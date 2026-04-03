@@ -195,7 +195,6 @@ body{
 // 新增快报时只需在此数组末尾追加即可
 const reports = [
   { date: "20260403", weekday: "星期五", title: "特朗普\"21天饱和打击\"改写预期，六大行分红4274亿" },
-  { date: "20260403", weekday: "星期五", title: "特朗普\"再打两三周\"推翻停战预期，A股回调" },
   { date: "20260402", weekday: "星期四", title: "AI前沿、全球市场、价值投资风向" },
   { date: "20260401", weekday: "星期三", title: "AI前沿、全球市场、价值投资风向" },
   { date: "20260331", weekday: "星期二", title: "老盛的每日快讯" },
@@ -209,8 +208,8 @@ const reports = [
 ];
 
 function getFilePrefix(dateStr) {
-  // 20260401 之前用 "老盛的每日快讯"，之后用 "老盛早知道"
-  return dateStr >= "20260401" ? "老盛早知道" : (dateStr === "20260324" ? "daily_brief" : "老盛的每日快讯");
+  // 20260403 起用 "老盛早知道"，之前用 "老盛的每日快讯"
+  return dateStr >= "20260403" ? "老盛早知道" : (dateStr === "20260324" ? "daily_brief" : "老盛的每日快讯");
 }
 
 function getLink(dateStr) {
