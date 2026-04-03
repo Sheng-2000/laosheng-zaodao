@@ -415,35 +415,31 @@ archive.forEach(r => {
 });
 
 // ══════════ 密码锁 ══════════
-(async function() {
-  const SECRET = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'; // SHA-256 of password
+(function() {
+  const _0x1a = [78,85,74,123,79,69,86,51];
+  const _0x1b = _0x1a.map(function(c){return String.fromCharCode(c - 1)}).join('');
   const KEY = 'lszd_auth';
 
-  function sha256(msg) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(msg);
-    return crypto.subtle.digest('SHA-256', data).then(buf => {
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    });
-  }
-
   // 检查 session 认证
-  const sessionAuth = sessionStorage.getItem(KEY);
-  if (sessionAuth === SECRET) {
-    document.getElementById('pw-overlay').classList.add('hidden');
+  if (sessionStorage.getItem(KEY) === 'ok') {
+    document.getElementById('pw-overlay').style.display = 'none';
     return;
   }
 
+  function verify(pwd) {
+    // 使用 base64 编码比对，不直接暴露明文
+    return btoa(pwd) === _0x1b;
+  }
+
   // 暴露全局函数
-  window.checkPassword = async function() {
-    const input = document.getElementById('pw-input');
-    const error = document.getElementById('pw-error');
-    const val = input.value.trim();
+  window.checkPassword = function() {
+    var input = document.getElementById('pw-input');
+    var error = document.getElementById('pw-error');
+    var val = input.value.trim();
     if (!val) { error.textContent = '请输入密码'; return; }
-    const hash = await sha256(val);
-    if (hash === SECRET) {
-      sessionStorage.setItem(KEY, SECRET);
-      document.getElementById('pw-overlay').classList.add('hidden');
+    if (verify(val)) {
+      sessionStorage.setItem(KEY, 'ok');
+      document.getElementById('pw-overlay').style.display = 'none';
     } else {
       error.textContent = '密码错误，请重试';
       input.value = '';
