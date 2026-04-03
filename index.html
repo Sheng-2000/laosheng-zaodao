@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老盛早知道 - 每日财经快讯</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-hover:#21273a;
+  --accent:#00d4ff;--accent-dim:rgba(0,212,255,0.15);--accent-border:rgba(0,212,255,0.35);
+  --green:#3fb950;--red:#f85149;--yellow:#d29922;--purple:#bc8cff;--orange:#ffa657;
+  --text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;
+  --border:rgba(48,54,61,0.8);--radius:10px;
+}
+body{
+  font-family:-apple-system,'SF Pro Text','PingFang SC','Noto Sans SC',sans-serif;
+  background:var(--bg-primary);color:var(--text-primary);line-height:1.7;
+  min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,212,255,0.06),transparent),
+    repeating-linear-gradient(0deg,transparent,transparent 100px,rgba(0,212,255,0.015) 100px,rgba(0,212,255,0.015) 101px);
+}
+
+/* Header */
+.site-header{
+  background:linear-gradient(180deg,#080e18 0%,#0a1422 100%);
+  border-bottom:1px solid rgba(0,212,255,0.18);
+  position:relative;overflow:hidden;
+}
+.site-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--purple) 75%,transparent 100%);
+  box-shadow:0 0 18px var(--accent);
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:48px 40px 40px;text-align:center;
+  position:relative;z-index:1;
+}
+.brand-signal{
+  display:inline-flex;align-items:center;position:relative;
+}
+.brand-name{color:#e6edf3;font-size:36px;font-weight:900;letter-spacing:6px}
+.brand-sep{
+  width:2px;height:28px;background:rgba(0,212,255,0.15);margin:0 14px;position:relative;overflow:hidden;
+}
+.brand-sep::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);width:5px;height:5px;
+  border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);
+  animation:sep-slide 3s ease-in-out infinite;
+}
+.brand-zaodao{color:var(--accent);font-size:36px;font-weight:300;letter-spacing:6px;text-shadow:0 0 25px rgba(0,212,255,0.35)}
+.brand-tag{
+  display:block;margin-top:8px;font-size:13px;color:var(--text-muted);letter-spacing:2px;
+}
+.site-desc{
+  margin-top:20px;font-size:15px;color:var(--text-secondary);letter-spacing:1px;
+}
+
+/* Stats */
+.stats-bar{
+  max-width:1200px;margin:30px auto 0;padding:0 40px;
+  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+}
+.stat-item{text-align:center}
+.stat-num{font-size:28px;font-weight:800;color:var(--accent);text-shadow:0 0 12px rgba(0,212,255,0.3)}
+.stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;margin-top:2px}
+
+/* Latest */
+.latest-section{
+  max-width:1200px;margin:40px auto 0;padding:0 40px;
+}
+.section-title{
+  font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);padding-left:12px;border-left:2px solid var(--accent);margin-bottom:20px;
+}
+.latest-card{
+  background:var(--bg-card);border:1px solid var(--accent-border);border-radius:var(--radius);
+  padding:28px 32px;transition:all 0.3s ease;position:relative;overflow:hidden;
+}
+.latest-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--purple));
+}
+.latest-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.12)}
+.latest-badge{
+  display:inline-block;background:var(--accent);color:#0d1117;font-size:11px;font-weight:700;
+  padding:2px 10px;border-radius:20px;letter-spacing:1px;margin-bottom:10px;
+}
+.latest-title{font-size:20px;font-weight:700;margin-bottom:6px}
+.latest-title a{color:var(--text-primary);text-decoration:none;transition:color 0.2s}
+.latest-title a:hover{color:var(--accent)}
+.latest-meta{font-size:13px;color:var(--text-muted)}
+
+/* Archive */
+.archive-section{
+  max-width:1200px;margin:50px auto 0;padding:0 40px;
+}
+.archive-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;
+}
+.archive-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 22px;transition:all 0.25s ease;text-decoration:none;display:block;
+  position:relative;overflow:hidden;
+}
+.archive-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:var(--accent);opacity:0;transition:opacity 0.25s;
+}
+.archive-card:hover{
+  border-color:var(--accent-border);transform:translateY(-1px);
+}
+.archive-card:hover::before{opacity:1}
+.archive-card:hover .card-date{color:var(--accent)}
+.card-header{display:flex;justify-content:space-between;align-items:center}
+.card-date{font-size:14px;font-weight:700;color:var(--text-primary);transition:color 0.2s;font-family:'SF Mono',Menlo,monospace}
+.card-weekday{font-size:12px;color:var(--text-muted);background:rgba(0,212,255,0.06);padding:2px 8px;border-radius:4px}
+.card-title{margin-top:6px;font-size:13px;color:var(--text-secondary)}
+
+/* Footer */
+.site-footer{
+  max-width:1200px;margin:60px auto 0;padding:30px 40px;
+  border-top:1px solid var(--border);text-align:center;
+  color:var(--text-muted);font-size:12px;letter-spacing:1px;
+}
+.site-footer a{color:var(--accent);text-decoration:none}
+
+/* Animations */
+@keyframes sep-slide{0%{top:0;opacity:0}15%{opacity:1}50%{top:calc(100%-5px);opacity:1}85%{opacity:1}100%{top:0;opacity:0}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeInUp 0.6s ease forwards}
+.fade-in-delay-1{animation-delay:0.1s;opacity:0}
+.fade-in-delay-2{animation-delay:0.2s;opacity:0}
+.fade-in-delay-3{animation-delay:0.3s;opacity:0}
+
+@media(max-width:768px){
+  .header-inner{padding:32px 20px 28px}
+  .brand-name,.brand-zaodao{font-size:26px;letter-spacing:3px}
+  .brand-sep{margin:0 8px;height:22px}
+  .latest-section,.archive-section{padding:0 16px}
+  .stats-bar{padding:0 16px;gap:24px}
+  .archive-grid{grid-template-columns:1fr}
+  .latest-card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="header-inner">
+    <div class="brand-signal">
+      <span class="brand-name">老盛</span>
+      <div class="brand-sep"></div>
+      <span class="brand-zaodao">早知道</span>
+    </div>
+    <div class="brand-tag">· 每日资讯不迟到</div>
+    <div class="site-desc">AI驱动情报 · 数据实时更新 · 价值投资视角</div>
+  </div>
+</div>
+
+<div class="stats-bar fade-in">
+  <div class="stat-item">
+    <div class="stat-num" id="total-count">--</div>
+    <div class="stat-label">累计发布</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" id="latest-date">--</div>
+    <div class="stat-label">最新一期</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" style="font-size:16px">每日更新</div>
+    <div class="stat-label">更新频率</div>
+  </div>
+</div>
+
+<div class="latest-section fade-in fade-in-delay-1" id="latest-section">
+  <!-- 最新一期，由 JS 动态填充 -->
+</div>
+
+<div class="archive-section fade-in fade-in-delay-2">
+  <div class="section-title">历史快报</div>
+  <div class="archive-grid" id="archive-grid">
+    <!-- 由 JS 动态填充 -->
+  </div>
+</div>
+
+<div class="site-footer fade-in fade-in-delay-3">
+  <p>老盛早知道 &copy; 2026 · Powered by WorkBuddy &amp; AI</p>
+  <p style="margin-top:4px">本站内容仅供参考，不构成投资建议</p>
+</div>
+
+<script>
+// 所有快报数据（按日期倒序）
+// 新增快报时只需在此数组末尾追加即可
+const reports = [
+  { date: "20260403", weekday: "星期五", title: "特朗普\"再打两三周\"推翻停战预期，A股回调" },
+  { date: "20260402", weekday: "星期四", title: "AI前沿、全球市场、价值投资风向" },
+  { date: "20260401", weekday: "星期三", title: "AI前沿、全球市场、价值投资风向" },
+  { date: "20260331", weekday: "星期二", title: "老盛的每日快讯" },
+  { date: "20260330", weekday: "星期一", title: "老盛的每日快讯" },
+  { date: "20260329", weekday: "星期日", title: "老盛的每日快讯" },
+  { date: "20260328", weekday: "星期六", title: "老盛的每日快讯" },
+  { date: "20260327", weekday: "星期五", title: "老盛的每日快讯" },
+  { date: "20260326", weekday: "星期四", title: "老盛的每日快讯" },
+  { date: "20260325", weekday: "星期三", title: "老盛的每日快讯" },
+  { date: "20260324", weekday: "星期二", title: "老盛的每日快讯" },
+];
+
+function getFilePrefix(dateStr) {
+  // 20260401 之前用 "老盛的每日快讯"，之后用 "老盛早知道"
+  return dateStr >= "20260401" ? "老盛早知道" : (dateStr === "20260324" ? "daily_brief" : "老盛的每日快讯");
+}
+
+function getLink(dateStr) {
+  const prefix = getFilePrefix(dateStr);
+  return `${prefix}_${dateStr}.html`;
+}
+
+// 统计
+document.getElementById('total-count').textContent = reports.length;
+document.getElementById('latest-date').textContent = reports[0].date.slice(4,6) + '/' + reports[0].date.slice(6,8);
+
+// 最新一期
+const latest = reports[0];
+document.getElementById('latest-section').innerHTML = `
+  <div class="section-title">最新一期</div>
+  <div class="latest-card">
+    <div class="latest-badge">LATEST</div>
+    <div class="latest-title"><a href="${getLink(latest.date)}">老盛早知道 ${latest.date.slice(0,4)}年${parseInt(latest.date.slice(4,6))}月${parseInt(latest.date.slice(6,8))}日</a></div>
+    <div class="latest-meta">${latest.weekday} · ${latest.title}</div>
+  </div>
+`;
+
+// 历史列表（去掉第一条，因为已显示为最新）
+const archive = reports.slice(1);
+const grid = document.getElementById('archive-grid');
+archive.forEach(r => {
+  const d = r.date;
+  const card = document.createElement('a');
+  card.className = 'archive-card';
+  card.href = getLink(d);
+  card.innerHTML = `
+    <div class="card-header">
+      <span class="card-date">${d.slice(0,4)}.${d.slice(4,6)}.${d.slice(6,8)}</span>
+      <span class="card-weekday">${r.weekday}</span>
+    </div>
+    <div class="card-title">${r.title}</div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
