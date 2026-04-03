@@ -5,184 +5,274 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>老盛早知道 - 每日财经快讯</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
+:root {
   --bg-primary:#0d1117;--bg-secondary:#161b22;--bg-card:#1c2333;--bg-hover:#21273a;
   --accent:#00d4ff;--accent-dim:rgba(0,212,255,0.15);--accent-border:rgba(0,212,255,0.35);
   --green:#3fb950;--red:#f85149;--yellow:#d29922;--purple:#bc8cff;--orange:#ffa657;
   --text-primary:#e6edf3;--text-secondary:#8b949e;--text-muted:#6e7681;
-  --border:rgba(48,54,61,0.8);--radius:10px;
+  --border:rgba(48,54,61,0.8);--radius:10px;--radius-sm:8px;
 }
+*{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:-apple-system,'SF Pro Text','PingFang SC','Noto Sans SC',sans-serif;
   background:var(--bg-primary);color:var(--text-primary);line-height:1.7;
   min-height:100vh;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,212,255,0.06),transparent),
-    repeating-linear-gradient(0deg,transparent,transparent 100px,rgba(0,212,255,0.015) 100px,rgba(0,212,255,0.015) 101px);
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
 }
 
-/* Header */
-.site-header{
-  background:linear-gradient(180deg,#080e18 0%,#0a1422 100%);
-  border-bottom:1px solid rgba(0,212,255,0.18);
-  position:relative;overflow:hidden;
+/* ══════════ HEADER ══════════ */
+.header {
+  background: linear-gradient(180deg, #080e18 0%, #0a1422 100%);
+  border-bottom: 1px solid rgba(0,212,255,0.18);
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.7), 0 1px 0 rgba(0,212,255,0.12);
 }
-.site-header::before{
+.header::before {
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--purple) 75%,transparent 100%);
   box-shadow:0 0 18px var(--accent);
 }
-.header-inner{
-  max-width:1200px;margin:0 auto;padding:48px 40px 40px;text-align:center;
-  position:relative;z-index:1;
+.header-inner { max-width:1200px;margin:0 auto;padding:22px 40px 0; }
+.header-top {
+  display:grid;grid-template-columns:72px 1fr auto;
+  align-items:center;gap:22px;padding-bottom:24px;
 }
-.brand-signal{
-  display:inline-flex;align-items:center;position:relative;
+
+/* ══ BRAND ICON ══ */
+.brand-icon {
+  width:72px;height:72px;
+  background:linear-gradient(145deg,#0a1e35 0%,#0d2040 60%,#091828 100%);
+  border:1px solid rgba(0,212,255,0.38);border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 28px rgba(0,212,255,0.32),0 0 8px rgba(0,212,255,0.12),inset 0 1px 0 rgba(255,255,255,0.08);
+  flex-shrink:0;position:relative;overflow:hidden;align-self:center;
 }
-.brand-name{color:#e6edf3;font-size:36px;font-weight:900;letter-spacing:6px}
-.brand-sep{
-  width:2px;height:28px;background:rgba(0,212,255,0.15);margin:0 14px;position:relative;overflow:hidden;
+.brand-icon::before {
+  content:'';position:absolute;top:-4px;left:-4px;width:32px;height:32px;
+  background:radial-gradient(circle,rgba(0,212,255,0.22) 0%,transparent 70%);pointer-events:none;
 }
-.brand-sep::after{
-  content:'';position:absolute;left:50%;transform:translateX(-50%);width:5px;height:5px;
-  border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);
+.brand-icon::after {
+  content:'';position:absolute;inset:0;border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,212,255,0.08) 0%,transparent 55%);pointer-events:none;
+}
+.brand-icon svg { width:36px;height:36px;position:relative;z-index:1; }
+
+/* ══ BRAND TITLE ══ */
+.brand-title { display:flex;flex-direction:column;justify-content:center;gap:6px;line-height:1; }
+.brand-en-row { display:flex;align-items:center;gap:8px; }
+.brand-en {
+  font-size:9.5px;font-weight:600;letter-spacing:2.5px;
+  color:var(--accent);opacity:0.4;text-transform:uppercase;
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+}
+.brand-main-row { display:flex;align-items:center; }
+
+/* ══ 信号脉冲标题 ══ */
+.brand-signal {
+  position:relative;display:inline-flex;align-items:center;cursor:default;padding:4px 0;
+}
+.brand-signal::before {
+  content:'';position:absolute;inset:-8px -16px;border-radius:10px;
+  background:radial-gradient(ellipse at center,rgba(0,212,255,0.06) 0%,transparent 70%);
+  animation:signal-pulse 5s ease-in-out infinite;pointer-events:none;
+}
+.brand-name {
+  font-size:28px;font-weight:900;letter-spacing:5px;color:#e6edf3;position:relative;
+}
+.brand-sep {
+  position:relative;width:2px;height:22px;background:rgba(0,212,255,0.15);
+  margin:0 10px;border-radius:1px;align-self:center;overflow:visible;
+}
+.brand-sep::after {
+  content:'';position:absolute;left:-1.5px;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 8px rgba(0,212,255,0.8),0 0 20px rgba(0,212,255,0.3);
   animation:sep-slide 3s ease-in-out infinite;
 }
-.brand-zaodao{color:var(--accent);font-size:36px;font-weight:300;letter-spacing:6px;text-shadow:0 0 25px rgba(0,212,255,0.35)}
-.brand-tag{
-  display:block;margin-top:8px;font-size:13px;color:var(--text-muted);letter-spacing:2px;
+.brand-zaodao {
+  font-size:28px;font-weight:300;letter-spacing:5px;color:var(--accent);
+  text-shadow:0 0 20px rgba(0,212,255,0.35);position:relative;
 }
-.site-desc{
-  margin-top:20px;font-size:15px;color:var(--text-secondary);letter-spacing:1px;
-}
+@keyframes signal-pulse { 0%,100%{opacity:0.4;transform:scale(1)} 50%{opacity:1;transform:scale(1.02)} }
+@keyframes sep-slide { 0%{top:0;opacity:0} 15%{opacity:1} 50%{top:calc(100%-5px);opacity:1} 85%{opacity:1} 100%{top:0;opacity:0} }
 
-/* Stats */
-.stats-bar{
-  max-width:1200px;margin:30px auto 0;padding:0 40px;
-  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+.brand-tag {
+  font-size:11px;font-weight:400;letter-spacing:2px;color:var(--text-primary);
+  margin-left:12px;opacity:0.35;white-space:nowrap;
 }
-.stat-item{text-align:center}
-.stat-num{font-size:28px;font-weight:800;color:var(--accent);text-shadow:0 0 12px rgba(0,212,255,0.3)}
-.stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;margin-top:2px}
+.brand-subtitle {
+  font-size:11.5px;color:var(--text-muted);letter-spacing:0.5px;
+  display:flex;align-items:center;margin-top:3px;flex-wrap:wrap;
+}
+.brand-subtitle .dot { color:rgba(0,212,255,0.28);margin:0 7px; }
 
-/* Latest */
-.latest-section{
-  max-width:1200px;margin:40px auto 0;padding:0 40px;
+.live-dot {
+  display:inline-block;width:7px;height:7px;
+  background:var(--green);border-radius:50%;
+  box-shadow:0 0 8px var(--green);
+  animation:pulse 2s ease-in-out infinite;vertical-align:middle;
 }
-.section-title{
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+/* ══ HEADER META ══ */
+.header-meta {
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;
+  padding-left:20px;border-left:1px solid rgba(0,212,255,0.1);
+}
+.hm-date {
+  font-size:22px;font-weight:700;letter-spacing:2px;color:var(--accent);line-height:1;
+  text-shadow:0 0 14px rgba(0,212,255,0.4);
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+}
+.hm-sub { font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:6px; }
+.hm-sub .sep { color:rgba(0,212,255,0.25); }
+
+/* ══════════ CONTENT ══════════ */
+.main-content { max-width:1200px;margin:0 auto;padding:40px 40px 0; }
+
+.section-title {
   font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
   color:var(--accent);padding-left:12px;border-left:2px solid var(--accent);margin-bottom:20px;
 }
-.latest-card{
+
+/* Latest */
+.latest-card {
   background:var(--bg-card);border:1px solid var(--accent-border);border-radius:var(--radius);
-  padding:28px 32px;transition:all 0.3s ease;position:relative;overflow:hidden;
+  padding:28px 32px;transition:all 0.3s ease;position:relative;overflow:hidden;margin-bottom:40px;
 }
-.latest-card::before{
+.latest-card::before {
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--accent),var(--purple));
 }
-.latest-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.12)}
-.latest-badge{
+.latest-card:hover { border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.12) }
+.latest-badge {
   display:inline-block;background:var(--accent);color:#0d1117;font-size:11px;font-weight:700;
   padding:2px 10px;border-radius:20px;letter-spacing:1px;margin-bottom:10px;
 }
-.latest-title{font-size:20px;font-weight:700;margin-bottom:6px}
-.latest-title a{color:var(--text-primary);text-decoration:none;transition:color 0.2s}
-.latest-title a:hover{color:var(--accent)}
-.latest-meta{font-size:13px;color:var(--text-muted)}
+.latest-title { font-size:20px;font-weight:700;margin-bottom:6px }
+.latest-title a { color:var(--text-primary);text-decoration:none;transition:color 0.2s }
+.latest-title a:hover { color:var(--accent) }
+.latest-meta { font-size:13px;color:var(--text-muted) }
 
 /* Archive */
-.archive-section{
-  max-width:1200px;margin:50px auto 0;padding:0 40px;
-}
-.archive-grid{
+.archive-section { margin-top:10px; }
+.archive-grid {
   display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;
 }
-.archive-card{
+.archive-card {
   background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
   padding:18px 22px;transition:all 0.25s ease;text-decoration:none;display:block;
   position:relative;overflow:hidden;
 }
-.archive-card::before{
+.archive-card::before {
   content:'';position:absolute;top:0;left:0;width:3px;height:100%;
   background:var(--accent);opacity:0;transition:opacity 0.25s;
 }
-.archive-card:hover{
-  border-color:var(--accent-border);transform:translateY(-1px);
+.archive-card:hover { border-color:var(--accent-border);transform:translateY(-1px); }
+.archive-card:hover::before { opacity:1 }
+.archive-card:hover .card-date { color:var(--accent) }
+.card-header { display:flex;justify-content:space-between;align-items:center }
+.card-date {
+  font-size:14px;font-weight:700;color:var(--text-primary);transition:color 0.2s;
+  font-family:'SF Mono',Menlo,monospace;
 }
-.archive-card:hover::before{opacity:1}
-.archive-card:hover .card-date{color:var(--accent)}
-.card-header{display:flex;justify-content:space-between;align-items:center}
-.card-date{font-size:14px;font-weight:700;color:var(--text-primary);transition:color 0.2s;font-family:'SF Mono',Menlo,monospace}
-.card-weekday{font-size:12px;color:var(--text-muted);background:rgba(0,212,255,0.06);padding:2px 8px;border-radius:4px}
-.card-title{margin-top:6px;font-size:13px;color:var(--text-secondary)}
+.card-weekday {
+  font-size:12px;color:var(--text-muted);background:rgba(0,212,255,0.06);
+  padding:2px 8px;border-radius:4px;
+}
+.card-title { margin-top:6px;font-size:13px;color:var(--text-secondary) }
 
 /* Footer */
-.site-footer{
+.site-footer {
   max-width:1200px;margin:60px auto 0;padding:30px 40px;
   border-top:1px solid var(--border);text-align:center;
   color:var(--text-muted);font-size:12px;letter-spacing:1px;
 }
-.site-footer a{color:var(--accent);text-decoration:none}
+.site-footer a { color:var(--accent);text-decoration:none }
 
 /* Animations */
-@keyframes sep-slide{0%{top:0;opacity:0}15%{opacity:1}50%{top:calc(100%-5px);opacity:1}85%{opacity:1}100%{top:0;opacity:0}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-in{animation:fadeInUp 0.6s ease forwards}
-.fade-in-delay-1{animation-delay:0.1s;opacity:0}
-.fade-in-delay-2{animation-delay:0.2s;opacity:0}
-.fade-in-delay-3{animation-delay:0.3s;opacity:0}
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { animation:fadeInUp 0.6s ease forwards }
+.fade-in-delay-1 { animation-delay:0.1s;opacity:0 }
+.fade-in-delay-2 { animation-delay:0.2s;opacity:0 }
+.fade-in-delay-3 { animation-delay:0.3s;opacity:0 }
 
+/* Mobile */
 @media(max-width:768px){
-  .header-inner{padding:32px 20px 28px}
-  .brand-name,.brand-zaodao{font-size:26px;letter-spacing:3px}
-  .brand-sep{margin:0 8px;height:22px}
-  .latest-section,.archive-section{padding:0 16px}
-  .stats-bar{padding:0 16px;gap:24px}
-  .archive-grid{grid-template-columns:1fr}
-  .latest-card{padding:20px}
+  .header-inner,.main-content,.site-footer { padding-left:16px;padding-right:16px; }
+  .header-top { flex-direction:column;align-items:flex-start;gap:10px; }
+  .brand-icon { width:56px;height:56px;border-radius:14px; }
+  .brand-icon svg { width:28px;height:28px; }
+  .brand-name,.brand-zaodao { font-size:22px;letter-spacing:3px; }
+  .brand-sep { margin:0 7px;height:18px; }
+  .brand-tag { font-size:10px;margin-left:8px;margin-bottom:4px; }
+  .header-meta { border-left:none;padding-left:0;flex-direction:row;flex-wrap:wrap;align-items:flex-end; }
+  .hm-date { font-size:18px; }
+  .main-content { padding:24px 16px 0; }
+  .archive-grid { grid-template-columns:1fr; }
+  .latest-card { padding:20px; }
 }
 </style>
 </head>
 <body>
 
-<div class="site-header">
+<div class="header">
   <div class="header-inner">
-    <div class="brand-signal">
-      <span class="brand-name">老盛</span>
-      <div class="brand-sep"></div>
-      <span class="brand-zaodao">早知道</span>
+    <div class="header-top">
+
+    <!-- 左栏：品牌图标 -->
+    <div class="brand-icon">
+      <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M1.5 5.5 Q-2 15 1.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M28.5 5.5 Q32 15 28.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
     </div>
-    <div class="brand-tag">· 每日资讯不迟到</div>
-    <div class="site-desc">AI驱动情报 · 数据实时更新 · 价值投资视角</div>
-  </div>
+
+    <!-- 中栏：品牌文字 -->
+    <div class="brand-title">
+      <div class="brand-en-row">
+        <span class="brand-en">Laosheng's Daily Brief</span>
+      </div>
+      <div class="brand-main-row">
+        <div class="brand-signal">
+          <span class="brand-name">老盛</span><div class="brand-sep"></div><span class="brand-zaodao">早知道</span>
+        </div><span class="brand-tag">· 每日资讯不迟到</span>
+      </div>
+      <div class="brand-subtitle">
+        <span class="live-dot" style="margin-right:7px;"></span>
+        AI驱动情报
+        <span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#f5c842;box-shadow:0 0 8px #f5c842;"></span>数据实时更新<span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#ff4444;box-shadow:0 0 8px #ff4444;"></span>价值投资视角
+      </div>
+    </div>
+
+    <!-- 右栏：信息 -->
+    <div class="header-meta">
+      <div class="hm-date" id="latest-date">--</div>
+      <div class="hm-sub">
+        <span id="latest-weekday">--</span>
+        <span class="sep">·</span>
+        <span>每日更新</span>
+      </div>
+    </div>
+
+  </div><!-- /header-top -->
+  </div><!-- /header-inner -->
 </div>
 
-<div class="stats-bar fade-in">
-  <div class="stat-item">
-    <div class="stat-num" id="total-count">--</div>
-    <div class="stat-label">累计发布</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" id="latest-date">--</div>
-    <div class="stat-label">最新一期</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" style="font-size:16px">每日更新</div>
-    <div class="stat-label">更新频率</div>
-  </div>
-</div>
+<div class="main-content">
 
-<div class="latest-section fade-in fade-in-delay-1" id="latest-section">
-  <!-- 最新一期，由 JS 动态填充 -->
-</div>
+<div id="latest-section" class="fade-in fade-in-delay-1"></div>
 
 <div class="archive-section fade-in fade-in-delay-2">
   <div class="section-title">历史快报</div>
-  <div class="archive-grid" id="archive-grid">
-    <!-- 由 JS 动态填充 -->
-  </div>
+  <div class="archive-grid" id="archive-grid"></div>
+</div>
+
 </div>
 
 <div class="site-footer fade-in fade-in-delay-3">
@@ -217,12 +307,12 @@ function getLink(dateStr) {
   return `${prefix}_${dateStr}.html`;
 }
 
-// 统计
-document.getElementById('total-count').textContent = reports.length;
-document.getElementById('latest-date').textContent = reports[0].date.slice(4,6) + '/' + reports[0].date.slice(6,8);
+// Header meta
+const latest = reports[0];
+document.getElementById('latest-date').textContent = latest.date.slice(0,4) + ' / ' + latest.date.slice(4,6) + ' / ' + latest.date.slice(6,8);
+document.getElementById('latest-weekday').textContent = latest.weekday;
 
 // 最新一期
-const latest = reports[0];
 document.getElementById('latest-section').innerHTML = `
   <div class="section-title">最新一期</div>
   <div class="latest-card">
@@ -232,7 +322,7 @@ document.getElementById('latest-section').innerHTML = `
   </div>
 `;
 
-// 历史列表（去掉第一条，因为已显示为最新）
+// 历史列表
 const archive = reports.slice(1);
 const grid = document.getElementById('archive-grid');
 archive.forEach(r => {
