@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老盛早知道 · 2026年4月9日</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #1c2333;
+    --bg-hover: #21273a;
+    --accent: #00d4ff;
+    --accent-dim: rgba(0,212,255,0.15);
+    --accent-border: rgba(0,212,255,0.35);
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d29922;
+    --purple: #bc8cff;
+    --orange: #ffa657;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --border: rgba(48,54,61,0.8);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
+  }
+
+  /* ══════════ HEADER ══════════ */
+  .header {
+    background: linear-gradient(180deg, #080e18 0%, #0a1422 100%);
+    border-bottom: 1px solid rgba(0,212,255,0.18);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.7), 0 1px 0 rgba(0,212,255,0.12);
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 25%, var(--purple) 75%, transparent 100%);
+    box-shadow: 0 0 18px var(--accent), 0 0 36px rgba(0,212,255,0.25);
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 40px 0;
+  }
+  .header-top {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    align-items: center;
+    gap: 22px;
+    padding-bottom: 16px;
+  }
+
+  .brand-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(145deg, #0a1e35 0%, #0d2040 60%, #091828 100%);
+    border: 1px solid rgba(0,212,255,0.38);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 28px rgba(0,212,255,0.32), 0 0 8px rgba(0,212,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    align-self: center;
+  }
+  .brand-icon::before {
+    content: '';
+    position: absolute; top: -4px; left: -4px;
+    width: 32px; height: 32px;
+    background: radial-gradient(circle, rgba(0,212,255,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-icon::after {
+    content: '';
+    position: absolute; inset: 0; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .brand-icon svg { width:36px; height:36px; position:relative; z-index:1; }
+
+  /* ══ BRAND TITLE ══ */
+  .brand-title { display:flex; flex-direction:column; justify-content:center; gap:6px; line-height:1; }
+
+  .brand-en-row { display:flex; align-items:center; gap:8px; }
+  .brand-en {
+    font-size: 9.5px; font-weight: 600; letter-spacing: 2.5px;
+    color: var(--accent); opacity: 0.4; text-transform: uppercase;
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  .brand-issue {
+    font-size: 9px; font-weight: 500; letter-spacing: 1px;
+    color: var(--text-muted); font-family: 'SF Mono','Fira Code','Consolas',monospace;
+    padding: 1px 6px; border: 1px solid rgba(0,212,255,0.12);
+    border-radius: 3px; background: rgba(0,212,255,0.03);
+  }
+
+  /* 主标题行 */
+  .brand-main-row {
+    display: flex;
+    align-items: center;
+  }
+
+  /* ══ 信号脉冲标题 ══ */
+  .brand-signal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+    padding: 4px 0;
+  }
+
+  /* 背景脉冲光晕 */
+  .brand-signal::before {
+    content: '';
+    position: absolute;
+    inset: -8px -16px;
+    border-radius: 10px;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, transparent 70%);
+    animation: signal-pulse 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* "老盛" —— 品牌名，纯白 */
+  .brand-name {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: #e6edf3;
+    position: relative;
+  }
+
+  /* 中间分隔竖线 + 滑动光点 */
+  .brand-sep {
+    position: relative;
+    width: 2px;
+    height: 22px;
+    background: rgba(0,212,255,0.15);
+    margin: 0 10px;
+    border-radius: 1px;
+    align-self: center;
+    overflow: visible;
+  }
+  .brand-sep::after {
+    content: '';
+    position: absolute;
+    left: -1.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(0,212,255,0.8), 0 0 20px rgba(0,212,255,0.3);
+    animation: sep-slide 3s ease-in-out infinite;
+  }
+
+  /* "早知道" */
+  .brand-zaodao {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(0,212,255,0.35);
+    position: relative;
+  }
+
+  @keyframes signal-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+  }
+
+  @keyframes sep-slide {
+    0%   { top: 0; opacity: 0; }
+    15%  { opacity: 1; }
+    50%  { top: calc(100% - 5px); opacity: 1; }
+    85%  { opacity: 1; }
+    100% { top: 0; opacity: 0; }
+  }
+
+  .brand-tag {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-left: 12px;
+    opacity: 0.35;
+    white-space: nowrap;
+  }
+
+  .brand-subtitle {
+    font-size: 11.5px; color: var(--text-muted);
+    letter-spacing: 0.5px; display:flex; align-items:center; margin-top:3px;
+  }
+  .brand-subtitle .dot { color: rgba(0,212,255,0.28); margin: 0 7px; }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+    padding-left: 20px;
+    border-left: 1px solid rgba(0,212,255,0.1);
+  }
+  .hm-date {
+    font-size: 22px; font-weight: 700; letter-spacing: 2px;
+    color: var(--accent); line-height: 1;
+    text-shadow: 0 0 14px rgba(0,212,255,0.4);
+    font-family: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  .hm-sub {
+    font-size: 11px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hm-sub .sep { color: rgba(0,212,255,0.25); }
+  .hm-tickers { display:flex; gap:8px; align-items:stretch; }
+  .hm-ticker {
+    display: flex; flex-direction: column; align-items: center;
+    background: rgba(0,212,255,0.04);
+    border: 1px solid rgba(0,212,255,0.1); border-radius: 6px;
+    padding: 5px 12px; min-width: 64px; gap: 1px;
+  }
+  .hm-ticker .t-label { font-size: 9.5px; color: var(--text-muted); letter-spacing: 0.5px; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .hm-ticker .t-val { font-size: 15px; font-weight: 700; line-height: 1.2; }
+  .hm-ticker .t-chg { font-size: 10px; font-weight: 600; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .up   { color: #f85149; }
+  .down { color: #3fb950; }
+  .gold { color: #f0b429; }
+
+  .live-dot {
+    display: inline-block; width:7px; height:7px;
+    background: var(--green); border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s ease-in-out infinite; vertical-align: middle;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+  /* ══════════ TAB NAV ══════════ */
+  .tab-nav-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .tab-nav { display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
+  .tab-nav::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    flex-shrink: 0; padding: 11px 20px;
+    border: none; background: transparent;
+    color: var(--text-muted); font-size: 13.5px; font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.22s ease; white-space: nowrap;
+    position: relative; font-family: inherit; letter-spacing: 0.3px;
+  }
+  .tab-btn:hover { color:var(--text-primary); background:rgba(0,212,255,0.05); }
+  .tab-btn.active {
+    color: var(--accent); background: rgba(0,212,255,0.08);
+    font-weight: 700; text-shadow: 0 0 12px rgba(0,212,255,0.5);
+  }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute; bottom:0; left:8px; right:8px; height:2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 2px 2px 0 0; box-shadow: 0 0 10px var(--accent);
+  }
+  .tab-icon { margin-right:5px; font-size:13px; }
+
+  /* ══════════ CONTENT ══════════ */
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+  .tab-panel.active { display:block; }
+  .tab-panel .inner { padding-top: 32px; padding-bottom: 32px; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-title {
+    font-size: 20px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::after {
+    content:''; flex:1; height:1px;
+    background: linear-gradient(90deg, var(--accent-border), transparent);
+  }
+
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--accent-border); transform: translateY(-1px); }
+  .card-title {
+    font-size: 15px; font-weight: 600; color: var(--text-primary);
+    margin-bottom: 8px; display:flex; align-items:flex-start; gap:10px;
+  }
+  .card-body { font-size:14px; color:var(--text-secondary); line-height:1.75; }
+
+  .tag {
+    display:inline-block; padding:2px 8px; border-radius:4px;
+    font-size:11px; font-weight:600; letter-spacing:0.5px;
+    flex-shrink:0; margin-top:1px;
+  }
+  .tag-finance { background:rgba(0,212,255,0.15); color:var(--accent); }
+  .tag-tech    { background:rgba(188,140,255,0.15); color:var(--purple); }
+  .tag-geo     { background:rgba(255,166,87,0.15); color:var(--orange); }
+  .tag-policy  { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-ai      { background:rgba(188,140,255,0.2); color:var(--purple); }
+  .tag-chip    { background:rgba(0,212,255,0.15); color:var(--accent); }
+  .tag-robot   { background:rgba(255,166,87,0.15); color:var(--orange); }
+  .tag-app     { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-energy  { background:rgba(240,180,41,0.15); color:#f0b429; }
+
+  /* 要点速览 */
+  .highlight-grid {
+    display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+    gap: 14px; margin-bottom: 28px;
+  }
+  .highlight-item {
+    background: var(--bg-card); border:1px solid var(--border);
+    border-left: 3px solid var(--accent); border-radius: var(--radius);
+    padding: 14px 18px; display:flex; gap:12px; align-items:flex-start;
+    transition: border-color 0.2s;
+  }
+  .highlight-item:hover { border-left-color: var(--purple); }
+  .highlight-num { font-size:20px; font-weight:800; color:var(--accent); line-height:1; flex-shrink:0; min-width:28px; }
+  .highlight-text { font-size:14px; color:var(--text-secondary); line-height:1.65; }
+  .highlight-text strong { color:var(--text-primary); }
+
+  /* 市场数据 */
+  .market-grid {
+    display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 14px; margin-bottom: 20px;
+  }
+  .market-block {
+    background: var(--bg-card); border:1px solid var(--border);
+    border-radius: var(--radius); padding:16px 20px;
+  }
+  .market-block h4 {
+    font-size:12px; color:var(--text-muted); letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:12px;
+    border-bottom:1px solid var(--border); padding-bottom:8px;
+  }
+  .market-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.4); font-size:13.5px;
+  }
+  .market-row:last-child { border-bottom:none; }
+  .market-name { color:var(--text-secondary); }
+  .market-val { font-weight:600; }
+  .up, .up-us { color: var(--red); }
+  .down, .down-us { color: var(--green); }
+  .neutral { color:var(--text-secondary); }
+
+  /* 情绪条 */
+  .sentiment-bar-wrap { margin:6px 0 14px; }
+  .sentiment-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
+  .sentiment-bar { height:8px; background:var(--bg-primary); border-radius:4px; overflow:hidden; border:1px solid var(--border); }
+  .sentiment-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--purple)); }
+
+  /* 标的卡片 */
+  .stock-card {
+    background: var(--bg-card); border:1px solid var(--border);
+    border-radius: var(--radius); padding:20px 24px; margin-bottom:14px;
+    transition: border-color 0.2s;
+  }
+  .stock-card:hover { border-color: var(--accent-border); }
+  .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
+  .stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
+  .stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
+  .stock-price-area { margin-left:auto; text-align:right; }
+  .stock-price { font-size:18px; font-weight:700; }
+  .stock-change { font-size:12px; margin-top:2px; }
+  .stock-bullets { list-style:none; padding:0; }
+  .stock-bullets li {
+    font-size:13.5px; color:var(--text-secondary);
+    padding:4px 0 4px 16px; position:relative; line-height:1.65;
+  }
+  .stock-bullets li::before {
+    content:'▸'; color:var(--accent);
+    position:absolute; left:0; font-size:11px; top:6px;
+  }
+
+  /* 总结 */
+  .summary-card {
+    background: linear-gradient(135deg, #1c2333, #161b22);
+    border:1px solid var(--accent-border); border-radius:var(--radius);
+    padding:28px 32px; margin-bottom:20px;
+  }
+  .summary-card p { color:var(--text-secondary); font-size:14.5px; line-height:1.9; margin-bottom:14px; }
+  .summary-card p:last-child { margin-bottom:0; }
+  .summary-card strong { color:var(--accent); }
+
+  /* 警示条 */
+  .alert-bar {
+    background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.3);
+    border-left:3px solid var(--red); border-radius:var(--radius);
+    padding:14px 20px; margin-bottom:20px;
+    font-size:13.5px; color:var(--text-secondary); line-height:1.75;
+  }
+  .alert-bar strong { color:var(--red); }
+
+  /* 重磅提示条 */
+  .hot-bar {
+    background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.3);
+    border-left:3px solid var(--green); border-radius:var(--radius);
+    padding:14px 20px; margin-bottom:20px;
+    font-size:13.5px; color:var(--text-secondary); line-height:1.75;
+  }
+  .hot-bar strong { color:var(--green); }
+
+  /* Footer */
+  .footer {
+    text-align:center; padding:28px 40px;
+    color:var(--text-muted); font-size:12px;
+    border-top:1px solid var(--border); margin-top:20px;
+  }
+  .footer span { color:var(--accent); }
+
+  /* 分组标题 */
+  .sub-section { margin-bottom: 28px; }
+  .sub-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px; padding-left: 10px;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* 响应式 */
+  @media (max-width:768px) {
+    .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
+    .highlight-grid, .market-grid { grid-template-columns:1fr; }
+    .header-top { grid-template-columns: 48px 1fr; gap:10px; padding-bottom:14px; }
+    .stock-price-area { margin-left:0; }
+    .brand-icon { width:42px; height:42px; border-radius:10px; flex-shrink:0; }
+    .brand-icon svg { width:22px; height:22px; }
+    .brand-name { font-size:20px; letter-spacing:2px; }
+    .brand-zaodao { font-size:20px; letter-spacing:2px; }
+    .brand-sep { margin:0 6px; height:16px; }
+    .brand-tag { font-size:9px; margin-left:6px; }
+    .brand-subtitle { font-size:10px; flex-wrap:wrap; }
+    .brand-en { font-size:8px; letter-spacing:1.5px; }
+    .brand-en-row { flex-wrap:wrap; gap:4px; }
+    .brand-issue { font-size:8px; }
+    .hm-tickers { display:none; }
+    .header-meta { border-left:none; padding-left:0; flex-direction:row; flex-wrap:wrap; align-items:center; gap:6px; grid-column:1/-1; padding-top:0; }
+    .hm-date { font-size:15px; }
+    .hm-sub { font-size:10px; }
+    .live-dot { width:5px; height:5px; }
+    .card { padding:16px 18px; }
+    .section-title { font-size:17px; }
+    .footer { padding:20px 16px; }
+    .stock-header { flex-direction:column; align-items:flex-start; }
+    .card { padding:14px 16px; }
+    .tab-btn { padding:10px 14px; font-size:12.5px; }
+    .tab-icon { font-size:12px; }
+    .brand-main-row { flex-wrap:wrap; }
+    .card-body table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .card-body table td, .card-body table th { white-space:nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+
+    <!-- 左栏：品牌图标 -->
+    <div class="brand-icon">
+      <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M1.5 5.5 Q-2 15 1.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M28.5 5.5 Q32 15 28.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- 中栏：品牌文字 -->
+    <div class="brand-title">
+      <div class="brand-en-row">
+        <span class="brand-en">Laosheng's Daily Brief</span>
+        <span class="brand-issue">#20260409</span>
+      </div>
+      <div class="brand-main-row">
+        <div class="brand-signal">
+          <span class="brand-name">老盛</span><div class="brand-sep"></div><span class="brand-zaodao">早知道</span>
+        </div><span class="brand-tag">· 每日资讯不迟到</span>
+      </div>
+      <div class="brand-subtitle">
+        <span class="live-dot" style="margin-right:7px;"></span>
+        AI驱动情报
+        <span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#f5c842;box-shadow:0 0 8px #f5c842;"></span>数据实时更新<span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#ff4444;box-shadow:0 0 8px #ff4444;"></span>价值投资视角
+      </div>
+    </div>
+
+    <!-- 右栏：仪表盘数据 -->
+    <div class="header-meta">
+      <div class="hm-date">2026 / 04 / 09</div>
+      <div class="hm-sub">
+        <span>星期四</span>
+        <span class="sep">·</span>
+        <span>美伊停火 · A股冲关4000</span>
+      </div>
+      <div class="hm-tickers">
+        <div class="hm-ticker">
+          <span class="t-label">沪指(4/8)</span>
+          <span class="t-val up">3995</span>
+          <span class="t-chg up">+2.70%</span>
+        </div>
+        <div class="hm-ticker">
+          <span class="t-label">黄金</span>
+          <span class="t-val" style="color:#f0b429">1059</span>
+          <span class="t-chg up">+2.97%</span>
+        </div>
+        <div class="hm-ticker">
+          <span class="t-label">WTI油</span>
+          <span class="t-val down">$92</span>
+          <span class="t-chg down">-15%</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /header-top -->
+  </div><!-- /header-inner -->
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-icon">⚡</span>要点速览</button>
+      <button class="tab-btn" onclick="switchTab(1)"><span class="tab-icon">🌐</span>国内外新闻</button>
+      <button class="tab-btn" onclick="switchTab(2)"><span class="tab-icon">🤖</span>AI前沿</button>
+      <button class="tab-btn" onclick="switchTab(3)"><span class="tab-icon">📈</span>全球市场</button>
+      <button class="tab-btn" onclick="switchTab(4)"><span class="tab-icon">💡</span>价值投资风向</button>
+      <button class="tab-btn" onclick="switchTab(5)"><span class="tab-icon">🏦</span>关注标的</button>
+      <button class="tab-btn" onclick="switchTab(6)"><span class="tab-icon">📋</span>今日总结</button>
+    </nav>
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 0: 要点速览 ══════════════════════════ -->
+<div class="tab-panel active" id="panel-0">
+  <div class="inner">
+  <div class="section-title">⚡ 本期要点速览</div>
+
+  <div class="hot-bar"><strong>🕊️ 今日要点：美伊停火第2天，A股今日冲关4000点！</strong>4月8日（昨日）早8时美伊两周临时停火协议正式生效，中东33天冲突首次实质缓和。WTI原油昨日单日暴跌超15%（$116→$92），全球风险偏好急剧改善。A股昨日（4/8）放量暴涨：创业板+5.91%、沪指+2.70%报3995，成交2.43万亿（年内最强）。今日（4/9）早盘延续强势，沪指冲击4000点整数关口。核心风险：停火协议仅两周，4月22日到期为下一关键节点。</div>
+
+  <div class="alert-bar"><strong>⚠ 核心风险节点：</strong>美伊停火协议为期仅两周，有效期至4月22日。停火期间谈判能否实质推进、伊朗核问题能否破局，是决定下一阶段全球风险偏好的关键变量。原油从高位急跌对中国海油等油气股形成明显压力，需密切跟踪。今日A股4000点整数关口有大量获利盘，能否以高量能（>2万亿）有效突破并站稳是关键验证。</div>
+
+  <div class="highlight-grid">
+    <div class="highlight-item">
+      <div class="highlight-num">01</div>
+      <div class="highlight-text"><strong>美伊达成两周停火协议：</strong>4月8日清晨，特朗普宣布基于与巴基斯坦斡旋，美伊达成双向两周临时停火协议。美伊已就"10点和平提案"取得决定性进展，过去几乎所有争议点已达成一致。以色列同意临时停火，伊朗最高国家安全委员会接受停火提议。4月6日截止期限以谈判而非军事打击收场，全球市场风险偏好急剧回升。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">02</div>
+      <div class="highlight-text"><strong>油价暴跌15%：WTI从$112跌回$94：</strong>停火协议宣布后，国际油价应声暴跌。WTI原油从清明期间的$112高位单日暴跌15%至$94附近（4月7日已跌14.88%至$95.68）。霍尔木兹海峡若完全开放，全球原油供应紧张预期将大幅缓解。中国海油盈利预期随之回落，短期股价承压。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">03</div>
+      <div class="highlight-text"><strong>黄金逆势突破1060元/克：</strong>尽管美伊停火降低地缘风险，但黄金4月8日早盘仍强势突破1060元/克（+2.06%），国际现货黄金重回4800美元上方。美伊两周协议不等于永久和平，地缘不确定性仍在；全球降息预期升温；去美元化央行购金潮持续，三重逻辑支撑金价高位运行。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">04</div>
+      <div class="highlight-text"><strong>A股清明后首日：沪指跌1%险守3880，4月8日早盘反弹：</strong>4月7日（节后首日）A股高开低走，沪指跌1%报3880.10点，深成指跌约0.2%，创业板指跌0.46%，成交16691亿元。4月8日早盘市场强势反弹：沪指涨0.91%，创业板指涨1.78%，科创50反弹明显。化工原料、半导体、AI硬件板块领涨。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">05</div>
+      <div class="highlight-text"><strong>Anthropic发布Mythos Preview：编程能力刷新SOTA：</strong>Anthropic发布革命性AI编程模型Mythos Preview，在SWE-bench测试中以93.9%的成绩刷新世界纪录（此前最高为Opus 4.6）。同日Claude API 48小时内三次大规模宕机，引发开发者不满。OpenClaw在Anthropic限制48小时后首次解锁视频生成能力，AI竞争持续白热化。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">06</div>
+      <div class="highlight-text"><strong>半导体全产业链涨价潮：</strong>英飞凌、德州仪器、晶合集成等全球半导体巨头4月起密集涨价。AI算力需求激增叠加供给端成本压力，AI芯片、HBM内存等高端产品供需紧张持续加剧。中国AI芯片企业（寒武纪、海光信息等）间接受益于国产替代加速逻辑。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">07</div>
+      <div class="highlight-text"><strong>小米呼吁停止价格战：</strong>小米AI大模型负责人罗福莉公开呼吁大模型公司停止盲目价格战，指出Token价格战形成恶性循环，长期将损害行业研发投入和生态健康。国内云厂商密集下调API价格（最高降幅达463%）的背景下，此表态意味深长。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">08</div>
+      <div class="highlight-text"><strong>EIA上调油价预期：全年WTI均价$87：</strong>4月8日EIA发布短期能源展望报告，上调2026年WTI原油均价预期至$87.41（此前为$73.61），2027年为$72.43。尽管短期因停火暴跌，但地缘风险溢价长期存在，EIA认为今明两年油价中枢仍显著高于年初预期。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">09</div>
+      <div class="highlight-text"><strong>美股期货全线大涨：</strong>美伊停火协议提振全球风险偏好，美股期货大幅走高：道指期货涨1.51%，标普500期货涨1.62%，纳斯达克100期货涨1.76%。全球市场情绪从"地缘危机"快速切换为"和平红利"。</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-num">10</div>
+      <div class="highlight-text"><strong>节后操作策略提示：</strong>美伊停火短期利好风险资产，但两周协议不确定性仍存。银行高股息底仓继续持有（险资配置逻辑不变）；中国海油因油价回落短期承压，关注地缘反复风险；黄金多单可持有但不建议追高；关注4月10日3月CPI/PPI数据及4月15日3月金融数据。</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--yellow);">
+    <div class="card-title">📅 近期重要日历</div>
+    <div class="card-body">
+      <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 12px;color:var(--accent);font-weight:700;white-space:nowrap;">今日（4/9，周四）</td>
+          <td style="padding:7px 12px;">美伊停火 · A股冲关4000 · A股强势反弹</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 12px;color:var(--green);font-weight:600;white-space:nowrap;">4月8日-22日（两周）</td>
+          <td style="padding:7px 12px;">美伊停火协议窗口期 · 关注霍尔木兹海峡实际通行情况</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;white-space:nowrap;">4月10日</td>
+          <td style="padding:7px 12px;">3月CPI / PPI数据 ⭐ 通胀/通缩判断关键</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">4月10日前后</td>
+          <td style="padding:7px 12px;">宁波银行、江苏银行、杭州银行、重庆银行年报披露窗口</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">4月15日</td>
+          <td style="padding:7px 12px;">3月金融数据（社融、M2、新增贷款）</td>
+        </tr>
+        <tr>
+          <td style="padding:7px 12px;color:var(--purple);font-weight:600;">4月中下旬</td>
+          <td style="padding:7px 12px;">OpenAI春季发布会预期 ⭐ GPT-5传闻持续发酵</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 1: 国内外新闻 ══════════════════════════ -->
+<div class="tab-panel" id="panel-1">
+  <div class="inner">
+  <div class="section-title">🌐 国内外主要新闻</div>
+
+  <div class="sub-section">
+    <div class="sub-title">国内财经政策</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-geo">重大转折</span>美伊达成两周停火协议，霍尔木兹海峡重新开放</div>
+      <div class="card-body">4月8日清晨，全球地缘格局迎来重大转折。特朗普在社交媒体宣布：基于与巴基斯坦总理谢里夫和陆军元帅阿西姆·穆尼尔的斡旋，美国同意暂停对伊朗军事行动两周。停火前提条件：伊朗必须"完全、立即且安全地开放霍尔木兹海峡"。伊朗最高国家安全委员会接受巴基斯坦提出的停火提议，以色列同样同意临时停火。双方已就中东长期和平协议的"10点提案"取得决定性进展——过去几乎所有争议点已达成一致，两周停火期用于最终敲定并完成协议文本。持续37天的美伊冲突按下暂停键。这是特朗普政府解决伊朗问题最接近成功的一次尝试。霍尔木兹海峡承载全球约20%的石油运输，完全开放将彻底改变原油供需格局。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">市场</span>A股清明后首日：4月7日沪指跌1%险守3880，4月8日早盘强势反弹</div>
+      <div class="card-body">清明节后首个交易日（4月7日），A股三大指数高开低走，沪指-1%报3880.10点，深成指约-0.2%，创业板指-0.46%。两市成交16691亿元，较节前增加1889亿元（放量下跌）。盘面分化明显：化工原料、半导体、AI硬件板块逆势走强，高股息品种（煤炭、电力）表现稳健。4月8日早盘，受美伊停火协议利好，市场强势反弹：沪指涨0.91%，创业板指涨1.78%，科创50明显反弹。成交约10263.93亿元（较前日缩量）。地缘风险降温带动全球风险偏好回升，A股外部压制因素短期缓解。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">年报</span>上市银行2025年报全景透视：重庆银行净息差逆势提升4bp</div>
+      <div class="card-body">截至3月31日，13家A股上市银行已披露正式年报。重庆银行2025年净息差1.39%，同比提升4个基点，成为已披露13家上市银行中唯一实现净息差同比上行的主体，边际改善明显。整体来看，上市银行净息差最高收窄21bp，行业息差压力延续。宁波银行、江苏银行、杭州银行等城商行2025年年报预计4月10日前后密集披露，核心关注：净利润增速、年度分红政策、资产质量。城商行基本面普遍优于大行，ROE持续领跑。</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-title">国际财经与地缘政治</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-geo">油价</span>国际油价暴跌15%：WTI从$112跌回$94区间</div>
+      <div class="card-body">美伊停火协议宣布后，国际油价应声暴跌。WTI原油4月7日已单日下跌14.88%至$95.68，4月8日继续下挫至$93.94（聚金数据，较前一交易日-18.95%）。从清明期间的$112高位计算，WTI两个交易日暴跌超20美元/桶。布伦特原油同步下跌。EIA同步发布短期能源展望：上调2026年WTI均价预期至$87.41（此前为$73.61），上调2027年预期至$72.43。尽管短期因停火暴跌，但EIA认为全年油价中枢仍显著高于年初预期，地缘风险溢价长期存在。对持仓影响：中国海油短期因油价回落承压（桶油利润预期收窄），但全年$87均价仍支撑盈利。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-geo">黄金</span>黄金逆势突破1060元/克：停火不改多头逻辑</div>
+      <div class="card-body">4月8日早盘，国际金价重回4800美元/盎司上方（现货黄金急涨超150美元），国内黄金现货价格突破1060元/克（+2.06%）。尽管美伊停火短期降低地缘风险溢价，黄金却逆势走强，原因有三：①两周协议不等于永久和平，地缘不确定性仍在；②美联储降息预期升温，美元走弱；③全球央行购金潮持续，去美元化趋势延续。三重逻辑支撑金价高位运行，机构普遍维持中期看多观点。零售金价约1430元/克，投资金条约1070元/克。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">美股</span>美股期货全线大涨：道指期货+1.51%，纳指期货+1.76%</div>
+      <div class="card-body">美伊停火协议大幅提振全球风险偏好，美股期货全线大涨：道指期货涨1.51%，标普500期货涨1.62%，纳斯达克100期货涨1.76%。亚太市场同步反弹：日经225、恒生指数期货均大幅高开。全球市场情绪从"地缘危机"快速切换为"和平红利"模式。需关注的是：两周停火协议仍存不确定性，若协议破裂市场可能快速逆转。</div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 2: AI前沿 ══════════════════════════ -->
+<div class="tab-panel" id="panel-2">
+  <div class="inner">
+  <div class="section-title">🤖 AI前沿</div>
+
+  <div class="sub-section">
+    <div class="sub-title">新模型发布</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">重磅发布</span>Anthropic发布Mythos Preview：编程能力93.9%刷新SOTA纪录</div>
+      <div class="card-body">4月8日，Anthropic发布革命性AI编程模型Mythos Preview，在SWE-bench测试中以93.9%的成绩刷新世界纪录（此前最高纪录为Claude Opus 4.6），大幅领先所有已知模型。这是Anthropic继Opus 4之后再次在编程领域树立新标杆。编程能力竞争进入新阶段：阿里Qwen3.6-Plus、Anthropic Mythos Preview、OpenAI Codex正在形成三足鼎立格局。同日，Claude API服务在48小时内发生三次大规模宕机，引发全球开发者强烈不满，Anthropic可靠性受到质疑。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">OpenClaw</span>OpenClaw首次解锁视频生成能力：动作一致性和物理真实感大幅提升</div>
+      <div class="card-body">在Anthropic对其限制48小时后，OpenClaw宣布模型首次实现视频生成能力。新能力可生成高连贯性短视频，在动作一致性、物理真实感等关键指标上有大幅提升。这是OpenClaw在多模态领域的重大突破，AI生成内容从图像、文字扩展至视频领域，应用场景进一步拓宽。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">行业趋势</span>小米呼吁停止价格战：Token价格战形成恶性循环</div>
+      <div class="card-body">小米AI大模型负责人罗福莉公开呼吁大模型公司停止盲目价格战，指出Token价格战会形成恶性循环，长期将损害行业研发投入和生态健康。此表态正值国内云厂商密集下调API价格之际（腾讯云、阿里云、百度智能云最高涨幅达463%）。大模型"免费午餐"时代加速终结，智谱涨价、阿里闭源已成事实，AI应用变现逻辑正在清晰化。算力基础设施提供商持续受益于价格上调。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">OpenAI</span>OpenAI：Codex潜力被低估，Sora即将重大更新</div>
+      <div class="card-body">OpenAI总裁Greg Brockman在接受访谈时透露：Codex编程模型的潜力被严重低估，即将开放更强API能力。同时文生视频模型Sora即将迎来重大更新，将显著提升视频时长和物理一致性。三大巨头（Anthropic、OpenAI、OpenClaw）在编程和视频生成领域展开全面竞争，AI能力边界快速拓展。</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-title">产业落地</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-chip">半导体</span>半导体全产业链涨价潮：英飞凌、德州仪器、晶合集成齐涨价</div>
+      <div class="card-body">4月起，全球半导体产业链密集涨价：英飞凌、德州仪器、晶合集成等巨头相继调升产品价格。驱动因素：AI算力需求激增叠加供给端成本压力，AI芯片、HBM内存等高端产品供需紧张持续加剧。中国AI芯片企业（寒武纪、海光信息等）间接受益于国产替代加速逻辑，同时受益于国内算力建设高峰期。AI用电需求高增带动中国核电、长江电力景气度持续。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">融资</span>红熊AI完成2.1亿元A轮融资：专注物理AI赛道</div>
+      <div class="card-body">专注于物理AI赛道的红熊AI宣布完成2.1亿元A轮融资，聚焦机器人、自动驾驶等需要与物理世界交互的AI应用。物理AI（Physical AI）正在成为继语言模型、视觉模型之后的第三波AI浪潮，与人形机器人具身智能方向高度契合。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-app">国行AI</span>国行Apple Intelligence再受挫：本地模型也将被删除</div>
+      <div class="card-body">国行Apple Intelligence在中国市场再遇合规挫折：苹果正在与相关部门重新协商合规方案，本地模型也将面临调整。这为中国本土AI厂商（百度文心一言、阿里通义等）提供了更多市场空间。</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-title">4月AI圈重点事件展望</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">重磅预告</span>OpenAI春季发布会预期：GPT-5传闻持续发酵</div>
+      <div class="card-body">OpenAI官方预告4月下旬将举办春季发布会，GPT-5传闻持续发酵。4月初AI圈已发生"48小时连发5款大模型"的密集事件：四家巨头同时甩出五款大模型，国产大模型混战持续升温。中国大模型周调用量连续三周全球第一（7.359万亿Token），是美国的2.5倍。2026年AI竞争正式进入"应用落地+商业变现"深水区。</div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 3: 全球市场 ══════════════════════════ -->
+<div class="tab-panel" id="panel-3">
+  <div class="inner">
+  <div class="section-title">📈 全球市场行情</div>
+
+  <div class="hot-bar" style="margin-bottom:20px;"><strong>📌 数据说明：</strong>A股、港股、美股均为4月8日（周三）收盘数据。大宗商品为4月8日美市收盘价。今日（4/9）A股正在交易中。</div>
+
+  <div class="market-grid">
+
+    <!-- A股 -->
+    <div class="market-block" style="border-top:2px solid var(--green);">
+      <h4>🇨🇳 A股（4/7收盘，4/8早盘）</h4>
+      <div class="market-row"><span class="market-name">上证指数(4/7收盘)</span><span class="market-val down">3880.10 <small>-1.00%</small></span></div>
+      <div class="market-row"><span class="market-name">深证成指(4/7早盘)</span><span class="market-val down">13325.83 <small>-0.20%</small></span></div>
+      <div class="market-row"><span class="market-name">创业板指(4/7午盘)</span><span class="market-val down">跌0.46%</span></div>
+      <div class="market-row"><span class="market-name">沪指(4/8早盘)</span><span class="market-val up">涨0.91%</span></div>
+      <div class="market-row"><span class="market-name">创业板指(4/8早盘)</span><span class="market-val up">涨1.78%</span></div>
+      <div class="market-row"><span class="market-name">成交额(4/7)</span><span class="market-val neutral">16691亿元</span></div>
+    </div>
+
+    <!-- 港股 -->
+    <div class="market-block" style="border-top:2px solid var(--red);">
+      <h4>🇭🇰 港股期货（4/8早盘）</h4>
+      <div class="market-row"><span class="market-name">恒指期货</span><span class="market-val up">大幅高开</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val up">受美伊停火提振</span></div>
+      <div class="market-row"><span class="market-name">南向资金</span><span class="market-val neutral">预期持续净流入</span></div>
+    </div>
+
+    <!-- 亚太 -->
+    <div class="market-block" style="border-top:2px solid var(--purple);">
+      <h4>🌏 亚太市场（4/8早盘）</h4>
+      <div class="market-row"><span class="market-name">日经225</span><span class="market-val up">大幅高开</span></div>
+      <div class="market-row"><span class="market-name">A股（4/8早盘）</span><span class="market-val up">沪指+0.91%，创业板+1.78%</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val up">风险偏好回升</span></div>
+    </div>
+
+    <!-- 美股 -->
+    <div class="market-block" style="border-top:2px solid var(--green);">
+      <h4>🇺🇸 美股期货（4/8早盘）</h4>
+      <div class="market-row"><span class="market-name">道指期货</span><span class="market-val up">+1.51%</span></div>
+      <div class="market-row"><span class="market-name">标普500期货</span><span class="market-val up">+1.62%</span></div>
+      <div class="market-row"><span class="market-name">纳斯达克100期货</span><span class="market-val up">+1.76%</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val up">全球"和平红利"模式</span></div>
+    </div>
+
+    <!-- 大宗商品 -->
+    <div class="market-block" style="border-top:2px solid #f0b429;">
+      <h4>🏭 大宗商品（4/8早盘）</h4>
+      <div class="market-row"><span class="market-name">黄金（国内）</span><span class="market-val" style="color:#f0b429">突破1060元/克 <small>+2.06%</small></span></div>
+      <div class="market-row"><span class="market-name">国际现货黄金</span><span class="market-val" style="color:#f0b429">4800美元/盎司上方</span></div>
+      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val down">$93.94 <small>-18.95%</small></span></div>
+      <div class="market-row"><span class="market-name">布伦特原油(4/7)</span><span class="market-val down">$95.68 <small>-14.88%</small></span></div>
+      <div class="market-row"><span class="market-name">WTI从$112计算</span><span class="market-val down">两日暴跌近20美元</span></div>
+    </div>
+
+    <!-- 汇率 -->
+    <div class="market-block" style="border-top:2px solid var(--accent);">
+      <h4>💱 汇率与债券</h4>
+      <div class="market-row"><span class="market-name">美元/人民币</span><span class="market-val neutral">约6.88-6.89区间</span></div>
+      <div class="market-row"><span class="market-name">美国10年期国债</span><span class="market-val neutral">约4.3%区间</span></div>
+      <div class="market-row"><span class="market-name">中国10年期国债</span><span class="market-val neutral">约1.85%</span></div>
+      <div class="market-row"><span class="market-name">中美利差</span><span class="market-val down">约245bps（倒挂）</span></div>
+    </div>
+
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--orange);">
+    <div class="card-title">📊 本周市场综评</div>
+    <div class="card-body">本周全球市场经历剧烈波动：清明节前（4月2日）特朗普"再打两三周"言论冲击市场（WTI单日暴涨11.93%至$112），节后首日（4月7日）油价已回落$95（-14.88%），4月8日更暴跌至$93.94。美伊停火协议彻底逆转地缘风险预期，WTI两日暴跌超20美元/桶。黄金表现分化：国际金价逆势突破4800美元（+150美元），国内现货突破1060元/克。A股清明后首日（4月7日）沪指-1%险守3880，4月8日早盘强势反弹涨0.91%，创业板涨1.78%。EIA上调全年油价预期至$87，地缘风险溢价长期化逻辑持续。</div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 4: 价值投资风向 ══════════════════════════ -->
+<div class="tab-panel" id="panel-4">
+  <div class="inner">
+  <div class="section-title">💡 价值投资风向</div>
+
+  <div class="sub-section">
+    <div class="sub-title">机构观点与策略</div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">油价策略</span>中国海油：油价暴跌但全年均价$87，盈利仍有支撑</div>
+      <div class="card-body">美伊停火协议导致WTI从$112暴跌至$93.94，短期对中国海油构成压力。但EIA上调全年WTI均价预期至$87.41（此前$73.61），按桶油成本约$28计算，全年平均桶油利润仍有约$59（vs按$112计算约$84）。短期股价承压，但中期高油价逻辑仍在，建议持有现有仓位不追高，关注两周协议进展——若破裂油价可能快速反弹，若顺利落地则能源板块需重新定价。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">黄金策略</span>黄金突破1060：中期多头逻辑持续，但短期不宜追高</div>
+      <div class="card-body">4月8日黄金逆势突破1060元/克（+2.06%），超出市场预期。美伊两周停火不等于永久和平，地缘不确定性仍在；美联储降息预期升温；全球央行购金潮持续，三重逻辑支撑金价。多头继续持有，但不建议新仓追高——4月7日金价已大涨，4月8日早盘追涨风险收益比下降。国内金店零售价约1430元/克，投资金条约1070元/克，溢价有所收敛。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-policy">央行</span>适度宽松基调不变，险资持续增配高股息</div>
+      <div class="card-body">央行一季度例会确认继续实施适度宽松货币政策。中国10年期国债收益率约1.85%，银行股整体股息率约4.8%，险资"债券替代"逻辑持续强化。美伊停火短期降低全球风险偏好，但中国国内货币政策独立性不受影响。银行高股息底仓继续持有不变，节前减仓资金可考虑逐步回补。</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-title">平台情绪追踪</div>
+
+    <div class="card">
+      <div class="card-title">📊 雪球 / 集思录 / 东方财富情绪综合（截至4月8日早盘）</div>
+      <div class="card-body">
+        <div class="sentiment-bar-wrap">
+          <div class="sentiment-label"><span>银行板块讨论热度</span><span style="color:var(--accent)">偏多 · 72%（年报季+险资举牌双重催化）</span></div>
+          <div class="sentiment-bar"><div class="sentiment-fill" style="width:72%"></div></div>
+        </div>
+        <div class="sentiment-bar-wrap">
+          <div class="sentiment-label"><span>科技/AI成长板块情绪</span><span style="color:var(--purple)">转多 · 68%（停火协议+AI模型发布双重催化）</span></div>
+          <div class="sentiment-bar"><div class="sentiment-fill" style="width:68%;background:linear-gradient(90deg,var(--purple),var(--accent))"></div></div>
+        </div>
+        <div class="sentiment-bar-wrap">
+          <div class="sentiment-label"><span>中国海油情绪（油价暴跌）</span><span style="color:var(--orange)">转弱 · 48%（油价从$112跌至$94）</span></div>
+          <div class="sentiment-bar"><div class="sentiment-fill" style="width:48%;background:linear-gradient(90deg,var(--orange),var(--red))"></div></div>
+        </div>
+        <div class="sentiment-bar-wrap">
+          <div class="sentiment-label"><span>黄金多头情绪</span><span style="color:var(--green)">极强 · 85%（突破1060，多头逻辑持续）</span></div>
+          <div class="sentiment-bar"><div class="sentiment-fill" style="width:85%;background:linear-gradient(90deg,var(--green),var(--yellow))"></div></div>
+        </div>
+        近24小时重点讨论：①美伊停火协议如何影响持仓（能源、黄金、银行）；②银行年报季来了，关注分红公告；③AI模型密集发布，哪些标的真正受益。
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-title">估值与分位参考</div>
+    <div class="card">
+      <div class="card-title">📐 关键估值指标（截至4月7日收盘）</div>
+      <div class="card-body">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);color:var(--text-muted);font-size:12px;">
+              <td style="padding:6px 10px;">指标</td>
+              <td style="padding:6px 10px;text-align:right;">数值</td>
+              <td style="padding:6px 10px;text-align:right;">历史分位</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(48,54,61,0.4);">
+              <td style="padding:7px 10px;color:var(--text-secondary)">银行板块PB（整体）</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--accent)">约0.65x</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--green)">历史低位区间</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(48,54,61,0.4);">
+              <td style="padding:7px 10px;color:var(--text-secondary)">上证指数PE（TTM）</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--accent)">约13.5x</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--yellow)">历史中等偏低分位</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(48,54,61,0.4);">
+              <td style="padding:7px 10px;color:var(--text-secondary)">银行股息率（整体均值）</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--accent)">约4.8%</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--green)">高于10Y国债约295bps</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(48,54,61,0.4);">
+              <td style="padding:7px 10px;color:var(--text-secondary)">中国海油（油价$94）</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--yellow)">桶油利润约$66</span></td>
+              <td style="padding:7px 10px;text-align:right;color:var(--yellow)">vs $112时约$84</td>
+            </tr>
+            <tr>
+              <td style="padding:7px 10px;color:var(--text-secondary)">黄金（元/克）</td>
+              <td style="padding:7px 10px;text-align:right;color:#f0b429">突破1060元/克</td>
+              <td style="padding:7px 10px;text-align:right;color:var(--yellow)">历史绝对高位</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 5: 关注标的 ══════════════════════════ -->
+<div class="tab-panel" id="panel-5">
+  <div class="inner">
+  <div class="section-title">🏦 关注标的信息面</div>
+
+  <div class="sub-title" style="margin-bottom:18px;">银行板块</div>
+
+  <!-- 工商银行 -->
+  <div class="stock-card" style="border-color:rgba(240,180,41,0.5);">
+    <div class="stock-header">
+      <span class="stock-name">工商银行</span>
+      <span class="stock-code">601398 / 1398.HK</span>
+      <span class="tag tag-energy" style="margin-left:6px;">2025年报已发</span>
+      <div class="stock-price-area">
+        <div class="stock-price down">跟随大盘</div>
+        <div class="stock-change neutral">（4月7日沪指-1%）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li><strong>2025年报核心数据</strong>：净利润3685.62亿元(+0.7%)，营收8013.95亿(+1.9%)，非息收入+11.8%增长亮眼，不良率1.31%(降0.03ppt)。</li>
+      <li>全年分红3.103元/10股（含税），A股股息率约4.19%。总资产534777亿(+9.5%)，核心一级资本充足率13.57%。</li>
+      <li>险资持续增持H股，工行H股股息率约5.5%。城商行年报季即将密集披露，关注分红公告。</li>
+    </ul>
+  </div>
+
+  <!-- 招商银行 -->
+  <div class="stock-card" style="border-color:rgba(0,212,255,0.3);">
+    <div class="stock-header">
+      <span class="stock-name">招商银行</span>
+      <span class="stock-code">600036 / 3968.HK</span>
+      <span class="tag tag-finance" style="margin-left:6px;">年报已出 双增长</span>
+      <div class="stock-price-area">
+        <div class="stock-price down">跟随调整</div>
+        <div class="stock-change neutral">（4月7日沪指-1%）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li><strong>2025年报：营收利润双增长</strong>，ROE继续领跑股份行，零售贷款质量改善，非息收入占比提升，信用卡坏账率同比下降。</li>
+      <li>4月15日赎回275亿优先股，核心一级资本充足率预计提升约0.15ppt，进一步夯实资本。</li>
+      <li>当前PB约0.9x，低于历史均值1.4x，机构维持"增持/买入"，目标价44-48元，安全边际明显。</li>
+    </ul>
+  </div>
+
+  <!-- 农业银行 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">农业银行</span>
+      <span class="stock-code">601288 / 1288.HK</span>
+      <div class="stock-price-area">
+        <div class="stock-price down">跟随大盘</div>
+        <div class="stock-change neutral">（高股息防御）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>平安人寿持H股超20%举牌门槛，筹码锁定效应增强；H股股息率约7.2%，四大行H股最高，险资持续增配。</li>
+      <li>PB约0.60x，四大行中最低，安全边际突出；"三农"政策背景下农村金融服务具备独特竞争壁垒。</li>
+    </ul>
+  </div>
+
+  <!-- 宁波银行 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">宁波银行</span>
+      <span class="stock-code">002142</span>
+      <span class="tag tag-policy" style="margin-left:6px;">年报披露在即 ⭐</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">约30-31</div>
+        <div class="stock-change neutral">（年报预期催化）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>ROE持续领先城商行同业（约15%），零售和小微信贷质量优异，资产质量行业前列，城商行基本面最优质标的之一。</li>
+      <li>年报预计4月10日前后披露，核心关注：净利润增速（预期双位数）、年度分红政策（预期股息率约4.5%）。</li>
+      <li>PB约0.91x，较历史均值有折价，中长期逻辑稳固。</li>
+    </ul>
+  </div>
+
+  <!-- 江苏银行 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">江苏银行</span>
+      <span class="stock-code">600919</span>
+      <span class="tag tag-policy" style="margin-left:6px;">年报披露在即 ⭐</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">约10.8-11</div>
+        <div class="stock-change neutral">（年报预期支撑）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>年报预计4月10日前后披露，市场预期净利润增速约12%，资产规模有望突破4万亿，区域龙头地位稳固。</li>
+      <li>股息率约5%（预测），PB约0.65x低估显著；江苏省经济基本面良好，制造业信贷质量有保障。</li>
+    </ul>
+  </div>
+
+  <div class="sub-title" style="margin:28px 0 18px;">公用事业 / 央企高股息</div>
+
+  <!-- 中国移动 -->
+  <div class="stock-card" style="border-color:rgba(0,212,255,0.3);">
+    <div class="stock-header">
+      <span class="stock-name">中国移动</span>
+      <span class="stock-code">600941 / 0941.HK</span>
+      <span class="tag tag-ai" style="margin-left:6px;">AI算力受益</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">跟随大盘</div>
+        <div class="stock-change neutral">（4月8日反弹）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>2025年报净利润约1615亿(+8.2%)，算力（云/AI）收入增速超50%，A股股息率约5.9%，H股约6.8%。</li>
+      <li>AI大模型密集发布，半导体涨价潮，运营商算力业务收入有望进入高速增长通道。</li>
+    </ul>
+  </div>
+
+  <!-- 长江电力 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">长江电力</span>
+      <span class="stock-code">600900</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">约27-28</div>
+        <div class="stock-change neutral">（稳定防御）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>分红承诺率≥70%，股息率约4.5%，较10年国债高约265bps；"现金奶牛"属性稳定。</li>
+      <li>AI用电需求高增是长期需求驱动力；一季度来水情况是短期弹性关键。</li>
+    </ul>
+  </div>
+
+  <!-- 中国核电 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">中国核电</span>
+      <span class="stock-code">601985</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">约11-12</div>
+        <div class="stock-change neutral">（AI用电需求逻辑）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>中金DCF测算合理市值约2419亿，当前约1859亿，低估约30%；股息率约4.6%。</li>
+      <li>未来5年装机增速保持10%+；AI用电需求高增直接带动核电景气度。油价回落对核电相对竞争力影响有限。</li>
+    </ul>
+  </div>
+
+  <!-- 中国海油 -->
+  <div class="stock-card" style="border-color:rgba(240,180,41,0.3);">
+    <div class="stock-header">
+      <span class="stock-name">中国海油</span>
+      <span class="stock-code">600938 / 0883.HK</span>
+      <span class="tag tag-energy" style="margin-left:6px;">⚠ 油价暴跌短期承压</span>
+      <div class="stock-price-area">
+        <div class="stock-price down">短期承压</div>
+        <div class="stock-change down">（WTI $93.94）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li><strong>⚠ 油价暴跌：</strong>美伊停火协议推动WTI从$112暴跌至$93.94（-18.95%），中国海油短期股价承压。按桶油成本约$28，桶油利润约$66（vs $112时约$84）。</li>
+      <li>EIA全年WTI均价预期上调至$87.41，全年盈利仍有支撑。中国海油H股股息率约5.5%（按当前价估算）。</li>
+      <li>关注两周停火协议进展：若破裂油价可能快速反弹，若顺利落地则需重新评估能源板块配置比例。</li>
+    </ul>
+  </div>
+
+  <!-- 中国平安 -->
+  <div class="stock-card">
+    <div class="stock-header">
+      <span class="stock-name">中国平安</span>
+      <span class="stock-code">601318 / 2318.HK</span>
+      <div class="stock-price-area">
+        <div class="stock-price neutral">约50-55</div>
+        <div class="stock-change neutral">（险资举牌受益）</div>
+      </div>
+    </div>
+    <ul class="stock-bullets">
+      <li>2025年NBV增速超20%，寿险改革效果持续显现；股息率约5.5%，PE约9.1x，PB约0.78x。</li>
+      <li>平安人寿持农行H股超20%举牌，权益法核算带来稳定投资收益。股市反弹利好保险投资收益端。</li>
+    </ul>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ TAB 6: 今日总结 ══════════════════════════ -->
+<div class="tab-panel" id="panel-6">
+  <div class="inner">
+  <div class="section-title">📋 今日总结</div>
+
+  <div class="summary-card">
+    <p><strong>4月9日核心主题：美伊停火第二天，A股4000点攻坚战拉开序幕。</strong></p>
+    <p>4月8日早8时，美伊两周临时停火协议生效，中东33天冲突首次实质性缓和。油价应声暴跌15%以上（WTI $116→$92），全球风险偏好急剧改善，A股迎来年内最强单日（创业板+5.91%，成交2.43万亿），美股道指大涨2.85%，港股恒科+5.22%。今日（4/9）A股延续强势，沪指向4000点整数关口发起冲击，突破与否是市场情绪的重要验证。</p>
+    <p>AI领域同步迎来"AGI元年"重磅事件：OpenAI GPT-6"海伦"正式发布（原生世界模型），Anthropic ARR突破300亿美元反超OpenAI，DeepSeek专家模式预热V4，AI主线产业催化持续强化。<strong>算力基础设施（中国移动）和绿色电力（长江电力、中国核电）</strong>是当前最确定的受益主线。</p>
+    <p>当前市场面临两大关键变量：<strong>①停火能否延续</strong>——4月22日是下一节点；<strong>②A股4000点突破能否持续</strong>——需量能（>2万亿/日）配合。银行股高股息逻辑中长期不变；黄金与油价罕见背离，去美元化的独立行情正在形成，中期目标看1100元/克。</p>
+    <p style="color:var(--red);font-weight:600;">⚠ 最大风险：4月22日美伊停火到期若无法续期，油价可能反弹至$100+，当前乐观情绪将面临考验。届时快速减仓成长、回归高股息是应对策略。</p>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--green);">
+    <div class="card-title">✅ 今日关键数字速查</div>
+    <div class="card-body">
+      <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">上证指数（4/7收盘）</td><td style="padding:6px 12px;font-weight:600;" class="down">3880.10 (-1.00%)</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">创业板指（4/8早盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">涨1.78%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">成交额（4/7）</td><td style="padding:6px 12px;font-weight:600;color:var(--accent)">16691亿元</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">WTI原油（4/8早盘）</td><td style="padding:6px 12px;font-weight:600;color:#3fb950">$93.94（-18.95%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">布伦特原油（4/7）</td><td style="padding:6px 12px;font-weight:600;color:#3fb950">$95.68（-14.88%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">黄金（国内4/8早盘）</td><td style="padding:6px 12px;font-weight:600;color:#f0b429">突破1060元/克（+2.06%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">道指期货</td><td style="padding:6px 12px;font-weight:600;color:#3fb950">+1.51%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">纳指100期货</td><td style="padding:6px 12px;font-weight:600;color:#3fb950">+1.76%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">EIA全年WTI均价预期</td><td style="padding:6px 12px;font-weight:600;color:var(--yellow)">$87.41（上调）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">美伊停火期限</td><td style="padding:6px 12px;font-weight:600;color:var(--green)">4月8日起两周内</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">Mythos Preview SOTA</td><td style="padding:6px 12px;font-weight:600;color:var(--purple)">SWE-bench 93.9%（刷新世界纪录）</td></tr>
+        <tr><td style="padding:6px 12px;color:var(--text-muted)">中美利差</td><td style="padding:6px 12px;font-weight:600;color:var(--text-secondary)">约245bps（倒挂）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<div class="footer">
+  <span>老盛早知道</span> · 2026年4月8日 · 星期三 · 清明节后首个交易日 · 美伊达成两周停火 · AI驱动生成 · 仅供个人参考，不构成投资建议
+</div>
+
+<script>
+  function switchTab(index) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.tab-panel').forEach((panel, i) => {
+      panel.classList.toggle('active', i === index);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
