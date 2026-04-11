@@ -25,3 +25,24 @@ switchTab 函数必须使用 classList.toggle 方式，严禁使用 inline style
 @media(max-width:768px) 中的 header-top 必须用 grid 语法，不能用 flex。
 - **闪电图标（brand-icon）和标题（brand-title）必须在同一行**：header-top 用 `grid-template-columns: 48px 1fr`，绝不能用 `1fr`（单列）。
 - header-meta 独占下一行：设置 `grid-column: 1 / -1`，同时保留 `border-left:none; padding-left:0; flex-direction:row; flex-wrap:wrap`。
+
+## TAB 4「价值投资风向」内容规范（从2026-04-10起生效）
+
+### 内容聚焦
+核心聚焦：**高股息策略、估值分析、价值股池、机构价值观点**
+
+### 六大板块顺序（固定）
+| 序号 | 板块名称 | 说明 |
+|---|---|---|
+| 一 | 机构价值投资观点 | 券商/机构研报观点，3张卡片 |
+| 二 | 雪球·集思录价值投资社区情绪 | **使用情绪柱状图样式**，4条sentiment-bar-wrap |
+| 三 | 高股息板块深度分析 | 银行/能源/煤炭/公用，4张卡片 |
+| 四 | 低估值板块 | 错杀机会与估值修复，2张卡片 |
+| 五 | 长线资金动向 | 险资+社保价值投资实践，2张卡片 |
+| 六 | 价值投资估值参考表 | 1张表格，9项核心指标 |
+
+### 附：精简参考板块（末尾）
+REITs·固收+、AI算力（液冷/光模块）、白酒/消费 各1张卡片，篇幅紧凑
+
+### 雪球热议样式
+必须用 `.sentiment-bar-wrap` + `.sentiment-bar` + `.sentiment-fill` 柱状图样式，不接受纯文字列表。
