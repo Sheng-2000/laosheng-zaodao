@@ -4,7 +4,8 @@
 - 仓库：https://github.com/Sheng-2000/laosheng-zaodao.git
 - 分支：main
 - 部署方式：GitHub Pages（push 后自动部署）
-- 本地路径：/Users/sheng/Sheng/MyData/02-任务空间/老盛的每日快讯/WorkBuddy版/
+- 本地路径：/Users/sheng/Sheng/MyData/02-任务空间/家庭生活/理财支撑/老盛的每日快讯/WorkBuddy版/
+- 旧路径（已废弃）：/Users/sheng/Sheng/MyData/02-任务空间/老盛的每日快讯/WorkBuddy版/（2026-04-17迁移）
 
 ## 每日快讯生成规范（必须严格遵守）
 1. 读取 template.html 了解结构和样式
