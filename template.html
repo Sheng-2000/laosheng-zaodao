@@ -450,46 +450,10 @@
     border-left: 2px solid var(--accent);
   }
 
-  /* 日历 · 桌面版 */
-  .week-calendar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
-  .wc-day {
-    background: linear-gradient(145deg, #1a2233 0%, #161b22 100%);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .wc-day::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .wc-day:hover { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 16px rgba(0,212,255,0.08); }
-  .wc-day:hover::before { opacity: 1; }
-  .wc-day.today {
-    border-color: var(--accent);
-    background: linear-gradient(145deg, #0d1e2e 0%, #0a1825 100%);
-    box-shadow: 0 0 20px rgba(0,212,255,0.12), inset 0 0 20px rgba(0,212,255,0.04);
-  }
-  .wc-day.today::before { opacity: 1; }
-  .wc-day .wc-label { font-size: 10px; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; font-family: 'SF Mono','Fira Code',monospace; }
-  .wc-day .wc-date { font-size: 22px; font-weight: 800; color: var(--text-primary); margin: 4px 0 10px; letter-spacing: 1px; }
-  .wc-day.today .wc-date { color: var(--accent); text-shadow: 0 0 12px rgba(0,212,255,0.5); }
-  .wc-day .wc-event { font-size: 11.5px; color: var(--text-secondary); line-height: 1.7; }
-  .wc-day .wc-event strong { color: var(--text-primary); font-weight: 600; }
-
   /* 响应式 */
   @media (max-width:768px) {
     .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
     .highlight-grid, .market-grid { grid-template-columns:1fr; }
-    .week-calendar { overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
-    .wc-day { min-width:140px; scroll-snap-align:start; display:inline-block; vertical-align:top; }
     .header-top { grid-template-columns: 48px 1fr; gap:10px; padding-bottom:14px; }
     .stock-price-area { margin-left:0; }
     .brand-icon { width:42px; height:42px; border-radius:10px; flex-shrink:0; }
@@ -783,6 +747,8 @@
 </div>
 
 <!-- ══════════════════════════ TAB 3: 全球市场 ══════════════════════════ -->
+<!-- ⚠️ 严格规范：全球市场必须包含以下8个market-block，缺一不可！ -->
+<!-- 1.🇨🇳A股  2.🇭🇰港股  3.🌏亚太市场  4.🇪🇺欧洲市场  5.🇺🇸美股  6.🏭大宗商品  7.🪙加密货币  8.💱汇率与债券 -->
 <div class="tab-panel" id="panel-3">
   <div class="inner">
   <div class="section-title">📈 全球市场行情</div>
@@ -879,6 +845,11 @@
 </div>
 
 <!-- ══════════════════════════ TAB 4: 价值投资风向 ══════════════════════════ -->
+<!-- ⚠️ 严格规范：价值投资风向是整个报告的核心板块，必须聚焦价值投资！ -->
+<!-- "一·机构价值投资观点"的3张卡片必须聚焦以下领域： -->
+<!-- 银行股、公共事业（水电/核电）、通信（中国移动等）、电力、交通（大秦铁路等）、能源（中国海油等）、高股息策略、估值分析 -->
+<!-- 禁止在机构观点卡片中讨论纯成长/题材股（如源杰科技、AI算力概念股等），这些内容应放在AI前沿或国内外新闻Tab中 -->
+<!-- 卡片tag标签仅使用：tag-finance（银行/金融）、tag-energy（能源/油气）、tag-policy（公用事业/政策）、tag-ai（通信/算力） -->
 <div class="tab-panel" id="panel-4">
   <div class="inner">
   <div class="section-title">💡 价值投资风向</div>
