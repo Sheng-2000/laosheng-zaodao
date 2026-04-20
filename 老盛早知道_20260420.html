@@ -372,10 +372,11 @@
     transition: border-color 0.2s;
   }
   .stock-card:hover { border-color: var(--accent-border); }
-  .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
+  .stock-header { display:grid; grid-template-columns:1fr auto; align-items:start; gap:6px 12px; margin-bottom:12px; }
+  .stock-header-left { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
   .stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
   .stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
-  .stock-price-area { margin-left:auto; text-align:right; }
+  .stock-price-area { text-align:right; }
   .stock-price { font-size:18px; font-weight:700; }
   .stock-change { font-size:12px; margin-top:2px; }
   .stock-bullets { list-style:none; padding:0; }
@@ -725,46 +726,96 @@
   <div class="inner">
   <div class="section-title">📈 全球市场行情</div>
 
-  <div class="sub-section">
-    <div class="sub-title">主要指数（上周五4/17收盘）</div>
-    <div class="market-grid">
-      <div class="market-block">
-        <h4>中国A股</h4>
-        <div class="market-row"><span class="market-name">上证指数</span><span class="market-val neutral">4051.43 <span class="down">▼0.10%</span></span></div>
-        <div class="market-row"><span class="market-name">创业板指</span><span class="market-val up">3678.29 <span class="up">▲1.43%</span></span></div>
-        <div class="market-row"><span class="market-name">深证成指</span><span class="market-val up">14885.42 <span class="up">▲0.60%</span></span></div>
-        <div class="market-row"><span class="market-name">成交额</span><span class="market-val neutral">8642亿</span></div>
-      </div>
-      <div class="market-block">
-        <h4>美股</h4>
-        <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">49447.43 <span class="up">▲1.79%</span></span></div>
-        <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7126.06 <span class="up">▲1.20%</span></span></div>
-        <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">24468.48 <span class="up">▲1.52%</span></span></div>
-        <div class="market-row"><span class="market-name">纳指连涨</span><span class="market-val up" style="color:#f0b429">13连阳·33年纪录</span></div>
-      </div>
-      <div class="market-block">
-        <h4>港股&amp;其他</h4>
-        <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val up">23186.00 <span class="up">▲0.62%</span></span></div>
-        <div class="market-row"><span class="market-name">日经225</span><span class="market-val up">38420 <span class="up">▲0.88%</span></span></div>
-        <div class="market-row"><span class="market-name">美元指数</span><span class="market-val down">102.15 <span class="down">▼0.45%</span></span></div>
-        <div class="market-row"><span class="market-name">人民币/美元</span><span class="market-val up">6.8150 <span class="up">升值</span></span></div>
-      </div>
-      <div class="market-block">
-        <h4>大宗商品</h4>
-        <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val down">$84.20 <span class="down">▼7.86%(周)</span></span></div>
-        <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val down">$92.42 <span class="down">▼7.01%(周)</span></span></div>
-        <div class="market-row"><span class="market-name">COMEX黄金</span><span class="market-val up">$4849.40 <span class="up">▲0.85%</span></span></div>
-        <div class="market-row"><span class="market-name">美债10年</span><span class="market-val neutral">4.28%</span></div>
-      </div>
+  <div class="hot-bar">
+    <strong>📌 数据说明：</strong>A股/港股/美股/亚太/欧洲均为上周五（4/17）收盘数据。大宗商品为4/17最新数据。WTI原油本周累跌7.86%，布伦特累跌7.01%。
+  </div>
+
+  <div class="market-grid">
+
+    <!-- A股 -->
+    <div class="market-block" style="border-top:2px solid var(--green);">
+      <h4>🇨🇳 A股（4/17收盘）</h4>
+      <div class="market-row"><span class="market-name">上证指数</span><span class="market-val neutral">4051.43 <small>▼0.10%</small></span></div>
+      <div class="market-row"><span class="market-name">深证成指</span><span class="market-val up">14885.42 <small>▲0.60%</small></span></div>
+      <div class="market-row"><span class="market-name">创业板指</span><span class="market-val up">3678.29 <small>▲1.43% 11年新高</small></span></div>
+      <div class="market-row"><span class="market-name">两市成交额</span><span class="market-val neutral">8642亿元</span></div>
+      <div class="market-row"><span class="market-name">源杰科技</span><span class="market-val up" style="color:#f0b429">超越茅台成新股王</span></div>
     </div>
+
+    <!-- 港股 -->
+    <div class="market-block" style="border-top:2px solid var(--green);">
+      <h4>🇭🇰 港股（4/17收盘）</h4>
+      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val up">23186.00 <small>▲0.62%</small></span></div>
+      <div class="market-row"><span class="market-name">恒生科技</span><span class="market-val up">+0.85%</span></div>
+      <div class="market-row"><span class="market-name">中国移动(H)</span><span class="market-val up">涨0.9% 高股息吸引</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val up">外资持续南下</span></div>
+    </div>
+
+    <!-- 亚太 -->
+    <div class="market-block" style="border-top:2px solid var(--purple);">
+      <h4>🌏 亚太市场（4/17）</h4>
+      <div class="market-row"><span class="market-name">日经225（日本）</span><span class="market-val up">38420 <small>▲0.88%</small></span></div>
+      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val neutral">约2,720 震荡</span></div>
+      <div class="market-row"><span class="market-name">澳洲ASX 200</span><span class="market-val neutral">约8,440 区间</span></div>
+      <div class="market-row"><span class="market-name">亚太整体</span><span class="market-val up">油价回落缓解通胀</span></div>
+    </div>
+
+    <!-- 欧洲 -->
+    <div class="market-block" style="border-top:2px solid var(--orange);">
+      <h4>🇪🇺 欧洲市场（4/17）</h4>
+      <div class="market-row"><span class="market-name">欧洲斯托克50</span><span class="market-val up">约5,205 <small>▲0.5%</small></span></div>
+      <div class="market-row"><span class="market-name">德国DAX 40</span><span class="market-val up">约23,150 <small>▲0.7%</small></span></div>
+      <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val neutral">约8,780 持平</span></div>
+      <div class="market-row"><span class="market-name">欧元区通胀</span><span class="market-val down">油价下跌缓解压力</span></div>
+    </div>
+
+    <!-- 美股 -->
+    <div class="market-block" style="border-top:2px solid var(--green);">
+      <h4>🇺🇸 美股（4/17收盘·纳指13连阳）</h4>
+      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">49447.43 <small>▲1.79%</small></span></div>
+      <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7126.06 <small>▲1.20% 史破7100</small></span></div>
+      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">24468.48 <small>▲1.52%</small></span></div>
+      <div class="market-row"><span class="market-name">纳指连涨</span><span class="market-val up" style="color:#f0b429">13连阳·33年最长纪录</span></div>
+      <div class="market-row"><span class="market-name">美国10Y国债</span><span class="market-val neutral">4.28%</span></div>
+    </div>
+
+    <!-- 大宗商品 -->
+    <div class="market-block" style="border-top:2px solid #f0b429;">
+      <h4>🏭 大宗商品（4/17）</h4>
+      <div class="market-row"><span class="market-name">COMEX黄金</span><span class="market-val up" style="color:#f0b429">$4849.40 <small>▲0.85%</small></span></div>
+      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val down">$84.20 <small>▼7.86%（周）</small></span></div>
+      <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val down">$92.42 <small>▼7.01%（周）</small></span></div>
+      <div class="market-row"><span class="market-name">霍尔木兹风险</span><span class="market-val down">停火4/22到期·走向未定</span></div>
+      <div class="market-row"><span class="market-name">铜价</span><span class="market-val neutral">约$9,450/吨 区间震荡</span></div>
+    </div>
+
+    <!-- 汇率与债券 -->
+    <div class="market-block" style="border-top:2px solid var(--accent);">
+      <h4>💱 汇率与债券</h4>
+      <div class="market-row"><span class="market-name">美元/人民币</span><span class="market-val up">6.8150 <small>人民币升破6.82</small></span></div>
+      <div class="market-row"><span class="market-name">美元指数</span><span class="market-val down">102.15 <small>▼0.45%</small></span></div>
+      <div class="market-row"><span class="market-name">美国10年期国债</span><span class="market-val neutral">4.28%</span></div>
+      <div class="market-row"><span class="market-name">中国10年期国债</span><span class="market-val neutral">约1.84%</span></div>
+      <div class="market-row"><span class="market-name">中美利差</span><span class="market-val down">约244bps（倒挂）</span></div>
+    </div>
+
+    <!-- 加密货币 -->
+    <div class="market-block" style="border-top:2px solid var(--purple);">
+      <h4>🔗 加密货币（4/17）</h4>
+      <div class="market-row"><span class="market-name">比特币（BTC）</span><span class="market-val up">约$87,500 <small>▲2.1%</small></span></div>
+      <div class="market-row"><span class="market-name">以太坊（ETH）</span><span class="market-val up">约$3,380 <small>▲1.5%</small></span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val up">美股13连涨带动风险偏好</span></div>
+    </div>
+
   </div>
 
   <div class="card" style="border-left:3px solid var(--orange);">
-    <div class="card-title">📋 市场综评 · 4月20日周一</div>
+    <div class="card-title">📋 市场综评 · 4月20日周一开盘前</div>
     <div class="card-body">
-      <strong>A股</strong>：三重催化（减持新规+宁德科技日前夕+DeepSeek V4本周），科技成长有望延续强势；银行高股息受减持新规利好，有望止跌企稳。沪指关键阻力4100，支撑3980。<br><br>
-      <strong>美股</strong>：纳指13连阳后注意技术性回调风险，但中期趋势仍向上。美伊停火到期（4/22）是本周最大不确定性，能源板块建议等待方向。<br><br>
-      <strong>黄金</strong>：4800支撑强劲，逢回调可关注黄金ETF（518880）布局机会。
+      <strong>A股</strong>：三重催化共振（减持新规讨论升温+宁德超级科技日明日19:00+DeepSeek V4本周发布），科技成长和高股息两条主线均有支撑。沪指上方阻力4100，下方支撑3980，创业板11年高位后需关注高位整理风险。<br><br>
+      <strong>美股</strong>：纳指13连阳后本周进入技术性敏感区，美伊停火4/22到期（以色列拒绝延期）是最大不确定性，能源板块建议观望；若停火延期则油价压力持续，利好通胀预期。<br><br>
+      <strong>黄金</strong>：$4849高位震荡，地缘溢价是核心支撑，4800一线支撑扎实，逢回调可关注黄金ETF（518880/159937）布局机会。<br><br>
+      <strong>人民币</strong>：升破6.82，美元指数走弱趋势延续，有利外资流入A股和港股。
     </div>
   </div>
 
@@ -950,15 +1001,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">工商银行</span>
+        <div class="stock-header-left"><span class="stock-name">工商银行</span>
         <span class="stock-code">601398.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率6.2%</span>
+        <span class="tag tag-finance">股息率6.2%</span>
+        
+          <div class="stock-change up">▲ +0.54%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">7.44</div>
-          <div class="stock-change up">▲ +0.54%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>PB 0.58倍，处于历史极低位，股息率6.2%全行业最高之列，安全边际充足。</li>
         <li>险资重点持仓，社保连续增配。减持新规预期下，国有大行估值修复逻辑最强。</li>
       </ul>
@@ -966,15 +1017,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">招商银行</span>
+        <div class="stock-header-left"><span class="stock-name">招商银行</span>
         <span class="stock-code">600036.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率4.8%</span>
+        <span class="tag tag-finance">股息率4.8%</span>
+        
+          <div class="stock-change up">▲ +0.83%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">47.28</div>
-          <div class="stock-change up">▲ +0.83%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>零售银行之王，ROE 15.2%全行业最高，PB 0.91倍为近五年低位。</li>
         <li>中金目标价58元，当前仍有22%上行空间。一季报预期净利润同比+8%。</li>
       </ul>
@@ -982,15 +1033,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">农业银行</span>
+        <div class="stock-header-left"><span class="stock-name">农业银行</span>
         <span class="stock-code">601288.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率5.85%</span>
+        <span class="tag tag-finance">股息率5.85%</span>
+        
+          <div class="stock-change up">▲ +0.35%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">5.82</div>
-          <div class="stock-change up">▲ +0.35%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>五大行之一，PB 0.55倍行业低位，县域农村金融龙头，分红稳定。</li>
         <li>险资持续增配，平安人寿H股持仓超20%举牌门槛，长线锁定筹码。</li>
       </ul>
@@ -998,15 +1049,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">宁波银行</span>
+        <div class="stock-header-left"><span class="stock-name">宁波银行</span>
         <span class="stock-code">002142.SZ</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率4.2%</span>
+        <span class="tag tag-finance">股息率4.2%</span>
+        
+          <div class="stock-change up">▲ +1.22%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">28.36</div>
-          <div class="stock-change up">▲ +1.22%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>优质城商行标杆，不良率0.76%全行业最低，ROE 14.1%，长三角民营客户结构优质。</li>
         <li>PB 0.82倍，成长性最强的城商行，一季报窗口有望催化估值修复。</li>
       </ul>
@@ -1014,15 +1065,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">江苏银行</span>
+        <div class="stock-header-left"><span class="stock-name">江苏银行</span>
         <span class="stock-code">600919.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率5.1%</span>
+        <span class="tag tag-finance">股息率5.1%</span>
+        
+          <div class="stock-change up">▲ +0.79%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">10.18</div>
-          <div class="stock-change up">▲ +0.79%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>苏南经济核心受益银行，制造业贷款质量优良，ROE 13.5%，PB 0.74倍。</li>
         <li>高ROE+高股息，估值仍有修复空间，是城商行中性价比较高的标的。</li>
       </ul>
@@ -1030,15 +1081,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">杭州银行</span>
+        <div class="stock-header-left"><span class="stock-name">杭州银行</span>
         <span class="stock-code">600926.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率4.52%</span>
+        <span class="tag tag-finance">股息率4.52%</span>
+        
+          <div class="stock-change up">▲ +0.96%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">14.62</div>
-          <div class="stock-change up">▲ +0.96%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>杭州数字经济核心银行，科技贷款比例全行业最高，ROE 13.8%，PB 0.78倍。</li>
         <li>受益于阿里、网易等头部互联网企业生态，消费信贷质量优异。</li>
       </ul>
@@ -1046,15 +1097,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">重庆银行</span>
+        <div class="stock-header-left"><span class="stock-name">重庆银行</span>
         <span class="stock-code">601963.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">股息率5.3%</span>
+        <span class="tag tag-finance">股息率5.3%</span>
+        
+          <div class="stock-change neutral">± 0.00%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price neutral">8.95</div>
-          <div class="stock-change neutral">± 0.00%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>西南地区城商行龙头，成渝经济圈受益标的，PB 0.62倍，估值较低。</li>
         <li>股息率5.3%性价比较高，当前维持观察，等待成渝经济圈政策催化。</li>
       </ul>
@@ -1066,15 +1117,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">中国移动</span>
+        <div class="stock-header-left"><span class="stock-name">中国移动</span>
         <span class="stock-code">600941.SH</span>
-        <span class="tag tag-ai" style="margin-left:6px;">算力收入+42%</span>
+        <span class="tag tag-ai">算力收入+42%</span>
+        
+          <div class="stock-change up">▲ +0.62%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">98.50</div>
-          <div class="stock-change up">▲ +0.62%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>传统运营商+AI算力双轮驱动，股息率5.2%，PE 15倍，PB 1.82倍。</li>
         <li>DeepSeek V4本周发布将直接拉动移动云算力需求，今日关注催化行情。</li>
       </ul>
@@ -1082,15 +1133,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">长江电力</span>
+        <div class="stock-header-left"><span class="stock-name">长江电力</span>
         <span class="stock-code">600900.SH</span>
-        <span class="tag tag-policy" style="margin-left:6px;">类固收资产</span>
+        <span class="tag tag-policy">类固收资产</span>
+        
+          <div class="stock-change up">▲ +0.31%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">32.18</div>
-          <div class="stock-change up">▲ +0.31%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>A股最优质类固收资产，水电零燃料成本+50年寿命，发电量2796亿度创历史新高。</li>
         <li>股息率3.8%，PE 21倍，险资核心持仓，估值相对合理，适合长期持有。</li>
       </ul>
@@ -1098,15 +1149,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">中国核电</span>
+        <div class="stock-header-left"><span class="stock-name">中国核电</span>
         <span class="stock-code">601985.SH</span>
-        <span class="tag tag-policy" style="margin-left:6px;">新机组投产</span>
+        <span class="tag tag-policy">新机组投产</span>
+        
+          <div class="stock-change up">▲ +0.51%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">9.86</div>
-          <div class="stock-change up">▲ +0.51%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>在建机组全球最多，2026年新投产3台，发电量增速约8%/年，AI数据中心用电需求催化。</li>
         <li>股息率4.2%，PE 15.2倍，历史20%分位，安全边际充足，可继续持有。</li>
       </ul>
@@ -1114,15 +1165,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">大秦铁路</span>
+        <div class="stock-header-left"><span class="stock-name">大秦铁路</span>
         <span class="stock-code">601006.SH</span>
-        <span class="tag tag-energy" style="margin-left:6px;">股息率7%</span>
+        <span class="tag tag-energy">股息率7%</span>
+        
+          <div class="stock-change neutral">± 0.00%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price neutral">8.24</div>
-          <div class="stock-change neutral">± 0.00%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>A股股息率最高大盘蓝筹之一（约7%），煤炭运输垄断线路，现金流极稳。</li>
         <li>PE约9.8倍，PB 1.12倍，能源安全战略下煤炭长协价格保障，适合收息型投资者。</li>
       </ul>
@@ -1130,15 +1181,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">中国海油</span>
+        <div class="stock-header-left"><span class="stock-name">中国海油</span>
         <span class="stock-code">600938.SH</span>
-        <span class="tag tag-energy" style="margin-left:6px;">股息率6.8%</span>
+        <span class="tag tag-energy">股息率6.8%</span>
+        
+          <div class="stock-change down">▼ -1.28%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price down">26.45</div>
-          <div class="stock-change down">▼ -1.28%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>桶油成本约28美元/全球最低，油价84美元下桶油利润约56美元，安全垫充足。</li>
         <li>股息率6.8%（含特别分红），油价下跌短期承压，80美元以下是较好的买入区间。</li>
       </ul>
@@ -1146,15 +1197,15 @@
 
     <div class="stock-card">
       <div class="stock-header">
-        <span class="stock-name">中国平安</span>
+        <div class="stock-header-left"><span class="stock-name">中国平安</span>
         <span class="stock-code">601318.SH</span>
-        <span class="tag tag-finance" style="margin-left:6px;">NBV+12%</span>
+        <span class="tag tag-finance">NBV+12%</span>
+        
+          <div class="stock-change up">▲ +0.71%</div>
+        </div></div>
         <div class="stock-price-area">
           <div class="stock-price up">52.36</div>
-          <div class="stock-change up">▲ +0.71%</div>
-        </div>
-      </div>
-      <ul class="stock-bullets">
+      </div><ul class="stock-bullets">
         <li>寿险复苏+高股息双重逻辑，NBV连续4季度正增长，代理人队伍质量提升。</li>
         <li>股息率5.6%，PE 9.1倍，PB 0.85倍，减持新规利好保险板块，继续持有。</li>
       </ul>
