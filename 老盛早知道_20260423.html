@@ -519,8 +519,9 @@
     /* ── 表格响应式 ── */
     .card-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px !important; }
     .card-body table td { padding: 5px 8px !important; }
-    .card-body table td:first-child { white-space: nowrap !important; }
-    .card-body table td:last-child { white-space: normal !important; overflow-wrap: break-word !important; word-break: normal !important; }
+    .card-body table td, .card-body table th { overflow-wrap: break-word !important; word-break: normal !important; }
+    .card-body table td.td-label { white-space: nowrap !important; }
+    .card-body table td.td-val { white-space: normal !important; }
 
     /* ── Footer ── */
     .footer { padding: 20px 16px; padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
@@ -670,24 +671,24 @@
     <div class="card-body">
       <table style="width:100%;border-collapse:collapse;">
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--red);font-weight:700;">4/23（周四）</td>
-          <td style="padding:7px 12px;">A股站稳4100+创业板迭创新高 · 布伦特突破100 · 黄金大跌 · 停火延长至4/26</td>
+          <td style="padding:7px 12px;color:var(--red);font-weight:700;" class="td-label">4/23（周四）</td>
+          <td style="padding:7px 12px;" class="td-val">A股站稳4100+创业板迭创新高 · 布伦特突破100 · 黄金大跌 · 停火延长至4/26</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--accent);font-weight:600;">4/23（周四）</td>
-          <td style="padding:7px 12px;">A股开盘 · 科技主线强势，关注创业板延续 · 布伦特破100利好能源股</td>
+          <td style="padding:7px 12px;color:var(--accent);font-weight:600;" class="td-label">4/23（周四）</td>
+          <td style="padding:7px 12px;" class="td-val">A股开盘 · 科技主线强势，关注创业板延续 · 布伦特破100利好能源股</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">4/24（周五）</td>
-          <td style="padding:7px 12px;">美伊和谈最快24日重启 · 北京车展开幕</td>
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;" class="td-label">4/24（周五）</td>
+          <td style="padding:7px 12px;" class="td-val">美伊和谈最快24日重启 · 北京车展开幕</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">4/26（周日）</td>
-          <td style="padding:7px 12px;">特朗普延长停火到期日——新一轮关键窗口</td>
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;" class="td-label">4/26（周日）</td>
+          <td style="padding:7px 12px;" class="td-val">特朗普延长停火到期日——新一轮关键窗口</td>
         </tr>
         <tr>
-          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">4月底前</td>
-          <td style="padding:7px 12px;">城商行一季报密集披露 · DeepSeek V4正式发布（全面适配华为昇腾950PR芯片）</td>
+          <td style="padding:7px 12px;color:var(--orange);font-weight:600;" class="td-label">4月底前</td>
+          <td style="padding:7px 12px;" class="td-val">城商行一季报密集披露 · DeepSeek V4正式发布（全面适配华为昇腾950PR芯片）</td>
         </tr>
       </table>
     </div>
@@ -1672,20 +1673,20 @@
     <div class="card-title">✅ 关键数字速查</div>
     <div class="card-body">
       <table style="width:100%;border-collapse:collapse;">
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">上证指数（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">4106.26（+0.52%，首次站稳4100）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">深证成指（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">15177.29（+1.30%，续创新高）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">创业板指（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">3752.76（+1.73%，11年新高）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">两市成交额</td><td style="padding:6px 12px;font-weight:600;" class="up">约2.52万亿元</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">恒生指数（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="down">跌1.22%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">道琼斯（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">49490.03（+0.69%）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">纳斯达克（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="up">24657.57（+1.64%，创收盘历史新高）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">WTI原油</td><td style="padding:6px 12px;font-weight:600;" class="up">$95.15（+3.58%）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">布伦特原油</td><td style="padding:6px 12px;font-weight:600;" class="up">$101.91（+3.48%，突破100！）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">现货黄金</td><td style="padding:6px 12px;font-weight:600;color:#f0b429">约4738.50美元（-1.87%，跌破4700）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">中国10Y国债</td><td style="padding:6px 12px;font-weight:600;" class="up">下破1.75%（债牛继续）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">BTC</td><td style="padding:6px 12px;font-weight:600;" class="up">$75,890（+0.23%）</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)">USD/CNY</td><td style="padding:6px 12px;font-weight:600;" class="neutral">6.8635（中间价）</td></tr>
-        <tr><td style="padding:6px 12px;color:var(--text-muted)">今日最重磅</td><td style="padding:6px 12px;font-weight:600;color:var(--red)">A股站稳4100·创业板11年新高·布伦特破100·黄金跌破4700·停火延至4/26·纳指+1.64%创新高</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">上证指数（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">4106.26（+0.52%，首次站稳4100）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">深证成指（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">15177.29（+1.30%，续创新高）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">创业板指（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">3752.76（+1.73%，11年新高）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">两市成交额</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">约2.52万亿元</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">恒生指数（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val down">跌1.22%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">道琼斯（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">49490.03（+0.69%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">纳斯达克（4/22收盘）</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">24657.57（+1.64%，创收盘历史新高）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">WTI原油</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">$95.15（+3.58%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">布伦特原油</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">$101.91（+3.48%，突破100！）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">现货黄金</td><td style="padding:6px 12px;font-weight:600;color:#f0b429" class="td-val">约4738.50美元（-1.87%，跌破4700）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">中国10Y国债</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">下破1.75%（债牛继续）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">BTC</td><td style="padding:6px 12px;font-weight:600;" class="td-val up">$75,890（+0.23%）</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">USD/CNY</td><td style="padding:6px 12px;font-weight:600;" class="td-val neutral">6.8635（中间价）</td></tr>
+        <tr><td style="padding:6px 12px;color:var(--text-muted)" class="td-label">今日最重磅</td><td style="padding:6px 12px;font-weight:600;color:var(--red)" class="td-val">A股站稳4100·创业板11年新高·布伦特破100·黄金跌破4700·停火延至4/26·纳指+1.64%创新高</td></tr>
       </table>
     </div>
   </div>
