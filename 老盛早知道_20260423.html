@@ -452,37 +452,77 @@
 
   /* 响应式 */
   @media (max-width:768px) {
+    /* ── 全局容器 ── */
     .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
-    .highlight-grid, .market-grid { grid-template-columns:1fr; }
-    .header-top { grid-template-columns: 48px 1fr; gap:10px; padding-bottom:14px; }
-    .stock-price-area { margin-left:0; }
-    .brand-icon { width:42px; height:42px; border-radius:10px; flex-shrink:0; }
-    .brand-icon svg { width:22px; height:22px; }
-    .brand-name { font-size:20px; letter-spacing:2px; }
-    .brand-zaodao { font-size:20px; letter-spacing:2px; }
-    .brand-sep { margin:0 6px; height:16px; }
-    .brand-tag { font-size:9px; margin-left:6px; }
-    .brand-subtitle { font-size:10px; flex-wrap:wrap; }
-    .brand-en { font-size:8px; letter-spacing:1.5px; }
-    .brand-en-row { flex-wrap:wrap; gap:4px; }
-    .brand-issue { font-size:8px; }
-    .hm-tickers { display:none; }
-    .header-meta { border-left:none; padding-left:0; flex-direction:row; flex-wrap:wrap; align-items:center; gap:6px; grid-column:1/-1; padding-top:0; }
-    .hm-date { font-size:15px; }
-    .hm-sub { font-size:10px; }
-    .live-dot { width:5px; height:5px; }
-    .card { padding:16px 18px; }
-    .section-title { font-size:17px; }
-    .footer { padding:20px 16px; }
-    .stock-header { flex-direction:column; align-items:flex-start; }
-    .card { padding:14px 16px; }
-    .tab-btn { padding:10px 14px; font-size:12.5px; }
-    .tab-icon { font-size:12px; }
-    .brand-main-row { flex-wrap:wrap; }
-    /* 表格响应式 */
-    .card-body table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; font-size:12px !important; }
-    .card-body table td { padding:5px 8px !important; }
-    .card-body table td, .card-body table th { white-space:normal !important; word-break:break-all; }
+    .header-inner { padding-top: 14px; }
+    .tab-panel .inner { padding-top: 20px; padding-bottom: 20px; }
+
+    /* ── Header 品牌 ── */
+    .highlight-grid, .market-grid { grid-template-columns: 1fr; }
+    .header-top { grid-template-columns: 48px 1fr; gap: 10px; padding-bottom: 14px; }
+    .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
+    .brand-icon svg { width: 22px; height: 22px; }
+    .brand-name { font-size: 20px; letter-spacing: 2px; }
+    .brand-zaodao { font-size: 20px; letter-spacing: 2px; }
+    .brand-sep { margin: 0 6px; height: 16px; }
+    .brand-tag { font-size: 10px; margin-left: 6px; }
+    .brand-subtitle { font-size: 11px; flex-wrap: wrap; }
+    .brand-en { font-size: 9px; letter-spacing: 1.5px; }
+    .brand-en-row { flex-wrap: wrap; gap: 4px; }
+    .brand-issue { font-size: 9px; }
+    .brand-main-row { flex-wrap: wrap; }
+
+    /* ── Header 仪表盘 ── */
+    .hm-tickers { display: none; }
+    .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
+    .hm-date { font-size: 14px; }
+    .hm-sub { font-size: 10px; }
+    .live-dot { width: 5px; height: 5px; }
+
+    /* ── Tab 导航 ── */
+    .tab-nav-wrap { position: relative; }
+    .tab-nav-wrap::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px; background: linear-gradient(90deg, transparent, var(--bg-primary)); pointer-events: none; z-index: 1; }
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+    .tab-icon { font-size: 12px; }
+
+    /* ── 通用卡片 ── */
+    .card { padding: 14px 16px; }
+    .card:hover { transform: none; }
+    .card-title { font-size: 14px; gap: 8px; }
+    .card-body { font-size: 13px; line-height: 1.7; }
+
+    /* ── 提示条 ── */
+    .alert-bar, .hot-bar, .good-bar { padding: 12px 14px; font-size: 13px; }
+
+    /* ── 要点速览 ── */
+    .highlight-item { padding: 12px 14px; }
+
+    /* ── 市场数据 ── */
+    .market-block { padding: 12px 14px; }
+
+    /* ── 标的卡片 ── */
+    .stock-card { padding: 14px 16px; }
+    .stock-card:hover { transform: none; }
+    .stock-header { flex-direction: column; align-items: flex-start; }
+    .stock-price-area { margin-left: 0; text-align: left; }
+
+    /* ── 总结卡片 ── */
+    .summary-card { padding: 18px 16px; }
+
+    /* ── 情绪条 ── */
+    .sentiment-label { flex-direction: column; gap: 2px; font-size: 11px; }
+
+    /* ── 板块间距 ── */
+    .section-title { font-size: 17px; margin-bottom: 18px; padding-bottom: 10px; }
+    .sub-section { margin-bottom: 20px; }
+
+    /* ── 表格响应式 ── */
+    .card-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px !important; }
+    .card-body table td { padding: 5px 8px !important; }
+    .card-body table td, .card-body table th { white-space: normal !important; overflow-wrap: break-word !important; word-break: normal !important; }
+
+    /* ── Footer ── */
+    .footer { padding: 20px 16px; padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
   }
 </style>
 </head>
