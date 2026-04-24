@@ -381,9 +381,9 @@
     transition: border-color 0.2s;
   }
   .stock-card:hover { border-color: var(--accent-border); }
-  .stock-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+  .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
   .stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
-  .stock-code { font-size:11px; color:var(--text-muted); }
+  .stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
   .stock-price-area { margin-left:auto; text-align:right; }
   .stock-price { font-size:18px; font-weight:700; }
   .stock-change { font-size:12px; margin-top:2px; }
@@ -450,6 +450,8 @@
     border-left: 2px solid var(--accent);
   }
 
+  .stock-info-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
   /* 响应式 */
   @media (max-width:768px) {
     /* ── 全局容器 ── */
@@ -503,8 +505,13 @@
     /* ── 标的卡片 ── */
     .stock-card { padding: 14px 16px; }
     .stock-card:hover { transform: none; }
-    .stock-header { flex-direction: column; align-items: flex-start; }
+    .stock-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .stock-name { font-size: 15px; }
+    .stock-code { font-size: 11px; }
+    .stock-header .tag { font-size: 10px; padding: 1px 6px; }
     .stock-price-area { margin-left: 0; text-align: left; }
+    .stock-price { font-size: 15px; }
+    .stock-change { font-size: 11px; }
 
     /* ── 总结卡片 ── */
     .summary-card { padding: 18px 16px; }
@@ -1013,7 +1020,11 @@
   <!-- 工商银行 -->
   <div class="stock-card" style="border-color:rgba(240,180,41,0.5);">
     <div class="stock-header">
-      <span class="stock-name">工商银行</span> <span class="stock-code">601398 / 1398.HK</span> <span class="tag tag-energy">股息率4.08%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">工商银行</span>
+        <span class="stock-code">601398 / 1398.HK</span>
+        <span class="tag tag-energy">股息率4.08%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">高股息核心资产</div>
         <div class="stock-change neutral">防御属性凸显</div>
@@ -1029,7 +1040,11 @@
   <!-- 招商银行 -->
   <div class="stock-card" style="border-color:rgba(0,212,255,0.3);">
     <div class="stock-header">
-      <span class="stock-name">招商银行</span> <span class="stock-code">600036 / 3968.HK</span> <span class="tag tag-finance">股息率5.11%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">招商银行</span>
+        <span class="stock-code">600036 / 3968.HK</span>
+        <span class="tag tag-finance">股息率5.11%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">高股息防御</div>
         <div class="stock-change neutral">煤炭酒类走强·防御属性凸显</div>
@@ -1045,7 +1060,11 @@
   <!-- 宁波银行 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">宁波银行</span> <span class="stock-code">002142</span> <span class="tag tag-policy">一季报窗口</span>
+      <div class="stock-info-row">
+        <span class="stock-name">宁波银行</span>
+        <span class="stock-code">002142</span>
+        <span class="tag tag-policy">一季报窗口</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">城商行龙头</div>
         <div class="stock-change neutral">关注一季报</div>
@@ -1061,7 +1080,11 @@
   <!-- 江苏银行 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">江苏银行</span> <span class="stock-code">600919</span> <span class="tag tag-policy">年报已披露</span>
+      <div class="stock-info-row">
+        <span class="stock-name">江苏银行</span>
+        <span class="stock-code">600919</span>
+        <span class="tag tag-policy">年报已披露</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">年报支撑</div>
         <div class="stock-change neutral">股息率5.27%</div>
@@ -1076,7 +1099,11 @@
   <!-- 杭州银行 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">杭州银行</span> <span class="stock-code">600926</span> <span class="tag tag-policy">年报已披露</span>
+      <div class="stock-info-row">
+        <span class="stock-name">杭州银行</span>
+        <span class="stock-code">600926</span>
+        <span class="tag tag-policy">年报已披露</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">年报催化</div>
         <div class="stock-change neutral">股息率4.42%</div>
@@ -1091,7 +1118,11 @@
   <!-- 农业银行 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">农业银行</span> <span class="stock-code">601288 / 1288.HK</span> <span class="tag tag-finance">H股股息率7.2%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">农业银行</span>
+        <span class="stock-code">601288 / 1288.HK</span>
+        <span class="tag tag-finance">H股股息率7.2%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">险资举牌标的</div>
         <div class="stock-change neutral">H股最高股息率</div>
@@ -1106,7 +1137,11 @@
   <!-- 重庆银行 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">重庆银行</span> <span class="stock-code">601963</span> <span class="tag tag-policy">年报已披露</span>
+      <div class="stock-info-row">
+        <span class="stock-name">重庆银行</span>
+        <span class="stock-code">601963</span>
+        <span class="tag tag-policy">年报已披露</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">年报已披露</div>
         <div class="stock-change neutral">股息率约4.7%</div>
@@ -1123,7 +1158,11 @@
   <!-- 长江电力 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">长江电力</span> <span class="stock-code">600900</span> <span class="tag tag-policy">股息率约4.24%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">长江电力</span>
+        <span class="stock-code">600900</span>
+        <span class="tag tag-policy">股息率约4.24%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">稳健防御</div>
         <div class="stock-change up">A股回调+地缘风险，防御价值凸显</div>
@@ -1138,7 +1177,11 @@
   <!-- 大秦铁路 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">大秦铁路</span> <span class="stock-code">601006</span> <span class="tag tag-energy">股息率约4.19%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">大秦铁路</span>
+        <span class="stock-code">601006</span>
+        <span class="tag tag-energy">股息率约4.19%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">运量稳健</div>
         <div class="stock-change neutral">典型价值洼地</div>
@@ -1155,7 +1198,11 @@
   <!-- 中国海油 -->
   <div class="stock-card" style="border-color:rgba(240,180,41,0.4);">
     <div class="stock-header">
-      <span class="stock-name">中国海油</span> <span class="stock-code">600938 / 0883.HK</span> <span class="tag tag-energy">布伦特破105</span>
+      <div class="stock-info-row">
+        <span class="stock-name">中国海油</span>
+        <span class="stock-code">600938 / 0883.HK</span>
+        <span class="tag tag-energy">布伦特破105</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price up">桶油利润$67+</div>
         <div class="stock-change up">布伦特105.07·WTI 95.85</div>
@@ -1171,7 +1218,11 @@
   <!-- 中国平安 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">中国平安</span> <span class="stock-code">601318 / 2318.HK</span> <span class="tag tag-finance">股息率约4.7%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">中国平安</span>
+        <span class="stock-code">601318 / 2318.HK</span>
+        <span class="tag tag-finance">股息率约4.7%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">保险+高股息</div>
         <div class="stock-change neutral">防御属性凸显</div>
@@ -1187,7 +1238,11 @@
   <!-- 中国移动 -->
   <div class="stock-card" style="border-color:rgba(0,212,255,0.45);">
     <div class="stock-header">
-      <span class="stock-name">中国移动</span> <span class="stock-code">600941 / 0941.HK</span> <span class="tag tag-ai">算力云+高股息双属性</span>
+      <div class="stock-info-row">
+        <span class="stock-name">中国移动</span>
+        <span class="stock-code">600941 / 0941.HK</span>
+        <span class="tag tag-ai">算力云+高股息双属性</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">股息率5.16%</div>
         <div class="stock-change neutral">科技回调，防御属性凸显</div>
@@ -1203,7 +1258,11 @@
   <!-- 中国核电 -->
   <div class="stock-card">
     <div class="stock-header">
-      <span class="stock-name">中国核电</span> <span class="stock-code">601985</span> <span class="tag tag-policy">股息率约1.99%</span>
+      <div class="stock-info-row">
+        <span class="stock-name">中国核电</span>
+        <span class="stock-code">601985</span>
+        <span class="tag tag-policy">股息率约1.99%</span>
+      </div>
       <div class="stock-price-area">
         <div class="stock-price neutral">装机全球第一</div>
         <div class="stock-change up">新能源防御属性</div>
