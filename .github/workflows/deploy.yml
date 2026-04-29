@@ -12,18 +12,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Sync to COS
+        uses: tencentyun/cos-action@v1
         with:
-          python-version: '3.12'
-
-      - name: Install coscmd
-        run: pip install coscmd
-
-      - name: Configure coscmd
-        run: |
-          coscmd config -a ${{ secrets.TENCENT_SECRET_ID }} -s ${{ secrets.TENCENT_SECRET_KEY }} -b laosheng-1425032065 -r ap-nanjing
-
-      - name: Sync files to COS
-        run: |
-          coscmd sync -r --delete --exclude ".git/*" --exclude ".github/*" --exclude ".codebuddy/*" --exclude ".workbuddy/*" --exclude "sync_github.sh" --exclude "生成规范.md" --exclude "template.html" ./ /
+          secret_id: ${{ secrets.TENCENT_SECRET_ID }}
+          secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
+          bucket: laosheng-1425032065
+          region: ap-nanjing
+          src: ./
+          dest: /
+          exclude: |
+            .git/**
+            .github/**
+            .codebuddy/**
+            .workbuddy/**
+            sync_github.sh
+            生成规范.md
+            template.html
+          delete: true
