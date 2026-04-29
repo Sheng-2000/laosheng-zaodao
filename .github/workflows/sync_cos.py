@@ -33,7 +33,8 @@ while True:
         for obj in resp['Contents']:
             existing_keys.add(obj['Key'])
     if resp.get('IsTruncated'):
-        marker = resp['NextMarker']
+        contents = resp.get('Contents', [])
+        marker = contents[-1]['Key'] if contents else ''
     else:
         break
 
