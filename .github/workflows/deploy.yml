@@ -12,21 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Sync to COS
-        uses: tencentyun/cos-action@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          secret_id: ${{ secrets.TENCENT_SECRET_ID }}
-          secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
-          bucket: laosheng-1425032065
-          region: ap-nanjing
-          src: ./
-          dest: /
-          exclude: |
-            .git/**
-            .github/**
-            .codebuddy/**
-            .workbuddy/**
-            sync_github.sh
-            生成规范.md
-            template.html
-          delete: true
+          python-version: '3.12'
+
+      - name: Install COS SDK
+        run: pip install cos-python-sdk-v5
+
+      - name: Sync to COS
+        env:
+          SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          BUCKET: laosheng-1425032065
+          REGION: ap-nanjing
+        run: python3 .github/workflows/sync_cos.py
