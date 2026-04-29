@@ -1,0 +1,39 @@
+name: Deploy to Tencent COS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install coscmd
+        run: pip install coscmd
+
+      - name: Configure coscmd
+        run: |
+          coscmd config -a ${{ secrets.TENCENT_SECRET_ID }} -s ${{ secrets.TENCENT_SECRET_KEY }} -b laosheng-zaodao -r ap-guangzhou
+
+      - name: Sync files to COS
+        run: |
+          # 排除不需要部署的文件
+          coscmd sync -r --delete --exclude ".git/*" --exclude ".github/*" --exclude ".codebuddy/*" --exclude ".workbuddy/*" --exclude "sync_github.sh" --exclude "生成规范.md" --exclude "template.html" ./ /
+
+      - name: Setup CDN cache purge
+        uses: yizhiyong/cdn-purge@v1
+        if: vars.CDN_URL != ''
+        with:
+          url: ${{ vars.CDN_URL }}
+          secretId: ${{ secrets.TENCENT_SECRET_ID }}
+          secretKey: ${{ secrets.TENCENT_SECRET_KEY }}
+        continue-on-error: true
