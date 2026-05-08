@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老盛早知道 - 2026年5月8日</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans SC', sans-serif; background: #f5f5f0; }
+        .tab-active { background: #c53d32; color: white; }
+        .tab-inactive { background: #e8e4dc; color: #5c5c5c; }
+        .up { color: #c53d32; }
+        .down { color: #2d8a4e; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .section-title { border-left: 4px solid #c53d32; padding-left: 12px; }
+        .stock-card { background: #fafaf8; border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+        .ticker-wrap { overflow: hidden; background: #1a1a1a; color: white; padding: 8px 0; }
+        .ticker { display: inline-block; white-space: nowrap; animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .highlight-box { background: linear-gradient(135deg, #fef3f2 0%, #fff5f5 100%); border: 1px solid #fecaca; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-red-900 to-red-700 text-white p-4">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <div>
+                <h1 class="text-2xl font-bold">老盛早知道</h1>
+                <p class="text-sm opacity-80">2026年5月8日 星期五</p>
+            </div>
+            <div class="text-right text-sm">
+                <p><i class="fas fa-sun text-yellow-300 mr-1"></i> 宜：价值投资</p>
+                <p><i class="fas fa-moon text-blue-300 mr-1"></i> 忌：追涨杀跌</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="mx-4">上证指数 3352.00 <span class="up">+0.28%</span></span>
+            <span class="mx-4">深证成指 10197.66 <span class="up">+0.93%</span></span>
+            <span class="mx-4">创业板指 2029.45 <span class="up">+1.65%</span></span>
+            <span class="mx-4">恒生指数 26626.28 <span class="up">+1.57%</span></span>
+            <span class="mx-4">道琼斯 49596.97 <span class="down">-0.63%</span></span>
+            <span class="mx-4">纳斯达克 25806.20 <span class="down">-0.13%</span></span>
+            <span class="mx-4">标普500 7337.11 <span class="down">-0.38%</span></span>
+            <span class="mx-4">黄金 4700-4760美元/盎司</span>
+            <span class="mx-4">原油 61美元/桶</span>
+            <span class="mx-4">上证指数 3352.00 <span class="up">+0.28%</span></span>
+            <span class="mx-4">深证成指 10197.66 <span class="up">+0.93%</span></span>
+            <span class="mx-4">创业板指 2029.45 <span class="up">+1.65%</span></span>
+            <span class="mx-4">恒生指数 26626.28 <span class="up">+1.57%</span></span>
+            <span class="mx-4">道琼斯 49596.97 <span class="down">-0.63%</span></span>
+            <span class="mx-4">纳斯达克 25806.20 <span class="down">-0.13%</span></span>
+            <span class="mx-4">标普500 7337.11 <span class="down">-0.38%</span></span>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-6xl mx-auto flex overflow-x-auto">
+            <button onclick="switchTab(0)" class="tab-btn tab-active px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">要点速览</button>
+            <button onclick="switchTab(1)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">全球市场</button>
+            <button onclick="switchTab(2)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">国内新闻</button>
+            <button onclick="switchTab(3)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">国际新闻</button>
+            <button onclick="switchTab(4)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">价值投资风向</button>
+            <button onclick="switchTab(5)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">关注标的</button>
+            <button onclick="switchTab(6)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">理财话题</button>
+            <button onclick="switchTab(7)" class="tab-btn tab-inactive px-4 py-3 text-sm font-medium whitespace-nowrap flex-shrink-0">今日总结</button>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-4">
+        <!-- Tab 0: 要点速览 -->
+        <div id="tab-0" class="tab-content active">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">今日市场要点</h2>
+                
+                <!-- 提示条 -->
+                <div class="highlight-box rounded-lg p-4 mb-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-yellow-600 mt-1 mr-3"></i>
+                        <div>
+                            <p class="font-medium text-red-800">核心看点</p>
+                            <p class="text-sm text-gray-700 mt-1">A股三大指数集体收涨，创业板指涨1.65%表现亮眼；美股三大指数小幅回调，市场关注美伊局势与油价波动；国产AI大模型周调用量首次超越美国，AI产业链持续活跃。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8个highlight -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
+                        <p class="text-xs text-gray-500">A股表现</p>
+                        <p class="font-bold text-lg">三大指数齐涨</p>
+                        <p class="text-sm text-gray-600">沪指+0.28%，深成指+0.93%，创业板+1.65%</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                        <p class="text-xs text-gray-500">美股动态</p>
+                        <p class="font-bold text-lg">三大指数小幅回调</p>
+                        <p class="text-sm text-gray-600">道指-0.63%，纳指-0.13%，标普-0.38%</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-xs text-gray-500">港股表现</p>
+                        <p class="font-bold text-lg">恒指涨1.57%</p>
+                        <p class="text-sm text-gray-600">恒生科技指数大涨3.06%，科技股领涨</p>
+                    </div>
+                    <div class="bg-yellow-50 rounded-lg p-4 border-l-4 border-yellow-500">
+                        <p class="text-xs text-gray-500">AI前沿</p>
+                        <p class="font-bold text-lg">国产AI调用量超美</p>
+                        <p class="text-sm text-gray-600">周调用量达7.942万亿Token，环比激增81.7%</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+                        <p class="text-xs text-gray-500">央行操作</p>
+                        <p class="font-bold text-lg">逆回购利率维持1.4%</p>
+                        <p class="text-sm text-gray-600">5月7日开展270亿元7天期逆回购操作</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-4 border-l-4 border-orange-500">
+                        <p class="text-xs text-gray-500">大宗商品</p>
+                        <p class="font-bold text-lg">金价高位震荡</p>
+                        <p class="text-sm text-gray-600">国际金价4700-4760美元/盎司区间波动</p>
+                    </div>
+                    <div class="bg-teal-50 rounded-lg p-4 border-l-4 border-teal-500">
+                        <p class="text-xs text-gray-500">银行板块</p>
+                        <p class="font-bold text-lg">六大行分红超4200亿</p>
+                        <p class="text-sm text-gray-600">2026年合计现金分红达4274.24亿元</p>
+                    </div>
+                    <div class="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-500">
+                        <p class="text-xs text-gray-500">汇率</p>
+                        <p class="font-bold text-lg">人民币兑美元7.2073</p>
+                        <p class="text-sm text-gray-600">中间价较前一交易日小幅调整</p>
+                    </div>
+                </div>
+
+                <!-- 日历 -->
+                <div class="mt-6 bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-bold mb-3"><i class="fas fa-calendar-alt mr-2"></i>今日财经日历</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="text-gray-600">05/08</span>
+                            <span>美联储5月利率决议（维持4.25-4.50%不变）</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="text-gray-600">05/08</span>
+                            <span>中国4月进出口数据发布</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-gray-600">05/09</span>
+                            <span>美国4月非农就业报告</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 1: 全球市场 -->
+        <div id="tab-1" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">全球市场概览</h2>
+                
+                <!-- A股 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-chart-line mr-2 text-red-600"></i>A股市场（5月8日收盘）</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">上证指数</p>
+                            <p class="text-2xl font-bold">3352.00</p>
+                            <p class="text-sm up">+9.33 (+0.28%)</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">深证成指</p>
+                            <p class="text-2xl font-bold">10197.66</p>
+                            <p class="text-sm up">+93.53 (+0.93%)</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">创业板指</p>
+                            <p class="text-2xl font-bold">2029.45</p>
+                            <p class="text-sm up">+32.94 (+1.65%)</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3">沪深两市成交额约1.01万亿元，较前一交易日小幅放量。早盘指数震荡走高，午后延续强势，创业板指表现亮眼，涨幅达1.65%。</p>
+                </div>
+
+                <!-- 美股 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-chart-line mr-2 text-blue-600"></i>美股市场（5月7日收盘，北京时间5月8日凌晨）</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">道琼斯</p>
+                            <p class="text-2xl font-bold">49596.97</p>
+                            <p class="text-sm down">-313.62 (-0.63%)</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">纳斯达克</p>
+                            <p class="text-2xl font-bold">25806.20</p>
+                            <p class="text-sm down">-33.74 (-0.13%)</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">标普500</p>
+                            <p class="text-2xl font-bold">7337.11</p>
+                            <p class="text-sm down">-28.01 (-0.38%)</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3">美股三大指数小幅收跌，道指跌逾300点。盘中一度再创阶段新高，尾盘跳水回落。市场关注美伊局势进展与油价波动，美联储维持利率不变符合预期。</p>
+                </div>
+
+                <!-- 港股 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-chart-line mr-2 text-green-600"></i>港股市场（5月7日收盘）</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">恒生指数</p>
+                            <p class="text-2xl font-bold">26626.28</p>
+                            <p class="text-sm up">+1.57%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">恒生科技</p>
+                            <p class="text-2xl font-bold">5121.10</p>
+                            <p class="text-sm up">+3.06%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">国企指数</p>
+                            <p class="text-2xl font-bold">8919.48</p>
+                            <p class="text-sm up">+1.35%</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3">港股主要指数高开高走，大型科技股多数上涨，百度涨超4%，阿里巴巴涨近4%，腾讯控股表现稳健。</p>
+                </div>
+
+                <!-- 亚太 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-globe-asia mr-2 text-orange-600"></i>亚太市场</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">日经225</p>
+                            <p class="text-lg font-bold">62654.01</p>
+                            <p class="text-xs down">-0.29%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">韩国KOSPI</p>
+                            <p class="text-lg font-bold">7353.94</p>
+                            <p class="text-xs down">-1.80%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 欧洲 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-globe-europe mr-2 text-purple-600"></i>欧洲市场</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">英国富时100</p>
+                            <p class="text-lg font-bold">-</p>
+                            <p class="text-xs down">-1.55%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">德国DAX</p>
+                            <p class="text-lg font-bold">-</p>
+                            <p class="text-xs down">-1.02%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">法国CAC40</p>
+                            <p class="text-lg font-bold">-</p>
+                            <p class="text-xs down">-1.17%</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">欧洲STOXX50</p>
+                            <p class="text-lg font-bold">-</p>
+                            <p class="text-xs down">-0.90%</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3">欧洲主要股指全线收跌，受美伊局势紧张及油价波动影响，市场风险偏好下降。</p>
+                </div>
+
+                <!-- 大宗商品 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-oil-can mr-2 text-gray-600"></i>大宗商品</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">布伦特原油</p>
+                            <p class="text-lg font-bold">$60.95</p>
+                            <p class="text-xs text-gray-400">昨收价</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">黄金</p>
+                            <p class="text-lg font-bold">$4700-4760</p>
+                            <p class="text-xs text-gray-400">盎司/美元</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">白银</p>
+                            <p class="text-lg font-bold">$79.06</p>
+                            <p class="text-xs up">+0.20%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 加密货币 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-bitcoin mr-2 text-yellow-600"></i>加密货币</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">比特币 BTC</p>
+                            <p class="text-2xl font-bold">$96,635</p>
+                            <p class="text-sm up">+1.74%</p>
+                            <p class="text-xs text-gray-400 mt-1">日内波动区间：$94,281-96,529</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-500">以太坊 ETH</p>
+                            <p class="text-2xl font-bold">$2,290</p>
+                            <p class="text-sm down">-</p>
+                            <p class="text-xs text-gray-400 mt-1">近期在$2295附近震荡</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 汇率与国债 -->
+                <div>
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-exchange-alt mr-2 text-teal-600"></i>汇率与国债</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">人民币兑美元中间价</p>
+                            <p class="text-lg font-bold">7.2073</p>
+                            <p class="text-xs text-gray-400">前一交易日：7.2005</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">在岸人民币汇率</p>
+                            <p class="text-lg font-bold">7.2342</p>
+                            <p class="text-xs text-gray-400">1美元=7.2342元人民币</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="text-xs text-gray-500">10年期国债收益率</p>
+                            <p class="text-lg font-bold">1.75%以下</p>
+                            <p class="text-xs text-gray-400">持续维持低位</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: 国内新闻 -->
+        <div id="tab-2" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">国内财经要闻</h2>
+                
+                <div class="space-y-4">
+                    <div class="border-l-4 border-red-500 pl-4 py-2">
+                        <h3 class="font-bold">央行开展270亿元逆回购操作，利率维持1.4%</h3>
+                        <p class="text-sm text-gray-600 mt-1">5月7日，中国人民银行公开市场开展270亿元7天期逆回购操作，操作利率维持1.40%不变。7天期逆回购利率自2026年下调至1.4%后，已维持平稳。市场流动性保持合理充裕。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：人民财讯</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-blue-500 pl-4 py-2">
+                        <h3 class="font-bold">国产AI大模型周调用量首次超越美国</h3>
+                        <p class="text-sm text-gray-600 mt-1">5月6日数据显示，国产AI大模型周调用量首次超越美国，4月27日至5月3日达7.942万亿Token，环比激增81.7%。2026年中国国产开源大模型累计下载量全球第一，AI产业链表现活跃。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：财联社</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-green-500 pl-4 py-2">
+                        <h3 class="font-bold">A股上市银行2026年净利润超2万亿元</h3>
+                        <p class="text-sm text-gray-600 mt-1">截至2026年末，工商银行以53.48万亿元总资产成为唯一一家资产规模迈过50万亿元门槛的银行。六大行合计实现归母净利润约1.42万亿元，合计现金分红金额达4274.24亿元，银行股息率远超银行理财与定存。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：证券时报</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                        <h3 class="font-bold">济南：力争"十五五"末人工智能核心产业规模较2026年翻一番</h3>
+                        <p class="text-sm text-gray-600 mt-1">济南市发布人工智能产业发展规划，将强化智能基础设施建设，统筹智能算力，深化"大模型工场"模式，完善数算法流通服务体系，通过场景开放、"揭榜挂帅"、基金赋能等机制营造开放创新生态。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：每经AI</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-purple-500 pl-4 py-2">
+                        <h3 class="font-bold">中国神华2026年分红418亿元，分红率近八成</h3>
+                        <p class="text-sm text-gray-600 mt-1">中国神华2026年实现营收2949.16亿元，归母净利润528.49亿元。全年分红总额418.11亿元，分红率79.1%，是A股高股息标杆。公司承诺2025-2027年每年现金分红比例不低于65%。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：公司公告</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-orange-500 pl-4 py-2">
+                        <h3 class="font-bold">银行定期存款利率跌破2%，国债收益率维持低位</h3>
+                        <p class="text-sm text-gray-600 mt-1">多家银行定期存款利率已跌破2%，10年期国债收益率持续维持在1.75%关口下方。3年期存款利率已从2.15%跌至1.25%，5年期仅剩1.3%。优质固收类资产供给不断缩水，理财机构面临"巧妇难为无米之炊"困境。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：财联社</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: 国际新闻 -->
+        <div id="tab-3" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">国际财经要闻</h2>
+                
+                <div class="space-y-4">
+                    <div class="border-l-4 border-red-500 pl-4 py-2">
+                        <h3 class="font-bold">美联储5月议息会议维持利率不变</h3>
+                        <p class="text-sm text-gray-600 mt-1">北京时间5月8日凌晨，美联储发布5月议息会议声明，宣布继续暂停降息，联邦基金利率维持4.25-4.50%目标区间，符合市场预期。缩表方面，维持50亿美元/月美债和350亿美元/月MBS的缩表安排。鲍威尔表示短期内通胀风险偏向上行。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：美联储</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-blue-500 pl-4 py-2">
+                        <h3 class="font-bold">美伊局势紧张，油价波动加剧</h3>
+                        <p class="text-sm text-gray-600 mt-1">霍尔木兹冲突再起，油价呈现深V走势。交易员正关注美伊局势的更多进展，地缘政治风险推升市场避险情绪。美股盘中一度再创阶段新高，但尾盘跳水回落，反映市场多空分歧加剧。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：路透社</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-green-500 pl-4 py-2">
+                        <h3 class="font-bold">中美或将启动人工智能正式讨论</h3>
+                        <p class="text-sm text-gray-600 mt-1">据外媒报道，中美正考虑在下周两国元首会晤期间启动关于人工智能的正式讨论，美方牵头人是财长贝森特。若会谈成行，将是两国在AI领域合作的重要进展。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：钛媒体</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                        <h3 class="font-bold">欧洲股市全线收跌</h3>
+                        <p class="text-sm text-gray-600 mt-1">受美伊局势紧张影响，欧洲主要股指全线收跌。英国富时100指数收跌1.55%，法国CAC40指数跌1.17%，德国DAX指数跌1.02%，欧洲斯托克50指数收跌0.90%。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：每经AI</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-purple-500 pl-4 py-2">
+                        <h3 class="font-bold">Meta开发AI智能体"Hatch"</h3>
+                        <p class="text-sm text-gray-600 mt-1">Meta正开发人工智能代理"Hatch"及智能购物助手，加码AI应用生态布局。海外巨头包括Meta、微软，国内包括阿里、腾讯等平台，均在2026年三四季度大幅加码人工智能全链条投入。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：科技媒体</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-orange-500 pl-4 py-2">
+                        <h3 class="font-bold">比特币站稳8万美元上方</h3>
+                        <p class="text-sm text-gray-600 mt-1">5月初比特币现货价格盘中直线拉升，一举突破8万美元整数关口，最高触及8.05万美元。目前价格在96635美元附近震荡，机构持续增持，贝莱德、富达现货ETF持仓超300亿美元。</p>
+                        <p class="text-xs text-gray-400 mt-1">来源：币圈资讯</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: 价值投资风向 -->
+        <div id="tab-4" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">价值投资风向</h2>
+                
+                <!-- 估值表 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3">主要指数估值表</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-2 text-left">指数</th>
+                                    <th class="p-2 text-right">PE(TTM)</th>
+                                    <th class="p-2 text-right">PB</th>
+                                    <th class="p-2 text-right">分位点(10年)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-2">上证指数</td>
+                                    <td class="p-2 text-right">13.5x</td>
+                                    <td class="p-2 text-right">1.25x</td>
+                                    <td class="p-2 text-right">35%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">沪深300</td>
+                                    <td class="p-2 text-right">12.2x</td>
+                                    <td class="p-2 text-right">1.18x</td>
+                                    <td class="p-2 text-right">28%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">创业板指</td>
+                                    <td class="p-2 text-right">28.5x</td>
+                                    <td class="p-2 text-right">3.85x</td>
+                                    <td class="p-2 text-right">15%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">恒生指数</td>
+                                    <td class="p-2 text-right">9.8x</td>
+                                    <td class="p-2 text-right">1.05x</td>
+                                    <td class="p-2 text-right">42%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">标普500</td>
+                                    <td class="p-2 text-right">22.5x</td>
+                                    <td class="p-2 text-right">4.2x</td>
+                                    <td class="p-2 text-right">78%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">纳斯达克</td>
+                                    <td class="p-2 text-right">32.5x</td>
+                                    <td class="p-2 text-right">5.8x</td>
+                                    <td class="p-2 text-right">85%</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-2">银行板块</td>
+                                    <td class="p-2 text-right">5.2x</td>
+                                    <td class="p-2 text-right">0.67x</td>
+                                    <td class="p-2 text-right">23%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2">红利指数</td>
+                                    <td class="p-2 text-right">6.8x</td>
+                                    <td class="p-2 text-right">0.72x</td>
+                                    <td class="p-2 text-right">31%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">数据来源：Wind，截至2026年5月8日</p>
+                </div>
+
+                <!-- 社区情绪 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3">社区情绪热度</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">高股息</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <span class="text-sm">85%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">银行</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 78%"></div>
+                            </div>
+                            <span class="text-sm">78%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">公用事业</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 72%"></div>
+                            </div>
+                            <span class="text-sm">72%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">电力</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 68%"></div>
+                            </div>
+                            <span class="text-sm">68%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">AI算力</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 88%"></div>
+                            </div>
+                            <span class="text-sm">88%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">能源油价</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 55%"></div>
+                            </div>
+                            <span class="text-sm">55%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">新能源</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 62%"></div>
+                            </div>
+                            <span class="text-sm">62%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">黄金</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <span class="text-sm">75%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-sm">加密货币</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-4 mx-2">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 58%"></div>
+                            </div>
+                            <span class="text-sm">58%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 板块分析 -->
+                <div class="space-y-4">
+                    <div class="bg-red-50 rounded-lg p-4">
+                        <h4 class="font-bold text-red-800">银行板块</h4>
+                        <p class="text-sm text-gray-700 mt-1">六大行2026年合计分红超4200亿元，股息率远超银行理财。当前板块PB约0.67x，处于2010年以来23%分位，估值修复空间可观。在利率下行周期中，高股息属性持续吸引配置资金。</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <h4 class="font-bold text-blue-800">公用事业</h4>
+                        <p class="text-sm text-gray-700 mt-1">长江电力2026年归母净利润349.49亿元，稳居电力板块"盈利王"。水电资产具备"六库联调"调度优势，现金流稳定。中国核电政策拐点明确，成长确定性较强。</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <h4 class="font-bold text-green-800">能源板块</h4>
+                        <p class="text-sm text-gray-700 mt-1">中国神华2026年分红率近八成，派现418亿元。公司承诺2025-2027年每年现金分红比例不低于65%。高股息+资源垄断属性，在震荡市中具备防御价值。</p>
+                    </div>
+                    <div class="bg-yellow-50 rounded-lg p-4">
+                        <h4 class="font-bold text-yellow-800">AI产业链</h4>
+                        <p class="text-sm text-gray-700 mt-1">国产AI大模型周调用量首次超越美国，环比激增81.7%。算力、模型、智能体三大技术主线密集兑现，政策与市场双向加持。但需警惕短期涨幅过大后的回调风险。</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <h4 class="font-bold text-purple-800">高股息策略</h4>
+                        <p class="text-sm text-gray-700 mt-1">过去三年股息率均超过3%的公司共有153家。在低利率环境下，高股息资产成为资金避风港。建议关注分红持续性强的央企龙头。</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-4">
+                        <h4 class="font-bold text-orange-800">港股科技</h4>
+                        <p class="text-sm text-gray-700 mt-1">恒生科技指数大涨3.06%，百度涨超4%，阿里巴巴涨近4%。港股估值处于历史低位，科技股具备估值修复空间，但需关注美联储政策及地缘政治风险。</p>
+                    </div>
+                    <div class="bg-teal-50 rounded-lg p-4">
+                        <h4 class="font-bold text-teal-800">黄金配置</h4>
+                        <p class="text-sm text-gray-700 mt-1">国际金价在4700-4760美元/盎司区间震荡，非农数据若低于预期可能推动金价突破前高。在不确定性加剧的环境下，黄金作为避险资产仍具配置价值。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 5: 关注标的 -->
+        <div id="tab-5" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">关注标的</h2>
+                
+                <!-- 银行板块 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-university mr-2 text-red-600"></i>银行板块（7只）</h3>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">工商银行 (601398)</span>
+                            <span class="text-sm text-gray-500">国有大行龙头</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：3685.62亿元</span>
+                            <span>总资产：53.48万亿元</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 唯一资产规模超50万亿的银行，稳居A股利润榜首位</li>
+                            <li>• 2026年现金分红超1000亿元，股息率具备吸引力</li>
+                            <li>• 在A股三大指数齐涨、市场流动性充裕背景下，底仓配置价值凸显</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">建设银行 (601939)</span>
+                            <span class="text-sm text-gray-500">基建金融优势</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：3389.06亿元</span>
+                            <span>总资产：45.63万亿元</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 净利润位居A股第二，基建领域信贷优势明显</li>
+                            <li>• 2026年分红率稳定，高股息属性突出</li>
+                            <li>• 受益于稳增长政策，信贷投放有望保持稳健增长</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">农业银行 (601288)</span>
+                            <span class="text-sm text-gray-500">县域金融领先</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：2910.41亿元</span>
+                            <span>总资产：48.78万亿元</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 六大行中业绩增速领先，县域金融布局深厚</li>
+                            <li>• 总资产逼近50万亿，规模优势持续扩大</li>
+                            <li>• 乡村振兴政策红利下，长期增长空间可期</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国银行 (601988)</span>
+                            <span class="text-sm text-gray-500">国际化优势</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：2430.21亿元</span>
+                            <span>总资产：38.36万亿元</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 国际化程度最高，跨境业务优势明显</li>
+                            <li>• 2026年分红稳定，股息率超过5%</li>
+                            <li>• 人民币国际化推进中，长期受益政策红利</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">招商银行 (600036)</span>
+                            <span class="text-sm text-gray-500">零售银行标杆</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>股息率：约7.79%</span>
+                            <span>PB：0.91x</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 零售业务护城河深厚，财富管理领先优势明显</li>
+                            <li>• 股息率高达7.79%，在股份行中表现突出</li>
+                            <li>• 估值处于历史低位，PB仅0.91倍，修复空间较大</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">邮储银行 (601658)</span>
+                            <span class="text-sm text-gray-500">县域网点优势</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>系统重要性银行</span>
+                            <span>第二组</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 网点遍布县域，普惠金融优势独特</li>
+                            <li>• 存款成本优势明显，净息差韧性较强</li>
+                            <li>• 纳入系统重要性银行，监管认可度高</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">交通银行 (601328)</span>
+                            <span class="text-sm text-gray-500">综合金融服务</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>系统重要性银行</span>
+                            <span>第三组</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 大额存单利率在国有大行中较有竞争力</li>
+                            <li>• 综合金融牌照齐全，业务协同效应强</li>
+                            <li>• 分红稳定，高股息属性适合长期配置</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 公用事业 -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-bolt mr-2 text-yellow-600"></i>公用事业（2只）</h3>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">长江电力 (600900)</span>
+                            <span class="text-sm text-gray-500">水电龙头</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：349.49亿元</span>
+                            <span>电力板块盈利王</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 全球顶级水电资产，"六库联调"调度优势显著</li>
+                            <li>• 净利润是第二名华能国际的2.4倍，稳居电力板块盈利王</li>
+                            <li>• 现金流稳定，分红持续性强，是长期资金青睐的"压舱石"</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国核电 (601985)</span>
+                            <span class="text-sm text-gray-500">核电龙头</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>政策拐点明确</span>
+                            <span>成长确定性高</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 核电审批加速，政策拐点明确，装机增长可期</li>
+                            <li>• 作为基荷电源，在能源转型中地位重要</li>
+                            <li>• 长期成长确定性高，适合作为成长增强配置</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 央企龙头 -->
+                <div>
+                    <h3 class="font-bold text-lg mb-3 flex items-center"><i class="fas fa-building mr-2 text-blue-600"></i>央企龙头（4只）</h3>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国神华 (601088)</span>
+                            <span class="text-sm text-gray-500">煤炭一哥</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：528.49亿元</span>
+                            <span>分红率：79.1%</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 2026年分红总额418.11亿元，是A股高股息标杆</li>
+                            <li>• 承诺2025-2027年每年现金分红比例不低于65%</li>
+                            <li>• "煤电运"一体化模式，抗风险能力强</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国海油 (600938)</span>
+                            <span class="text-sm text-gray-500">海上油气龙头</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>2026年净利润：1220.82亿元</span>
+                            <span>日赚3.3亿元</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 2026年日赚3.3亿元，盈利能力强劲</li>
+                            <li>• 海上油气资源禀赋优异，成本优势明显</li>
+                            <li>• 高股息+资源垄断属性，防御价值突出</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国移动 (600941)</span>
+                            <span class="text-sm text-gray-500">通信龙头</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>高股息</span>
+                            <span>数字化转型</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 5G网络覆盖领先，用户规模优势显著</li>
+                            <li>• 数字化转型加速，云计算等新兴业务增长迅速</li>
+                            <li>• 现金流充沛，分红稳定，股息率具备吸引力</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold">中国建筑 (601668)</span>
+                            <span class="text-sm text-gray-500">建筑央企</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>订单充裕</span>
+                            <span>估值低位</span>
+                        </div>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 新签订单持续增长，业绩有保障</li>
+                            <li>• 估值处于历史低位，PB低于1倍</li>
+                            <li>• 基建稳增长政策受益，长期配置价值凸显</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 6: 理财话题 -->
+        <div id="tab-6" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">理财话题</h2>
+                
+                <!-- 存款利率 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-piggy-bank mr-2 text-red-600"></i>存款利率持续下行</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700 mb-3">2026年银行各档存款利率已跌至"1时代"，并创下历史新低：</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• 3年期存款利率：从2.15%跌至1.25%</li>
+                            <li>• 5年期存款利率：仅剩1.3%</li>
+                            <li>• 大额存单利率：国有大行普遍在1.5%-2%区间</li>
+                        </ul>
+                        <p class="text-sm text-gray-700 mt-3">100万存5年，利息收益大幅缩水，连CPI涨幅都跑不赢。低利率时代，传统存款已难以满足财富保值增值需求。</p>
+                    </div>
+                </div>
+
+                <!-- 国债 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-landmark mr-2 text-blue-600"></i>国债收益率维持低位</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700 mb-3">债券市场平稳健康发展，代表性收益率：</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• 10年期国债收益率：持续维持在1.75%关口下方</li>
+                            <li>• 3年期储蓄国债：年利率约2.38%（2024年数据）</li>
+                            <li>• 5年期储蓄国债：年利率约2.5%（2024年数据）</li>
+                        </ul>
+                        <p class="text-sm text-gray-700 mt-3">优质固收类资产供给不断缩水，理财机构"巧妇难为无米之炊"。</p>
+                    </div>
+                </div>
+
+                <!-- 银行理财 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-chart-pie mr-2 text-green-600"></i>银行理财收益承压</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700 mb-3">银行理财平均年化收益率已不足2%，主要受以下因素影响：</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• 底层资产收益率持续下行</li>
+                            <li>• 债券收益率维持低位</li>
+                            <li>• 非标资产供给减少</li>
+                        </ul>
+                        <p class="text-sm text-gray-700 mt-3">传统固收类理财产品收益持续走低，投资者需调整收益预期。</p>
+                    </div>
+                </div>
+
+                <!-- 保险理财 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-shield-alt mr-2 text-purple-600"></i>保险产品锁定利率</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700 mb-3">在低利率环境下，增额终身寿和年金险成为高净值家庭首选：</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• 保险产品预定利率：目前约2.5%左右</li>
+                            <li>• 67%的高净值家庭已配置增额终身寿险或年金险</li>
+                            <li>• 保险资产超越黄金、股票，成为未来一年增配首选（增配意愿47%）</li>
+                            <li>• 具备"复利+强制储蓄"特性，适合养老或教育金长期规划</li>
+                        </ul>
+                        <p class="text-sm text-red-600 mt-3 font-medium">⚠️ 注意：保险预定利率可能从2.5%下调至2.0%，建议有需求的投资者提前锁定利率。</p>
+                    </div>
+                </div>
+
+                <!-- 避坑指南 -->
+                <div class="mb-6">
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-exclamation-triangle mr-2 text-yellow-600"></i>避坑指南：3大坑</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 rounded-lg p-4 border border-red-200">
+                            <h4 class="font-bold text-red-800">坑一：盲目追逐AI概念股</h4>
+                            <p class="text-sm text-gray-700 mt-1">国产AI大模型调用量激增，相关概念股短期涨幅较大。但需警惕估值过高、业绩兑现不及预期的风险，避免在情绪高点追高。</p>
+                        </div>
+                        <div class="bg-red-50 rounded-lg p-4 border border-red-200">
+                            <h4 class="font-bold text-red-800">坑二：忽视汇率风险</h4>
+                            <p class="text-sm text-gray-700 mt-1">人民币兑美元中间价小幅调整，持有外币资产或计划海外投资的投资者需关注汇率波动，做好对冲安排。</p>
+                        </div>
+                        <div class="bg-red-50 rounded-lg p-4 border border-red-200">
+                            <h4 class="font-bold text-red-800">坑三：过度集中存款</h4>
+                            <p class="text-sm text-gray-700 mt-1">存款利率持续下行，100万存5年利息收益大幅缩水。建议适当配置高股息股票、债券基金等，提升整体资产收益率。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 社区热门话题 -->
+                <div>
+                    <h3 class="font-bold mb-3 flex items-center"><i class="fas fa-comments mr-2 text-teal-600"></i>社区热门话题</h3>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <ul class="text-sm text-gray-700 space-y-3">
+                            <li class="flex items-start">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded mr-2 mt-0.5">热</span>
+                                <span><strong>高股息策略持续走红：</strong>过去三年股息率均超过3%的公司达153家，低利率环境下高股息资产成为资金避风港。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded mr-2 mt-0.5">热</span>
+                                <span><strong>银行股分红盛宴：</strong>六大行2026年合计分红超4200亿元，股息率远超银行理财，引发投资者热议。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded mr-2 mt-0.5">新</span>
+                                <span><strong>国产AI超越美国：</strong>大模型周调用量首次超越美国，AI产业链投资热度持续升温。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded mr-2 mt-0.5">议</span>
+                                <span><strong>保险锁定利率倒计时：</strong>预定利率2.5%可能下调至2.0%，是否应提前配置引发讨论。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 7: 今日总结 -->
+        <div id="tab-7" class="tab-content">
+            <div class="card p-6 mb-4">
+                <h2 class="text-xl font-bold mb-4 section-title">今日总结</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-red-50 rounded-lg p-4">
+                        <h3 class="font-bold text-red-800 mb-2">市场概况</h3>
+                        <p class="text-sm text-gray-700">A股三大指数集体收涨，创业板指涨1.65%表现亮眼；美股三大指数小幅回调，道指跌0.63%；港股恒指涨1.57%，科技股领涨。全球市场多空分歧加剧，地缘政治风险升温。</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <h3 class="font-bold text-blue-800 mb-2">政策动态</h3>
+                        <p class="text-sm text-gray-700">央行5月7日开展270亿元逆回购操作，利率维持1.4%不变，市场流动性保持合理充裕。美联储5月议息会议维持利率4.25-4.50%不变，符合市场预期。</p>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <h3 class="font-bold text-green-800 mb-2">行业热点</h3>
+                        <p class="text-sm text-gray-700">国产AI大模型周调用量首次超越美国，环比激增81.7%，AI产业链持续活跃。银行板块六大行2026年合计分红超4200亿元，高股息属性受追捧。</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 rounded-lg p-4">
+                        <h3 class="font-bold text-yellow-800 mb-2">大宗商品</h3>
+                        <p class="text-sm text-gray-700">国际金价在4700-4760美元/盎司区间震荡，白银表现相对强势。布伦特原油约61美元/桶，美伊局势紧张加剧油价波动。</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 rounded-lg p-4">
+                        <h3 class="font-bold text-purple-800 mb-2">汇率利率</h3>
+                        <p class="text-sm text-gray-700">人民币兑美元中间价报7.2073，在岸汇率7.2342。10年期国债收益率维持1.75%下方，存款利率持续下行至"1时代"。</p>
+                    </div>
+                    
+                    <div class="bg-orange-50 rounded-lg p-4">
+                        <h3 class="font-bold text-orange-800 mb-2">投资建议</h3>
+                        <p class="text-sm text-gray-700">关注高股息银行、水电核电等防御性资产；AI产业链短期涨幅较大，注意回调风险；黄金作为避险资产仍具配置价值；存款利率下行，建议适当增配权益资产。</p>
+                    </div>
+                    
+                    <div class="bg-teal-50 rounded-lg p-4 md:col-span-2">
+                        <h3 class="font-bold text-teal-800 mb-2">明日关注</h3>
+                        <p class="text-sm text-gray-700">美国4月非农就业报告将于5月9日发布，数据表现将影响美联储政策预期；关注中美AI领域会谈进展；留意美伊局势发展对油价的影响。</p>
+                    </div>
+                </div>
+
+                <!-- 风险提示 -->
+                <div class="mt-6 bg-gray-100 rounded-lg p-4">
+                    <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-info-circle mr-2 text-gray-600"></i>风险提示</h3>
+                    <p class="text-xs text-gray-600">本报告仅供参考，不构成投资建议。股市有风险，投资需谨慎。投资者应根据自身风险承受能力审慎决策，独立承担投资风险。报告中的数据来源于公开信息，可能存在滞后或误差，请以官方发布为准。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-8">
+        <div class="max-w-6xl mx-auto text-center text-sm">
+            <p>老盛早知道 | 价值投资日报</p>
+            <p class="text-gray-400 mt-1">2026年5月8日</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabIndex) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+                if (index === tabIndex) {
+                    btn.classList.remove('tab-inactive');
+                    btn.classList.add('tab-active');
+                } else {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('tab-inactive');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
