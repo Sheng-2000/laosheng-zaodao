@@ -239,6 +239,356 @@
     .gold-price-header { flex-direction: column; align-items: flex-start; gap: 8px; }
     .gold-price-header > div:last-child { text-align: left; }
   }
+
+  /* ===== Tab 0 新样式 ===== */
+  /* 顶部提示区 - 2×2网格卡片 */
+  .summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .summary-card-green,
+  .summary-card-blue,
+  .summary-card-yellow,
+  .summary-card-red {
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .summary-card-green:hover,
+  .summary-card-blue:hover,
+  .summary-card-yellow:hover,
+  .summary-card-red:hover {
+    transform: translateY(-2px);
+  }
+  .summary-card-green {
+    background: linear-gradient(135deg, rgba(29, 198, 100, 0.12), rgba(29, 198, 100, 0.03));
+    border: 1px solid rgba(29, 198, 100, 0.3);
+    box-shadow: 0 4px 20px rgba(29, 198, 100, 0.1);
+  }
+  .summary-card-blue {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(0, 212, 255, 0.03));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+  }
+  .summary-card-yellow {
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.12), rgba(240, 180, 41, 0.03));
+    border: 1px solid rgba(240, 180, 41, 0.3);
+    box-shadow: 0 4px 20px rgba(240, 180, 41, 0.1);
+  }
+  .summary-card-red {
+    background: linear-gradient(135deg, rgba(248, 81, 73, 0.12), rgba(248, 81, 73, 0.03));
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    box-shadow: 0 4px 20px rgba(248, 81, 73, 0.1);
+  }
+  .summary-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+  }
+  .summary-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .summary-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .summary-card-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .summary-card-change {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .summary-card-change.up {
+    color: #f85149;
+    background: rgba(248, 81, 73, 0.15);
+  }
+  .summary-card-change.down {
+    color: #3fb950;
+    background: rgba(63, 185, 80, 0.15);
+  }
+  .summary-card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(240, 180, 41, 0.2);
+    color: #f0b429;
+  }
+  .summary-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* 要点卡片V2 */
+  .highlight-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .highlight-item-v2 {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: all 0.25s ease;
+  }
+  .highlight-item-v2:hover {
+    border-color: var(--accent-border);
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .highlight-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+  }
+  .highlight-text-v2 {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .highlight-text-v2 strong {
+    color: var(--text-primary);
+  }
+
+  /* 时间线样式 */
+  .timeline-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-icon {
+    font-size: 20px;
+  }
+  .timeline-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--purple));
+    opacity: 0.3;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    padding: 14px 0;
+    position: relative;
+  }
+  .timeline-item:first-child {
+    padding-top: 0;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  .timeline-date {
+    width: 76px;
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-day {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .timeline-month {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .timeline-label {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 6px;
+    display: inline-block;
+  }
+  .timeline-item.today .timeline-label {
+    background: rgba(248, 81, 73, 0.2);
+    color: #f85149;
+  }
+  .timeline-item.future .timeline-label {
+    background: rgba(240, 180, 41, 0.2);
+    color: #f0b429;
+  }
+  .timeline-item.data .timeline-label {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--accent);
+  }
+  .timeline-item.deadline .timeline-label {
+    background: rgba(188, 140, 255, 0.2);
+    color: var(--purple);
+  }
+  .timeline-content {
+    flex: 1;
+    padding-top: 2px;
+  }
+  .timeline-event {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .timeline-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Tab 0 手机端适配 */
+  @media (max-width: 768px) {
+    .summary-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .summary-card-green,
+    .summary-card-blue,
+    .summary-card-yellow,
+    .summary-card-red {
+      padding: 16px;
+      gap: 12px;
+    }
+    .summary-card-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 18px;
+    }
+    .summary-card-title {
+      font-size: 12px;
+    }
+    .summary-card-value {
+      font-size: 18px;
+    }
+    .summary-card-desc {
+      font-size: 11px;
+    }
+    .highlight-grid-v2 {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .highlight-item-v2 {
+      padding: 14px 16px;
+    }
+    .highlight-badge {
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+    }
+    .highlight-text-v2 {
+      font-size: 13px;
+    }
+    .timeline-section {
+      padding: 18px 16px;
+    }
+    .timeline-header {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+    }
+    .timeline-title {
+      font-size: 15px;
+    }
+    .timeline-container::before {
+      left: 32px;
+    }
+    .timeline-date {
+      width: 64px;
+    }
+    .timeline-day {
+      font-size: 18px;
+    }
+    .timeline-month {
+      font-size: 10px;
+    }
+    .timeline-label {
+      font-size: 9px;
+      padding: 1px 5px;
+    }
+    .timeline-event {
+      font-size: 14px;
+    }
+    .timeline-detail {
+      font-size: 12px;
+    }
+    .timeline-item {
+      gap: 14px;
+      padding: 12px 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -310,77 +660,150 @@
 <div class="tab-panel active" id="panel-0">
   <div class="inner">
   <div class="section-title">⚡ 本期要点速览</div>
-  <div class="good-bar">
-    <strong>🚀 A股史诗级大涨！上证4225.02(+1.08%)站上4200创近11年新高，沪指8连阳！科创50 1716.69(+4.65%)创历史新高！两市成交3.54万亿连续4日破3万亿！北向资金净流入186.5亿连续第9日净流入！</strong>
-  </div>
-  <div class="good-bar">
-    <strong>🚀 美股标普7412.84(+0.19%)首次站稳7400续创历史新高！纳指26274.13(+0.10%)续创新高！光通信概念股集体爆发！高通涨超8%！</strong>
-  </div>
-  <div class="hot-bar">
-    <strong>🔥 特朗普将于5/13-15日访华！应习近平邀请时隔8年多再次国事访问！央行Q1报告继续适度宽松！WTI原油$98.81(+3%+)布伦特$105.34(+4%)！</strong>
-  </div>
-  <div class="alert-bar">
-    <strong>⚠️ 黄金白银遭遇"连环跳水"！国际黄金4690.2美元(-0.86%)！国内黄金9995报1037.2元/克(-0.21%)！美伊冲突升级霍尔木兹海峡封锁！追涨高位半导体需警惕回调风险！</strong>
-  </div>
-  <div class="highlight-grid">
-    <div class="highlight-item">
-      <div class="highlight-num">01</div>
-      <div class="highlight-text"><strong>A股史诗级大涨站上4200：</strong>上证指数4225.02(+1.08%)创近11年新高站稳4200点，沪指8连阳。科创50 1716.69(+4.65%)创历史新高，创业板指3928.97(+3.50%)创2015年6月以来新高。两市成交3.54万亿连续第4日破3万亿创4个月新高，北向资金净流入186.5亿元连续第9日净流入。半导体产业链涨停潮，超3100只个股飘红，180只个股涨幅超9%。</div>
+  
+  <!-- 顶部提示区 - 2×2网格卡片 -->
+  <div class="summary-cards-grid">
+    <!-- A股大涨卡片 - 绿色 -->
+    <div class="summary-card-green">
+      <div class="summary-card-icon">📈</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">A股史诗级大涨</div>
+        <div class="summary-card-value">4225.02 <span class="summary-card-change up">+1.08%</span></div>
+        <div class="summary-card-desc">上证站上4200创近11年新高，沪指8连阳，科创50创历史新高</div>
+      </div>
     </div>
-    <div class="highlight-item">
-      <div class="highlight-num">02</div>
-      <div class="highlight-text"><strong>特朗普将于5/13-15日访华：</strong>应习近平邀请，特朗普将于5月13日至15日对中国进行国事访问，时隔8年多再次访华。这一重大外交事件对中美经贸关系、科技合作、资本市场均构成积极催化。叠加央行Q1货币政策报告明确"继续实施适度宽松货币政策"，政策与外交双重利好共振。</div>
+    <!-- 美股新高卡片 - 蓝色 -->
+    <div class="summary-card-blue">
+      <div class="summary-card-icon">🚀</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">美股续创新高</div>
+        <div class="summary-card-value">7412.84 <span class="summary-card-change up">+0.19%</span></div>
+        <div class="summary-card-desc">标普首次站稳7400，光通信概念股爆发，高通涨超8%</div>
+      </div>
     </div>
-    <div class="highlight-item">
-      <div class="highlight-num">03</div>
-      <div class="highlight-text"><strong>美股标普首次站稳7400，光通信概念股集体爆发：</strong>标普500 7412.84(+0.19%)首次站稳7400点续创历史新高，纳指26274.13(+0.10%)续创新高。光通信概念股集体爆发：POET Technologies涨超26%，Applied Optoelectronics涨超24%。高通涨超8%，西部数据涨超7%，美光涨超6%。本周关键：周二4月CPI（预期同比3.7%），周四零售销售。</div>
+    <!-- 特朗普访华卡片 - 黄色/橙色 -->
+    <div class="summary-card-yellow">
+      <div class="summary-card-icon">🤝</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">特朗普将访华</div>
+        <div class="summary-card-value">5/13-15 <span class="summary-card-tag">国事访问</span></div>
+        <div class="summary-card-desc">时隔8年多再次访华，中美经贸与科技合作预期升温</div>
+      </div>
     </div>
-    <div class="highlight-item">
-      <div class="highlight-num">04</div>
-      <div class="highlight-text"><strong>美伊冲突升级，霍尔木兹海峡封锁推升油价：</strong>美伊谈判破裂，特朗普拒绝伊朗停战回应称"完全不可接受"，美军超20艘军舰参与霍尔木兹海峡封锁。WTI原油$98.81(+3%+)，盘中布伦特$105.34(+4%)。油价暴涨对能源股形成直接利好，但黄金白银同日遭遇"连环跳水"，国际黄金4690.2美元(-0.86%)。</div>
-    </div>
-    <div class="highlight-item">
-      <div class="highlight-num">05</div>
-      <div class="highlight-text"><strong>央行Q1货币政策报告：继续实施适度宽松货币政策：</strong>央行发布2026年Q1货币政策执行报告，明确"继续实施适度宽松货币政策"，推进人民币国际化。USD/CNY中间价6.8467（上调35个基点），在岸人民币围绕6.80一线波动。央行5/11开展5亿元7天期逆回购，利率1.40%。</div>
-    </div>
-    <div class="highlight-item">
-      <div class="highlight-num">06</div>
-      <div class="highlight-text"><strong>韩国KOSPI首破7800点，年内累涨超82%牛冠全球：</strong>韩国KOSPI 7822.20(+4.32%)首破7800点大关，年内累计涨幅超82%领跑全球。港股芯片股走强：澜起科技涨超11%，上海复旦涨超5%，中芯国际涨超4%。亚太市场整体风险偏好高涨。</div>
-    </div>
-    <div class="highlight-item">
-      <div class="highlight-num">07</div>
-      <div class="highlight-text"><strong>中国AI应用使用量是美国的2.11倍，连续两周全球第一：</strong>腾讯Hy3蝉联榜首，Kimi K2.6紧随其后，DeepSeek三款模型集体上榜。Anthropic季度营收飙升80倍，太空算力成新战场。算力争夺白热化、大模型集体商业化、AI替代人工岗位成为热议话题。</div>
-    </div>
-    <div class="highlight-item">
-      <div class="highlight-num">08</div>
-      <div class="highlight-text"><strong>理财参考：</strong>银行1年定存利率1.65%，5年定存2.50%。银行板块PB 0.66x，股息率4.12%远超定存。黄金跳水至4690.2美元(-0.86%)，追高风险加大。工商银行今日7.47元(+0.13%)，5/12股权登记日。分红险演示利率上限3.5%，6/30前老产品退市窗口。</div>
+    <!-- 风险提示卡片 - 红色 -->
+    <div class="summary-card-red">
+      <div class="summary-card-icon">⚠️</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">风险提示</div>
+        <div class="summary-card-value">黄金跳水 <span class="summary-card-change down">-0.86%</span></div>
+        <div class="summary-card-desc">美伊冲突升级，霍尔木兹海峡封锁，追涨半导体需警惕</div>
+      </div>
     </div>
   </div>
-  <div class="card" style="border-left:3px solid var(--yellow);">
-    <div class="card-title">📅 近期重要日历</div>
-    <div class="card-body">
-      <table style="width:100%;border-collapse:collapse;">
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--red);font-weight:700;">5/12（周二·今天）</td>
-          <td style="padding:7px 12px;">工商银行股权登记日 · A股开盘（沪指8连阳后能否9连阳？）· 关注特朗普访华预热</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--orange);font-weight:600;">5/13-5/15</td>
-          <td style="padding:7px 12px;">特朗普对中国进行国事访问 · CIBF2026电池展（深圳，超3000家展商）</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--accent);font-weight:600;">5/12（美东周二）</td>
-          <td style="padding:7px 12px;">美国4月CPI数据公布（预期同比3.7%）· 美联储利率路径关键参考</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:7px 12px;color:var(--purple);font-weight:600;">5/14（美东周四）</td>
-          <td style="padding:7px 12px;">美国4月零售销售数据 · 消费韧性验证</td>
-        </tr>
-        <tr>
-          <td style="padding:7px 12px;color:var(--yellow);font-weight:600;">6/30前</td>
-          <td style="padding:7px 12px;">分红险老产品（演示利率上限3.5%）停售或变更窗口期 · 预定利率从1.75%降至1.25%</td>
-        </tr>
-      </table>
+
+  <!-- 8个要点卡片 -->
+  <div class="highlight-grid-v2">
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">01</div>
+      <div class="highlight-text-v2"><strong>A股史诗级大涨站上4200：</strong>上证指数4225.02(+1.08%)创近11年新高站稳4200点，沪指8连阳。科创50 1716.69(+4.65%)创历史新高，创业板指3928.97(+3.50%)创2015年6月以来新高。两市成交3.54万亿连续第4日破3万亿创4个月新高，北向资金净流入186.5亿元连续第9日净流入。半导体产业链涨停潮，超3100只个股飘红，180只个股涨幅超9%。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">02</div>
+      <div class="highlight-text-v2"><strong>特朗普将于5/13-15日访华：</strong>应习近平邀请，特朗普将于5月13日至15日对中国进行国事访问，时隔8年多再次访华。这一重大外交事件对中美经贸关系、科技合作、资本市场均构成积极催化。叠加央行Q1货币政策报告明确"继续实施适度宽松货币政策"，政策与外交双重利好共振。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">03</div>
+      <div class="highlight-text-v2"><strong>美股标普首次站稳7400，光通信概念股集体爆发：</strong>标普500 7412.84(+0.19%)首次站稳7400点续创历史新高，纳指26274.13(+0.10%)续创新高。光通信概念股集体爆发：POET Technologies涨超26%，Applied Optoelectronics涨超24%。高通涨超8%，西部数据涨超7%，美光涨超6%。本周关键：周二4月CPI（预期同比3.7%），周四零售销售。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">04</div>
+      <div class="highlight-text-v2"><strong>美伊冲突升级，霍尔木兹海峡封锁推升油价：</strong>美伊谈判破裂，特朗普拒绝伊朗停战回应称"完全不可接受"，美军超20艘军舰参与霍尔木兹海峡封锁。WTI原油$98.81(+3%+)，盘中布伦特$105.34(+4%)。油价暴涨对能源股形成直接利好，但黄金白银同日遭遇"连环跳水"，国际黄金4690.2美元(-0.86%)。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">05</div>
+      <div class="highlight-text-v2"><strong>央行Q1货币政策报告：继续实施适度宽松货币政策：</strong>央行发布2026年Q1货币政策执行报告，明确"继续实施适度宽松货币政策"，推进人民币国际化。USD/CNY中间价6.8467（上调35个基点），在岸人民币围绕6.80一线波动。央行5/11开展5亿元7天期逆回购，利率1.40%。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">06</div>
+      <div class="highlight-text-v2"><strong>韩国KOSPI首破7800点，年内累涨超82%牛冠全球：</strong>韩国KOSPI 7822.20(+4.32%)首破7800点大关，年内累计涨幅超82%领跑全球。港股芯片股走强：澜起科技涨超11%，上海复旦涨超5%，中芯国际涨超4%。亚太市场整体风险偏好高涨。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">07</div>
+      <div class="highlight-text-v2"><strong>中国AI应用使用量是美国的2.11倍，连续两周全球第一：</strong>腾讯Hy3蝉联榜首，Kimi K2.6紧随其后，DeepSeek三款模型集体上榜。Anthropic季度营收飙升80倍，太空算力成新战场。算力争夺白热化、大模型集体商业化、AI替代人工岗位成为热议话题。</div>
+    </div>
+    <div class="highlight-item-v2">
+      <div class="highlight-badge">08</div>
+      <div class="highlight-text-v2"><strong>理财参考：</strong>银行1年定存利率1.65%，5年定存2.50%。银行板块PB 0.66x，股息率4.12%远超定存。黄金跳水至4690.2美元(-0.86%)，追高风险加大。工商银行今日7.47元(+0.13%)，5/12股权登记日。分红险演示利率上限3.5%，6/30前老产品退市窗口。</div>
+    </div>
+  </div>
+
+  <!-- 日历区域 - 垂直时间线 -->
+  <div class="timeline-section">
+    <div class="timeline-header">
+      <span class="timeline-icon">📅</span>
+      <span class="timeline-title">近期重要日历</span>
+    </div>
+    <div class="timeline-container">
+      <!-- 今天 -->
+      <div class="timeline-item today">
+        <div class="timeline-date">
+          <div class="timeline-day">12</div>
+          <div class="timeline-month">5月</div>
+          <div class="timeline-label">今天</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">工商银行股权登记日</div>
+          <div class="timeline-detail">A股开盘关注沪指能否9连阳 · 特朗普访华预热</div>
+        </div>
+      </div>
+      <!-- 未来事件 -->
+      <div class="timeline-item future">
+        <div class="timeline-date">
+          <div class="timeline-day">13-15</div>
+          <div class="timeline-month">5月</div>
+          <div class="timeline-label">重大事件</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">特朗普对中国进行国事访问</div>
+          <div class="timeline-detail">CIBF2026电池展（深圳，超3000家展商）</div>
+        </div>
+      </div>
+      <!-- 美国数据 -->
+      <div class="timeline-item data">
+        <div class="timeline-date">
+          <div class="timeline-day">12</div>
+          <div class="timeline-month">美东</div>
+          <div class="timeline-label">数据公布</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">美国4月CPI数据公布</div>
+          <div class="timeline-detail">预期同比3.7% · 美联储利率路径关键参考</div>
+        </div>
+      </div>
+      <!-- 零售数据 -->
+      <div class="timeline-item data">
+        <div class="timeline-date">
+          <div class="timeline-day">14</div>
+          <div class="timeline-month">美东</div>
+          <div class="timeline-label">数据公布</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">美国4月零售销售数据</div>
+          <div class="timeline-detail">消费韧性验证 · 经济健康度指标</div>
+        </div>
+      </div>
+      <!-- 截止期限 -->
+      <div class="timeline-item deadline">
+        <div class="timeline-date">
+          <div class="timeline-day">30</div>
+          <div class="timeline-month">6月前</div>
+          <div class="timeline-label">截止期限</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">分红险老产品停售窗口期</div>
+          <div class="timeline-detail">演示利率上限3.5%产品退市 · 预定利率降至1.25%</div>
+        </div>
+      </div>
     </div>
   </div>
   </div>
