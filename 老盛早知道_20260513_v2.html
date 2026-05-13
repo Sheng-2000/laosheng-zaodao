@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老盛早知道 · 2026年5月13日</title>
+<style>
+/* 完整CSS复用template.html */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-hover: #21273a;
+  --accent: #00d4ff;
+  --accent-dim: rgba(0,212,255,0.15);
+  --accent-border: rgba(0,212,255,0.35);
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --purple: #bc8cff;
+  --orange: #ffa657;
+  --text-primary: #e6edf3;
+  --text-secondary: #b0bac4;
+  --text-muted: #8b95a5;
+  --border: rgba(48,54,61,0.8);
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
+}
+.header {
+  background: linear-gradient(180deg, #080e18 0%, #0a1422 100%);
+  border-bottom: 1px solid rgba(0,212,255,0.18);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.7), 0 1px 0 rgba(0,212,255,0.12);
+}
+.header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 25%, var(--purple) 75%, transparent 100%);
+  box-shadow: 0 0 18px var(--accent), 0 0 36px rgba(0,212,255,0.25);
+}
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.header-inner { max-width: 1200px; margin: 0 auto; padding: 22px 40px 0; }
+.header-top { display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 22px; padding-bottom: 16px; }
+.brand-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(145deg, #0a1e35 0%, #0d2040 60%, #091828 100%);
+  border: 1px solid rgba(0,212,255,0.38); border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 28px rgba(0,212,255,0.32), 0 0 8px rgba(0,212,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+  flex-shrink: 0; position: relative; overflow: hidden; align-self: center;
+}
+.brand-icon::before { content: ''; position: absolute; top: -4px; left: -4px; width: 32px; height: 32px; background: radial-gradient(circle, rgba(0,212,255,0.22) 0%, transparent 70%); pointer-events: none; }
+.brand-icon::after { content: ''; position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, transparent 55%); pointer-events: none; }
+.brand-icon svg { width:36px; height:36px; position:relative; z-index:1; }
+.brand-title { display:flex; flex-direction:column; justify-content:center; gap:6px; line-height:1; }
+.brand-en-row { display:flex; align-items:center; gap:8px; }
+.brand-en { font-size: 9.5px; font-weight: 600; letter-spacing: 2.5px; color: var(--accent); opacity: 0.4; text-transform: uppercase; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+.brand-issue { font-size: 9px; font-weight: 500; letter-spacing: 1px; color: var(--text-muted); font-family: 'SF Mono','Fira Code','Consolas',monospace; padding: 1px 6px; border: 1px solid rgba(0,212,255,0.12); border-radius: 3px; background: rgba(0,212,255,0.03); }
+.brand-main-row { display: flex; align-items: center; }
+.brand-signal { position: relative; display: inline-flex; align-items: center; cursor: default; padding: 4px 0; }
+.brand-signal::before { content: ''; position: absolute; inset: -8px -16px; border-radius: 10px; background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, transparent 70%); animation: signal-pulse 5s ease-in-out infinite; pointer-events: none; }
+.brand-name { font-size: 28px; font-weight: 900; letter-spacing: 5px; color: #e6edf3; position: relative; }
+.brand-sep { position: relative; width: 2px; height: 22px; background: rgba(0,212,255,0.15); margin: 0 10px; border-radius: 1px; align-self: center; overflow: visible; }
+.brand-sep::after { content: ''; position: absolute; left: -1.5px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(0,212,255,0.8), 0 0 20px rgba(0,212,255,0.3); animation: sep-slide 3s ease-in-out infinite; }
+.brand-zaodao { font-size: 28px; font-weight: 300; letter-spacing: 5px; color: var(--accent); text-shadow: 0 0 20px rgba(0,212,255,0.35); position: relative; }
+@keyframes signal-pulse { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
+@keyframes sep-slide { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 50% { top: calc(100% - 5px); opacity: 1; } 85% { opacity: 1; } 100% { top: 0; opacity: 0; } }
+.brand-tag { font-size: 11px; font-weight: 400; letter-spacing: 2px; color: var(--text-primary); margin-left: 12px; opacity: 0.35; white-space: nowrap; }
+.brand-subtitle { font-size: 11.5px; color: var(--text-muted); letter-spacing: 0.5px; display:flex; align-items:center; margin-top:3px; }
+.brand-subtitle .dot { color: rgba(0,212,255,0.28); margin: 0 7px; }
+.header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; padding-left: 20px; border-left: 1px solid rgba(0,212,255,0.1); }
+.hm-date { font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--accent); line-height: 1; text-shadow: 0 0 14px rgba(0,212,255,0.4); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+.hm-sub { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+.hm-sub .sep { color: rgba(0,212,255,0.25); }
+.hm-tickers { display:flex; gap:8px; align-items:stretch; }
+.hm-ticker { display: flex; flex-direction: column; align-items: center; background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.1); border-radius: 6px; padding: 5px 12px; min-width: 64px; gap: 1px; }
+.hm-ticker .t-label { font-size: 9.5px; color: var(--text-muted); letter-spacing: 0.5px; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+.hm-ticker .t-val { font-size: 15px; font-weight: 700; line-height: 1.2; }
+.hm-ticker .t-chg { font-size: 10px; font-weight: 600; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+.up   { color: #f85149; }
+.down { color: #3fb950; }
+.gold { color: #f0b429; }
+.neutral { color: var(--text-secondary); }
+.live-dot { display: inline-block; width:7px; height:7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; vertical-align: middle; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+.tab-nav-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.tab-nav { display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
+.tab-nav::-webkit-scrollbar { display:none; }
+.tab-btn { flex-shrink: 0; padding: 11px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13.5px; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: all 0.22s ease; white-space: nowrap; position: relative; font-family: inherit; letter-spacing: 0.3px; }
+.tab-btn:hover { color:var(--text-primary); background:rgba(0,212,255,0.05); }
+.tab-btn.active { color: var(--accent); background: rgba(0,212,255,0.08); font-weight: 700; text-shadow: 0 0 12px rgba(0,212,255,0.5); }
+.tab-btn.active::after { content: ''; position: absolute; bottom:0; left:8px; right:8px; height:2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); border-radius: 2px 2px 0 0; box-shadow: 0 0 10px var(--accent); }
+.tab-icon { margin-right:5px; font-size:13px; }
+.tab-panel { display: none; animation: fadeIn 0.3s ease; }
+.tab-panel.active { display:block; }
+.tab-panel .inner { padding-top: 32px; padding-bottom: 12px; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.section-title { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.section-title::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, var(--accent-border), transparent); }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; transition: border-color 0.2s, transform 0.2s; }
+.card:hover { border-color: var(--accent-border); transform: translateY(-1px); }
+.card-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; display:flex; align-items:flex-start; gap:10px; }
+.card-body { font-size:14px; color:#b0bac4; line-height:1.75; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; letter-spacing:0.5px; flex-shrink:0; margin-top:1px; }
+.tag-finance { background:rgba(0,212,255,0.15); color:var(--accent); }
+.tag-tech    { background:rgba(188,140,255,0.15); color:var(--purple); }
+.tag-geo     { background:rgba(255,166,87,0.15); color:var(--orange); }
+.tag-policy  { background:rgba(63,185,80,0.15); color:var(--green); }
+.tag-ai      { background:rgba(188,140,255,0.2); color:var(--purple); }
+.tag-chip    { background:rgba(0,212,255,0.15); color:var(--accent); }
+.tag-robot   { background:rgba(255,166,87,0.15); color:var(--orange); }
+.tag-app     { background:rgba(63,185,80,0.15); color:var(--green); }
+.tag-energy  { background:rgba(240,180,41,0.15); color:#f0b429; }
+.highlight-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 14px; margin-bottom: 28px; }
+.highlight-item { background: var(--bg-card); border:1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 14px 18px; display:flex; gap:12px; align-items:flex-start; transition: border-color 0.2s; }
+.highlight-item:hover { border-left-color: var(--purple); }
+.highlight-num { font-size:20px; font-weight:800; color:var(--accent); line-height:1; flex-shrink:0; min-width:28px; }
+.highlight-text { font-size:14px; color:var(--text-secondary); line-height:1.65; }
+.highlight-text strong { color:var(--text-primary); }
+.market-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 14px; margin-bottom: 20px; }
+.market-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:16px 20px; }
+.market-block h4 { font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; border-bottom: 1px solid var(--border); padding-bottom:8px; }
+.market-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.4); font-size:13.5px; }
+.market-row:last-child { border-bottom:none; }
+.market-name { color:var(--text-secondary); }
+.market-val { font-weight:600; }
+.sentiment-bar-wrap { margin:6px 0 14px; }
+.sentiment-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
+.sentiment-bar { height:8px; background:var(--bg-primary); border-radius:4px; overflow:hidden; border:1px solid var(--border); }
+.sentiment-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--purple)); }
+.stock-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:20px 24px; margin-bottom:14px; transition: border-color 0.2s; }
+.stock-card:hover { border-color: var(--accent-border); }
+.stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
+.stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
+.stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
+.stock-price-area { margin-left:auto; text-align:right; }
+.stock-price { font-size:18px; font-weight:700; }
+.stock-change { font-size:12px; margin-top:2px; }
+.stock-bullets { list-style:none; padding:0; }
+.stock-bullets li { font-size:13.5px; color:var(--text-secondary); padding:4px 0 4px 16px; position:relative; line-height:1.65; }
+.stock-bullets li::before { content:'▸'; color:var(--accent); position:absolute; left:0; font-size:11px; top:6px; }
+.summary-card { background: linear-gradient(135deg, #1c2333, #161b22); border:1px solid var(--accent-border); border-radius:var(--radius); padding:28px 32px; margin-bottom:20px; }
+.summary-card p { color:var(--text-secondary); font-size:14.5px; line-height:1.9; margin-bottom:14px; }
+.summary-card p:last-child { margin-bottom: 0; }
+.summary-card strong { color:var(--accent); }
+.alert-bar { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.3); border-left:3px solid var(--red); border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+.alert-bar strong { color:var(--red); }
+.hot-bar { background: rgba(240,180,41,0.08); border: 1px solid rgba(240,180,41,0.3); border-left:3px solid #f0b429; border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+.hot-bar strong { color:#f0b429; }
+.good-bar { background: rgba(29,198,100,0.08); border: 1px solid rgba(29,198,100,0.3); border-left:3px solid #1dc664; border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+.good-bar strong { color:#1dc664; }
+.footer { text-align:center; padding:28px 40px; color:var(--text-muted); font-size:12px; border-top:1px solid var(--border); margin-top:8px; }
+.footer span { color:var(--accent); }
+.sub-section { margin-bottom: 28px; }
+.sub-title { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; padding-left: 10px; border-left: 2px solid var(--accent); }
+.stock-info-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-auto { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+@media (max-width:768px) {
+  .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
+  .header-inner { padding-top: 14px; }
+  .tab-panel .inner { padding-top: 20px; padding-bottom: 8px; }
+  .highlight-grid, .market-grid { grid-template-columns: 1fr; }
+  .header-top { grid-template-columns: 48px 1fr; gap: 10px; padding-bottom: 14px; }
+  .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
+  .brand-icon svg { width: 22px; height: 22px; }
+  .brand-name { font-size: 20px; letter-spacing: 2px; }
+  .brand-zaodao { font-size: 20px; letter-spacing: 2px; }
+  .brand-sep { margin: 0 6px; height: 16px; }
+  .brand-tag { font-size: 10px; margin-left: 6px; }
+  .brand-subtitle { font-size: 11px; flex-wrap: wrap; }
+  .brand-en { font-size: 9px; letter-spacing: 1.5px; }
+  .brand-en-row { flex-wrap: wrap; gap: 4px; }
+  .brand-issue { font-size: 9px; }
+  .brand-main-row { flex-wrap: wrap; }
+  .hm-tickers { display: none; }
+  .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
+  .hm-date { font-size: 14px; }
+  .hm-sub { font-size: 10px; }
+  .live-dot { width: 5px; height: 5px; }
+  .tab-nav-wrap { position: relative; }
+  .tab-btn { padding: 12px 14px; font-size: 12px; }
+  .tab-icon { font-size: 12px; }
+  .card { padding: 14px 16px; }
+  .card:hover { transform: none; }
+  .card-title { font-size: 14px; gap: 8px; }
+  .card-body { font-size: 13px; line-height: 1.7; }
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .section-title { font-size: 16px; }
+  .stock-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .stock-price-area { margin-left: 0; text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-title">
+        <div class="brand-en-row">
+          <span class="brand-en">Laosheng's Daily Brief</span>
+          <span class="brand-issue">ISSUE 2026-05-13</span>
+        </div>
+        <div class="brand-main-row">
+          <div class="brand-signal">
+            <span class="brand-name">老盛</span>
+            <div class="brand-sep"></div>
+            <span class="brand-zaodao">早知道</span>
+          </div>
+          <span class="brand-tag">· 每日资讯不迟到</span>
+        </div>
+        <div class="brand-subtitle">
+          <span class="live-dot"></span>AI驱动情报
+          <span class="dot">·</span><span class="live-dot" style="background:#f5c842;box-shadow:0 0 6px #f5c842;"></span>数据实时
+          <span class="dot">·</span><span class="live-dot" style="background:#ff4444;box-shadow:0 0 6px #ff4444;"></span>价值投资
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="hm-date">2026.05.13</div>
+        <div class="hm-sub">
+          <span>星期三</span>
+          <span class="sep">|</span>
+          <span>第127期</span>
+        </div>
+        <div class="hm-tickers">
+          <div class="hm-ticker">
+            <span class="t-label">上证</span>
+            <span class="t-val down">4214.49</span>
+            <span class="t-chg down">-0.25%</span>
+          </div>
+          <div class="hm-ticker">
+            <span class="t-label">标普</span>
+            <span class="t-val up">7412.84</span>
+            <span class="t-chg up">+0.19%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-nav-wrap">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-icon">📋</span>要点速览</button>
+      <button class="tab-btn" onclick="switchTab(1)"><span class="tab-icon">🌍</span>要闻</button>
+      <button class="tab-btn" onclick="switchTab(2)"><span class="tab-icon">🚀</span>科技</button>
+      <button class="tab-btn" onclick="switchTab(3)"><span class="tab-icon">📊</span>市场</button>
+      <button class="tab-btn" onclick="switchTab(4)"><span class="tab-icon">💎</span>价值</button>
+      <button class="tab-btn" onclick="switchTab(5)"><span class="tab-icon">👁</span>关注</button>
+      <button class="tab-btn" onclick="switchTab(6)"><span class="tab-icon">💰</span>理财</button>
+      <button class="tab-btn" onclick="switchTab(7)"><span class="tab-icon">📝</span>总结</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 0: 要点速览 -->
+<div class="tab-panel active" id="panel-0">
+  <div class="inner">
+    <div class="section-title">📋 今日要点速览</div>
+    
+    <div class="good-bar">
+      <strong>🚀 标普首破7400续创新高！</strong>美股三大指数齐涨，标普500指数5/12收盘7412.84点（+0.19%）首次站稳7400点上方，纳指26274.13点（+0.10%）同步刷新历史新高。科技主线业绩底座坚实，费城半导体指数暴涨2.59%。
+    </div>
+    
+    <div class="hot-bar">
+      <strong>🤝 特朗普今日访华！</strong>美国总统唐纳德·特朗普将于5月13日至15日对中国进行国事访问，这是中美两国元首继去年10月釜山之后再次面对面会晤，也是美国总统时隔9年再次访华。中美贸易、半导体、AI算力等议题成焦点。
+    </div>
+    
+    <div class="alert-bar">
+      <strong>⚠️ A股震荡分化守住4200！</strong>5/12沪指4214.49点（-0.25%）守住4200关口，科创50逆势+0.41%领涨，但个股跌多涨少。特朗普访华期间需警惕"利好出尽"回调风险，建议保持4-6成仓位。
+    </div>
+
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <div class="highlight-num">01</div>
+        <div class="highlight-text"><strong>美股续创新高：</strong>标普500首破7400点，纳指26274点新高，道指49704点。科技龙头业绩强劲，市场谨慎偏多。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">02</div>
+        <div class="highlight-text"><strong>特朗普访华：</strong>5/13-15日国事访问，时隔9年再次访华。中美经贸合作预期升温，半导体、AI算力板块或受益。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">03</div>
+        <div class="highlight-text"><strong>A股震荡分化：</strong>上证4214.49(-0.25%)守住4200，科创50+0.41%领涨，成交1.47万亿。个股跌多涨少，高位分歧显现。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">04</div>
+        <div class="highlight-text"><strong>原油逼近$100：</strong>WTI原油99.12美元(+0.89%)，布伦特105.20美元(+0.59%)。美伊冲突升级，摩根大通预计Q2-Q3油价103-104美元。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">05</div>
+        <div class="highlight-text"><strong>央行适度宽松：</strong>5/13开展5亿元7天期逆回购，利率1.40%。Q1货币政策执行报告明确"继续实施好适度宽松的货币政策"。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">06</div>
+        <div class="highlight-text"><strong>AI大战白热化：</strong>DeepSeek V4、GPT-5.5、Claude Code竞争加剧。终端派(Claude Code/Codex CLI)与IDE派(Cursor 3.0)分化明显。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">07</div>
+        <div class="highlight-text"><strong>银行股息率4.5-5.5%：</strong>工行农行今日派息，国有大行股息率约4.5%（交行4.64%最高），远超1年定存1.65%。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">08</div>
+        <div class="highlight-text"><strong>人民币汇率稳定：</strong>USD/CNY中间价6.8431（下调5个基点），围绕6.80一线波动，央行稳定汇率决心明确。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="tag tag-policy">近期日历</span>重要事件提醒</div>
+      <div class="card-body">
+        <table style="width:100%;font-size:13px;margin-top:8px;">
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 0;color:var(--text-muted);">5月13-15日</td>
+            <td style="padding:8px 0;">特朗普访华，中美元首会晤</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 0;color:var(--text-muted);">5月13日</td>
+            <td style="padding:8px 0;">工商银行、农业银行A股派息</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 0;color:var(--text-muted);">5月14日</td>
+            <td style="padding:8px 0;">美国4月CPI数据公布（北京时间晚8:30）</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 1: 要闻精选 -->
+<div class="tab-panel" id="panel-1">
+  <div class="inner">
+    <div class="section-title">🌍 要闻精选</div>
+    
+    <div class="sub-section">
+      <div class="sub-title">📌 国内外重点新闻</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-geo">外交</span>特朗普5月13-15日访华，中美元首将举行会晤</div>
+        <div class="card-body">
+          中国外交部发言人5月11日宣布，美国总统特朗普将于5月13日至15日对中国进行国事访问。这是中美两国元首继去年10月釜山之后再次面对面会晤，也是美国总统时隔9年再次访华。国际舆论广泛关注，认为中美关系正处于关键时刻，此访将为两国关系发展定下基调。中美之间最主要的议题将集中在贸易领域，半导体、AI算力等科技合作也成焦点。
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-policy">央行</span>央行Q1报告明确"适度宽松"，5/13开展5亿元逆回购</div>
+        <div class="card-body">
+          中国人民银行5月11日发布2026年第一季度货币政策执行报告，明确"继续实施好适度宽松的货币政策"，灵活运用多种货币政策工具，保持流动性充裕。5月13日，央行开展5亿元7天期逆回购操作，操作利率1.40%。数据显示，3月企业贷款加权平均利率约3.1%，同比下降约0.2个百分点，持续处于历史低位。
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">🌍 地缘政治</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-geo">中东</span>美伊冲突升级，原油逼近$100</div>
+        <div class="card-body">
+          美伊冲突持续升级，特朗普拒绝伊朗和平提议，WTI原油5/12逼近100美元/桶，布伦特突破105美元。摩根大通发布报告，预计2026年国际油价平均为96美元/桶，其中第二、三季度均价或分别达103美元和104美元/桶。EIA月度短期能源展望报告显示，预计2026年布伦特原油价格95美元/桶。
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">💰 国内外财经</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-finance">美股</span>标普首破7400续创新高</div>
+        <div class="card-body">
+          北京时间5月12日凌晨，美股三大指数全线小幅收涨。标普500指数收盘7412.84点（+0.19%），首次站稳7400点整数关口；纳斯达克指数26274.13点（+0.10%）同步刷新历史新高；道琼斯指数49704.47点（+0.19%）。费城半导体指数暴涨2.59%，科技主线业绩底座坚实。投资者正关注本周即将公布的4月CPI数据。
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-finance">A股</span>沪指守住4200点，科创50逆势领涨</div>
+        <div class="card-body">
+          5月12日，A股三大指数分化震荡。上证指数收盘4214.49点（-0.25%），守住4200点关口；深证成指15824.92点（-0.47%）；创业板指3934.88点（+0.15%）；科创50指数1723.78点（+0.41%）逆势领涨。成交额1.47万亿，较前日缩量。个股层面跌多涨少，市场进入高位分歧期。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 2: AI前沿 -->
+<div class="tab-panel" id="panel-2">
+  <div class="inner">
+    <div class="section-title">🚀 AI前沿 · 智能时代每日追踪</div>
+    
+    <div class="sub-section">
+      <div class="sub-title">🔥 大模型大战</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-ai">竞争</span>DeepSeek V4、GPT-5.5、Claude三强争霸</div>
+        <div class="card-body">
+          2026年4月，全球AI行业上演史诗级"撞车"。4月24日OpenAI发布GPT-5.5，号称"有史以来最强大的AI模型"，百万token上下文窗口、Agentic编码能力大幅跃升。DeepSeek V4横空出世，以1/70成本碾压GPT-5.5，搭载100万token超长上下文，推出Pro(1.6万亿参数)和Flash(280亿参数)版本。Anthropic Claude Mythos因"风险过高"限量开放。中美AI竞争进入白热化阶段。
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">⚡ 算力基础设施</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-chip">液冷</span>液冷服务器概念集体走高</div>
+        <div class="card-body">
+          随着AI算力需求爆发，液冷散热成为关键基础设施。5月11日A股液冷服务器概念集体走高，冰轮环境、大元泵业、海鸥股份等多股涨停。背后是公司2026年固定资产投资上调至100亿元、重点扩产先进封装产线的明确信号。光通信、CPO、光纤、PCB等算力硬件板块持续受资金关注。
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-title">📊 产业趋势</div>
+      <div class="card">
+        <div class="card-title"><span class="tag tag-tech">趋势</span>终端派vs IDE派：AI开发工具分化</div>
+        <div class="card-body">
+          5月13日AI动态：Claude Code、Codex CLI、DeepSeek TUI构成"终端派"，深度集成Git工作流，主打开发者原生体验；Cursor 3.0代表"IDE派"，主打实时补全体验。OpenAI Codex CLI和Claude Code先后上线，AI编程助手进入"百花齐放"阶段。特朗普访华期间若在科技领域达成合作，中美AI产业链或将迎来新变数。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 3: 全球市场 -->
+<div class="tab-panel" id="panel-3">
+  <div class="inner">
+    <div class="section-title">📊 全球市场数据</div>
+    
+    <div class="market-grid">
+      <div class="market-block">
+        <h4>A股 · 5月12日收盘</h4>
+        <div class="market-row"><span class="market-name">上证指数</span><span class="market-val down">4214.49 (-0.25%)</span></div>
+        <div class="market-row"><span class="market-name">深证成指</span><span class="market-val down">15824.92 (-0.47%)</span></div>
+        <div class="market-row"><span class="market-name">创业板指</span><span class="market-val up">3934.88 (+0.15%)</span></div>
+        <div class="market-row"><span class="market-name">科创50</span><span class="market-val up">1723.78 (+0.41%)</span></div>
+        <div class="market-row"><span class="market-name">成交额</span><span class="market-val neutral">1.47万亿</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>港股 · 5月12日收盘</h4>
+        <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val down">25776.53 (-0.22%)</span></div>
+        <div class="market-row"><span class="market-name">恒生科技</span><span class="market-val down">4871.32 (-0.70%)</span></div>
+        <div class="market-row"><span class="market-name">国企指数</span><span class="market-val down">8681.83 (-0.02%)</span></div>
+        <div class="market-row"><span class="market-name">芯片股</span><span class="market-val down">华虹-3% 复旦-3%</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>美股 · 5月12日收盘</h4>
+        <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">49704.47 (+0.19%)</span></div>
+        <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7412.84 (+0.19%)</span></div>
+        <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">26274.13 (+0.10%)</span></div>
+        <div class="market-row"><span class="market-name">费城半导体</span><span class="market-val up">+2.59%</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>亚太 · 5月12日收盘</h4>
+        <div class="market-row"><span class="market-name">日经225</span><span class="market-val up">62742.57 (+0.52%)</span></div>
+        <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val down">7644.03 (-2.28%)</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>欧洲 · 5月12日收盘</h4>
+        <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val down">10265.32 (-0.04%)</span></div>
+        <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val down">7970. (-)</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>大宗商品</h4>
+        <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val up">$99.12 (+0.89%)</span></div>
+        <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val up">$105.20 (+0.59%)</span></div>
+        <div class="market-row"><span class="market-name">黄金</span><span class="market-val down">$4698.72 (-1.43%)</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>加密货币</h4>
+        <div class="market-row"><span class="market-name">比特币</span><span class="market-val neutral">~$80,000</span></div>
+        <div class="market-row"><span class="market-name">以太坊</span><span class="market-val neutral">~$2,300</span></div>
+      </div>
+      
+      <div class="market-block">
+        <h4>汇率与债券</h4>
+        <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val down">6.8431 (-5bp)</span></div>
+        <div class="market-row"><span class="market-name">逆回购利率</span><span class="market-val neutral">1.40%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 4-7 简化版 -->
+<div class="tab-panel" id="panel-4">
+  <div class="inner">
+    <div class="section-title">💎 价值投资风向</div>
+    <div class="good-bar">
+      <strong>银行股息率4.5-5.5%远超定存</strong> — 国有大行约4.5%（交行4.64%最高），招行5.3-7%，城商行超5.6%。
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">估值</span>银行板块PB 0.66x处于历史低位</div>
+      <div class="card-body">
+        银行板块PB仅0.66x，处于近十年23%分位。工行农行今日派息，41家银行派现6456亿创纪录。在利率下行通道中，高股息底仓配置价值凸显。
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="panel-5">
+  <div class="inner">
+    <div class="section-title">👁 关注标的</div>
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row">
+          <span class="stock-name">工商银行</span>
+          <span class="stock-code">601398</span>
+          <span class="tag tag-energy">股息率4.5%</span>
+        </div>
+        <div class="stock-price-area">
+          <div class="stock-price neutral">派息日</div>
+          <div class="stock-change neutral">每股0.1689元</div>
+        </div>
+      </div>
+      <ul class="stock-bullets">
+        <li>5月13日A股派息，每股分红0.1689元。41家上市银行派现6456亿创纪录。</li>
+        <li>股息率约4.5%，是1年定存（1.65%）的近3倍。</li>
+      </ul>
+    </div>
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row">
+          <span class="stock-name">长江电力</span>
+          <span class="stock-code">600900</span>
+          <span class="tag tag-policy">股息率约4%</span>
+        </div>
+      </div>
+      <ul class="stock-bullets">
+        <li>全球最大水电上市公司，承诺2026-2030年分红比例不低于70%。</li>
+        <li>股价27.01元，市值6608亿，是典型的稳健型配置标的。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="panel-6">
+  <div class="inner">
+    <div class="section-title">💰 理财话题</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-policy">利率</span>存款利率与国债收益率</div>
+      <div class="card-body">
+        <p>• 1年定存：1.65%</p>
+        <p>• 5年定存：2.50%</p>
+        <p>• 3年期国债：1.63%</p>
+        <p>• 5年期国债：1.70%</p>
+        <p>• 银行股息率：4.5-5.5%（定存的近3倍）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="panel-7">
+  <div class="inner">
+    <div class="section-title">📝 今日总结</div>
+    <div class="summary-card">
+      <p><strong>🔑 今日关键词：</strong>特朗普访华、标普破7400、原油破100、央行宽松、AI大战</p>
+      <p><strong>🌐 宏观面：</strong>特朗普5/13-15访华，中美元首会晤。央行Q1报告明确"适度宽松"，5/13开展5亿元逆回购。</p>
+      <p><strong>📉 市场面：</strong>美股标普首破7400续创新高；A股震荡分化守住4200，科创50逆势领涨。</p>
+      <p><strong>💵 资金面：</strong>北向资金动态需关注；人民币汇率6.8431稳定。</p>
+      <p><strong>📌 操作建议：</strong>保持4-6成仓位，高股息底仓坚守，特朗普访华期间警惕"利好出尽"回调。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>老盛早知道 · 每日资讯不迟到</p>
+  <p>数据来源：财联社、新华社、新浪财经、金投网 | <span>Powered by AI</span></p>
+  <p style="margin-top:8px;font-size:11px;">免责声明：本内容仅供参考，不构成投资建议</p>
+</div>
+
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.tab-panel').forEach((panel) => {
+    panel.classList.toggle('active', panel.id === 'panel-' + idx);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
