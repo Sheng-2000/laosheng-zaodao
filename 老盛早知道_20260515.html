@@ -164,7 +164,6 @@
   .sub-section { margin-bottom: 28px; }
   .sub-title { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; padding-left: 10px; border-left: 2px solid var(--accent); }
   .stock-info-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  /* 响应式grid工具类 */
   .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
   .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -224,13 +223,11 @@
     .grid-3 { grid-template-columns: 1fr; gap: 12px; }
     .grid-2 { grid-template-columns: 1fr; gap: 12px; }
     .grid-auto { grid-template-columns: 1fr; gap: 10px; }
-    /* 保险配置流程图手机适配 */
     .insurance-flow { flex-direction: column; gap: 8px; }
     .insurance-flow .flow-arrow { transform: rotate(90deg); font-size: 16px; }
     .insurance-flow .insurance-card { width: 100%; max-width: 280px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; text-align: left; }
     .insurance-flow .insurance-card > div:first-child { font-size: 28px; margin-bottom: 0; }
     .insurance-flow .insurance-card > div:nth-child(2) { flex: 1; }
-    /* 理财话题其他手机适配 */
     .rate-compare { flex-wrap: wrap; justify-content: center; gap: 8px; }
     .rate-compare .big-num { font-size: 26px; letter-spacing: -1px; }
     .rate-compare > div { flex: 0 0 auto; }
@@ -241,7 +238,6 @@
   }
 
   /* ===== Tab 0 新样式 ===== */
-  /* 顶部提示区 - 2×2网格卡片 */
   .summary-cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -349,7 +345,6 @@
     line-height: 1.6;
   }
 
-  /* 要点卡片V2 */
   .highlight-grid-v2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -396,7 +391,6 @@
     color: var(--text-primary);
   }
 
-  /* 时间线样式 */
   .timeline-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -508,7 +502,6 @@
     line-height: 1.6;
   }
 
-  /* Tab 0 手机端适配 */
   @media (max-width: 768px) {
     .summary-cards-grid {
       grid-template-columns: 1fr;
@@ -1426,21 +1419,21 @@
       </div>
       <div class="header-meta">
         <div class="hm-date">2026 / 05 / 15</div>
-        <div class="hm-sub"><span>星期三</span><span class="sep">|</span><span>特朗普访华首日·美国CPI爆表·美伊冲突持续</span></div>
+        <div class="hm-sub"><span>星期五</span><span class="sep">|</span><span>A股放量大跌·美股创新高·中美元首会谈</span></div>
         <div class="hm-tickers">
           <div class="hm-ticker">
             <span class="t-label">上证</span>
-            <span class="t-val down">4214.49</span>
-            <span class="t-chg down">-0.25%</span>
+            <span class="t-val down">4177.92</span>
+            <span class="t-chg down">-1.52%</span>
           </div>
           <div class="hm-ticker">
             <span class="t-label">标普</span>
-            <span class="t-val down">7400.96</span>
-            <span class="t-chg down">-0.16%</span>
+            <span class="t-val up">7501.25</span>
+            <span class="t-chg up">+0.77%</span>
           </div>
           <div class="hm-ticker">
             <span class="t-label">BTC</span>
-            <span class="t-val neutral">$81,400</span>
+            <span class="t-val neutral">$68,500</span>
             <span class="t-chg neutral">震荡</span>
           </div>
         </div>
@@ -1468,40 +1461,40 @@
   
   <!-- 顶部提示区 - 2×2网格卡片 -->
   <div class="summary-cards-grid">
-    <!-- A股调整卡片 - 黄色 -->
-    <div class="summary-card-yellow">
-      <div class="summary-card-icon">📊</div>
-      <div class="summary-card-content">
-        <div class="summary-card-title">A股高位震荡</div>
-        <div class="summary-card-value">4214.49 <span class="summary-card-change down">-0.25%</span></div>
-        <div class="summary-card-desc">上证高位震荡，两市成交3.24万亿，北向连续6日净买入</div>
-      </div>
-    </div>
-    <!-- 美股回调卡片 - 蓝色 -->
-    <div class="summary-card-blue">
+    <!-- A股大跌卡片 - 红色 -->
+    <div class="summary-card-red">
       <div class="summary-card-icon">📉</div>
       <div class="summary-card-content">
-        <div class="summary-card-title">美股从历史高位回落</div>
-        <div class="summary-card-value">7400.96 <span class="summary-card-change down">-0.16%</span></div>
-        <div class="summary-card-desc">标普纳指从历史高位小幅回落，CPI爆表加息预期升温</div>
+        <div class="summary-card-title">A股放量大跌</div>
+        <div class="summary-card-value">4177.92 <span class="summary-card-change down">-1.52%</span></div>
+        <div class="summary-card-desc">上证失守4200点，两市成交3.36万亿，北向终结12日净流入</div>
       </div>
     </div>
-    <!-- 特朗普访华卡片 - 绿色 -->
+    <!-- 美股创新高卡片 - 绿色 -->
     <div class="summary-card-green">
+      <div class="summary-card-icon">📈</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">美股再创历史新高</div>
+        <div class="summary-card-value">7501.25 <span class="summary-card-change up">+0.77%</span></div>
+        <div class="summary-card-desc">标普纳指齐创新高，道指重返50000点，英伟达市值逼近6万亿</div>
+      </div>
+    </div>
+    <!-- 中美元首会谈卡片 - 蓝色 -->
+    <div class="summary-card-blue">
       <div class="summary-card-icon">🤝</div>
       <div class="summary-card-content">
-        <div class="summary-card-title">特朗普访华首日</div>
-        <div class="summary-card-value">5/13-15 <span class="summary-card-tag">国事访问</span></div>
-        <div class="summary-card-desc">时隔9年再次访华，中美经贸与科技合作预期升温</div>
+        <div class="summary-card-title">中美元首会谈</div>
+        <div class="summary-card-value">5月14日 <span class="summary-card-tag">重大外交</span></div>
+        <div class="summary-card-desc">习近平同特朗普举行会谈，关注经贸科技合作进展</div>
       </div>
     </div>
-    <!-- CPI爆表卡片 - 红色 -->
-    <div class="summary-card-red">
+    <!-- PPI爆表卡片 - 黄色 -->
+    <div class="summary-card-yellow">
       <div class="summary-card-icon">⚠️</div>
       <div class="summary-card-content">
-        <div class="summary-card-title">美国CPI爆表</div>
-        <div class="summary-card-value">3.8% <span class="summary-card-change up">超预期</span></div>
-        <div class="summary-card-desc">4月CPI同比3.8%创2023年5月以来新高，加息预期升温</div>
+        <div class="summary-card-title">美国PPI爆表</div>
+        <div class="summary-card-value">6% <span class="summary-card-change up">超预期</span></div>
+        <div class="summary-card-desc">4月PPI同比飙升6%，创2022年以来最大涨幅</div>
       </div>
     </div>
   </div>
@@ -1510,35 +1503,35 @@
   <div class="highlight-grid-v2">
     <div class="highlight-item-v2">
       <div class="highlight-badge">01</div>
-      <div class="highlight-text-v2"><strong>A股史诗级大涨站上4200：</strong>上证指数4225.02(+1.08%)创近11年新高站稳4200点，沪指8连阳。科创50 1716.69(+4.65%)创历史新高，创业板指3928.97(+3.50%)创2015年6月以来新高。两市成交3.54万亿连续第4日破3万亿创4个月新高，北向资金净流入186.5亿元连续第9日净流入。半导体产业链涨停潮，超3100只个股飘红，180只个股涨幅超9%。</div>
+      <div class="highlight-text-v2"><strong>A股放量大跌失守4200点：</strong>上证指数4177.92(-1.52%)失守4200点，深证成指15745.74(-2.14%)，创业板指下跌2.16%，科创50下跌约2.55%。两市成交约3.36万亿元，连续第7个交易日突破3万亿。上涨1047家，下跌4387家，赚钱效应仅约19%。涨停80家，跌停44家。高位科技股遭集中兑现，市场避险情绪升温。（数据来源：5月14日收盘）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">02</div>
-      <div class="highlight-text-v2"><strong>特朗普将于5/13-15日访华：</strong>应习近平邀请，特朗普将于5月13日至15日对中国进行国事访问，时隔8年多再次访华。这一重大外交事件对中美经贸关系、科技合作、资本市场均构成积极催化。叠加央行Q1货币政策报告明确"继续实施适度宽松货币政策"，政策与外交双重利好共振。</div>
+      <div class="highlight-text-v2"><strong>美股三大指数齐创历史新高：</strong>道琼斯50063.46(+0.75%)时隔三个月重返50000点，标普500 7501.25(+0.77%)再创历史新高，纳斯达克上涨约1.2%续创新高。英伟达市值逼近6万亿美元。美联储批准凯文·沃什出任美联储主席，市场关注后续政策走向。（数据来源：5月14日收盘）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">03</div>
-      <div class="highlight-text-v2"><strong>美股标普首次站稳7400，光通信概念股集体爆发：</strong>标普500 7412.84(+0.19%)首次站稳7400点续创历史新高，纳指26274.13(+0.10%)续创新高。光通信概念股集体爆发：POET Technologies涨超26%，Applied Optoelectronics涨超24%。高通涨超8%，西部数据涨超7%，美光涨超6%。本周关键：周二4月CPI（预期同比3.7%），周四零售销售。</div>
+      <div class="highlight-text-v2"><strong>中美元首会谈举行：</strong>5月14日习近平同特朗普举行会谈，这是特朗普重返白宫后首次中美元首面对面会晤。双方就经贸合作、科技交流等议题交换意见。会谈结果将对全球资本市场产生深远影响，市场密切关注后续政策信号。（数据来源：5月14日）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">04</div>
-      <div class="highlight-text-v2"><strong>美伊冲突升级，霍尔木兹海峡封锁推升油价：</strong>美伊谈判破裂，特朗普拒绝伊朗停战回应称"完全不可接受"，美军超20艘军舰参与霍尔木兹海峡封锁。WTI原油$98.81(+3%+)，盘中布伦特$105.34(+4%)。油价暴涨对能源股形成直接利好，但黄金白银同日遭遇"连环跳水"，国际黄金4690.2美元(-0.86%)。</div>
+      <div class="highlight-text-v2"><strong>美国4月PPI同比飙升6%：</strong>美国4月PPI同比飙升6%，创2022年以来最大涨幅，远超市场预期。通胀压力持续高企，美联储降息预期进一步推迟。美国10年期国债收益率上行，美元指数走强，对全球风险资产构成压力。（数据来源：5月14日）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">05</div>
-      <div class="highlight-text-v2"><strong>央行Q1货币政策报告：继续实施适度宽松货币政策：</strong>央行发布2026年Q1货币政策执行报告，明确"继续实施适度宽松货币政策"，推进人民币国际化。USD/CNY中间价6.8467（上调35个基点），在岸人民币围绕6.80一线波动。央行5/11开展5亿元7天期逆回购，利率1.40%。</div>
+      <div class="highlight-text-v2"><strong>北向资金终结12日净流入：</strong>北向资金净流出45.8亿元，终结连续12日净流入态势。南向资金净流出97.12亿港元。外资动向出现分化，A股高位回调引发外资获利了结，短期市场波动加大。（数据来源：5月14日）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">06</div>
-      <div class="highlight-text-v2"><strong>韩国KOSPI首破7800点，年内累涨超82%牛冠全球：</strong>韩国KOSPI 7822.20(+4.32%)首破7800点大关，年内累计涨幅超82%领跑全球。港股芯片股走强：澜起科技涨超11%，上海复旦涨超5%，中芯国际涨超4%。亚太市场整体风险偏好高涨。</div>
+      <div class="highlight-text-v2"><strong>AI算力基础设施需求爆发：</strong>光模块、液冷、AI服务器三大算力基础设施方向需求爆发。DeepSeek拟融资500亿元，V4将大规模采用国产算力。GPT-5.4、Gemini 3.1 Pro、DeepSeek V3.2相继亮相，大模型竞争白热化。（数据来源：5月14日）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">07</div>
-      <div class="highlight-text-v2"><strong>中国AI应用使用量是美国的2.11倍，连续两周全球第一：</strong>腾讯Hy3蝉联榜首，Kimi K2.6紧随其后，DeepSeek三款模型集体上榜。Anthropic季度营收飙升80倍，太空算力成新战场。算力争夺白热化、大模型集体商业化、AI替代人工岗位成为热议话题。</div>
+      <div class="highlight-text-v2"><strong>银行股分红6456亿创纪录：</strong>2026年银行分红6456亿元创历史纪录，工商银行派现1105亿元居首。银行板块PB仅0.67倍，处于近十年23%分位，42家上市银行全线破净。工行、建行PE仅7倍左右，银行股息率普遍超5%。（数据来源：5月14日）</div>
     </div>
     <div class="highlight-item-v2">
       <div class="highlight-badge">08</div>
-      <div class="highlight-text-v2"><strong>理财参考：</strong>银行1年定存利率1.65%，5年定存2.50%。银行板块PB 0.66x，股息率4.12%远超定存。黄金$4734.55/盎司，追高风险加大。工商银行今日7.47元(+0.13%)，5/12股权登记日。分红险演示利率上限3.5%，6/30前老产品退市窗口。</div>
+      <div class="highlight-text-v2"><strong>理财参考：</strong>银行1年定存利率0.95%-1.15%，5年定存1.30%。现金管理类理财平均收益率1.4%，固收类理财平均收益率2.2%。2026年3月全市场理财产品平均年化收益率已跌至1.01%。分红险占2026年人身险新产品四成，6/30前老产品退市窗口。（数据来源：2026年5月）</div>
     </div>
   </div>
 
@@ -1552,40 +1545,28 @@
       <!-- 今天 -->
       <div class="timeline-item today">
         <div class="timeline-date">
-          <div class="timeline-day">13</div>
+          <div class="timeline-day">15</div>
           <div class="timeline-month">5月</div>
           <div class="timeline-label">今天</div>
         </div>
         <div class="timeline-content">
-          <div class="timeline-event">特朗普访华首日</div>
-          <div class="timeline-detail">美国CPI爆表3.8% · 美伊冲突持续 · 农行股权登记日</div>
+          <div class="timeline-event">央行开展3000亿元买断式逆回购</div>
+          <div class="timeline-detail">6个月期 · 中标利率维持1.25%不变</div>
         </div>
       </div>
       <!-- 未来事件 -->
       <div class="timeline-item future">
         <div class="timeline-date">
-          <div class="timeline-day">14-15</div>
+          <div class="timeline-day">持续</div>
           <div class="timeline-month">5月</div>
-          <div class="timeline-label">重大事件</div>
+          <div class="timeline-label">关注</div>
         </div>
         <div class="timeline-content">
-          <div class="timeline-event">特朗普访华持续进行</div>
-          <div class="timeline-detail">关注中美经贸与科技合作进展</div>
+          <div class="timeline-event">中美经贸合作进展</div>
+          <div class="timeline-detail">关注元首会谈后续政策落地</div>
         </div>
       </div>
       <!-- 美国数据 -->
-      <div class="timeline-item data">
-        <div class="timeline-date">
-          <div class="timeline-day">12</div>
-          <div class="timeline-month">美东</div>
-          <div class="timeline-label">数据公布</div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-event">美国4月CPI数据公布</div>
-          <div class="timeline-detail">同比3.8%超预期 · 创2023年5月以来新高</div>
-        </div>
-      </div>
-      <!-- 零售数据 -->
       <div class="timeline-item data">
         <div class="timeline-date">
           <div class="timeline-day">14</div>
@@ -1593,8 +1574,8 @@
           <div class="timeline-label">数据公布</div>
         </div>
         <div class="timeline-content">
-          <div class="timeline-event">美国4月零售销售数据</div>
-          <div class="timeline-detail">消费韧性验证 · 经济健康度指标</div>
+          <div class="timeline-event">美国4月PPI数据公布</div>
+          <div class="timeline-detail">同比飙升6% · 创2022年以来最大涨幅</div>
         </div>
       </div>
       <!-- 截止期限 -->
@@ -1615,300 +1596,203 @@
 </div>
 
 <!-- TAB 1: 国内外新闻 -->
-<!-- TAB 1: 国内外新闻 -->
 <div class="tab-panel" id="panel-1">
   <div class="inner">
   <div class="section-title">🌐 国内外新闻</div>
-  
   <div class="sub-section">
     <div class="sub-title">📌 国内外重点新闻</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-geo">外交</span>特朗普抵达北京开启国事访问，9年来美国总统首次访华</div>
-      <div class="card-body">5月13日晚，美国总统特朗普抵达北京，开启对华国事访问。这是9年来美国总统首次访华，具有重大历史意义。中方在人民大会堂举行高规格欢迎宴会，美方随行阵容豪华，包括苹果CEO库克、英伟达CEO黄仁勋、特斯拉CEO马斯克等科技界巨头。市场预期此次访问将在经贸合作、科技交流、人工智能监管协调等领域达成重要共识，为中美关系注入新动力。</div>
+      <div class="card-title"><span class="tag tag-geo">外交</span>中美元首会谈举行，习近平同特朗普举行会谈</div>
+      <div class="card-body">5月14日，习近平同特朗普举行会谈，这是特朗普重返白宫后首次中美元首面对面会晤。双方就经贸合作、科技交流、地缘协调等领域交换意见。此次会谈在中美关系处于关键节点的背景下举行，意义重大。市场预期此次会谈将在经贸合作、科技交流等领域取得积极进展，但具体成果仍需观察后续政策落地。A股市场已提前反应，会谈结果将对全球资本市场产生深远影响。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-tech">航天</span>朱雀二号改进型遥五发射成功！全球首枚液氧甲烷火箭入轨</div>
-      <div class="card-body">5月14日11时，朱雀二号改进型遥五运载火箭在东风商业航天创新试验区成功发射，成为全球首枚成功入轨的液氧甲烷火箭。这一里程碑标志着中国商业航天在可重复使用火箭技术领域取得重大突破，液氧甲烷作为清洁高效推进剂，是未来深空探测和卫星互联网建设的关键技术路线。商业航天产业链迎来历史性发展机遇。</div>
+      <div class="card-title"><span class="tag tag-policy">央行</span>央行5月15日开展3000亿元买断式逆回购，利率维持1.25%不变</div>
+      <div class="card-body">央行5月15日将开展3000亿元6个月期买断式逆回购操作，中标利率维持1.25%不变。5月14日央行开展5亿元7天期逆回购操作。央行维持适度宽松货币政策基调，流动性整体维持合理充裕。USD/CNY中间价6.8401元，上调30个基点，在岸人民币约6.7820元，汇率保持稳定。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-tech">量子计算</span>"九章四号"量子计算原型机问世！算力远超全球最快超算</div>
-      <div class="card-body">中国科学技术大学成功研制"九章四号"量子计算原型机，在特定问题上的算力远超全球最快超级计算机。该成果标志着我国在量子计算领域继续保持全球领先地位，为密码学、药物研发、金融建模等复杂问题求解提供了革命性工具。量子计算产业化进程加速，相关产业链投资价值凸显。</div>
+      <div class="card-title"><span class="tag tag-finance">宏观</span>美国4月PPI同比飙升6%，创2022年以来最大涨幅</div>
+      <div class="card-body">美国4月PPI同比飙升6%，创2022年以来最大涨幅，远超市场预期。通胀压力持续高企，美联储降息预期进一步推迟。美国参议院批准凯文·沃什出任美联储主席，市场关注后续政策走向。PPI爆表对全球风险资产构成压力，美国10年期国债收益率上行，美元指数走强。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-tech">AI芯片</span>百度Create2026大会开幕！发布昆仑芯超节点</div>
-      <div class="card-body">百度Create2026大会隆重开幕，正式发布昆仑芯超节点，为AI大模型训练和推理提供强劲算力支撑。百度CEO李彦宏提出"日活智能体数"（DAI）作为AI时代新度量衡，强调AI应用落地和用户活跃度将成为衡量AI价值的核心指标。国产AI芯片生态建设加速，自主可控算力底座日趋完善。</div>
+      <div class="card-title"><span class="tag tag-tech">航天</span>朱雀二号改进型遥五火箭成功发射</div>
+      <div class="card-body">5月14日，朱雀二号改进型遥五火箭成功发射，标志着我国商业航天事业取得新进展。商业航天作为战略性新兴产业，正迎来快速发展期。航天产业链相关企业有望受益于行业景气度提升，关注卫星互联网、火箭发射等细分领域投资机会。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-energy">能源</span>中国石化探明2356亿方超深层页岩气田！我国首个超深层大型页岩气田</div>
-      <div class="card-body">中国石化在四川资阳探明2356亿立方米超4500米深层页岩气田，这是我国首个超深层大型页岩气田。该发现对保障国家能源安全、优化能源结构具有战略意义。深层页岩气开发技术突破将释放巨大资源潜力，油气勘探开发产业链迎来新增长点。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-policy">民生</span>5月15日起：60岁以上旅客淡季周中购票可享折扣</div>
-      <div class="card-body">铁路部门推出惠民新举措：自5月15日起，60岁以上旅客在淡季周中（周一至周四）购买火车票可享受折扣优惠。这是铁路部门积极应对人口老龄化、提升老年人出行体验的重要举措，预计将有效刺激淡季铁路客运需求，同时也体现了公共服务领域的适老化改造趋势。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-policy">体育</span>U17男足2:0胜卡塔尔！时隔多年重返世少赛</div>
-      <div class="card-body">中国U17男足在亚少赛预选赛中2:0战胜卡塔尔队，成功晋级2026年U17世界杯（世少赛）。这是中国国少队时隔多年再次重返世少赛舞台，标志着中国足球青训体系改革初见成效。年轻球员在国际赛场上的出色表现，为中国足球未来发展注入信心。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-finance">A股</span>A股大跌！上证跌1.52%失守4200点，成交3.36万亿</div>
-      <div class="card-body">5月14日A股三大指数全线收跌，上证指数跌1.52%失守4200点，深证成指、创业板指同步下挫。两市成交额3.36万亿元，市场避险情绪升温。板块方面，前期涨幅较大的科技股出现回调，银行、能源等防御性板块相对抗跌。市场短期面临获利回吐压力，投资者需关注特朗普访华期间的政策信号及后续市场资金流向。</div>
+      <div class="card-title"><span class="tag tag-policy">政策</span>商务部召开例行新闻发布会</div>
+      <div class="card-body">5月14日，商务部召开例行新闻发布会，就中美经贸关系、外贸形势等热点问题回应市场关切。商务部表示将继续推动高水平对外开放，稳定外贸外资基本盘。中美元首会谈后，商务部将在具体经贸政策层面跟进落实，关注后续政策细则出台。（数据来源：5月14日）</div>
     </div>
   </div>
-  
   <div class="sub-section">
     <div class="sub-title">🌍 地缘政治</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-geo">中美关系</span>特朗普访华开启"交易外交"新模式</div>
-      <div class="card-body">特朗普此次访华被视为其"交易外交"风格的延续。随行商界代表团规模空前，涵盖科技、能源、金融等多个领域，显示出美方对深化中美经贸合作的强烈意愿。市场关注双方是否在关税、技术出口管制、市场准入等议题上取得突破。此次访问的结果将对全球地缘政治格局和资本市场产生深远影响。</div>
+      <div class="card-title"><span class="tag tag-geo">美联储</span>美国参议院批准凯文·沃什出任美联储主席</div>
+      <div class="card-body">美国参议院批准凯文·沃什出任美联储主席，市场关注其货币政策立场。沃什此前在美联储任职期间以鹰派著称，市场担忧其上任后可能加快加息步伐。但当前美国经济面临通胀高企与增长放缓的双重压力，新主席的政策取向仍存在不确定性。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-geo">亚太</span>中美科技巨头同台：库克、黄仁勋、马斯克齐聚北京</div>
-      <div class="card-body">苹果CEO库克、英伟达CEO黄仁勋、特斯拉CEO马斯克等美国科技界领军人物随同特朗普访华，这一罕见阵容引发全球关注。科技巨头们此行的商业议程包括：库克关注中国市场销售与供应链布局，黄仁勋寻求AI芯片出口管制松绑，马斯克推进自动驾驶在华落地。中美科技博弈与合作的复杂态势，在此次访问中展现得淋漓尽致。</div>
-    </div>
-  </div>
-  
-  <div class="sub-section">
-    <div class="sub-title">💰 国内外财经</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-finance">A股</span>市场深度调整：科技股领跌，防御板块受青睐</div>
-      <div class="card-body">5月14日A股深度调整，前期涨幅较大的半导体、AI算力、机器人等科技板块领跌，资金明显流向银行、电力、能源等高股息防御性板块。市场风格切换迹象明显，投资者风险偏好下降。短期来看，市场需消化前期获利盘，等待特朗普访华结果及后续政策明朗化。建议关注业绩确定性高、估值合理的优质标的。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-finance">能源</span>深层页岩气开发打开油气产业链新空间</div>
-      <div class="card-body">中国石化四川资阳深层页岩气田的发现，标志着我国深层页岩气开发技术取得重大突破。深层页岩气资源量丰富，技术突破将释放巨大产能潜力。上游勘探开发设备、压裂服务、油气管道等产业链环节有望受益。同时，天然气作为清洁能源，在"双碳"目标下需求持续增长，行业长期景气度向好。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-tech">航天</span>商业航天产业链迎来爆发期</div>
-      <div class="card-body">朱雀二号液氧甲烷火箭成功入轨，标志着中国商业航天进入新纪元。卫星互联网建设、深空探测、太空旅游等应用场景加速落地，商业航天产业链迎来爆发期。火箭制造、卫星载荷、地面设备、运营服务等环节投资价值凸显。政策层面，商业航天被列为战略性新兴产业，多地出台专项支持政策，产业生态日趋完善。</div>
-    </div>
-  </div>
-  
-  </div>
-</div>
-  <div class="sub-section">
-    <div class="sub-title">🌍 地缘政治</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-geo">美伊</span>美伊谈判破裂！特朗普拒绝停战回应，美军封锁霍尔木兹海峡</div>
-      <div class="card-body">美伊谈判破裂，特朗普拒绝伊朗停战回应并称"完全不可接受"。美军超20艘军舰参与霍尔木兹海峡封锁行动，中东地缘风险急剧升温。霍尔木兹海峡承担全球约20%石油运输，封锁行动直接推升国际油价：WTI原油$98.81(+3%+)，盘中布伦特$105.34(+4%)。地缘局势走向存在高度不确定性，市场密切关注后续军事与外交动态。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-geo">俄乌</span>俄乌三天停火5/11到期，俄方称"目前无延长计划"</div>
-      <div class="card-body">俄乌之间为期三天的停火协议于5月11日到期，俄方表态"目前无延长计划"。停火到期后局势走向尚不明朗，市场对东欧地缘风险的担忧有所回升。叠加美伊冲突升级，全球地缘政治不确定性处于阶段性高位。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-geo">亚太</span>韩国KOSPI首破7800点，年内累涨超82%牛冠全球</div>
-      <div class="card-body">韩国KOSPI 7822.20(+4.32%)首破7800点大关，年内累计涨幅超82%领跑全球。韩国市场受益于半导体产业链景气度持续提升及外资大幅流入。亚太市场整体风险偏好高涨，日经225小幅回调至62417.88(-0.47%)。港股恒生指数26406.84(+0.05%)窄幅震荡，芯片股走强。</div>
+      <div class="card-title"><span class="tag tag-geo">亚太</span>亚太市场分化，日经下跌韩股上涨</div>
+      <div class="card-body">5月14日亚太市场分化，日经225 62654.05点下跌0.98%，韩国KOSPI 7873.91点上涨0.4%。港股恒生指数26389.04点收平，恒生科技5076.20点下跌0.35%，国企指数8858.63点下跌0.20%。南向资金净流出97.12亿港元，外资对港股态度趋于谨慎。（数据来源：5月14日收盘）</div>
     </div>
   </div>
   <div class="sub-section">
     <div class="sub-title">💰 国内外财经</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-energy">原油</span>油价暴涨！WTI $98.81(+3%+)，布伦特$105.34(+4%)</div>
-      <div class="card-body">美伊谈判破裂叠加美军封锁霍尔木兹海峡，国际油价大幅飙升。WTI原油$98.81/桶(+3%+)，盘中布伦特原油$105.34/桶(+4%)。霍尔木兹海峡承担全球约20%石油运输，封锁行动对全球能源供应链构成直接威胁。油价暴涨对上游能源企业形成利好，但对航空、化工等下游行业构成成本压力。</div>
+      <div class="card-title"><span class="tag tag-energy">黄金</span>国际黄金微涨，约4700-4701美元/盎司</div>
+      <div class="card-body">5月14日国际现货黄金约4700-4701美元/盎司，微涨0.09%-0.11%。纽约金期货4706.6美元/盎司，基本持平。国内黄金T+D 1028.23元/克，上涨0.19%，沪金主连1029.6元/克。伦敦银现87.754美元/盎司，金银比接近50。黄金在高位震荡，短期缺乏明确方向。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-energy">黄金</span>黄金白银遭遇"连环跳水"！国际黄金4690.2美元(-0.86%)</div>
-      <div class="card-body">国际黄金4690.2美元/盎司(-0.86%)大幅回落，国内黄金9995报1037.2元/克(-0.21%)。国内现货白银基准价18.5元/克。尽管美伊冲突升级理论上应支撑避险需求，但黄金白银却遭遇"连环跳水"，可能原因包括：高位获利了结、美元指数反弹、以及市场资金从避险资产转向风险资产（A股大涨吸金）。追高风险加大，建议已有黄金配置的持有观望。</div>
+      <div class="card-title"><span class="tag tag-finance">加密货币</span>BTC约68500-85400美元区间震荡，ETH约5280美元</div>
+      <div class="card-body">5月14日比特币(BTC)约68500-85400美元（不同来源有差异），以太坊(ETH)约5280美元。加密货币市场整体处于高位震荡状态，A股大跌对部分资金形成分流效应。市场等待美联储政策信号为加密货币走势提供更多线索。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-finance">加密货币</span>BTC约$81,400在80000-82500区间震荡，ETH $2,341(-1.45%)</div>
-      <div class="card-body">BTC约$81,400在80000-82500区间窄幅震荡，ETH约$2,341(-1.45%)小幅回落。加密货币市场整体处于高位盘整状态，A股史诗级大涨对部分资金形成分流效应。市场等待美国4月CPI数据（周二公布）为美联储利率路径提供更多线索。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-policy">利率</span>银行存款利率一览：1年定存1.65%，5年定存2.50%</div>
-      <div class="card-body">最新银行存款利率：活期0.20%，3个月1.10%，6个月1.30%，1年期1.65%，2年期2.05%，3年期2.45%，5年期2.50%。对比银行板块股息率2.6-6.8%，高股息股票的收益优势依然显著。利率下行通道未改，"储蓄贬值"压力持续，资金向高股息资产转移的趋势不变。</div>
+      <div class="card-title"><span class="tag tag-policy">汇率</span>人民币兑美元中间价6.8401元，上调30个基点</div>
+      <div class="card-body">5月14日人民币兑美元中间价6.8401元，上调30个基点，在岸人民币约6.7820元。汇率保持稳定，为外资流入创造良好条件。央行维持适度宽松货币政策，人民币汇率在合理均衡水平上保持基本稳定。（数据来源：5月14日）</div>
     </div>
   </div>
   </div>
 </div>
 
 <!-- TAB 2: AI前沿 -->
-<!-- TAB 2: AI前沿 -->
 <div class="tab-panel" id="panel-2">
   <div class="inner">
   <div class="section-title">🤖 AI前沿</div>
-  
   <div class="sub-section">
     <div class="sub-title">🔥 大模型大战</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-ai">竞争格局</span>GPT-5、Claude 4、Gemini 3、DeepSeek V4激烈角逐</div>
-      <div class="card-body">全球大模型竞争进入白热化阶段：OpenAI GPT-5在推理能力上持续突破，Anthropic Claude 4以超长上下文和安全性著称，Google Gemini 3多模态能力全面进化，国产DeepSeek V4在代码生成和数学推理上表现亮眼。国产大模型周调用量突破7.36万亿Token，显示出中国AI应用的强劲需求。大模型厂商在参数规模、训练效率、推理成本三个维度展开全方位军备竞赛。</div>
+      <div class="card-title"><span class="tag tag-ai">大模型</span>GPT-5.4、Gemini 3.1 Pro、DeepSeek V3.2相继亮相</div>
+      <div class="card-body">近期GPT-5.4、Gemini 3.1 Pro、DeepSeek V3.2等大模型相继亮相，大模型竞争进入白热化阶段。各大厂商在模型能力、应用场景、商业化路径上展开全方位竞争。中国大模型在中文理解、本土应用等维度具备差异化优势，DeepSeek等国产大模型快速迭代，与国际领先水平差距持续缩小。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-ai">国产大模型</span>周调用量突破7.36万亿Token！百度Create大会定义新度量衡</div>
-      <div class="card-body">国产大模型生态持续繁荣，周调用量突破7.36万亿Token，用户规模和使用频次快速增长。百度Create2026大会上，李彦宏提出"日活智能体数"（DAI）作为AI时代新度量衡，强调从"模型参数竞赛"转向"应用价值创造"。腾讯混元、阿里通义、字节豆包、百度文心等国产大模型在办公、搜索、创作等场景深度渗透，商业化变现路径日益清晰。</div>
+      <div class="card-title"><span class="tag tag-ai">国产算力</span>DeepSeek拟融资500亿元，V4将大规模采用国产算力</div>
+      <div class="card-body">DeepSeek拟融资500亿元，V4版本将大规模采用国产算力。这标志着国产AI芯片在性能、生态等方面取得重大突破，国产算力产业链迎来历史性机遇。光模块、液冷、AI服务器三大算力基础设施方向需求爆发，相关产业链企业订单饱满，业绩弹性值得期待。（数据来源：5月14日）</div>
     </div>
   </div>
-  
   <div class="sub-section">
     <div class="sub-title">🤖 人形机器人</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-robot">特斯拉</span>Optimus预计2026年量产！目标年产10万台</div>
-      <div class="card-body">特斯拉Optimus人形机器人预计2026年正式量产，设计年产能10万台，标志着人形机器人从实验室走向商业化量产的关键节点。马斯克表示，Optimus将率先应用于特斯拉工厂，执行重复性、危险性任务。随着规模效应显现，成本有望快速下降，人形机器人进入家庭服务、医疗护理、教育陪伴等民用场景指日可待。</div>
+      <div class="card-title"><span class="tag tag-robot">特斯拉</span>特斯拉Optimus V3预计2026年年中亮相，目标年产10万台</div>
+      <div class="card-body">特斯拉Optimus V3预计2026年年中亮相，目标年产10万台。这标志着人形机器人从实验室走向商业化量产的关键一步。国内机器人投资热潮涌动，多地政府出台支持政策，产业链企业加速布局。精密减速器、伺服电机、传感器等核心零部件供应商有望率先受益。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-robot">国产机器人</span>宇树科技科创板IPO申请已受理</div>
-      <div class="card-body">国内人形机器人领军企业宇树科技科创板IPO申请已获受理，有望成为"人形机器人第一股"。宇树科技在四足机器人和人形机器人领域技术积累深厚，产品已出口全球多个国家和地区。IPO募资将主要用于产能扩张、技术研发和市场拓展。资本市场对人形机器人赛道热情高涨，产业链投融资活跃度持续提升。</div>
-    </div>
-  </div>
-  
-  <div class="sub-section">
-    <div class="sub-title">⚡ 算力基础设施</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-chip">光模块</span>800G光模块逆势走强！CPO、光模块、液冷、PCB为算力四大赛道</div>
-      <div class="card-body">AI算力硬件方向延续分化格局，800G高速光模块需求旺盛、逆势走强，成为算力板块中最亮眼的细分领域。CPO（共封装光学）、光模块、液冷散热、高端PCB构成AI算力基础设施的四大核心赛道。随着大模型训练规模指数级增长，算力硬件的技术迭代和产能扩张同步加速。国内光模块厂商在全球市场份额持续提升，头部企业竞争优势明显。</div>
+      <div class="card-title"><span class="tag tag-robot">宇树科技</span>宇树科技开放全球首个机器人应用商店</div>
+      <div class="card-body">宇树科技开放全球首个机器人应用商店，标志着机器人软件生态建设迈出重要一步。应用商店模式将加速机器人应用场景拓展，降低开发门槛，推动机器人产业从硬件制造向软硬一体化转型。国内人形机器人产业链正加速成熟，关注核心零部件和应用开发企业。（数据来源：5月14日）</div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-chip">国产算力</span>百度昆仑芯超节点发布！自主可控算力底座加速构建</div>
-      <div class="card-body">百度Create2026大会发布昆仑芯超节点，采用自研XPU架构，专为AI大模型训练和推理优化设计。国产AI芯片在性能、功耗、生态等方面持续突破，与英伟达等国际巨头的差距不断缩小。在美国芯片出口管制背景下，自主可控算力底座建设紧迫性凸显，国产AI芯片产业链迎来历史性发展机遇。</div>
-    </div>
-  </div>
-  
-  <div class="sub-section">
-    <div class="sub-title">📱 AI应用落地</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-app">智能体</span>"日活智能体数"成AI时代新度量衡</div>
-      <div class="card-body">百度李彦宏提出"日活智能体数"（DAI, Daily Active Intelligence）作为衡量AI价值的新标准，标志着行业关注点从"模型能力"转向"应用价值"。AI智能体正在从简单的问答工具进化为能够自主决策、执行任务的数字助手。在办公自动化、客户服务、内容创作、编程辅助等场景，AI智能体的渗透率和使用深度持续提升，商业化变现模式日趋成熟。</div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-app">行业渗透</span>AI应用从"尝鲜"走向"刚需"，商业化全面提速</div>
-      <div class="card-body">AI应用正从早期尝鲜阶段进入日常刚需阶段。教育领域，AI个性化辅导成为标配；医疗领域，AI辅助诊断提升诊疗效率；金融领域，智能投顾服务规模快速增长；编程领域，AI代码助手成为开发者必备工具。大模型厂商从"烧钱抢用户"转向"精细化运营+付费转化"，订阅制、按量付费等商业模式跑通，AI应用商业化进入收获期。</div>
-    </div>
-  </div>
-  
-  <div class="sub-section">
-    <div class="sub-title">📊 产业趋势</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-tech">趋势</span>AI产业三线并进：大模型进化+机器人量产+算力基建</div>
-      <div class="card-body">大模型层面：GPT-5、Claude 4、Gemini 3、DeepSeek V4激烈角逐，国产大模型周调用量突破7.36万亿Token，"日活智能体数"成为新度量衡。机器人层面：特斯拉Optimus 2026年量产目标10万台，宇树科技科创板IPO受理，人形机器人商业化元年开启。算力层面：800G光模块逆势走强，CPO、液冷、PCB为算力四大赛道，百度昆仑芯超节点发布。AI产业已进入"大模型进化+机器人量产+算力基建"三线并进的新阶段，长期投资逻辑清晰且确定性强。</div>
-    </div>
-  </div>
-  
-  </div>
-</div>
-  <div class="sub-section">
-    <div class="sub-title">🤖 人形机器人</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-robot">特斯拉Optimus</span>特斯拉Optimus年中量产在即，国内机器人投资热潮涌动</div>
-      <div class="card-body">特斯拉Optimus人形机器人预计年中开始量产，设计年产能10万台，标志着人形机器人从实验室走向商业化量产的关键一步。国内机器人投资热潮涌动，多地政府出台支持政策，产业链企业加速布局。A股人形机器人板块在5/11大涨中表现活跃，成为资金追捧的核心方向之一。精密减速器、伺服电机、传感器等核心零部件供应商有望率先受益。</div>
+      <div class="card-title"><span class="tag tag-robot">Figure AI</span>Figure AI机器人能自主收拾房间</div>
+      <div class="card-body">Figure AI发布最新演示视频，展示其机器人自主收拾房间的能力。这标志着人形机器人在家庭服务场景取得重要突破。随着大模型与机器人技术的深度融合，机器人智能化水平快速提升，商业化落地进程加速。家庭服务、工业制造、物流仓储等场景将成为人形机器人首批落地领域。（数据来源：5月14日）</div>
     </div>
   </div>
   <div class="sub-section">
     <div class="sub-title">⚡ 算力基础设施</div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-chip">光通信</span>美股光通信概念股集体爆发！POET+26% · AAOI+24%</div>
-      <div class="card-body">美东5/11收盘，光通信概念股集体爆发：POET Technologies涨超26%，Applied Optoelectronics涨超24%。芯片股全面走强：高通涨超8%，西部数据涨超7%，美光涨超6%，英特尔涨超3%，英伟达涨约2%。光通信和存储芯片的爆发反映出AI算力基础设施投资持续加速，CPO（共封装光学）技术路线获得市场高度认可。A股半导体产业链在5/11同步掀起涨停潮，中美科技股形成共振。</div>
-    </div>
-  </div>
-  <div class="sub-section">
-    <div class="sub-title">📱 AI应用落地</div>
-    <div class="card">
-      <div class="card-title"><span class="tag tag-app">应用</span>AI应用从"尝鲜"走向"刚需"，商业化变现路径清晰</div>
-      <div class="card-body">中国AI应用使用量达美国的2.11倍，说明AI已从早期尝鲜阶段进入日常刚需阶段。腾讯Hy3、Kimi K2.6、DeepSeek等产品在办公、教育、编程等场景深度渗透。AI替代人工岗位的讨论持续升温，企业端AI工具采购需求快速增长。大模型厂商从"烧钱抢用户"转向"精细化运营+付费转化"，商业化变现路径日益清晰。</div>
+      <div class="card-title"><span class="tag tag-chip">算力基建</span>光模块、液冷、AI服务器三大方向需求爆发</div>
+      <div class="card-body">光模块、液冷、AI服务器三大算力基础设施方向需求爆发。随着大模型训练推理需求激增，算力基础设施建设进入高峰期。800G光模块开始批量出货，液冷技术渗透率快速提升，AI服务器订单饱满。国产算力产业链在政策支持和市场需求双重驱动下，正迎来黄金发展期。（数据来源：5月14日）</div>
     </div>
   </div>
   <div class="sub-section">
     <div class="sub-title">📊 产业趋势</div>
     <div class="card">
       <div class="card-title"><span class="tag tag-tech">趋势</span>AI产业三线并进：大模型商业化+算力军备竞赛+机器人量产</div>
-      <div class="card-body">大模型层面：中国AI使用量超美国2倍，腾讯Hy3/Kimi/DeepSeek三强格局成型，Anthropic营收飙升80倍验证商业化可行性。算力层面：美股光通信+26%/+24%爆发，高通+8%西部数据+7%，A股半导体涨停潮，CPO/AI算力投资持续加码。机器人层面：特斯拉Optimus年中量产，国内投资热潮涌动。AI产业已进入"应用落地+商业化变现+硬件量产"三线并进的新阶段，长期投资逻辑清晰且确定性强。</div>
+      <div class="card-body">大模型层面：GPT-5.4、Gemini 3.1 Pro、DeepSeek V3.2相继亮相，国产大模型快速追赶。算力层面：DeepSeek拟融资500亿元，V4将大规模采用国产算力，光模块、液冷、AI服务器需求爆发。机器人层面：特斯拉Optimus V3年中量产，宇树科技开放机器人应用商店，Figure AI机器人能自主收拾房间。AI产业已进入"应用落地+商业化变现+硬件量产"三线并进的新阶段，长期投资逻辑清晰且确定性强。（数据来源：5月14日）</div>
     </div>
   </div>
   </div>
 </div>
+
 
 <!-- TAB 3: 全球市场 -->
 <div class="tab-panel" id="panel-3">
   <div class="inner">
   <div class="section-title">📈 全球市场行情</div>
   <div class="alert-bar" style="margin-bottom:20px;">
-    <strong>⚠️ A股全线调整！上证指数跌1.52%至4177点，两市成交3.36万亿，北向净卖出63亿元！</strong>
-  </div>
-  <div class="hot-bar" style="margin-bottom:20px;">
-    <strong>🔥 美股续创新高！纳斯达克涨1.20%至26402点，标普500续创历史新高！</strong>
+    <strong>⚠️ A股放量大跌！上证4177.92(-1.52%)失守4200点！高位科技股遭集中兑现！赚钱效应仅约19%！</strong>
   </div>
   <div class="good-bar" style="margin-bottom:20px;">
-    <strong>✅ 高盛/摩根一致看好A股！判断进入盈利驱动的慢牛新阶段，沪深300目标5300点！</strong>
+    <strong>📈 美股三大指数齐创历史新高！标普500 7501.25(+0.77%)！道指重返50000点！英伟达市值逼近6万亿！</strong>
+  </div>
+  <div class="hot-bar" style="margin-bottom:20px;">
+    <strong>🤝 中美元首会谈举行！习近平同特朗普举行会谈！关注经贸科技合作进展！</strong>
   </div>
   <div class="market-grid">
     <div class="market-block" style="border-top:2px solid var(--red);">
-      <h4>🇨🇳 A股（5/14收盘）全线调整</h4>
+      <h4>🇨🇳 A股（5/14收盘）放量大跌</h4>
       <div class="market-row"><span class="market-name">上证指数</span><span class="market-val down">4177.92 <small>-1.52%</small></span></div>
       <div class="market-row"><span class="market-name">深证成指</span><span class="market-val down">15745.74 <small>-2.14%</small></span></div>
-      <div class="market-row"><span class="market-name">创业板指</span><span class="market-val down">3951.14 <small>-2.16%</small></span></div>
-      <div class="market-row"><span class="market-name">科创50</span><span class="market-val down">1725.09 <small>-2.55%</small></span></div>
-      <div class="market-row"><span class="market-name">两市成交额</span><span class="market-val neutral">3.36万亿（连续7日破3万亿）</span></div>
-      <div class="market-row"><span class="market-name">涨跌家数</span><span class="market-val down">上涨1047只 / 下跌4387只</span></div>
-      <div class="market-row"><span class="market-name">北向资金</span><span class="market-val down">净卖出63.04亿元</span></div>
+      <div class="market-row"><span class="market-name">创业板指</span><span class="market-val down">下跌2.16%</span></div>
+      <div class="market-row"><span class="market-name">科创50</span><span class="market-val down">下跌约2.55%</span></div>
+      <div class="market-row"><span class="market-name">两市成交额</span><span class="market-val neutral">约3.36万亿（连续7日破3万亿）</span></div>
+      <div class="market-row"><span class="market-name">北向资金</span><span class="market-val down">净流出45.8亿（终结12日净流入）</span></div>
+      <div class="market-row"><span class="market-name">涨跌家数</span><span class="market-val down">上涨1047家 / 下跌4387家</span></div>
+      <div class="market-row"><span class="market-name">赚钱效应</span><span class="market-val down">约19%</span></div>
+      <div class="market-row"><span class="market-name">涨停/跌停</span><span class="market-val neutral">涨停80家 / 跌停44家</span></div>
+      <div class="market-row"><span class="market-name">关键事件</span><span class="market-val neutral">中美元首会谈 · 高位科技股兑现</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--yellow);">
-      <h4>🇭🇰 港股（5/14收盘）平盘震荡</h4>
-      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val neutral">26389.04 <small>平盘</small></span></div>
+      <h4>🇭🇰 港股（5/14收盘）窄幅震荡</h4>
+      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val neutral">26389.04 <small>0.00%</small></span></div>
       <div class="market-row"><span class="market-name">恒生科技</span><span class="market-val down">5076.20 <small>-0.35%</small></span></div>
-      <div class="market-row"><span class="market-name">国企指数</span><span class="market-val neutral">8850.32 <small>-0.05%</small></span></div>
-      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val neutral">跟随A股调整，表现相对抗跌</span></div>
+      <div class="market-row"><span class="market-name">国企指数</span><span class="market-val down">8858.63 <small>-0.20%</small></span></div>
+      <div class="market-row"><span class="market-name">南向资金</span><span class="market-val down">净流出97.12亿港元</span></div>
+      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val neutral">等待中美会谈政策信号</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--yellow);">
-      <h4>🌏 亚太市场（5/14）分化明显</h4>
+      <h4>🌏 亚太市场（5/14）分化</h4>
       <div class="market-row"><span class="market-name">日经225</span><span class="market-val down">62654.05 <small>-0.98%</small></span></div>
-      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val up">7981.41 <small>+1.75%（续创新高）</small></span></div>
-      <div class="market-row"><span class="market-name">中国台湾加权</span><span class="market-val down">41532.18 <small>-0.87%</small></span></div>
-      <div class="market-row"><span class="market-name">新加坡海峡时报</span><span class="market-val up">4968.23 <small>+0.45%</small></span></div>
-      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val up">韩国KOSPI年内涨幅超82%领跑全球</span></div>
+      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val up">7873.91 <small>+0.4%</small></span></div>
+      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val neutral">亚太市场分化，日股回调韩股上涨</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--green);">
-      <h4>🇪🇺 欧洲市场（5/14收盘）普涨</h4>
-      <div class="market-row"><span class="market-name">欧洲斯托克50</span><span class="market-val up">5930.75 <small>+1.19%</small></span></div>
-      <div class="market-row"><span class="market-name">德国DAX30</span><span class="market-val up">+1.49%</span></div>
-      <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val up">+0.78%</span></div>
-      <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val up">+0.36%</span></div>
-      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val up">欧股全线反弹，风险偏好回升</span></div>
+      <h4>🇪🇺 欧洲市场（5/14收盘）上涨</h4>
+      <div class="market-row"><span class="market-name">德国DAX</span><span class="market-val up">上涨0.7%</span></div>
+      <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val up">8007.97 <small>+0.35%</small></span></div>
+      <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val up">10325.35 <small>+0.58%</small></span></div>
+      <div class="market-row"><span class="market-name">欧洲斯托克600</span><span class="market-val up">上涨0.66%</span></div>
+      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val up">欧股普涨，风险偏好回升</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--green);">
-      <h4>🇺🇸 美股（5/14凌晨收盘）续创新高</h4>
-      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val down">49693.20 <small>-0.14%</small></span></div>
-      <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">~7440 <small>+0.19%（续创新高）</small></span></div>
-      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">26402.34 <small>+1.20%（续创新高）</small></span></div>
-      <div class="market-row"><span class="market-name">科技七姐妹</span><span class="market-val up">多数上涨，科技股表现强势</span></div>
-      <div class="market-row"><span class="market-name">中概股</span><span class="market-val neutral">跟随美股科技股反弹</span></div>
+      <h4>🇺🇸 美股（5/14收盘）齐创新高</h4>
+      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">50063.46 <small>+0.75%（+370.26点）</small></span></div>
+      <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7501.25 <small>+0.77%（+57.00点）</small></span></div>
+      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">上涨约1.2%</span></div>
+      <div class="market-row"><span class="market-name">英伟达</span><span class="market-val up">市值逼近6万亿美元</span></div>
+      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val up">道指重返50000点，三大指数齐创新高</span></div>
+      <div class="market-row"><span class="market-name">关键事件</span><span class="market-val neutral">沃什出任美联储主席 · PPI爆表6%</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--yellow);">
-      <h4>🏭 大宗商品（5/14）小幅上涨</h4>
-      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val up">$101.02/桶 <small>+0.15%</small></span></div>
-      <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val up">$105.72/桶 <small>+0.09%</small></span></div>
-      <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val up">$4701.47/盎司 <small>+0.11%</small></span></div>
-      <div class="market-row"><span class="market-name">现货白银</span><span class="market-val neutral">跟随黄金波动</span></div>
-      <div class="market-row"><span class="market-name">市场特征</span><span class="market-val neutral">油价维持高位震荡，黄金小幅反弹</span></div>
+      <h4>🏭 大宗商品（5/14）黄金微涨</h4>
+      <div class="market-row"><span class="market-name">国际现货黄金</span><span class="market-val up">约4700-4701美元/盎司 <small>+0.09%-0.11%</small></span></div>
+      <div class="market-row"><span class="market-name">纽约金期货</span><span class="market-val neutral">4706.6美元/盎司（基本持平）</span></div>
+      <div class="market-row"><span class="market-name">国内黄金T+D</span><span class="market-val up">1028.23元/克 <small>+0.19%</small></span></div>
+      <div class="market-row"><span class="market-name">沪金主连</span><span class="market-val neutral">1029.6元/克</span></div>
+      <div class="market-row"><span class="market-name">伦敦银现</span><span class="market-val neutral">87.754美元/盎司</span></div>
+      <div class="market-row"><span class="market-name">金银比</span><span class="market-val neutral">接近50</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--purple);">
-      <h4>🪙 加密货币（5/14）震荡整理</h4>
-      <div class="market-row"><span class="market-name">比特币（BTC）</span><span class="market-val neutral">约$81,000 <small>震荡</small></span></div>
-      <div class="market-row"><span class="market-name">以太坊（ETH）</span><span class="market-val neutral">跟随BTC波动</span></div>
-      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val neutral">高位震荡，等待方向选择</span></div>
-      <div class="market-row"><span class="market-name">机构观点</span><span class="market-val neutral">长期配置价值仍存</span></div>
+      <h4>🪙 加密货币（5/14）震荡</h4>
+      <div class="market-row"><span class="market-name">比特币（BTC）</span><span class="market-val neutral">约68500-85400美元</span></div>
+      <div class="market-row"><span class="market-name">以太坊（ETH）</span><span class="market-val neutral">约5280美元</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val neutral">高位震荡，等待政策指引</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid var(--accent);">
       <h4>💱 汇率与债券</h4>
-      <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val neutral">6.8401</span></div>
-      <div class="market-row"><span class="market-name">在岸人民币</span><span class="market-val neutral">围绕6.84一线波动</span></div>
-      <div class="market-row"><span class="market-name">美元指数</span><span class="market-val neutral">约103.5</span></div>
-      <div class="market-row"><span class="market-name">中国10年期国债</span><span class="market-val neutral">约1.65%</span></div>
-      <div class="market-row"><span class="market-name">美国10年期国债</span><span class="market-val neutral">约4.40%</span></div>
-      <div class="market-row"><span class="market-name">中美利差</span><span class="market-val down">约-275BP <small>（倒挂）</small></span></div>
+      <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val neutral">6.8401 <small>（上调30个基点）</small></span></div>
+      <div class="market-row"><span class="market-name">在岸人民币</span><span class="market-val neutral">约6.7820元</span></div>
+      <div class="market-row"><span class="market-name">央行操作</span><span class="market-val neutral">5亿元7天期逆回购</span></div>
+      <div class="market-row"><span class="market-name">今日操作</span><span class="market-val neutral">3000亿元6个月期买断式逆回购</span></div>
+      <div class="market-row"><span class="market-name">中标利率</span><span class="market-val neutral">维持1.25%不变</span></div>
     </div>
   </div>
   <div class="card" style="border-left:3px solid var(--orange);">
-    <div class="card-title">📊 市场综评（5月12日·周二）</div>
+    <div class="card-title">📊 市场综评（5月14日·周四）</div>
     <div class="card-body">
-      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(248,81,73,0.08);border-radius:8px;border-left:3px solid var(--red);"><strong style="color:var(--red);">🚀 A股史诗级大涨</strong><br>上证 <span class="up" style="font-weight:700;">4225.02（+1.08%）</span> 创近11年新高 · 科创50 <span class="up" style="font-weight:700;">1716.69（+4.65%）</span> 创历史新高 · 沪指8连阳 · 成交3.54万亿连续4日破3万亿</p>
-      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(0,212,255,0.08);border-radius:8px;border-left:3px solid var(--accent);"><strong style="color:var(--accent);">🌍 特朗普将访华</strong><br>应习近平邀请，特朗普将于5/13-15日国事访问。时隔8年多再次访华，中美关系关键节点。</p>
-      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(255,166,87,0.08);border-radius:8px;border-left:3px solid var(--orange);"><strong style="color:var(--orange);">⚠️ 美伊冲突升级</strong><br>谈判破裂，美军超20艘军舰封锁霍尔木兹海峡。WTI <span class="up" style="font-weight:700;">$98.81（+3%+）</span> · 布伦特 <span class="up" style="font-weight:700;">$105.34（+4%）</span></p>
-      <p style="margin-bottom:0;padding:10px 12px;background:rgba(63,185,80,0.08);border-radius:8px;border-left:3px solid var(--green);"><strong style="color:var(--green);">🇺🇸 美股续创新高</strong><br>标普 <span class="up" style="font-weight:700;">7412.84（+0.19%）站稳7400</span> · 纳指 <span class="up" style="font-weight:700;">26274.13（+0.10%）</span> · 光通信概念股集体爆发</p>
+      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(248,81,73,0.08);border-radius:8px;border-left:3px solid var(--red);"><strong style="color:var(--red);">📉 A股放量大跌</strong><br>上证 <span class="down" style="font-weight:700;">4177.92（-1.52%）</span> 失守4200点 · 深证 <span class="down" style="font-weight:700;">15745.74（-2.14%）</span> · 创业板 <span class="down" style="font-weight:700;">下跌2.16%</span> · 科创50 <span class="down" style="font-weight:700;">下跌约2.55%</span><br>成交 <span style="font-weight:700;">3.36万亿</span> 连续7日破3万亿 · 上涨1047家/下跌4387家 · 赚钱效应仅约19%</p>
+      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(0,212,255,0.08);border-radius:8px;border-left:3px solid var(--accent);"><strong style="color:var(--accent);">🤝 中美元首会谈</strong><br>5月14日习近平同特朗普举行会谈，关注经贸科技合作进展。</p>
+      <p style="margin-bottom:10px;padding:10px 12px;background:rgba(255,166,87,0.08);border-radius:8px;border-left:3px solid var(--orange);"><strong style="color:var(--orange);">⚠️ 美国PPI爆表</strong><br>4月PPI同比飙升 <span class="up" style="font-weight:700;">6%</span> ，创2022年以来最大涨幅，加息预期升温。</p>
+      <p style="margin-bottom:0;padding:10px 12px;background:rgba(63,185,80,0.08);border-radius:8px;border-left:3px solid var(--green);"><strong style="color:var(--green);">🇺🇸 美股齐创新高</strong><br>道指 <span class="up" style="font-weight:700;">50063.46（+0.75%）重返50000点</span> · 标普 <span class="up" style="font-weight:700;">7501.25（+0.77%）创新高</span> · 纳指 <span class="up" style="font-weight:700;">上涨约1.2%创新高</span></p>
     </div>
   </div>
   </div>
 </div>
+
 
 <!-- TAB 4: 价值投资风向 -->
 <div class="tab-panel" id="panel-4">
@@ -1919,21 +1803,6 @@
   <div class="sub-section">
     <div class="sub-title">一 · 机构价值投资观点</div>
     <div class="institute-tabs">
-      <!-- 高盛/摩根 -->
-      <div class="institute-card institute-gs">
-        <div class="institute-header">
-          <div class="institute-logo">
-            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(188,140,255,0.15)" stroke="rgba(188,140,255,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#bc8cff" font-size="12" font-weight="700">GS</text></svg>
-          </div>
-          <div class="institute-info">
-            <div class="institute-name">高盛/摩根大通</div>
-            <div class="institute-tag">超配中国核心资产</div>
-          </div>
-        </div>
-        <div class="institute-body">
-          高盛、摩根大通一致判断A股进入盈利驱动的慢牛新阶段。高盛再次喊话超配中国核心资产，将沪深300目标价上调至5300点。尽管5月14日A股出现技术性调整，但机构认为这只是短期获利回吐，不改中长期上行趋势。银行板块PB仅0.67倍，处近十年23%分位，42家上市银行全线破净，高股息属性在全球低利率环境下极具配置价值。
-        </div>
-      </div>
       <!-- 中金/中信 -->
       <div class="institute-card institute-cicc">
         <div class="institute-header">
@@ -1942,11 +1811,26 @@
           </div>
           <div class="institute-info">
             <div class="institute-name">中金/中信证券</div>
-            <div class="institute-tag">全年震荡上行</div>
+            <div class="institute-tag">防御为主</div>
           </div>
         </div>
         <div class="institute-body">
-          中金、中信证券维持A股全年震荡上行判断，认为4300-4500点是合理区间。当前上证指数4177点处于区间下沿附近，调整反而提供了更好的布局机会。两市成交连续7日破3万亿，显示市场活跃度维持高位。建议关注银行、公用事业等高股息板块，以及AI算力、半导体等成长方向的回调布局机会。
+          上证指数4177.92(-1.52%)失守4200点，两市成交3.36万亿，北向资金终结连续12日净流入。高位科技股遭集中兑现，市场避险情绪升温。中美元首会谈结果有待观察，美国PPI爆表6%压制全球风险偏好。策略上建议：降低仓位，防御为主，关注银行等高股息板块，等待市场企稳信号。
+        </div>
+      </div>
+      <!-- 高盛/摩根 -->
+      <div class="institute-card institute-gs">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(188,140,255,0.15)" stroke="rgba(188,140,255,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#bc8cff" font-size="12" font-weight="700">GS</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">高盛/摩根</div>
+            <div class="institute-tag">关注中美会谈</div>
+          </div>
+        </div>
+        <div class="institute-body">
+          中美元首会谈是本周最重要的宏观事件，双方就经贸合作、科技交流等议题交换意见。会谈结果将对全球资本市场产生深远影响。美股三大指数齐创历史新高，道指重返50000点，显示全球资金对风险资产的偏好。建议关注会谈后续政策落地，以及银行等高股息防御板块。
         </div>
       </div>
       <!-- 兴业/华泰 -->
@@ -1957,11 +1841,11 @@
           </div>
           <div class="institute-info">
             <div class="institute-name">兴业/华泰</div>
-            <div class="institute-tag">高股息防御策略</div>
+            <div class="institute-tag">高股息防御</div>
           </div>
         </div>
         <div class="institute-body">
-          银行板块PB仅0.67倍，股息率2.6-6.8%，远超一年定存利率（1.65%）。工行、建行PE仅7倍左右，估值处于历史极低水平。在A股短期调整、北向资金净卖出的背景下，高股息板块提供了良好的防御属性。建议维持银行、公用事业等高股息底仓配置，同时关注调整后的成长板块布局机会。
+          A股高位回调，银行板块防御价值凸显。2026年银行分红6456亿元创历史纪录，工商银行派现1105亿元居首。银行板块PB仅0.67倍，处于近十年23%分位，42家上市银行全线破净，工行、建行PE仅7倍左右，银行股息率普遍超5%。高股息策略在当前市场环境下具备攻守兼备的特性。
         </div>
       </div>
     </div>
@@ -1980,11 +1864,11 @@
               <div class="sentiment-name">高股息整体仓位</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:72%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:75%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent">72%</span>
+                <span class="sentiment-percent">75%</span>
               </div>
-              <div class="sentiment-desc">偏高 · A股调整，资金转向防御性高股息板块</div>
+              <div class="sentiment-desc">偏高 · A股大跌，高股息防御属性凸显</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -1993,11 +1877,11 @@
               <div class="sentiment-name">银行板块讨论热度</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:65%"></div>
+                  <div class="sentiment-progress-fill" style="width:72%"></div>
                 </div>
-                <span class="sentiment-percent">65%</span>
+                <span class="sentiment-percent">72%</span>
               </div>
-              <div class="sentiment-desc">偏强 · 42家银行全线破净，PB仅0.67倍引关注</div>
+              <div class="sentiment-desc">偏高 · 银行分红6456亿创纪录，股息率超5%</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2006,11 +1890,11 @@
               <div class="sentiment-name">公用事业防御需求</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:70%;background:linear-gradient(90deg,var(--green),var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:68%;background:linear-gradient(90deg,var(--green),var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent">70%</span>
+                <span class="sentiment-percent">68%</span>
               </div>
-              <div class="sentiment-desc">偏强 · 市场调整期，公用事业避险属性凸显</div>
+              <div class="sentiment-desc">偏强 · 市场大跌，确定性资产受青睐</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2019,11 +1903,11 @@
               <div class="sentiment-name">电力板块情绪</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:68%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:65%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent">68%</span>
+                <span class="sentiment-percent">65%</span>
               </div>
-              <div class="sentiment-desc">偏多 · 高股息+AI算力用电需求双重逻辑</div>
+              <div class="sentiment-desc">偏多 · 高股息+AI算力耗电需求支撑</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2032,37 +1916,11 @@
               <div class="sentiment-name">AI算力板块情绪</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:75%;background:linear-gradient(90deg,var(--purple),var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:45%;background:linear-gradient(90deg,var(--purple),var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent hot">75%</span>
+                <span class="sentiment-percent low">45%</span>
               </div>
-              <div class="sentiment-desc">高涨 · 短期调整不改长期看好，等待回调布局</div>
-            </div>
-          </div>
-          <div class="sentiment-item">
-            <div class="sentiment-emoji">🛢️</div>
-            <div class="sentiment-info">
-              <div class="sentiment-name">能源/油价情绪</div>
-              <div class="sentiment-progress-wrap">
-                <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:60%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
-                </div>
-                <span class="sentiment-percent">60%</span>
-              </div>
-              <div class="sentiment-desc">中性偏多 · WTI维持101美元高位，能源股受益</div>
-            </div>
-          </div>
-          <div class="sentiment-item">
-            <div class="sentiment-emoji">🔋</div>
-            <div class="sentiment-info">
-              <div class="sentiment-name">新能源板块情绪</div>
-              <div class="sentiment-progress-wrap">
-                <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:58%;background:linear-gradient(90deg,var(--green),var(--accent))"></div>
-                </div>
-                <span class="sentiment-percent">58%</span>
-              </div>
-              <div class="sentiment-desc">中性 · 跟随大盘调整，长期碳中和逻辑不变</div>
+              <div class="sentiment-desc">回落 · 高位科技股遭集中兑现</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2071,11 +1929,24 @@
               <div class="sentiment-name">黄金板块情绪</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:62%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:52%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent">62%</span>
+                <span class="sentiment-percent">52%</span>
               </div>
-              <div class="sentiment-desc">中性偏多 · 黄金4701美元，高位震荡观望为主</div>
+              <div class="sentiment-desc">中性 · 黄金高位震荡，等待方向选择</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🔋</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">新能源板块情绪</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:48%;background:linear-gradient(90deg,var(--green),var(--accent))"></div>
+                </div>
+                <span class="sentiment-percent low">48%</span>
+              </div>
+              <div class="sentiment-desc">中性偏弱 · 市场调整，成长板块承压</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2084,11 +1955,11 @@
               <div class="sentiment-name">加密货币情绪</div>
               <div class="sentiment-progress-wrap">
                 <div class="sentiment-progress-bar">
-                  <div class="sentiment-progress-fill" style="width:55%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
+                  <div class="sentiment-progress-fill" style="width:50%;background:linear-gradient(90deg,#f0b429,var(--accent))"></div>
                 </div>
-                <span class="sentiment-percent low">55%</span>
+                <span class="sentiment-percent">50%</span>
               </div>
-              <div class="sentiment-desc">中性 · BTC约8.1万美元震荡，等待方向选择</div>
+              <div class="sentiment-desc">中性 · BTC高位震荡，等待政策指引</div>
             </div>
           </div>
         </div>
@@ -2097,16 +1968,16 @@
       <div class="topic-cloud">
         <div class="topic-cloud-title">🔥 近24小时社区重点讨论</div>
         <div class="topic-tags">
-          <span class="topic-tag hot">银行板块破净</span>
-          <span class="topic-tag">高盛喊话超配</span>
-          <span class="topic-tag hot">A股技术性调整</span>
-          <span class="topic-tag">沪深300目标5300</span>
-          <span class="topic-tag">高股息防御</span>
-          <span class="topic-tag">北向净卖出63亿</span>
-          <span class="topic-tag">美股续创新高</span>
-          <span class="topic-tag">油价维持高位</span>
-          <span class="topic-tag">盈利驱动慢牛</span>
-          <span class="topic-tag">4300-4500合理区间</span>
+          <span class="topic-tag warn">A股放量大跌</span>
+          <span class="topic-tag">中美元首会谈</span>
+          <span class="topic-tag warn">高位科技股兑现</span>
+          <span class="topic-tag">北向资金流出</span>
+          <span class="topic-tag hot">银行分红6456亿</span>
+          <span class="topic-tag">美股创新高</span>
+          <span class="topic-tag warn">PPI爆表6%</span>
+          <span class="topic-tag">央行逆回购</span>
+          <span class="topic-tag">AI算力需求</span>
+          <span class="topic-tag">机器人量产</span>
         </div>
       </div>
     </div>
@@ -2124,7 +1995,7 @@
         </div>
         <div class="dividend-metrics">
           <div class="metric">
-            <div class="metric-value">2.6-6.8%</div>
+            <div class="metric-value">5%+</div>
             <div class="metric-label">股息率</div>
           </div>
           <div class="metric">
@@ -2133,7 +2004,7 @@
           </div>
         </div>
         <div class="dividend-body">
-          银行板块PB仅0.67倍，处近十年23%分位，42家上市银行全线破净。工行、建行PE仅7倍左右，股息率2.6-6.8%，远超一年定存利率（1.65%）。高盛、摩根一致看好银行板块配置价值，认为在盈利驱动的慢牛新阶段，银行股的高股息属性将为投资者提供稳定的现金流回报。A股调整后，银行板块防御价值进一步凸显。
+          2026年银行分红6456亿元创历史纪录，工商银行派现1105亿元居首。银行板块PB仅0.67倍，处于近十年23%分位，42家上市银行全线破净。工行、建行PE仅7倍左右，银行股息率普遍超5%。在A股高位回调背景下，银行板块"低波动+高分红+大市值"的压舱石价值凸显。
         </div>
       </div>
       <!-- 能源板块 -->
@@ -2144,16 +2015,16 @@
         </div>
         <div class="dividend-metrics">
           <div class="metric">
-            <div class="metric-value warn">$101.02</div>
-            <div class="metric-label">WTI原油</div>
+            <div class="metric-value">6%+</div>
+            <div class="metric-label">股息率</div>
           </div>
           <div class="metric">
-            <div class="metric-value warn">$105.72</div>
-            <div class="metric-label">布伦特</div>
+            <div class="metric-value">中国海油</div>
+            <div class="metric-label">龙头</div>
           </div>
         </div>
         <div class="dividend-body">
-          WTI原油维持101美元/桶高位，布伦特105.72美元/桶，油价高位震荡为上游能源企业带来丰厚利润。中国海油作为国内油气龙头，直接受益于高油价环境。能源板块股息率普遍较高，在通胀环境下具备天然的抗通胀属性。建议关注油价走势，维持能源股底仓配置，享受高股息+油价上涨的双重收益。
+          能源板块股息率普遍超6%，中国海油作为上游油气龙头，在高油价环境下业绩弹性较大。但需关注中美元首会谈后能源领域政策变化。建议已有底仓持有观望，密切关注后续政策信号。
         </div>
       </div>
       <!-- 公用事业 -->
@@ -2164,16 +2035,16 @@
         </div>
         <div class="dividend-metrics">
           <div class="metric">
-            <div class="metric-value good">~4.24%</div>
-            <div class="metric-label">长江电力股息率</div>
+            <div class="metric-value">4%+</div>
+            <div class="metric-label">股息率</div>
           </div>
           <div class="metric">
-            <div class="metric-value">~3.8%</div>
-            <div class="metric-label">中国核电股息率</div>
+            <div class="metric-value">长江电力</div>
+            <div class="metric-label">龙头</div>
           </div>
         </div>
         <div class="dividend-body">
-          公用事业板块在A股调整期体现出良好的防御属性。长江电力作为水电龙头，承诺分红比例不低于70%，股息率约4.24%。中国核电装机规模全球首位，核电作为清洁稳定的能源形式，在AI数据中心耗电量攀升的背景下具备长期增长逻辑。公用事业不受科技周期波动影响，是震荡市中的确定性收益来源。
+          公用事业板块作为"不受地缘冲突影响、不受科技周期波动干扰"的纯内需防御板块，在市场大跌环境下确定性溢价凸显。长江电力运营六座梯级电站构成世界级清洁能源走廊，承诺分红比例不低于70%，是高股息策略的核心标的。
         </div>
       </div>
       <!-- 通信/中国移动 -->
@@ -2184,8 +2055,8 @@
         </div>
         <div class="dividend-metrics">
           <div class="metric">
-            <div class="metric-value">~5.16%</div>
-            <div class="metric-label">A股股息率</div>
+            <div class="metric-value">5-6.5%</div>
+            <div class="metric-label">股息率</div>
           </div>
           <div class="metric">
             <div class="metric-value hot">+50%</div>
@@ -2193,7 +2064,7 @@
           </div>
         </div>
         <div class="dividend-body">
-          中国移动A股股息率约5.16%，H股约6.8%。算力及云/AI相关业务收入增速超过50%，PB约1.15x处于历史28%分位。移动兼具"高股息防御+算力成长"双属性，在AI算力投资加速的背景下，作为算力基础设施核心参与者将直接受益。当前估值处于历史低位，配置价值凸显。
+          中国移动A股股息率约5.16%，H股约6.8%。算力及云/AI相关业务收入增速超过50%，PB约1.15x处于历史28%分位。移动"高股息防御+算力成长"双属性在当前环境下尤为稀缺，是高股息策略中的成长型标的。
         </div>
       </div>
     </div>
@@ -2203,72 +2074,67 @@
   <div class="sub-section">
     <div class="sub-title">四 · 低估值板块</div>
     <div class="undervalued-grid">
-      <!-- 中国海油 -->
+      <!-- 中国核电 -->
       <div class="undervalued-card">
         <div class="undervalued-badge">低估值</div>
         <div class="undervalued-header">
-          <div class="undervalued-icon">🛢️</div>
+          <div class="undervalued-icon">⚛️</div>
           <div class="undervalued-title-area">
-            <div class="undervalued-name">中国海油</div>
+            <div class="undervalued-name">中国核电</div>
             <div class="undervalued-tags">
-              <span class="uv-tag">上游油气龙头</span>
-              <span class="uv-tag">高油价受益</span>
+              <span class="uv-tag">核电装机全球第一</span>
+              <span class="uv-tag">AI耗电受益</span>
             </div>
           </div>
         </div>
         <div class="undervalued-metrics">
           <div class="uv-metric">
-            <div class="uv-metric-value">~8x</div>
+            <div class="uv-metric-value">18x</div>
             <div class="uv-metric-label">PE</div>
-            <div class="uv-metric-percentile">25%分位</div>
+            <div class="uv-metric-percentile">45%分位</div>
           </div>
           <div class="uv-metric">
-            <div class="uv-metric-value">~1.3x</div>
+            <div class="uv-metric-value">1.25亿</div>
+            <div class="uv-metric-label">装机(千瓦)</div>
+            <div class="uv-metric-percentile good">全球首位</div>
+          </div>
+        </div>
+        <div class="undervalued-desc">
+          中国核电装机规模位居全球首位（达1.25亿千瓦），未来五年装机增速有望维持在10%以上。AI数据中心耗电量持续攀升为核电板块提供中长期需求支撑。18倍PE对应历史45%分位，估值处于合理区间。
+        </div>
+      </div>
+      <!-- 中国平安 -->
+      <div class="undervalued-card">
+        <div class="undervalued-badge">低估值</div>
+        <div class="undervalued-header">
+          <div class="undervalued-icon">🛡️</div>
+          <div class="undervalued-title-area">
+            <div class="undervalued-name">中国平安</div>
+            <div class="undervalued-tags">
+              <span class="uv-tag">保险龙头</span>
+              <span class="uv-tag">分红险切换红利</span>
+            </div>
+          </div>
+        </div>
+        <div class="undervalued-metrics">
+          <div class="uv-metric">
+            <div class="uv-metric-value">9.1x</div>
+            <div class="uv-metric-label">PE</div>
+            <div class="uv-metric-percentile good">15%分位</div>
+          </div>
+          <div class="uv-metric">
+            <div class="uv-metric-value">0.78x</div>
             <div class="uv-metric-label">PB</div>
             <div class="uv-metric-percentile good">历史低位</div>
           </div>
           <div class="uv-metric">
-            <div class="uv-metric-value">~6%</div>
+            <div class="uv-metric-value">~4.7%</div>
             <div class="uv-metric-label">股息率</div>
-            <div class="uv-metric-percentile good">高股息</div>
+            <div class="uv-metric-percentile">双属性</div>
           </div>
         </div>
         <div class="undervalued-desc">
-          中国海油作为国内上游油气龙头，直接受益于WTI原油101美元/桶的高油价环境。当前PE约8倍，PB约1.3倍，均处于历史低位。股息率约6%（A股），H股股息率更高。在通胀环境下，能源股具备天然的抗通胀属性。高盛超配中国核心资产的判断下，海油作为低估值高股息的央企代表，配置价值凸显。
-        </div>
-      </div>
-      <!-- 中国移动 -->
-      <div class="undervalued-card">
-        <div class="undervalued-badge">低估值</div>
-        <div class="undervalued-header">
-          <div class="undervalued-icon">📡</div>
-          <div class="undervalued-title-area">
-            <div class="undervalued-name">中国移动</div>
-            <div class="undervalued-tags">
-              <span class="uv-tag">通信龙头</span>
-              <span class="uv-tag">算力基建</span>
-            </div>
-          </div>
-        </div>
-        <div class="undervalued-metrics">
-          <div class="uv-metric">
-            <div class="uv-metric-value">~12x</div>
-            <div class="uv-metric-label">PE</div>
-            <div class="uv-metric-percentile">30%分位</div>
-          </div>
-          <div class="uv-metric">
-            <div class="uv-metric-value">1.15x</div>
-            <div class="uv-metric-label">PB</div>
-            <div class="uv-metric-percentile good">28%分位</div>
-          </div>
-          <div class="uv-metric">
-            <div class="uv-metric-value">~5.2%</div>
-            <div class="uv-metric-label">股息率</div>
-            <div class="uv-metric-percentile good">高股息</div>
-          </div>
-        </div>
-        <div class="undervalued-desc">
-          中国移动PE约12倍，PB仅1.15倍处于历史28%分位，估值极具吸引力。A股股息率约5.16%，H股约6.8%。算力及云/AI相关业务收入增速超过50%，在AI算力投资加速的背景下，移动作为算力基础设施核心参与者将直接受益。兼具高股息防御与算力成长双属性，在当前市场环境下尤为稀缺。
+          中国平安当前PE约9.1倍，PB约0.78倍，股息率约4.7%，估值处于历史低位。分红险演示利率上限降至3.5%，预定利率从1.75%降至1.25%，老产品须在6/30前退市——平安作为行业龙头将直接承接切换红利。
         </div>
       </div>
     </div>
@@ -2308,23 +2174,23 @@
           <div class="capital-content">
             <div class="capital-title">险资+社保</div>
             <div class="capital-stats">
-              <span class="capital-stat">预计入市<span class="highlight-num">1.2万亿</span></span>
-              <span class="capital-stat">银行PB<span class="highlight-num">0.67x</span></span>
-              <span class="capital-stat">股息<span class="highlight-num">2.6-6.8%</span></span>
+              <span class="capital-stat">QFII持有<span class="highlight-num">1495家</span></span>
+              <span class="capital-stat">社保基金<span class="highlight-num">611家</span></span>
+              <span class="capital-stat">持仓市值<span class="highlight-num">8000亿+</span></span>
             </div>
-            <div class="capital-desc">2026年社保基金与保险资金合计新增入市规模预计可达1.2万亿元左右。银行板块PB仅0.67倍，42家上市银行全线破净，为高股息策略提供丰富标的。工行、建行PE仅7倍左右，股息率远超定存，是险资社保等长线资金的理想配置方向。</div>
+            <div class="capital-desc">QFII持有1495家A股公司，社保基金现身611家前十股东，三类长线资金合计持仓总市值超过8000亿元。2026年一季度社保基金新进持仓聚焦半导体、自动化设备及电子化学品。</div>
           </div>
         </div>
         <div class="capital-card">
           <div class="capital-icon">🌍</div>
           <div class="capital-content">
-            <div class="capital-title">QFII外资</div>
+            <div class="capital-title">北向资金</div>
             <div class="capital-stats">
-              <span class="capital-stat">USD/CNY <span class="highlight-num">6.8401</span></span>
-              <span class="capital-stat">汇率<span class="highlight-num">稳定</span></span>
-              <span class="capital-stat">目标<span class="highlight-num">5300点</span></span>
+              <span class="capital-stat">昨日流出<span class="highlight-num">45.8亿</span></span>
+              <span class="capital-stat">终结<span class="highlight-num">12日</span>净流入</span>
+              <span class="capital-stat">南向流出<span class="highlight-num">97.12亿</span></span>
             </div>
-            <div class="capital-desc">USD/CNY中间价6.8401，汇率稳定为外资流入创造良好条件。高盛将沪深300目标价上调至5300点，喊话超配中国核心资产。尽管5月14日北向资金净卖出63亿元，但机构一致看好A股中长期走势，外资增配A股动力持续增强。</div>
+            <div class="capital-desc">北向资金净流出45.8亿元，终结连续12日净流入态势。南向资金净流出97.12亿港元。外资动向出现分化，A股高位回调引发外资获利了结，短期市场波动加大。</div>
           </div>
         </div>
       </div>
@@ -2341,7 +2207,7 @@
           <div class="valuation-name">银行板块PB</div>
           <div class="valuation-value">0.67x</div>
         </div>
-        <div class="valuation-tag low">23%分位</div>
+        <div class="valuation-tag low">低位</div>
       </div>
       <div class="valuation-item">
         <div class="valuation-icon">📊</div>
@@ -2355,7 +2221,7 @@
         <div class="valuation-icon">💰</div>
         <div class="valuation-info">
           <div class="valuation-name">银行股息率</div>
-          <div class="valuation-value">2.6-6.8%</div>
+          <div class="valuation-value">5%+</div>
         </div>
         <div class="valuation-tag high">高位</div>
       </div>
@@ -2363,17 +2229,9 @@
         <div class="valuation-icon">📈</div>
         <div class="valuation-info">
           <div class="valuation-name">中证红利PE</div>
-          <div class="valuation-value">7.1x</div>
+          <div class="valuation-value">7.0x</div>
         </div>
         <div class="valuation-tag low">22%</div>
-      </div>
-      <div class="valuation-item">
-        <div class="valuation-icon">🛢️</div>
-        <div class="valuation-info">
-          <div class="valuation-name">中国海油桶油利润</div>
-          <div class="valuation-value">~$35</div>
-        </div>
-        <div class="valuation-tag high">高油价</div>
       </div>
       <div class="valuation-item">
         <div class="valuation-icon">📡</div>
@@ -2400,12 +2258,20 @@
         <div class="valuation-tag mid">45%</div>
       </div>
       <div class="valuation-item">
+        <div class="valuation-icon">🛡️</div>
+        <div class="valuation-info">
+          <div class="valuation-name">中国平安PE</div>
+          <div class="valuation-value">9.1x</div>
+        </div>
+        <div class="valuation-tag low">15%</div>
+      </div>
+      <div class="valuation-item">
         <div class="valuation-icon">🥇</div>
         <div class="valuation-info">
           <div class="valuation-name">黄金价格</div>
           <div class="valuation-value warn">4701$</div>
         </div>
-        <div class="valuation-tag mid">高位</div>
+        <div class="valuation-tag mid">高位震荡</div>
       </div>
     </div>
   </div>
@@ -2416,104 +2282,102 @@
     <div class="reference-grid">
       <div class="reference-card">
         <div class="reference-risk low">低风险</div>
-        <div class="reference-icon">🏦</div>
-        <div class="reference-title">银行板块</div>
-        <div class="reference-desc">42家银行全线破净，PB仅0.67倍，股息率2.6-6.8%</div>
-        <div class="reference-detail">银行板块PB仅0.67倍，处近十年23%分位，估值处于历史极低水平。工行、建行PE仅7倍左右，股息率远超一年定存利率。高盛、摩根一致看好银行板块配置价值，认为在盈利驱动的慢牛新阶段，银行股的高股息属性将为投资者提供稳定的现金流回报。A股调整后，银行板块防御价值进一步凸显，是长线资金的理想配置方向。</div>
-      </div>
-      <div class="reference-card">
-        <div class="reference-risk mid">中风险</div>
-        <div class="reference-icon">⚡</div>
-        <div class="reference-title">公用事业</div>
-        <div class="reference-desc">高股息+AI算力用电需求，长江电力/中国核电双龙头</div>
-        <div class="reference-detail">公用事业板块在A股调整期体现出良好的防御属性。长江电力股息率约4.24%，承诺分红比例不低于70%。中国核电装机规模全球首位，核电作为清洁稳定的能源形式，在AI数据中心耗电量攀升的背景下具备长期增长逻辑。公用事业不受科技周期波动影响，是震荡市中的确定性收益来源，适合作为高股息底仓配置。</div>
+        <div class="reference-icon">🏢</div>
+        <div class="reference-title">REITs·固收+</div>
+        <div class="reference-desc">央行适度宽松+人民币稳定，固收资产配置价值不减</div>
+        <div class="reference-detail">央行维持适度宽松货币政策，流动性环境保持合理充裕。10年期国债收益率维持在低位，债牛格局延续。在A股大跌背景下，固收类资产对保守型资金的吸引力凸显。</div>
       </div>
       <div class="reference-card">
         <div class="reference-risk high">高风险</div>
+        <div class="reference-icon">💻</div>
+        <div class="reference-title">半导体/算力</div>
+        <div class="reference-desc">高位科技股遭集中兑现，短期调整压力较大</div>
+        <div class="reference-detail">5月14日A股高位科技股遭集中兑现，科创50下跌约2.55%。虽然AI算力长期逻辑清晰，但短期涨幅过大，建议等待回调企稳后再分批介入，切勿急于抄底。</div>
+      </div>
+      <div class="reference-card">
+        <div class="reference-risk mid">中风险</div>
         <div class="reference-icon">🤖</div>
-        <div class="reference-title">AI算力</div>
-        <div class="reference-desc">短期调整不改长期趋势，等待回调布局机会</div>
-        <div class="reference-detail">5月14日AI算力板块跟随大盘调整，科创50跌2.55%，但长期逻辑未变。中国移动算力收入增速超过50%，PB仅1.15倍处于历史28%分位，兼具高股息与算力成长双属性。高盛将沪深300目标价上调至5300点，看好中国核心资产。建议等待回调后分批介入AI算力板块，切勿追高，重点关注算力基础设施相关标的。</div>
+        <div class="reference-title">人形机器人</div>
+        <div class="reference-desc">特斯拉年中量产+国内投资热潮，产业化提速</div>
+        <div class="reference-detail">特斯拉Optimus V3预计2026年年中亮相，目标年产10万台。宇树科技开放全球首个机器人应用商店。机器人板块处于产业化提速的关键阶段，关注核心零部件供应商的长期投资机会。</div>
       </div>
     </div>
   </div>
   </div>
 </div>
+
+
 <!-- TAB 5: 关注标的 -->
 <div class="tab-panel" id="panel-5">
   <div class="inner">
   <div class="section-title">🏦 关注标的 · 核心持仓跟踪</div>
   <div class="good-bar" style="margin-bottom:16px;">
-    <strong>💰 银行股逆势抗跌！工行/农行5/13派息日刚结束，股息率4.5%-6.8%远超定存！长江电力Q1净利+30.50%业绩亮眼！</strong>
+    <strong>💰 银行股息率5%+远超定存！2026年银行分红6456亿创纪录！工行派现1105亿居首！银行板块PB仅0.67倍处于近十年23%分位！</strong>
   </div>
   <div class="alert-bar" style="margin-bottom:16px;">
-    <strong>⚠️ 5月14日A股大跌，上证-1.52%，科技股回调明显。银行股相对抗跌，防御属性凸显。关注标的提醒：中国核电跌2.16%，短期波动不改中长期配置价值；招行PB跌破1倍，安全边际进一步提升。</strong>
+    <strong>⚠️ 关注标的提醒：A股高位回调，注意控制仓位，高股息防御为主，等待市场企稳信号。</strong>
   </div>
   <div class="sub-title" style="margin:28px 0 18px;">银行股 · 高股息核心</div>
     <div class="stock-card" style="border-color:rgba(240,180,41,0.5);">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">工商银行</span><span class="stock-code">601398 / 1398.HK</span><span class="tag tag-energy">股息率4.5-5%</span></div>
-        <div class="stock-price-area"><div class="stock-price up">7.30元（+0.97%）</div><div class="stock-change up">5/13派息日</div></div>
+        <div class="stock-info-row"><span class="stock-name">工商银行</span><span class="stock-code">601398 / 1398.HK</span><span class="tag tag-energy">派现1105亿</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">2026年分红居首</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>5月14日A股大跌-1.52%，工行逆势上涨0.97%，展现出银行板块强大的防御属性。5月13日为派息日，每股派0.1689元(含税)，股息率约4.5-5%，远超一年定存利率。</li>
-        <li>总市值约2.6万亿，是全球资产规模最大的商业银行。科技股回调背景下，资金从高估值板块流向银行等高股息防御品种的趋势明显。</li>
-        <li>在大盘大跌环境下，工行作为"国家队"核心持仓，具备极强的抗跌能力和分红确定性，是稳健型投资者的底仓首选。</li>
+        <li>2026年派发现金红利1105亿元，创历史纪录，在上市银行中居首。银行板块PB仅0.67倍，处于近十年23%分位，42家上市银行全线破净。</li>
+        <li>工行PE仅7倍左右，股息率超5%，是一年定存（0.95%-1.15%）的5倍以上。在A股高位回调背景下，银行板块的防御属性凸显。</li>
+        <li>作为全球资产规模最大的商业银行，工行是长线资金底仓配置的首选标的。高股息+低估值提供攻守兼备的安全垫。</li>
       </ul>
     </div>
     <div class="stock-card" style="border-color:rgba(0,212,255,0.3);">
       <div class="stock-header">
         <div class="stock-info-row"><span class="stock-name">招商银行</span><span class="stock-code">600036 / 3968.HK</span><span class="tag tag-finance">PE 6.35x</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB跌破1倍 · 股息率5.11%</div></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB跌破1倍</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>当前PB约0.93x，正式跌破1倍净资产，处于近十年极低估值分位。PE仅6.35倍，拨备覆盖率392%，不良率仅0.94%，资产质量优异。</li>
-        <li>5月14日市场大跌中，招行作为零售银行龙头，凭借稳健的基本面和5.11%的高股息率，相对科技股展现出明显的避险属性。</li>
-        <li>PB跌破1倍意味着股价低于每股净资产，提供了极高的安全边际。对于长期价值投资者而言，当前价位具备较高的配置性价比。</li>
+        <li>PE仅6.35倍，PB跌破1倍至约0.93x处于近十年仅12%分位。拨备覆盖率392%，不良率0.94%，资产质量优异。股息率约5.11%，在银行股中名列前茅。</li>
+        <li>零售金融龙头地位稳固，中金公司目标价46元。中美元首会谈若推动金融开放合作，招行作为零售银行标杆将优先受益。</li>
+        <li>PB跌破1倍提供了较高的安全边际，是稳健型投资者的优质选择。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">宁波银行</span><span class="stock-code">002142</span><span class="tag tag-policy">Q1双十增长</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">不良率仅0.76% · PB 0.91x</div></div>
+        <div class="stock-info-row"><span class="stock-name">宁波银行</span><span class="stock-code">002142</span><span class="tag tag-policy">股息率2.59-3%</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">Q1净利+10.30%</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>Q1营收203.84亿元（+10.21%），归母净利81.81亿元（+10.30%），重回双十增长轨道。不良率仅0.76%，资产质量在城商行中名列前茅。</li>
-        <li>5月14日科技股大幅回调，市场风格从高估值成长向稳健价值切换，宁波银行凭借优异的业绩增速和资产质量，有望获得避险资金青睐。</li>
-        <li>PB约0.91x，估值处于历史低位。长三角区域经济活跃，宁波银行作为区域龙头，中长期成长逻辑清晰。</li>
+        <li>Q1营收203.84亿元（+10.21%），归母净利81.81亿元（+10.30%），重回双十增长轨道，不良率仅0.76%，资产质量在城商行中名列前茅。PB约0.91x。</li>
+        <li>在A股高位回调、市场避险情绪升温的背景下，宁波银行凭借双十增速在银行板块内部脱颖而出。人民币汇率稳定+中美元首会谈预期提振外资风险偏好。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
         <div class="stock-info-row"><span class="stock-name">江苏银行</span><span class="stock-code">600919</span><span class="tag tag-policy">股息率5.27%</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB仅0.65x · 净利增速12%</div></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB 0.65x</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>市场预期净利润增速约12%，股息率约5.27%，PB仅0.65x，估值洼地特征突出。江苏经济体量长期位居全国前列，区域龙头地位稳固。</li>
-        <li>5月14日A股大跌背景下，高股息+低估值品种成为资金避风港。江苏银行作为长三角城商行代表，防御属性与成长属性兼具。</li>
-        <li>总资产规模大概率突破4万亿，规模效应持续释放。在当前市场波动加大环境下，配置价值进一步凸显。</li>
+        <li>市场预期净利润增速约12%，总资产规模大概率突破4万亿。江苏经济体量长期位居全国前列，区域龙头地位稳固。股息率约5.4%，PB仅0.65x，估值洼地特征突出。</li>
+        <li>A股高位回调，高股息+低估值品种成为防御型资金首选。江苏银行作为长三角城商行高股息代表，在市场波动加大时配置价值凸显。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">杭州银行</span><span class="stock-code">600926</span><span class="tag tag-policy">Q1净利+10.09%</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB仅0.74x</div></div>
+        <div class="stock-info-row"><span class="stock-name">杭州银行</span><span class="stock-code">600926</span><span class="tag tag-policy">Q1超预期</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">Q1净利+10.09% · PB 0.74x</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>Q1归母净利润66.29亿元（+10.09%），盈利增速保持两位数。深耕长三角腹地，充分受益于数字经济蓬勃发展与新制造业集群效应。</li>
-        <li>5月14日市场大跌中，杭州银行凭借0.74x的低PB和稳健的业绩增长，展现出较强的抗跌能力。科技股回调反而凸显其价值属性。</li>
-        <li>AI算力投资热潮为杭州银行所在区域的科技企业带来融资需求增量，中长期成长空间可期。</li>
+        <li>Q1归母净利润66.29亿元（+10.09%），盈利增速保持两位数。深耕长三角腹地，充分受益于数字经济蓬勃发展与新制造业集群效应。PB仅0.74x处于历史估值底部。</li>
+        <li>中美元首会谈预期+央行适度宽松，长三角外向型经济景气上行有望带动杭州银行信贷投放提速。AI算力投资热潮也为杭州银行所在区域的科技企业带来融资需求增量。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
         <div class="stock-info-row"><span class="stock-name">农业银行</span><span class="stock-code">601288 / 1288.HK</span><span class="tag tag-finance">股息率6.5-6.8%</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">5/13派息日 · PB约0.60倍</div></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">高股息代表</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>5月13日为派息日，A股股息率约6.5-6.8%，为四大行最高。PB约0.60倍，也是四大行最低，下行空间有限，安全边际极高。</li>
-        <li>5月14日A股大跌中，农行作为高股息代表，凭借6.5%+的股息率吸引避险资金，相对大盘展现出明显的超额收益能力。</li>
-        <li>平安人寿持有的农行H股已突破20%举牌线，机构资金持续流入。国家"三农"支持政策持续加码，农村金融护城河深厚。</li>
+        <li>A股股息率约6.5-6.8%，H股股息率更高在四大行中居首。平安人寿持有的农行H股已突破20%举牌线，显示险资对高股息银行股的青睐。</li>
+        <li>PB约0.60倍为四大行最低，下行空间有限。国家层面"三农"支持政策持续加码，农村金融护城河深厚。银行分红季进入密集落地期。</li>
       </ul>
     </div>
     <div class="stock-card">
@@ -2522,21 +2386,19 @@
         <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">西南城商行标杆</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>重庆经济运行总体平稳，公司作为西南地区城商行标杆，区域深耕壁垒深厚。股息率约4.7%，在城商行中处于较高水平。</li>
-        <li>5月14日市场大跌背景下，重庆银行凭借稳定的区域业务和高股息特征，为投资者提供了良好的防御选择。</li>
-        <li>中西部城商行的资产质量优势在流动性充裕环境下更加凸显，中长期配置价值值得关注。</li>
+        <li>重庆经济运行总体平稳，公司作为西南地区城商行标杆，区域深耕壁垒深厚。股息率约4-5%。</li>
+        <li>央行维持适度宽松+人民币稳定，中西部城商行的资产质量优势在流动性充裕环境下更加凸显。</li>
       </ul>
     </div>
     <div class="sub-title" style="margin:28px 0 18px;">公用事业</div>
     <div class="stock-card">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">长江电力</span><span class="stock-code">600900</span><span class="tag tag-policy">Q1净利+30.50%</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">约27元</div><div class="stock-change neutral">股息率约4.24%</div></div>
+        <div class="stock-info-row"><span class="stock-name">长江电力</span><span class="stock-code">600900</span><span class="tag tag-policy">分红比例≥70%</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">股息率约4.24%</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>Q1营收181.12亿元（+6.44%），归母净利67.61亿元（+30.50%），业绩大超预期。运营六座梯级电站构成世界级清洁能源走廊，公司承诺分红比例不低于70%。</li>
-        <li>5月14日A股大跌中，长江电力作为典型的防御性标的，凭借稳定的现金流和高分红特征，有望获得避险资金青睐。</li>
-        <li>"不受地缘冲突影响、不受科技周期干扰"的纯内需属性，在市场波动加大时尤为珍贵。4.24%的股息率提供了确定性收益。</li>
+        <li>运营六座梯级电站构成世界级清洁能源走廊，公司承诺分红比例不低于70%。在A股高位回调的背景下，长江电力体现出典型的防御属性。</li>
+        <li>作为"不受地缘冲突影响、不受科技周期干扰"的纯内需标的，其确定性收益特征在复杂环境下尤为珍贵。AI数据中心耗电量持续攀升提供中长期需求支撑。</li>
       </ul>
     </div>
     <div class="stock-card">
@@ -2545,54 +2407,49 @@
         <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">PB约1.0x · PE约9x</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>PB约1.0x，PE约9x，股息率约4.19%。作为全国煤炭运输大动脉，货运量长期维持高位稳定，现金流极其充沛。</li>
-        <li>5月14日市场大跌背景下，大秦铁路作为"与大宗价格脱钩、与分红回报挂钩"的基础设施央企，确定性收益特征凸显。</li>
-        <li>国内陆路运输通道完全不受国际局势影响，是稳健型投资者的"压舱石"标的，适合作为防御底仓配置。</li>
+        <li>PB约1.0x，PE约9x，股息率约5%。作为全国煤炭运输大动脉，货运量长期维持高位稳定。</li>
+        <li>在油价波动+地缘冲突的背景下，"与大宗价格脱钩、与分红回报挂钩"的基础设施央企确定性收益特征凸显，是稳健型投资者的"压舱石"。</li>
       </ul>
     </div>
     <div class="sub-title" style="margin:28px 0 18px;">央企高股息</div>
     <div class="stock-card" style="border-color:rgba(240,180,41,0.4);">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">中国海油</span><span class="stock-code">600938 / 0883.HK</span><span class="tag tag-energy">油价$101支撑</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">A股股息率约6% · PE约11倍</div></div>
+        <div class="stock-info-row"><span class="stock-name">中国海油</span><span class="stock-code">600938 / 0883.HK</span><span class="tag tag-energy">股息率6%</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">高油价受益</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>油价维持101美元高位，为中国海油业绩提供强劲支撑。A股股息率约6%，H股股息率更高，在高股息标的中名列前茅。</li>
-        <li>5月14日A股大跌中，能源板块相对抗跌。中国海油凭借高股息和油价支撑，展现出较强的防御能力。</li>
-        <li>动态PE约11倍，估值合理。油价高位运行背景下，业绩确定性强，适合作为能源板块的核心配置标的。</li>
+        <li>作为国内上游油气龙头，在高油价环境下业绩弹性较大。A股股息率约6%，H股股息率更高。</li>
+        <li>建议已有底仓持有观望，密切关注中美元首会谈后能源领域政策信号。短期油价波动+地缘催化提供一定修复机会。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
         <div class="stock-info-row"><span class="stock-name">中国平安</span><span class="stock-code">601318 / 2318.HK</span><span class="tag tag-finance">PE 9.1x · PB 0.78x</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">股息率约4.7% · NBV+20%</div></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">股息率约4.7%</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>2025年新业务价值（NBV）增速超过20%，寿险业务转型成效持续兑现。当前PE约9.1倍，PB约0.78倍，股息率约4.7%，估值处于历史低位。</li>
-        <li>5月14日市场大跌中，保险板块相对稳健。平安作为综合金融龙头，凭借高股息和低估值特征，具备较强的防御属性。</li>
-        <li>分红险演示利率上限降至3.5%，大量到期存单资金正转向保险产品，平安作为行业龙头将直接承接切换红利。</li>
+        <li>2025年新业务价值（NBV）增速超过20%，寿险业务转型成效持续兑现。当前PE约9.1倍，PB约0.78倍，股息率约4.75-5.8%，估值处于历史低位。</li>
+        <li>分红险演示利率上限降至3.5%，预定利率从1.75%降至1.25%，老产品须在6/30前退市。平安作为行业龙头将直接承接切换红利，大量到期存单资金正转向保险产品。</li>
       </ul>
     </div>
     <div class="stock-card" style="border-color:rgba(0,212,255,0.45);">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">中国移动</span><span class="stock-code">600941 / 0941.HK</span><span class="tag tag-ai">算力收入+50%</span></div>
-        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">A股股息率约5.16% · PB约1.15x</div></div>
+        <div class="stock-info-row"><span class="stock-name">中国移动</span><span class="stock-code">600941 / 0941.HK</span><span class="tag tag-ai">股息率5-6.5%</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">算力收入+50%</div></div>
       </div>
       <ul class="stock-bullets">
         <li>A股股息率约5.16%，H股约6.8%。算力及云/AI相关业务收入增速超过50%，PB约1.15倍处于历史28%分位的低位。</li>
-        <li>5月14日科技股回调中，中国移动凭借"高股息防御+算力成长"的双属性，展现出较强的抗跌能力。</li>
-        <li>1.2万亿科创再贷款定向扶持AI算力，政策东风持续。作为全球算力基础设施核心参与者，中长期成长逻辑清晰。</li>
+        <li>"高股息防御+算力成长"双属性在当前环境下尤为稀缺。中美元首会谈若推动科技合作，移动作为国内算力基础设施核心参与者将直接受益。</li>
       </ul>
     </div>
     <div class="stock-card">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">中国核电</span><span class="stock-code">601985</span><span class="tag tag-policy">装机全球首位</span></div>
-        <div class="stock-price-area"><div class="stock-price down">9.04元（-2.16%）</div><div class="stock-change down">PE约18x</div></div>
+        <div class="stock-info-row"><span class="stock-name">中国核电</span><span class="stock-code">601985</span><span class="tag tag-policy">股息率2-3.8%</span></div>
+        <div class="stock-price-area"><div class="stock-price neutral">—</div><div class="stock-change neutral">18x PE · 全球装机第一</div></div>
       </div>
       <ul class="stock-bullets">
-        <li>5月14日收盘9.04元，跌2.16%，短期随市场回调。核电装机规模位居全球首位，未来五年装机增速有望维持在10%以上。</li>
-        <li>18倍PE对应历史45%分位，估值合理。AI数据中心耗电量持续攀升，为核电提供中长期需求支撑。</li>
-        <li>短期波动不改中长期配置价值。核电作为清洁、稳定、不受地缘冲突影响的能源形式，在能源安全逻辑下具备长期配置价值。</li>
+        <li>核电装机规模位居全球首位（达1.25亿千瓦），未来五年装机增速有望维持在10%以上。18倍PE对应历史45%分位。</li>
+        <li>AI数据中心耗电量持续攀升提供中长期需求支撑。中国核电在"双碳"目标+能源安全双重逻辑下具备长期配置价值。</li>
       </ul>
     </div>
     <div class="card" style="border-left:3px solid var(--accent);margin-top:24px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(29,198,100,0.04));">
@@ -2603,11 +2460,11 @@
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
             <span style="font-size:24px;">🏦</span>
             <span style="font-size:15px;font-weight:700;color:var(--yellow);">银行股（7个）</span>
-            <span style="margin-left:auto;background:rgba(240,180,41,0.15);color:var(--yellow);padding:3px 10px;border-radius:20px;font-size:11px;">逆势抗跌+高股息</span>
+            <span style="margin-left:auto;background:rgba(240,180,41,0.15);color:var(--yellow);padding:3px 10px;border-radius:20px;font-size:11px;">防御底仓+高分红</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;">
             <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
-              <div style="font-size:20px;font-weight:800;color:var(--yellow);">4.5-6.8%</div>
+              <div style="font-size:20px;font-weight:800;color:var(--yellow);">5%+</div>
               <div style="font-size:11px;color:var(--text-muted);">股息率</div>
             </div>
             <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
@@ -2615,12 +2472,12 @@
               <div style="font-size:11px;color:var(--text-muted);">PB估值</div>
             </div>
             <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
-              <div style="font-size:20px;font-weight:800;color:var(--yellow);">3-4倍</div>
-              <div style="font-size:11px;color:var(--text-muted);">vs定存</div>
+              <div style="font-size:20px;font-weight:800;color:var(--yellow);">6456亿</div>
+              <div style="font-size:11px;color:var(--text-muted);">银行分红创纪录</div>
             </div>
           </div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
-            <strong style="color:var(--text-primary);">核心逻辑：</strong>5月14日A股大跌-1.52%，工行逆势涨0.97%展现防御属性。招行PB跌破1倍(0.93x)至近十年极低分位，不良率仅0.94%、拨备覆盖率392%，安全边际极高。农行股息率6.5-6.8%为四大行最高，PB仅0.60倍。科技股回调背景下，银行板块成为资金避风港。
+            <strong style="color:var(--text-primary);">核心逻辑：</strong>2026年银行分红6456亿元创历史纪录，工行派现1105亿居首。银行板块PB仅0.67倍处于近十年23%分位，42家上市银行全线破净。招行PB跌破1倍(0.93x)至近十年12%分位，不良率仅0.94%、拨备覆盖率392%，安全边际极高。城商行Q1净利双十增长，长三角区域龙头享有定价权。
           </div>
         </div>
         <!-- 公用事业 -->
@@ -2632,20 +2489,20 @@
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;">
             <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
-              <div style="font-size:20px;font-weight:800;color:#1dc664;">+30.50%</div>
-              <div style="font-size:11px;color:var(--text-muted);">长江电力净利</div>
-            </div>
-            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
               <div style="font-size:20px;font-weight:800;color:#1dc664;">≥70%</div>
-              <div style="font-size:11px;color:var(--text-muted);">分红比例</div>
+              <div style="font-size:11px;color:var(--text-muted);">长江电力分红比例</div>
             </div>
             <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
-              <div style="font-size:20px;font-weight:800;color:#1dc664;">4.19-4.24%</div>
-              <div style="font-size:11px;color:var(--text-muted);">股息率</div>
+              <div style="font-size:20px;font-weight:800;color:#1dc664;">4.24%</div>
+              <div style="font-size:11px;color:var(--text-muted);">长江电力股息率</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:20px;font-weight:800;color:#1dc664;">3.8-5%</div>
+              <div style="font-size:11px;color:var(--text-muted);">大秦铁路股息率</div>
             </div>
           </div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
-            <strong style="color:var(--text-primary);">核心逻辑：</strong>长江电力运营六座梯级电站构成世界级清洁能源走廊，承诺分红比例不低于70%，Q1净利大增30.50%。大秦铁路作为国内陆路运输大动脉，完全不受国际局势影响，是稳健型投资者的"压舱石"。在市场大跌时，公用事业的防御价值凸显。
+            <strong style="color:var(--text-primary);">核心逻辑：</strong>长江电力运营六座梯级电站构成世界级清洁能源走廊，承诺分红比例不低于70%。在A股高位回调中，"不为市场所动"正是防御价值所在。大秦铁路作为国内陆路运输大动脉，完全不受外部冲击影响，是稳健型投资者的"压舱石"。
           </div>
         </div>
         <!-- 央企高股息 -->
@@ -2662,19 +2519,19 @@
             </div>
             <div style="text-align:center;padding:8px;background:rgba(13,17,23,0.5);border-radius:8px;">
               <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">中国平安</div>
-              <div style="font-size:16px;font-weight:700;color:var(--purple);">股息率4.7%</div>
+              <div style="font-size:16px;font-weight:700;color:var(--purple);">股息率4.75-5.8%</div>
             </div>
             <div style="text-align:center;padding:8px;background:rgba(13,17,23,0.5);border-radius:8px;">
               <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">中国移动</div>
-              <div style="font-size:16px;font-weight:700;color:var(--purple);">股息率5.16%</div>
+              <div style="font-size:16px;font-weight:700;color:var(--purple);">股息率5-6.5%</div>
             </div>
             <div style="text-align:center;padding:8px;background:rgba(13,17,23,0.5);border-radius:8px;">
               <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">中国核电</div>
-              <div style="font-size:16px;font-weight:700;color:var(--purple);">PE 18x</div>
+              <div style="font-size:16px;font-weight:700;color:var(--purple);">股息率2-3.8%</div>
             </div>
           </div>
           <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
-            <strong style="color:var(--text-primary);">核心逻辑：</strong>中国海油油价$101支撑业绩，股息率约6%。平安NBV增速20%+，估值处于历史低位。移动"高股息+算力成长"双属性稀缺，算力收入增速超50%。中国核电5/14跌2.16%随市场回调，但装机全球首位，中长期能源安全逻辑清晰。
+            <strong style="color:var(--text-primary);">核心逻辑：</strong>中国海油高油价环境下业绩弹性大。平安NBV增速20%+分红险6/30切换红利。移动"高股息+算力成长"双属性稀缺。核电AI数据中心耗电需求支撑，中美元首会谈期间四大央企均可能受益于政策信号。
           </div>
         </div>
         <!-- 配置建议 -->
@@ -2687,14 +2544,14 @@
             <div style="padding:12px;background:rgba(13,17,23,0.5);border-radius:8px;border-left:3px solid var(--yellow);">
               <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">🛡️ 防御端（底仓）</div>
               <div style="font-size:14px;font-weight:600;color:var(--text-primary);">银行+公用事业</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">工行/农行/招行/长江电力</div>
-              <div style="font-size:13px;font-weight:700;color:var(--yellow);margin-top:6px;">股息率 4.5%-6.8%</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">工行/农行/长江电力/大秦铁路</div>
+              <div style="font-size:13px;font-weight:700;color:var(--yellow);margin-top:6px;">股息率 4%-7%</div>
             </div>
             <div style="padding:12px;background:rgba(13,17,23,0.5);border-radius:8px;border-left:3px solid var(--purple);">
               <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">🚀 成长端（弹性）</div>
               <div style="font-size:14px;font-weight:600;color:var(--text-primary);">央企高股息</div>
               <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">中国核电/中国移动</div>
-              <div style="font-size:13px;font-weight:700;color:var(--purple);margin-top:6px;">短期回调关注机会</div>
+              <div style="font-size:13px;font-weight:700;color:var(--purple);margin-top:6px;">政策红利+成长</div>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-bottom:10px;">
@@ -2703,919 +2560,327 @@
               <div style="font-size:14px;font-weight:700;color:var(--accent);">70%+20%+10%</div>
             </div>
             <div style="flex:1;text-align:center;padding:8px;background:rgba(13,17,23,0.5);border-radius:6px;">
-              <div style="font-size:11px;color:var(--text-muted);">平衡型</div>
-              <div style="font-size:14px;font-weight:700;color:var(--purple);">50%+30%+20%</div>
+              <div style="font-size:11px;color:var(--text-muted);">激进型</div>
+              <div style="font-size:14px;font-weight:700;color:var(--purple);">提高成长配置</div>
             </div>
           </div>
           <div style="font-size:12px;color:var(--text-muted);text-align:center;">
-            ⚠️ 5月14日A股大跌，建议短期以防御为主，关注高股息低估值品种
+            ⚠️ A股高位回调，注意控制仓位，等待市场企稳信号
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Tab 6: 理财话题 -->
+
+
+<!-- TAB 6: 理财话题 -->
 <div class="tab-panel" id="panel-6">
-  <div class="tab-header">
-    <h2 class="tab-title">理财话题</h2>
-    <p class="tab-subtitle">低利率时代，如何守护你的钱包？</p>
-  </div>
-
-  <!-- 子板块1: 稳健理财工具收益对比 -->
+  <div class="inner">
+  <div class="section-title">💰 理财话题</div>
   <div class="sub-section">
-    <h3 class="sub-title">稳健理财工具收益对比</h3>
-    <div class="card">
+    <div class="sub-title">一 · 银行存款利率（2026年5月）</div>
+    <div class="card" style="border-left:3px solid var(--yellow);">
+      <div class="card-title">🏦 最新银行存款利率表</div>
       <div class="card-body">
-        <div class="highlight-box warning">
-          <strong>重要提醒：</strong>1年期定存利率首次跌破1%，进入"0字头"时代
-        </div>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>理财工具</th>
-              <th>收益率</th>
-              <th>风险等级</th>
-              <th>流动性</th>
-              <th>适合人群</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>银行存款（1年）</strong></td>
-              <td class="down">0.95%</td>
-              <td>极低</td>
-              <td>高</td>
-              <td>保守型投资者</td>
-            </tr>
-            <tr>
-              <td><strong>国债（5年期）</strong></td>
-              <td>1.30%</td>
-              <td>极低</td>
-              <td>中</td>
-              <td>长期稳健配置</td>
-            </tr>
-            <tr>
-              <td><strong>特别国债（20-30年）</strong></td>
-              <td>2.2%</td>
-              <td>极低</td>
-              <td>中（可流通）</td>
-              <td>长期资金配置</td>
-            </tr>
-            <tr>
-              <td><strong>银行理财（固收类）</strong></td>
-              <td>2.0%-2.5%</td>
-              <td>低</td>
-              <td>中</td>
-              <td>稳健型投资者</td>
-            </tr>
-            <tr>
-              <td><strong>固收+基金</strong></td>
-              <td>2.5%-4%</td>
-              <td>中低</td>
-              <td>高</td>
-              <td>追求稳健增值</td>
-            </tr>
-            <tr>
-              <td><strong>红利ETF</strong></td>
-              <td>4%-6%</td>
-              <td>中等</td>
-              <td>高</td>
-              <td>能承受波动的投资者</td>
-            </tr>
-          </tbody>
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:14px;">
+          <tr style="background:rgba(0,212,255,0.08);">
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">存款类型</th>
+            <th style="padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);">利率</th>
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">备注</th>
+          </tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">活期存款</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>0.05%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">极低</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">3个月定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>0.65%-0.70%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">短期配置</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">6个月定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>0.85%-0.95%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">中期过渡</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">1年定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>0.95%-1.15%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">主流选择</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">2年定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>1.05%-1.20%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">中期锁定</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">3年定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>1.25%-1.30%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">长期配置</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">5年定期</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>1.30%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">利率倒挂</td></tr>
         </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- 子板块2: 高股息替代策略 -->
-  <div class="sub-section">
-    <h3 class="sub-title">高股息替代策略：存款的"平替"选择</h3>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">红利ETF vs 银行存款</div>
-        <div class="card-body">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>对比项</th>
-                <th>红利ETF</th>
-                <th>1年期定存</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>预期收益</td>
-                <td class="up">4%-6%</td>
-                <td class="down">0.95%</td>
-              </tr>
-              <tr>
-                <td>本金安全</td>
-                <td>有波动风险</td>
-                <td>保本保息</td>
-              </tr>
-              <tr>
-                <td>流动性</td>
-                <td>T+1可取</td>
-                <td>提前支取损失利息</td>
-              </tr>
-              <tr>
-                <td>分红频率</td>
-                <td>季度/年度</td>
-                <td>到期一次性</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="note">*5月14日A股大跌，红利板块相对抗跌，银行股表现稳健</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">家庭资产配置建议</div>
-        <div class="card-body">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>资金用途</th>
-                <th>配置比例</th>
-                <th>推荐工具</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>应急资金</td>
-                <td>10%</td>
-                <td>货币基金/活期</td>
-              </tr>
-              <tr>
-                <td>短期理财（1年内）</td>
-                <td>20%</td>
-                <td>短债基金/银行理财</td>
-              </tr>
-              <tr>
-                <td>中期配置（1-3年）</td>
-                <td>30%</td>
-                <td>国债/固收+基金</td>
-              </tr>
-              <tr>
-                <td>长期增值（3年+）</td>
-                <td>30%</td>
-                <td>红利ETF/分红险</td>
-              </tr>
-              <tr>
-                <td>高风险投资</td>
-                <td>10%</td>
-                <td>股票/可转债基金</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style="background:rgba(248,81,73,0.08);padding:12px 16px;border-radius:8px;border-left:3px solid var(--red);">
+          <strong style="color:var(--red);">⚠️ 关键提示：</strong>银行存款利率持续下行，5年定存利率仅1.30%，且出现3年与5年利率倒挂现象。建议存款到期后不要简单续存，可考虑转向理财产品或高股息股票。
         </div>
       </div>
     </div>
   </div>
-
-  <!-- 子板块3: 理财避坑指南 -->
   <div class="sub-section">
-    <h3 class="sub-title">理财避坑指南</h3>
-    <div class="highlight-box danger">
-      <strong>5月14日A股大跌警示：</strong>上证指数跌1.52%，科技股大幅回调，投资者需警惕以下风险
-    </div>
-    <div class="grid-3">
-      <div class="card danger-card">
-        <div class="card-title">坑1：盲目抄底科技股</div>
-        <div class="card-body">
-          <div class="icon-warning">⚠️</div>
-          <p><strong>风险：</strong>5月14日科技股集体回调，盲目抄底可能遭遇进一步下跌</p>
-          <p><strong>建议：</strong></p>
-          <ul>
-            <li>等待企稳信号，不要急于入场</li>
-            <li>分批建仓，控制仓位</li>
-            <li>关注基本面，避免追热点</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card danger-card">
-        <div class="card-title">坑2：追高黄金</div>
-        <div class="card-body">
-          <div class="icon-warning">⚠️</div>
-          <p><strong>风险：</strong>金价已处于历史高位（国内约1028元/克），短期回调风险加大</p>
-          <p><strong>建议：</strong></p>
-          <ul>
-            <li>不要一次性重仓买入</li>
-            <li>采用定投方式分散成本</li>
-            <li>配置比例不超过总资产10%</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card danger-card">
-        <div class="card-title">坑3：忽视分红险窗口期</div>
-        <div class="card-body">
-          <div class="icon-warning">⚠️</div>
-          <p><strong>风险：</strong>老产品6月30日前退市，仅剩约45天，错过将锁定更低收益</p>
-          <p><strong>建议：</strong></p>
-          <ul>
-            <li>有长期资金需求的尽快配置</li>
-            <li>对比新老产品收益差异</li>
-            <li>咨询专业顾问，理性决策</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="grid-2" style="margin-top: 16px;">
-      <div class="card">
-        <div class="card-title">定投策略</div>
-        <div class="card-body">
-          <ul>
-            <li><strong>适合人群：</strong>上班族、没时间盯盘的投资者</li>
-            <li><strong>核心优势：</strong>平摊成本、降低择时压力</li>
-            <li><strong>推荐标的：</strong>红利ETF、宽基指数基金</li>
-            <li><strong>定投周期：</strong>每月/每周固定金额</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">REITs投资</div>
-        <div class="card-body">
-          <ul>
-            <li><strong>收益来源：</strong>分红收益+资产增值</li>
-            <li><strong>分红率：</strong>通常4%-8%</li>
-            <li><strong>特点：</strong>与股市相关性较低</li>
-            <li><strong>注意：</strong>流动性相对较差，适合长期持有</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 子板块4: 家庭保险配置指南 -->
-  <div class="sub-section">
-    <h3 class="sub-title">家庭保险配置指南</h3>
-    <div class="card">
+    <div class="sub-title">二 · 理财产品收益率（2026年5月）</div>
+    <div class="card" style="border-left:3px solid var(--green);">
+      <div class="card-title">📈 理财产品收益对比</div>
       <div class="card-body">
-        <div class="flow-chart">
-          <div class="flow-step">
-            <div class="step-num">1</div>
-            <div class="step-title">基础保障</div>
-            <div class="step-content">医保 + 重疾险 + 医疗险</div>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">2</div>
-            <div class="step-title">家庭责任</div>
-            <div class="step-content">定期寿险 + 意外险</div>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">3</div>
-            <div class="step-title">长期储蓄</div>
-            <div class="step-content">分红险 / 年金险</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card" style="margin-top: 16px;">
-      <div class="card-title">分红险窗口期倒计时</div>
-      <div class="card-body">
-        <div class="highlight-box urgent">
-          <strong>⏰ 紧急提醒：</strong>老产品退市倒计时约45天（截止6月30日）
-        </div>
-        <div class="grid-2">
-          <div>
-            <h4>新老产品对比</h4>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>项目</th>
-                  <th>老产品</th>
-                  <th>新产品</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>演示利率上限</td>
-                  <td>3.5%</td>
-                  <td class="down">降至更低</td>
-                </tr>
-                <tr>
-                  <td>预定利率</td>
-                  <td>1.75%</td>
-                  <td class="down">1.25%</td>
-                </tr>
-                <tr>
-                  <td>长期收益</td>
-                  <td class="up">相对较高</td>
-                  <td>相对较低</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <h4>适合配置人群</h4>
-            <ul>
-              <li>有长期闲置资金（10年以上）</li>
-              <li>追求稳健收益的投资者</li>
-              <li>需要养老/教育金规划的家庭</li>
-              <li>已完成基础保障配置的人群</li>
-            </ul>
-            <p class="note">*建议咨询专业保险顾问，根据自身需求理性配置</p>
-          </div>
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:14px;">
+          <tr style="background:rgba(0,212,255,0.08);">
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">产品类型</th>
+            <th style="padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);">平均收益率</th>
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">特点</th>
+          </tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">现金管理类理财</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>1.4%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">流动性好，随存随取</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">固收类理财</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong>2.2%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">稳健收益，风险较低</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">全市场理财平均（3月）</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong class="down">1.01%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">已跌破1.5%心理关口</td></tr>
+        </table>
+        <div style="background:rgba(63,185,80,0.08);padding:12px 16px;border-radius:8px;border-left:3px solid var(--green);">
+          <strong style="color:var(--green);">💡 配置建议：</strong>现金管理类理财平均收益率1.4%，固收类理财平均收益率2.2%，均高于银行定存。建议将部分存款转向理财产品，但需注意产品风险等级和流动性安排。
         </div>
       </div>
     </div>
   </div>
-
-  <!-- 子板块5: 黄金投资 -->
   <div class="sub-section">
-    <h3 class="sub-title">黄金投资</h3>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">黄金价格（2026年5月14日）</div>
-        <div class="card-body">
-          <div class="price-display">
-            <div class="price-item">
-              <span class="price-label">国际黄金</span>
-              <span class="price-value">4701.47 USD</span>
-              <span class="price-change up">+0.11%</span>
+    <div class="sub-title">三 · 保险市场动态</div>
+    <div class="card" style="border-left:3px solid var(--purple);">
+      <div class="card-title">🛡️ 人身险产品切换窗口期</div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px;">
+          <div style="background:rgba(188,140,255,0.08);padding:14px;border-radius:10px;border:1px solid rgba(188,140,255,0.2);">
+            <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">分红险占比</div>
+            <div style="font-size:22px;font-weight:800;color:var(--purple);">40%</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">2026年人身险新产品</div>
+          </div>
+          <div style="background:rgba(248,81,73,0.08);padding:14px;border-radius:10px;border:1px solid rgba(248,81,73,0.2);">
+            <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">老产品停售截止</div>
+            <div style="font-size:22px;font-weight:800;color:var(--red);">6月30日</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">演示利率上限3.5%产品退市</div>
+          </div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:14px;">
+          <tr style="background:rgba(0,212,255,0.08);">
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">产品类型</th>
+            <th style="padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);">变化</th>
+            <th style="padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);">影响</th>
+          </tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">分红险演示利率上限</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong class="down">降至3.5%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">老产品收益更高</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">预定利率</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong class="down">从1.75%降至1.25%</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">新产品收益下降</td></tr>
+          <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">重疾险</td><td style="padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);"><strong class="up">涨价</strong></td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-muted);">30岁男50万保额年交约6710元</td></tr>
+        </table>
+        <div style="background:rgba(240,180,41,0.08);padding:12px 16px;border-radius:8px;border-left:3px solid #f0b429;">
+          <strong style="color:#f0b429;">⏰ 窗口期提示：</strong>6月30日前老产品退市，演示利率上限3.5%的产品将停售。有保险配置需求的投资者可抓住最后窗口期。增额终身寿、分红年金等浮动收益型产品成主流。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">四 · 理财配置建议</div>
+    <div class="card" style="border-left:3px solid var(--accent);">
+      <div class="card-title">💡 当前市场环境下的理财策略</div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+          <div style="background:rgba(0,212,255,0.08);padding:14px;border-radius:10px;text-align:center;border:1px solid rgba(0,212,255,0.2);">
+            <div style="font-size:28px;margin-bottom:8px;">🏦</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">保守型</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">银行理财+国债<br>收益率1.4-2.2%</div>
+          </div>
+          <div style="background:rgba(240,180,41,0.08);padding:14px;border-radius:10px;text-align:center;border:1px solid rgba(240,180,41,0.2);">
+            <div style="font-size:28px;margin-bottom:8px;">⚖️</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">稳健型</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">固收理财+保险<br>+高股息股票</div>
+          </div>
+          <div style="background:rgba(188,140,255,0.08);padding:14px;border-radius:10px;text-align:center;border:1px solid rgba(188,140,255,0.2);">
+            <div style="font-size:28px;margin-bottom:8px;">🚀</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">进取型</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">保险+高股息<br>+少量成长</div>
+          </div>
+        </div>
+        <div style="background:rgba(29,198,100,0.08);padding:14px 16px;border-radius:10px;border:1px solid rgba(29,198,100,0.2);">
+          <div style="font-size:14px;font-weight:700;color:#1dc664;margin-bottom:10px;">✅ 当前建议配置比例</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">稳健型投资者</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+                • 银行理财/固收：40%<br>
+                • 高股息股票：40%<br>
+                • 保险：15%<br>
+                • 现金：5%
+              </div>
             </div>
-            <div class="price-item">
-              <span class="price-label">国内黄金</span>
-              <span class="price-value">约1028 元/克</span>
-              <span class="price-change">高位震荡</span>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">进取型投资者</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+                • 高股息股票：50%<br>
+                • 保险：20%<br>
+                • 银行理财：20%<br>
+                • 现金/成长：10%
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-title">4种黄金投资方式对比</div>
-        <div class="card-body">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>方式</th>
-                <th>门槛</th>
-                <th>流动性</th>
-                <th>适合人群</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>实物黄金</td>
-                <td>中</td>
-                <td>低</td>
-                <td>长期保值</td>
-              </tr>
-              <tr>
-                <td>黄金ETF</td>
-                <td>低</td>
-                <td>高</td>
-                <td>普通投资者</td>
-              </tr>
-              <tr>
-                <td>纸黄金</td>
-                <td>低</td>
-                <td>高</td>
-                <td>银行客户</td>
-              </tr>
-              <tr>
-                <td>黄金期货</td>
-                <td>高</td>
-                <td>高</td>
-                <td>专业投资者</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style="margin-top:14px;padding:12px 16px;background:rgba(248,81,73,0.08);border-radius:8px;border-left:3px solid var(--red);">
+          <strong style="color:var(--red);">⚠️ 风险提示：</strong>A股高位回调，注意控制仓位。银行存款利率持续下行，单纯持有现金或定存面临实际购买力缩水风险。建议适当配置高股息股票和保险产品，以获取更高收益。
         </div>
       </div>
     </div>
   </div>
-
-  <!-- 子板块6: 债券基金 -->
-  <div class="sub-section">
-    <h3 class="sub-title">债券基金</h3>
-    <div class="grid-4">
-      <div class="card">
-        <div class="card-title">纯债基金</div>
-        <div class="card-body">
-          <div class="yield-range">2%-4%</div>
-          <ul>
-            <li>只投资债券，不投股票</li>
-            <li>风险最低，波动最小</li>
-            <li>适合保守型投资者</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">一级债基</div>
-        <div class="card-body">
-          <div class="yield-range">3%-5%</div>
-          <ul>
-            <li>债券+打新</li>
-            <li>风险较低</li>
-            <li>收益略高于纯债</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">二级债基</div>
-        <div class="card-body">
-          <div class="yield-range">4%-7%</div>
-          <ul>
-            <li>债券+股票（≤20%）</li>
-            <li>风险中等</li>
-            <li>受股市影响较大</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">可转债基金</div>
-        <div class="card-body">
-          <div class="yield-range volatile">波动大</div>
-          <ul>
-            <li>股债双重属性</li>
-            <li>波动较大</li>
-            <li>适合风险承受力强者</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 子板块7: 社区热门话题 -->
-  <div class="sub-section">
-    <h3 class="sub-title">社区热门话题</h3>
-    <div class="grid-2">
-      <div class="card topic-card">
-        <div class="card-title">A股失守4200点</div>
-        <div class="card-body">
-          <p class="topic-desc">5月14日上证指数大跌1.52%，失守4200点关口，科技股集体回调引发热议。</p>
-          <div class="topic-tags">
-            <span class="tag">#大跌</span>
-            <span class="tag">#科技股</span>
-            <span class="tag">#回调</span>
-          </div>
-        </div>
-      </div>
-      <div class="card topic-card">
-        <div class="card-title">特朗普访华影响</div>
-        <div class="card-body">
-          <p class="topic-desc">市场关注特朗普访华对中美贸易关系的潜在影响，投资者情绪波动。</p>
-          <div class="topic-tags">
-            <span class="tag">#中美关系</span>
-            <span class="tag">#贸易</span>
-            <span class="tag">#政策</span>
-          </div>
-        </div>
-      </div>
-      <div class="card topic-card">
-        <div class="card-title">银行股避险</div>
-        <div class="card-body">
-          <p class="topic-desc">大跌中银行股表现相对稳健，高股息特性吸引避险资金关注。</p>
-          <div class="topic-tags">
-            <span class="tag">#银行股</span>
-            <span class="tag">#高股息</span>
-            <span class="tag">#避险</span>
-          </div>
-        </div>
-      </div>
-      <div class="card topic-card">
-        <div class="card-title">黄金走势讨论</div>
-        <div class="card-body">
-          <p class="topic-desc">金价维持高位震荡，投资者热议是否还有上涨空间，还是该获利了结。</p>
-          <div class="topic-tags">
-            <span class="tag">#黄金</span>
-            <span class="tag">#1028元</span>
-            <span class="tag">#高位</span>
-          </div>
-        </div>
-      </div>
-      <div class="card topic-card">
-        <div class="card-title">科技股回调</div>
-        <div class="card-body">
-          <p class="topic-desc">科技股5月14日大幅回调，投资者讨论是抄底机会还是风险释放。</p>
-          <div class="topic-tags">
-            <span class="tag">#科技股</span>
-            <span class="tag">#抄底</span>
-            <span class="tag">#风险</span>
-          </div>
-        </div>
-      </div>
-      <div class="card topic-card">
-        <div class="card-title">存款利率新低</div>
-        <div class="card-body">
-          <p class="topic-desc">1年期定存利率跌破1%，创历史新低，储户寻求替代理财方案。</p>
-          <div class="topic-tags">
-            <span class="tag">#存款</span>
-            <span class="tag">#0.95%</span>
-            <span class="tag">#低利率</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
+
+<!-- TAB 7: 今日总结 -->
 <div class="tab-panel" id="panel-7">
-  <div class="summary-section">
-    <!-- 今日关键词 -->
-    <div class="keyword-section">
-      <div class="section-title">🔑 今日关键词</div>
-      <div class="keyword-tags">
-        <span class="keyword-tag tag-blue">特朗普访华</span>
-        <span class="keyword-tag tag-red">A股失守4200</span>
-        <span class="keyword-tag tag-green">纳指创新高</span>
-        <span class="keyword-tag tag-orange">科技股回调</span>
-        <span class="keyword-tag tag-purple">央行逆回购</span>
-        <span class="keyword-tag tag-cyan">朱雀二号</span>
-        <span class="keyword-tag tag-pink">中美经贸磋商</span>
-        <span class="keyword-tag tag-yellow">北向净卖出</span>
-      </div>
+  <div class="inner">
+  <div class="section-title">📋 今日总结</div>
+  <div class="summary-card" style="border-left:3px solid var(--accent);background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(188,140,255,0.04));">
+    <div style="font-size:16px;font-weight:700;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span>📅</span> 2026年5月15日（周五）· 市场概览
     </div>
-
-    <!-- 宏观面 -->
-    <div class="macro-section">
-      <div class="section-title">🌐 宏观面</div>
-      <div class="macro-content">
-        <div class="macro-item">
-          <span class="macro-label">央行操作：</span>
-          <span class="macro-text">5月14日开展5亿元7天期逆回购操作，5月15日将开展3000亿元买断式逆回购操作，维护银行体系流动性合理充裕</span>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px;">
+      <div style="background:rgba(248,81,73,0.1);padding:16px;border-radius:12px;border:1px solid rgba(248,81,73,0.3);">
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">🇨🇳 A股（5/14收盘）</div>
+        <div style="font-size:22px;font-weight:800;color:var(--red);margin-bottom:6px;">4177.92</div>
+        <div style="font-size:14px;color:var(--red);font-weight:600;">-1.52% · 失守4200点</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6;">
+          成交3.36万亿（连续7日破3万亿）<br>
+          上涨1047家/下跌4387家<br>
+          赚钱效应仅约19%
         </div>
-        <div class="macro-item">
-          <span class="macro-label">外交动态：</span>
-          <span class="macro-text">特朗普于5月13日至15日访华，中美经贸团队同步进行磋商，关注后续政策信号</span>
-        </div>
-        <div class="macro-item">
-          <span class="macro-label">科技成就：</span>
-          <span class="macro-text">朱雀二号运载火箭发射成功，商业航天领域再获突破</span>
+      </div>
+      <div style="background:rgba(63,185,80,0.1);padding:16px;border-radius:12px;border:1px solid rgba(63,185,80,0.3);">
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">🇺🇸 美股（5/14收盘）</div>
+        <div style="font-size:22px;font-weight:800;color:var(--green);margin-bottom:6px;">7501.25</div>
+        <div style="font-size:14px;color:var(--green);font-weight:600;">+0.77% · 历史新高</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6;">
+          道指重返50000点<br>
+          纳指上涨约1.2%创新高<br>
+          英伟达市值逼近6万亿
         </div>
       </div>
     </div>
-
-    <!-- 市场面 -->
-    <div class="market-section">
-      <div class="section-title">📉 市场面</div>
-      <div class="market-grid">
-        <div class="market-card">
-          <div class="market-title">A股</div>
-          <div class="market-desc">三大指数集体收跌，上证指数失守4200点关口，科技股集体回调，市场情绪偏谨慎</div>
-          <div class="market-data">
-            <span class="index-name">上证</span>
-            <span class="index-value">4177.92</span>
-            <span class="index-change down">-1.52%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">深证</span>
-            <span class="index-value">15745.74</span>
-            <span class="index-change down">-2.14%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">创业板</span>
-            <span class="index-value">3951.14</span>
-            <span class="index-change down">-2.16%</span>
-          </div>
-        </div>
-        <div class="market-card">
-          <div class="market-title">美股</div>
-          <div class="market-desc">纳指、标普500再创历史新高，科技股领涨，道指小幅收跌</div>
-          <div class="market-data">
-            <span class="index-name">道指</span>
-            <span class="index-value">49693.20</span>
-            <span class="index-change down">-0.14%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">纳指</span>
-            <span class="index-value">26402.34</span>
-            <span class="index-change up">+1.20% 新高</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">标普</span>
-            <span class="index-value">7440.00</span>
-            <span class="index-change up">+0.19% 新高</span>
-          </div>
-        </div>
-        <div class="market-card">
-          <div class="market-title">港股</div>
-          <div class="market-desc">恒生指数平收，恒生科技小幅下跌，市场观望情绪浓厚</div>
-          <div class="market-data">
-            <span class="index-name">恒生</span>
-            <span class="index-value">26389.04</span>
-            <span class="index-change">0.00%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">恒科</span>
-            <span class="index-value">5076.20</span>
-            <span class="index-change down">-0.35%</span>
-          </div>
-        </div>
-        <div class="market-card">
-          <div class="market-title">大宗商品</div>
-          <div class="market-desc">国际油价、金价小幅上涨，整体维持高位震荡</div>
-          <div class="market-data">
-            <span class="index-name">WTI</span>
-            <span class="index-value">101.02</span>
-            <span class="index-change up">+0.15%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">布伦特</span>
-            <span class="index-value">105.72</span>
-            <span class="index-change up">+0.09%</span>
-          </div>
-          <div class="market-data">
-            <span class="index-name">黄金</span>
-            <span class="index-value">4701.47</span>
-            <span class="index-change up">+0.11%</span>
-          </div>
-        </div>
+    <div style="background:rgba(240,180,41,0.1);padding:14px 16px;border-radius:10px;border:1px solid rgba(240,180,41,0.3);margin-bottom:16px;">
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:6px;">🤝 重大事件</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">中美元首会谈举行</div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+        5月14日习近平同特朗普举行会谈，关注经贸科技合作进展。会谈结果将对全球资本市场产生深远影响。
       </div>
     </div>
-
-    <!-- 资金面 -->
-    <div class="capital-section">
-      <div class="section-title">💵 资金面</div>
-      <div class="capital-content">
-        <div class="capital-item">
-          <span class="capital-label">央行操作：</span>
-          <span class="capital-text">5月14日逆回购5亿元，5月15日将开展3000亿元买断式逆回购</span>
-        </div>
-        <div class="capital-item">
-          <span class="capital-label">A股成交：</span>
-          <span class="capital-text">成交额3.36万亿元，北向资金净卖出63.04亿元</span>
-        </div>
-        <div class="capital-item">
-          <span class="capital-label">汇率：</span>
-          <span class="capital-text">USD/CNY 6.8401，人民币汇率保持稳定</span>
-        </div>
+    <div style="background:rgba(188,140,255,0.1);padding:14px 16px;border-radius:10px;border:1px solid rgba(188,140,255,0.3);">
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:6px;">⚠️ 宏观数据</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">美国4月PPI同比飙升6%</div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+        创2022年以来最大涨幅，远超市场预期。通胀压力持续高企，美联储降息预期进一步推迟。
       </div>
     </div>
-
-    <!-- 操作提示 -->
-    <div class="tips-section">
-      <div class="section-title">📌 操作提示</div>
-      <div class="tips-list">
-        <div class="tip-item tip-green">
-          <span class="tip-icon">✓</span>
-          <span class="tip-text">A股大跌后关注超跌反弹机会，但需控制仓位</span>
-        </div>
-        <div class="tip-item tip-blue">
-          <span class="tip-icon">ℹ</span>
-          <span class="tip-text">科技股集体回调，短期回避高位题材股</span>
-        </div>
-        <div class="tip-item tip-orange">
-          <span class="tip-icon">⚠</span>
-          <span class="tip-text">关注特朗普访华进展及中美经贸磋商结果</span>
-        </div>
-        <div class="tip-item tip-red">
-          <span class="tip-icon">!</span>
-          <span class="tip-text">北向资金连续净卖出，警惕外资流出压力</span>
-        </div>
-        <div class="tip-item tip-purple">
-          <span class="tip-icon">★</span>
-          <span class="tip-text">美股创新高后关注估值风险，不宜追高</span>
-        </div>
-        <div class="tip-item tip-cyan">
-          <span class="tip-icon">◆</span>
-          <span class="tip-text">大宗商品高位震荡，可适当配置黄金避险</span>
-        </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">📊 关键数据速览</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
+      <div style="background:var(--bg-card);padding:14px;border-radius:10px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">北向资金</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green);">-45.8亿</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">终结12日净流入</div>
+      </div>
+      <div style="background:var(--bg-card);padding:14px;border-radius:10px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">南向资金</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green);">-97.12亿</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">港元</div>
+      </div>
+      <div style="background:var(--bg-card);padding:14px;border-radius:10px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">黄金价格</div>
+        <div style="font-size:18px;font-weight:800;color:#f0b429;">$4701</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">微涨0.09%</div>
+      </div>
+      <div style="background:var(--bg-card);padding:14px;border-radius:10px;border:1px solid var(--border);text-align:center;">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">央行操作</div>
+        <div style="font-size:18px;font-weight:800;color:var(--accent);">3000亿</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">6个月期逆回购</div>
       </div>
     </div>
-
-    <!-- 关键数字速查 -->
-    <div class="numbers-section">
-      <div class="section-title">✅ 关键数字速查</div>
-      <table class="numbers-table">
-        <thead>
-          <tr>
-            <th>指标</th>
-            <th>数值</th>
-            <th>涨跌</th>
-            <th>备注</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>上证指数</td>
-            <td>4177.92</td>
-            <td class="down">-1.52%</td>
-            <td>失守4200点</td>
-          </tr>
-          <tr>
-            <td>深证成指</td>
-            <td>15745.74</td>
-            <td class="down">-2.14%</td>
-            <td>科技股拖累</td>
-          </tr>
-          <tr>
-            <td>创业板指</td>
-            <td>3951.14</td>
-            <td class="down">-2.16%</td>
-            <td>跌幅最大</td>
-          </tr>
-          <tr>
-            <td>科创50</td>
-            <td>1725.09</td>
-            <td class="down">-2.55%</td>
-            <td>科技股回调</td>
-          </tr>
-          <tr>
-            <td>A股成交</td>
-            <td>3.36万亿</td>
-            <td>-</td>
-            <td>量能维持</td>
-          </tr>
-          <tr>
-            <td>涨跌家数</td>
-            <td>1047/4387</td>
-            <td class="down">跌多涨少</td>
-            <td>普跌格局</td>
-          </tr>
-          <tr>
-            <td>北向资金</td>
-            <td>-63.04亿</td>
-            <td class="down">净卖出</td>
-            <td>外资流出</td>
-          </tr>
-          <tr>
-            <td>纳斯达克</td>
-            <td>26402.34</td>
-            <td class="up">+1.20%</td>
-            <td>历史新高</td>
-          </tr>
-          <tr>
-            <td>标普500</td>
-            <td>7440.00</td>
-            <td class="up">+0.19%</td>
-            <td>历史新高</td>
-          </tr>
-          <tr>
-            <td>WTI原油</td>
-            <td>101.02美元</td>
-            <td class="up">+0.15%</td>
-            <td>高位震荡</td>
-          </tr>
-          <tr>
-            <td>黄金</td>
-            <td>4701.47美元</td>
-            <td class="up">+0.11%</td>
-            <td>避险需求</td>
-          </tr>
-          <tr>
-            <td>USD/CNY</td>
-            <td>6.8401</td>
-            <td>-</td>
-            <td>汇率稳定</td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">💡 核心观点</div>
+    <div class="card" style="border-left:3px solid var(--yellow);">
+      <div class="card-title">🎯 市场研判</div>
+      <div class="card-body">
+        <p style="margin-bottom:12px;"><strong style="color:var(--yellow);">A股：</strong>上证指数4177.92(-1.52%)失守4200点，高位科技股遭集中兑现，市场避险情绪升温。两市成交3.36万亿，连续7日破3万亿，但赚钱效应仅约19%。北向资金终结连续12日净流入，短期市场波动加大。</p>
+        <p style="margin-bottom:12px;"><strong style="color:var(--green);">美股：</strong>三大指数齐创历史新高，道指重返50000点，标普500 7501.25(+0.77%)，纳指上涨约1.2%。英伟达市值逼近6万亿美元，科技股引领市场。</p>
+        <p style="margin-bottom:12px;"><strong style="color:var(--accent);">宏观：</strong>中美元首会谈举行，关注经贸科技合作进展。美国4月PPI同比飙升6%，创2022年以来最大涨幅，通胀压力压制全球风险偏好。</p>
+        <p style="margin-bottom:0;"><strong style="color:var(--purple);">策略：</strong>建议防御为主，关注银行等高股息板块。银行板块PB仅0.67倍处于近十年23%分位，股息率普遍超5%，在A股高位回调背景下防御价值凸显。</p>
+      </div>
     </div>
-
-    <!-- 理财话题参考 -->
-    <div class="finance-section">
-      <div class="section-title">💰 理财话题参考</div>
-      <div class="finance-grid">
-        <div class="finance-card">
-          <div class="finance-title">市场波动应对</div>
-          <div class="finance-desc">A股大跌后如何调整心态？建议保持理性，避免恐慌性抛售，关注基本面优质标的</div>
-        </div>
-        <div class="finance-card">
-          <div class="finance-title">美股创新高</div>
-          <div class="finance-desc">纳指、标普再创历史新高，科技股领涨。关注估值风险，可考虑定投方式分散风险</div>
-        </div>
-        <div class="finance-card">
-          <div class="finance-title">黄金配置价值</div>
-          <div class="finance-desc">地缘政治不确定性下，黄金避险属性凸显。可适当配置黄金ETF或实物黄金</div>
-        </div>
-        <div class="finance-card">
-          <div class="finance-title">北向资金流向</div>
-          <div class="finance-desc">外资连续净卖出，反映外资对A股短期谨慎态度。关注后续资金流向变化</div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">📅 近期关注</div>
+    <div class="card" style="border-left:3px solid var(--accent);">
+      <div class="card-title">🔔 重要日历</div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(0,212,255,0.06);border-radius:8px;">
+            <div style="min-width:60px;text-align:center;">
+              <div style="font-size:18px;font-weight:800;color:var(--accent);">5/15</div>
+              <div style="font-size:10px;color:var(--text-muted);">今天</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary);">央行开展3000亿元买断式逆回购</div>
+              <div style="font-size:12px;color:var(--text-muted);">6个月期 · 中标利率维持1.25%不变</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(240,180,41,0.06);border-radius:8px;">
+            <div style="min-width:60px;text-align:center;">
+              <div style="font-size:18px;font-weight:800;color:#f0b429;">持续</div>
+              <div style="font-size:10px;color:var(--text-muted);">关注</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary);">中美经贸合作进展</div>
+              <div style="font-size:12px;color:var(--text-muted);">关注元首会谈后续政策落地</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(188,140,255,0.06);border-radius:8px;">
+            <div style="min-width:60px;text-align:center;">
+              <div style="font-size:18px;font-weight:800;color:var(--purple);">6/30</div>
+              <div style="font-size:10px;color:var(--text-muted);">截止</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary);">分红险老产品停售窗口期</div>
+              <div style="font-size:12px;color:var(--text-muted);">演示利率上限3.5%产品退市 · 预定利率降至1.25%</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Tab 0: 要点速览 -->
-<div class="tab-panel" id="tab-0">
-  <div class="overview-section">
-    <!-- 提示条 -->
-    <div class="alert-bars">
-      <div class="alert-bar good-bar">
-        <span class="alert-icon">✓</span>
-        <span class="alert-text">美股纳指、标普500再创历史新高，科技股表现强劲</span>
-      </div>
-      <div class="alert-bar alert-bar">
-        <span class="alert-icon">⚠</span>
-        <span class="alert-text">A股三大指数集体收跌，上证指数失守4200点，科技股回调明显</span>
-      </div>
-      <div class="alert-bar hot-bar">
-        <span class="alert-icon">🔥</span>
-        <span class="alert-text">特朗普访华进行中，中美经贸团队同步磋商，关注政策信号</span>
-      </div>
-      <div class="alert-bar info-bar">
-        <span class="alert-icon">ℹ</span>
-        <span class="alert-text">央行15日将开展3000亿元买断式逆回购，维护流动性合理充裕</span>
-      </div>
-    </div>
-
-    <!-- 核心要点 -->
-    <div class="highlights-section">
-      <div class="section-title">📋 核心要点</div>
-      <div class="highlights-grid">
-        <div class="highlight-item">
-          <div class="highlight-title">A股大跌</div>
-          <div class="highlight-content">三大指数集体收跌，上证失守4200点，成交3.36万亿，北向净卖出63亿</div>
+  <div class="sub-section">
+    <div class="sub-title">⚠️ 风险提示</div>
+    <div class="card" style="border-left:3px solid var(--red);">
+      <div class="card-title">🚨 投资需谨慎</div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+          <div style="padding:12px;background:rgba(248,81,73,0.06);border-radius:8px;">
+            <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:6px;">市场风险</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">A股高位回调，高位科技股遭集中兑现，短期波动加大。建议控制仓位，防御为主。</div>
+          </div>
+          <div style="padding:12px;background:rgba(240,180,41,0.06);border-radius:8px;">
+            <div style="font-size:13px;font-weight:700;color:#f0b429;margin-bottom:6px;">政策风险</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">中美元首会谈结果有待观察，美国PPI爆表6%可能引发全球货币政策收紧预期。</div>
+          </div>
+          <div style="padding:12px;background:rgba(188,140,255,0.06);border-radius:8px;">
+            <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:6px;">汇率风险</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">人民币汇率虽保持稳定，但外部环境复杂多变，需关注汇率波动对跨境投资的影响。</div>
+          </div>
+          <div style="padding:12px;background:rgba(0,212,255,0.06);border-radius:8px;">
+            <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px;">流动性风险</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.7;">北向资金终结12日净流入，外资动向出现分化，短期市场流动性可能承压。</div>
+          </div>
         </div>
-        <div class="highlight-item">
-          <div class="highlight-title">美股新高</div>
-          <div class="highlight-content">纳指涨1.20%至26402点，标普涨0.19%，双双刷新历史新高</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">科技股回调</div>
-          <div class="highlight-content">科创50跌2.55%领跌，创业板跌2.16%，科技股集体承压</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">特朗普访华</div>
-          <div class="highlight-content">5月13-15日访华，中美经贸团队同步磋商，关注后续进展</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">央行操作</div>
-          <div class="highlight-content">14日逆回购5亿元，15日将开展3000亿元买断式逆回购</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">朱雀二号</div>
-          <div class="highlight-content">运载火箭发射成功，商业航天领域再获突破</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">大宗商品</div>
-          <div class="highlight-content">WTI原油101.02美元，黄金4701.47美元，小幅上涨</div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-title">亚太市场</div>
-          <div class="highlight-content">日经跌0.98%，韩国KOSPI涨1.75%创新高，港股平收</div>
+        <div style="margin-top:14px;padding:12px 16px;background:rgba(29,198,100,0.06);border-radius:8px;border-left:3px solid #1dc664;">
+          <strong style="color:#1dc664;">💡 免责声明：</strong>本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。请投资者根据自身风险承受能力审慎决策。
         </div>
       </div>
-    </div>
-
-    <!-- 近期重要日历 -->
-    <div class="calendar-section">
-      <div class="section-title">📅 近期重要日历</div>
-      <table class="calendar-table">
-        <thead>
-          <tr>
-            <th>日期</th>
-            <th>事件</th>
-            <th>重要性</th>
-            <th>影响领域</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>5月13-15日</td>
-            <td>特朗普访华</td>
-            <td class="importance-high">高</td>
-            <td>中美关系、经贸政策</td>
-          </tr>
-          <tr>
-            <td>5月15日</td>
-            <td>央行3000亿买断式逆回购</td>
-            <td class="importance-medium">中</td>
-            <td>流动性、资金面</td>
-          </tr>
-          <tr>
-            <td>5月中旬</td>
-            <td>4月经济数据发布</td>
-            <td class="importance-high">高</td>
-            <td>宏观经济、政策预期</td>
-          </tr>
-          <tr>
-            <td>5月下旬</td>
-            <td>美联储会议纪要</td>
-            <td class="importance-medium">中</td>
-            <td>全球流动性、汇率</td>
-          </tr>
-          <tr>
-            <td>6月初</td>
-            <td>美国非农就业数据</td>
-            <td class="importance-high">高</td>
-            <td>美联储政策、全球市场</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
+  </div>
 </div>
+
 <div class="footer">
-  <p>数据来源：财联社·东方财富·新浪财经·新华社·每经AI | 仅供参考，不构成投资建议</p>
-  <p style="margin-top:4px;">本报告由 <span>老盛早知道</span> AI驱动生成 · 数据截至2026年5月14日</p>
-  <p style="margin-top:4px;">© 2026 老盛早知道 · Laosheng's Daily Brief · #20260515</p>
+  <span>老盛早知道</span> · 每日资讯不迟到 · 2026年5月15日<br>
+  数据来源：公开市场数据 · 仅供参考，不构成投资建议
 </div>
+
 <script>
-function switchTab(idx) {
-  document.querySelectorAll('.tab-panel').forEach(p => {
-    p.classList.toggle('active', p.id === 'panel-' + idx);
-  });
-  document.querySelectorAll('.tab-btn').forEach((b,i) => {
-    b.classList.toggle('active', i === idx);
-  });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.toggle('active', p.id === 'panel-' + idx);
+    });
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === idx);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 </script>
 </body>
 </html>
