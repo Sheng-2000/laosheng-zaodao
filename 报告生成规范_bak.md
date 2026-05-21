@@ -1,0 +1,875 @@
+# 老盛早知道 · 每日报告生成规范（2026年5月13日固化版）
+
+---
+
+## 一、生成流程（铁律）
+
+1. **4轮搜索**（每轮最多6个搜索，总计不超过24次）：
+   
+   - **第1轮**：A股最近一次收盘 + 美股最近一次收盘 + 最新国内外的重大新闻 + 最新美联储/央行动态
+   - **第2轮**：港股/亚太/欧洲最近一次收盘 + 最新大宗商品（原油/黄金/白银）+ 最新加密货币 + 最新汇率/国债
+   - **第3轮A**：最新AI前沿（大模型/机器人/算力/应用）+ 关注标的基本面 + 最新论坛热门话题
+   - **第3轮B**：最新 券商策略观点 + 板块估值 + 存款利率 + 理财收益率 + 保险产品动态
+   - **第4轮**：补充缺失数据 + 交叉验证关键数据点（搜索权威来源新华社/财联社/每经AI/人民财讯，逐项核对）
+
+2. **全部内容搜索完成后，撰写报告**：数据、新闻、AI前沿、理财话题、论坛热门、保险产品、关注标的基本面——绝不沿用旧数据
+   
+   - 遵循模版 template.html 的布局和样式，不修改CSS和HTML骨架，根据最新的数据重新生成当天的报告（重新生成，禁止复制旧报告，参考下面 禁止复制旧报告（核心铁律） 的要求）
+   
+   - 报告名称为 `老盛早知道_YYYYMMDD.html`，和index.html同一个目录
+   
+   - **template.html 是一份基于旧日期的完整报告，不是空白模板！必须重写的范围**：Tab 0~7 的**所有正文内容**（新闻事件、分析文字、股票数据、市场描述等）
+   
+   - **生成顺序**：先填8个Tab（1~7），**最后生成Tab 0（要点速览）**，因为要点速览需要综合参考其他Tab的核心内容
+
+3. **🚫 禁止复制旧报告（核心铁律）**：
+   
+   - **本质要求**：每天基于新搜索到的真实数据，撰写全新的分析内容
+   - **什么是"复制"**：将昨天的文字通过同义词替换、句式调整、语序变化等方式"改头换面"，但实质内容完全相同
+   - **什么是"重新撰写"**：基于今天搜索到的新数据/新事件，写出全新的分析逻辑和结论
+   - **具体要求**：
+     - Tab 4 价值投资风向的所有卡片文字（机构观点、高股息深度、低估值、长线资金、精简参考）
+     - Tab 5 关注标的的stock-card bullets（基本面数据可引用但需标注来源日期，分析文字必须基于最新市场环境重写）
+     - Tab 6 理财话题的所有sub-section文字（利率数据可引用但分析必须基于最新理财环境重写）
+     - Tab 7 今日总结的所有模块文字
+     - **禁止"机械替换"**：仅替换同义词（如"净利"→"净利润"、"披露"→"公布"）但分析逻辑和结论完全不变
+     - **禁止"句式调整"**：仅调整语序、主动被动转换，但内容实质相同
+     - **正确做法**：基于今天的新数据（如新的市场事件、新的政策、新的价格变动），写出与昨天不同的分析视角和结论
+     - 基本面数据（如年报数据）可以引用，但必须标注"截至2025年报"或"一季报尚未披露"等来源日期
+
+4. **更新index.html**：在reports数组最前面添加新日期条目（格式参考已有条目），历史记录只保留最近10天（不包含当天），超过10天的旧记录需删除。index.html密码为 `12345678`
+
+---
+
+## 二、数据引用规范（铁律）
+
+### 2.1 数据时效性要求
+
+| 数据类型        | 要求                  | 示例                         |
+| ----------- | ------------------- | -------------------------- |
+| **价格/指数数据** | 必须引用最新可得日期          | "标普5/12收盘7412.84"          |
+| **基本面数据**   | 可引用最近可得数据，必须标注来源日期  | "截至2025年报"、"2026Q1数据"      |
+| **政策/事件**   | 必须引用最新进展            | "美联储5/7决议"、"央行5/13开展5亿逆回购" |
+| **利率/国债数据** | 引用最新可得数据            | "1年定存1.65%（2026年5月数据）"     |
+| **搜索不到的数据** | 写"暂无数据"或引用最近可得日期并标注 | "亚太数据暂无（引用5/9数据）"          |
+
+### 2.2 禁止行为
+
+- ❌ **严禁编造数据**：只使用搜索到的真实数据
+- ❌ **严禁使用过期数据冒充当日数据**：如5月13日的报告引用"布伦特4/29最高126美元"而不标注日期
+- ❌ **严禁"银行护盘"等无来源说法**
+- ❌ **严禁为了文字不同而机械改写**：这是对"禁止复制"要求的误解
+
+### 2.3 数据标注格式
+
+- 价格数据：`"标普5/12收盘7412.84（+0.19%）"`
+- 基本面数据：`"截至2025年报：归母净利润3685.62亿元"`
+- 未披露数据：`"一季报尚未单独披露（最新数据截至2025年报）"`
+- 假期引用：`"A股4/30收盘（节前最后交易日）"`
+
+---
+
+## 三、搜索策略（效率优化）
+
+### 3.1 搜索预算
+
+| 任务类型      | 最大搜索次数       |
+| --------- | ------------ |
+| 简单任务      | 1-3次         |
+| 中等任务      | 3-5次         |
+| 复杂任务（本报告） | 最多24次（4轮×6个） |
+
+### 3.2 搜索原则
+
+1. **批量搜索**：多个相关主题合并为一次搜索
+   - ✅ 好：`"2026年5月12日 港股恒生指数 亚太股市 欧洲DAX CAC 富时 收盘"`
+   - ❌ 差：分别搜索港股、亚太、欧洲
+2. **一次搜索多次提取**：搜索一次后提取所有需要的信息，不要重复搜索
+3. **优先权威来源**：新华社、财联社、每经AI、人民财讯、新浪财经
+4. **WebFetch获取详情**：搜索到关键页面后，用WebFetch获取完整数据
+5. **遇到敏感词直接跳过**：不要在敏感词上浪费搜索次数
+
+### 3.3 关键数据源
+
+| 数据    | 优先搜索来源        |
+| ----- | ------------- |
+| 美股收盘  | 新华社纽约电、新浪财经   |
+| A股收盘  | 财联社、东方财富      |
+| 港股/亚太 | 新浪财经、格隆汇      |
+| 大宗商品  | 金投网、新浪期货      |
+| 汇率/国债 | 金投网、中国货币网     |
+| 加密货币  | 无特定权威源，多方交叉验证 |
+| 国内外新闻 | 财联社早间新闻精选、新华社 |
+
+### 3.4 各轮搜索必搜数据清单（铁律）
+
+#### 第1轮必搜（A股+美股+新闻+央行）
+
+| #   | 必搜数据                          | 用于Tab       | 说明          |
+| --- | ----------------------------- | ----------- | ----------- |
+| 1   | A股四大指数收盘（上证/深成指/创业板/科创50）+涨跌幅 | Tab 0/1/3/7 | 含成交额、涨跌家数   |
+| 2   | 北向资金净流入/流出                    | Tab 3/4/7   | 连续净流入天数     |
+| 3   | 美股三大指数收盘（道指/标普/纳指）+涨跌幅        | Tab 0/1/3/7 | 含板块表现、龙头个股  |
+| 4   | 国内外重大新闻（3-5条）                 | Tab 0/1     | 政策、外交、科技、社会 |
+| 5   | 央行操作（逆回购/MLF/LPR）+ 货币政策信号     | Tab 1/4/7   | 央行报告、官员讲话   |
+
+#### 第2轮必搜（港股/亚太/欧洲+大宗商品+加密货币+汇率）
+
+| #   | 必搜数据                            | 用于Tab     | 说明        |
+| --- | ------------------------------- | --------- | --------- |
+| 1   | 港股三大指数（恒生/恒生科技/国企）+个股           | Tab 3     | 含芯片股、科网股  |
+| 2   | 亚太（日经225/KOSPI）+ 欧洲（DAX/CAC/富时） | Tab 3     | 涨跌幅+年内表现  |
+| 3   | 大宗商品：WTI/布伦特/黄金/白银              | Tab 3/4/6 | 含涨跌幅、日内走势 |
+| 4   | 加密货币：BTC/ETH                    | Tab 3/4   | 含涨跌幅、关键价位 |
+| 5   | 汇率（USD/CNY中间价+在岸）+ 国债收益率        | Tab 3/6   | 央行中间价公告   |
+
+#### 第3轮必搜（AI+关注标的+理财+论坛+券商+估值+理财收益）
+
+| #   | 必搜数据                               | 用于Tab   | 说明          |
+| --- | ---------------------------------- | ------- | ----------- |
+| 1   | AI前沿（大模型/机器人/算力/应用）最新动态            | Tab 2   | 2-4个方向      |
+| 2   | **13个关注标的基本面**（股价/PE/PB/股息率/最新消息）  | Tab 5   | 逐个搜索或批量搜索   |
+| 3   | **银行板块/公用事业板块 整体估值**（PB/股息率区间）     | Tab 4/6 | 板块级数据，非个股   |
+| 4   | **券商机构策略观点**（中金/中信/高盛/摩根等）         | Tab 4   | 当日或最近研报摘要   |
+| 5   | **存款利率各期限**（活期~5年）+ **国债利率**       | Tab 6   | 国有大行最新挂牌利率  |
+| 6   | **理财产品收益率**（银行理财R2/固收+/债券基金/REITs） | Tab 6   | 行业平均收益率区间   |
+| 7   | **保险产品动态**（分红险/重疾险/医疗险价格）          | Tab 6   | 政策变化+产品价格区间 |
+| 8   | 论坛热门话题（雪球/集思录/东方财富）                | Tab 4/6 | 当日热议3-5个    |
+
+> **注意**：第3轮内容最多，建议拆分为2次搜索：
+> 
+> - 搜索A：AI前沿 + 关注标的基本面 + 论坛热门
+> - 搜索B：券商策略 + 板块估值 + 存款利率 + 理财收益率 + 保险产品
+
+#### 第4轮必搜（补充+验证）
+
+| #   | 必搜数据                                   | 用于Tab | 说明           |
+| --- | -------------------------------------- | ----- | ------------ |
+| 1   | **估值参考表9行数据**（上证PE/中证红利PE/各标的PB等+历史分位） | Tab 4 | 百分位可基于搜索数据估算 |
+| 2   | **长线资金动向**（险资/社保/QFII/北向）              | Tab 4 | 入市规模预测       |
+| 3   | 交叉验证第1-3轮关键数据点                         | 全部    | 确保数据一致性      |
+
+### 3.5 股息率数据获取规范（铁律）
+
+股息率是关注标的的核心指标，必须确保准确性：
+
+**计算公式**：股息率 = 最近12个月每股分红总额 ÷ 当前股价 × 100%
+**标注要求**：若搜索到的股息率为区间（如"4.75-5.8%"），直接使用区间；若为精确值，标注"约X%"
+**⚠️ 常见错误**：不要把H股股息率（因汇率折算更高）和A股股息率混为一谈，报告中应标注"A股股息率约X%"
+
+---
+
+## 四、8个Tab面板（按生成顺序）
+
+> **⚠️ 重要提醒**：template.html 是一份完整报告，必须从 template 复制后再修改内容。严禁删除或改变 CSS 类名和 HTML 骨架结构，仅替换正文文字和数据。
+
+---
+
+### Tab 1: 国内外新闻（`id="panel-1"`）
+
+**HTML骨架：**
+
+```html
+<div class="section-title">🌐 国内外新闻</div>
+<div class="sub-section">
+  <div class="sub-title">📌 国内外重点新闻</div>
+  <!-- 5张 card -->
+</div>
+<div class="sub-section">
+  <div class="sub-title">🌍 地缘政治</div>
+  <!-- 3张 card -->
+</div>
+<div class="sub-section">
+  <div class="sub-title">💰 国内外财经</div>
+  <!-- 4张 card -->
+</div>
+```
+
+**card结构（每张card必须包含）：**
+
+- `.card` 外层容器
+- `.card-title` 标题（emoji + 粗体标题）
+- `.card-body` 正文（tag标签 + 正文分析）
+- `tag` 标签样式：tag-red / tag-yellow / tag-green / tag-blue / tag-purple / tag-orange
+
+**子板块内容要求：**
+| 板块 | 卡片数 | 内容方向 |
+|------|--------|----------|
+| 📌 国内外重点新闻 | 5张 | 重大政策、社会事件、科技突破、自然灾害、车展等 |
+| 🌍 地缘政治 | 3张 | 美伊、中美关系、俄乌、中东、台海等 |
+| 💰 国内外财经 | 4张 | A股、美股、欧洲、原油、黄金、加密、存款利率等 |
+
+---
+
+### Tab 2: AI前沿（`id="panel-2"`）
+
+**HTML骨架：**
+
+```html
+<div class="section-title">🤖 AI前沿</div>
+<div class="sub-section"><div class="sub-title">🔥 大模型大战</div><!-- 2~4张 card --></div>
+<div class="sub-section"><div class="sub-title">🤖 人形机器人</div><!-- 1~3张 card --></div>
+<div class="sub-section"><div class="sub-title">⚡ 算力基础设施</div><!-- 2~3张 card --></div>
+<div class="sub-section"><div class="sub-title">📱 AI应用落地</div><!-- 1~3张 card --></div>
+<div class="sub-section"><div class="sub-title">📊 产业趋势</div><!-- 1张 card --></div>
+```
+
+**子板块内容要求：**
+| 子板块 | 卡片数 | 内容方向 |
+|--------|--------|----------|
+| 🔥 大模型大战 | 2~4 | GPT/Claude/Gemini/DeepSeek/国内大模型发布、迭代、评测、诉讼、融资 |
+| 🤖 人形机器人 | 1~3 | 特斯拉Optimus、Figure AI、宇树科技、具身智能、量产进展 |
+| ⚡ 算力基础设施 | 2~3 | 液冷散热、光模块/CPO/NPO、AI芯片/GPU/昇腾、服务器PCB、数据中心 |
+| 📱 AI应用落地 | 1~3 | 自动驾驶/L3、AI Agent、AI+办公/教育/医疗/金融、终端AI设备 |
+| 📊 产业趋势 | 1 | 综合研判：四大主线走势总结 |
+
+**搜索关键词参考**：大模型发布、人形机器人量产、算力芯片、液冷光模块、自动驾驶、AI应用、具身智能、CPO交换机、昇腾芯片、AI Agent
+
+---
+
+### Tab 3: 全球市场（`id="panel-3"`）
+
+**HTML骨架（从上到下顺序，不得颠倒）：**
+
+```html
+<div class="section-title">📈 全球市场行情</div>
+<div class="good-bar">...</div>         <!-- 1条，重大利好 -->
+<div class="hot-bar">...</div>          <!-- 1条，市场热点 -->
+<div class="alert-bar">...</div>         <!-- 1条，风险提示 -->
+<div class="market-grid">
+  <div class="market-block" style="border-top:2px solid var(--yellow);">  <!-- A股 -->
+  <div class="market-block" style="border-top:2px solid var(--green);">   <!-- 港股 -->
+  <div class="market-block" style="border-top:2px solid var(--yellow);">  <!-- 亚太 -->
+  <div class="market-block" style="border-top:2px solid var(--red);">    <!-- 欧洲 -->
+  <div class="market-block" style="border-top:2px solid var(--red);">    <!-- 美股 -->
+  <div class="market-block" style="border-top:2px solid var(--red);">    <!-- 大宗商品 -->
+  <div class="market-block" style="border-top:2px solid var(--purple);"> <!-- 加密货币 -->
+  <div class="market-block" style="border-top:2px solid var(--accent);"> <!-- 汇率与债券 -->
+</div>
+<div class="card" style="border-left:3px solid var(--orange);">  <!-- 📊 市场综评 -->
+  <div class="card-title">📊 市场综评（X月X日·周X）</div>
+  <div class="card-body">
+    <p style="... border-left:3px solid var(--red);">...</p>   <!-- A股 -->
+    <p style="... border-left:3px solid var(--accent);">...</p>  <!-- 地缘/政策 -->
+    <p style="... border-left:3px solid var(--orange);">...</p>  <!-- 风险事件 -->
+    <p style="... border-left:3px solid var(--green);">...</p>   <!-- 美股/海外 -->
+  </div>
+</div>
+```
+
+**market-block 结构（每个block内）：**
+
+```html
+<div class="market-block">
+  <h4>🇨🇳 A股（X月X日收盘）市场特征</h4>
+  <div class="market-row"><span class="market-name">指数名</span><span class="market-val [up|down|neutral]">数值 <small>涨跌幅</small></span></div>
+  <!-- 更多 market-row -->
+</div>
+```
+
+**各区块必须包含的数据项：**
+| 区块 | 必须包含的数据项 | 颜色标识 |
+|------|----------------|----------|
+| **A股** | 上证、深证、创业板、科创50、沪深300、北证50、成交额、涨跌家数、北向资金、领涨板块、领跌板块、关键事件 | border-top: yellow |
+| **港股** | 恒生指数、恒生科技、国企指数、领涨/领跌个股、南向资金、市场特征 | border-top: green |
+| **亚太** | 日经225、KOSPI、台股、新加坡、印度、澳洲、市场特征 | border-top: yellow |
+| **欧洲** | DAX、CAC、富时、斯托克50、涨跌幅、市场特征 | border-top: red |
+| **美股** | 道指、标普、纳指、领涨/领跌板块、核心驱动、本周关注 | border-top: red |
+| **大宗商品** | WTI、布伦特、国际黄金（伦敦金）、COMEX黄金、**国内黄金9995价格（沪金）**、白银、核心驱动 | border-top: red |
+| **加密货币** | BTC、ETH、价格区间、市场情绪、资金动向 | border-top: purple |
+| **汇率与债券** | USD/CNY中间价、在岸汇率、美元指数、**中国10年期国债**、**美国10年期国债**、中美利差、政策信号 | border-top: accent |
+
+**📊 市场综评要求：**
+
+- 位于 market-grid 结束后、Tab 3 结尾处
+- 4条分色 p 标签，顺序：**A股大涨/行情 → 地缘/政策 → 风险事件 → 美股/海外**
+- 每条含 emoji + 粗体标题 + 正文（正文内含涨跌颜色 span.up / span.down）
+
+---
+
+### Tab 4: 价值投资风向（`id="panel-4"`）
+
+**HTML骨架：**
+
+```html
+<div class="section-title">💡 价值投资风向</div>
+
+<!-- 一 · 机构价值投资观点 -->
+<div class="sub-section">
+  <div class="sub-title">一 · 机构价值投资观点</div>
+  <div class="institute-tabs">
+    <div class="institute-card institute-cicc">...</div>   <!-- 中金 -->
+    <div class="institute-card institute-gs">...</div>    <!-- 高盛 -->
+    <div class="institute-card institute-xy">...</div>    <!-- 兴业 -->
+  </div>
+</div>
+
+<!-- 二 · 社区情绪 -->
+<div class="sub-section">
+  <div class="sub-title">二 · 雪球·集思录价值投资社区情绪</div>
+  <div class="sentiment-dashboard">
+    <div class="sentiment-grid">
+      <div class="sentiment-item">...</div> × 9（固定顺序）
+    </div>
+  </div>
+</div>
+
+<!-- 三 · 高股息深度分析 -->
+<div class="sub-section"><div class="sub-title">三 · 高股息板块深度分析</div><!-- 4张 card --></div>
+
+<!-- 四 · 低估值板块 -->
+<div class="sub-section"><div class="sub-title">四 · 低估值板块</div><!-- 2张 card --></div>
+
+<!-- 五 · 长线资金动向 -->
+<div class="sub-section"><div class="sub-title">五 · 长线资金动向</div><!-- 2张 card --></div>
+
+<!-- 六 · 估值参考表 -->
+<div class="sub-section"><div class="sub-title">六 · 价值投资估值参考表</div><!-- 1张 card 含9行3列表格 --></div>
+
+<!-- 附 · 精简参考板块 -->
+<div class="sub-section"><div class="sub-title">附 · 精简参考板块</div><!-- 3张 card --></div>
+```
+
+**社区情绪固定9条（按以下顺序展示，不按百分比排序）：**
+高股息 → 银行 → 公用事业 → 电力 → AI算力 → 能源油价 → 新能源 → 黄金 → 加密货币
+
+**估值表固定9项：** 银行板块PB / 上证PE / 银行股息率 / 中证红利PE / 中国海油桶油利润 / 中国移动PB / 招商银行PB / 中国核电估值 / 黄金价格
+
+---
+
+### Tab 5: 关注标的（`id="panel-5"`）
+
+**HTML骨架：**
+
+```html
+<div class="section-title">🏦 关注标的 · 核心持仓跟踪</div>
+<div class="good-bar">...</div>   <!-- 1条，高股息逻辑提示 -->
+<div class="alert-bar">...</div>  <!-- 1条，风险提示 -->
+
+<!-- 银行股 -->
+<div class="sub-title">银行股 · 高股息核心</div>
+<div class="stock-card">...</div> × 7（工商银行、招商银行、宁波银行、江苏银行、杭州银行、农业银行、重庆银行）
+
+<!-- 公用事业 -->
+<div class="sub-title">公用事业</div>
+<div class="stock-card">...</div> × 2（长江电力、大秦铁路）
+
+<!-- 央企高股息 -->
+<div class="sub-title">央企高股息</div>
+<div class="stock-card">...</div> × 4（中国海油、中国平安、中国移动、中国核电）
+
+<!-- 📊 关注标的深度解读（汇总卡片） -->
+<div class="card" style="border-left:3px solid var(--accent);">
+  <div class="card-title">📊 关注标的深度解读</div>
+  <div class="card-body">
+    <!-- 4个子块：银行股(黄) + 公用事业(绿) + 央企(紫) + 配置建议(蓝) -->
+  </div>
+</div>
+```
+
+**stock-card 结构（每张股票卡必须包含）：**
+
+```html
+<div class="stock-card">
+  <div class="stock-header">
+    <div class="stock-info-row">
+      <span class="stock-name">工商银行</span>
+      <span class="stock-code">601398</span>
+      <span class="stock-tag">银行·高股息</span>
+    </div>
+    <div class="stock-price-area">
+      <span class="stock-price">6.12</span>
+      <span class="stock-change up">+0.23（+3.90%）</span>
+    </div>
+  </div>
+  <div class="stock-bullets">
+    <ul>
+      <li>基本面数据或分析文字...</li>
+    </ul>
+  </div>
+</div>
+```
+
+**13只标的（不得增减）：**
+| 归类 | 标的（7+2+4） |
+|------|---------------|
+| 🏦 银行股·高股息核心 | 工商银行、招商银行、宁波银行、江苏银行、杭州银行、农业银行、重庆银行 |
+| ⚡ 公用事业 | 长江电力、大秦铁路 |
+| 🏢 央企高股息 | 中国海油、中国平安、中国移动、中国核电 |
+
+**撰写要求：**
+
+- 每个标的的bullet文字必须基于最新市场环境重新撰写
+- 结合当日市场大环境（如"在A股回调的背景下..."、"在央行逆回购的流动性环境下..."）
+- 禁止连续两天使用相同或高度相似的bullet文字
+
+---
+
+### Tab 6: 理财话题（`id="panel-6"`）
+
+**HTML骨架（8项，顺序不得颠倒）：**
+
+```html
+<div class="section-title">💰 理财话题参考</div>
+
+<!-- 第1项：顶部4列概览 -->
+<div class="grid-4">
+  <div class="data-card gradient-card">定存利率</div>
+  <div class="data-card gradient-card">银行股息率</div>
+  <div class="data-card gradient-card">分红险窗口</div>
+  <div class="data-card gradient-card">超长期特别国债</div>
+</div>
+
+<!-- 第2项：稳健理财工具收益对比 -->
+<div class="sub-section">
+  <div class="sub-title">稳健理财工具收益对比</div>
+  <div class="card">...</div>  <!-- 5个 progress-bar 进度条 -->
+</div>
+
+<!-- 第3项：高股息替代策略 -->
+<div class="sub-section">
+  <div class="sub-title">高股息替代策略</div>
+  <div class="grid-2">
+    <div class="rate-compare">左：3个 big-num 大数字对比</div>
+    <div class="asset-alloc">右：grid-2 资产配置</div>
+  </div>
+</div>
+
+<!-- 第4项：理财避坑指南 -->
+<div class="sub-section">
+  <div class="sub-title">理财避坑指南</div>
+  <div class="grid-3">3张坑卡片</div>
+  <div class="grid-2">定投策略 + REITs配置</div>
+</div>
+
+<!-- 第5项：家庭保险配置指南 -->
+<div class="sub-section">
+  <div class="sub-title">家庭保险配置指南</div>
+  <div class="card">
+    <div class="insurance-flow">
+      <div class="insurance-card">医疗险</div><div class="flow-arrow">→</div>
+      <div class="insurance-card">重疾险</div><div class="flow-arrow">→</div>
+      <div class="insurance-card">意外险</div><div class="flow-arrow">→</div>
+      <div class="insurance-card">定期寿险</div>
+    </div>
+    <!-- 分红险倒计时进度条 -->
+  </div>
+</div>
+
+<!-- 第6项：黄金投资 -->
+<div class="sub-section">
+  <div class="sub-title">黄金投资</div>
+  <div class="grid-2">
+    <div>左：国际黄金价格 + SVG走势图</div>
+    <div>右：4种黄金投资方式对比</div>
+  </div>
+</div>
+
+<!-- 第7项：债券基金 -->
+<div class="sub-section">
+  <div class="sub-title">债券基金</div>
+  <div class="card">
+    <div class="grid-4">纯债/一级债基/二级债基/可转债基金</div>
+  </div>
+</div>
+
+<!-- 第8项：社区热门话题 -->
+<div class="sub-section">
+  <div class="sub-title">社区热门话题</div>
+  <div class="topic-card">...</div> × 5
+</div>
+```
+
+**第1项（顶部4列数据卡片）结构：**
+
+- 每张卡片：渐变背景（linear-gradient）+ 大号数字（font-size:22-24px）+ 趋势说明
+- 4张卡片内容固定：银行1年定存利率 / 银行股息率区间 / 分红险窗口期 / 超长期特别国债
+
+**撰写要求：**
+
+- 利率/国债等固定数据可以引用（标注来源日期）
+- 分析文字必须基于当日市场环境重新撰写
+- 避坑指南的"3大坑"必须反映当日最新的市场风险
+- 社区热门话题必须引用当日搜索到的最新热议内容
+
+---
+
+### Tab 7: 今日总结（`id="panel-7"`）
+
+**HTML骨架（从上到下顺序）：**
+
+```html
+<div class="section-title">📋 今日总结</div>
+
+<!-- 今日关键词（渐变背景容器 + 8个彩色胶囊标签） -->
+<div class="keyword-container">
+  <div class="keyword-tags">
+    <span class="keyword-tag">关键词1</span> × 8
+  </div>
+</div>
+
+<!-- 宏观面 card（border-left: accent） -->
+<div class="card" style="border-left:3px solid var(--accent);">
+  <div class="card-title">🌐 宏观面</div>
+  <div class="card-body">
+    <p>央行与利率...</p>
+    <p>外交与地缘...</p>
+    <p>经济数据...</p>
+  </div>
+</div>
+
+<!-- 市场面 card（border-left: red） -->
+<div class="card" style="border-left:3px solid var(--red);">
+  <div class="card-title">📉 市场面</div>
+  <div class="card-body">
+    <p>A股...</p>
+    <p>美股...</p>
+    <p>港股亚太...</p>
+    <p>大宗商品...</p>
+  </div>
+</div>
+
+<!-- 资金面 card（border-left: green） -->
+<div class="card" style="border-left:3px solid #22c55e;">
+  <div class="card-title">💵 资金面</div>
+  <div class="card-body">
+    <p>央行操作...</p>
+    <p>市场资金...</p>
+    <p>汇率与利率...</p>
+  </div>
+</div>
+
+<!-- 操作提示 card（border-left: purple） -->
+<div class="card" style="border-left:3px solid var(--purple);">
+  <div class="card-title">📌 操作提示</div>
+  <div class="card-body">
+    <p>🔴 高位科技股...</p>
+    <p>🟢 高股息底仓...</p>
+    <p>🔵 特朗普访华...</p>
+    <p>🟡 黄金勿急于...</p>
+    <p>🟣 分红险...</p>
+    <p>🟠 美伊冲突...</p>
+  </div>
+</div>
+
+<!-- 关键数字速查 card（border-left: yellow） -->
+<div class="card" style="border-left:3px solid #f0b429;">
+  <div class="card-title">✅ 关键数字速查</div>
+  <div class="card-body">
+    <table>
+      <tr><td>上证指数</td><td>...</td><td>...</td></tr>
+      <!-- 8行 -->
+    </table>
+  </div>
+</div>
+
+<!-- 理财话题参考（渐变背景 + grid-auto 4列） -->
+<div style="background:linear-gradient(...);">
+  <div class="grid-auto">
+    <div>定存利率</div>
+    <div>股息率</div>
+    <div>分红险</div>
+    <div>原油</div>
+  </div>
+</div>
+
+<!-- 今日操作建议（独立渐变背景容器，⭐关键易遗漏） -->
+<div style="background:linear-gradient(135deg,rgba(188,140,255,0.08),rgba(0,212,255,0.04));">
+  <div style="font-size:16px;font-weight:700;">
+    <span style="background:linear-gradient(...);">📌 今日操作建议</span>
+  </div>
+  <div style="display:grid;gap:10px;">
+    <div style="background:rgba(...);border-left:4px solid #1dc664;">🟢 高股息底仓坚守...</div>
+    <div style="background:rgba(...);border-left:4px solid var(--red);">🔴 半导体...</div>
+    <div style="background:rgba(...);border-left:4px solid var(--accent);">🔵 关注政策...</div>
+    <div style="background:rgba(...);border-left:4px solid #f0b429;">🟡 黄金...</div>
+    <div style="background:rgba(...);border-left:4px solid var(--purple);">🟣 分红险...</div>
+    <div style="background:rgba(...);border-left:4px solid var(--orange);">🟠 油价...</div>
+  </div>
+</div>
+```
+
+**⚠️ 特别注意：「今日操作建议」是独立于「操作提示」的模块！**
+
+- 「操作提示」：card 样式，6条内联 p 标签，带 border-left 颜色
+- 「今日操作建议」：独立渐变背景容器，**grid 布局**，6张独立卡片
+- 颜色顺序：**绿→红→蓝→黄→紫→橙**
+
+---
+
+### Tab 0: 要点速览（`id="panel-0"`）— **最后生成**
+
+**HTML骨架：**
+
+```html
+<div class="section-title">⚡ 本期要点速览</div>
+
+<!-- 4张摘要卡片 -->
+<div class="summary-cards-grid">
+  <div class="summary-card summary-card-yellow">...</div>  <!-- 今日最强 -->
+  <div class="summary-card summary-card-blue">...</div>   <!-- 市场面 -->
+  <div class="summary-card summary-card-green">...</div>   <!-- 资金面 -->
+  <div class="summary-card summary-card-red">...</div>    <!-- 风险提示 -->
+</div>
+
+<!-- 8条今日亮点 -->
+<div class="highlight-grid-v2">
+  <div class="highlight-item-v2">
+    <span class="highlight-badge">01</span>
+    <span class="highlight-text-v2">亮点文字...</span>
+  </div>
+  × 8
+</div>
+
+<!-- 近期重要日历 -->
+<div class="timeline-section">
+  <div class="timeline-container">
+    <div class="timeline-item today">...</div>
+    <div class="timeline-item future">...</div>
+    <div class="timeline-item data">...</div>
+    <div class="timeline-item deadline">...</div>
+  </div>
+</div>
+```
+
+**summary-card 结构（每张卡片必须包含4个要素）：**
+
+- icon emoji（大号）
+- title（粗体）
+- value（大号数字/涨跌幅）
+- desc（描述文字）
+
+**timeline-item 样式说明：**
+
+- `.today`：今日日期，当前时间
+- `.future`：未来事件
+- `.data`：重要数据发布日
+- `.deadline`：截止日期
+
+---
+
+## 五、格式规范
+
+- **涨红跌绿**：.up=红色（涨），.down=绿色（跌），.neutral=灰色（持平）
+- **stock-info-row**：横向flex排列（name+code+tag同行）
+- **表格**：速查表和日历的td加td-label（左列不换行）/td-val（右列可换行）
+- **搜索不到的数据**：标注"暂无数据"，不编造。周六日报告引用周五数据，未开市取最新
+- **零"待更新"为目标**：亚太5个+大宗4个+汇率4个尽量全部搜齐
+- **Tab切换滚动到顶部**：switchTab函数必须包含 `window.scrollTo({ top: 0, behavior: 'smooth' });`
+- **switchTab必须使用id匹配**：`p.classList.toggle('active', p.id === 'panel-' + idx)`，禁止使用DOM顺序索引
+
+---
+
+## 六、样式与结构规范（铁律）
+
+### 6.1 复制模板要求（核心铁律）
+
+**必须使用以下命令复制模板，禁止手动创建或修改CSS：**
+
+```bash
+cp template.html 老盛早知道_YYYYMMDD.html
+```
+
+**复制后必须保留的模板内容：**
+
+- ✅ 完整CSS（从 `<style>` 到 `</style>`，约2000行）
+- ✅ HTML骨架结构（header、tab-nav、所有tab-panel的div框架）
+- ✅ JavaScript函数（switchTab）
+- ✅ 所有footer内容
+
+### 6.2 必须重写的范围
+
+**仅允许重写以下内容：**
+
+- 各tab-panel内部的HTML正文内容
+- header中的日期、ticker数据
+- footer中的日期
+
+**禁止删除或修改的内容：**
+
+- ❌ 任何CSS样式定义
+- ❌ header骨架结构
+- ❌ tab-nav导航栏
+- ❌ tab-panel的div框架和id
+- ❌ footer结构
+- ❌ switchTab函数
+
+### 6.3 CSS类名使用规范（铁律）
+
+**必须使用模板定义的CSS类名，禁止自创：**
+
+| 组件    | 必须使用的CSS类                                                            |
+| ----- | -------------------------------------------------------------------- |
+| 卡片容器  | `class="card"`                                                       |
+| 卡片标题  | `class="card-title"`                                                 |
+| 卡片正文  | `class="card-body"`                                                  |
+| 子版块   | `class="sub-section"`                                                |
+| 子标题   | `class="sub-title"`                                                  |
+| 区块标题  | `class="section-title"`                                              |
+| 标签    | `class="tag tag-*"（finance/tech/geo/policy/ai/chip/robot/app/energy） |
+| 股票卡片  | `class="stock-card"`                                                 |
+| 股票头部  | `class="stock-header"`                                               |
+| 股票信息行 | `class="stock-info-row"`                                             |
+| 股票名称  | `class="stock-name"`                                                 |
+| 股票代码  | `class="stock-code"`                                                 |
+| 股票价格区 | `class="stock-price-area"`                                           |
+| 股票价格  | `class="stock-price"`                                                |
+| 股票涨跌  | `class="stock-change"`                                               |
+| 股票要点  | `class="stock-bullets"` + `<li>`                                     |
+| 市场区块  | `class="market-block"`                                               |
+| 市场行   | `class="market-row"`                                                 |
+| 上涨标识  | `class="up"`                                                         |
+| 下跌标识  | `class="down"`                                                       |
+| 持平标识  | `class="neutral"`                                                    |
+| 提示条   | `class="alert-bar" / "hot-bar" / "good-bar"`                         |
+| 高亮项   | `class="highlight-item"`                                             |
+| 汇总卡   | `class="summary-card"`                                               |
+
+### 6.4 HTML结构规范
+
+**tab-panel结构（必须严格遵循）：**
+
+```html
+<div class="tab-panel" id="panel-0">
+  <div class="inner">
+    <div class="section-title">...</div>
+    <div class="sub-section">
+      <div class="sub-title">...</div>
+      <!-- 卡片内容 -->
+    </div>
+    <!-- 更多sub-section -->
+  </div>
+</div>
+```
+
+**switchTab函数（禁止修改）：**
+
+```javascript
+function switchTab(idx) {
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'panel-' + idx);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+```
+
+### 6.5 文件完整性要求
+
+| 指标          | 目标值                 | 说明         |
+| ----------- | ------------------- | ---------- |
+| 文件行数        | 3300±100行           | 包含完整CSS和骨架 |
+| CSS类数量      | 与模板一致（223个）         | 不得删减       |
+| sub-title数量 | 与模板一致（25个）          | 不得删减       |
+| tab-panel数量 | 8个（panel-0到panel-7） | 不得删减       |
+
+### 6.6 常见错误（必须避免）
+
+| ❌ 错误做法        | ✅ 正确做法                |
+| ------------- | --------------------- |
+| 手动创建HTML文件    | 必须 `cp template.html` |
+| 删减模板CSS       | 保留全部CSS               |
+| 自定义CSS类名      | 必须用模板类名               |
+| 删除tab-panel骨架 | 仅修改内部内容               |
+| 修改switchTab函数 | 禁止修改                  |
+| 跳过CSS检查       | 自动化命令验证               |
+
+---
+
+## 七、原创性深化规范（铁律）
+
+### 标题也必须不同
+
+- 不仅内容要重新撰写，**每个卡片的标题也必须基于当日事件重新拟定**
+- ❌ 昨天标题"银行股息率是定存的5倍，美伊交火+地量逆回购强化防御逻辑"，今天改成"银行股息率达定存5倍，美伊封锁+逆回购缩量强化防御" → 标题高度相似，不通过
+- ✅ 今天标题"国常会基建加码+外贸+14.9%+银行分红季，高股息迎三重催化" → 基于当日新事件拟定新标题，通过
+
+### 低估值板块必须轮换标的
+
+- **禁止连续两天写相同的两个标的**（如城商行+大秦铁路）
+- 每天从关注标的池（13个）及更广泛的低估值板块中，选择2个**当日最有催化/最有故事**的标的
+- 选择标准：当日有新数据、新政策、新事件催化的标的优先
+
+### Tab 6所有文字板块都必须每日重写
+
+以下板块的文字（非固定数据表）必须基于当日市场环境重新撰写：
+
+- hot-bar概览段（融入当日最新事件）
+- 银行理财卡（标题+分析角度）
+- 高股息替代策略卡（标题+分析逻辑）
+- 避坑指南3大坑（反映当日最新市场风险）
+- 重疾险卡（融入当日相关政策动态）
+- 分红险卡（融入最新数据点）
+- 黄金投资卡（融入当日地缘/价格动态）
+- 债券基金卡（融入当日流动性/供给动态）
+- 社区热门话题（必须引用当日搜索到的最新热议）
+
+### 分析角度必须切换
+
+- 即使讨论同一个板块（如银行），每天的**分析切入角度**必须不同
+- ❌ 连续两天都从"防御属性"角度分析银行
+- ✅ 周一从"防御属性"切入 → 周二从"国常会基建加码带动融资需求"切入 → 周三从"外贸超预期带动长三角信贷回暖"切入
+
+---
+
+## 八、手机端适配
+
+- Tab导航右侧渐变遮罩提示
+- 表格font-size:12px !important，允许换行
+- stock-info-row横向flex排列
+- footer底部安全区适配
+
+---
+
+## 九、header日期与ticker引用规则（⚠️ 高频出错，必须严格执行）
+
+### 9.1 日期确定流程（铁律，生成前必须执行）
+
+**在开始任何搜索之前，必须先执行以下步骤：**
+
+```
+步骤1：读取 env 中的 Today's date，确认为 T 日（如 2026-05-15）
+步骤2：计算文件名日期 = T 日（如 20260515）
+步骤3：计算搜索数据日期 = T - 1 个自然日（如 2026-05-14）
+步骤4：在搜索关键词中使用 T - 1 的日期（如 "2026年5月14日 A股收盘"）
+步骤5：header 中显示 T 日的日期和星期
+步骤6：ticker 引用 T - 1 日的收盘数据
+```
+
+**⚠️ 常见错误（必须避免）**：
+
+- ❌ 今天是15号，搜索"5月13日"的数据 → 差了2天！应该搜"5月14日"
+- ❌ 今天是15号，文件名写成"20260514" → 差了1天！应该是"20260515"
+- ❌ 今天是15号，header写"5月14日" → 差了1天！应该是"5月15日"
+- ✅ 正确：今天=15号 → 文件名=20260515 → header=5月15日 → 搜索"5月14日"收盘数据
+
+### 9.2 日期对照表
+
+| 今天（T日）         | 文件名      | header日期  | 搜索数据日期（T-1） | 搜索关键词示例                  |
+| -------------- | -------- | --------- | ----------- | ------------------------ |
+| 2026-05-15（周五） | 20260515 | 5月15日 星期五 | 2026-05-14  | "2026年5月14日 A股收盘"        |
+| 2026-05-16（周六） | 20260516 | 5月16日 星期六 | 2026-05-15  | "2026年5月15日 A股收盘"（周五收盘）  |
+| 2026-05-18（周一） | 20260518 | 5月18日 星期一 | 2026-05-15  | "2026年5月15日 A股收盘"（上周五收盘） |
+| 2026-05-19（周二） | 20260519 | 5月19日 星期二 | 2026-05-18  | "2026年5月18日 A股收盘"        |
+
+### 9.3 特殊场景处理
+
+| 场景              | header日期 | ticker引用数据              |
+| --------------- | -------- | ----------------------- |
+| 正常交易日（如周三）      | T日（周三）   | T-1日收盘数据（周二）            |
+| 周一              | T日（周一）   | 上周五（T-3）收盘数据            |
+| 周末（周六/周日）       | T日       | 最近交易日收盘数据（周五），标注"周末休市"  |
+| 假期中             | T日       | 最近交易日收盘数据，并标注"假期休市"     |
+| 假期后首个交易日（如节后周三） | T日（周三）   | 假期前最后交易日数据，并标注"节前最后交易日" |
+
+---
+
+**规范版本**: v1.6
+**最后更新**: 2026年5月15日
+
+**更新说明**:
+
+- v1.6: 扩充「样式与结构规范」章节，新增CSS类名对照表、HTML结构示例、文件完整性指标、常见错误对照表
+- v1.5: 首次固化版
