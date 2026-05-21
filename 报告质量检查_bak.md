@@ -371,7 +371,7 @@ grep -oE 'class="[^"]*(w-|h-|p-|m-|flex|grid|block|text-|bg-|rounded)' 老盛早
 | ----------- | --------------- | ------------ |
 | CSS完整性      | `</style>`在文件末尾 | CSS被截断       |
 | CSS类差异      | 输出为空            | 报告删减了模板CSS   |
-| 文件行数        | 3300±100行       | 远低于模板（CSS缺失） |
+| 文件行数        | 3200±300行       | 远低于模板（CSS缺失） |
 | sub-section | 22个             | 数量不符         |
 | tab-panel   | 8个              | 数量不符         |
 | sub-title   | 26个             | 数量不符         |
@@ -546,7 +546,7 @@ grep -oP 'class="t-val[^"]*">[^<]+' template.html | head -4
 
 | 指标          | 目标值                 | 验证命令                                                               |
 | ----------- | ------------------- | ------------------------------------------------------------------ |
-| 文件行数        | 3300±100行           | `wc -l 老盛早知道_YYYYMMDD.html`                                        |
+| 文件行数        | 3200±300行           | `wc -l 老盛早知道_YYYYMMDD.html`                                        |
 | CSS类数量      | 223个（与模板一致）         | `grep -oP 'class="[^"]*"' 老盛早知道_YYYYMMDD.html \| sort -u \| wc -l` |
 | sub-title数量 | 25个                 | `grep -c 'class="sub-title"' 老盛早知道_YYYYMMDD.html`                  |
 | tab-panel数量 | 8个（panel-0到panel-7） | `grep -c 'class="tab-panel"' 老盛早知道_YYYYMMDD.html`                  |
