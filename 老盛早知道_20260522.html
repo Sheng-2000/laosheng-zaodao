@@ -1394,6 +1394,180 @@
     font-size: 11px;
   }
 }
+
+/* ===== 全局手机端适配增强 ===== */
+@media (max-width: 768px) {
+  /* Tab 0: 要点速览 */
+  .summary-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .summary-card-green,
+  .summary-card-blue,
+  .summary-card-yellow,
+  .summary-card-red {
+    padding: 16px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  .summary-card-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 22px !important;
+  }
+  .summary-card-value {
+    font-size: 22px !important;
+  }
+  
+  /* Tab 1: 国内外新闻 */
+  .news-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .news-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 2: AI前沿 */
+  .ai-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .ai-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 3: 全球市场 */
+  .market-grid-v2 {
+    grid-template-columns: 1fr !important;
+  }
+  .market-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 4: 价值投资风向 */
+  .institute-tabs {
+    grid-template-columns: 1fr !important;
+  }
+  .institute-card {
+    padding: 0 !important;
+  }
+  .sentiment-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .sentiment-item {
+    padding: 12px 8px !important;
+  }
+  .sentiment-emoji {
+    font-size: 24px !important;
+  }
+  .sentiment-label {
+    font-size: 10px !important;
+  }
+  
+  /* Tab 5: 关注标的 */
+  .stock-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Tab 6: 理财话题 */
+  .insurance-flow {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .insurance-flow .flow-arrow {
+    transform: rotate(90deg) !important;
+  }
+  .insurance-flow .insurance-card {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .rate-compare {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .topic-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .topic-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 7: 今日总结 */
+  .summary-operation-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .operation-card {
+    padding: 14px !important;
+  }
+  
+  /* 通用网格适配 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 图表适配 */
+  [style*="padding-left:120px"] {
+    padding-left: 80px !important;
+  }
+  
+  /* 数据卡片适配 */
+  .data-card {
+    padding: 14px !important;
+  }
+  
+  /* 表格横向滚动 */
+  .table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* 字体大小调整 */
+  .section-title {
+    font-size: 16px !important;
+  }
+  .sub-title {
+    font-size: 14px !important;
+  }
+  
+  /* 间距调整 */
+  .tab-panel .inner {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  
+  /* 按钮大小调整 */
+  .tab-btn {
+    padding: 10px 12px !important;
+    font-size: 11px !important;
+  }
+  
+  /* 底部安全区 */
+  .footer {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 20px)) !important;
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .sentiment-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .summary-card-value {
+    font-size: 18px !important;
+  }
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
 </style>
 </head>
 <body>
