@@ -1568,6 +1568,93 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/* ===== 新增组件手机端适配 ===== */
+@media (max-width: 768px) {
+  /* 要点速览8条要点卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 市场综评4维度卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 宏观面/市场面/资金面3列数据卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 理财话题参考6张卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 今日操作建议6张卡片 */
+  [style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 稳健理财工具图表 - 数据条容器 */
+  [style*="padding-left:120px"] {
+    padding-left: 80px !important;
+  }
+  
+  /* 数据条标签缩小 */
+  [style*="width:100px"] {
+    width: 80px !important;
+  }
+  
+  /* 图表X轴刻度简化 */
+  [style*="text-align:center;margin:14px 0"] {
+    margin: 10px 0 !important;
+  }
+  
+  /* 对比区3张卡片 */
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 图例区4列 */
+  [style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 机构观点卡片内边距 */
+  .institute-card {
+    padding: 0 !important;
+  }
+  
+  /* 情绪指示器底部数据 */
+  [style*="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 理财话题参考改为2列 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 图表左侧padding进一步减小 */
+  [style*="padding-left:120px"] {
+    padding-left: 60px !important;
+  }
+  
+  /* 数据条标签进一步缩小 */
+  [style*="width:100px"] {
+    width: 70px !important;
+  }
+  
+  /* 对比区卡片字号调整 */
+  [style*="font-size:24px;font-weight:800"] {
+    font-size: 20px !important;
+  }
+}
 </style>
 </head>
 <body>
