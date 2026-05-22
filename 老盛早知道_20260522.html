@@ -1690,9 +1690,15 @@
 }
 
 @media (max-width: 480px) {
-  /* 家庭保险4卡片 - 进一步改为单列 */
+  /* 家庭保险4卡片 - 保持2列展示 */
   [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  /* 保险卡片内边距进一步减小 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] > div {
+    padding: 10px !important;
   }
 
   /* 关键数字速查表格 - 手机端适配 */
