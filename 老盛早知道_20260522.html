@@ -169,60 +169,67 @@
   .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .grid-auto { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
   @media (max-width:768px) {
-    .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
-    .header-inner { padding-top: 14px; }
-    .tab-panel .inner { padding-top: 20px; padding-bottom: 8px; }
+    .inner { max-width: 100%; }
+    .header-inner, .tab-nav-wrap, .inner { padding-left: 12px; padding-right: 12px; }
+    .header-inner { padding-top: 12px; }
+    .tab-panel .inner { padding-top: 16px; padding-bottom: 6px; }
     .highlight-grid, .market-grid { grid-template-columns: 1fr; }
-    .header-top { grid-template-columns: 48px 1fr; gap: 10px; padding-bottom: 14px; }
-    .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
-    .brand-icon svg { width: 22px; height: 22px; }
-    .brand-name { font-size: 20px; letter-spacing: 2px; }
-    .brand-zaodao { font-size: 20px; letter-spacing: 2px; }
-    .brand-sep { margin: 0 6px; height: 16px; }
-    .brand-tag { font-size: 10px; margin-left: 6px; }
-    .brand-subtitle { font-size: 11px; flex-wrap: wrap; }
-    .brand-en { font-size: 9px; letter-spacing: 1.5px; }
-    .brand-en-row { flex-wrap: wrap; gap: 4px; }
-    .brand-issue { font-size: 9px; }
+    .header-top { grid-template-columns: 44px 1fr; gap: 8px; padding-bottom: 12px; }
+    .brand-icon { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; }
+    .brand-icon svg { width: 20px; height: 20px; }
+    .brand-name { font-size: 18px; letter-spacing: 1.5px; }
+    .brand-zaodao { font-size: 18px; letter-spacing: 1.5px; }
+    .brand-sep { margin: 0 5px; height: 14px; }
+    .brand-tag { font-size: 9px; margin-left: 4px; }
+    .brand-subtitle { font-size: 10px; flex-wrap: wrap; line-height: 1.4; }
+    .brand-en { font-size: 8px; letter-spacing: 1px; }
+    .brand-en-row { flex-wrap: wrap; gap: 3px; }
+    .brand-issue { font-size: 8px; padding: 1px 4px; }
     .brand-main-row { flex-wrap: wrap; }
-    .hm-tickers { display: none; }
-    .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
-    .hm-date { font-size: 14px; }
-    .hm-sub { font-size: 10px; }
-    .live-dot { width: 5px; height: 5px; }
+    .hm-tickers { display: flex; gap: 6px; align-items: stretch; overflow-x: auto; padding-bottom: 4px; }
+    .hm-ticker { min-width: 56px; padding: 4px 8px; }
+    .hm-ticker .t-label { font-size: 8px; }
+    .hm-ticker .t-val { font-size: 12px; }
+    .hm-ticker .t-chg { font-size: 9px; }
+    .hm-date { font-size: 13px; }
+    .hm-sub { font-size: 9px; }
+    .hm-sub .sep { margin: 0 3px; }
+    .live-dot { width: 4px; height: 4px; }
     .tab-nav-wrap { position: relative; }
-    .tab-btn { padding: 12px 14px; font-size: 12px; }
-    .tab-icon { font-size: 12px; }
-    .card { padding: 14px 16px; }
+    .tab-btn { padding: 10px 12px; font-size: 11px; letter-spacing: 0.2px; }
+    .tab-icon { font-size: 11px; margin-right: 3px; }
+    .card { padding: 12px 14px; margin-bottom: 12px; }
     .card:hover { transform: none; }
-    .card-title { font-size: 14px; gap: 8px; }
-    .card-body { font-size: 13px; line-height: 1.7; }
-    .alert-bar, .hot-bar, .good-bar { padding: 12px 14px; font-size: 13px; }
-    .highlight-item { padding: 12px 14px; }
-    .market-block { padding: 12px 14px; }
-    .stock-card { padding: 14px 16px; }
+    .card-title { font-size: 13px; gap: 6px; }
+    .card-body { font-size: 12.5px; line-height: 1.65; }
+    .alert-bar, .hot-bar, .good-bar { padding: 10px 12px; font-size: 12.5px; }
+    .highlight-item { padding: 10px 12px; }
+    .market-block { padding: 10px 12px; }
+    .stock-card { padding: 12px 14px; margin-bottom: 12px; }
     .stock-card:hover { transform: none; }
     .stock-header { flex-direction: column; align-items: flex-start; gap: 4px; }
-    .stock-name { font-size: 15px; }
-    .stock-code { font-size: 11px; }
-    .stock-header .tag { font-size: 10px; padding: 1px 6px; }
+    .stock-name { font-size: 14px; }
+    .stock-code { font-size: 10px; padding: 1px 6px; }
+    .stock-header .tag { font-size: 9px; padding: 1px 5px; }
     .stock-price-area { margin-left: 0; text-align: left; }
-    .stock-price { font-size: 15px; }
-    .stock-change { font-size: 11px; }
-    .summary-card { padding: 18px 16px; }
-    .sentiment-label { flex-direction: column; gap: 2px; font-size: 11px; }
-    .section-title { font-size: 17px; margin-bottom: 18px; padding-bottom: 10px; }
-    .sub-section { margin-bottom: 20px; }
-    .card-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px !important; }
-    .card-body table td { padding: 5px 8px !important; }
+    .stock-price { font-size: 14px; }
+    .stock-change { font-size: 10px; }
+    .summary-card { padding: 14px 12px; }
+    .sentiment-label { flex-direction: column; gap: 2px; font-size: 10px; }
+    .section-title { font-size: 16px; margin-bottom: 16px; padding-bottom: 8px; }
+    .sub-section { margin-bottom: 18px; }
+    .card-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 11px !important; }
+    .card-body table td { padding: 4px 6px !important; }
     .card-body table td, .card-body table th { overflow-wrap: break-word !important; word-break: normal !important; }
     .card-body table td.td-label { white-space: nowrap !important; }
     .card-body table td.td-val { white-space: normal !important; }
-    .footer { padding: 20px 16px; padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
-    .grid-4 { grid-template-columns: repeat(2,1fr); gap: 10px; }
-    .grid-3 { grid-template-columns: 1fr; gap: 12px; }
-    .grid-2 { grid-template-columns: 1fr; gap: 12px; }
-    .grid-auto { grid-template-columns: 1fr; gap: 10px; }
+    .footer { padding: 18px 12px; padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+    .grid-4 { grid-template-columns: repeat(2,1fr); gap: 8px; }
+    .grid-3 { grid-template-columns: 1fr; gap: 10px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 10px; }
+    .grid-auto { grid-template-columns: 1fr; gap: 8px; }
+    .tag { padding: 1px 6px; font-size: 10px; }
+    .sub-title { font-size: 11px; padding-left: 8px; margin-bottom: 12px; }
   }
   .summary-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
   .summary-card-green, .summary-card-blue, .summary-card-yellow, .summary-card-red { border-radius: 14px; padding: 20px; position: relative; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; gap: 16px; align-items: flex-start; }
