@@ -1653,7 +1653,7 @@
 }
 
 @media (max-width: 480px) {
-  /* 理财数据参考改为2列 */
+  /* 理财话题参考改为2列 */
   [style*="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -1690,9 +1690,15 @@
 }
 
 @media (max-width: 480px) {
-  /* 家庭保险4卡片 - 进一步改为单列 */
+  /* 家庭保险4卡片 - 保持2列展示 */
   [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  /* 保险卡片内边距进一步减小 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] > div {
+    padding: 10px !important;
   }
 
   /* 关键数字速查表格 - 手机端适配 */
@@ -1769,7 +1775,7 @@
       <button class="tab-btn" onclick="switchTab(3)"><span class="tab-icon">📈</span>全球市场</button>
       <button class="tab-btn" onclick="switchTab(4)"><span class="tab-icon">💡</span>价值投资风向</button>
       <button class="tab-btn" onclick="switchTab(5)"><span class="tab-icon">🏦</span>关注标的</button>
-      <button class="tab-btn" onclick="switchTab(6)"><span class="tab-icon">💰</span>理财数据</button>
+      <button class="tab-btn" onclick="switchTab(6)"><span class="tab-icon">💰</span>理财话题</button>
       <button class="tab-btn" onclick="switchTab(7)"><span class="tab-icon">📋</span>今日总结</button>
     </nav>
   </div>
@@ -3017,10 +3023,10 @@
   </div>
 </div>
 
-<!-- TAB 6: 理财数据 -->
+<!-- TAB 6: 理财话题 -->
 <div class="tab-panel" id="panel-6">
   <div class="inner">
-  <div class="section-title">💰 理财数据参考</div>
+  <div class="section-title">💰 理财话题参考</div>
 
   <!-- 顶部概览栏 - 4列数据卡片 -->
   <div class="grid-4" style="margin-bottom:28px;">
@@ -3547,9 +3553,9 @@
       <p style="margin-bottom:0;padding:10px 12px;background:rgba(240,180,41,0.06);border-radius:8px;"><strong style="color:#f0b429;font-size:13px;letter-spacing:0.5px;">💰 存款搬家趋势</strong><br>"存款搬家"趋势延续，居民财富向高股息资产迁移。存款利率持续下行，六大行1年期仅<span style="font-weight:600;">0.95%</span>，银行股息率<span style="color:var(--green);font-weight:700;">4.25%+</span>吸引力凸显。</p>
     </div>
   </div>
-  <!-- 理财数据参考 - 6张卡片 -->
+  <!-- 理财话题参考 - 6张卡片 -->
   <div style="background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(188,140,255,0.06));border:1px solid var(--accent-border);border-radius:12px;padding:20px 24px;margin-bottom:20px;">
-    <div style="font-size:15px;font-weight:700;margin-bottom:14px;">💰 理财数据参考</div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:14px;">💰 理财话题参考</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
       <!-- 01 银行股息率 -->
       <div style="padding:14px 16px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.15);text-align:center;">
