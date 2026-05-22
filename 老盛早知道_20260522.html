@@ -1329,15 +1329,33 @@
   }
   
   .flow-diagram {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
   }
   .flow-arrow {
-    transform: rotate(90deg);
+    font-size: 14px;
+    flex-shrink: 0;
   }
   .flow-node {
-    width: 100%;
-    max-width: 200px;
+    flex: 0 0 auto;
+    min-width: 90px;
+    max-width: 110px;
+    padding: 10px 8px;
+  }
+  .flow-node-icon {
+    font-size: 18px;
+  }
+  .flow-node-title {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .flow-node-desc {
+    font-size: 9px;
+    white-space: nowrap;
   }
   .capital-cards {
     grid-template-columns: 1fr;
