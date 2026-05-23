@@ -1,0 +1,3680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老盛早知道 · 2026年5月23日 · 星期六</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #1c2333;
+    --bg-hover: #21273a;
+    --accent: #00d4ff;
+    --accent-dim: rgba(0,212,255,0.15);
+    --accent-border: rgba(0,212,255,0.35);
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d29922;
+    --purple: #bc8cff;
+    --orange: #ffa657;
+    --text-primary: #e6edf3;
+    --text-secondary: #b0bac4;
+    --text-muted: #8b95a5;
+    --border: rgba(48,54,61,0.8);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, 'SF Pro Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
+  }
+  .header {
+    background: linear-gradient(180deg, #080e18 0%, #0a1422 100%);
+    border-bottom: 1px solid rgba(0,212,255,0.18);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.7), 0 1px 0 rgba(0,212,255,0.12);
+  }
+  .header::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 25%, var(--purple) 75%, transparent 100%);
+    box-shadow: 0 0 18px var(--accent), 0 0 36px rgba(0,212,255,0.25);
+  }
+  .inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 22px 40px 0; }
+  .header-top { display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 22px; padding-bottom: 16px; }
+  .brand-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(145deg, #0a1e35 0%, #0d2040 60%, #091828 100%);
+    border: 1px solid rgba(0,212,255,0.38); border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 28px rgba(0,212,255,0.32), 0 0 8px rgba(0,212,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+    flex-shrink: 0; position: relative; overflow: hidden; align-self: center;
+  }
+  .brand-icon::before { content: ''; position: absolute; top: -4px; left: -4px; width: 32px; height: 32px; background: radial-gradient(circle, rgba(0,212,255,0.22) 0%, transparent 70%); pointer-events: none; }
+  .brand-icon::after { content: ''; position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, transparent 55%); pointer-events: none; }
+  .brand-icon svg { width:36px; height:36px; position:relative; z-index:1; }
+  .brand-title { display:flex; flex-direction:column; justify-content:center; gap:6px; line-height:1; }
+  .brand-en-row { display:flex; align-items:center; gap:8px; }
+  .brand-en { font-size: 9.5px; font-weight: 600; letter-spacing: 2.5px; color: var(--accent); opacity: 0.4; text-transform: uppercase; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+
+  .brand-main-row { display: flex; align-items: center; }
+  .brand-signal { position: relative; display: inline-flex; align-items: center; cursor: default; padding: 4px 0; }
+  .brand-signal::before { content: ''; position: absolute; inset: -8px -16px; border-radius: 10px; background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, transparent 70%); animation: signal-pulse 5s ease-in-out infinite; pointer-events: none; }
+  .brand-name { font-size: 28px; font-weight: 900; letter-spacing: 5px; color: #e6edf3; position: relative; }
+  .brand-sep { position: relative; width: 2px; height: 22px; background: rgba(0,212,255,0.15); margin: 0 10px; border-radius: 1px; align-self: center; overflow: visible; }
+  .brand-sep::after { content: ''; position: absolute; left: -1.5px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(0,212,255,0.8), 0 0 20px rgba(0,212,255,0.3); animation: sep-slide 3s ease-in-out infinite; }
+  .brand-zaodao { font-size: 28px; font-weight: 300; letter-spacing: 5px; color: var(--accent); text-shadow: 0 0 20px rgba(0,212,255,0.35); position: relative; }
+  @keyframes signal-pulse { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
+  @keyframes sep-slide { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 50% { top: calc(100% - 5px); opacity: 1; } 85% { opacity: 1; } 100% { top: 0; opacity: 0; } }
+  .brand-tag { font-size: 11px; font-weight: 400; letter-spacing: 2px; color: var(--text-primary); margin-left: 12px; opacity: 0.35; white-space: nowrap; }
+  .brand-subtitle { font-size: 11.5px; color: var(--text-muted); letter-spacing: 0.5px; display:flex; align-items:center; margin-top:3px; }
+  .brand-subtitle .dot { color: rgba(0,212,255,0.28); margin: 0 7px; }
+  .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; padding-left: 20px; border-left: 1px solid rgba(0,212,255,0.1); }
+  .hm-date { font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--accent); line-height: 1; text-shadow: 0 0 14px rgba(0,212,255,0.4); font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .hm-sub { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+  .hm-sub .sep { color: rgba(0,212,255,0.25); }
+  .hm-tickers { display:flex; gap:8px; align-items:stretch; }
+  .hm-ticker { display: flex; flex-direction: column; align-items: center; background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.1); border-radius: 6px; padding: 5px 12px; min-width: 64px; gap: 1px; }
+  .hm-ticker .t-label { font-size: 9.5px; color: var(--text-muted); letter-spacing: 0.5px; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .hm-ticker .t-val { font-size: 15px; font-weight: 700; line-height: 1.2; }
+  .hm-ticker .t-chg { font-size: 10px; font-weight: 600; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .up   { color: #f85149; }
+  .down { color: #3fb950; }
+  .gold { color: #f0b429; }
+  .neutral { color: var(--text-secondary); }
+  .live-dot { display: inline-block; width:7px; height:7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; vertical-align: middle; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+  .tab-nav-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .tab-nav { display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
+  .tab-nav::-webkit-scrollbar { display:none; }
+  .tab-btn { flex-shrink: 0; padding: 11px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13.5px; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: all 0.22s ease; white-space: nowrap; position: relative; font-family: inherit; letter-spacing: 0.3px; }
+  .tab-btn:hover { color:var(--text-primary); background:rgba(0,212,255,0.05); }
+  .tab-btn.active { color: var(--accent); background: rgba(0,212,255,0.08); font-weight: 700; text-shadow: 0 0 12px rgba(0,212,255,0.5); }
+  .tab-btn.active::after { content: ''; position: absolute; bottom:0; left:8px; right:8px; height:2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); border-radius: 2px 2px 0 0; box-shadow: 0 0 10px var(--accent); }
+  .tab-icon { margin-right:5px; font-size:13px; }
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+  .tab-panel.active { display:block; }
+  .tab-panel .inner { padding-top: 32px; padding-bottom: 12px; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .section-title { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, var(--accent-border), transparent); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent-border); transform: translateY(-1px); }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; display:flex; align-items:flex-start; gap:10px; }
+  .card-body { font-size:14px; color:#b0bac4; line-height:1.75; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; letter-spacing:0.5px; flex-shrink:0; margin-top:1px; }
+  .tag-finance { background:rgba(0,212,255,0.15); color:var(--accent); }
+  .tag-tech    { background:rgba(188,140,255,0.15); color:var(--purple); }
+  .tag-geo     { background:rgba(255,166,87,0.15); color:var(--orange); }
+  .tag-policy  { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-ai      { background:rgba(188,140,255,0.2); color:var(--purple); }
+  .tag-chip    { background:rgba(0,212,255,0.15); color:var(--accent); }
+  .tag-robot   { background:rgba(255,166,87,0.15); color:var(--orange); }
+  .tag-app     { background:rgba(63,185,80,0.15); color:var(--green); }
+  .tag-energy  { background:rgba(240,180,41,0.15); color:#f0b429; }
+  .highlight-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 14px; margin-bottom: 28px; }
+  .highlight-item { background: var(--bg-card); border:1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 14px 18px; display:flex; gap:12px; align-items:flex-start; transition: border-color 0.2s; }
+  .highlight-item:hover { border-left-color: var(--purple); }
+  .highlight-num { font-size:20px; font-weight:800; color:var(--accent); line-height:1; flex-shrink:0; min-width:28px; }
+  .highlight-text { font-size:14px; color:var(--text-secondary); line-height:1.65; }
+  .highlight-text strong { color:var(--text-primary); }
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 14px; margin-bottom: 20px; }
+  .market-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:16px 20px; }
+  .market-block h4 { font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; border-bottom: 1px solid var(--border); padding-bottom:8px; }
+  .market-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(48,54,61,0.4); font-size:13.5px; }
+  .market-row:last-child { border-bottom:none; }
+  .market-name { color:var(--text-secondary); }
+  .market-val { font-weight:600; }
+  .sentiment-bar-wrap { margin:6px 0 14px; }
+  .sentiment-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
+  .sentiment-bar { height:8px; background:var(--bg-primary); border-radius:4px; overflow:hidden; border:1px solid var(--border); }
+  .sentiment-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--purple)); }
+  .stock-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:20px 24px; margin-bottom:14px; transition: border-color 0.2s; }
+  .stock-card:hover { border-color: var(--accent-border); }
+  .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
+  .stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
+  .stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
+  .stock-price-area { margin-left:auto; text-align:right; }
+  .stock-price { font-size:18px; font-weight:700; }
+  .stock-change { font-size:12px; margin-top:2px; }
+  .stock-bullets { list-style:none; padding:0; }
+  .stock-bullets li { font-size:13.5px; color:var(--text-secondary); padding:4px 0 4px 16px; position:relative; line-height:1.65; }
+  .stock-bullets li::before { content:'▸'; color:var(--accent); position:absolute; left:0; font-size:11px; top:6px; }
+  .summary-card { background: linear-gradient(135deg, #1c2333, #161b22); border:1px solid var(--accent-border); border-radius:var(--radius); padding:28px 32px; margin-bottom:20px; }
+  .summary-card p { color:var(--text-secondary); font-size:14.5px; line-height:1.9; margin-bottom:14px; }
+  .summary-card p:last-child { margin-bottom: 0; }
+  .summary-card strong { color:var(--accent); }
+  .alert-bar { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.3); border-left:3px solid var(--red); border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+  .alert-bar strong { color:var(--red); }
+  .hot-bar { background: rgba(240,180,41,0.08); border: 1px solid rgba(240,180,41,0.3); border-left:3px solid #f0b429; border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+  .hot-bar strong { color:#f0b429; }
+  .good-bar { background: rgba(29,198,100,0.08); border: 1px solid rgba(29,198,100,0.3); border-left:3px solid #1dc664; border-radius:var(--radius); padding:14px 20px; margin-bottom:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.75; }
+  .good-bar strong { color:#1dc664; }
+  .footer { text-align:center; padding:28px 40px; color:var(--text-muted); font-size:12px; border-top:1px solid var(--border); margin-top:8px; }
+  .footer span { color:var(--accent); }
+  .sub-section { margin-bottom: 28px; }
+  .sub-title { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; padding-left: 10px; border-left: 2px solid var(--accent); }
+  .stock-info-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  /* 响应式grid工具类 */
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .grid-auto { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+  @media (max-width:768px) {
+    .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
+    .header-inner { padding-top: 14px; }
+    .tab-panel .inner { padding-top: 20px; padding-bottom: 8px; }
+    .highlight-grid, .market-grid { grid-template-columns: 1fr; }
+    .header-top { grid-template-columns: 48px 1fr; gap: 10px; padding-bottom: 14px; }
+    .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
+    .brand-icon svg { width: 22px; height: 22px; }
+    .brand-name { font-size: 20px; letter-spacing: 2px; }
+    .brand-zaodao { font-size: 20px; letter-spacing: 2px; }
+    .brand-sep { margin: 0 6px; height: 16px; }
+    .brand-tag { font-size: 10px; margin-left: 6px; }
+    .brand-subtitle { font-size: 11px; flex-wrap: wrap; }
+    .brand-en { font-size: 9px; letter-spacing: 1.5px; }
+    .brand-en-row { flex-wrap: wrap; gap: 4px; }
+
+    .brand-main-row { flex-wrap: wrap; }
+    .hm-tickers { display: none; }
+    .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
+    .hm-date { font-size: 14px; }
+    .hm-sub { font-size: 10px; }
+    .live-dot { width: 5px; height: 5px; }
+    .tab-nav-wrap { position: relative; }
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+    .tab-icon { font-size: 12px; }
+    .card { padding: 14px 16px; }
+    .card:hover { transform: none; }
+    .card-title { font-size: 14px; gap: 8px; }
+    .card-body { font-size: 13px; line-height: 1.7; }
+    .alert-bar, .hot-bar, .good-bar { padding: 12px 14px; font-size: 13px; }
+    .highlight-item { padding: 12px 14px; }
+    .market-block { padding: 12px 14px; }
+    .stock-card { padding: 14px 16px; }
+    .stock-card:hover { transform: none; }
+    .stock-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .stock-name { font-size: 15px; }
+    .stock-code { font-size: 11px; }
+    .stock-header .tag { font-size: 10px; padding: 1px 6px; }
+    .stock-price-area { margin-left: 0; text-align: left; }
+    .stock-price { font-size: 15px; }
+    .stock-change { font-size: 11px; }
+    .summary-card { padding: 18px 16px; }
+    .sentiment-label { flex-direction: column; gap: 2px; font-size: 11px; }
+    .section-title { font-size: 17px; margin-bottom: 18px; padding-bottom: 10px; }
+    .sub-section { margin-bottom: 20px; }
+    .card-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px !important; }
+    .card-body table td { padding: 5px 8px !important; }
+    .card-body table td, .card-body table th { overflow-wrap: break-word !important; word-break: normal !important; }
+    .card-body table td.td-label { white-space: nowrap !important; }
+    .card-body table td.td-val { white-space: normal !important; }
+    .footer { padding: 20px 16px; padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+    .grid-4 { grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .grid-3 { grid-template-columns: 1fr; gap: 12px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 12px; }
+    .grid-auto { grid-template-columns: 1fr; gap: 10px; }
+    /* 保险配置流程图手机适配 */
+    .insurance-flow { flex-direction: column; gap: 8px; }
+    .insurance-flow .flow-arrow { transform: rotate(90deg); font-size: 16px; }
+    .insurance-flow .insurance-card { width: 100%; max-width: 280px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; text-align: left; }
+    .insurance-flow .insurance-card > div:first-child { font-size: 28px; margin-bottom: 0; }
+    .insurance-flow .insurance-card > div:nth-child(2) { flex: 1; }
+    /* 理财话题其他手机适配 */
+    .rate-compare { flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .rate-compare .big-num { font-size: 26px; letter-spacing: -1px; }
+    .rate-compare > div { flex: 0 0 auto; }
+    .topic-card { padding: 12px 14px; gap: 12px; }
+    .topic-card > div:first-child { width: 40px; height: 40px; }
+    .gold-price-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .gold-price-header > div:last-child { text-align: left; }
+  }
+
+  /* ===== Tab 0 新样式 ===== */
+  /* 顶部提示区 - 2×2网格卡片 */
+  .summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .summary-card-green,
+  .summary-card-blue,
+  .summary-card-yellow,
+  .summary-card-red {
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .summary-card-green:hover,
+  .summary-card-blue:hover,
+  .summary-card-yellow:hover,
+  .summary-card-red:hover {
+    transform: translateY(-2px);
+  }
+  .summary-card-green {
+    background: linear-gradient(135deg, rgba(29, 198, 100, 0.12), rgba(29, 198, 100, 0.03));
+    border: 1px solid rgba(29, 198, 100, 0.3);
+    box-shadow: 0 4px 20px rgba(29, 198, 100, 0.1);
+  }
+  .summary-card-blue {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(0, 212, 255, 0.03));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+  }
+  .summary-card-yellow {
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.12), rgba(240, 180, 41, 0.03));
+    border: 1px solid rgba(240, 180, 41, 0.3);
+    box-shadow: 0 4px 20px rgba(240, 180, 41, 0.1);
+  }
+  .summary-card-red {
+    background: linear-gradient(135deg, rgba(248, 81, 73, 0.12), rgba(248, 81, 73, 0.03));
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    box-shadow: 0 4px 20px rgba(248, 81, 73, 0.1);
+  }
+  .summary-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+  }
+  .summary-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .summary-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .summary-card-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .summary-card-change {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .summary-card-change.up {
+    color: #f85149;
+    background: rgba(248, 81, 73, 0.15);
+  }
+  .summary-card-change.down {
+    color: #3fb950;
+    background: rgba(63, 185, 80, 0.15);
+  }
+  .summary-card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(240, 180, 41, 0.2);
+    color: #f0b429;
+  }
+  .summary-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* 要点卡片V2 */
+  .highlight-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .highlight-item-v2 {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: all 0.25s ease;
+  }
+  .highlight-item-v2:hover {
+    border-color: var(--accent-border);
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .highlight-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+  }
+  .highlight-text-v2 {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .highlight-text-v2 strong {
+    color: var(--text-primary);
+  }
+
+  /* 时间线样式 */
+  .timeline-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-icon {
+    font-size: 20px;
+  }
+  .timeline-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--purple));
+    opacity: 0.3;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    padding: 14px 0;
+    position: relative;
+  }
+  .timeline-item:first-child {
+    padding-top: 0;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  .timeline-date {
+    width: 76px;
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-day {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .timeline-month {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .timeline-label {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 6px;
+    display: inline-block;
+  }
+  .timeline-item.today .timeline-label {
+    background: rgba(248, 81, 73, 0.2);
+    color: #f85149;
+  }
+  .timeline-item.future .timeline-label {
+    background: rgba(240, 180, 41, 0.2);
+    color: #f0b429;
+  }
+  .timeline-item.data .timeline-label {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--accent);
+  }
+  .timeline-item.deadline .timeline-label {
+    background: rgba(188, 140, 255, 0.2);
+    color: var(--purple);
+  }
+  .timeline-content {
+    flex: 1;
+    padding-top: 2px;
+  }
+  .timeline-event {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .timeline-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Tab 0 手机端适配 */
+  @media (max-width: 768px) {
+    .summary-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .summary-card-green,
+    .summary-card-blue,
+    .summary-card-yellow,
+    .summary-card-red {
+      padding: 16px;
+      gap: 12px;
+    }
+    .summary-card-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 18px;
+    }
+    .summary-card-title {
+      font-size: 12px;
+    }
+    .summary-card-value {
+      font-size: 18px;
+    }
+    .summary-card-desc {
+      font-size: 11px;
+    }
+    .highlight-grid-v2 {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .highlight-item-v2 {
+      padding: 14px 16px;
+    }
+    .highlight-badge {
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+    }
+    .highlight-text-v2 {
+      font-size: 13px;
+    }
+    .timeline-section {
+      padding: 18px 16px;
+    }
+    .timeline-header {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+    }
+    .timeline-title {
+      font-size: 15px;
+    }
+    .timeline-container::before {
+      left: 32px;
+    }
+    .timeline-date {
+      width: 64px;
+    }
+    .timeline-day {
+      font-size: 18px;
+    }
+    .timeline-month {
+      font-size: 10px;
+    }
+    .timeline-label {
+      font-size: 9px;
+      padding: 1px 5px;
+    }
+    .timeline-event {
+      font-size: 14px;
+    }
+    .timeline-detail {
+      font-size: 12px;
+    }
+    .timeline-item {
+      gap: 14px;
+      padding: 12px 0;
+    }
+  }
+
+/* ===== Tab 4 价值投资风向 专用样式 ===== */
+
+/* 机构观点卡片样式 */
+.institute-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.institute-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.institute-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.institute-cicc {
+  border-left: 4px solid #00d4ff;
+}
+.institute-cicc:hover {
+  border-color: rgba(0,212,255,0.5);
+}
+.institute-gs {
+  border-left: 4px solid #bc8cff;
+}
+.institute-gs:hover {
+  border-color: rgba(188,140,255,0.5);
+}
+.institute-xy {
+  border-left: 4px solid #3fb950;
+}
+.institute-xy:hover {
+  border-color: rgba(63,185,80,0.5);
+}
+.institute-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+  border-bottom: 1px solid var(--border);
+}
+.institute-logo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.institute-logo svg {
+  width: 100%;
+  height: 100%;
+}
+.institute-info {
+  flex: 1;
+}
+.institute-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.institute-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.institute-cicc .institute-tag {
+  background: rgba(0,212,255,0.15);
+  color: #00d4ff;
+}
+.institute-gs .institute-tag {
+  background: rgba(188,140,255,0.15);
+  color: #bc8cff;
+}
+.institute-xy .institute-tag {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+}
+.institute-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* 社区情绪仪表盘 */
+.sentiment-dashboard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.sentiment-main {
+  padding: 20px;
+}
+.sentiment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.sentiment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid rgba(48,54,61,0.5);
+  transition: all 0.2s ease;
+}
+.sentiment-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--accent-border);
+}
+.sentiment-emoji {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.sentiment-info {
+  flex: 1;
+  min-width: 0;
+}
+.sentiment-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.sentiment-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.sentiment-progress-bar {
+  flex: 1;
+  height: 10px;
+  background: var(--bg-primary);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.sentiment-progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  transition: width 0.5s ease;
+}
+.sentiment-percent {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 40px;
+  text-align: right;
+}
+.sentiment-percent.hot {
+  color: var(--purple);
+}
+.sentiment-percent.low {
+  color: #f0b429;
+}
+.sentiment-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* 话题标签云 */
+.topic-cloud {
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid var(--border);
+}
+.topic-cloud-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.topic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.topic-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.topic-tag:hover {
+  background: rgba(0,212,255,0.15);
+  border-color: rgba(0,212,255,0.4);
+  color: var(--text-primary);
+}
+.topic-tag.hot {
+  background: rgba(188,140,255,0.12);
+  border-color: rgba(188,140,255,0.3);
+  color: #bc8cff;
+}
+.topic-tag.warn {
+  background: rgba(248,81,73,0.1);
+  border-color: rgba(248,81,73,0.25);
+  color: #f85149;
+}
+
+/* 高股息板块网格 */
+.dividend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.dividend-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.dividend-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.dividend-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.dividend-header.bank-theme {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), transparent);
+}
+.dividend-header.energy-theme {
+  background: linear-gradient(135deg, rgba(240,180,41,0.08), transparent);
+}
+.dividend-header.utility-theme {
+  background: linear-gradient(135deg, rgba(63,185,80,0.08), transparent);
+}
+.dividend-header.telecom-theme {
+  background: linear-gradient(135deg, rgba(188,140,255,0.08), transparent);
+}
+.dividend-icon {
+  font-size: 24px;
+}
+.dividend-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.dividend-metrics {
+  display: flex;
+  gap: 24px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.15);
+}
+.metric {
+  text-align: center;
+}
+.metric-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.metric-value.warn {
+  color: #f0b429;
+}
+.metric-value.good {
+  color: #3fb950;
+}
+.metric-value.hot {
+  color: var(--purple);
+}
+.metric-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.dividend-body {
+  padding: 16px 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* 低估值板块 */
+.undervalued-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.undervalued-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.undervalued-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.undervalued-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #3fb950, #2ea043);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+.undervalued-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-right: 60px;
+}
+.undervalued-icon {
+  font-size: 32px;
+}
+.undervalued-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.undervalued-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.uv-tag {
+  font-size: 10px;
+  padding: 2px 8px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 4px;
+  color: var(--accent);
+}
+.undervalued-metrics {
+  display: flex;
+  gap: 16px;
+  padding: 14px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+.uv-metric {
+  flex: 1;
+  text-align: center;
+}
+.uv-metric-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.uv-metric-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.uv-metric-percentile {
+  font-size: 10px;
+  padding: 2px 8px;
+  background: rgba(240,180,41,0.15);
+  border-radius: 10px;
+  color: #f0b429;
+  display: inline-block;
+}
+.uv-metric-percentile.good {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+}
+.undervalued-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* 长线资金动向 */
+.capital-flow-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.flow-visualization {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.flow-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+.flow-node:hover {
+  border-color: var(--accent-border);
+  background: rgba(0,212,255,0.05);
+}
+.flow-node.highlight {
+  background: rgba(188,140,255,0.1);
+  border-color: rgba(188,140,255,0.4);
+}
+.flow-node.target {
+  background: rgba(63,185,80,0.1);
+  border-color: rgba(63,185,80,0.4);
+}
+.flow-node-icon {
+  font-size: 28px;
+}
+.flow-node-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.flow-node-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.flow-node.highlight .flow-node-value {
+  color: var(--purple);
+}
+.flow-node.target .flow-node-value {
+  color: #3fb950;
+}
+.flow-arrow {
+  font-size: 24px;
+  color: var(--accent);
+  opacity: 0.6;
+}
+.capital-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.capital-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+.capital-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+.capital-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.capital-content {
+  flex: 1;
+}
+.capital-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.capital-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.capital-stat {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 3px 10px;
+  background: rgba(0,212,255,0.08);
+  border-radius: 12px;
+}
+.highlight-num {
+  color: var(--accent);
+  font-weight: 700;
+}
+.capital-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* 估值参考卡片 */
+.valuation-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.valuation-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+.valuation-item:hover {
+  border-color: var(--accent-border);
+  background: var(--bg-hover);
+}
+.valuation-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.valuation-info {
+  flex: 1;
+  min-width: 0;
+}
+.valuation-name {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.valuation-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.valuation-value.warn {
+  color: #f0b429;
+}
+.valuation-tag {
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.valuation-tag.low {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+}
+.valuation-tag.mid {
+  background: rgba(240,180,41,0.15);
+  color: #f0b429;
+}
+.valuation-tag.high {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+}
+.valuation-tag.warn {
+  background: rgba(248,81,73,0.1);
+  color: #f85149;
+}
+
+/* 精简参考板块 */
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.reference-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.reference-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+.reference-risk {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.reference-risk.low {
+  background: rgba(63,185,80,0.15);
+  color: #3fb950;
+}
+.reference-risk.mid {
+  background: rgba(240,180,41,0.15);
+  color: #f0b429;
+}
+.reference-risk.high {
+  background: rgba(248,81,73,0.1);
+  color: #f85149;
+}
+.reference-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.reference-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.reference-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.reference-detail {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== Tab 4 手机端适配 ===== */
+@media (max-width: 768px) {
+  .institute-header {
+    padding: 12px 16px;
+  }
+  .institute-body {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  
+  .sentiment-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .sentiment-main {
+    padding: 14px;
+  }
+  .sentiment-item {
+    padding: 12px;
+  }
+  .sentiment-emoji {
+    font-size: 20px;
+  }
+  .sentiment-name {
+    font-size: 12px;
+  }
+  .sentiment-percent {
+    font-size: 14px;
+  }
+  .sentiment-desc {
+    font-size: 10px;
+  }
+  .topic-cloud {
+    padding: 12px 14px;
+  }
+  .topic-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  
+  .dividend-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .dividend-header {
+    padding: 14px 16px;
+  }
+  .dividend-metrics {
+    padding: 14px 16px;
+    gap: 20px;
+  }
+  .metric-value {
+    font-size: 18px;
+  }
+  .dividend-body {
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+  
+  .undervalued-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .undervalued-card {
+    padding: 16px;
+  }
+  .undervalued-icon {
+    font-size: 28px;
+  }
+  .undervalued-name {
+    font-size: 15px;
+  }
+  .undervalued-metrics {
+    padding: 12px;
+    gap: 12px;
+  }
+  .uv-metric-value {
+    font-size: 18px;
+  }
+  .undervalued-desc {
+    font-size: 12px;
+  }
+  
+  .flow-diagram {
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .flow-arrow {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .flow-node {
+    flex: 0 0 auto;
+    min-width: 90px;
+    max-width: 110px;
+    padding: 10px 8px;
+  }
+  .flow-node-icon {
+    font-size: 18px;
+  }
+  .flow-node-title {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .flow-node-desc {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+  .capital-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .capital-card {
+    padding: 14px;
+  }
+  .capital-icon {
+    font-size: 24px;
+  }
+  .capital-stats {
+    gap: 6px;
+  }
+  .capital-stat {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+  .capital-desc {
+    font-size: 12px;
+  }
+  
+  .valuation-cards {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .valuation-item {
+    padding: 12px 14px;
+  }
+  .valuation-icon {
+    font-size: 20px;
+  }
+  .valuation-value {
+    font-size: 15px;
+  }
+  
+  .reference-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .reference-card {
+    padding: 14px;
+  }
+  .reference-icon {
+    font-size: 28px;
+  }
+  .reference-title {
+    font-size: 14px;
+  }
+  .reference-desc {
+    font-size: 11px;
+  }
+  .reference-detail {
+    font-size: 11px;
+  }
+}
+
+/* ===== 全局手机端适配增强 ===== */
+@media (max-width: 768px) {
+  /* Tab 0: 要点速览 */
+  .summary-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .summary-card-green,
+  .summary-card-blue,
+  .summary-card-yellow,
+  .summary-card-red {
+    padding: 16px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  .summary-card-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 22px !important;
+  }
+  .summary-card-value {
+    font-size: 22px !important;
+  }
+  
+  /* Tab 1: 国内外新闻 */
+  .news-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .news-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 2: AI前沿 */
+  .ai-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .ai-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 3: 全球市场 */
+  .market-grid-v2 {
+    grid-template-columns: 1fr !important;
+  }
+  .market-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 4: 价值投资风向 */
+  .institute-tabs {
+    grid-template-columns: 1fr !important;
+  }
+  .institute-card {
+    padding: 0 !important;
+  }
+  .sentiment-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .sentiment-item {
+    padding: 12px 8px !important;
+  }
+  .sentiment-emoji {
+    font-size: 24px !important;
+  }
+  .sentiment-label {
+    font-size: 10px !important;
+  }
+  
+  /* Tab 5: 关注标的 */
+  .stock-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Tab 6: 理财话题 */
+  .insurance-flow {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .insurance-flow .flow-arrow {
+    transform: rotate(90deg) !important;
+  }
+  .insurance-flow .insurance-card {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .rate-compare {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .topic-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .topic-card {
+    padding: 14px !important;
+  }
+  
+  /* Tab 7: 今日总结 */
+  .summary-operation-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .operation-card {
+    padding: 14px !important;
+  }
+  
+  /* 通用网格适配 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 图表适配 */
+  [style*="padding-left:120px"] {
+    padding-left: 80px !important;
+  }
+  
+  /* 数据卡片适配 */
+  .data-card {
+    padding: 14px !important;
+  }
+  
+  /* 表格横向滚动 */
+  .table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* 字体大小调整 */
+  .section-title {
+    font-size: 16px !important;
+  }
+  .sub-title {
+    font-size: 14px !important;
+  }
+  
+  /* 间距调整 */
+  .tab-panel .inner {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  
+  /* 按钮大小调整 */
+  .tab-btn {
+    padding: 10px 12px !important;
+    font-size: 11px !important;
+  }
+  
+  /* 底部安全区 */
+  .footer {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 20px)) !important;
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .sentiment-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .summary-card-value {
+    font-size: 18px !important;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ===== 新增组件手机端适配 ===== */
+@media (max-width: 768px) {
+  /* 要点速览8条要点卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 市场综评4维度卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 宏观面/市场面/资金面3列数据卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 理财话题参考6张卡片 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 今日操作建议6张卡片 */
+  [style*="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 稳健理财工具图表 - 数据条容器 */
+  [style*="padding-left:120px"] {
+    padding-left: 80px !important;
+  }
+  
+  /* 数据条标签缩小 */
+  [style*="width:100px"] {
+    width: 80px !important;
+  }
+  
+  /* 图表X轴刻度简化 */
+  [style*="text-align:center;margin:14px 0"] {
+    margin: 10px 0 !important;
+  }
+  
+  /* 对比区3张卡片 */
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 图例区4列 */
+  [style*="grid-template-columns:repeat(4,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 机构观点卡片内边距 */
+  .institute-card {
+    padding: 0 !important;
+  }
+  
+  /* 情绪指示器底部数据 */
+  [style*="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 理财话题参考改为2列 */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 图表左侧padding进一步减小 */
+  [style*="padding-left:120px"] {
+    padding-left: 60px !important;
+  }
+  
+  /* 数据条标签进一步缩小 */
+  [style*="width:100px"] {
+    width: 70px !important;
+  }
+  
+  /* 对比区卡片字号调整 */
+  [style*="font-size:24px;font-weight:800"] {
+    font-size: 20px !important;
+  }
+}
+
+/* ===== 家庭保险配置指南手机端适配 ===== */
+@media (max-width: 768px) {
+  /* 家庭保险4卡片 - 从flex改为grid 2列 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  /* 保险卡片内边距减小 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] > div {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 家庭保险4卡片 - 保持2列展示 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  /* 保险卡片内边距进一步减小 */
+  [style*="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px"] > div {
+    padding: 10px !important;
+  }
+
+  /* 关键数字速查表格 - 手机端适配 */
+  #panel-7 .card-body table {
+    font-size: 11px;
+  }
+  #panel-7 .card-body td {
+    padding: 4px 6px;
+    word-break: break-all;
+  }
+  #panel-7 .card-body td:first-child {
+    width: 60px;
+    min-width: 60px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand-icon">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M1.5 5.5 Q-2 15 1.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <path d="M28.5 5.5 Q32 15 28.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-title">
+        <div class="brand-en-row">
+          <span class="brand-en">Laosheng's Daily Brief</span>
+
+        </div>
+        <div class="brand-main-row">
+          <div class="brand-signal">
+            <span class="brand-name">老盛</span><div class="brand-sep"></div><span class="brand-zaodao">早知道</span>
+          </div><span class="brand-tag">· 每日资讯不迟到</span>
+        </div>
+        <div class="brand-subtitle">
+          <span class="live-dot" style="margin-right:7px;"></span>AI驱动情报
+          <span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#f5c842;box-shadow:0 0 8px #f5c842;"></span>数据实时更新<span class="dot">·</span><span class="live-dot" style="margin-right:7px;background:#ff4444;box-shadow:0 0 8px #ff4444;"></span>价值投资视角
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="hm-date">05/23 周六</div>
+        <div class="hm-sub"><span>周末休市</span><span class="sep">|</span><span>英伟达Q1营收暴增85%</span></div>
+        <div class="hm-tickers">
+          <div class="hm-ticker">
+            <span class="t-label">上证</span>
+            <span class="t-val">4112.90</span>
+            <span class="t-chg up">+0.87%</span>
+          </div>
+          <div class="hm-ticker">
+            <span class="t-label">道指</span>
+            <span class="t-val">50285</span>
+            <span class="t-chg up">+0.55%</span>
+          </div>
+          <div class="hm-ticker">
+            <span class="t-label">BTC</span>
+            <span class="t-val">77900</span>
+            <span class="t-chg neutral">震荡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-icon">⚡</span>要点速览</button>
+      <button class="tab-btn" onclick="switchTab(1)"><span class="tab-icon">🌐</span>国内外新闻</button>
+      <button class="tab-btn" onclick="switchTab(2)"><span class="tab-icon">🤖</span>AI前沿</button>
+      <button class="tab-btn" onclick="switchTab(3)"><span class="tab-icon">📈</span>全球市场</button>
+      <button class="tab-btn" onclick="switchTab(4)"><span class="tab-icon">💡</span>价值投资风向</button>
+      <button class="tab-btn" onclick="switchTab(5)"><span class="tab-icon">🏦</span>关注标的</button>
+      <button class="tab-btn" onclick="switchTab(6)"><span class="tab-icon">💰</span>理财话题</button>
+      <button class="tab-btn" onclick="switchTab(7)"><span class="tab-icon">📋</span>今日总结</button>
+    </nav>
+  </div>
+</div>
+
+<!-- TAB 0: 要点速览 -->
+<div class="tab-panel active" id="panel-0">
+  <div class="inner">
+  <div class="section-title">⚡ 本期要点速览</div>
+  
+  <!-- 顶部提示区 - 2×2网格卡片 -->
+  <div class="summary-cards-grid">
+    <div class="summary-card-red">
+      <div class="summary-card-icon">📊</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">上证指数（5/22收盘）</div>
+        <div class="summary-card-value">4112.90 <span class="summary-card-change up">+0.87%</span> </div>
+        <div class="summary-card-desc">A股普涨修复，近3900家上涨，两市成交2.92万亿</div>
+      </div>
+    </div>
+    <div class="summary-card-blue">
+      <div class="summary-card-icon">🏦</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">北向资金</div>
+        <div class="summary-card-value">+12.37亿 <span class="summary-card-tag">净买入</span> </div>
+        <div class="summary-card-desc">沪股通-3.28亿，深股通+15.65亿，深市更受青睐</div>
+      </div>
+    </div>
+    <div class="summary-card-yellow">
+      <div class="summary-card-icon">💰</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">国际黄金</div>
+        <div class="summary-card-value">~4510美元 <span class="summary-card-tag">窄幅震荡</span> </div>
+        <div class="summary-card-desc">国内金价约996元/克，白银突破77美元/盎司</div>
+      </div>
+    </div>
+    <div class="summary-card-green">
+      <div class="summary-card-icon">🤖</div>
+      <div class="summary-card-content">
+        <div class="summary-card-title">英伟达Q1财报</div>
+        <div class="summary-card-value">816亿美元 <span class="summary-card-tag">同比+85%</span> </div>
+        <div class="summary-card-desc">AI算力需求持续爆发，ARM大涨16%创上市新高</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 要点卡片 - 全新设计 -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin:20px 0;">
+    <!-- 01 A股放量大跌 -->
+    <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.03));border:1px solid rgba(240,180,41,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f0b429,#d29922);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">01</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#f0b429;font-weight:700;font-size:14px;">A股普涨修复</span>，上证+0.87%报4112点，创业板指+2.84%领涨，近3900家上涨，两市成交2.92万亿较前日缩量5783亿
+      </div>
+    </div>
+    <!-- 02 北向资金 -->
+    <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.03));border:1px solid rgba(240,180,41,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f0b429,#d29922);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">02</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#f0b429;font-weight:700;font-size:14px;">北向资金净买入12.37亿</span>，深股通+15.65亿明显强于沪股通-3.28亿，外资偏好科技成长方向
+      </div>
+    </div>
+    <!-- 03 LPR -->
+    <div style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(0,212,255,0.03));border:1px solid rgba(0,212,255,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#00d4ff,#0099cc);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">03</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#00d4ff;font-weight:700;font-size:14px;">道指创历史新高</span>，收50285.66点+0.55%，日经225涨2.68%同步创新高，全球风险偏好持续回暖
+      </div>
+    </div>
+    <!-- 04 道指新高 -->
+    <div style="background:linear-gradient(135deg,rgba(248,81,73,0.1),rgba(248,81,73,0.03));border:1px solid rgba(248,81,73,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f85149,#cc0000);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">04</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#f85149;font-weight:700;font-size:14px;">英伟达Q1营收816亿美元</span>，同比大增85%超市场预期，ARM大涨16.16%创上市新高，市值破3000亿美元
+      </div>
+    </div>
+    <!-- 05 银行股 -->
+    <div style="background:linear-gradient(135deg,rgba(248,81,73,0.1),rgba(248,81,73,0.03));border:1px solid rgba(248,81,73,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f85149,#cc0000);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">05</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#f85149;font-weight:700;font-size:14px;">OpenAI发布GPT-5预览版</span>，推理能力大幅提升；谷歌I/O 2026发布Gemini Omni和3.5 Flash，全面驶入AI智能体时代
+      </div>
+    </div>
+    <!-- 06 Qwen -->
+    <div style="background:linear-gradient(135deg,rgba(188,140,255,0.1),rgba(188,140,255,0.03));border:1px solid rgba(188,140,255,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#bc8cff,#9a6de0);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">06</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#bc8cff;font-weight:700;font-size:14px;">美债收益率持续走高</span>，10年期突破4.60%创3月新高，30年期突破5.09%，关注全球流动性压力
+      </div>
+    </div>
+    <!-- 07 谷歌I/O -->
+    <div style="background:linear-gradient(135deg,rgba(188,140,255,0.1),rgba(188,140,255,0.03));border:1px solid rgba(188,140,255,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#bc8cff,#9a6de0);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">07</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#bc8cff;font-weight:700;font-size:14px;">央行5月25日将开展6000亿MLF</span>，5月22日已开展1530亿7天期逆回购利率1.40%，流动性保持合理充裕
+      </div>
+    </div>
+    <!-- 08 美债 -->
+    <div style="background:linear-gradient(135deg,rgba(139,149,165,0.1),rgba(139,149,165,0.03));border:1px solid rgba(139,149,165,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#8b95a5,#6e7885);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">08</div>
+      <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+        <span style="color:#8b95a5;font-weight:700;font-size:14px;">人形机器人产业加速</span>，国家发改委定调具身智能基建，智元西南基地量产下线，SpaceX正式提交IPO申请
+      </div>
+    </div>
+  </div>
+
+  <!-- 日历区域 - 垂直时间线 -->
+  <div class="timeline-section">
+    <div class="timeline-header">
+      <span class="timeline-icon">📅</span>
+      <span class="timeline-title">近期重要日历</span>
+    </div>
+    <div class="timeline-container">
+      <div class="timeline-item today">
+        <div class="timeline-date">
+          <div class="timeline-day">23</div>
+          <div class="timeline-month">5月 · 周六</div>
+          <div class="timeline-label">今日</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">周末休市</div>
+          <div class="timeline-detail">A股、港股休市，美股正常交易。关注周末可能出台的政策消息。</div>
+        </div>
+      </div>
+      <div class="timeline-item future">
+        <div class="timeline-date">
+          <div class="timeline-day">25</div>
+          <div class="timeline-month">5月 · 周一</div>
+          <div class="timeline-label">交易日</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">央行MLF操作 · 6000亿元</div>
+          <div class="timeline-detail">关注MLF利率是否调整，以及续作量对市场流动性的影响。</div>
+        </div>
+      </div>
+      <div class="timeline-item data">
+        <div class="timeline-date">
+          <div class="timeline-day">26</div>
+          <div class="timeline-month">5月 · 周二</div>
+          <div class="timeline-label">数据日</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">美国耐用品订单 · 消费者信心指数</div>
+          <div class="timeline-detail">关注美国经济数据对美联储降息预期的影响，以及美债收益率走势。</div>
+        </div>
+      </div>
+      <div class="timeline-item deadline">
+        <div class="timeline-date">
+          <div class="timeline-day">29</div>
+          <div class="timeline-month">5月 · 周五</div>
+          <div class="timeline-label">截止日</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-event">A股5月期权交割日</div>
+          <div class="timeline-detail">关注期权交割对市场波动的影响，以及月末资金面变化。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 1: 国内外新闻 -->
+<div class="tab-panel" id="panel-1">
+  <div class="inner">
+  <div class="section-title">🌐 国内外新闻</div>
+  <div class="sub-section">
+    <div class="sub-title">📌 国内外重点新闻</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-tech">科技</span> 英伟达Q1营收<strong style="color:#58a6ff">816亿美元</strong>同比大增<strong style="color:#58a6ff">85%</strong>，AI算力需求持续爆发</div>
+      <div class="card-body">英伟达公布2027财年Q1财报，营收达<span style="color:#f85149;font-weight:700;">816亿美元</span>，<strong style="color:#f85149">同比增长85%</strong>，<strong style="color:#f0883e">超出市场预期</strong>。数据中心业务继续成为核心增长引擎，受益于全球AI基础设施建设加速。CEO黄仁勋表示，AI推理需求正在指数级增长，下一代Blackwell架构芯片<strong style="color:#f0883e">供不应求</strong>。财报公布后盘后股价震荡，市场关注后续指引。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">AI</span> OpenAI发布<strong style="color:#58a6ff">GPT-5</strong>预览版，推理能力大幅提升</div>
+      <div class="card-body">OpenAI正式发布<span style="color:#bc8cff;font-weight:700;">GPT-5预览版</span>，在复杂推理、多模态理解和代码生成方面实现重大突破。新模型在数学推理基准测试中<strong style="color:#58a6ff">得分提升超过40%</strong>，在科学问答和长文本理解方面也有显著进步。Sam Altman表示GPT-5是<strong style="color:#f0883e">迈向AGI的重要里程碑</strong>，企业API已开放申请。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-tech">科技</span> ARM股价大涨<strong style="color:#f85149">16.16%</strong>创上市新高，市值突破<strong style="color:#f0b429">3000亿美元</strong></div>
+      <div class="card-body">ARM Holdings股价单日大涨<span style="color:#f85149;font-weight:700;">16.16%</span>，创上市以来历史新高，市值首次突破<strong style="color:#f0b429">3000亿美元</strong>大关。上涨主要受AI芯片需求驱动，ARM架构在边缘计算和移动端AI推理中占据主导地位。多家投行上调目标价，<strong style="color:#f0883e">看好ARM在AI时代的长期增长潜力</strong>。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-tech">科技</span> <strong style="color:#58a6ff">SpaceX</strong>正式提交IPO申请，太空经济迎来里程碑</div>
+      <div class="card-body">马斯克旗下的SpaceX正式向SEC提交IPO申请，预计将成为<span style="color:#f0b429;font-weight:700;">全球最大太空科技公司上市</span>。市场估值预期超过<strong style="color:#f0b429">2000亿美元</strong>。SpaceX的Starlink卫星互联网业务<strong style="color:#f0883e">已实现盈利</strong>，星舰项目持续推进。IPO有望推动全球商业航天产业链加速发展。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-policy">政策</span> 国家发改委定调具身智能基建，人形机器人产业迎来政策红利</div>
+      <div class="card-body">国家发改委明确将<span style="color:#3fb950;font-weight:700;">具身智能基础设施</span>纳入新基建范畴，支持人形机器人研发和产业化应用。智元机器人在西南基地实现量产下线，<strong style="color:#f0883e">标志着国内人形机器人从实验室走向商业化生产</strong>。多地出台配套政策，产业链上下游企业加速布局。</div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">🌍 地缘政治</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-geo">地缘</span> 中美科技博弈持续，半导体出口管制新规动态</div>
+      <div class="card-body">中美科技领域博弈持续深化，半导体出口管制政策动态备受市场关注。国内芯片自主可控进程加速，<strong style="color:#f0883e">国产替代需求旺盛</strong>。市场预期<strong style="color:#d29922">短期内科技领域摩擦仍将持续</strong>，但过度悲观预期已部分定价。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-geo">地缘</span> 欧洲经济温和复苏，德法股市联袂上涨</div>
+      <div class="card-body">欧洲主要经济体数据改善，德国DAX30涨<span style="color:#f85149;font-weight:700;">1.07%</span>，法国CAC40涨<span style="color:#f85149;font-weight:700;">0.53%</span>，斯托克50涨<span style="color:#f85149;font-weight:700;">1.05%</span>。欧洲央行维持宽松政策预期，<strong style="color:#f0883e">经济软着陆概率增大</strong>，提振市场风险偏好。</div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">💰 国内外财经</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">财经</span> 央行5月22日开展<strong style="color:#f0b429">1530亿</strong>逆回购，25日将续做<strong style="color:#f0b429">6000亿</strong>MLF</div>
+      <div class="card-body">央行5月22日开展<span style="color:#00d4ff;font-weight:700;">1530亿元7天期逆回购</span>，中标利率<strong style="color:#58a6ff">1.40%</strong>。5月25日将开展<strong style="color:#f0b429">6000亿元</strong>MLF操作，<strong style="color:#d29922">市场关注利率是否调整</strong>。当前流动性保持合理充裕，DR007维持在政策利率附近波动。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">财经</span> 美债收益率持续走高，10年期突破<strong style="color:#f85149">4.60%</strong>创3月新高</div>
+      <div class="card-body">美国10年期国债收益率突破<span style="color:#f85149;font-weight:700;">4.60%</span>，创3月以来新高；30年期突破<strong style="color:#f85149">5.09%</strong>。市场对美联储降息预期持续后移，<strong style="color:#f0883e">通胀粘性和财政赤字扩大推升长端利率</strong>。<strong style="color:#d29922">全球资产定价承压</strong>，关注后续PCE数据。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">财经</span> 韩国KOSPI年内累涨<strong style="color:#f85149">86.22%</strong>，牛冠全球</div>
+      <div class="card-body">韩国KOSPI指数收报<span style="color:#f85149;font-weight:700;">7847.71点</span>，<strong style="color:#f85149">年内累计涨幅高达86.22%</strong>，<strong style="color:#f0883e">领跑全球主要股指</strong>。韩国半导体和AI产业链受益于全球科技景气周期，外资持续流入韩股市场。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-finance">财经</span> 原油价格强势，布伦特突破<strong style="color:#f0b429">104美元</strong></div>
+      <div class="card-body">布伦特原油收报<span style="color:#f85149;font-weight:700;">104.92美元/桶</span>，WTI原油在<strong style="color:#f0b429">100美元</strong>附近震荡。OPEC+维持减产立场，地缘风险溢价和夏季需求旺季支撑油价。<strong style="color:#d29922">高油价对全球通胀形成上行压力</strong>。</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 2: AI前沿 -->
+<div class="tab-panel" id="panel-2">
+  <div class="inner">
+  <div class="section-title">🤖 AI前沿</div>
+  <div class="sub-section">
+    <div class="sub-title">🔥 大模型大战</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">AI</span> <strong style="color:#58a6ff">OpenAI</strong>发布<strong style="color:#bc8cff">GPT-5</strong>预览版，推理能力大幅提升</div>
+      <div class="card-body"><strong style="color:#bc8cff">GPT-5</strong>预览版在复杂推理任务上表现惊艳，数学推理得分提升超<strong style="color:#f85149">40%</strong>，多模态理解能力显著增强。新模型支持超长上下文窗口，在代码生成、科学研究和专业领域问答方面均有突破。<strong style="color:#58a6ff">OpenAI</strong>同步推出新版API，企业客户可申请接入。<strong style="color:#f0883e">这标志着大模型竞争进入新阶段。</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">AI</span> <strong style="color:#58a6ff">谷歌</strong>I/O 2026：<strong style="color:#bc8cff">Gemini Omni</strong>和<strong style="color:#bc8cff">Gemini 3.5 Flash</strong>同场发布</div>
+      <div class="card-body"><strong style="color:#58a6ff">谷歌</strong>在I/O 2026大会上发布<span style="color:#bc8cff;font-weight:700;">Gemini Omni</span>（全能旗舰模型）和<span style="color:#bc8cff;font-weight:700;">Gemini 3.5 Flash</span>（轻量高效版），<strong style="color:#f0883e">全面驶入AI智能体时代</strong>。<span style="color:#bc8cff;font-weight:700;">Gemini Omni</span>支持<strong style="color:#00d4ff">原生多模态</strong>输入输出，可自主完成复杂多步骤任务。<strong style="color:#58a6ff">谷歌</strong>还发布了AI搜索升级版和Android端深度整合方案。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">AI</span> <strong style="color:#58a6ff">英伟达</strong>Q1财报验证AI算力高景气，数据中心收入再创新高</div>
+      <div class="card-body"><strong style="color:#58a6ff">英伟达</strong>Q1营收<strong style="color:#f85149">816亿美元</strong>，其中数据中心业务收入占比超<strong style="color:#f85149">80%</strong>。<strong style="color:#bc8cff">Blackwell</strong>架构芯片出货量环比大幅增长，H系列依然供不应求。黄仁勋强调AI推理需求正在从云端向边缘端扩散，下一代<strong style="color:#bc8cff">Rubin</strong>架构已在研发中。<strong style="color:#f0883e">全球AI资本开支仍在加速。</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-ai">AI</span> <strong style="color:#58a6ff">ARM</strong>大涨<strong style="color:#f85149">16%</strong>创上市新高，移动端AI芯片需求爆发</div>
+      <div class="card-body"><strong style="color:#58a6ff">ARM</strong>股价单日大涨<strong style="color:#f85149">16.16%</strong>，市值突破<strong style="color:#f85149">3000亿美元</strong>。上涨逻辑在于ARM架构在AI推理芯片中的渗透率持续提升，特别是在智能手机和边缘计算领域。<strong style="color:#58a6ff">高通</strong>、<strong style="color:#58a6ff">联发科</strong>等客户的新一代AI手机芯片均基于ARM架构，<strong style="color:#f0883e">授权收入和版税收入双增</strong>。</div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">🤖 人形机器人</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-robot">机器人</span> 国家发改委定调<strong style="color:#00d4ff">具身智能</strong>基建，产业政策持续加码</div>
+      <div class="card-body">国家发改委明确将<strong style="color:#00d4ff">具身智能</strong>纳入新基建范畴，从顶层设计层面推动人形机器人产业发展。政策支持涵盖核心零部件攻关、场景应用示范、标准体系建设等多个维度。<strong style="color:#f0883e">预计未来几年将形成千亿级市场规模。</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-robot">机器人</span> <strong style="color:#58a6ff">智元机器人</strong>西南基地量产下线，商业化进程加速</div>
+      <div class="card-body"><strong style="color:#58a6ff">智元机器人</strong>在西南生产基地实现首批量产下线，<strong style="color:#f0883e">标志着国内人形机器人从研发验证阶段进入规模化生产阶段</strong>。产品主要面向工业制造和商业服务场景，预计2026年下半年开始批量交付。多家车企和制造企业已签署意向订单。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-robot">机器人</span> <strong style="color:#58a6ff">特斯拉</strong><strong style="color:#bc8cff">Optimus</strong>进展更新，国内厂商加速追赶</div>
+      <div class="card-body"><strong style="color:#58a6ff">特斯拉</strong><strong style="color:#bc8cff">Optimus</strong>机器人持续迭代，新一代版本在手部精细操作和平衡控制方面有显著改善。国内<strong style="color:#58a6ff">优必选</strong>、<strong style="color:#58a6ff">小米</strong>、<strong style="color:#58a6ff">小鹏</strong>等企业也在加速人形机器人研发。产业链上游的减速器、伺服电机、传感器等核心零部件企业订单增长明显。</div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">⚡ 算力基础设施</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-chip">芯片</span> <strong style="color:#58a6ff">英伟达</strong><strong style="color:#bc8cff">Blackwell</strong>芯片出货加速，供应链持续紧张</div>
+      <div class="card-body"><strong style="color:#58a6ff">英伟达</strong><strong style="color:#bc8cff">Blackwell</strong>架构GPU出货量环比大幅增长，但供应链仍面临<strong style="color:#00d4ff">CoWoS封装</strong>产能瓶颈。<strong style="color:#58a6ff">台积电</strong>正在加速扩产先进封装产能，预计2026年下半年产能将显著提升。<strong style="color:#58a6ff">SK海力士</strong>的<strong style="color:#bc8cff">HBM4</strong>内存也开始量产供货。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-chip">芯片</span> <strong style="color:#58a6ff">ARM</strong>架构在AI推理芯片中渗透率持续提升</div>
+      <div class="card-body">随着AI推理从云端向边缘端迁移，<strong style="color:#58a6ff">ARM</strong>架构凭借低功耗优势在AI推理芯片市场占据越来越重要的地位。<strong style="color:#58a6ff">高通</strong>骁龙X系列、<strong style="color:#58a6ff">联发科</strong>天玑系列均大幅强化AI算力。<strong style="color:#58a6ff">ARM</strong>授权收入和版税收入双增，<strong style="color:#f0883e">股价创历史新高</strong>。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-chip">芯片</span> 国内AI芯片自主可控进程加速</div>
+      <div class="card-body"><strong style="color:#58a6ff">华为</strong><strong style="color:#bc8cff">昇腾</strong>系列芯片在国产AI算力市场持续扩大份额，多家互联网大厂加大国产AI芯片采购力度。<strong style="color:#58a6ff">寒武纪</strong>、<strong style="color:#58a6ff">海光信息</strong>等国产AI芯片企业业绩改善明显。<strong style="color:#f0883e">在中美科技博弈背景下，国产替代逻辑持续强化。</strong></div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">📱 AI应用落地</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-app">应用</span> <strong style="color:#00d4ff">AI智能体</strong>进入商用元年，企业级应用加速落地</div>
+      <div class="card-body"><strong style="color:#58a6ff">谷歌</strong><strong style="color:#bc8cff">Gemini Omni</strong>、<strong style="color:#58a6ff">OpenAI</strong><strong style="color:#bc8cff">GPT-5</strong>等新模型均强调智能体（Agent）能力，AI从"对话工具"进化为"自主执行任务"的智能体。企业级AI应用在客服、编程、数据分析、内容创作等领域加速落地，<strong style="color:#f0883e">AI Agent成为2026年最热门赛道</strong>。</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-app">应用</span> AI手机渗透率快速提升，<strong style="color:#00d4ff">端侧AI</strong>成新战场</div>
+      <div class="card-body">各大手机厂商加速AI功能集成，AI拍照、AI翻译、AI助手等功能成为旗舰机标配。<strong style="color:#00d4ff">端侧AI模型小型化</strong>取得突破，手机端运行的大模型性能大幅提升。<strong style="color:#f0883e">预计2026年AI手机出货量占比将超过50%。</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-app">应用</span> AI+医疗、AI+教育等垂直领域应用加速</div>
+      <div class="card-body">AI在<strong style="color:#00d4ff">医疗影像诊断</strong>、<strong style="color:#00d4ff">药物研发</strong>、<strong style="color:#00d4ff">个性化教育</strong>等垂直领域的应用持续深化。多家AI医疗公司获得融资，AI辅助诊断产品获批上市。教育领域AI个性化学习方案受到学校和家长关注。</div>
+    </div>
+  </div>
+  <div class="sub-section">
+    <div class="sub-title">📊 产业趋势</div>
+    <div class="card">
+      <div class="card-title"><span class="tag tag-tech">趋势</span> 全球AI资本开支仍在上行通道，算力产业链景气度持续</div>
+      <div class="card-body"><strong style="color:#58a6ff">微软</strong>、<strong style="color:#58a6ff">谷歌</strong>、<strong style="color:#58a6ff">Meta</strong>、<strong style="color:#58a6ff">亚马逊</strong>四大科技巨头2026年AI资本开支合计预计超过<strong style="color:#f85149">3000亿美元</strong>，同比增长超<strong style="color:#f85149">50%</strong>。AI算力产业链从芯片、服务器、光模块到数据中心建设，全链条景气度持续高涨。<strong style="color:#f0883e">但需关注后续资本开支增速放缓的风险。</strong></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 3: 全球市场 -->
+<div class="tab-panel" id="panel-3">
+  <div class="inner">
+  <div class="section-title">📈 全球市场行情</div>
+  <!-- 提示栏 -->
+  <div class="good-bar" style="margin-bottom:20px;">
+    <strong>✅ 正面因素：</strong>A股普涨修复近3900家上涨；道指创历史新高；日经225创新高；英伟达财报超预期；ARM大涨16%；全球风险偏好回暖
+  </div>
+  <div class="hot-bar" style="margin-bottom:20px;">
+    <strong>🔥 市场热点：</strong>AI算力产业链（英伟达/ARM）、人形机器人政策利好、韩国KOSPI年内涨86%牛冠全球、白银突破77美元
+  </div>
+  <div class="alert-bar" style="margin-bottom:20px;">
+    <strong>⚠️ 风险提示：</strong>美债10年期突破4.60%、30年期突破5.09%；两市成交缩量5783亿；南向资金净卖出65亿港元；油价维持高位通胀压力
+  </div>
+  
+  <div class="market-grid">
+    <div class="market-block" style="border-top:2px solid #f85149;">
+      <h4>🇨🇳 A股</h4>
+      <div class="market-row"><span class="market-name">上证指数</span><span class="market-val up">4112.90 +0.87%</span></div>
+      <div class="market-row"><span class="market-name">深证成指</span><span class="market-val up">15597.30 +2.30%</span></div>
+      <div class="market-row"><span class="market-name">创业板指</span><span class="market-val up">3938.50 +2.84%</span></div>
+      <div class="market-row"><span class="market-name">科创50</span><span class="market-val up">1790.77 +1.51%</span></div>
+      <div class="market-row"><span class="market-name">沪深300</span><span class="market-val up">+1.30%</span></div>
+      <div class="market-row"><span class="market-name">成交额</span><span class="market-val" style="color:#f0b429;font-weight:700;">2.92万亿<span style="font-size:11px;"> (缩量5783亿)</span></span></div>
+      <div class="market-row"><span class="market-name">涨跌家数</span><span class="market-val" style="color:#f85149;">近3900家上涨</span></div>
+      <div class="market-row"><span class="market-name">北向资金</span><span class="market-val up">净买入+12.37亿</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #f85149;">
+      <h4>🇭🇰 港股</h4>
+      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val up">25606.03 +0.86%</span></div>
+      <div class="market-row"><span class="market-name">恒生科技</span><span class="market-val up">4869.57 +2.11%</span></div>
+      <div class="market-row"><span class="market-name">国企指数</span><span class="market-val up">+1.25%</span></div>
+      <div class="market-row"><span class="market-name">哔哩哔哩</span><span class="market-val neutral">港股科技股</span></div>
+      <div class="market-row"><span class="market-name">光通信板块</span><span class="market-val up">CPO概念+4.33%</span></div>
+      <div class="market-row"><span class="market-name">南向资金</span><span class="market-val down">净卖出64.94亿港元</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #3fb950;">
+      <h4>🌏 亚太市场</h4>
+      <div class="market-row"><span class="market-name">日经225</span><span class="market-val up">63339.07 +2.68% 创新高</span></div>
+      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val neutral">7847.71 +0.41% 年内+86%</span></div>
+      <div class="market-row"><span class="market-name">台湾加权</span><span class="market-val up">42267.97 +2.18% 创新高</span></div>
+      <div class="market-row"><span class="market-name">印度Sensex</span><span class="market-val up">75415 +0.3%</span></div>
+      <div class="market-row"><span class="market-name">澳洲ASX200</span><span class="market-val up">8657 +0.4%</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid var(--yellow);">
+      <h4>🇪🇺 欧洲市场</h4>
+      <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val up">10466.26 +0.22%</span></div>
+      <div class="market-row"><span class="market-name">德国DAX30</span><span class="market-val up">+1.07%</span></div>
+      <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val up">+0.53%</span></div>
+      <div class="market-row"><span class="market-name">斯托克50</span><span class="market-val up">+1.05%</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #3fb950;">
+      <h4>🇺🇸 美股（5/21收盘）</h4>
+      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">50285.66 +0.55% 历史新高</span></div>
+      <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7445.72 +0.17%</span></div>
+      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val up">26293.10 +0.09%</span></div>
+      <div class="market-row"><span class="market-name">英伟达</span><span class="market-val up">Q1营收816亿 +85%</span></div>
+      <div class="market-row"><span class="market-name">特斯拉</span><span class="market-val up">+1.95%</span></div>
+      <div class="market-row"><span class="market-name">ARM</span><span class="market-val up">+16.16% 创上市新高</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #f85149;">
+      <h4>🏭 大宗商品</h4>
+      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val up">~100美元/桶</span></div>
+      <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val up">104.92美元/桶</span></div>
+      <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val neutral">~4510美元/盎司</span></div>
+      <div class="market-row"><span class="market-name">上海金</span><span class="market-val neutral">~996元/克</span></div>
+      <div class="market-row"><span class="market-name">白银</span><span class="market-val neutral">突破77美元/盎司</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #bc8cff;">
+      <h4>🪙 加密货币</h4>
+      <div class="market-row"><span class="market-name">比特币BTC</span><span class="market-val neutral">77500-78300美元区间</span></div>
+      <div class="market-row"><span class="market-name">以太坊ETH</span><span class="market-val neutral">~2140美元</span></div>
+      <div class="market-row"><span class="market-name">BTC ETF</span><span class="market-val neutral">资金流入放缓</span></div>
+      <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val neutral">区间震荡</span></div>
+    </div>
+    <div class="market-block" style="border-top:2px solid #00d4ff;">
+      <h4>💱 汇率与债券</h4>
+      <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val neutral">6.8373</span></div>
+      <div class="market-row"><span class="market-name">在岸汇率</span><span class="market-val neutral">6.7991</span></div>
+      <div class="market-row"><span class="market-name">美元指数</span><span class="market-val text-secondary">~99附近震荡</span></div>
+      <div class="market-row"><span class="market-name">美10年期</span><span class="market-val up" style="color:#f85149;">~4.60%（3月新高）</span></div>
+      <div class="market-row"><span class="market-name">美30年期</span><span class="market-val up" style="color:#f85149;">突破5.09%</span></div>
+      <div class="market-row"><span class="market-name">中10年期</span><span class="market-val neutral">~1.7%-1.8%</span></div>
+    </div>
+  </div>
+  
+  <!-- 市场综评 - 全新设计 -->
+  <div style="background:linear-gradient(135deg,rgba(30,35,48,0.9),rgba(22,27,34,0.95));border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;margin-top:20px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#ffa657,#ff7b29);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">📊</div>
+      <div>
+        <div style="font-size:17px;font-weight:700;color:#fff;">市场综评</div>
+        <div style="font-size:12px;color:#8b95a5;">基于2026年5月22日全球市场表现</div>
+      </div>
+    </div>
+    
+    <!-- 四大维度卡片网格 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;">
+      
+      <!-- A股行情 -->
+      <div style="background:linear-gradient(135deg,rgba(248,81,73,0.1),rgba(248,81,73,0.03));border:1px solid rgba(248,81,73,0.2);border-radius:12px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:18px;">🇨🇳</span>
+          <span style="font-size:14px;font-weight:700;color:#f85149;">A股普涨修复</span>
+          <span style="margin-left:auto;font-size:11px;color:#f85149;background:rgba(248,81,73,0.15);padding:2px 8px;border-radius:10px;">偏多</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">上证<strong style="color:#f85149">+0.87%</strong>报<strong style="color:#f85149">4112点</strong>，创业板指<strong style="color:#f85149">+2.84%</strong>领涨，近<strong style="color:#f85149">3900家</strong>上涨呈现普涨格局。科技成长方向表现活跃，<strong style="color:#58a6ff">AI算力、机器人板块</strong>涨幅居前。</p>
+          <p style="margin-bottom:8px;">两市成交<strong style="color:#f0b429">2.92万亿</strong>，较前日缩量<strong style="color:#d29922">5783亿</strong>，说明市场以存量博弈为主，增量资金入场意愿有待观察。</p>
+          <p style="font-size:12px;color:#8b95a5;">北向资金净买入<strong style="color:#f85149">12.37亿</strong>，深股通明显强于沪股通，外资偏好科技成长方向。</p>
+        </div>
+      </div>
+      
+      <!-- 外围市场 -->
+      <div style="background:linear-gradient(135deg,rgba(63,185,80,0.1),rgba(63,185,80,0.03));border:1px solid rgba(63,185,80,0.2);border-radius:12px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:18px;">🌍</span>
+          <span style="font-size:14px;font-weight:700;color:#3fb950;">外围市场偏暖</span>
+          <span style="margin-left:auto;font-size:11px;color:#3fb950;background:rgba(63,185,80,0.15);padding:2px 8px;border-radius:10px;">积极</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">道指<strong style="color:#f85149">+0.55%</strong>创历史新高<strong style="color:#f85149">50285点</strong>，日经225<strong style="color:#f85149">+2.68%</strong>同步创新高，全球风险偏好持续回暖。<strong style="color:#58a6ff">英伟达</strong>Q1财报超预期提振科技股情绪。</p>
+          <p style="margin-bottom:8px;">欧洲三大股指全线上涨，德国DAX30涨<strong style="color:#f85149">1.07%</strong>领涨。韩国KOSPI年内累涨<strong style="color:#f85149">86.22%</strong>牛冠全球，亚太市场整体偏强。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#58a6ff">ARM</strong>大涨<strong style="color:#f85149">16.16%</strong>创上市新高，SpaceX提交IPO申请，科技股持续活跃。</p>
+        </div>
+      </div>
+      
+      <!-- 地缘政策 -->
+      <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.03));border:1px solid rgba(240,180,41,0.2);border-radius:12px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:18px;">🏛️</span>
+          <span style="font-size:14px;font-weight:700;color:#f0b429;">政策面偏暖</span>
+          <span style="margin-left:auto;font-size:11px;color:#f0b429;background:rgba(240,180,41,0.15);padding:2px 8px;border-radius:10px;">中性偏多</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">央行5月22日开展<strong style="color:#f0b429">1530亿</strong>逆回购，25日将续做<strong style="color:#f0b429">6000亿</strong>MLF，流动性保持合理充裕。发改委定调<strong style="color:#00d4ff">具身智能基建</strong>，支持<strong style="color:#58a6ff">人形机器人</strong>产业发展。</p>
+          <p style="margin-bottom:8px;">国内政策面整体偏暖，产业政策持续加码AI和机器人方向。但<strong style="color:#d29922">中美科技博弈</strong>仍是长期变量。</p>
+          <p style="font-size:12px;color:#8b95a5;">关注5月25日MLF操作利率是否调整，以及周末可能出台的政策消息。</p>
+        </div>
+      </div>
+      
+      <!-- 风险事件 -->
+      <div style="background:linear-gradient(135deg,rgba(139,149,165,0.1),rgba(139,149,165,0.03));border:1px solid rgba(139,149,165,0.2);border-radius:12px;padding:16px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:18px;">⚠️</span>
+          <span style="font-size:14px;font-weight:700;color:#8b95a5;">风险因素需关注</span>
+          <span style="margin-left:auto;font-size:11px;color:#8b95a5;background:rgba(139,149,165,0.15);padding:2px 8px;border-radius:10px;">中性</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">美债10年期突破<strong style="color:#f85149">4.60%</strong>创3月新高，30年期突破<strong style="color:#f85149">5.09%</strong>，全球流动性压力上升。高油价（布伦特<strong style="color:#f0b429">104美元</strong>）对通胀形成上行压力。</p>
+          <p style="margin-bottom:8px;">南向资金净卖出<strong style="color:#3fb950">65亿港元</strong>，港股资金面有所承压。A股成交缩量<strong style="color:#d29922">5783亿</strong>，市场增量资金不足。</p>
+          <p style="font-size:12px;color:#8b95a5;">周末休市期间关注海外市场变化和政策消息，下周一开盘可能有跳空风险。</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- 底部市场情绪指示器 -->
+    <div style="margin-top:16px;padding:14px 18px;background:rgba(0,0,0,0.2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:13px;color:#8b95a5;">市场情绪：</span>
+        <span style="font-size:13px;font-weight:600;color:var(--red);">偏多</span>
+        <div style="display:flex;gap:3px;margin-left:6px;">
+          <div style="width:20px;height:6px;background:#f85149;border-radius:3px;"></div>
+          <div style="width:20px;height:6px;background:#f85149;border-radius:3px;"></div>
+          <div style="width:20px;height:6px;background:#f85149;border-radius:3px;"></div>
+          <div style="width:20px;height:6px;background:rgba(139,149,165,0.3);border-radius:3px;"></div>
+          <div style="width:20px;height:6px;background:rgba(139,149,165,0.3);border-radius:3px;"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;color:#8b95a5;">涨跌比</div>
+          <div style="font-size:13px;font-weight:600;color:#f85149;">~3900:500</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:11px;color:#8b95a5;">成交额</div>
+          <div style="font-size:13px;font-weight:600;color:#f0b429;">2.92万亿</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:11px;color:#8b95a5;">北向资金</div>
+          <div style="font-size:13px;font-weight:600;color:#f85149;">+12.37亿</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 4: 价值投资风向 -->
+<div class="tab-panel" id="panel-4">
+  <div class="inner">
+  <div class="section-title">💡 价值投资风向</div>
+  
+  <!-- 一 · 机构价值投资观点 -->
+  <div class="sub-section">
+    <div class="sub-title">一 · 机构价值投资观点</div>
+    <div class="institute-tabs">
+      
+      <!-- 1. 中金公司 -->
+      <div class="institute-card institute-cicc">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="700">中金</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">中金公司</div>
+            <span class="institute-tag">高股息策略</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;">当前A股高股息板块估值仍处于历史低位区间，银行板块<strong style="color:#f85149">PB约0.6倍</strong>，<strong style="color:#f85149">股息率普遍在5%以上</strong>。<strong style="color:#00d4ff">建议投资者在市场震荡期以高股息资产为底仓，获取确定性收益。</strong>同时关注AI算力等成长方向的波段机会。<strong style="color:#f0883e">央行维持宽松货币政策，利好高股息资产的相对吸引力。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 2. 高盛 -->
+      <div class="institute-card" style="background:linear-gradient(135deg,rgba(188,140,255,0.08),rgba(0,212,255,0.04));border:1px solid rgba(188,140,255,0.2);">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(188,140,255,0.15)" stroke="rgba(188,140,255,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#bc8cff" font-size="11" font-weight="700">高盛</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">高盛</div>
+            <span class="institute-tag">板块估值</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;"><strong style="color:#f0883e">中国银行板块估值在全球主要市场中处于最低水平，</strong><strong style="color:#f85149">PB仅0.6倍左右</strong>，远低于欧美银行1-1.5倍的水平。<strong style="color:#f0883e">随着国内经济企稳和银行资产质量改善，板块存在显著的估值修复空间。</strong>维持对A股银行板块的<strong style="color:#f85149">"超配"评级</strong>，重点推荐国有大行和优质城商行。</p>
+        </div>
+      </div>
+      
+      <!-- 3. 摩根士丹利 -->
+      <div class="institute-card" style="background:linear-gradient(135deg,rgba(240,180,41,0.08),rgba(255,166,87,0.04));border:1px solid rgba(240,180,41,0.2);">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(240,180,41,0.15)" stroke="rgba(240,180,41,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#f0b429" font-size="9" font-weight="700">大摩</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">摩根士丹利</div>
+            <span class="institute-tag">中国策略</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;">A股当前估值处于合理偏低区间，<strong style="color:#f85149">上证PE约14倍</strong>，低于历史均值。<strong style="color:#00d4ff">建议关注三个方向：</strong>一是高股息的银行和公用事业；二是AI算力产业链的国产替代机会；三是受益于政策支持的人形机器人板块。<strong style="color:#d29922">但需警惕美债收益率走高对全球流动性的冲击。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 4. 兴业证券 -->
+      <div class="institute-card" style="background:linear-gradient(135deg,rgba(63,185,80,0.08),rgba(29,198,100,0.04));border:1px solid rgba(63,185,80,0.2);">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(63,185,80,0.15)" stroke="rgba(63,185,80,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#3fb950" font-size="9" font-weight="700">兴业</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">兴业证券</div>
+            <span class="institute-tag">红利策略</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;"><strong style="color:#f0883e">红利策略在当前市场环境下仍具配置价值。</strong>中证红利指数<strong style="color:#f85149">PE约7倍</strong>，<strong style="color:#f85149">股息率约5.5%</strong>，处于历史较高水平。在无风险利率下行（中10年期国债<strong style="color:#3fb950">1.7%-1.8%</strong>）的背景下，高股息资产的相对吸引力进一步提升。<strong style="color:#00d4ff">建议以银行、电力、交运等高股息板块为底仓。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 5. 中信证券 -->
+      <div class="institute-card" style="background:linear-gradient(135deg,rgba(255,166,87,0.08),rgba(240,180,41,0.04));border:1px solid rgba(255,166,87,0.2);">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(255,166,87,0.15)" stroke="rgba(255,166,87,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#ffa657" font-size="12" font-weight="700">中信</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">中信证券</div>
+            <span class="institute-tag">市场策略</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;"><strong style="color:#f0883e">A股市场短期处于震荡修复阶段，</strong><strong style="color:#00d4ff">建议采取"哑铃型"配置策略：</strong>一端配置低估值高股息的银行、公用事业等防御性资产；另一端适度参与AI算力、人形机器人等成长方向的波段机会。<strong style="color:#d29922">周末休市期间关注海外市场变化，下周一关注MLF操作结果。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 6. 瑞银 -->
+      <div class="institute-card" style="background:linear-gradient(135deg,rgba(248,81,73,0.08),rgba(255,100,100,0.04));border:1px solid rgba(248,81,73,0.2);">
+        <div class="institute-header">
+          <div class="institute-logo">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(248,81,73,0.15)" stroke="rgba(248,81,73,0.5)" stroke-width="1.5"/><text x="20" y="25" text-anchor="middle" fill="#f85149" font-size="12" font-weight="700">瑞银</text></svg>
+          </div>
+          <div class="institute-info">
+            <div class="institute-name">瑞银</div>
+            <span class="institute-tag">全球配置</span>
+          </div>
+        </div>
+        <div class="institute-body">
+          <p style="margin-bottom:10px;"><strong style="color:#f0883e">全球市场分化加剧，美股创新高但美债收益率快速上行值得关注。</strong><strong style="color:#00d4ff">建议超配中国和日本股市，低配欧洲。</strong>中国股市估值优势明显，高股息板块提供安全边际。黄金在<strong style="color:#f85149">4510美元</strong>附近震荡，<strong style="color:#f0883e">中长期仍看好金价上行空间，建议逢低配置。</strong></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 二 · 雪球·集思录价值投资社区情绪 -->
+  <div class="sub-section">
+    <div class="sub-title">二 · 雪球·集思录价值投资社区情绪</div>
+    <div class="sentiment-dashboard">
+      <div class="sentiment-main">
+        <!-- 情绪指标网格 -->
+        <div class="sentiment-grid">
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">💰</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">高股息策略</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:78%;background:linear-gradient(90deg,#3fb950,#00d4ff);"></div>
+                </div>
+                <span class="sentiment-percent">78%</span>
+              </div>
+              <div class="sentiment-desc">银行股息率5%+，配置价值突出</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🏦</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">银行板块</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:72%;background:linear-gradient(90deg,#f0b429,#ffa657);"></div>
+                </div>
+                <span class="sentiment-percent">72%</span>
+              </div>
+              <div class="sentiment-desc">PB 0.6x历史低位，估值修复预期强</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">⚡</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">公用事业</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:65%;background:linear-gradient(90deg,#00d4ff,#bc8cff);"></div>
+                </div>
+                <span class="sentiment-percent">65%</span>
+              </div>
+              <div class="sentiment-desc">长江电力等稳健标的受关注</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🔌</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">电力板块</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:60%;background:linear-gradient(90deg,#3fb950,#f0b429);"></div>
+                </div>
+                <span class="sentiment-percent">60%</span>
+              </div>
+              <div class="sentiment-desc">核电、绿电关注度提升</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🤖</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">AI算力</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:92%;background:linear-gradient(90deg,#bc8cff,#f85149);"></div>
+                </div>
+                <span class="sentiment-percent hot">92%</span>
+              </div>
+              <div class="sentiment-desc">英伟达财报超预期，算力主线强势</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🛢️</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">能源/油价</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:55%;background:linear-gradient(90deg,#f0b429,#f85149);"></div>
+                </div>
+                <span class="sentiment-percent">55%</span>
+              </div>
+              <div class="sentiment-desc">布伦特破104美元，中国海油受益</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🌱</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">新能源</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:40%;background:linear-gradient(90deg,#3fb950,#00d4ff);"></div>
+                </div>
+                <span class="sentiment-percent low">40%</span>
+              </div>
+              <div class="sentiment-desc">光伏锂电产能过剩，等待出清</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">🥇</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">黄金</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:70%;background:linear-gradient(90deg,#f0b429,#ffa657);"></div>
+                </div>
+                <span class="sentiment-percent ">70%</span>
+              </div>
+              <div class="sentiment-desc">4510美元高位震荡，中长期看多</div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-emoji">₿</div>
+            <div class="sentiment-info">
+              <div class="sentiment-name">加密货币</div>
+              <div class="sentiment-progress-wrap">
+                <div class="sentiment-progress-bar">
+                  <div class="sentiment-progress-fill" style="width:45%;background:linear-gradient(90deg,#bc8cff,#f85149);"></div>
+                </div>
+                <span class="sentiment-percent low">45%</span>
+              </div>
+              <div class="sentiment-desc">BTC 7.7-7.8万区间震荡，缺乏方向</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 热门话题标签云 -->
+      <div class="topic-cloud">
+        <div class="topic-cloud-title">🔥 近24小时社区重点讨论</div>
+        <div class="topic-tags">
+          <span class="topic-tag" style="background:rgba(248,81,73,0.15);color:#f85149;">A股普涨修复</span>
+          <span class="topic-tag" style="background:rgba(0,212,255,0.15);color:#00d4ff;">英伟达财报超预期</span>
+          <span class="topic-tag" style="background:rgba(63,185,80,0.15);color:#3fb950;">银行股高股息</span>
+          <span class="topic-tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">美债收益率飙升</span>
+          <span class="topic-tag" style="background:rgba(188,140,255,0.15);color:#bc8cff;">黄金配置策略</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三 · 高股息板块深度分析 -->
+  <div class="sub-section">
+    <div class="sub-title">三 · 高股息板块深度分析</div>
+    <div class="dividend-grid">
+      <div class="card" style="border-left:3px solid var(--yellow);">
+        <div class="card-title">🏦 银行板块：估值洼地+高股息双重优势</div>
+        <div class="card-body">
+          <p>银行板块<strong style="color:#f85149">PB约0.6倍</strong>处于历史低位，国有大行<strong style="color:#f85149">股息率普遍在5%以上</strong>。<strong style="color:#58a6ff">工商银行</strong>7.18元微涨0.42%，<strong style="color:#58a6ff">农业银行</strong>6.46元微跌0.77%。资产质量持续改善，不良率维持低位。央行维持宽松货币政策，银行净息差压力有望缓解。<strong style="color:#00d4ff">建议以国有大行为底仓，逢低配置。</strong></p>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--green);">
+        <div class="card-title">⚡ 公用事业：稳定现金流的避风港</div>
+        <div class="card-body">
+          <p><strong style="color:#58a6ff">长江电力</strong>26.56元微跌0.38%，<strong style="color:#58a6ff">大秦铁路</strong>5.42元微涨0.18%。<strong style="color:#f0883e">公用事业板块现金流稳定、股息率可观，是市场震荡期的优质防御性资产。</strong>水电来水偏丰利好发电企业，铁路货运量保持平稳。长期资金（险资、社保）持续加仓。</p>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card-title">🔌 电力板块：核电+绿电双轮驱动</div>
+        <div class="card-body">
+          <p><strong style="color:#58a6ff">中国核电</strong>9.01元<strong style="color:#3fb950">下跌2.28%</strong>，<strong style="color:#f0883e">短期调整提供布局机会。</strong>核电作为清洁能源基荷电源，在建机组陆续投产带来增长确定性。绿电方面，风电光伏装机持续增长。<strong style="color:#f0883e">电力体制改革深化，电价市场化利好优质发电企业。</strong></p>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--purple);">
+        <div class="card-title">🛢️ 央企高股息：确定性收益首选</div>
+        <div class="card-body">
+          <p><strong style="color:#58a6ff">中国移动</strong>95.98元微跌0.80%，<strong style="color:#58a6ff">中国海油</strong>35.83元（5/21数据）微跌1.08%。<strong style="color:#f0883e">央企高股息标的现金流充沛、分红稳定，是长期配置的优质选择。</strong>中国海油受益于油价维持高位，桶油利润保持强劲。中国移动5G资本开支高峰已过，自由现金流持续改善。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 四 · 低估值板块 -->
+  <div class="sub-section">
+    <div class="sub-title">四 · 低估值板块</div>
+    <div class="undervalued-grid">
+      <div class="undervalued-card">
+        <div class="undervalued-icon">🏦</div>
+        <div class="undervalued-name">杭州银行</div>
+        <div class="undervalued-metrics">
+          <div class="uv-metric">
+            <div class="uv-metric-label">今日涨幅</div>
+            <div class="uv-metric-value down">-0.50%</div>
+          </div>
+          <div class="uv-metric">
+            <div class="uv-metric-label">收盘价</div>
+            <div class="uv-metric-value">16.05元</div>
+          </div>
+        </div>
+        <div class="undervalued-desc"><strong style="color:#58a6ff">杭州银行</strong>作为长三角优质城商行，资产质量优异，不良率持续低于行业平均。受益于区域经济活跃，贷款增速保持在较高水平。估值处于城商行板块偏低位置，<strong style="color:#f85149">PB约0.7倍</strong>，<strong style="color:#f85149">股息率约4.5%</strong>，具有较高的安全边际和配置价值。</div>
+      </div>
+      <div class="undervalued-card">
+        <div class="undervalued-icon">🏛️</div>
+        <div class="undervalued-name">江苏银行</div>
+        <div class="undervalued-metrics">
+          <div class="uv-metric">
+            <div class="uv-metric-label">今日涨幅</div>
+            <div class="uv-metric-value down">-1.42%</div>
+          </div>
+          <div class="uv-metric">
+            <div class="uv-metric-label">收盘价</div>
+            <div class="uv-metric-value">11.13元</div>
+          </div>
+        </div>
+        <div class="undervalued-desc"><strong style="color:#58a6ff">江苏银行</strong>作为江苏省最大城商行，资产规模突破3万亿元，服务长三角经济腹地。公司<strong style="color:#f85149">ROE保持在12%以上</strong>，资产质量持续改善。当前<strong style="color:#f85149">PB约0.6倍</strong>，处于历史低位区间，估值修复空间较大。<strong style="color:#f85149">股息率约5%</strong>，具备较高的配置性价比。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五 · 长线资金动向 -->
+  <div class="sub-section">
+    <div class="sub-title">五 · 长线资金动向</div>
+    <div class="capital-flow-section">
+      <!-- 资金流向可视化 -->
+      <div class="flow-visualization">
+        <div class="flow-title">💰 长线资金入市路径</div>
+        <div class="flow-diagram">
+          <div class="flow-node" style="background:rgba(29,198,100,0.1);border:1px solid rgba(29,198,100,0.3);">
+            <div class="flow-node-icon">📈</div>
+            <div class="flow-node-title">险资/社保</div>
+            <div class="flow-node-desc">长期资金</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);">
+            <div class="flow-node-icon">💰</div>
+            <div class="flow-node-title">ETF/公募</div>
+            <div class="flow-node-desc">配置资金</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" style="background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.3);">
+            <div class="flow-node-icon">🏦</div>
+            <div class="flow-node-title">高股息资产</div>
+            <div class="flow-node-desc">银行/公用/央企</div>
+          </div>
+        </div>
+      </div>
+      <!-- 资金卡片 -->
+      <div class="capital-cards">
+        <div class="capital-card">
+          <div class="capital-icon">📊</div>
+          <div class="capital-title">ETF长线资金</div>
+          <div class="capital-stats">
+            <span class="capital-stat" style="background:rgba(29,198,100,0.15);color:#3fb950;">券商ETF净流入</span>
+            <span class="capital-stat" style="background:rgba(0,212,255,0.15);color:#00d4ff;">红利ETF净流入</span>
+          </div>
+          <div class="capital-desc">机构资金持续加仓券商和红利方向，布局低估值高股息资产。</div>
+        </div>
+        <div class="capital-card">
+          <div class="capital-icon">🛡️</div>
+          <div class="capital-title">险资动向</div>
+          <div class="capital-stats">
+            <span class="capital-stat" style="background:rgba(240,180,41,0.15);color:#f0b429;">银行股 +</span>
+            <span class="capital-stat" style="background:rgba(63,185,80,0.15);color:#3fb950;">公用事业 +</span>
+          </div>
+          <div class="capital-desc">保险资金偏好高股息资产，银行和公用事业成为配置重点。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 六 · 价值投资估值参考表 -->
+  <div class="sub-section">
+    <div class="sub-title">六 · 价值投资估值参考表</div>
+    <div class="valuation-cards">
+      <div class="valuation-item">
+        <div class="valuation-icon">🏦</div>
+        <div class="valuation-info">
+          <div class="valuation-name">银行板块PB</div>
+          <div class="valuation-value">~0.6x</div>
+        </div>
+        <div class="valuation-tag low">历史低位</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">📊</div>
+        <div class="valuation-info">
+          <div class="valuation-name">上证PE</div>
+          <div class="valuation-value">~14x</div>
+        </div>
+        <div class="valuation-tag low">低于均值</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">💰</div>
+        <div class="valuation-info">
+          <div class="valuation-name">银行股息率</div>
+          <div class="valuation-value" style="color:#f85149;">5%+</div>
+        </div>
+        <div class="valuation-tag low">极具吸引力</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">📈</div>
+        <div class="valuation-info">
+          <div class="valuation-name">中证红利PE</div>
+          <div class="valuation-value">~7x</div>
+        </div>
+        <div class="valuation-tag low">历史低位</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">🛢️</div>
+        <div class="valuation-info">
+          <div class="valuation-name">中海油桶油利润</div>
+          <div class="valuation-value">强劲</div>
+        </div>
+        <div class="valuation-tag low">高盈利</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">📱</div>
+        <div class="valuation-info">
+          <div class="valuation-name">中国移动PB</div>
+          <div class="valuation-value">~1.1x</div>
+        </div>
+        <div class="valuation-tag mid">合理偏低</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">🏦</div>
+        <div class="valuation-info">
+          <div class="valuation-name">招商银行PB</div>
+          <div class="valuation-value" style="color:#00d4ff;">~0.9x</div>
+        </div>
+        <div class="valuation-tag low">偏低</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">⚡</div>
+        <div class="valuation-info">
+          <div class="valuation-name">中国核电PE</div>
+          <div class="valuation-value">~18x</div>
+        </div>
+        <div class="valuation-tag mid">合理</div>
+      </div>
+      <div class="valuation-item">
+        <div class="valuation-icon">🥇</div>
+        <div class="valuation-info">
+          <div class="valuation-name">黄金价格</div>
+          <div class="valuation-value" style="color:#f0b429;">~4510$</div>
+        </div>
+        <div class="valuation-tag warn">历史高位</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 附 · 精简参考板块 -->
+  <div class="sub-section">
+    <div class="sub-title">附 · 精简参考板块</div>
+    <div class="reference-grid">
+      <div class="reference-card">
+        <div class="reference-icon">🏦</div>
+        <div class="reference-title">银行股息率</div>
+        <div class="reference-desc">国有大行股息率普遍5%+，远超10年期国债1.7%的收益率，配置价值突出。</div>
+      </div>
+      <div class="reference-card">
+        <div class="reference-icon">📈</div>
+        <div class="reference-title">中证红利指数</div>
+        <div class="reference-desc"><strong style="color:#f85149">PE约7倍</strong>，<strong style="color:#f85149">股息率约5.5%</strong>，处于历史较高水平，适合长期定投。</div>
+      </div>
+      <div class="reference-card">
+        <div class="reference-icon">🎯</div>
+        <div class="reference-title">黄金配置价值</div>
+        <div class="reference-desc">国际金价<strong style="color:#f85149">4510美元</strong>高位震荡，中长期受去美元化和避险需求支撑，<strong style="color:#00d4ff">建议逢低配置。</strong></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 5: 关注标的 -->
+<div class="tab-panel" id="panel-5">
+  <div class="inner">
+  <div class="section-title">🏦 关注标的 · 核心持仓跟踪</div>
+  <div class="good-bar" style="margin-bottom:16px;">
+    <strong>✅ 市场环境：</strong>A股普涨修复，近<strong style="color:#f85149">3900家上涨</strong>，市场情绪回暖。央行维持宽松流动性，高股息资产配置价值突出。
+  </div>
+  <div class="alert-bar" style="margin-bottom:16px;">
+    <strong>⚠️ 风险因素：</strong>美债收益率走高（10年期<strong style="color:#d29922">4.60%+</strong>），两市成交<strong style="color:#d29922">缩量5783亿</strong>，周末休市关注海外变化。
+  </div>
+  
+  <div class="sub-title" style="margin:28px 0 18px;">银行股 · 高股息核心</div>
+
+    <!-- 工商银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">工商银行</span><span class="stock-code">601398</span><span class="tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">7.18元</div><div class="stock-change up">+0.42%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国有大行龙头，总资产超44万亿元，全球市值最大银行</li>
+        <li><strong style="color:#f85149">股息率约5.2%</strong>，<strong style="color:#f85149">PB约0.6倍</strong>，估值处于历史低位区间</li>
+        <li>资产质量持续改善，不良率维持低位，拨备覆盖率充足</li>
+      </ul>
+    </div>
+
+    <!-- 建设银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">建设银行</span><span class="stock-code">601939</span><span class="tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">10.10元</div><div class="stock-change up">+0.5%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国有大行，基建贷款领域优势突出，资产规模稳步增长</li>
+        <li><strong style="color:#f85149">股息率约5.3%</strong>，<strong style="color:#f85149">PB约0.6倍</strong>，分红稳定且持续增长</li>
+        <li>受益于基建投资加码和房地产政策优化，贷款质量有望改善</li>
+        <li><strong style="color:#f85149">股价创历史新高</strong>，A+H股总市值达2.05万亿元</li>
+      </ul>
+    </div>
+
+    <!-- 招商银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">招商银行</span><span class="stock-code">600036</span><span class="tag" style="background:rgba(0,212,255,0.15);color:#00d4ff;">零售银行</span></div>
+        <div class="stock-price-area"><div class="stock-price">37.02元</div><div class="stock-change down">-0.35%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>零售银行龙头，AUM管理资产规模行业领先</li>
+        <li><strong style="color:#f85149">PB约0.9倍</strong>，低于历史均值，估值修复空间较大</li>
+        <li>财富管理业务稳健发展，手续费收入有望企稳回升</li>
+      </ul>
+    </div>
+
+    <!-- 中国银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">中国银行</span><span class="stock-code">601988</span><span class="tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">5.86元</div><div class="stock-change up">+1.03%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国际化程度最高的中资银行，跨境业务优势明显</li>
+        <li><strong style="color:#f85149">股息率约5.5%</strong>，<strong style="color:#f85149">PB约0.6倍</strong>，估值极具吸引力</li>
+        <li>受益于人民币国际化推进和"一带一路"金融服务需求</li>
+      </ul>
+    </div>
+
+    <!-- 农业银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">农业银行</span><span class="stock-code">601288</span><span class="tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">6.46元</div><div class="stock-change down">-0.77%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>服务"三农"和县域经济的核心银行，网点覆盖最广</li>
+        <li><strong style="color:#f85149">股息率约5.4%</strong>，<strong style="color:#f85149">PB约0.6倍</strong>，高股息特征突出</li>
+        <li>乡村振兴战略持续推进，县域金融业务增长空间大</li>
+      </ul>
+    </div>
+
+    <!-- 重庆银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">重庆银行</span><span class="stock-code">601963</span><span class="tag" style="background:rgba(248,81,73,0.15);color:#f85149;">城商行</span></div>
+        <div class="stock-price-area"><div class="stock-price">11.25元</div><div class="stock-change down">-1.92%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>西南地区重要城商行，受益于成渝双城经济圈建设</li>
+        <li><strong style="color:#f85149">PB约0.5倍</strong>，处于城商行板块最低估值区间</li>
+        <li>区域经济活力强，成渝经济圈政策红利持续释放</li>
+      </ul>
+    </div>
+
+    <!-- 宁波银行 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">宁波银行</span><span class="stock-code">002142</span><span class="tag" style="background:rgba(0,212,255,0.15);color:#00d4ff;">优质城商行</span></div>
+        <div class="stock-price-area"><div class="stock-price">31.09元</div><div class="stock-change down">-1.40%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>长三角优质城商行，资产质量优异，<strong style="color:#f85149">ROE保持在15%以上</strong></li>
+        <li>受益于长三角经济活跃，贷款增速保持在较高水平</li>
+        <li>5月22日暂无精确收盘数据，以5月19日数据为参考</li>
+      </ul>
+    </div>
+
+  <div class="sub-title" style="margin:28px 0 18px;">公用事业</div>
+
+    <!-- 长江电力 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">长江电力</span><span class="stock-code">600900</span><span class="tag" style="background:rgba(29,198,100,0.15);color:#3fb950;">稳定现金流</span></div>
+        <div class="stock-price-area"><div class="stock-price">26.56元</div><div class="stock-change down">-0.38%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>全球最大水电上市公司，装机容量超4500万千瓦</li>
+        <li><strong style="color:#f85149">股息率约3.5%</strong>，现金流极其稳定，是典型的"印钞机"资产</li>
+        <li>2026年来水偏丰，发电量有望超预期，乌东德和白鹤滩电站完全达产</li>
+      </ul>
+    </div>
+
+    <!-- 大秦铁路 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">大秦铁路</span><span class="stock-code">601006</span><span class="tag" style="background:rgba(29,198,100,0.15);color:#3fb950;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">5.42元</div><div class="stock-change up">+0.18%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国内煤炭运输大动脉，年运量超4亿吨</li>
+        <li><strong style="color:#f85149">股息率约5.8%</strong>，<strong style="color:#f85149">PB约0.9倍</strong>，高股息+低估值双重优势</li>
+        <li>铁路货运量保持平稳，煤炭长协运输提供稳定收入保障</li>
+      </ul>
+    </div>
+
+  <div class="sub-title" style="margin:28px 0 18px;">央企高股息</div>
+
+    <!-- 中国海油 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">中国海油</span><span class="stock-code">600938</span><span class="tag" style="background:rgba(240,180,41,0.15);color:#f0b429;">高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">35.83元（5/21）</div><div class="stock-change down">-1.08%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国内最大海上油气生产商，桶油成本行业领先</li>
+        <li>布伦特原油维持<strong style="color:#f85149">100美元+</strong>，桶油利润保持强劲</li>
+        <li><strong style="color:#f85149">股息率约5%</strong>，持续加大分红力度，自由现金流充沛</li>
+      </ul>
+    </div>
+
+    <!-- 中国平安 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">中国平安</span><span class="stock-code">601318</span><span class="tag" style="background:rgba(188,140,255,0.15);color:#bc8cff;">保险龙头</span></div>
+        <div class="stock-price-area"><div class="stock-price">53.76元（5/21）</div><div class="stock-change down">-0.65%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>综合金融龙头，保险+银行+科技三大板块协同发展</li>
+        <li>寿险新业务价值企稳回升，投资端受益于股市回暖</li>
+        <li><strong style="color:#f85149">PB约0.9倍</strong>，处于历史偏低位置，估值修复空间较大</li>
+      </ul>
+    </div>
+
+    <!-- 中国移动 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">中国移动</span><span class="stock-code">600941</span><span class="tag" style="background:rgba(188,140,255,0.15);color:#bc8cff;">央企高股息</span></div>
+        <div class="stock-price-area"><div class="stock-price">95.98元</div><div class="stock-change down">-0.80%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>全球市值最大电信运营商，移动用户数超10亿</li>
+        <li>5G资本开支高峰已过，自由现金流持续改善</li>
+        <li><strong style="color:#f85149">股息率约4.5%</strong>，云计算和数字化转型打开第二增长曲线</li>
+      </ul>
+    </div>
+
+    <!-- 中国核电 -->
+    <div class="stock-card">
+      <div class="stock-header">
+        <div class="stock-info-row"><span class="stock-name">中国核电</span><span class="stock-code">601985</span><span class="tag" style="background:rgba(63,185,80,0.15);color:#3fb950;">清洁能源</span></div>
+        <div class="stock-price-area"><div class="stock-price">9.01元</div><div class="stock-change down">-2.28%</div></div>
+      </div>
+      <ul class="stock-bullets">
+        <li>国内核电运营龙头，在运机组超25台，装机容量超2300万千瓦</li>
+        <li>在建机组陆续投产，未来三年装机容量有望<strong style="color:#f85149">增长30%以上</strong></li>
+        <li>短期调整提供布局机会，<strong style="color:#f85149">PE约18倍</strong>处于合理区间</li>
+      </ul>
+    </div>
+
+    <!-- 📊 关注标的深度解读（汇总卡片） -->
+    <div class="card" style="border-left:3px solid var(--accent);margin-top:24px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(29,198,100,0.04));">
+      <div class="card-title">📊 关注标的深度解读（2026年5月23日）</div>
+      <div class="card-body">
+        <!-- 银行股 -->
+        <div style="margin-bottom:16px;padding:16px;background:rgba(240,180,41,0.06);border-radius:12px;border:1px solid rgba(240,180,41,0.2);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span style="font-size:24px;">🏦</span>
+            <span style="font-size:15px;font-weight:700;color:#f0b429;">银行组 · 高股息核心底仓</span>
+            <span style="margin-left:auto;background:rgba(240,180,41,0.15);color:#f0b429;padding:3px 10px;border-radius:20px;font-size:11px;">5只银行股跟踪</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;">
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">工行股价</div>
+              <div style="font-size:14px;font-weight:700;color:#f85149;">7.18元 +0.42%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">招行股价</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">37.02元 -0.35%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">农行股价</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">6.46元 -0.77%</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;">银行板块整体微涨微跌，估值仍处历史低位。<strong style="color:#58a6ff">工商银行</strong>稳健领涨，<strong style="color:#58a6ff">招商银行</strong>和<strong style="color:#58a6ff">农业银行</strong>小幅回调。<strong style="color:#00d4ff">建议以国有大行为底仓，逢低加仓优质城商行（杭州银行、江苏银行），获取高股息确定性收益。</strong></p>
+        </div>
+
+        <!-- 公用事业 -->
+        <div style="margin-bottom:16px;padding:16px;background:rgba(29,198,100,0.06);border-radius:12px;border:1px solid rgba(29,198,100,0.2);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span style="font-size:24px;">⚡</span>
+            <span style="font-size:15px;font-weight:700;color:#3fb950;">公用事业组 · 稳定现金流</span>
+            <span style="margin-left:auto;background:rgba(29,198,100,0.15);color:#3fb950;padding:3px 10px;border-radius:20px;font-size:11px;">2只标的跟踪</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px;">
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">长江电力</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">26.56元 -0.38%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">大秦铁路</div>
+              <div style="font-size:14px;font-weight:700;color:#f85149;">5.42元 +0.18%</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;">公用事业标的走势平稳，<strong style="color:#58a6ff">长江电力</strong>微跌0.38%，<strong style="color:#58a6ff">大秦铁路</strong>微涨0.18%。两只标的现金流极其稳定，是市场震荡期的优质防御性资产。<strong style="color:#00d4ff">建议长期持有，享受稳定分红。</strong></p>
+        </div>
+
+        <!-- 央企高股息 -->
+        <div style="margin-bottom:16px;padding:16px;background:rgba(188,140,255,0.06);border-radius:12px;border:1px solid rgba(188,140,255,0.2);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span style="font-size:24px;">🏢</span>
+            <span style="font-size:15px;font-weight:700;color:#bc8cff;">央企高股息组 · 确定性收益</span>
+            <span style="margin-left:auto;background:rgba(188,140,255,0.15);color:#bc8cff;padding:3px 10px;border-radius:20px;font-size:11px;">4只标的跟踪</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;">
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">中国海油</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">35.83元 -1.08%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">中国平安</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">53.76元 -0.65%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">中国移动</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">95.98元 -0.80%</div>
+            </div>
+            <div style="text-align:center;padding:10px;background:rgba(13,17,23,0.5);border-radius:8px;">
+              <div style="font-size:12px;color:#8b95a5;margin-bottom:4px;">中国核电</div>
+              <div style="font-size:14px;font-weight:700;color:#3fb950;">9.01元 -2.28%</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;">央企高股息标的整体小幅回调，<strong style="color:#58a6ff">中国核电</strong>跌幅较大（<strong style="color:#3fb950">-2.28%</strong>）提供布局机会。<strong style="color:#58a6ff">中国海油</strong>受益于高油价，<strong style="color:#58a6ff">中国移动</strong>自由现金流改善，<strong style="color:#58a6ff">中国平安</strong>寿险业务企稳。<strong style="color:#00d4ff">建议长期持有，逢低加仓中国核电。</strong></p>
+        </div>
+
+        <!-- 配置建议 -->
+        <div style="padding:16px;background:rgba(0,212,255,0.06);border-radius:12px;border:1px solid rgba(0,212,255,0.2);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span style="font-size:24px;">📊</span>
+            <span style="font-size:15px;font-weight:700;color:#00d4ff;">配置建议</span>
+          </div>
+          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;"><strong style="color:#00d4ff">建议采取"哑铃型"配置策略：</strong>底仓配置银行（工行+农行）和公用事业（长江电力+大秦铁路），获取<strong style="color:#f85149">5%+</strong>的确定性股息收益；卫星仓位参与AI算力、人形机器人等成长方向的波段机会。<strong style="color:#d29922">周末休市期间关注海外市场变化和MLF操作结果。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: 理财话题 -->
+<div class="tab-panel" id="panel-6">
+  <div class="inner">
+  <div class="section-title">💰 理财话题参考</div>
+
+  <!-- 顶部概览栏 - 4列数据卡片 -->
+  <div class="grid-4" style="margin-bottom:28px;">
+    <div style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(0,212,255,0.02));border:1px solid rgba(0,212,255,0.25);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 100% 0%,rgba(0,212,255,0.15),transparent 70%);"></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">银行股息率（国有大行）</div>
+      <div style="font-size:32px;font-weight:800;color:var(--accent);letter-spacing:-1px;">5.2%</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--text-muted);">
+        远超存款利率 · 稳定分红
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(63,185,80,0.1),rgba(63,185,80,0.02));border:1px solid rgba(63,185,80,0.25);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 100% 0%,rgba(63,185,80,0.15),transparent 70%);"></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">中证红利股息率</div>
+      <div style="font-size:32px;font-weight:800;color:#3fb950;letter-spacing:-1px;">5.5%</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#3fb950;">
+        历史高位 · 配置价值突出
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.02));border:1px solid rgba(240,180,41,0.25);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 100% 0%,rgba(240,180,41,0.15),transparent 70%);"></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">国内金价</div>
+      <div style="font-size:32px;font-weight:800;color:#f0b429;letter-spacing:-1px;">996元/克</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#f0b429;">
+        国际金价~4510美元 · 震荡
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(188,140,255,0.1),rgba(188,140,255,0.02));border:1px solid rgba(188,140,255,0.25);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 100% 0%,rgba(188,140,255,0.15),transparent 70%);"></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">美10年期国债</div>
+      <div style="font-size:32px;font-weight:800;color:#bc8cff;letter-spacing:-1px;">4.60%</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#bc8cff;">
+        创3月新高 · 关注流动性
+      </div>
+    </div>
+  </div>
+
+  <!-- 稳健理财工具对比 - 垂直列表式设计 -->
+  <div class="sub-section">
+    <div class="sub-title">稳健理财工具收益对比</div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:15px;font-weight:600;">各类稳健理财产品年化收益率对比</div>
+        <div style="font-size:12px;color:var(--text-muted);">数据截至2026年5月22日</div>
+      </div>
+
+      <!-- 红利ETF -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(248,81,73,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">💎</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">红利ETF</div>
+              <div style="font-size:11px;color:var(--text-muted);">中证红利指数</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--red);">~5.5%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:100%;height:100%;background:linear-gradient(90deg,var(--red),rgba(248,81,73,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 银行股息率 -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(63,185,80,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🏦</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">银行股息率</div>
+              <div style="font-size:11px;color:var(--text-muted);">国有大行平均</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--green);">~5.2%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:82%;height:100%;background:linear-gradient(90deg,var(--green),rgba(63,185,80,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 超长国债 -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(188,140,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">📜</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">超长国债</div>
+              <div style="font-size:11px;color:var(--text-muted);">30年期</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--purple);">5.09%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:38%;height:100%;background:linear-gradient(90deg,var(--purple),rgba(188,140,255,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 银行理财 -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(240,180,41,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">💼</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">银行理财</div>
+              <div style="font-size:11px;color:var(--text-muted);">R2级中低风险</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:#f0b429;">~3.0%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:45%;height:100%;background:linear-gradient(90deg,#f0b429,rgba(240,180,41,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 5年定存 -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(0,212,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🏦</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">银行存款</div>
+              <div style="font-size:11px;color:var(--text-muted);">5年定期</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--accent);">~1.8%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:25%;height:100%;background:linear-gradient(90deg,var(--accent),rgba(0,212,255,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 1年定存 -->
+      <div style="margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(0,212,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">💰</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">银行存款</div>
+              <div style="font-size:11px;color:var(--text-muted);">1年定期</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--accent);">~1.4%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:18%;height:100%;background:linear-gradient(90deg,var(--accent),rgba(0,212,255,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <!-- 活期存款 -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:32px;height:32px;background:rgba(139,149,165,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">💤</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;">活期存款</div>
+              <div style="font-size:11px;color:var(--text-muted);">基准利率</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--text-muted);">0.05%</div>
+        </div>
+        <div style="height:8px;background:var(--bg-primary);border-radius:4px;overflow:hidden;">
+          <div style="width:1%;height:100%;background:linear-gradient(90deg,var(--text-muted),rgba(139,149,165,0.6));border-radius:4px;"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:14px;background:rgba(0,212,255,0.05);border-radius:8px;border-left:3px solid var(--accent);">
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+          <strong style="color:var(--accent);">💡 收益计算器思路：</strong>以10万元本金计算：银行股年股息约5200元 vs 1年定存约1400元，差额3800元/年。5年累计差额约19000元（不含股价变动收益）。长期持有高股息资产，复利效应更加显著。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 高股息替代策略 -->
+  <div class="sub-section">
+    <div class="sub-title">高股息替代策略</div>
+    <div class="grid-2">
+      <div class="card" style="border-left:3px solid #3fb950;">
+        <div class="card-title">💰 股息率对比</div>
+        <div class="card-body">
+          <p style="margin-bottom:12px;">国有大行股息率约<strong style="color:#f0b429">5.2%</strong>，中证红利指数约<strong style="color:#f0b429">5.5%</strong>，均远超1年定存<strong style="color:#f0b429">1.4%</strong>和银行理财<strong style="color:#f0b429">3.0%</strong>的收益水平。以10万元本金计算，持有银行股每年可获得约<strong style="color:#f0b429">5200元</strong>股息收入，而1年定存仅<strong style="color:#f0b429">1400元</strong>。差额<strong style="color:#f0b429">3800元</strong>相当于多出2.7年的定存利息。</p>
+          <div style="margin-top:12px;padding:10px;background:rgba(63,185,80,0.08);border-radius:8px;">
+            <div style="font-size:12px;color:#b0bac4;">在无风险利率持续下行的背景下，高股息资产的相对吸引力不断提升。建议将银行股和红利ETF作为存款的替代品，获取更高的确定性收益。</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid #00d4ff;">
+        <div class="card-title">📊 资产配置建议</div>
+        <div class="card-body">
+          <p style="margin-bottom:8px;"><strong style="color:#00d4ff">建议将投资组合的40-50%配置于高股息资产（银行股+红利ETF），30%配置于债券基金，20%配置于成长方向（AI算力/机器人）。</strong>具体操作上，可通过定投方式逐步建仓银行股，降低择时风险。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 理财避坑指南 -->
+  <div class="sub-section">
+    <div class="sub-title">理财避坑指南</div>
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card" style="border-left:3px solid #f85149;">
+        <div class="card-title">❌ 追涨杀跌</div>
+        <div class="card-body">
+          <p><strong style="color:#d29922">市场普涨时不要盲目追高，缩量反弹的持续性存疑。</strong>建议在市场回调时逢低布局，而不是在情绪高涨时追涨。<strong style="color:#f0883e">历史经验表明，追涨杀跌是散户亏损的主要原因。</strong></p>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid #f85149;">
+        <div class="card-title">❌ 忽视估值</div>
+        <div class="card-body">
+          <p><strong style="color:#d29922">不要只看涨幅不看估值。</strong>当前银行板块<strong style="color:#f85149">PB仅0.6倍</strong>、<strong style="color:#f85149">股息率5%+</strong>，安全边际充足。而部分热门赛道估值已偏高，追高风险较大。<strong style="color:#f0883e">投资应以估值为核心，寻找性价比高的标的。</strong></p>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid #f85149;">
+        <div class="card-title">❌ 过度集中</div>
+        <div class="card-body">
+          <p><strong style="color:#d29922">不要把所有资金集中在单一标的或单一板块。</strong>建议分散配置：银行+公用事业提供稳定股息，债券基金提供流动性，适度配置成长方向获取弹性。<strong style="color:#f0883e">分散投资是降低风险的有效手段。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 家庭保险配置 -->
+  <div class="sub-section">
+    <div class="sub-title">家庭保险配置指南</div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+      <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:20px;">
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(248,81,73,0.08);border-radius:10px;border:1px solid rgba(248,81,73,0.2);">
+          <div style="font-size:28px;margin-bottom:8px;">🏥</div>
+          <div style="font-size:14px;font-weight:700;color:#f85149;margin-bottom:4px;">医疗险</div>
+          <div style="font-size:12px;color:#b0bac4;">★★★★★</div>
+          <div style="font-size:11px;color:#8b95a5;margin-top:4px;">人人必备</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(248,81,73,0.08);border-radius:10px;border:1px solid rgba(248,81,73,0.2);">
+          <div style="font-size:28px;margin-bottom:8px;">🦠</div>
+          <div style="font-size:14px;font-weight:700;color:#f85149;margin-bottom:4px;">重疾险</div>
+          <div style="font-size:12px;color:#b0bac4;">★★★★</div>
+          <div style="font-size:11px;color:#8b95a5;margin-top:4px;">收入补偿</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.2);">
+          <div style="font-size:28px;margin-bottom:8px;">🛡️</div>
+          <div style="font-size:14px;font-weight:700;color:#f0b429;margin-bottom:4px;">意外险</div>
+          <div style="font-size:12px;color:#b0bac4;">★★★★</div>
+          <div style="font-size:11px;color:#8b95a5;margin-top:4px;">保费低</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(0,212,255,0.08);border-radius:10px;border:1px solid rgba(0,212,255,0.2);">
+          <div style="font-size:28px;margin-bottom:8px;">👨‍👩‍👧</div>
+          <div style="font-size:14px;font-weight:700;color:#00d4ff;margin-bottom:4px;">定期寿险</div>
+          <div style="font-size:12px;color:#b0bac4;">★★★★</div>
+          <div style="font-size:11px;color:#8b95a5;margin-top:4px;">家庭支柱</div>
+        </div>
+      </div>
+      <div style="padding:14px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.2);">
+        <div style="font-size:13px;color:#f0b429;font-weight:600;margin-bottom:8px;">📢 预定利率下调窗口期</div>
+        <div style="font-size:13px;color:#b0bac4;">保险产品预定利率持续下调，<strong style="color:#d29922">3.0%产品即将退出市场。</strong><strong style="color:#00d4ff">建议有长期储蓄需求的投资者抓住当前窗口期，配置增额终身寿险或年金险，锁定长期收益。</strong>重点关注大公司的产品，确保安全性。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 黄金投资 -->
+  <div class="sub-section">
+    <div class="sub-title">黄金投资</div>
+    <div class="grid-2">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+        <div class="gold-price-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:28px;">🥇</span>
+            <div>
+              <div style="font-size:16px;font-weight:700;">国际黄金现货</div>
+              <div style="font-size:12px;color:var(--text-muted);">美元/盎司</div>
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:28px;font-weight:800;color:var(--text-primary);">~4,510</div>
+            <div style="font-size:14px;color:var(--text-secondary);font-weight:600;">窄幅震荡 4495-4540</div>
+          </div>
+        </div>
+
+        <!-- 价格走势示意 -->
+        <div style="height:100px;position:relative;margin-bottom:16px;">
+          <svg viewBox="0 0 300 100" style="width:100%;height:100%;">
+            <!-- 网格线 -->
+            <line x1="0" y1="25" x2="300" y2="25" stroke="rgba(48,54,61,0.4)" stroke-width="1"/>
+            <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(48,54,61,0.4)" stroke-width="1"/>
+            <line x1="0" y1="75" x2="300" y2="75" stroke="rgba(48,54,61,0.4)" stroke-width="1"/>
+            <!-- 价格线 -->
+            <path d="M 10 70 Q 50 65 90 55 Q 130 45 170 50 Q 210 55 250 40 Q 270 35 290 30" fill="none" stroke="var(--text-secondary)" stroke-width="2"/>
+            <!-- 渐变填充 -->
+            <path d="M 10 70 Q 50 65 90 55 Q 130 45 170 50 Q 210 55 250 40 Q 270 35 290 30 L 290 100 L 10 100 Z" fill="url(#goldGradient)" opacity="0.2"/>
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#3fb950"/>
+                <stop offset="100%" style="stop-color:transparent"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div style="position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);">
+            <span>4月</span>
+            <span>5月中</span>
+            <span>5月22日</span>
+          </div>
+        </div>
+
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+          国际黄金在<strong style="color:#f85149">4510美元</strong>附近窄幅震荡，运行区间4495-4540美元。国内金价约<strong style="color:#f85149">996元/克</strong>，白银突破<strong style="color:#f85149">77美元/盎司</strong>。<strong style="color:#f0883e">中长期看，去美元化趋势和全球央行购金需求支撑金价，</strong>但短期需关注美债收益率走高对金价的压制。<strong style="color:#00d4ff">建议逢低分批配置黄金ETF。</strong>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+        <div style="font-size:14px;font-weight:600;margin-bottom:16px;">四种黄金投资方式对比</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(240,180,41,0.08);border-radius:8px;">
+            <span style="font-size:20px;">🧱</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;">实物金条</div>
+              <div style="font-size:11px;color:var(--text-muted);">流动性差 · 保管成本高</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:8px;">
+            <span style="font-size:20px;">📊</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;color:var(--accent);">黄金ETF</div>
+              <div style="font-size:11px;color:var(--text-muted);">流动性好 · 费率低 ⭐推荐</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(248,81,73,0.08);border-radius:8px;">
+            <span style="font-size:20px;">⚡</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;">黄金期货</div>
+              <div style="font-size:11px;color:var(--text-muted);">杠杆高 · 风险大</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(29,198,100,0.08);border-radius:8px;">
+            <span style="font-size:20px;">💰</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;">黄金积存</div>
+              <div style="font-size:11px;color:var(--text-muted);">定投首选 · 门槛低</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 债券基金 -->
+  <div class="sub-section">
+    <div class="sub-title">债券基金</div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="text-align:center;padding:16px;background:rgba(0,212,255,0.08);border-radius:8px;">
+          <div style="font-size:20px;margin-bottom:8px;">🛡️</div>
+          <div style="font-size:13px;font-weight:600;color:#00d4ff;margin-bottom:4px;">纯债基金</div>
+          <div style="font-size:12px;color:#8b95a5;">年化 3-4%</div>
+          <div style="font-size:11px;color:#3fb950;margin-top:4px;">风险最低</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(63,185,80,0.08);border-radius:8px;">
+          <div style="font-size:20px;margin-bottom:8px;">📊</div>
+          <div style="font-size:13px;font-weight:600;color:#3fb950;margin-bottom:4px;">一级债基</div>
+          <div style="font-size:12px;color:#8b95a5;">年化 4-5%</div>
+          <div style="font-size:11px;color:#f0b429;margin-top:4px;">可打新</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(240,180,41,0.08);border-radius:8px;">
+          <div style="font-size:20px;margin-bottom:8px;">📈</div>
+          <div style="font-size:13px;font-weight:600;color:#f0b429;margin-bottom:4px;">二级债基</div>
+          <div style="font-size:12px;color:#8b95a5;">年化 5-7%</div>
+          <div style="font-size:11px;color:#ffa657;margin-top:4px;">可配股</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(248,81,73,0.08);border-radius:8px;">
+          <div style="font-size:20px;margin-bottom:8px;">💹</div>
+          <div style="font-size:13px;font-weight:600;color:#f85149;margin-bottom:4px;">可转债</div>
+          <div style="font-size:12px;color:#8b95a5;">年化 6-10%</div>
+          <div style="font-size:11px;color:#f85149;margin-top:4px;">波动大</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:14px;background:rgba(0,212,255,0.06);border-radius:10px;border:1px solid rgba(0,212,255,0.2);">
+        <div style="font-size:13px;color:#00d4ff;font-weight:600;margin-bottom:6px;">💡 债券基金配置建议</div>
+        <div style="font-size:13px;color:#b0bac4;">在美债收益率走高、国内利率维持低位的背景下，<strong style="color:#00d4ff">建议以纯债基金和一级债基为主，获取3-5%的稳健收益。</strong>二级债基可适度配置，但需注意股市波动对净值的影响。<strong style="color:#d29922">可转债当前估值偏高，建议谨慎参与。</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 社区热门话题 -->
+  <div class="sub-section">
+    <div class="sub-title">社区热门话题</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      
+      <!-- 话题1：银行股息率 -->
+      <div style="padding:16px;background:rgba(240,180,41,0.08);border-radius:12px;border:1px solid rgba(240,180,41,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">🏦</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#f0b429;">银行股还能买吗？</div>
+            <div style="font-size:12px;color:#8b95a5;">🔥 热度 92</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">银行股<strong style="color:#f85149">PB仅0.6倍</strong>，<strong style="color:#f85149">股息率5%+</strong>，估值处于历史低位。多位大V认为银行板块是当前最具性价比的配置方向。</p>
+          <p style="font-size:12px;color:#8b95a5;">老盛观点：国有大行适合作为底仓长期持有，优质城商行（<strong style="color:#58a6ff">杭州银行</strong>、<strong style="color:#58a6ff">江苏银行</strong>）有超额收益空间。<strong style="color:#d29922">不要追涨，逢低布局。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 话题2：分红险停售 -->
+      <div style="padding:16px;background:rgba(29,198,100,0.08);border-radius:12px;border:1px solid rgba(29,198,100,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">💰</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#3fb950;">红利ETF定投策略</div>
+            <div style="font-size:12px;color:#8b95a5;">🔥 热度 85</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">中证红利指数<strong style="color:#f85149">股息率约5.5%</strong>，<strong style="color:#f85149">PE仅7倍</strong>。社区讨论红利ETF的定投时点和止盈策略。</p>
+          <p style="font-size:12px;color:#8b95a5;">老盛观点：<strong style="color:#f0883e">红利ETF适合长期定投，建议在市场回调时加大投入。</strong>当前估值处于历史低位，是较好的建仓窗口。</p>
+        </div>
+      </div>
+      
+      <!-- 话题3：红利ETF定投 -->
+      <div style="padding:16px;background:rgba(0,212,255,0.08);border-radius:12px;border:1px solid rgba(0,212,255,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">📈</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#00d4ff;">黄金现在还能上车吗？</div>
+            <div style="font-size:12px;color:#8b95a5;">🔥 热度 78</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">国际金价<strong style="color:#f85149">4510美元</strong>高位震荡，国内金价<strong style="color:#f85149">996元/克</strong>。社区讨论黄金是否还有上涨空间。</p>
+          <p style="font-size:12px;color:#8b95a5;">老盛观点：<strong style="color:#f0883e">中长期看好黄金，但短期在4500美元以上追高风险较大。</strong><strong style="color:#00d4ff">建议等回调至4400美元以下分批配置黄金ETF。</strong></p>
+        </div>
+      </div>
+      
+      <!-- 话题4：黄金抄底 -->
+      <div style="padding:16px;background:rgba(188,140,255,0.08);border-radius:12px;border:1px solid rgba(188,140,255,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">🥇</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#bc8cff;">美债收益率走高对A股影响</div>
+            <div style="font-size:12px;color:#8b95a5;">🔥 热度 70</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">美10年期突破<strong style="color:#d29922">4.60%</strong>，30年期突破<strong style="color:#d29922">5.09%</strong>。社区讨论美债走高对A股高股息板块的影响。</p>
+          <p style="font-size:12px;color:#8b95a5;">老盛观点：<strong style="color:#d29922">美债走高对A股整体估值有压制，但高股息板块受影响较小</strong>（股息率5% vs 美债4.6%仍有优势）。银行股的安全边际依然充足。</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- TAB 7: 今日总结 -->
+<div class="tab-panel" id="panel-7">
+  <div class="inner">
+  <div class="section-title">📋 今日总结</div>
+  <div style="background:linear-gradient(135deg,rgba(29,198,100,0.1),rgba(0,212,255,0.06));border:1px solid rgba(29,198,100,0.25);border-radius:12px;padding:16px 18px;margin-bottom:16px;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:10px;">🔑 今日关键词</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span style="background:rgba(248,81,73,0.15);color:#f85149;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">A股普涨</span>
+      <span style="background:rgba(240,180,41,0.15);color:#f0b429;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">英伟达财报</span>
+      <span style="background:rgba(29,198,100,0.15);color:#3fb950;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">GPT-5</span>
+      <span style="background:rgba(0,212,255,0.15);color:#00d4ff;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">美债走高</span>
+      <span style="background:rgba(188,140,255,0.15);color:#bc8cff;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">人形机器人</span>
+      <span style="background:rgba(255,166,87,0.15);color:#ffa657;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">央行MLF</span>
+      <span style="background:rgba(63,185,80,0.15);color:#3fb950;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">高股息</span>
+      <span style="background:rgba(248,81,73,0.15);color:#f85149;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;">黄金震荡</span>
+    </div>
+  </div>
+  <!-- 宏观面 -->
+  <div class="card" style="border-left:3px solid var(--accent);">
+    <div class="card-title">🌐 宏观面</div>
+    <div class="card-body">
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(0,212,255,0.06);border-radius:8px;"><strong style="color:var(--accent);font-size:13px;letter-spacing:0.5px;">🏦 央行逆回购+MLF操作</strong><br>5月22日开展<strong style="color:#f0b429">1530亿</strong>7天期逆回购，利率<strong style="color:#58a6ff">1.40%</strong>；5月25日将开展<strong style="color:#f0b429">6000亿</strong>MLF操作。流动性保持合理充裕，DR007维持在政策利率附近。关注MLF利率是否调整。</p>
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(248,81,73,0.06);border-radius:8px;"><strong style="color:var(--red);font-size:13px;letter-spacing:0.5px;">📉 美债收益率持续走高</strong><br>美国10年期国债收益率突破<strong style="color:#f85149">4.60%</strong>创3月新高，30年期突破<strong style="color:#f85149">5.09%</strong>。市场对美联储降息预期持续后移，全球流动性压力上升。关注后续PCE数据和美联储官员讲话。</p>
+      <p style="margin-bottom:0;padding:10px 12px;background:rgba(240,180,41,0.06);border-radius:8px;"><strong style="color:#f0b429;font-size:13px;letter-spacing:0.5px;">💱 人民币汇率平稳</strong><br>USD/CNY中间价<strong style="color:#00d4ff">6.8373</strong>，在岸汇率<strong style="color:#00d4ff">6.7991</strong>，人民币汇率整体平稳。美元指数在<strong style="color:#f0b429">99附近</strong>震荡，中美利差收窄对人民币形成一定支撑。</p>
+    </div>
+  </div>
+
+  <!-- 市场面 -->
+  <div class="card" style="border-left:3px solid var(--red);">
+    <div class="card-title">📊 市场面</div>
+    <div class="card-body">
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(248,81,73,0.06);border-radius:8px;"><strong style="color:var(--red);font-size:13px;letter-spacing:0.5px;">🇨🇳 A股普涨修复</strong><br>上证<strong style="color:#f85149">+0.87%</strong>报<strong style="color:#f85149">4112点</strong>，创业板指<strong style="color:#f85149">+2.84%</strong>领涨，近<strong style="color:#f85149">3900家</strong>上涨。两市成交<strong style="color:#f0b429">2.92万亿</strong>缩量<strong style="color:#d29922">5783亿</strong>。科技成长方向活跃，AI算力、机器人板块涨幅居前。北向资金净买入<strong style="color:#f85149">12.37亿</strong>。</p>
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(63,185,80,0.06);border-radius:8px;"><strong style="color:var(--green);font-size:13px;letter-spacing:0.5px;">🇺🇸 美股道指创历史新高</strong><br>道指<strong style="color:#f85149">+0.55%</strong>报<strong style="color:#f85149">50285点</strong>创新高，标普+0.17%，纳指+0.09%。英伟达Q1营收<strong style="color:#f85149">816亿</strong>超预期，ARM大涨<strong style="color:#f85149">16.16%</strong>创上市新高。日经225<strong style="color:#f85149">+2.68%</strong>同步创新高。</p>
+      <p style="margin-bottom:0;padding:10px 12px;background:rgba(240,180,41,0.06);border-radius:8px;"><strong style="color:#f0b429;font-size:13px;letter-spacing:0.5px;">🏦 银行股微涨微跌</strong><br>工商银行<strong style="color:#f85149">+0.42%</strong>，招商银行<strong style="color:#3fb950">-0.35%</strong>，农业银行<strong style="color:#3fb950">-0.77%</strong>。银行板块整体走势平稳，估值仍处历史低位。建议逢低配置，获取高股息确定性收益。</p>
+    </div>
+  </div>
+
+  <!-- 资金面 -->
+  <div class="card" style="border-left:3px solid #22c55e;">
+    <div class="card-title">💰 资金面</div>
+    <div class="card-body">
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(248,81,73,0.06);border-radius:8px;"><strong style="color:var(--red);font-size:13px;letter-spacing:0.5px;">📉 成交缩量5783亿</strong><br>两市成交<strong style="color:#f0b429">2.92万亿</strong>，较前日缩量<strong style="color:#d29922">5783亿</strong>，说明市场以存量博弈为主。增量资金入场意愿有待观察，关注后续政策面和资金面变化。</p>
+      <p style="margin-bottom:12px;padding:10px 12px;background:rgba(0,212,255,0.06);border-radius:8px;"><strong style="color:var(--accent);font-size:13px;letter-spacing:0.5px;">📈 北向资金净买入12.37亿</strong><br>北向资金净买入<strong style="color:#f85149">12.37亿</strong>元，其中深股通<strong style="color:#f85149">+15.65亿</strong>明显强于沪股通<strong style="color:#3fb950">-3.28亿</strong>。外资偏好科技成长方向，深市更受青睐。</p>
+      <p style="margin-bottom:0;padding:10px 12px;background:rgba(240,180,41,0.06);border-radius:8px;"><strong style="color:#f0b429;font-size:13px;letter-spacing:0.5px;">💰 南向资金净卖出65亿港元</strong><br>南向资金净卖出<strong style="color:#3fb950">64.94亿港元</strong>，港股资金面有所承压。恒生指数<strong style="color:#f85149">+0.86%</strong>，恒生科技<strong style="color:#f85149">+2.11%</strong>，港股科技股表现强于大盘。</p>
+    </div>
+  </div>
+  <!-- 理财话题参考 - 6张卡片 -->
+  <div style="background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(188,140,255,0.06));border:1px solid var(--accent-border);border-radius:12px;padding:20px 24px;margin-bottom:20px;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:14px;">💰 理财话题参考</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+      <!-- 01 银行股息率 -->
+      <div style="padding:14px 16px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">🏦</div>
+        <div style="font-size:12px;font-weight:600;color:#f0b429;margin-bottom:4px;">银行股息率</div>
+        <div style="font-size:22px;font-weight:800;color:#f85149;">5.2%</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">国有大行平均</div>
+      </div>
+      <!-- 02 存款利率 -->
+      <div style="padding:14px 16px;background:rgba(0,212,255,0.08);border-radius:10px;border:1px solid rgba(0,212,255,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">💰</div>
+        <div style="font-size:12px;font-weight:600;color:#00d4ff;margin-bottom:4px;">1年定存</div>
+        <div style="font-size:22px;font-weight:800;color:#00d4ff;">~1.4%</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">利率持续下调</div>
+      </div>
+      <!-- 03 中证红利 -->
+      <div style="padding:14px 16px;background:rgba(63,185,80,0.08);border-radius:10px;border:1px solid rgba(63,185,80,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">📊</div>
+        <div style="font-size:12px;font-weight:600;color:#3fb950;margin-bottom:4px;">中证红利</div>
+        <div style="font-size:22px;font-weight:800;color:#3fb950;">~5.5%</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">PE约7x</div>
+      </div>
+      <!-- 04 银行板块PB -->
+      <div style="padding:14px 16px;background:rgba(188,140,255,0.08);border-radius:10px;border:1px solid rgba(188,140,255,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">📉</div>
+        <div style="font-size:12px;font-weight:600;color:#bc8cff;margin-bottom:4px;">银行PB</div>
+        <div style="font-size:22px;font-weight:800;color:#bc8cff;">~0.6x</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">历史低位</div>
+      </div>
+      <!-- 05 美债收益率 -->
+      <div style="padding:14px 16px;background:rgba(248,81,73,0.08);border-radius:10px;border:1px solid rgba(248,81,73,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">📈</div>
+        <div style="font-size:12px;font-weight:600;color:#f85149;margin-bottom:4px;">美10年期</div>
+        <div style="font-size:22px;font-weight:800;color:#f85149;">4.60%</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">3月新高</div>
+      </div>
+      <!-- 06 黄金投资 -->
+      <div style="padding:14px 16px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.15);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">🥇</div>
+        <div style="font-size:12px;font-weight:600;color:#f0b429;margin-bottom:4px;">国内金价</div>
+        <div style="font-size:22px;font-weight:800;color:#f0b429;">996元/克</div>
+        <div style="font-size:10px;color:#8b95a5;margin-top:4px;">高位震荡</div>
+      </div>
+    </div>
+  </div>
+  <!-- 今日操作建议 -->
+  <div style="background:linear-gradient(135deg,rgba(188,140,255,0.08),rgba(0,212,255,0.04));border:1px solid rgba(188,140,255,0.25);border-radius:14px;padding:22px 26px;margin-bottom:20px;">
+    <div style="font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span style="background:linear-gradient(135deg,var(--purple),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">📌 今日操作建议</span>
+      <span style="font-size:11px;color:var(--text-muted);font-weight:400;">基于2026年5月23日市场环境</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+      <!-- 1. 银行股逢低布局 -->
+      <div style="padding:16px;background:rgba(29,198,100,0.08);border-radius:12px;border:1px solid rgba(29,198,100,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">🏦</span>
+          <span style="font-size:14px;font-weight:700;color:#3fb950;">银行股逢低布局</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">银行板块PB约<strong style="color:#f85149">0.6倍</strong>、股息率<strong style="color:#f85149">5%+</strong>，估值处于历史低位。工商银行稳健领涨，国有大行适合作为底仓长期持有。</p>
+          <p style="margin-bottom:8px;">优质城商行（<strong style="color:#58a6ff">杭州银行、江苏银行</strong>）有超额收益空间，建议关注。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>逢低分批建仓国有大行，目标仓位<strong style="color:#00d4ff">30-40%</strong>。</p>
+        </div>
+      </div>
+      <!-- 2. 高股息底仓配置 -->
+      <div style="padding:16px;background:rgba(0,212,255,0.08);border-radius:12px;border:1px solid rgba(0,212,255,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">💎</span>
+          <span style="font-size:14px;font-weight:700;color:#00d4ff;">高股息底仓配置</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">中证红利指数PE约<strong style="color:#f85149">7倍</strong>、股息率约<strong style="color:#f85149">5.5%</strong>，配置价值突出。长江电力、大秦铁路等公用事业标的现金流稳定。</p>
+          <p style="margin-bottom:8px;">红利ETF定投是较好的参与方式，可降低择时风险。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>通过红利ETF定投方式参与，每月定额投入。</p>
+        </div>
+      </div>
+      <!-- 3. 控制仓位防风险 -->
+      <div style="padding:16px;background:rgba(248,81,73,0.08);border-radius:12px;border:1px solid rgba(248,81,73,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">⚠️</span>
+          <span style="font-size:14px;font-weight:700;color:#f85149;">控制仓位防风险</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">两市成交缩量5783亿，市场增量资金不足。美债收益率走高对全球流动性形成压力。</p>
+          <p style="margin-bottom:8px;">周末休市期间关注海外市场变化，下周一关注MLF操作结果。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>总仓位控制在<strong style="color:#d29922">60-70%</strong>，保留现金应对不确定性。</p>
+        </div>
+      </div>
+      <!-- 4. AI主线精选个股 -->
+      <div style="padding:16px;background:rgba(188,140,255,0.08);border-radius:12px;border:1px solid rgba(188,140,255,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">🤖</span>
+          <span style="font-size:14px;font-weight:700;color:#bc8cff;">AI主线精选个股</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">英伟达Q1财报超预期，AI算力需求持续爆发。国内AI芯片自主可控逻辑强化。</p>
+          <p style="margin-bottom:8px;">但AI板块整体估值偏高，追涨风险较大，建议等待回调机会。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>卫星仓位<strong style="color:#00d4ff">10-15%</strong>，逢低参与AI算力国产替代方向。</p>
+        </div>
+      </div>
+      <!-- 5. 黄金配置避险 -->
+      <div style="padding:16px;background:rgba(240,180,41,0.08);border-radius:12px;border:1px solid rgba(240,180,41,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">🥇</span>
+          <span style="font-size:14px;font-weight:700;color:#f0b429;">黄金配置避险</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">国际金价<strong style="color:#f0b429">4510美元</strong>高位震荡，中长期受去美元化和央行购金需求支撑。</p>
+          <p style="margin-bottom:8px;">短期在4500美元以上追高风险较大，建议等回调至<strong style="color:#00d4ff">4400美元</strong>以下分批配置。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>配置<strong style="color:#00d4ff">5-10%</strong>黄金ETF，逢低分批买入。</p>
+        </div>
+      </div>
+      <!-- 6. 定投策略坚持 -->
+      <div style="padding:16px;background:rgba(255,166,87,0.08);border-radius:12px;border:1px solid rgba(255,166,87,0.25);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:20px;">📅</span>
+          <span style="font-size:14px;font-weight:700;color:#ffa657;">定投策略坚持</span>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
+          <p style="margin-bottom:8px;">市场短期震荡不改长期配置逻辑。高股息+红利ETF定投是穿越牛熊的有效策略。</p>
+          <p style="margin-bottom:8px;">坚持每月定额投入，不在市场大涨时追加，不在大跌时停止。</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>每月固定日期定额投入红利ETF和银行股。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="border-left:3px solid #f0b429;">
+    <div class="card-title">✅ 关键数字速查</div>
+    <div class="card-body">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;color:var(--text-secondary)">上证指数</td><td style="padding:6px 10px;text-align:right;"><span class="up" style="font-weight:700;">4112.90</span></td><td style="padding:6px 10px;text-align:right;">+0.87%</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">创业板指</td><td style="padding:6px 10px;text-align:right;"><span class="up" style="font-weight:700;">3938.50</span></td><td style="padding:6px 10px;text-align:right;">+2.84%</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">两市成交</td><td style="padding:6px 10px;text-align:right;"><span class="gold" style="font-weight:700;">2.92万亿</span></td><td style="padding:6px 10px;text-align:right;">缩量5783亿</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">北向资金</td><td style="padding:6px 10px;text-align:right;"><span class="up" style="font-weight:700;">+12.37亿</span></td><td style="padding:6px 10px;text-align:right;">净买入</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">国际黄金</td><td style="padding:6px 10px;text-align:right;"><span class="gold" style="font-weight:700;">~4510$</span></td><td style="padding:6px 10px;text-align:right;">窄幅震荡</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">美10年期</td><td style="padding:6px 10px;text-align:right;"><span class="up" style="font-weight:700;">4.60%</span></td><td style="padding:6px 10px;text-align:right;">3月新高</td></tr>
+        <tr style="border-bottom:1px solid rgba(48,54,61,0.4);"><td style="padding:6px 10px;color:var(--text-secondary)">USD/CNY</td><td style="padding:6px 10px;text-align:right;"><span class="neutral" style="font-weight:700;">6.7991</span></td><td style="padding:6px 10px;text-align:right;">在岸汇率</td></tr>
+        <tr><td style="padding:6px 10px;color:var(--text-secondary)">布伦特原油</td><td style="padding:6px 10px;text-align:right;"><span class="up" style="font-weight:700;">104.92$</span></td><td style="padding:6px 10px;text-align:right;">+高位</td></tr>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>数据来源：财联社·东方财富·新浪财经·新华社·每经AI</p>
+  <p style="margin-top:4px;">仅供参考，不构成投资建议</p>
+  <p style="margin-top:4px;">本报告由 <span>老盛早知道</span> AI驱动生成 · 数据截至2026年5月22日(T-1)</p>
+  <p style="margin-top:4px;">© 2026 老盛早知道 · Laosheng's Daily Brief</p>
+</div>
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'panel-' + idx);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
