@@ -1746,7 +1746,7 @@
         </div>
       </div>
       <div class="header-meta">
-        <div class="hm-date">{{格式化日期}}</div>
+        <div class="hm-date">{{格式化日期_含年份}}</div>
         <div class="hm-sub"><span>{{星期}}</span><span class="sep">|</span><span>{{每日重点事件}}</span></div>
         <div class="hm-tickers">
           <div class="hm-ticker">
@@ -1760,9 +1760,9 @@
             <span class="t-chg up">{{ticker_道指_涨跌幅}}</span>
           </div>
           <div class="hm-ticker">
-            <span class="t-label">BTC</span>
-            <span class="t-val">{{ticker_BTC_数值}}</span>
-            <span class="t-chg neutral">{{ticker_BTC_状态}}</span>
+            <span class="t-label">黄金</span>
+            <span class="t-val">{{ticker_黄金_数值}}</span>
+            <span class="t-chg neutral">{{ticker_黄金_状态}}</span>
           </div>
         </div>
       </div>
@@ -3404,12 +3404,12 @@
           <span style="font-size:24px;">🏦</span>
           <div>
             <div style="font-size:15px;font-weight:700;color:#f0b429;">{{社区话题1_标题}}</div>
-            <div style="font-size:12px;color:#8b95a5;">{{社区话题1_热度}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题1_来源}} · {{社区话题1_热度}}</div>
           </div>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题1_内容}}</p>
-          <p style="font-size:12px;color:#8b95a5;">{{社区话题1_观点}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#f0b429;">老盛观点：</strong>{{社区话题1_观点}}</p>
         </div>
       </div>
       
@@ -3419,12 +3419,12 @@
           <span style="font-size:24px;">💰</span>
           <div>
             <div style="font-size:15px;font-weight:700;color:#3fb950;">{{社区话题2_标题}}</div>
-            <div style="font-size:12px;color:#8b95a5;">{{社区话题2_热度}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题2_来源}} · {{社区话题2_热度}}</div>
           </div>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题2_内容}}</p>
-          <p style="font-size:12px;color:#8b95a5;">{{社区话题2_观点}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#3fb950;">老盛观点：</strong>{{社区话题2_观点}}</p>
         </div>
       </div>
       
@@ -3434,12 +3434,12 @@
           <span style="font-size:24px;">📈</span>
           <div>
             <div style="font-size:15px;font-weight:700;color:#00d4ff;">{{社区话题3_标题}}</div>
-            <div style="font-size:12px;color:#8b95a5;">{{社区话题3_热度}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题3_来源}} · {{社区话题3_热度}}</div>
           </div>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题3_内容}}</p>
-          <p style="font-size:12px;color:#8b95a5;">{{社区话题3_观点}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#00d4ff;">老盛观点：</strong>{{社区话题3_观点}}</p>
         </div>
       </div>
       
@@ -3449,15 +3449,45 @@
           <span style="font-size:24px;">🥇</span>
           <div>
             <div style="font-size:15px;font-weight:700;color:#bc8cff;">{{社区话题4_标题}}</div>
-            <div style="font-size:12px;color:#8b95a5;">{{社区话题4_热度}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题4_来源}} · {{社区话题4_热度}}</div>
           </div>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题4_内容}}</p>
-          <p style="font-size:12px;color:#8b95a5;">{{社区话题4_观点}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#bc8cff;">老盛观点：</strong>{{社区话题4_观点}}</p>
         </div>
       </div>
-      
+
+      <!-- 话题5：AI产业政策 -->
+      <div style="padding:16px;background:rgba(248,81,73,0.08);border-radius:12px;border:1px solid rgba(248,81,73,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">🤖</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#f85149;">{{社区话题5_标题}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题5_来源}} · {{社区话题5_热度}}</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">{{社区话题5_内容}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#f85149;">老盛观点：</strong>{{社区话题5_观点}}</p>
+        </div>
+      </div>
+
+      <!-- 话题6：债市波动 -->
+      <div style="padding:16px;background:rgba(255,166,87,0.08);border-radius:12px;border:1px solid rgba(255,166,87,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:24px;">📊</span>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#ffa657;">{{社区话题6_标题}}</div>
+            <div style="font-size:12px;color:#8b95a5;">{{社区话题6_来源}} · {{社区话题6_热度}}</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
+          <p style="margin-bottom:8px;">{{社区话题6_内容}}</p>
+          <p style="font-size:12px;color:#8b95a5;"><strong style="color:#ffa657;">老盛观点：</strong>{{社区话题6_观点}}</p>
+        </div>
+      </div>
+
     </div>
   </div>
   </div>
