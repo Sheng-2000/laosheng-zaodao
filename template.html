@@ -140,6 +140,30 @@
   .sentiment-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
   .sentiment-bar { height:8px; background:var(--bg-primary); border-radius:4px; overflow:hidden; border:1px solid var(--border); }
   .sentiment-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--purple)); }
+  /* 老盛观点卡片 */
+  .laosheng-view {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(188,140,255,0.05));
+    border-left: 3px solid #f0b429;
+    border-radius: 0 8px 8px 0;
+    font-size: 12.5px;
+    color: #c9d1d9;
+    line-height: 1.75;
+  }
+  .laosheng-view .lv-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    color: #f0b429;
+    font-size: 12px;
+    margin-right: 4px;
+  }
+  .laosheng-view .lv-label::before {
+    content: '💬';
+    font-size: 13px;
+  }
   .stock-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:20px 24px; margin-bottom:14px; transition: border-color 0.2s; }
   .stock-card:hover { border-color: var(--accent-border); }
   .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
@@ -1181,32 +1205,6 @@
 .valuation-tag.warn {
   background: rgba(248,81,73,0.1);
   color: #f85149;
-}
-
-/* 老盛观点引用卡片 */
-.laosheng-quote {
-  margin: 10px 0 4px;
-  padding: 12px 16px;
-  background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(240,180,41,0.03));
-  border-left: 3px solid #f0b429;
-  border-radius: 0 10px 10px 0;
-  font-size: 12.5px;
-  color: #c9d1d9;
-  line-height: 1.75;
-}
-.laosheng-quote .laosheng-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 700;
-  font-size: 12px;
-  color: #f0b429;
-  margin-bottom: 4px;
-  letter-spacing: 0.5px;
-}
-.laosheng-quote .laosheng-label::before {
-  content: '👨‍💼';
-  font-size: 14px;
 }
 
 /* 精简参考板块 */
@@ -3472,7 +3470,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题1_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题1_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题1_观点}}</div>
         </div>
       </div>
       
@@ -3487,7 +3485,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题2_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题2_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题2_观点}}</div>
         </div>
       </div>
       
@@ -3502,7 +3500,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题3_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题3_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题3_观点}}</div>
         </div>
       </div>
       
@@ -3517,7 +3515,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题4_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题4_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题4_观点}}</div>
         </div>
       </div>
 
@@ -3532,7 +3530,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题5_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题5_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题5_观点}}</div>
         </div>
       </div>
 
@@ -3547,7 +3545,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">{{社区话题6_内容}}</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>{{社区话题6_观点}}</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>{{社区话题6_观点}}</div>
         </div>
       </div>
 

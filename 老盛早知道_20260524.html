@@ -140,6 +140,30 @@
   .sentiment-label { font-size:12px; color:var(--text-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
   .sentiment-bar { height:8px; background:var(--bg-primary); border-radius:4px; overflow:hidden; border:1px solid var(--border); }
   .sentiment-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--purple)); }
+  /* 老盛观点卡片 */
+  .laosheng-view {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(188,140,255,0.05));
+    border-left: 3px solid #f0b429;
+    border-radius: 0 8px 8px 0;
+    font-size: 12.5px;
+    color: #c9d1d9;
+    line-height: 1.75;
+  }
+  .laosheng-view .lv-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    color: #f0b429;
+    font-size: 12px;
+    margin-right: 4px;
+  }
+  .laosheng-view .lv-label::before {
+    content: '💬';
+    font-size: 13px;
+  }
   .stock-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:20px 24px; margin-bottom:14px; transition: border-color 0.2s; }
   .stock-card:hover { border-color: var(--accent-border); }
   .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
@@ -1181,35 +1205,6 @@
 .valuation-tag.warn {
   background: rgba(248,81,73,0.1);
   color: #f85149;
-}
-
-/* 老盛观点引用卡片 */
-.laosheng-quote {
-  margin: 10px 0 4px;
-  padding: 12px 16px;
-  background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(240,180,41,0.03));
-  border-left: 3px solid #f0b429;
-  border-radius: 0 10px 10px 0;
-  font-size: 12.5px;
-  color: #c9d1d9;
-  line-height: 1.75;
-}
-.laosheng-quote .laosheng-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 700;
-  font-size: 12px;
-  color: #f0b429;
-  margin-bottom: 4px;
-  letter-spacing: 0.5px;
-}
-.laosheng-quote .laosheng-label::before {
-  content: '👨‍💼';
-  font-size: 14px;
-}
-.laosheng-quote .laosheng-label::after {
-  content: '';
 }
 
 /* 精简参考板块 */
@@ -3475,7 +3470,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">六大行股息率普遍<span style="color:#f85149;font-weight:700;">超5%</span>，显著高于5年定存利率<span style="color:#00d4ff;font-weight:700;">1.30%</span>。越来越多的投资者选择"<span style="color:#f85149;font-weight:700;">存款搬家</span>"，将银行存款转为银行股或红利ETF，获取<span style="color:#f85149;font-weight:700;">更高的收益回报</span>。以工商银行为例，每<span style="color:#00d4ff;font-weight:700;">10万元</span>持仓年分红约<span style="color:#f85149;font-weight:700;">5300元</span>，<span style="color:#f85149;font-weight:700;">远超</span>定存收益。</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>存款搬家是<span style="color:#f85149;font-weight:700;">大趋势</span>，但要注意银行股也有<span style="color:#3fb950;font-weight:700;">波动风险</span>。建议用<span style="color:#00d4ff;font-weight:700;">3-5年</span>不用的闲钱配置，不要用短期资金。<span style="color:#f85149;font-weight:700;">分红再投资</span>是复利增长的关键。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>存款搬家是<span style="color:#f85149;font-weight:700;">大趋势</span>，但要注意银行股也有<span style="color:#3fb950;font-weight:700;">波动风险</span>。建议用<span style="color:#00d4ff;font-weight:700;">3-5年</span>不用的闲钱配置，不要用短期资金。<span style="color:#f85149;font-weight:700;">分红再投资</span>是复利增长的关键。</div>
         </div>
       </div>
       
@@ -3490,7 +3485,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">央行预告5月25日开展<span style="color:#f85149;font-weight:700;">6000亿元</span>MLF操作，规模<span style="color:#f85149;font-weight:700;">较大</span>。市场解读为央行维护流动性<span style="color:#f85149;font-weight:700;">合理充裕</span>的明确信号。结合5月22日<span style="color:#00d4ff;font-weight:700;">1530亿元</span>逆回购操作，短期资金面预期<span style="color:#f85149;font-weight:700;">宽松</span>。对银行股和债券市场均形成<span style="color:#f85149;font-weight:700;">利好</span>。</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>MLF操作<span style="color:#f85149;font-weight:700;">利好银行负债端</span>，但也要关注<span style="color:#f0b429;font-weight:700;">利率变化</span>。如果MLF利率<span style="color:#3fb950;font-weight:700;">下调</span>，将带动<span style="color:#00d4ff;font-weight:700;">LPR下行</span>，银行净息差可能<span style="color:#3fb950;font-weight:700;">进一步收窄</span>。整体来看，流动性<span style="color:#f85149;font-weight:700;">充裕</span>对市场是<span style="color:#f85149;font-weight:700;">正面因素</span>。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>MLF操作<span style="color:#f85149;font-weight:700;">利好银行负债端</span>，但也要关注<span style="color:#f0b429;font-weight:700;">利率变化</span>。如果MLF利率<span style="color:#3fb950;font-weight:700;">下调</span>，将带动<span style="color:#00d4ff;font-weight:700;">LPR下行</span>，银行净息差可能<span style="color:#3fb950;font-weight:700;">进一步收窄</span>。整体来看，流动性<span style="color:#f85149;font-weight:700;">充裕</span>对市场是<span style="color:#f85149;font-weight:700;">正面因素</span>。</div>
         </div>
       </div>
       
@@ -3505,7 +3500,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">DeepSeek宣布V4-Pro模型<span style="color:#f85149;font-weight:700;">永久降价至原价1/4</span>，最高降幅<span style="color:#f85149;font-weight:700;">97.5%</span>。AI大模型<span style="color:#f0b429;font-weight:700;">价格战持续升级</span>，API调用成本<span style="color:#3fb950;font-weight:700;">大幅下降</span>。对AI应用开发者而言是<span style="color:#f85149;font-weight:700;">重大利好</span>，将<span style="color:#f85149;font-weight:700;">加速AI技术</span>在各行各业的落地。但对AI模型公司而言，<span style="color:#3fb950;font-weight:700;">竞争压力加大</span>。</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>AI价格战<span style="color:#f85149;font-weight:700;">利好应用端</span>，<span style="color:#3fb950;font-weight:700;">利空模型端</span>。关注AI应用落地速度<span style="color:#f85149;font-weight:700;">快的公司</span>，如<span style="color:#00d4ff;font-weight:700;">AI+金融、AI+教育、AI+医疗</span>等方向。对普通投资者而言，通过<span style="color:#f0b429;font-weight:700;">AI ETF</span>参与可能是更好的选择。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>AI价格战<span style="color:#f85149;font-weight:700;">利好应用端</span>，<span style="color:#3fb950;font-weight:700;">利空模型端</span>。关注AI应用落地速度<span style="color:#f85149;font-weight:700;">快的公司</span>，如<span style="color:#00d4ff;font-weight:700;">AI+金融、AI+教育、AI+医疗</span>等方向。对普通投资者而言，通过<span style="color:#f0b429;font-weight:700;">AI ETF</span>参与可能是更好的选择。</div>
         </div>
       </div>
       
@@ -3520,7 +3515,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">上海金报<span style="color:#00d4ff;font-weight:700;">995.3元/克</span>，距离<span style="color:#f0b429;font-weight:700;">1000元</span>大关仅一步之遥。国际黄金报<span style="color:#00d4ff;font-weight:700;">4536.7美元/盎司</span>，在<span style="color:#f0b429;font-weight:700;">历史高位</span>震荡。美伊停火协议短期<span style="color:#3fb950;font-weight:700;">压制金价</span>，但全球央行<span style="color:#f85149;font-weight:700;">持续购金</span>、地缘风险犹存等因素<span style="color:#f85149;font-weight:700;">支撑金价中长期走势</span>。社区讨论焦点：现在还能不能买黄金？</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>黄金在<span style="color:#00d4ff;font-weight:700;">1000元/克</span>附近<span style="color:#3fb950;font-weight:700;">追高风险较大</span>。建议已有黄金持仓的投资者<span style="color:#f85149;font-weight:700;">继续持有</span>，未建仓的投资者等<span style="color:#f85149;font-weight:700;">回调后再分批布局</span>。黄金ETF是最便捷的<span style="color:#f85149;font-weight:700;">黄金投资方式</span>，建议配置<span style="color:#00d4ff;font-weight:700;">5%-10%</span>作为<span style="color:#f0b429;font-weight:700;">避险资产</span>。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>黄金在<span style="color:#00d4ff;font-weight:700;">1000元/克</span>附近<span style="color:#3fb950;font-weight:700;">追高风险较大</span>。建议已有黄金持仓的投资者<span style="color:#f85149;font-weight:700;">继续持有</span>，未建仓的投资者等<span style="color:#f85149;font-weight:700;">回调后再分批布局</span>。黄金ETF是最便捷的<span style="color:#f85149;font-weight:700;">黄金投资方式</span>，建议配置<span style="color:#00d4ff;font-weight:700;">5%-10%</span>作为<span style="color:#f0b429;font-weight:700;">避险资产</span>。</div>
         </div>
       </div>
 
@@ -3535,7 +3530,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">道琼斯指数收涨<span style="color:#f85149;font-weight:700;">0.55%</span>报<span style="color:#00d4ff;font-weight:700;">50285.66点</span>，创<span style="color:#f85149;font-weight:700;">历史收盘新高</span>。标普500<span style="color:#f85149;font-weight:700;">连续8周上涨</span>。相比之下，A股上证指数在<span style="color:#00d4ff;font-weight:700;">4100点</span>附近震荡，距离历史高点仍有<span style="color:#3fb950;font-weight:700;">较大差距</span>。社区讨论：A股何时能创历史新高？</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>A股和美股的驱动因素<span style="color:#f0b429;font-weight:700;">不同</span>，不宜简单对比。A股当前的核心矛盾是<span style="color:#f0b429;font-weight:700;">经济转型和结构性调整</span>，而非指数点位。关注A股的<span style="color:#f85149;font-weight:700;">结构性机会</span>，如<span style="color:#00d4ff;font-weight:700;">高股息和AI两大主线</span>，比纠结指数点位<span style="color:#f85149;font-weight:700;">更有意义</span>。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>A股和美股的驱动因素<span style="color:#f0b429;font-weight:700;">不同</span>，不宜简单对比。A股当前的核心矛盾是<span style="color:#f0b429;font-weight:700;">经济转型和结构性调整</span>，而非指数点位。关注A股的<span style="color:#f85149;font-weight:700;">结构性机会</span>，如<span style="color:#00d4ff;font-weight:700;">高股息和AI两大主线</span>，比纠结指数点位<span style="color:#f85149;font-weight:700;">更有意义</span>。</div>
         </div>
       </div>
 
@@ -3550,7 +3545,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;padding-left:36px;">
           <p style="margin-bottom:8px;">美伊协议最终草案达成，双方同意<span style="color:#f85149;font-weight:700;">全面停火</span>。地缘政治风险<span style="color:#f85149;font-weight:700;">显著降温</span>，油价短线<span style="color:#3fb950;font-weight:700;">承压</span>。对A股而言，地缘风险降低有利于<span style="color:#f85149;font-weight:700;">风险偏好回升</span>，但停火对军工和能源板块可能形成<span style="color:#3fb950;font-weight:700;">短期压力</span>。</p>
-          <div class="laosheng-quote"><div class="laosheng-label">老盛观点</div><div>美伊停火整体<span style="color:#f85149;font-weight:700;">利好全球风险资产</span>。对A股而言，关注受益于风险偏好回升的<span style="color:#f85149;font-weight:700;">成长板块</span>。油价下跌<span style="color:#f85149;font-weight:700;">利好交通运输和化工行业</span>。但停火协议的落实<span style="color:#f0b429;font-weight:700;">仍需观察</span>，不宜<span style="color:#f0b429;font-weight:700;">过度乐观</span>。</div></div>
+          <div class="laosheng-view"><span class="lv-label">老盛观点</span>美伊停火整体<span style="color:#f85149;font-weight:700;">利好全球风险资产</span>。对A股而言，关注受益于风险偏好回升的<span style="color:#f85149;font-weight:700;">成长板块</span>。油价下跌<span style="color:#f85149;font-weight:700;">利好交通运输和化工行业</span>。但停火协议的落实<span style="color:#f0b429;font-weight:700;">仍需观察</span>，不宜<span style="color:#f0b429;font-weight:700;">过度乐观</span>。</div>
         </div>
       </div>
 
