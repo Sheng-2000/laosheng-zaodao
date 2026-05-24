@@ -160,17 +160,7 @@
     color: #f0b429;
     font-size: 12px;
     margin-right: 4px;
-    position: relative;
-  }
-  .laosheng-view .lv-label::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #f0b429, transparent);
-    animation: lvSweep 2.5s ease-in-out infinite;
+    animation: lvHeartbeat 2s ease-in-out infinite;
   }
   .laosheng-view .lv-label::before {
     content: '💬';
@@ -181,11 +171,12 @@
     from { opacity: 0; transform: translateX(-8px); }
     to { opacity: 1; transform: translateX(0); }
   }
-  @keyframes lvSweep {
-    0% { transform: scaleX(0); transform-origin: left; }
-    50% { transform: scaleX(1); transform-origin: left; }
-    51% { transform-origin: right; }
-    100% { transform: scaleX(0); transform-origin: right; }
+  @keyframes lvHeartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.08); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.05); }
+    60% { transform: scale(1); }
   }
   @keyframes lvBounce {
     0%, 100% { transform: translateY(0); }
