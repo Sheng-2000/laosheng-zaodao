@@ -1783,6 +1783,7 @@
 </div>
 
 <!-- TAB 0: 要点速览 -->
+<!-- ⚠️ 8张要点卡片：每张正文至少2-3处span高亮（涨跌幅→#f85149红，下跌→#3fb950绿，数字→#00d4ff青，观点→#f0b429橙） -->
 <div class="tab-panel active" id="panel-0">
   <div class="inner">
   <div class="section-title">⚡ 本期要点速览</div>
@@ -1940,6 +1941,7 @@
 </div>
 
 <!-- TAB 1: 国内外新闻 -->
+<!-- ⚠️ 新闻卡片：每张正文至少3-5处span高亮（利好→#f85149红，利空→#3fb950绿，数字→#00d4ff青，警示→#f0b429橙） -->
 <div class="tab-panel" id="panel-1">
   <div class="inner">
   <div class="section-title">🌐 国内外新闻</div>
@@ -2000,6 +2002,7 @@
 </div>
 
 <!-- TAB 2: AI前沿 -->
+<!-- ⚠️ AI卡片：每张正文至少3-5处span高亮（突破/利好→#f85149红，下跌/利空→#3fb950绿，数字→#00d4ff青，趋势→#f0b429橙） -->
 <div class="tab-panel" id="panel-2">
   <div class="inner">
   <div class="section-title">🤖 AI前沿</div>
@@ -2094,7 +2097,7 @@
   
   <div class="market-grid">
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇨🇳 A股</h4>
+      <h4>🇨🇳 A股（{{A股_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">上证指数</span><span class="market-val neutral">{{A股_上证指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">深证成指</span><span class="market-val neutral">{{A股_深证成指_数据}}</span></div>
       <div class="market-row"><span class="market-name">创业板指</span><span class="market-val neutral">{{A股_创业板指_数据}}</span></div>
@@ -2105,14 +2108,14 @@
       <div class="market-row"><span class="market-name">北向资金</span><span class="market-val neutral">{{A股_北向资金}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇭🇰 港股</h4>
+      <h4>🇭🇰 港股（{{港股_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val neutral">{{港股_恒生指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">恒生科技指数</span><span class="market-val neutral">{{港股_恒生科技_数据}}</span></div>
       <div class="market-row"><span class="market-name">国企指数</span><span class="market-val neutral">{{港股_国企指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">南向资金</span><span class="market-val neutral">{{港股_南向资金}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🌏 亚太市场</h4>
+      <h4>🌏 亚太市场（{{亚太_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">日经225</span><span class="market-val neutral">{{亚太_日经225}}</span></div>
       <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val neutral">{{亚太_韩国KOSPI_状态}}</span></div>
       <div class="market-row"><span class="market-name">台湾加权</span><span class="market-val neutral">{{亚太_台湾加权_状态}}</span></div>
@@ -2120,7 +2123,7 @@
       <div class="market-row"><span class="market-name">澳洲ASX200</span><span class="market-val neutral">{{亚太_澳洲ASX200_状态}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇪🇺 欧洲市场</h4>
+      <h4>🇪🇺 欧洲市场（{{欧洲_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val neutral">{{欧洲_英国富时100_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">德国DAX30</span><span class="market-val neutral">{{欧洲_德国DAX30_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val neutral">{{欧洲_法国CAC40_涨跌幅}}</span></div>
@@ -2136,7 +2139,7 @@
       <div class="market-row"><span class="market-name">ARM</span><span class="market-val neutral">{{美股_ARM}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🏭 大宗商品</h4>
+      <h4>🏭 大宗商品（{{大宗商品_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val neutral">{{大宗_WTI原油}}</span></div>
       <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val neutral">{{大宗_布伦特原油}}</span></div>
       <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val neutral">{{大宗_国际黄金}}</span></div>
@@ -2144,14 +2147,14 @@
       <div class="market-row"><span class="market-name">白银</span><span class="market-val neutral">{{大宗_白银}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🪙 加密货币</h4>
+      <h4>🪙 加密货币（{{加密货币_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">比特币BTC</span><span class="market-val neutral">{{加密_BTC}}</span></div>
       <div class="market-row"><span class="market-name">以太坊ETH</span><span class="market-val neutral">{{加密_ETH}}</span></div>
       <div class="market-row"><span class="market-name">BTC ETF</span><span class="market-val neutral">{{加密_BTCEFT}}</span></div>
       <div class="market-row"><span class="market-name">市场情绪</span><span class="market-val neutral">{{加密_市场情绪}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>💱 汇率与债券</h4>
+      <h4>💱 汇率与债券（{{汇率债券_收盘日期}}收盘）</h4>
       <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val neutral">{{汇率_USD/CNY中间价}}</span></div>
       <div class="market-row"><span class="market-name">在岸汇率</span><span class="market-val neutral">{{汇率_在岸汇率}}</span></div>
       <div class="market-row"><span class="market-name">美元指数</span><span class="market-val neutral">{{汇率_美元指数}}</span></div>
@@ -2748,6 +2751,7 @@
   
   <div class="sub-title" style="margin:28px 0 18px;">银行股 · 高股息核心</div>
 
+    <!-- ⚠️ 关注标的13个stock-card：每个bullet必须用span高亮关键信息（股价/涨跌幅→#00d4ff青色，利好→#f85149红色，利空→#3fb950绿色，警示→#f0b429橙色），每条li至少2-3处高亮 -->
     <!-- 工商银行 -->
     <div class="stock-card">
       <div class="stock-header">
@@ -3011,6 +3015,7 @@
 </div>
 
 <!-- TAB 6: 理财话题 -->
+<!-- ⚠️ 理财区域：避坑指南/保险/黄金/债券每张至少2处高亮，社区热门话题每个至少4-6处高亮 -->
 <div class="tab-panel" id="panel-6">
   <div class="inner">
   <div class="section-title">💰 理财数据参考</div>
@@ -3588,6 +3593,7 @@
     </div>
   </div>
   <!-- 今日操作建议 -->
+  <!-- ⚠️ 操作建议6张卡片：每段p必须用span高亮关键信息（数字→#00d4ff青色，利好→#f85149红色，利空/风险→#3fb950绿色，警示→#f0b429橙色），每段至少3-4处高亮 -->
   <div style="background:linear-gradient(135deg,rgba(188,140,255,0.08),rgba(0,212,255,0.04));border:1px solid rgba(188,140,255,0.25);border-radius:14px;padding:22px 26px;margin-bottom:20px;">
     <div style="font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
       <span style="background:linear-gradient(135deg,var(--purple),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">📌 今日操作建议</span>
