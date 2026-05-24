@@ -157,10 +157,10 @@
     align-items: center;
     gap: 4px;
     font-weight: 700;
-    color: #3fb950;
+    color: #f0b429;
     font-size: 12px;
     margin-right: 4px;
-    animation: lvPulse 2s ease-in-out infinite;
+    animation: lvGlow 2s ease-in-out infinite;
   }
   .laosheng-view .lv-label::before {
     content: '💬';
@@ -171,9 +171,9 @@
     from { opacity: 0; transform: translateX(-8px); }
     to { opacity: 1; transform: translateX(0); }
   }
-  @keyframes lvPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+  @keyframes lvGlow {
+    0%, 100% { text-shadow: 0 0 4px rgba(240,180,41,0.3); }
+    50% { text-shadow: 0 0 10px rgba(240,180,41,0.6), 0 0 20px rgba(240,180,41,0.2); }
   }
   @keyframes lvBounce {
     0%, 100% { transform: translateY(0); }
