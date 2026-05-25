@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>老盛早知道 - 每日快讯</title>
+<style>
+/* ══════════ CSS VARIABLES ══════════ */
+:root {
+  --bg-primary:#0d1117;
+  --bg-secondary:#161b22;
+  --bg-card:#1c2333;
+  --bg-hover:#21273a;
+  --accent:#00d4ff;
+  --accent-dim:rgba(0,212,255,0.15);
+  --accent-border:rgba(0,212,255,0.35);
+  --green:#3fb950;
+  --red:#f85149;
+  --yellow:#d29922;
+  --purple:#bc8cff;
+  --orange:#ffa657;
+  --text-primary:#e6edf3;
+  --text-secondary:#8b949e;
+  --text-muted:#6e7681;
+  --border:rgba(48,54,61,0.8);
+  --radius:12px;
+  --radius-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,'SF Pro Text','PingFang SC','Noto Sans SC',sans-serif;
+  background:var(--bg-primary);
+  color:var(--text-primary);
+  line-height:1.7;
+  min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ══════════ PASSWORD GATE ══════════ */
+.pw-overlay {
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg-primary);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 0.6s ease, visibility 0.6s ease;
+  overflow:hidden;
+}
+.pw-overlay.hidden { opacity:0;pointer-events:none;visibility:hidden; }
+
+.pw-overlay::before {
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle 300px at 20% 30%, rgba(0,212,255,0.06) 0%, transparent 70%),
+    radial-gradient(circle 250px at 80% 70%, rgba(188,140,255,0.05) 0%, transparent 70%),
+    radial-gradient(circle 200px at 50% 50%, rgba(0,212,255,0.03) 0%, transparent 70%);
+  animation:pw-bg-drift 12s ease-in-out infinite alternate;
+}
+@keyframes pw-bg-drift {
+  0% { transform:scale(1) translate(0,0); }
+  50% { transform:scale(1.1) translate(-2%,3%); }
+  100% { transform:scale(1) translate(2%,-2%); }
+}
+
+.pw-particles {
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+}
+.pw-particle {
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--accent);opacity:0;
+  animation:pw-float linear infinite;
+}
+.pw-particle:nth-child(1) { left:10%;top:80%;animation-duration:14s;animation-delay:0s;width:2px;height:2px; }
+.pw-particle:nth-child(2) { left:25%;top:90%;animation-duration:18s;animation-delay:2s;background:var(--purple); }
+.pw-particle:nth-child(3) { left:45%;top:85%;animation-duration:12s;animation-delay:4s;width:4px;height:4px; }
+.pw-particle:nth-child(4) { left:65%;top:95%;animation-duration:16s;animation-delay:1s;background:var(--purple); }
+.pw-particle:nth-child(5) { left:80%;top:88%;animation-duration:20s;animation-delay:3s;width:2px;height:2px; }
+.pw-particle:nth-child(6) { left:35%;top:92%;animation-duration:15s;animation-delay:5s; }
+.pw-particle:nth-child(7) { left:55%;top:82%;animation-duration:17s;animation-delay:6s;background:var(--green);width:2px;height:2px; }
+.pw-particle:nth-child(8) { left:90%;top:75%;animation-duration:13s;animation-delay:7s;background:var(--green); }
+@keyframes pw-float {
+  0% { transform:translateY(0) translateX(0);opacity:0; }
+  10% { opacity:0.6; }
+  90% { opacity:0.3; }
+  100% { transform:translateY(-100vh) translateX(30px);opacity:0; }
+}
+
+.pw-overlay::after {
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,212,255,0.015) 2px, rgba(0,212,255,0.015) 4px
+  );
+  pointer-events:none;
+}
+
+.pw-box {
+  text-align:center;max-width:380px;width:90%;padding:44px 36px;
+  background:rgba(22,27,34,0.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(0,212,255,0.2);
+  border-radius:20px;
+  box-shadow:0 0 80px rgba(0,212,255,0.06),0 0 0 1px rgba(0,212,255,0.05),inset 0 1px 0 rgba(255,255,255,0.04);
+  position:relative;z-index:1;
+  animation:pw-box-in 0.8s ease forwards;
+}
+@keyframes pw-box-in {
+  from { opacity:0;transform:translateY(30px) scale(0.96); }
+  to { opacity:1;transform:translateY(0) scale(1); }
+}
+
+.pw-box::before {
+  content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--purple),transparent);
+  border-radius:2px;
+}
+
+.pw-box .pw-icon {
+  width:60px;height:60px;margin:0 auto 22px;
+  background:linear-gradient(145deg,rgba(0,212,255,0.08),rgba(0,212,255,0.02));
+  border:1px solid rgba(0,212,255,0.25);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 30px rgba(0,212,255,0.15);
+  position:relative;
+}
+.pw-box .pw-icon::after {
+  content:'';position:absolute;inset:-6px;border-radius:20px;
+  border:1px solid rgba(0,212,255,0.06);
+  animation:pw-icon-ring 3s ease-in-out infinite;
+}
+@keyframes pw-icon-ring {
+  0%,100% { transform:scale(1);opacity:0.5; }
+  50% { transform:scale(1.08);opacity:1; }
+}
+.pw-box .pw-icon svg { width:28px;height:28px; }
+
+.pw-box h2 { font-size:20px;font-weight:700;color:var(--text-primary);margin-bottom:6px;letter-spacing:2px; }
+.pw-box p { font-size:13px;color:var(--text-muted);margin-bottom:28px; }
+.pw-box input[type="password"] {
+  width:100%;padding:14px 18px;font-size:16px;
+  background:rgba(13,17,23,0.8);
+  border:1px solid rgba(48,54,61,0.8);
+  border-radius:10px;color:var(--text-primary);
+  outline:none;letter-spacing:6px;text-align:center;
+  transition:all 0.3s ease;
+}
+.pw-box input[type="password"]:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(0,212,255,0.1),0 0 20px rgba(0,212,255,0.08);
+}
+.pw-box input[type="password"]::placeholder { letter-spacing:1px;color:var(--text-muted);font-size:14px; }
+
+.pw-box .pw-btn {
+  margin-top:18px;width:100%;padding:13px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,#00d4ff,#0099cc);
+  color:#0d1117;border:none;border-radius:10px;cursor:pointer;
+  letter-spacing:3px;transition:all 0.3s ease;
+  position:relative;overflow:hidden;
+}
+.pw-box .pw-btn::before {
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transition:left 0.5s ease;
+}
+.pw-box .pw-btn:hover::before { left:100%; }
+.pw-box .pw-btn:hover {
+  box-shadow:0 0 30px rgba(0,212,255,0.35);transform:translateY(-2px);
+}
+.pw-box .pw-btn:active { transform:translateY(0); }
+
+.pw-box .pw-error {
+  color:var(--red);font-size:12px;margin-top:14px;min-height:18px;
+  transition:opacity 0.3s;
+}
+
+/* ══════════ HEADER ══════════ */
+.header {
+  background:linear-gradient(180deg, #080e18 0%, #0a1422 100%);
+  border-bottom:1px solid rgba(0,212,255,0.18);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 40px rgba(0,0,0,0.7),0 1px 0 rgba(0,212,255,0.12);
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.header::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--purple) 75%,transparent 100%);
+  box-shadow:0 0 18px var(--accent);
+}
+
+.header::after {
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:header-grid-move 20s linear infinite;
+  pointer-events:none;
+}
+@keyframes header-grid-move {
+  0% { transform:translate(0,0); }
+  100% { transform:translate(60px,60px); }
+}
+
+.header-inner {
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px 24px 16px;
+  position:relative;z-index:1;
+}
+
+.header-top {
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:16px;
+}
+
+/* ══ BRAND ICON ══ */
+.brand-icon {
+  width:56px;height:56px;
+  background:linear-gradient(145deg,#0a1e35 0%,#0d2040 60%,#091828 100%);
+  border:1px solid rgba(0,212,255,0.38);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px rgba(0,212,255,0.25),inset 0 1px 0 rgba(255,255,255,0.08);
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.brand-icon::before {
+  content:'';position:absolute;top:-4px;left:-4px;width:24px;height:24px;
+  background:radial-gradient(circle,rgba(0,212,255,0.22) 0%,transparent 70%);
+}
+.brand-icon::after {
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(135deg,rgba(0,212,255,0.08) 0%,transparent 55%);
+}
+.brand-icon svg { width:28px;height:28px;position:relative;z-index:1; }
+
+/* ══ BRAND TITLE ══ */
+.brand-title {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+  line-height:1.2;
+  min-width:0;
+}
+
+.brand-main-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.brand-signal {
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  cursor:default;
+}
+
+.brand-name {
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:3px;
+  color:#e6edf3;
+}
+.brand-sep {
+  position:relative;
+  width:2px;
+  height:18px;
+  background:rgba(0,212,255,0.15);
+  margin:0 8px;
+  border-radius:1px;
+}
+.brand-sep::after {
+  content:'';position:absolute;left:-1.5px;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(0,212,255,0.8);
+  animation:sep-slide 3s ease-in-out infinite;
+}
+.brand-zaodao {
+  font-size:22px;
+  font-weight:300;
+  letter-spacing:3px;
+  color:var(--accent);
+  text-shadow:0 0 16px rgba(0,212,255,0.3);
+}
+@keyframes sep-slide { 0%{top:0;opacity:0} 15%{opacity:1} 50%{top:14px;opacity:1} 85%{opacity:1} 100%{top:0;opacity:0} }
+
+.brand-en {
+  font-size:9px;font-weight:600;letter-spacing:2px;
+  color:var(--accent);opacity:0.5;text-transform:uppercase;
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+  margin-bottom:2px;
+}
+
+.brand-tag {
+  font-size:10px;color:var(--text-muted);
+  opacity:0.6;
+  white-space:nowrap;
+}
+
+.brand-subtitle {
+  font-size:10.5px;
+  color:var(--text-muted);
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex-wrap:wrap;
+  margin-top:2px;
+}
+.brand-subtitle .dot { color:rgba(0,212,255,0.25);margin:0 4px; }
+
+.live-dot {
+  display:inline-block;width:6px;height:6px;
+  background:var(--green);border-radius:50%;
+  box-shadow:0 0 6px var(--green);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+/* ══ HEADER META ══ */
+.header-meta {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+  flex-shrink:0;
+  padding-left:16px;
+  border-left:1px solid rgba(0,212,255,0.1);
+}
+.hm-date {
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--accent);
+  line-height:1;
+  text-shadow:0 0 12px rgba(0,212,255,0.4);
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+}
+.hm-sub {
+  font-size:10px;
+  color:var(--text-muted);
+  display:flex;
+  align-items:center;
+  gap:4px;
+  white-space:nowrap;
+}
+.hm-sub .sep { color:rgba(0,212,255,0.2); }
+
+/* ══════════ CONTENT ══════════ */
+.main-content { max-width:1200px;margin:0 auto;padding:32px 24px 0; }
+
+.section-title {
+  font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);padding-left:12px;border-left:2px solid var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::after {
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(0,212,255,0.2),transparent);
+}
+
+/* ══════════ HERO CARD (最新一期) ══════════ */
+.hero-card {
+  position:relative;
+  background:var(--bg-card);
+  border-radius:14px;
+  margin-bottom:36px;
+  overflow:hidden;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  cursor:pointer;
+  text-decoration:none;
+  display:block;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.hero-card-border {
+  position:absolute;inset:0;border-radius:14px;padding:1.5px;
+  background:linear-gradient(135deg,var(--accent),var(--purple),var(--accent));
+  background-size:200% 200%;
+  animation:hero-border-shift 6s ease-in-out infinite;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+@keyframes hero-border-shift {
+  0%,100% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+}
+
+.hero-card::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:100px;
+  background:linear-gradient(180deg,rgba(0,212,255,0.05) 0%,transparent 100%);
+  pointer-events:none;z-index:1;
+}
+
+.hero-card:active {
+  transform:scale(0.99);
+}
+
+.hero-card-inner {
+  display:flex;
+  align-items:stretch;
+  position:relative;
+  z-index:2;
+}
+
+.hero-date-block {
+  flex-shrink:0;
+  width:140px;
+  background:linear-gradient(160deg,rgba(0,212,255,0.08) 0%,rgba(0,212,255,0.02) 100%);
+  border-right:1px solid rgba(0,212,255,0.1);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  gap:2px;
+  position:relative;
+}
+.hero-date-block::before {
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:32px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--purple));
+}
+
+.hero-date-day {
+  font-size:52px;font-weight:900;line-height:1;
+  color:var(--text-primary);
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+  text-shadow:0 0 24px rgba(0,212,255,0.2);
+}
+.hero-date-month {
+  font-size:14px;font-weight:600;color:var(--accent);letter-spacing:1px;
+}
+.hero-date-weekday {
+  font-size:11px;color:var(--text-muted);margin-top:6px;
+  background:rgba(0,212,255,0.08);padding:3px 10px;border-radius:20px;
+}
+
+.hero-content-block {
+  flex:1;
+  padding:20px 24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+  min-width:0;
+}
+
+.hero-badge-row {
+  display:flex;align-items:center;gap:8px;
+}
+.hero-badge {
+  display:inline-flex;align-items:center;gap:4px;
+  background:linear-gradient(135deg,var(--accent),#0099cc);
+  color:#0d1117;font-size:9px;font-weight:800;
+  padding:3px 10px;border-radius:20px;letter-spacing:1px;
+  text-transform:uppercase;
+}
+.hero-badge-dot {
+  width:4px;height:4px;border-radius:50%;background:#0d1117;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.hero-label {
+  font-size:10px;color:var(--text-muted);
+}
+
+.hero-title {
+  font-size:16px;font-weight:700;color:var(--text-primary);
+  line-height:1.5;
+  transition:color 0.3s;
+  word-break:break-word;
+}
+
+.hero-tags {
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;
+}
+.hero-tag {
+  font-size:10px;padding:2px 10px;border-radius:4px;
+  background:rgba(0,212,255,0.06);
+  border:1px solid rgba(0,212,255,0.12);
+  color:var(--text-secondary);
+  transition:all 0.3s;
+}
+.hero-tag:nth-child(1) { border-color:rgba(0,212,255,0.25);color:var(--accent); }
+.hero-tag:nth-child(2) { border-color:rgba(188,140,255,0.25);color:var(--purple); }
+.hero-tag:nth-child(3) { border-color:rgba(63,185,80,0.25);color:var(--green); }
+
+.hero-read-btn {
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:4px;
+  font-size:12px;font-weight:600;color:var(--accent);
+  transition:all 0.3s;
+  align-self:flex-start;
+}
+.hero-read-btn .arrow {
+  display:inline-block;
+  transition:transform 0.3s;
+}
+.hero-card:hover .hero-read-btn .arrow { transform:translateX(4px); }
+
+/* ══════════ ARCHIVE TIMELINE ══════════ */
+.archive-section { margin-top:8px; }
+
+.archive-timeline {
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 32px;
+}
+
+.archive-timeline::before {
+  content:'';position:absolute;
+  left:50%;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--accent-border),var(--border),transparent);
+  transform:translateX(-50%);
+}
+
+.timeline-item {
+  position:relative;
+  padding:0 0 16px 0;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  text-decoration:none;
+  transition:all 0.3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction:row-reverse;
+  text-align:right;
+  padding-right:20px;
+  grid-column:1;
+  justify-self:end;
+  width:100%;
+}
+.timeline-item:nth-child(even) {
+  padding-left:20px;
+  grid-column:2;
+  width:100%;
+}
+
+.timeline-dot {
+  position:absolute;
+  top:6px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--bg-primary);
+  border:2px solid var(--border);
+  transition:all 0.3s;
+  z-index:2;
+}
+.timeline-item:nth-child(odd) .timeline-dot { right:-5px; }
+.timeline-item:nth-child(even) .timeline-dot { left:-5px; }
+
+.timeline-content {
+  flex:1;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+  min-width:0;
+}
+.timeline-content::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--purple));
+  opacity:0;transition:opacity 0.3s;
+}
+.timeline-item:hover .timeline-content {
+  border-color:var(--accent-border);
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+.timeline-item:hover .timeline-content::before { opacity:1; }
+
+.timeline-item:active .timeline-content {
+  background:var(--bg-hover);
+}
+
+.tl-header {
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  margin-bottom:6px;
+  flex-wrap:wrap;
+}
+.timeline-item:nth-child(odd) .tl-header { flex-direction:row-reverse; }
+
+.tl-date {
+  font-size:13px;font-weight:700;color:var(--text-primary);
+  font-family:'SF Mono','Menlo',monospace;
+  transition:color 0.3s;
+  white-space:nowrap;
+}
+.timeline-item:hover .tl-date { color:var(--accent); }
+
+.tl-weekday {
+  font-size:10px;color:var(--text-muted);
+  background:rgba(0,212,255,0.06);
+  padding:2px 8px;border-radius:4px;
+  white-space:nowrap;
+}
+.tl-title {
+  font-size:12px;color:var(--text-secondary);line-height:1.5;
+  transition:color 0.3s;
+  word-break:break-word;
+}
+.timeline-item:hover .tl-title { color:var(--text-primary); }
+
+.tl-arrow {
+  display:inline-block;font-size:10px;color:var(--accent);
+  margin-top:4px;transition:all 0.3s;
+  opacity:0;transform:translateX(-4px);
+}
+.timeline-item:hover .tl-arrow { opacity:1;transform:translateX(0); }
+.timeline-item:nth-child(odd) .tl-arrow { transform:translateX(4px); }
+.timeline-item:nth-child(odd):hover .tl-arrow { transform:translateX(0); }
+
+/* ══════════ FOOTER ══════════ */
+.site-footer {
+  max-width:1200px;margin:48px auto 0;padding:0 24px 32px;
+}
+.footer-divider {
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent-border),var(--purple),var(--accent-border),transparent);
+  margin-bottom:24px;
+  position:relative;
+}
+.footer-divider::before {
+  content:'';position:absolute;
+  left:50%;top:-1px;transform:translateX(-50%);
+  width:48px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),var(--purple));
+  box-shadow:0 0 10px rgba(0,212,255,0.3);
+}
+.footer-content {
+  text-align:center;
+  color:var(--text-muted);font-size:11px;letter-spacing:0.5px;
+  line-height:1.8;
+}
+.footer-content a { color:var(--accent);text-decoration:none;transition:color 0.2s; }
+.footer-content a:hover { color:var(--text-primary); }
+
+/* ══════════ ANIMATIONS ══════════ */
+@keyframes fadeInUp {
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-in { animation:fadeInUp 0.5s ease forwards }
+.fade-in-delay-1 { animation-delay:0.1s;opacity:0 }
+.fade-in-delay-2 { animation-delay:0.2s;opacity:0 }
+.fade-in-delay-3 { animation-delay:0.3s;opacity:0 }
+
+/* ══════════ MOBILE (<=768px) ══════════ */
+@media (max-width: 768px) {
+  /* 通用 */
+  body { line-height:1.6; }
+
+  /* 密码锁 */
+  .pw-box {
+    padding:28px 20px;
+    max-width:320px;
+    margin:0 16px;
+  }
+  .pw-box .pw-icon { width:48px;height:48px;border-radius:12px;margin-bottom:18px; }
+  .pw-box .pw-icon svg { width:22px;height:22px; }
+  .pw-box h2 { font-size:16px;margin-bottom:4px; }
+  .pw-box p { font-size:12px;margin-bottom:20px; }
+  .pw-box input[type="password"] { padding:12px;font-size:15px;letter-spacing:4px; }
+  .pw-box .pw-btn { padding:11px;font-size:13px;letter-spacing:2px; }
+
+  /* Header - 紧凑布局 */
+  .header { position:sticky; }
+  .header-inner { padding:12px 16px 10px; }
+
+  .header-top {
+    grid-template-columns:auto 1fr;
+    gap:10px;
+  }
+
+  .brand-icon {
+    width:44px;height:44px;
+    border-radius:10px;
+  }
+  .brand-icon svg { width:22px;height:22px; }
+
+  .brand-title { gap:2px; }
+  .brand-en { font-size:8px;letter-spacing:1.5px;margin-bottom:1px; }
+  .brand-name { font-size:18px;letter-spacing:2px; }
+  .brand-sep { height:14px;margin:0 6px; }
+  .brand-zaodao { font-size:18px;letter-spacing:2px; }
+  .brand-tag { font-size:9px;display:none; }
+
+  .brand-subtitle {
+    font-size:9px;
+    gap:2px;
+  }
+  .brand-subtitle .dot { margin:0 3px; }
+
+  /* Header Meta - 水平排列 */
+  .header-meta {
+    flex-direction:row;
+    align-items:center;
+    gap:8px;
+    padding-left:12px;
+    grid-column:1 / -1;
+    border-left:1px solid rgba(0,212,255,0.1);
+    padding-top:6px;
+    border-top:1px solid rgba(0,212,255,0.05);
+    margin-top:2px;
+  }
+  .hm-date { font-size:14px;letter-spacing:0.5px; }
+  .hm-sub { font-size:9px; }
+  .hm-sub .sep { display:none; }
+
+  /* Content */
+  .main-content { padding:20px 16px 0; }
+  .section-title {
+    font-size:10px;
+    margin-bottom:16px;
+    padding-left:10px;
+    letter-spacing:2px;
+  }
+
+  /* Hero Card - 垂直布局优化 */
+  .hero-card {
+    margin-bottom:28px;
+    border-radius:12px;
+  }
+
+  .hero-card-inner {
+    flex-direction:column;
+  }
+
+  .hero-date-block {
+    width:100%;
+    flex-direction:row;
+    gap:12px;
+    padding:16px 20px;
+    border-right:none;
+    border-bottom:1px solid rgba(0,212,255,0.1);
+    justify-content:flex-start;
+  }
+  .hero-date-block::before { display:none; }
+
+  .hero-date-day {
+    font-size:36px;
+  }
+  .hero-date-month { font-size:13px;margin-top:0; }
+  .hero-date-weekday {
+    margin-top:0;
+    margin-left:auto;
+    font-size:10px;
+    padding:2px 8px;
+  }
+
+  .hero-content-block {
+    padding:16px 20px;
+    gap:8px;
+  }
+
+  .hero-title { font-size:14px;line-height:1.5; }
+  .hero-tags { gap:4px;margin-top:2px; }
+  .hero-tag { font-size:9px;padding:2px 6px; }
+  .hero-read-btn { font-size:11px; }
+
+  /* Timeline - 单列优化 */
+  .archive-timeline {
+    grid-template-columns:1fr;
+    gap:0;
+    padding-left:16px;
+  }
+
+  .archive-timeline::before {
+    left:0;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    grid-column:1;
+    flex-direction:row;
+    text-align:left;
+    padding-left:16px;
+    padding-right:0;
+    width:100%;
+    justify-self:auto;
+  }
+
+  .timeline-item:nth-child(odd) .tl-header { flex-direction:row; }
+  .timeline-item:nth-child(odd) .tl-arrow { transform:translateX(-4px); }
+  .timeline-item:nth-child(odd):hover .tl-arrow { transform:translateX(0); }
+
+  .timeline-dot,
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left:-13px;
+    right:auto;
+    width:10px;height:10px;
+  }
+
+  .timeline-content {
+    padding:12px 14px;
+    border-radius:10px;
+  }
+
+  .tl-date { font-size:12px; }
+  .tl-title { font-size:11px;line-height:1.5; }
+
+  /* Footer */
+  .site-footer { padding:0 16px 24px;margin-top:36px; }
+  .footer-content { font-size:10px; }
+}
+
+/* ══════════ SMALL MOBILE (<=375px) ══════════ */
+@media (max-width: 375px) {
+  .header-inner { padding:10px 12px 8px; }
+  .brand-icon { width:38px;height:38px;border-radius:8px; }
+  .brand-icon svg { width:18px;height:18px; }
+  .brand-name { font-size:16px;letter-spacing:1px; }
+  .brand-sep { height:12px;margin:0 4px; }
+  .brand-zaodao { font-size:16px;letter-spacing:1px; }
+  .brand-subtitle { font-size:8px; }
+
+  .hm-date { font-size:12px; }
+  .hm-sub { font-size:8px; }
+
+  .main-content { padding:16px 12px 0; }
+  .hero-date-day { font-size:30px; }
+  .hero-title { font-size:13px; }
+  .tl-date { font-size:11px; }
+  .tl-title { font-size:10px; }
+}
+
+/* ══════════ SAFE AREA ══════════ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .site-footer {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  }
+  .header {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ══════════ REDUCED MOTION ══════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 密码锁遮罩层 -->
+<div id="pw-overlay" class="pw-overlay">
+  <div class="pw-particles">
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+    <div class="pw-particle"></div>
+  </div>
+  <div class="pw-box">
+    <div class="pw-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1C6.5 1 2 5.5 2 11v10h4v2h12v-2h4V11c0-5.5-4.5-10-10-10zm0 3c3.9 0 7 3.1 7 7v3H5v-3c0-3.9 3.1-7 7-7zm-1 8h2v4h-2z" fill="#00d4ff"/>
+      </svg>
+    </div>
+    <h2>访问需要密码</h2>
+    <p>输入密码以查看快讯内容</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off">
+    <button class="pw-btn" onclick="checkPassword()">进入</button>
+    <div class="pw-error" id="pw-error"></div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-top">
+
+    <!-- 左栏：品牌图标 -->
+    <div class="brand-icon">
+      <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M1.5 5.5 Q-2 15 1.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M28.5 5.5 Q32 15 28.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- 中栏：品牌文字 -->
+    <div class="brand-title">
+      <div class="brand-en">Laosheng's Daily Brief</div>
+      <div class="brand-main-row">
+        <span class="brand-name">老盛</span>
+        <div class="brand-sep"></div>
+        <span class="brand-zaodao">早知道</span>
+        <span class="brand-tag">· 每日资讯不迟到</span>
+      </div>
+      <div class="brand-subtitle">
+        <span class="live-dot"></span>AI驱动情报
+        <span class="dot">·</span><span class="live-dot" style="background:#f5c842;box-shadow:0 0 6px #f5c842;"></span>数据实时
+        <span class="dot">·</span><span class="live-dot" style="background:#ff4444;box-shadow:0 0 6px #ff4444;"></span>价值投资
+      </div>
+    </div>
+
+    <!-- 右栏：信息 -->
+    <div class="header-meta">
+      <div class="hm-date" id="latest-date">--</div>
+      <div class="hm-sub">
+        <span id="latest-weekday">--</span>
+        <span>·</span>
+        <span>每日更新</span>
+      </div>
+    </div>
+
+  </div><!-- /header-top -->
+  </div><!-- /header-inner -->
+</div>
+
+<div class="main-content">
+
+<div id="latest-section" class="fade-in fade-in-delay-1"></div>
+
+<div class="archive-section fade-in fade-in-delay-2">
+  <div class="section-title">历史快报 <span style="font-size:14px;font-weight:400;color:var(--text-muted);">（仅保留最近10天）</span></div>
+  <div class="archive-timeline" id="archive-timeline"></div>
+</div>
+
+</div>
+
+<div class="site-footer fade-in fade-in-delay-3">
+  <div class="footer-divider"></div>
+  <div class="footer-content">
+    <p>老盛早知道 &copy; 2026 &middot; Powered by WorkBuddy &amp; AI</p>
+    <p>本站内容仅供参考，不构成投资建议</p>
+  </div>
+</div>
+
+<script>
+// 所有快报数据（按日期倒序）- 只保留最近10天
+const reports = [
+  { date: "20260525", weekday: "星期一", title: "A股5/25收涨科创50飙升5.88%·央行6000亿MLF加量续做·日经225创历史新高65158点·原油大跌5.8%黄金涨1.59%·美股休市·银行股创新高·AI大模型价格战" },
+  { date: "20260524", weekday: "星期日", title: "周末休市·A股5/22强势反弹创业板大涨2.84%·道指50286创历史新高·港股AI爆发智谱涨27%·存款利率跌破1%·高股息策略受青睐·美伊协议草案达成" },
+  { date: "20260523", weekday: "星期六", title: "A股全线反弹创业板大涨2.84%·道指50580创收盘新高·日经225暴涨2.68%创新高·DeepSeek永久降价1/4·券商齐喊牛市下半场·银行高股息策略·美伊缓和油价回落" },
+  { date: "20260522", weekday: "星期五", title: "A股全线反弹创业板大涨2.84%领涨·道指50579创历史新高·日经225暴涨2.68%创收盘新高·发改委AI立法研究+国产大模型适配国产芯片·南向净卖出65亿·黄金4508震荡" },
+  { date: "20260521", weekday: "星期四", title: "科创50大涨3.2%创历史新高·半导体AI算力爆发·银行股放量杀跌农行跌2.42%·美股三连跌标普跌0.67%·英伟达财报发布·黄金跌破4500美元·美债收益率升至4.57%" },
+  { date: "20260520", weekday: "星期三", title: "A股 V型反转上证涨0.92%科创50大涨3.81%·美股涨跌不一纳指跌0.51%·港股三大指数齐涨·油价大涨4.2%突破105美元·普京正式访华·央行地量逆回购5亿" },
+  { date: "20260519", weekday: "星期二", title: "A股缩量震荡科创50逆势涨0.8%·美股分化道指涨0.32%纳指跌0.51%·港股恒指跌1.11%南向净卖出78亿·国债3年期1.63%·中国海油涨1.07%" },
+  { date: "20260518", weekday: "星期一", title: "全球国债闪崩30年美债破5.1%·A股两连跌退守4135·韩股暴跌6.12%触发熔断·白银暴跌近9%·BTC跌破80000·央行净回笼5000亿·南向逆势净买入250亿" },
+  { date: "20260517", weekday: "星期日", title: "A股两连跌退守4135·韩股暴跌6.12%触发熔断·黄金跌破4550白银暴跌近9%·美债收益率飙至4.59%·央行净回笼5000亿·WTI突破105·美股道指跌破5万·中国海油逆势涨1.25%" },
+  { date: "20260516", weekday: "星期六", title: "A股失守4200点全线回调·美股三大指数齐创历史新高·道指重返50000点·特朗普访华圆满结束·美伊和谈破裂油价破$105·亚太股市暴跌·央行净回笼5000亿" },
+];
+
+function getLink(dateStr) {
+  return `老盛早知道_${dateStr}.html`;
+}
+
+// 从标题中提取前3个关键词（用·分割）
+function extractKeywords(title) {
+  const parts = title.split('·').map(s => s.trim()).filter(Boolean);
+  return parts.slice(0, 3);
+}
+
+// Header meta
+const latest = reports[0];
+document.getElementById('latest-date').textContent = latest.date.slice(0,4) + ' / ' + latest.date.slice(4,6) + ' / ' + latest.date.slice(6,8);
+document.getElementById('latest-weekday').textContent = latest.weekday;
+
+// 最新一期 - Hero卡片
+const keywords = extractKeywords(latest.title);
+const heroTagsHtml = keywords.map(k => `<span class="hero-tag">${k}</span>`).join('');
+document.getElementById('latest-section').innerHTML = `
+  <div class="section-title">最新一期</div>
+  <a class="hero-card" href="${getLink(latest.date)}">
+    <div class="hero-card-border"></div>
+    <div class="hero-card-inner">
+      <div class="hero-date-block">
+        <div class="hero-date-day">${parseInt(latest.date.slice(6,8))}</div>
+        <div class="hero-date-month">${parseInt(latest.date.slice(4,6))}月</div>
+        <div class="hero-date-weekday">${latest.weekday}</div>
+      </div>
+      <div class="hero-content-block">
+        <div class="hero-badge-row">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>LATEST</span>
+          <span class="hero-label">${latest.date.slice(0,4)}年${parseInt(latest.date.slice(4,6))}月${parseInt(latest.date.slice(6,8))}日</span>
+        </div>
+        <div class="hero-title">${latest.title}</div>
+        <div class="hero-tags">${heroTagsHtml}</div>
+        <div class="hero-read-btn">阅读全文 <span class="arrow">&rarr;</span></div>
+      </div>
+    </div>
+  </a>
+`;
+
+// 历史列表 - 时间线样式
+const archive = reports.slice(1);
+const timeline = document.getElementById('archive-timeline');
+archive.forEach(r => {
+  const d = r.date;
+  const item = document.createElement('a');
+  item.className = 'timeline-item';
+  item.href = getLink(d);
+  item.innerHTML = `
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="tl-header">
+        <span class="tl-date">${d.slice(0,4)}.${d.slice(4,6)}.${d.slice(6,8)}</span>
+        <span class="tl-weekday">${r.weekday}</span>
+      </div>
+      <div class="tl-title">${r.title}</div>
+      <div class="tl-arrow">查看详情 &rarr;</div>
+    </div>
+  `;
+  timeline.appendChild(item);
+});
+
+// ══════════ 密码锁 ══════════
+(function() {
+  const _0x1a = [78,85,74,123,79,69,86,51,79,123,104,62];
+  const _0x1b = _0x1a.map(function(c){return String.fromCharCode(c - 1)}).join('');
+  const KEY = 'lszd_auth';
+
+  // 检查 session 认证
+  if (sessionStorage.getItem(KEY) === 'ok') {
+    document.getElementById('pw-overlay').style.display = 'none';
+    return;
+  }
+
+  function verify(pwd) {
+    return btoa(pwd) === _0x1b;
+  }
+
+  window.checkPassword = function() {
+    var input = document.getElementById('pw-input');
+    var error = document.getElementById('pw-error');
+    var val = input.value.trim();
+    if (!val) { error.textContent = '请输入密码'; return; }
+    if (verify(val)) {
+      sessionStorage.setItem(KEY, 'ok');
+      document.getElementById('pw-overlay').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      error.textContent = '密码错误，请重试';
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  document.getElementById('pw-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); window.checkPassword(); }
+  });
+
+  document.getElementById('pw-input').focus();
+})();
+</script>
+</body>
+</html>
