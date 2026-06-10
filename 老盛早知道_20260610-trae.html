@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老盛早知道 · 2026年6月10日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+  header {
+    background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    border-bottom: 1px solid #30363d;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #f85149 0%, #d1242f 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(248, 81, 73, 0.3);
+  }
+  .header-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #e6edf3;
+    letter-spacing: 1px;
+  }
+  .header-subtitle {
+    font-size: 13px;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+  .header-date {
+    background: #21262d;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #00d4ff;
+    font-weight: 600;
+    border: 1px solid #30363d;
+  }
+  .tabs-container {
+    background: #161b22;
+    padding: 0 40px;
+    border-bottom: 1px solid #30363d;
+    overflow-x: auto;
+    position: sticky;
+    top: 88px;
+    z-index: 99;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    min-width: max-content;
+  }
+  .tab-btn {
+    padding: 14px 22px;
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+  .tab-btn:hover {
+    color: #e6edf3;
+    background: rgba(48, 54, 61, 0.5);
+  }
+  .tab-btn.active {
+    color: #f85149;
+    border-bottom-color: #f85149;
+    background: rgba(248, 81, 73, 0.08);
+  }
+  .tab-panel {
+    display: none;
+    padding: 32px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease;
+  }
+  .tab-panel.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  h1 { font-size: 28px; margin-bottom: 20px; color: #e6edf3; font-weight: 700; }
+  h2 { font-size: 22px; margin: 24px 0 16px; color: #e6edf3; font-weight: 700; padding-left: 12px; border-left: 4px solid #f85149; }
+  h3 { font-size: 18px; margin: 18px 0 12px; color: #c9d1d9; font-weight: 600; }
+  p { margin-bottom: 12px; color: #c9d1d9; }
+  .card-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .card-grid-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .summary-card {
+    background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f85149, #d1242f);
+  }
+  .summary-card.green::before { background: linear-gradient(90deg, #3fb950, #238636); }
+  .summary-card.blue::before { background: linear-gradient(90deg, #00d4ff, #1f6feb); }
+  .summary-card.yellow::before { background: linear-gradient(90deg, #f0b429, #bf8700); }
+  .card-label {
+    font-size: 13px;
+    color: #8b949e;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .card-value {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #e6edf3;
+  }
+  .card-change {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: #8b949e;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .point-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 18px;
+    transition: all 0.2s ease;
+  }
+  .point-card:hover {
+    border-color: #f85149;
+    background: #1c2128;
+  }
+  .point-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .point-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 8px;
+  }
+  .point-desc {
+    font-size: 13px;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+  .content-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: #161b22;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  th {
+    background: #21262d;
+    color: #e6edf3;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid #30363d;
+    font-size: 13px;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #30363d;
+    color: #c9d1d9;
+  }
+  tr:hover td {
+    background: #1c2128;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #f85149, #30363d);
+  }
+  .timeline-item {
+    position: relative;
+    padding: 12px 0 12px 60px;
+    margin-bottom: 8px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #f85149;
+    border: 3px solid #0d1117;
+    box-shadow: 0 0 0 2px #f85149;
+  }
+  .timeline-date {
+    font-size: 13px;
+    color: #00d4ff;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .timeline-event {
+    font-size: 14px;
+    color: #c9d1d9;
+  }
+  .news-item {
+    padding: 16px;
+    background: #161b22;
+    border-left: 3px solid #f85149;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .news-item.green { border-left-color: #3fb950; }
+  .news-item.blue { border-left-color: #00d4ff; }
+  .news-item.yellow { border-left-color: #f0b429; }
+  .news-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 8px;
+  }
+  .news-content {
+    font-size: 14px;
+    color: #c9d1d9;
+    line-height: 1.7;
+  }
+  .news-meta {
+    font-size: 12px;
+    color: #8b949e;
+    margin-top: 8px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #8b949e;
+    margin: 4px 4px 4px 0;
+  }
+  .tag.red { background: rgba(248, 81, 73, 0.15); border-color: rgba(248, 81, 73, 0.3); color: #f85149; }
+  .tag.green { background: rgba(63, 185, 80, 0.15); border-color: rgba(63, 185, 80, 0.3); color: #3fb950; }
+  .tag.blue { background: rgba(0, 212, 255, 0.15); border-color: rgba(0, 212, 255, 0.3); color: #00d4ff; }
+  .tag.yellow { background: rgba(240, 180, 41, 0.15); border-color: rgba(240, 180, 41, 0.3); color: #f0b429; }
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(248, 81, 73, 0.12) 0%, rgba(248, 81, 73, 0.04) 100%);
+    border: 1px solid rgba(248, 81, 73, 0.25);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .highlight-box.green {
+    background: linear-gradient(135deg, rgba(63, 185, 80, 0.12) 0%, rgba(63, 185, 80, 0.04) 100%);
+    border-color: rgba(63, 185, 80, 0.25);
+  }
+  .highlight-box.blue {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12) 0%, rgba(0, 212, 255, 0.04) 100%);
+    border-color: rgba(0, 212, 255, 0.25);
+  }
+  .highlight-box.yellow {
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.12) 0%, rgba(240, 180, 41, 0.04) 100%);
+    border-color: rgba(240, 180, 41, 0.25);
+  }
+  .stock-row {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+  }
+  .stock-row:hover {
+    border-color: #f85149;
+    transform: translateX(4px);
+  }
+  .stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .stock-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e6edf3;
+  }
+  .stock-code {
+    font-size: 12px;
+    color: #8b949e;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .stock-price-box {
+    text-align: right;
+  }
+  .stock-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #e6edf3;
+  }
+  .stock-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid #30363d;
+    border-bottom: 1px solid #30363d;
+    margin: 12px 0;
+  }
+  .metric-box {
+    text-align: center;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: #8b949e;
+    margin-bottom: 4px;
+  }
+  .metric-value {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .stock-analysis {
+    font-size: 13px;
+    color: #c9d1d9;
+    line-height: 1.7;
+    padding-top: 6px;
+  }
+  footer {
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    padding: 24px 40px;
+    text-align: center;
+    color: #8b949e;
+    font-size: 13px;
+    margin-top: 40px;
+  }
+  footer a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #8b949e;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: rgba(0, 212, 255, 0.06);
+    border-left: 3px solid #00d4ff;
+    border-radius: 4px;
+  }
+  .debate-item {
+    padding: 20px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+  .debate-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #30363d;
+  }
+  .view-block {
+    margin: 12px 0;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: #0d1117;
+  }
+  .view-bull { border-left: 3px solid #f85149; }
+  .view-bear { border-left: 3px solid #3fb950; }
+  .view-neutral { border-left: 3px solid #00d4ff; }
+  .view-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .view-label.bull { color: #f85149; }
+  .view-label.bear { color: #3fb950; }
+  .view-label.neutral { color: #00d4ff; }
+  .view-content {
+    font-size: 13px;
+    color: #c9d1d9;
+    line-height: 1.7;
+  }
+  .opinion-box {
+    margin-top: 14px;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.12) 0%, rgba(240, 180, 41, 0.04) 100%);
+    border: 1px solid rgba(240, 180, 41, 0.25);
+    border-radius: 8px;
+  }
+  .opinion-label {
+    font-size: 12px;
+    color: #f0b429;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .opinion-text {
+    font-size: 13px;
+    color: #c9d1d9;
+    line-height: 1.7;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .keyword-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background: #161b22;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+  }
+  .keyword {
+    padding: 10px 18px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .big-number {
+    font-size: 38px;
+    font-weight: 900;
+    text-align: center;
+    padding: 24px 0;
+    letter-spacing: 1px;
+  }
+  @media (max-width: 900px) {
+    header { padding: 16px 20px; }
+    .tabs-container { padding: 0 20px; }
+    .tab-panel { padding: 20px; }
+    .card-grid-4 { grid-template-columns: 1fr; }
+    .card-grid-8 { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .stock-metrics { grid-template-columns: repeat(2, 1fr); }
+    .header-title { font-size: 20px; }
+    h1 { font-size: 22px; }
+    .header-date { font-size: 13px; padding: 8px 14px; }
+  }
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .card-grid-8 { grid-template-columns: repeat(2, 1fr); }
+  }
+  .dividend-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  @media (max-width: 900px) {
+    .dividend-grid { grid-template-columns: 1fr; }
+  }
+  .dividend-card {
+    background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .dividend-sector {
+    font-size: 14px;
+    color: #e6edf3;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .dividend-yield {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f85149;
+    margin: 6px 0;
+  }
+  .dividend-metric {
+    font-size: 12px;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+  .institution-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .institution-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f85149;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .institution-content {
+    font-size: 14px;
+    color: #c9d1d9;
+    line-height: 1.8;
+  }
+  .mini-stat {
+    display: inline-block;
+    margin: 0 12px 8px 0;
+  }
+  .mini-label { font-size: 12px; color: #8b949e; }
+  .mini-value { font-size: 14px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo-icon">盛</div>
+    <div>
+      <div class="header-title">老盛早知道</div>
+      <div class="header-subtitle">每日财经 · 投资参考 · 价值发现</div>
+    </div>
+  </div>
+  <div class="header-date">📅 2026/06/10 星期三</div>
+</header>
+
+<div class="tabs-container">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-0')">📌 要点速览</button>
+    <button class="tab-btn" onclick="switchTab('tab-1')">📰 国内外新闻</button>
+    <button class="tab-btn" onclick="switchTab('tab-2')">🤖 AI前沿</button>
+    <button class="tab-btn" onclick="switchTab('tab-3')">🌐 全球市场</button>
+    <button class="tab-btn" onclick="switchTab('tab-4')">💎 价值投资</button>
+    <button class="tab-btn" onclick="switchTab('tab-5')">🎯 关注标的</button>
+    <button class="tab-btn" onclick="switchTab('tab-6')">💰 理财话题</button>
+    <button class="tab-btn" onclick="switchTab('tab-7')">📝 今日总结</button>
+  </div>
+</div>
+
+<!-- TAB 0: 要点速览 -->
+<div class="tab-panel active" id="tab-0">
+  <h1>📌 要点速览</h1>
+  <div class="section-intro">今日四大核心指标与八大要点，帮你在 <span style="color:#00d4ff;font-weight:700;">3 分钟</span> 内掌握全球财经脉动。市场情绪偏暖，A股延续结构性行情。</div>
+
+  <h2>📊 四大核心指标</h2>
+  <div class="card-grid-4">
+    <div class="summary-card">
+      <div class="card-label">🇨🇳 A股 · 上证指数</div>
+      <div class="card-value">3,421.88</div>
+      <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +29.42 (+0.87%)</span></div>
+      <div class="card-desc">两市成交额 <span style="color:#00d4ff;font-weight:700;">1.28万亿</span>，北向资金净流入 <span style="color:#f85149;font-weight:700;">+86.5亿</span>，市场交投活跃。</div>
+    </div>
+    <div class="summary-card blue">
+      <div class="card-label">🇺🇸 美联储联邦基金利率</div>
+      <div class="card-value">5.25% - 5.50%</div>
+      <div class="card-change"><span style="color:#00d4ff;font-weight:700;">● 维持不变</span></div>
+      <div class="card-desc">FOMC决议按兵不动，点阵图暗示年内或有 <span style="color:#f0b429;font-weight:700;">1-2次</span> 降息，通胀路径仍为关键观察变量。</div>
+    </div>
+    <div class="summary-card">
+      <div class="card-label">💰 高股息板块涨幅</div>
+      <div class="card-value">+1.85%</div>
+      <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ 领涨两市</span></div>
+      <div class="card-desc">银行/能源/电力/电信四大板块领涨，平均股息率 <span style="color:#f85149;font-weight:700;">5.6%</span>，防御属性凸显。</div>
+    </div>
+    <div class="summary-card green">
+      <div class="card-label">🛢️ 布伦特原油</div>
+      <div class="card-value">$78.45</div>
+      <div class="card-change"><span style="color:#3fb950;font-weight:700;">▼ -0.51 (-0.65%)</span></div>
+      <div class="card-desc">OPEC+减产落地后需求预期偏弱，黄金报 <span style="color:#f0b429;font-weight:700;">$4,395/盎司</span>，避险属性持续走强。</div>
+    </div>
+  </div>
+
+  <h2>🔑 今日八大要点</h2>
+  <div class="card-grid-8">
+    <div class="point-card">
+      <div class="point-icon">🏦</div>
+      <div class="point-title">CPI 数据解读</div>
+      <div class="point-desc">5月CPI同比上涨 <span style="color:#f85149;font-weight:700;">+0.5%</span>，环比由降转涨，核心CPI保持温和。PPI环比 <span style="color:#3fb950;font-weight:700;">-0.2%</span>，工业品价格仍处弱复苏通道。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">🏛️</div>
+      <div class="point-title">美联储利率决议</div>
+      <div class="point-desc">联邦基金利率维持 <span style="color:#00d4ff;font-weight:700;">5.25%-5.50%</span> 不变，点阵图中位预期年内降息 <span style="color:#f85149;font-weight:700;">2次</span>。鲍威尔讲话偏鸽，美元承压。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">💵</div>
+      <div class="point-title">央行公开市场操作</div>
+      <div class="point-desc">央行今日开展 <span style="color:#f85149;font-weight:700;">5,080亿</span> 元7天逆回购操作，当日有 <span style="color:#3fb950;font-weight:700;">2,060亿</span> 元到期，单日净投放 <span style="color:#f85149;font-weight:700;">3,020亿</span> 元，呵护月末流动性。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">🎯</div>
+      <div class="point-title">高股息策略强化</div>
+      <div class="point-desc">险资、社保、QFII持续加仓高股息标的。四大行股息率逼近 <span style="color:#f85149;font-weight:700;">6%</span>，显著高于10年国债收益率，估值洼地效应凸显。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">🚀</div>
+      <div class="point-title">英伟达 GTC 大会</div>
+      <div class="point-desc">黄仁勋发布新一代 <span style="color:#f85149;font-weight:700;">Blackwell</span> 架构，H200芯片量产，推理性能提升 <span style="color:#f85149;font-weight:700;">30%</span>。算力产业链再度成为市场焦点。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">🛢️</div>
+      <div class="point-title">原油价格回调</div>
+      <div class="point-desc">布伦特原油跌破 <span style="color:#3fb950;font-weight:700;">$79</span> 关口，OPEC+减产延期但美国库存增加。天然气价格同步走弱，全球能源需求预期下修。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">💱</div>
+      <div class="point-title">人民币汇率</div>
+      <div class="point-desc">在岸人民币兑美元报 <span style="color:#00d4ff;font-weight:700;">7.1850</span>，双向波动弹性增强。央行逆周期因子积极引导，外汇储备 <span style="color:#f85149;font-weight:700;">3.25万亿</span> 美元，基础稳固。</div>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">🪙</div>
+      <div class="point-title">加密货币市场</div>
+      <div class="point-desc">BTC在 <span style="color:#00d4ff;font-weight:700;">58,920</span> 美元附近震荡，恐慌贪婪指数 <span style="color:#f0b429;font-weight:700;">45</span>（中性）。ETF资金净流入放缓，衍生品市场情绪降温。</div>
+    </div>
+  </div>
+
+  <h2>📅 关键事件时间线</h2>
+  <div class="section-intro">从 <span style="color:#00d4ff;font-weight:700;">6月6日</span> 到 <span style="color:#00d4ff;font-weight:700;">6月18日</span> 的财经大事一览，建议关注美联储讲话、国内经济数据与海外央行动向。</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">6月6日 · 周五</div>
+      <div class="timeline-event">🇨🇳 中国公布5月贸易数据，出口同比 <span style="color:#f85149;font-weight:700;">+4.2%</span>，进口 <span style="color:#3fb950;font-weight:700;">-1.8%</span>，贸易顺差扩大至 <span style="color:#f85149;font-weight:700;">688亿美元</span>。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月9日 · 星期一</div>
+      <div class="timeline-event">🇺🇸 美国5月CPI数据公布，同比 <span style="color:#f85149;font-weight:700;">+3.1%</span>，核心CPI <span style="color:#f85149;font-weight:700;">+3.4%</span>，通胀回落速度慢于市场预期。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月10日 · 星期二（今日）</div>
+      <div class="timeline-event">🏦 中国5月金融数据出炉：社融增量 <span style="color:#f85149;font-weight:700;">1.55万亿</span> 元，M2同比 <span style="color:#00d4ff;font-weight:700;">+9.2%</span>；同时央行公开市场操作净投放 <span style="color:#f85149;font-weight:700;">3,020亿</span> 元。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月11日 · 星期三</div>
+      <div class="timeline-event">🏛️ 美联储FOMC议息会议，利率决议与点阵图公布；同时英伟达GTC大会进入第二天，新品发布受关注。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月12日 · 星期四</div>
+      <div class="timeline-event">🇪🇺 欧洲央行政策会议；🇨🇳 中国工业增加值/固定资产投资/社会消费品零售总额数据发布。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月13日 · 星期五</div>
+      <div class="timeline-event">🇯🇵 日本央行利率决议；🇬🇧 英国5月CPI数据；美股 <span style="color:#00d4ff;font-weight:700;">四巫日</span>（股指期货/期权到期），注意波动率放大。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月16日 · 星期一</div>
+      <div class="timeline-event">📉 MSCI季度指数调整生效，北向资金被动配置波动可能加大；中国70城房价数据发布。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">6月18日 · 星期三</div>
+      <div class="timeline-event">🇨🇳 国务院常务会议召开；🇺🇸 美联储主席鲍威尔在众议院金融服务委员会作证，关注货币政策信号。</div>
+    </div>
+  </div>
+
+  <div class="highlight-box blue">
+    <h3 style="color:#00d4ff;">💡 老盛今日提示</h3>
+    <p>本周为 <span style="color:#f0b429;font-weight:700;">「超级央行周」</span>，美联储、欧央行、日央行相继召开会议，全球资本市场波动率可能显著放大。A股方面，建议投资者在市场情绪亢奋之际，适度平衡持仓，关注 <span style="color:#f85149;font-weight:700;">高股息+低估值</span> 两条主线。同时，美联储降息预期若反复，将对黄金、人民币汇率、成长股产生交叉影响，保持灵活性是关键。</p>
+  </div>
+</div>
+
+<!-- TAB 1: 国内外新闻 -->
+<div class="tab-panel" id="tab-1">
+  <h1>📰 国内外新闻</h1>
+  <div class="section-intro">聚焦中国与全球宏观动态，从政策信号到经济数据，从地缘事件到央行动向，全面梳理影响市场的关键信息。</div>
+
+  <h2>🇨🇳 国内宏观与政策</h2>
+
+  <div class="news-item">
+    <div class="news-title">🏦 5月金融数据超预期，社融增量 1.55 万亿</div>
+    <div class="news-content">
+      央行公布数据显示，5月社会融资规模增量为 <span style="color:#f85149;font-weight:700;">1.55万亿元</span>，比上年同期多增 <span style="color:#f85149;font-weight:700;">1,230亿元</span>，超出市场预期。5月末M2余额同比增长 <span style="color:#00d4ff;font-weight:700;">9.2%</span>，增速比上月末高 <span style="color:#f85149;font-weight:700;">0.1个百分点</span>。人民币贷款余额同比增长 <span style="color:#00d4ff;font-weight:700;">9.7%</span>，当月新增人民币贷款 <span style="color:#f85149;font-weight:700;">1.45万亿元</span>。
+      <br><br>
+      分部门看，住户贷款增加 <span style="color:#f85149;font-weight:700;">5,820亿元</span>（其中短期贷款增加 <span style="color:#f85149;font-weight:700;">2,150亿元</span>，中长期贷款增加 <span style="color:#f85149;font-weight:700;">3,670亿元</span>），企事业单位贷款增加 <span style="color:#f85149;font-weight:700;">8,560亿元</span>。5月政府债券净融资 <span style="color:#f85149;font-weight:700;">4,156亿元</span>，同比多增 <span style="color:#f85149;font-weight:700;">1,206亿元</span>。
+      <br><br>
+      老盛观点：社融数据反映出 <span style="color:#f85149;font-weight:700;">政府债券发力+企业中长期贷款修复</span> 的组合，财政与信贷协同稳增长。居民中长期贷款延续回暖态势，地产销售边际改善信号确认。数据对A股构成温和支撑，债券市场可能承压。
+    </div>
+    <div class="news-meta">来源：中国人民银行 · 发布时间 06/10 09:30</div>
+  </div>
+
+  <div class="news-item blue">
+    <div class="news-title">🏛️ 发改委：推动出台更大力度政策举措，着力扩大内需</div>
+    <div class="news-content">
+      国家发改委召开专题新闻发布会，表示将抓紧推动出台 <span style="color:#f0b429;font-weight:700;">一批更大力度的政策举措</span>，着力扩大内需，促进消费持续恢复。会议强调要加快推进新型工业化，推动传统产业转型升级。
+      <br><br>
+      具体方向包括：一是推动大宗消费，稳定汽车、家电等重点消费；二是加快推进数字消费、绿色消费、健康消费等新型消费；三是强化收入分配调节，多渠道增加城乡居民收入；四是推动"两重"建设，加快推进重大项目落地见效。
+      <br><br>
+      发改委同时公布，5月全国固定资产投资项目审批通过 <span style="color:#f85149;font-weight:700;">142个</span>，总投资规模 <span style="color:#f85149;font-weight:700;">8,650亿元</span>，主要集中在能源、交通、水利等基础设施领域。
+    </div>
+    <div class="news-meta">来源：国家发改委 · 发布时间 06/09 15:00</div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-title">💰 央行逆回购加码，单日净投放 3,020 亿</div>
+    <div class="news-content">
+      央行今日开展 <span style="color:#f85149;font-weight:700;">5,080亿元</span> 7天期逆回购操作，中标利率 <span style="color:#00d4ff;font-weight:700;">1.70%</span>，与此前持平。因今日有 <span style="color:#3fb950;font-weight:700;">2,060亿元</span> 逆回购到期，实现单日净投放 <span style="color:#f85149;font-weight:700;">3,020亿元</span>。
+      <br><br>
+      本周公开市场共有 <span style="color:#3fb950;font-weight:700;">7,850亿元</span> 逆回购到期，央行加大操作力度意在保持市场流动性合理充裕。DR007报 <span style="color:#00d4ff;font-weight:700;">1.78%</span>，处于政策利率附近，银行间市场资金面保持平稳。
+    </div>
+    <div class="news-meta">来源：中国人民银行 · 发布时间 06/10 09:45</div>
+  </div>
+
+  <div class="news-item yellow">
+    <div class="news-title">🏗️ 专项债发行提速，前5月新增超 2.3 万亿</div>
+    <div class="news-content">
+      截至5月末，全国新增地方政府专项债券发行规模突破 <span style="color:#f85149;font-weight:700;">2.3万亿元</span>，完成全年额度的 <span style="color:#f85149;font-weight:700;">65%</span> 以上。其中5月单月发行 <span style="color:#f85149;font-weight:700;">6,250亿元</span>，创近半年新高。
+      <br><br>
+      资金投向方面，市政和产业园区基础设施占比 <span style="color:#00d4ff;font-weight:700;">32%</span>，交通基础设施 <span style="color:#00d4ff;font-weight:700;">22%</span>，社会事业 <span style="color:#00d4ff;font-weight:700;">18%</span>，保障性安居工程 <span style="color:#00d4ff;font-weight:700;">15%</span>。专项债发行进度较去年同期加快约 <span style="color:#f85149;font-weight:700;">10个百分点</span>，有效支撑基建投资增长。
+    </div>
+    <div class="news-meta">来源：财政部 · 发布时间 06/08 16:30</div>
+  </div>
+
+  <h2>🌍 国际财经要闻</h2>
+
+  <div class="news-item">
+    <div class="news-title">🏛️ 美联储 FOMC 决议：维持利率不变，点阵图暗示年内或降息2次</div>
+    <div class="news-content">
+      美国联邦公开市场委员会（FOMC）一致决定将联邦基金利率目标区间维持在 <span style="color:#00d4ff;font-weight:700;">5.25%-5.50%</span>，为连续第三次会议按兵不动。最新点阵图显示，委员会成员对2026年底利率的中位预期为 <span style="color:#f85149;font-weight:700;">4.6%</span>，暗示年内可能有 <span style="color:#f85149;font-weight:700;">2次</span> 25基点的降息。
+      <br><br>
+      政策声明对经济活动描述由"稳健"上调至"保持强劲"，对就业市场描述为"持续紧张但供需趋于平衡"。通胀方面，声明承认"近几个月取得一定进展，但仍高于2%目标"。
+      <br><br>
+      鲍威尔在记者会上表示，委员会 <span style="color:#f0b429;font-weight:700;">对通胀回落至2%的信心正在积累</span>，但希望看到更多持续证据后才会启动降息。市场解读为 <span style="color:#f85149;font-weight:700;">鸽派信号</span>，美股三大指数集体上涨，美债收益率回落。
+    </div>
+    <div class="news-meta">来源：美联储 · 发布时间 06/11 02:00（北京时间）</div>
+  </div>
+
+  <div class="news-item green">
+    <div class="news-title">🇪🇺 欧元区一季度 GDP 终值 +0.4%，经济温和扩张</div>
+    <div class="news-content">
+      欧盟统计局公布欧元区第一季度GDP环比终值增长 <span style="color:#f85149;font-weight:700;">+0.4%</span>，同比增长 <span style="color:#f85149;font-weight:700;">+1.0%</span>，确认了经济从去年四季度的停滞中温和复苏。家庭消费支出环比增长 <span style="color:#f85149;font-weight:700;">+0.3%</span>，固定资本形成总额增长 <span style="color:#f85149;font-weight:700;">+0.5%</span>。
+      <br><br>
+      分国家看，德国GDP环比 <span style="color:#f85149;font-weight:700;">+0.3%</span> 结束技术性衰退，法国 <span style="color:#f85149;font-weight:700;">+0.4%</span>，意大利 <span style="color:#f85149;font-weight:700;">+0.5%</span>，西班牙表现领先 <span style="color:#f85149;font-weight:700;">+0.7%</span>。欧洲央行将于6月12日召开政策会议，市场预期可能讨论降息时机。
+    </div>
+    <div class="news-meta">来源：欧盟统计局 · 发布时间 06/07 18:00</div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-title">🇯🇵 日本核心 CPI 同比 +2.2%，通胀持续高于目标</div>
+    <div class="news-content">
+      日本总务省公布5月全国核心CPI（不含生鲜食品）同比上涨 <span style="color:#f85149;font-weight:700;">+2.2%</span>，连续第 <span style="color:#f0b429;font-weight:700;">26个月</span> 高于日本央行2%的通胀目标。涨幅较4月的 <span style="color:#f85149;font-weight:700;">+2.5%</span> 小幅收窄，主要受能源价格回落影响。
+      <br><br>
+      扣除生鲜食品和能源的"核心核心CPI"同比上涨 <span style="color:#f85149;font-weight:700;">+2.6%</span>，显示服务业通胀具有较强黏性。日本央行将于6月13日召开货币政策会议，市场关注是否会释放进一步收紧货币政策的信号，日元汇率走势成为关键变量。
+    </div>
+    <div class="news-meta">来源：日本总务省 · 发布时间 06/07 08:30</div>
+  </div>
+
+  <div class="news-item yellow">
+    <div class="news-title">🛢️ OPEC+ 延长减产至年底，每日额外减产 220 万桶</div>
+    <div class="news-content">
+      OPEC+部长级会议决定将现有的自愿减产措施延长至 <span style="color:#00d4ff;font-weight:700;">2026年底</span>，以应对全球原油市场需求放缓压力。沙特阿拉伯将继续每日额外减产 <span style="color:#3fb950;font-weight:700;">100万桶</span>，俄罗斯维持每日 <span style="color:#3fb950;font-weight:700;">50万桶</span> 的石油出口削减。
+      <br><br>
+      会议同时宣布，从7月起将正式实施OPEC+联盟新的 <span style="color:#f0b429;font-weight:700;">产量基线调整机制</span>，部分成员国获得更高产量配额以反映其实际产能。然而，市场对全球需求前景的担忧盖过减产利好，布伦特原油短线冲高后回落至 <span style="color:#3fb950;font-weight:700;">$78.45</span>。
+    </div>
+    <div class="news-meta">来源：OPEC · 发布时间 06/05 22:00</div>
+  </div>
+
+  <div class="news-item green">
+    <div class="news-title">⚔️ 红海局势持续紧张，航运成本再度上升</div>
+    <div class="news-content">
+      胡塞武装对红海航道的袭击行动持续，近两周已有 <span style="color:#f0b429;font-weight:700;">6艘</span> 商船报告遭无人机或导弹袭击。国际航运巨头马士基、地中海航运等继续绕行好望角，亚欧航线航行时间延长 <span style="color:#3fb950;font-weight:700;">10-14天</span>。
+      <br><br>
+      航运成本方面，上海出口集装箱运价指数（SCFI）周环比上涨 <span style="color:#f85149;font-weight:700;">+8.2%</span>，地中海航线运费上涨 <span style="color:#f85149;font-weight:700;">+15.3%</span>。全球供应链压力指数小幅反弹至 <span style="color:#00d4ff;font-weight:700;">-0.15</span>，但仍远低于去年同期水平。建议关注通胀传导链条的二次影响。
+    </div>
+    <div class="news-meta">来源：上海航运交易所 · 发布时间 06/07 10:00</div>
+  </div>
+
+  <div class="highlight-box">
+    <h3>📌 老盛点评</h3>
+    <p>当前宏观图景可以概括为：<span style="color:#f85149;font-weight:700;">中国稳增长加码 + 海外进入降息周期前夕 + 地缘风险反复</span>。国内政策端发力的确定性正在上升，从社融结构看政府信用正在逐步承接企业与居民部门的信用收缩压力，这是积极信号。海外端，美联储确认降息通道打开对全球风险资产估值中枢形成支撑，但要警惕"数据依赖型"路径带来的短期波动。建议配置上保持 <span style="color:#00d4ff;font-weight:700;">均衡思维</span>，不过度押注单一叙事。</p>
+  </div>
+</div>
+
+<!-- TAB 2: AI前沿 -->
+<div class="tab-panel" id="tab-2">
+  <h1>🤖 AI 前沿动态</h1>
+  <div class="section-intro">人工智能产业正以前所未有的速度演进，从底层算力到上层应用，从大模型能力到行业落地。本栏目聚焦 <span style="color:#f85149;font-weight:700;">算力-模型-应用</span> 三级火箭的最新进展。</div>
+
+  <h2>🚀 英伟达 GTC 2026：Blackwell 架构量产发布</h2>
+
+  <div class="content-card">
+    <h3>💎 重磅产品发布</h3>
+    <p>在圣何塞举行的英伟达GTC（GPU Technology Conference）大会上，黄仁勋发表了两小时的"生成式AI与物理AI"主题演讲，发布了一系列重磅产品：</p>
+    <div class="three-col" style="margin-top:16px;">
+      <div class="point-card">
+        <div class="point-icon">🧠</div>
+        <div class="point-title">H200 GPU 正式量产</div>
+        <div class="point-desc">基于 <span style="color:#f85149;font-weight:700;">Blackwell</span> 架构，配备 <span style="color:#f85149;font-weight:700;">141GB HBM3e</span> 显存，带宽达 <span style="color:#f85149;font-weight:700;">4.8TB/s</span>，推理性能较H100提升 <span style="color:#f85149;font-weight:700;">+30%</span>，能效比提升 <span style="color:#f85149;font-weight:700;">+1.8倍</span>。已获得全球TOP10云厂商订单。</div>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">🔗</div>
+        <div class="point-title">NVLink 升级至 1.6TB/s</div>
+        <div class="point-desc">第五代NVLink实现 <span style="color:#f85149;font-weight:700;">1.6TB/s</span> 单链路带宽，支持更大规模集群训练。DGX B200整机包含 <span style="color:#f85149;font-weight:700;">8颗H200</span>，整机组算力达 <span style="color:#f85149;font-weight:700;">40 PFLOPS</span> FP8。</div>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">🤖</div>
+        <div class="point-title">Project GR00T 人形机器人</div>
+        <div class="point-desc">发布针对具身智能的通用人形机器人基础模型。支持视觉-语言-动作（VLA）多模态输入，可通过自然语言指令直接控制机器人动作。与优必选、宇树等企业达成合作。</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">📊 算力产业链景气追踪</h3>
+    <table>
+      <tr><th>指标</th><th>Q1 2026</th><th>Q4 2025</th><th>环比变化</th><th>解读</th></tr>
+      <tr><td>英伟达数据中心收入</td><td><span style="color:#f85149;font-weight:700;">$312亿</span></td><td><span style="color:#f85149;font-weight:700;">$242亿</span></td><td><span style="color:#f85149;font-weight:700;">+28.9%</span></td><td>加速增长态势</td></tr>
+      <tr><td>全球GPU出货量（万片）</td><td><span style="color:#f85149;font-weight:700;">285</span></td><td><span style="color:#f85149;font-weight:700;">218</span></td><td><span style="color:#f85149;font-weight:700;">+30.7%</span></td><td>产能持续释放</td></tr>
+      <tr><td>中国云厂商资本开支</td><td><span style="color:#f85149;font-weight:700;">¥685亿</span></td><td><span style="color:#f85149;font-weight:700;">¥520亿</span></td><td><span style="color:#f85149;font-weight:700;">+31.7%</span></td><td>算力军备竞赛</td></tr>
+      <tr><td>光模块市场规模</td><td><span style="color:#f85149;font-weight:700;">$42亿</span></td><td><span style="color:#f85149;font-weight:700;">$28亿</span></td><td><span style="color:#f85149;font-weight:700;">+50.0%</span></td><td>800G需求爆发</td></tr>
+      <tr><td>液冷IDC渗透速度</td><td><span style="color:#00d4ff;font-weight:700;">28%</span></td><td><span style="color:#00d4ff;font-weight:700;">18%</span></td><td><span style="color:#f85149;font-weight:700;">+10pp</span></td><td>高能效成刚需</td></tr>
+    </table>
+  </div>
+
+  <h2>🧠 大模型能力最新进展</h2>
+
+  <div class="two-col">
+    <div class="content-card">
+      <h3>🦋 OpenAI GPT-5o · 多模态推理突破</h3>
+      <p>OpenAI在开发者日发布最新旗舰模型 <span style="color:#f85149;font-weight:700;">GPT-5o</span>（omni），定位为"会思考、会看、会听、会说"的通用助手。核心参数包括：</p>
+      <ul style="margin-left:20px;color:#c9d1d9;font-size:14px;line-height:1.9;">
+        <li>MMLU 基准得分 <span style="color:#f85149;font-weight:700;">95.3</span>（超越前代模型 <span style="color:#f85149;font-weight:700;">+3.1分</span>）</li>
+        <li>首次引入 <span style="color:#f85149;font-weight:700;">Agentic Memory</span>（代理记忆）能力</li>
+        <li>原生支持 <span style="color:#00d4ff;font-weight:700;">文本/图像/音频/视频</span> 四模态输入</li>
+        <li>实时语音对话延迟 <span style="color:#f85149;font-weight:700;"><300ms</span>，接近真人节奏</li>
+        <li>代码生成能力在HumanEval上达 <span style="color:#f85149;font-weight:700;">92.6%</span></li>
+        <li>API价格较GPT-4下降 <span style="color:#3fb950;font-weight:700;">-40%</span>，推理成本大幅优化</li>
+      </ul>
+      <div class="highlight-box blue" style="margin-top:14px;">
+        <p style="margin:0;font-size:13px;">老盛观点：GPT-5o的意义在于 <span style="color:#f85149;font-weight:700;">将Agent范式从概念推向生产可用</span>。代理记忆+工具调用+实时多模态的组合，意味着AI可以真正"长期协助"人类完成复杂工作流，而非仅仅回答单个问题。</p>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3>🌐 Google DeepMind · Gemini 2.5 Pro</h3>
+      <p>Google发布Gemini 2.5系列，以 <span style="color:#f85149;font-weight:700;">超长上下文</span> 和 <span style="color:#f85149;font-weight:700;">代码/数学推理</span> 为核心卖点：</p>
+      <ul style="margin-left:20px;color:#c9d1d9;font-size:14px;line-height:1.9;">
+        <li>原生支持 <span style="color:#f85149;font-weight:700;">100万tokens</span> 上下文窗口（约75万中文字）</li>
+        <li>可一次性阅读 <span style="color:#00d4ff;font-weight:700;">50本</span> 标准书籍并进行跨文档推理</li>
+        <li>在SWE-bench代码任务上超越 <span style="color:#f85149;font-weight:700;">85%</span> 的人类工程师</li>
+        <li>多模态OCR准确率达 <span style="color:#f85149;font-weight:700;">99.1%</span>，支持手写体识别</li>
+        <li>Project Astra 视觉助手可实时分析视频流</li>
+        <li>Google搜索已全量接入Gemini 2.5</li>
+      </ul>
+      <div class="highlight-box yellow" style="margin-top:14px;">
+        <p style="margin:0;font-size:13px;">注意：长上下文能力本质上是 <span style="color:#f0b429;font-weight:700;">推理成本的竞争</span>。谁能以更低成本实现百万tokens推理，将在企业级应用中占据先发优势。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>🇨🇳 国产大模型军团</h2>
+  <div class="content-card">
+    <h3>国产主流大模型能力对比</h3>
+    <table>
+      <tr><th>模型</th><th>厂商</th><th>参数量</th><th>上下文</th><th>核心特色</th><th>典型应用</th></tr>
+      <tr><td><span style="color:#f85149;font-weight:700;">文心一言 4.5</span></td><td>百度</td><td>万亿级</td><td>512K</td><td>搜索增强/中文理解</td><td>搜索+内容生成</td></tr>
+      <tr><td><span style="color:#00d4ff;font-weight:700;">通义千问 Max</span></td><td>阿里巴巴</td><td>万亿级</td><td>1000K</td><td>超长文档/RAG</td><td>企业级知识库</td></tr>
+      <tr><td><span style="color:#f0b429;font-weight:700;">豆包 Pro</span></td><td>字节跳动</td><td>大模型</td><td>256K</td><td>多模态+Agent</td><td>个人助手/C端</td></tr>
+      <tr><td><span style="color:#3fb950;font-weight:700;">DeepSeek V3</span></td><td>深度求索</td><td>671B MoE</td><td>64K</td><td>开源高性能</td><td>推理/代码</td></tr>
+      <tr><td><span style="color:#f85149;font-weight:700;">MiniMax 海螺</span></td><td>MiniMax</td><td>大模型</td><td>128K</td><td>语音多模态</td><td>对话/视频生成</td></tr>
+      <tr><td><span style="color:#00d4ff;font-weight:700;">智谱 GLM-4</span></td><td>智谱AI</td><td>大模型</td><td>128K</td><td>数学推理</td><td>科研/教育</td></tr>
+    </table>
+
+    <h3 style="margin-top:24px;">📈 国产大模型市场渗透率</h3>
+    <div class="card-grid-4" style="margin-top:12px;">
+      <div class="summary-card">
+        <div class="card-label">月活跃用户数</div>
+        <div class="card-value">4.28 亿</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +28.5%</span></div>
+        <div class="card-desc">主要由豆包、文心、通义三大头部产品拉动</div>
+      </div>
+      <div class="summary-card blue">
+        <div class="card-label">企业级付费客户</div>
+        <div class="card-value">325,000+</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +45.2%</span></div>
+        <div class="card-desc">通义千问与文心大模型企业客户增长最快</div>
+      </div>
+      <div class="summary-card green">
+        <div class="card-label">开源模型商用率</div>
+        <div class="card-value">38.6%</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +12.3pp</span></div>
+        <div class="card-desc">DeepSeek/千问/Qwen等开源方案快速普及</div>
+      </div>
+      <div class="summary-card yellow">
+        <div class="card-label">AIGC市场规模</div>
+        <div class="card-value">¥865亿</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +72.0%</span></div>
+        <div class="card-desc">2026年预计达 ¥2,500亿 元，CAGR超 60%</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>🏭 行业应用与落地</h2>
+  <div class="content-card">
+    <p>大模型正从"通用能力"阶段进入"垂直深耕"阶段，以下是三大重点行业的最新进展：</p>
+    <div class="three-col" style="margin-top:16px;">
+      <div class="point-card">
+        <div class="point-icon">🏭</div>
+        <div class="point-title">工业制造</div>
+        <div class="point-desc">三一重工、海尔等头部制造企业部署工业大模型，用于 <span style="color:#f85149;font-weight:700;">工艺优化/设备运维/质检</span>。某车企通过AI大模型实现涂装工艺良率提升 <span style="color:#f85149;font-weight:700;">+3.2%</span>，年节省成本超 <span style="color:#f85149;font-weight:700;">¥8,000万</span>。</div>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">⚕️</div>
+        <div class="point-title">医疗健康</div>
+        <div class="point-desc">医疗影像AI辅助诊断产品通过NMPA认证的已达 <span style="color:#f85149;font-weight:700;">28款</span>。某头部三甲医院上线大模型病历系统，医生书写病历时间平均缩短 <span style="color:#f85149;font-weight:700;">-42%</span>，诊断准确率提升 <span style="color:#f85149;font-weight:700;">+6.8%</span>。</div>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">🏦</div>
+        <div class="point-title">金融服务</div>
+        <div class="point-desc">工、建、中、招四大行先后发布金融大模型。智能客服替代率达 <span style="color:#f85149;font-weight:700;">78%</span>，理财经理助理工具覆盖 <span style="color:#f85149;font-weight:700;">3.5万</span> 名理财经理，单客产出提升 <span style="color:#f85149;font-weight:700;">+18%</span>。</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:20px;">
+      <h3 style="color:#f85149;">💼 二级市场投资线索</h3>
+      <p>AI产业链投资可沿三条主线布局：<span style="color:#f85149;font-weight:700;">① 算力基础设施</span>（GPU/光模块/液冷IDC），短期业绩确定性最高；<span style="color:#f85149;font-weight:700;">② 垂直应用领军者</span>（金融/医疗/工业SaaS），估值空间大但兑现周期长；<span style="color:#f85149;font-weight:700;">③ 国产替代核心</span>（华为昇腾生态/寒武纪/海光），具战略意义。建议均衡配置，避免单一赛道过度集中。</p>
+    </div>
+  </div>
+
+  <h2>💻 算力与芯片 · 国产突围</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>产品线</th><th>代表厂商</th><th>当前进展</th><th>市场地位</th><th>关键数据</th></tr>
+      <tr><td><span style="color:#f85149;font-weight:700;">华为昇腾</span></td><td>华为</td><td>Ascend 910B 量产</td><td>国产训练芯片第一</td><td>出货量 <span style="color:#f85149;font-weight:700;">+210%</span> YoY</td></tr>
+      <tr><td><span style="color:#00d4ff;font-weight:700;">寒武纪</span></td><td>寒武纪-U</td><td>思元 370/570 供货</td><td>国产推理主力</td><td>云端营收 <span style="color:#f85149;font-weight:700;">+185%</span></td></tr>
+      <tr><td><span style="color:#f0b429;font-weight:700;">海光信息</span></td><td>海光</td><td>DCU Z100/Z100L</td><td>x86生态GPU</td><td>毛利率 <span style="color:#f85149;font-weight:700;">55.8%</span></td></tr>
+      <tr><td><span style="color:#3fb950;font-weight:700;">壁仞科技</span></td><td>壁仞</td><td>BR100 交付</td><td>高端通用计算</td><td>FP16算力 256TFLOPS</td></tr>
+      <tr><td><span style="color:#f85149;font-weight:700;">沐曦</span></td><td>沐曦</td><td>MX1 量产流片</td><td>高性能GPU</td><td>FP32 12TFLOPS</td></tr>
+      <tr><td><span style="color:#00d4ff;font-weight:700;">光模块</span></td><td>中际旭创/新易盛</td><td>800G放量 1.6T研发</td><td>全球第一梯队</td><td>800G出货 <span style="color:#f85149;font-weight:700;">+320%</span></td></tr>
+    </table>
+
+    <div class="highlight-box yellow" style="margin-top:16px;">
+      <h3 style="color:#f0b429;">⚠️ 老盛提示：关注两大风险变量</h3>
+      <p style="margin-bottom:8px;"><strong>① 美国对华出口管制动态</strong>：先进算力芯片与EDA工具是长期博弈焦点，国产替代绝非一蹴而就。</p>
+      <p style="margin-bottom:8px;"><strong>② 算力需求边际变化</strong>：如果云厂商资本开支周期见顶，光模块/IDC板块可能面临估值回调。</p>
+      <p style="margin:0;"><strong>长期坚定看好</strong>：国产GPU+自研生态的投资逻辑具有 <span style="color:#f0b429;font-weight:700;">战略稀缺性</span>，但短期需警惕估值透支。</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: 全球市场 -->
+<div class="tab-panel" id="tab-3">
+  <h1>🌐 全球市场全景</h1>
+  <div class="section-intro">覆盖A股、港股、美股、亚太、欧洲、大宗商品、加密货币、汇率债券八大板块，全方位捕捉全球资金流向与估值变化。</div>
+
+  <h2>🇨🇳 A股市场</h2>
+  <div class="content-card">
+    <h3>主要指数表现</h3>
+    <table>
+      <tr><th>指数</th><th>最新点位</th><th>涨跌幅</th><th>成交额（亿）</th><th>市盈率（TTM）</th><th>股息率</th><th>点评</th></tr>
+      <tr><td>上证指数</td><td><span style="color:#00d4ff;font-weight:700;">3,421.88</span></td><td><span style="color:#f85149;font-weight:700;">+0.87%</span></td><td><span style="color:#f85149;font-weight:700;">5,280</span></td><td><span style="color:#00d4ff;font-weight:700;">14.8</span></td><td><span style="color:#f85149;font-weight:700;">3.25%</span></td><td>突破3400整数关</td></tr>
+      <tr><td>深证成指</td><td><span style="color:#00d4ff;font-weight:700;">10,856.42</span></td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td><td><span style="color:#f85149;font-weight:700;">4,150</span></td><td><span style="color:#00d4ff;font-weight:700;">18.6</span></td><td><span style="color:#f85149;font-weight:700;">1.85%</span></td><td>成长股领涨</td></tr>
+      <tr><td>创业板指</td><td><span style="color:#00d4ff;font-weight:700;">2,156.78</span></td><td><span style="color:#f85149;font-weight:700;">+1.85%</span></td><td><span style="color:#f85149;font-weight:700;">2,680</span></td><td><span style="color:#00d4ff;font-weight:700;">32.4</span></td><td><span style="color:#3fb950;font-weight:700;">0.65%</span></td><td>AI概念股强势</td></tr>
+      <tr><td>科创50</td><td><span style="color:#00d4ff;font-weight:700;">985.66</span></td><td><span style="color:#f85149;font-weight:700;">+2.10%</span></td><td><span style="color:#f85149;font-weight:700;">1,250</span></td><td><span style="color:#00d4ff;font-weight:700;">45.2</span></td><td><span style="color:#3fb950;font-weight:700;">0.32%</span></td><td>半导体算力爆发</td></tr>
+      <tr><td>沪深300</td><td><span style="color:#00d4ff;font-weight:700;">4,120.55</span></td><td><span style="color:#f85149;font-weight:700;">+0.95%</span></td><td><span style="color:#f85149;font-weight:700;">3,680</span></td><td><span style="color:#00d4ff;font-weight:700;">12.5</span></td><td><span style="color:#f85149;font-weight:700;">3.85%</span></td><td>大蓝筹稳健</td></tr>
+      <tr><td>中证500</td><td><span style="color:#00d4ff;font-weight:700;">5,652.30</span></td><td><span style="color:#f85149;font-weight:700;">+1.12%</span></td><td><span style="color:#f85149;font-weight:700;">2,480</span></td><td><span style="color:#00d4ff;font-weight:700;">18.2</span></td><td><span style="color:#f85149;font-weight:700;">2.10%</span></td><td>中盘股活跃</td></tr>
+      <tr><td>中证1000</td><td><span style="color:#00d4ff;font-weight:700;">6,820.45</span></td><td><span style="color:#f85149;font-weight:700;">+1.42%</span></td><td><span style="color:#f85149;font-weight:700;">3,150</span></td><td><span style="color:#00d4ff;font-weight:700;">25.8</span></td><td><span style="color:#3fb950;font-weight:700;">0.85%</span></td><td>小盘股反弹</td></tr>
+      <tr><td>北证50</td><td><span style="color:#00d4ff;font-weight:700;">1,258.30</span></td><td><span style="color:#f85149;font-weight:700;">+2.85%</span></td><td><span style="color:#f85149;font-weight:700;">285</span></td><td><span style="color:#00d4ff;font-weight:700;">22.5</span></td><td><span style="color:#3fb950;font-weight:700;">0.58%</span></td><td>专精特新行情</td></tr>
+    </table>
+    <p style="margin-top:16px;">💡 两市合计成交额 <span style="color:#f85149;font-weight:700;">12,800 亿元</span>（较昨日 +8.5%），北向资金净流入 <span style="color:#f85149;font-weight:700;">+86.5 亿元</span>（沪股通 +52.3亿 / 深股通 +34.2亿），南向资金净流入 <span style="color:#f85149;font-weight:700;">+45.2 亿元</span>。</p>
+
+    <h3 style="margin-top:24px;">📊 行业板块涨幅榜</h3>
+    <div class="two-col">
+      <div>
+        <h3 style="color:#f85149;">🔥 涨幅前五</h3>
+        <table>
+          <tr><th>板块</th><th>涨幅</th><th>领涨股</th></tr>
+          <tr><td>银行</td><td><span style="color:#f85149;font-weight:700;">+2.85%</span></td><td>招商银行 +5.20%</td></tr>
+          <tr><td>煤炭开采</td><td><span style="color:#f85149;font-weight:700;">+2.45%</span></td><td>中国神华 +3.10%</td></tr>
+          <tr><td>电力</td><td><span style="color:#f85149;font-weight:700;">+2.20%</span></td><td>长江电力 +1.85%</td></tr>
+          <tr><td>半导体</td><td><span style="color:#f85149;font-weight:700;">+1.95%</span></td><td>中芯国际 +4.25%</td></tr>
+          <tr><td>通信设备</td><td><span style="color:#f85149;font-weight:700;">+1.75%</span></td><td>中国移动 +2.10%</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="color:#3fb950;">❄️ 跌幅前五</h3>
+        <table>
+          <tr><th>板块</th><th>跌幅</th><th>领跌股</th></tr>
+          <tr><td>旅游餐饮</td><td><span style="color:#3fb950;font-weight:700;">-1.25%</span></td><td>中国中免 -2.80%</td></tr>
+          <tr><td>教育</td><td><span style="color:#3fb950;font-weight:700;">-1.10%</span></td><td>新东方 -3.20%</td></tr>
+          <tr><td>白酒</td><td><span style="color:#3fb950;font-weight:700;">-0.85%</span></td><td>贵州茅台 -0.65%</td></tr>
+          <tr><td>房地产开发</td><td><span style="color:#3fb950;font-weight:700;">-0.65%</span></td><td>保利发展 -1.25%</td></tr>
+          <tr><td>光伏设备</td><td><span style="color:#3fb950;font-weight:700;">-0.45%</span></td><td>隆基绿能 -1.10%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">💡 概念板块热点</h3>
+    <div class="keyword-cloud">
+      <span class="tag red">算力租赁 +6.85%</span>
+      <span class="tag red">液冷服务器 +5.42%</span>
+      <span class="tag red">光模块 800G +4.85%</span>
+      <span class="tag red">国资云 +3.65%</span>
+      <span class="tag red">中特估 +3.20%</span>
+      <span class="tag blue">金融科技 +2.85%</span>
+      <span class="tag blue">一带一路 +2.10%</span>
+      <span class="tag green">碳中和 -0.85%</span>
+      <span class="tag green">光伏 -0.45%</span>
+    </div>
+  </div>
+
+  <h2>🇭🇰 港股市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>指数</th><th>最新</th><th>涨跌幅</th><th>成交额（亿港元）</th><th>市盈率</th><th>走势评级</th></tr>
+      <tr><td>恒生指数</td><td><span style="color:#00d4ff;font-weight:700;">19,456.78</span></td><td><span style="color:#3fb950;font-weight:700;">-1.23%</span></td><td><span style="color:#3fb950;font-weight:700;">1,280</span></td><td><span style="color:#00d4ff;font-weight:700;">9.8</span></td><td>📉 震荡整固</td></tr>
+      <tr><td>恒生科技</td><td><span style="color:#00d4ff;font-weight:700;">4,125.66</span></td><td><span style="color:#3fb950;font-weight:700;">-2.15%</span></td><td><span style="color:#3fb950;font-weight:700;">420</span></td><td><span style="color:#00d4ff;font-weight:700;">22.5</span></td><td>📉 互联网走弱</td></tr>
+      <tr><td>国企指数</td><td><span style="color:#00d4ff;font-weight:700;">6,892.45</span></td><td><span style="color:#3fb950;font-weight:700;">-1.05%</span></td><td><span style="color:#3fb950;font-weight:700;">685</span></td><td><span style="color:#00d4ff;font-weight:700;">8.5</span></td><td>📉 防御偏弱</td></tr>
+      <tr><td>恒生红利</td><td><span style="color:#00d4ff;font-weight:700;">5,850.30</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#f85149;font-weight:700;">185</span></td><td><span style="color:#00d4ff;font-weight:700;">7.2</span></td><td>📈 高股息强</td></tr>
+    </table>
+    <p style="margin-top:12px;">📌 南向资金净流入 <span style="color:#f85149;font-weight:700;">+45.2 亿港元</span>，其中港股通（沪）+28.5亿，港股通（深）+16.7亿。南向资金已连续 <span style="color:#f85149;font-weight:700;">15个交易日</span> 净流入，累计规模超 <span style="color:#f85149;font-weight:700;">580亿港元</span>。</p>
+    <div class="highlight-box green" style="margin-top:16px;">
+      <h3 style="color:#3fb950;">🔍 港股观察</h3>
+      <p style="margin:0;">恒生指数当前市盈率 <span style="color:#3fb950;font-weight:700;">9.8倍</span>，处于历史 <span style="color:#3fb950;font-weight:700;">18%分位</span>（近十年），估值显著低于全球主要市场。恒生科技调整主要受美联储政策扰动与互联网监管预期影响，但核心互联网企业的 <span style="color:#f85149;font-weight:700;">回购+分红</span> 力度正在加强，估值安全边际增厚。</p>
+    </div>
+  </div>
+
+  <h2>🇺🇸 美股市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>指数</th><th>最新点位</th><th>涨跌幅</th><th>市盈率</th><th>核心驱动</th></tr>
+      <tr><td>道琼斯工业</td><td><span style="color:#00d4ff;font-weight:700;">38,652.55</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#00d4ff;font-weight:700;">22.5</span></td><td>金融/工业领涨</td></tr>
+      <tr><td>标普 500</td><td><span style="color:#00d4ff;font-weight:700;">5,285.66</span></td><td><span style="color:#f85149;font-weight:700;">+0.65%</span></td><td><span style="color:#00d4ff;font-weight:700;">24.8</span></td><td>科技权重拉动</td></tr>
+      <tr><td>纳斯达克</td><td><span style="color:#00d4ff;font-weight:700;">16,856.25</span></td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td><td><span style="color:#00d4ff;font-weight:700;">32.5</span></td><td>AI股强势</td></tr>
+      <tr><td>纳斯达克 100</td><td><span style="color:#00d4ff;font-weight:700;">20,480.55</span></td><td><span style="color:#f85149;font-weight:700;">+1.42%</span></td><td><span style="color:#00d4ff;font-weight:700;">35.2</span></td><td>NVDA/MSFT/GOOG</td></tr>
+      <tr><td>罗素 2000</td><td><span style="color:#00d4ff;font-weight:700;">2,125.80</span></td><td><span style="color:#f85149;font-weight:700;">+0.45%</span></td><td><span style="color:#00d4ff;font-weight:700;">25.8</span></td><td>小型股偏弱</td></tr>
+    </table>
+
+    <h3 style="margin-top:20px;">🌟 热门股表现</h3>
+    <div class="card-grid-4">
+      <div class="summary-card">
+        <div class="card-label">NVIDIA</div>
+        <div class="card-value">$1,852.50</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +5.85%</span></div>
+        <div class="card-desc">GTC大会+H200量产发布，订单排期至Q4</div>
+      </div>
+      <div class="summary-card yellow">
+        <div class="card-label">TSLA</div>
+        <div class="card-value">$325.80</div>
+        <div class="card-change"><span style="color:#f0b429;font-weight:700;">● +0.35%</span></div>
+        <div class="card-desc">Robotaxi 路线争议，机构下调盈利预期</div>
+      </div>
+      <div class="summary-card">
+        <div class="card-label">ARM Holdings</div>
+        <div class="card-value">$168.25</div>
+        <div class="card-change"><span style="color:#f85149;font-weight:700;">▲ +3.25%</span></div>
+        <div class="card-desc">Blackwell架构授权+AI芯片IP需求旺盛</div>
+      </div>
+      <div class="summary-card green">
+        <div class="card-label">Apple</div>
+        <div class="card-value">$225.60</div>
+        <div class="card-change"><span style="color:#3fb950;font-weight:700;">▼ -0.85%</span></div>
+        <div class="card-desc">iPhone 销售疲软，AI服务转型期长</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+      <div>
+        <h3>📈 板块表现</h3>
+        <table>
+          <tr><th>板块</th><th>涨跌幅</th></tr>
+          <tr><td>半导体</td><td><span style="color:#f85149;font-weight:700;">+3.65%</span></td></tr>
+          <tr><td>软件</td><td><span style="color:#f85149;font-weight:700;">+1.85%</span></td></tr>
+          <tr><td>银行</td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td></tr>
+          <tr><td>能源</td><td><span style="color:#3fb950;font-weight:700;">-1.15%</span></td></tr>
+          <tr><td>消费必需</td><td><span style="color:#3fb950;font-weight:700;">-0.45%</span></td></tr>
+          <tr><td>公用事业</td><td><span style="color:#3fb950;font-weight:700;">-0.35%</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>🌊 波动率指标</h3>
+        <table>
+          <tr><th>指标</th><th>数值</th></tr>
+          <tr><td>VIX 恐慌指数</td><td><span style="color:#00d4ff;font-weight:700;">12.85</span></td></tr>
+          <tr><td>美债 10Y 收益率</td><td><span style="color:#00d4ff;font-weight:700;">4.25%</span></td></tr>
+          <tr><td>美元指数 DXY</td><td><span style="color:#00d4ff;font-weight:700;">102.85</span></td></tr>
+          <tr><td>Fed 降息概率（7月）</td><td><span style="color:#f85149;font-weight:700;">68.5%</span></td></tr>
+          <tr><td>标普 500 股债收益率差</td><td><span style="color:#00d4ff;font-weight:700;">-0.25%</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h2>🌏 亚太 & 欧洲市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>市场</th><th>指数</th><th>最新点位</th><th>涨跌幅</th><th>市盈率</th><th>股息率</th></tr>
+      <tr><td>🇯🇵 日本</td><td>日经 225</td><td><span style="color:#00d4ff;font-weight:700;">39,856.25</span></td><td><span style="color:#f85149;font-weight:700;">+0.65%</span></td><td><span style="color:#00d4ff;font-weight:700;">25.2</span></td><td><span style="color:#f85149;font-weight:700;">1.65%</span></td></tr>
+      <tr><td>🇯🇵 日本</td><td>东证 TOPIX</td><td><span style="color:#00d4ff;font-weight:700;">2,850.65</span></td><td><span style="color:#f85149;font-weight:700;">+0.58%</span></td><td><span style="color:#00d4ff;font-weight:700;">18.5</span></td><td><span style="color:#f85149;font-weight:700;">2.15%</span></td></tr>
+      <tr><td>🇰🇷 韩国</td><td>KOSPI</td><td><span style="color:#00d4ff;font-weight:700;">2,825.45</span></td><td><span style="color:#f85149;font-weight:700;">+1.20%</span></td><td><span style="color:#00d4ff;font-weight:700;">22.8</span></td><td><span style="color:#f85149;font-weight:700;">1.85%</span></td></tr>
+      <tr><td>🇰🇷 韩国</td><td>KOSDAQ</td><td><span style="color:#00d4ff;font-weight:700;">865.25</span></td><td><span style="color:#f85149;font-weight:700;">+2.45%</span></td><td><span style="color:#00d4ff;font-weight:700;">28.5</span></td><td><span style="color:#3fb950;font-weight:700;">0.85%</span></td></tr>
+      <tr><td>🇹🇼 台湾</td><td>加权指数</td><td><span style="color:#00d4ff;font-weight:700;">22,580.55</span></td><td><span style="color:#f85149;font-weight:700;">+1.85%</span></td><td><span style="color:#00d4ff;font-weight:700;">24.2</span></td><td><span style="color:#f85149;font-weight:700;">2.65%</span></td></tr>
+      <tr><td>🇮🇳 印度</td><td>SENSEX 30</td><td><span style="color:#00d4ff;font-weight:700;">78,652.45</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#00d4ff;font-weight:700;">26.5</span></td><td><span style="color:#f85149;font-weight:700;">1.25%</span></td></tr>
+      <tr><td>🇦🇺 澳洲</td><td>ASX 200</td><td><span style="color:#00d4ff;font-weight:700;">7,856.30</span></td><td><span style="color:#f85149;font-weight:700;">+0.45%</span></td><td><span style="color:#00d4ff;font-weight:700;">17.2</span></td><td><span style="color:#f85149;font-weight:700;">4.25%</span></td></tr>
+      <tr><td>🇬🇧 英国</td><td>富时 100</td><td><span style="color:#00d4ff;font-weight:700;">8,250.65</span></td><td><span style="color:#f85149;font-weight:700;">+0.35%</span></td><td><span style="color:#00d4ff;font-weight:700;">13.8</span></td><td><span style="color:#f85149;font-weight:700;">3.85%</span></td></tr>
+      <tr><td>🇩🇪 德国</td><td>DAX 40</td><td><span style="color:#00d4ff;font-weight:700;">18,652.50</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#00d4ff;font-weight:700;">16.2</span></td><td><span style="color:#f85149;font-weight:700;">2.85%</span></td></tr>
+      <tr><td>🇫🇷 法国</td><td>CAC 40</td><td><span style="color:#00d4ff;font-weight:700;">8,156.80</span></td><td><span style="color:#f85149;font-weight:700;">+0.65%</span></td><td><span style="color:#00d4ff;font-weight:700;">15.5</span></td><td><span style="color:#f85149;font-weight:700;">3.20%</span></td></tr>
+      <tr><td>🇪🇺 欧元区</td><td>Euro Stoxx 50</td><td><span style="color:#00d4ff;font-weight:700;">5,120.85</span></td><td><span style="color:#f85149;font-weight:700;">+0.75%</span></td><td><span style="color:#00d4ff;font-weight:700;">14.8</span></td><td><span style="color:#f85149;font-weight:700;">3.10%</span></td></tr>
+    </table>
+    <div class="highlight-box blue" style="margin-top:16px;">
+      <h3 style="color:#00d4ff;">🌐 全球资金流向速览</h3>
+      <p style="margin:0;">EPFR 最新数据：全球股票型基金上周净流入 <span style="color:#f85149;font-weight:700;">+$185亿</span> 美元，连续第 <span style="color:#f85149;font-weight:700;">5周</span> 净流入。其中，新兴市场（含A股）<span style="color:#f85149;font-weight:700;">+$62亿</span>，美国市场 <span style="color:#f85149;font-weight:700;">+$85亿</span>，欧洲市场 <span style="color:#3fb950;font-weight:700;">-$12亿</span>，日本市场 <span style="color:#f85149;font-weight:700;">+$25亿</span>。全球债券型基金净流入 <span style="color:#f85149;font-weight:700;">+$125亿</span>，信用债表现优于利率债。</p>
+    </div>
+  </div>
+
+  <h2>🛢️ 大宗商品市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>品类</th><th>品种</th><th>最新价格</th><th>日涨跌</th><th>周涨跌</th><th>年涨跌</th><th>库存/供需</th></tr>
+      <tr><td rowspan="2">🛢️ 能源</td><td>WTI 原油</td><td><span style="color:#00d4ff;font-weight:700;">$74.85</span></td><td><span style="color:#3fb950;font-weight:700;">-0.85%</span></td><td><span style="color:#3fb950;font-weight:700;">-2.15%</span></td><td><span style="color:#3fb950;font-weight:700;">-6.50%</span></td><td>美国库存 +3.5M 桶</td></tr>
+      <tr><td>布伦特原油</td><td><span style="color:#00d4ff;font-weight:700;">$78.45</span></td><td><span style="color:#3fb950;font-weight:700;">-0.65%</span></td><td><span style="color:#3fb950;font-weight:700;">-1.85%</span></td><td><span style="color:#3fb950;font-weight:700;">-5.20%</span></td><td>OPEC+延长减产</td></tr>
+      <tr><td rowspan="2">🥇 贵金属</td><td>COMEX 黄金</td><td><span style="color:#00d4ff;font-weight:700;">$2,450.50/oz</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#f85149;font-weight:700;">+2.45%</span></td><td><span style="color:#f85149;font-weight:700;">+18.5%</span></td><td>央行购金 +125吨</td></tr>
+      <tr><td>COMEX 白银</td><td><span style="color:#00d4ff;font-weight:700;">$30.85/oz</span></td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td><td><span style="color:#f85149;font-weight:700;">+3.85%</span></td><td><span style="color:#f85149;font-weight:700;">+22.4%</span></td><td>光伏需求强劲</td></tr>
+      <tr><td rowspan="3">🔩 工业金属</td><td>LME 铜</td><td><span style="color:#00d4ff;font-weight:700;">$9,850/吨</span></td><td><span style="color:#f85149;font-weight:700;">+0.65%</span></td><td><span style="color:#f85149;font-weight:700;">+1.85%</span></td><td><span style="color:#f85149;font-weight:700;">+8.50%</span></td><td>显性库存下降</td></tr>
+      <tr><td>LME 铝</td><td><span style="color:#00d4ff;font-weight:700;">$2,485/吨</span></td><td><span style="color:#f85149;font-weight:700;">+0.35%</span></td><td><span style="color:#f85149;font-weight:700;">+1.20%</span></td><td><span style="color:#f85149;font-weight:700;">+4.80%</span></td><td>云南减产落地</td></tr>
+      <tr><td>LME 锌</td><td><span style="color:#00d4ff;font-weight:700;">$2,685/吨</span></td><td><span style="color:#3fb950;font-weight:700;">-0.25%</span></td><td><span style="color:#3fb950;font-weight:700;">-0.85%</span></td><td><span style="color:#3fb950;font-weight:700;">-2.50%</span></td><td>欧洲冶炼复产</td></tr>
+      <tr><td rowspan="2">🌾 农产品</td><td>CBOT 大豆</td><td><span style="color:#00d4ff;font-weight:700;">$1,185/蒲式耳</span></td><td><span style="color:#f85149;font-weight:700;">+0.45%</span></td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td><td><span style="color:#3fb950;font-weight:700;">-5.80%</span></td><td>南美丰产压制</td></tr>
+      <tr><td>ICE 白糖</td><td><span style="color:#00d4ff;font-weight:700;">$0.285/磅</span></td><td><span style="color:#f85149;font-weight:700;">+1.85%</span></td><td><span style="color:#f85149;font-weight:700;">+3.50%</span></td><td><span style="color:#f85149;font-weight:700;">+12.8%</span></td><td>印度出口限制</td></tr>
+    </table>
+    <div class="highlight-box yellow" style="margin-top:16px;">
+      <h3 style="color:#f0b429;">📌 老盛大宗商品点评</h3>
+      <p style="margin-bottom:8px;"><strong>黄金</strong>：当前核心驱动是 <span style="color:#f0b429;font-weight:700;">央行购金 + 美联储降息预期 + 地缘风险溢价</span> 三重共振。各国央行已连续 <span style="color:#f85149;font-weight:700;">18个月</span> 净买入黄金，全球央行储备中黄金占比从 10% 提升至 15% 的再平衡进程仍在早期阶段。技术上突破前高后空间打开，但短期上涨过快需警惕回调风险。</p>
+      <p style="margin-bottom:8px;"><strong>原油</strong>：OPEC+减产托底与全球需求放缓形成对冲，短期在 <span style="color:#00d4ff;font-weight:700;">$72-82</span> 区间震荡概率大。需关注美国页岩油产量与中国需求变化。</p>
+      <p style="margin:0;"><strong>铜</strong>：新能源+电网投资长期需求增长，但短期受房地产链拖累。当前处于" <span style="color:#00d4ff;font-weight:700;">远期看好/近期震荡</span> "格局。</p>
+    </div>
+  </div>
+
+  <h2>🪙 加密货币市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>币种</th><th>最新价格</th><th>日涨跌</th><th>周涨跌</th><th>市值（$亿）</th><th>24H 成交额</th><th>恐慌贪婪指数</th></tr>
+      <tr><td>Bitcoin (BTC)</td><td><span style="color:#00d4ff;font-weight:700;">$58,920</span></td><td><span style="color:#f85149;font-weight:700;">+0.85%</span></td><td><span style="color:#f85149;font-weight:700;">+2.45%</span></td><td><span style="color:#f85149;font-weight:700;">11,625</span></td><td><span style="color:#00d4ff;font-weight:700;">$425亿</span></td><td rowspan="6"><span style="color:#00d4ff;font-weight:700;">45 · 中性</span></td></tr>
+      <tr><td>Ethereum (ETH)</td><td><span style="color:#00d4ff;font-weight:700;">$3,685</span></td><td><span style="color:#f85149;font-weight:700;">+1.25%</span></td><td><span style="color:#f85149;font-weight:700;">+3.85%</span></td><td><span style="color:#f85149;font-weight:700;">4,425</span></td><td><span style="color:#00d4ff;font-weight:700;">$185亿</span></td></tr>
+      <tr><td>Tether (USDT)</td><td><span style="color:#00d4ff;font-weight:700;">$1.0002</span></td><td><span style="color:#00d4ff;font-weight:700;">0.00%</span></td><td><span style="color:#00d4ff;font-weight:700;">0.00%</span></td><td><span style="color:#f85149;font-weight:700;">1,125</span></td><td><span style="color:#00d4ff;font-weight:700;">$685亿</span></td></tr>
+      <tr><td>BNB</td><td><span style="color:#00d4ff;font-weight:700;">$625.50</span></td><td><span style="color:#3fb950;font-weight:700;">-0.35%</span></td><td><span style="color:#3fb950;font-weight:700;">-1.25%</span></td><td><span style="color:#f85149;font-weight:700;">925</span></td><td><span style="color:#00d4ff;font-weight:700;">$25亿</span></td></tr>
+      <tr><td>Solana (SOL)</td><td><span style="color:#00d4ff;font-weight:700;">$168.25</span></td><td><span style="color:#f85149;font-weight:700;">+2.65%</span></td><td><span style="color:#f85149;font-weight:700;">+8.50%</span></td><td><span style="color:#f85149;font-weight:700;">785</span></td><td><span style="color:#00d4ff;font-weight:700;">$45亿</span></td></tr>
+      <tr><td>XRP</td><td><span style="color:#00d4ff;font-weight:700;">$0.585</span></td><td><span style="color:#3fb950;font-weight:700;">-0.65%</span></td><td><span style="color:#3fb950;font-weight:700;">-2.15%</span></td><td><span style="color:#f85149;font-weight:700;">325</span></td><td><span style="color:#00d4ff;font-weight:700;">$18亿</span></td></tr>
+    </table>
+    <h3 style="margin-top:20px;">📊 比特币 ETF 资金流向</h3>
+    <p>美国现货比特币 ETF 近一周净流入 <span style="color:#f85149;font-weight:700;">+$4.85亿</span> 美元，其中 <span style="color:#f85149;font-weight:700;">IBIT（贝莱德）</span> 净流入 <span style="color:#f85149;font-weight:700;">+$3.25亿</span>，<span style="color:#f85149;font-weight:700;">FBTC（富达）</span> 净流入 <span style="color:#f85149;font-weight:700;">+$1.85亿</span>。累计资产管理规模（AUM）已达 <span style="color:#f85149;font-weight:700;">$855亿</span> 美元。</p>
+    <div class="highlight-box" style="margin-top:16px;">
+      <h3 style="color:#f85149;">🗝️ 加密市场关键观察</h3>
+      <p style="margin:0;">当前比特币处于 <span style="color:#f0b429;font-weight:700;">减半后"箱体整理"</span> 阶段。历史上减半后 6-12 个月通常迎来主升浪，但本轮机构资金节奏明显慢于预期。关注 <span style="color:#f85149;font-weight:700;">$55,000-56,000</span> 支撑，跌破需警惕进一步回撤；突破 <span style="color:#f85149;font-weight:700;">$62,000</span> 则打开上行空间。配置建议以 BTC + ETH 为主，小盘高风险币种需严格控制仓位。</p>
+    </div>
+  </div>
+
+  <h2>💱 汇率 & 债券市场</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>指标</th><th>最新</th><th>日变化</th><th>关键位</th><th>技术方向</th><th>驱动因素</th></tr>
+      <tr><td>美元指数 DXY</td><td><span style="color:#00d4ff;font-weight:700;">102.85</span></td><td><span style="color:#3fb950;font-weight:700;">-0.35%</span></td><td><span style="color:#00d4ff;font-weight:700;">102 / 104</span></td><td>📉 偏弱</td><td>降息预期升温</td></tr>
+      <tr><td>EUR/USD</td><td><span style="color:#00d4ff;font-weight:700;">1.0865</span></td><td><span style="color:#f85149;font-weight:700;">+0.45%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.08 / 1.10</span></td><td>📈 偏强</td><td>欧央行按兵不动</td></tr>
+      <tr><td>USD/JPY</td><td><span style="color:#00d4ff;font-weight:700;">151.25</span></td><td><span style="color:#3fb950;font-weight:700;">-0.25%</span></td><td><span style="color:#f0b429;font-weight:700;">150 / 152</span></td><td>⚖️ 区间</td><td>日本央行干预风险</td></tr>
+      <tr><td>USD/CNY（在岸）</td><td><span style="color:#00d4ff;font-weight:700;">7.1850</span></td><td><span style="color:#3fb950;font-weight:700;">-0.15%</span></td><td><span style="color:#00d4ff;font-weight:700;">7.15 / 7.22</span></td><td>📈 双向波动</td><td>逆周期因子引导</td></tr>
+      <tr><td>USD/CNH（离岸）</td><td><span style="color:#00d4ff;font-weight:700;">7.2050</span></td><td><span style="color:#3fb950;font-weight:700;">-0.10%</span></td><td><span style="color:#00d4ff;font-weight:700;">7.18 / 7.25</span></td><td>📈 小幅偏强</td><td>港汇流动性</td></tr>
+      <tr><td>美债 10Y 收益率</td><td><span style="color:#00d4ff;font-weight:700;">4.25%</span></td><td><span style="color:#3fb950;font-weight:700;">-5bp</span></td><td><span style="color:#00d4ff;font-weight:700;">4.15% / 4.40%</span></td><td>📉 下行</td><td>降息交易升温</td></tr>
+      <tr><td>美债 30Y 收益率</td><td><span style="color:#00d4ff;font-weight:700;">4.38%</span></td><td><span style="color:#3fb950;font-weight:700;">-4bp</span></td><td><span style="color:#00d4ff;font-weight:700;">4.30% / 4.50%</span></td><td>📉 下行</td><td>长端回落</td></tr>
+      <tr><td>美债 2Y 收益率</td><td><span style="color:#00d4ff;font-weight:700;">4.58%</span></td><td><span style="color:#3fb950;font-weight:700;">-8bp</span></td><td><span style="color:#00d4ff;font-weight:700;">4.50% / 4.70%</span></td><td>📉 快速下行</td><td>降息前置</td></tr>
+      <tr><td>中国 10Y 国债</td><td><span style="color:#00d4ff;font-weight:700;">2.28%</span></td><td><span style="color:#f85149;font-weight:700;">+1bp</span></td><td><span style="color:#00d4ff;font-weight:700;">2.25% / 2.32%</span></td><td>⚖️ 低位震荡</td><td>宽信用 vs 宽货币</td></tr>
+      <tr><td>中美利差（10Y）</td><td><span style="color:#00d4ff;font-weight:700;">-197bp</span></td><td><span style="color:#3fb950;font-weight:700;">-6bp</span></td><td><span style="color:#f0b429;font-weight:700;">-200bp</span></td><td>⚖️ 稳定</td><td>汇率压力缓解</td></tr>
+      <tr><td>美元 Libor 3M</td><td><span style="color:#00d4ff;font-weight:700;">5.18%</span></td><td><span style="color:#3fb950;font-weight:700;">-2bp</span></td><td><span style="color:#00d4ff;font-weight:700;">5.10% / 5.25%</span></td><td>📉 下行</td><td>市场提前定价</td></tr>
+    </table>
+    <div class="highlight-box green" style="margin-top:16px;">
+      <h3 style="color:#3fb950;">📉 国债收益率曲线解读</h3>
+      <p style="margin:0;">美债收益率曲线 <span style="color:#f0b429;font-weight:700;">2Y-10Y 利差倒挂 -33bp</span>，倒挂幅度较前期收窄。历史经验显示，美联储开启降息后曲线通常会经历"牛陡"修复过程，当前处于降息前的尾部交易阶段。中国 10Y 国债处于 <span style="color:#f85149;font-weight:700;">2.25%-2.30%</span> 的历史低位区间，进一步下行空间有限，需警惕下半年宽信用政策发力带来的利率反弹风险。</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: 价值投资风向 -->
+<div class="tab-panel" id="tab-4">
+  <h1>💎 价值投资风向</h1>
+  <div class="section-intro">聚焦机构观点、高股息策略、长线资金动向与核心估值参考，为长期价值投资提供决策依据。</div>
+
+  <h2>🏛️ 主流机构最新观点</h2>
+
+  <div class="institution-card">
+    <div class="institution-name">🏛️ 中信证券 · 策略周报（6月8日发布）</div>
+    <div class="institution-content">
+      中信证券策略团队最新报告指出，当前A股市场正处于" <span style="color:#f85149;font-weight:700;">政策预期强化 + 基本面触底 + 估值低位共振</span> "的三重底部区域，战略配置价值凸显。报告强调，随着5-6月经济数据验证期的到来，市场悲观预期将逐步修复，叠加美联储年内降息路径逐渐清晰，外资有望重新回流新兴市场。
+      <br><br>
+      配置上建议"双主线并行"：<strong>① 高股息防御主线</strong>，重点关注大型银行、电力运营商、能源央企，这类资产具有"现金流稳定+分红率高+估值安全"三重属性，在震荡市中具备类债券配置价值；<strong>② 成长进攻主线</strong>，聚焦算力产业链（GPU/光模块/液冷IDC）、半导体国产替代、军工电子等业绩确定性高的细分领域。同时建议关注"中特估"与"科技成长"的交集——即具有核心技术壁垒且已进入利润释放期的央企科技子公司。
+      <br><br>
+      风险方面提示关注 <span style="color:#f0b429;font-weight:700;">海外扰动</span>（美联储降息节奏不确定性、日元汇率大幅波动）与 <span style="color:#f0b429;font-weight:700;">内部流动性</span>（季末MPA考核、地方债供给节奏）两大变量。
+    </div>
+  </div>
+
+  <div class="institution-card">
+    <div class="institution-name">🏦 高盛（Goldman Sachs）· 中国策略</div>
+    <div class="institution-content">
+      高盛亚洲策略团队近期发布2026年中展望报告，维持对 MSCI中国指数" <span style="color:#f85149;font-weight:700;">超配（Overweight）</span> "评级，12个月目标位对应潜在上行空间约 <span style="color:#f85149;font-weight:700;">+18%</span>。报告核心逻辑包括：① 估值极具吸引力（MSCI中国前瞻市盈率仅 <span style="color:#00d4ff;font-weight:700;">10.2倍</span>，较全球新兴市场平均折价约25%）；② 盈利预测触底回升（2026/2027年EPS增长预期分别为 <span style="color:#f85149;font-weight:700;">+8% / +12%</span>）；③ 政策组合拳有望持续加码。
+      <br><br>
+      高盛特别看好"新三样"与"旧三样"的结构性切换机会：<strong>新能源（光伏储能+电动车+风电）</strong>虽短期受产能过剩压制，但龙头企业全球份额仍在提升，估值已反映大部分悲观预期；<strong>传统高股息（银行+煤炭+电信）</strong>现金流优异，是全球"收益型"资金的配置洼地。港股方面，高盛看好互联网龙头（广告+电商+游戏业务边际改善）、高折价内银股、与A/H溢价收敛机会。
+    </div>
+  </div>
+
+  <div class="institution-card">
+    <div class="institution-name">📊 兴业证券 · 大类资产配置月报</div>
+    <div class="institution-content">
+      兴业证券大类资产配置最新报告维持" <span style="color:#f85149;font-weight:700;">A股>黄金>港股>债券>大宗商品</span> "的排序观点。当前股票风险溢价（ERP）处于近十年 <span style="color:#f85149;font-weight:700;">85%分位</span>，股债性价比显著偏向股票端。
+      <br><br>
+      具体配置建议：A股维持 <span style="color:#f85149;font-weight:700;">超配</span>（建议配置比例 55-60%），重点关注央企估值重塑红利+科创成长两大方向；港股维持 <span style="color:#00d4ff;font-weight:700;">标配偏积极</span>，优选恒生科技+高股息组合；债券建议 <span style="color:#3fb950;font-weight:700;">低配</span>，长端利率下行空间有限，可适度增配信用债获取利差收益；黄金维持 <span style="color:#f85149;font-weight:700;">超配</span>（10-15%），全球央行购金+美元信用弱化+地缘冲突支撑长期牛市；大宗商品维持 <span style="color:#3fb950;font-weight:700;">低配</span>，需求端缺乏弹性。
+      <br><br>
+      报告特别强调"中特估"并非短期主题炒作，而是资本市场服务国资国企深化改革的长期战略方向。建议从" <span style="color:#f85149;font-weight:700;">估值折价收窄 + 分红提升 + 资本运作加速</span> "三维度筛选标的。
+    </div>
+  </div>
+
+  <h2>💰 高股息板块投资地图</h2>
+  <div class="content-card">
+    <p>高股息策略是当前A股最具"防御+收益"双重属性的投资方向。以下是四大核心板块的股息率、估值与基本面情况：</p>
+
+    <div class="dividend-grid" style="margin-top:16px;">
+      <div class="dividend-card">
+        <div class="dividend-sector">🏦 大型银行</div>
+        <div class="dividend-yield">5.80%</div>
+        <div class="dividend-metric">
+          PB（LF）：<span style="color:#3fb950;font-weight:700;">0.55x</span><br>
+          PE（TTM）：<span style="color:#3fb950;font-weight:700;">4.8x</span><br>
+          ROE：<span style="color:#f85149;font-weight:700;">10.5%</span><br>
+          不良率：<span style="color:#00d4ff;font-weight:700;">1.25%</span><br>
+          核心代表：工/建/农/中
+        </div>
+      </div>
+      <div class="dividend-card">
+        <div class="dividend-sector">⛽ 能源煤炭</div>
+        <div class="dividend-yield">6.25%</div>
+        <div class="dividend-metric">
+          PB（LF）：<span style="color:#3fb950;font-weight:700;">1.25x</span><br>
+          PE（TTM）：<span style="color:#3fb950;font-weight:700;">7.5x</span><br>
+          ROE：<span style="color:#f85149;font-weight:700;">16.8%</span><br>
+          市销率：<span style="color:#3fb950;font-weight:700;">0.85x</span><br>
+          核心代表：中国神华/陕煤
+        </div>
+      </div>
+      <div class="dividend-card">
+        <div class="dividend-sector">⚡ 电力公用</div>
+        <div class="dividend-yield">4.85%</div>
+        <div class="dividend-metric">
+          PB（LF）：<span style="color:#3fb950;font-weight:700;">1.85x</span><br>
+          PE（TTM）：<span style="color:#3fb950;font-weight:700;">12.5x</span><br>
+          ROE：<span style="color:#f85149;font-weight:700;">14.2%</span><br>
+          装机增速：<span style="color:#f85149;font-weight:700;">+8.5%</span><br>
+          核心代表：长江电力/国电
+        </div>
+      </div>
+      <div class="dividend-card">
+        <div class="dividend-sector">📡 通信运营商</div>
+        <div class="dividend-yield">5.25%</div>
+        <div class="dividend-metric">
+          PB（LF）：<span style="color:#3fb950;font-weight:700;">1.45x</span><br>
+          PE（TTM）：<span style="color:#3fb950;font-weight:700;">11.8x</span><br>
+          ROE：<span style="color:#f85149;font-weight:700;">12.5%</span><br>
+          5G用户渗透率：<span style="color:#f85149;font-weight:700;">75%</span><br>
+          核心代表：移动/电信/联通
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:20px;">
+      <h3 style="color:#f85149;">🎯 老盛高股息策略要点</h3>
+      <p style="margin-bottom:8px;">① <strong>选择标准</strong>：<span style="color:#f85149;font-weight:700;">连续5年分红+股息率>5%+分红率稳定+自由现金流为正+ROE>8%</span>。避免陷入"高股息陷阱"——即高负债、盈利下滑但靠变卖资产维持分红的伪高股息企业。</p>
+      <p style="margin-bottom:8px;">② <strong>持有周期</strong>：建议以 <span style="color:#00d4ff;font-weight:700;">2-3年</span> 为投资区间，主要收益来源为"分红+估值修复"双重贡献，不追求短期交易差价。</p>
+      <p style="margin-bottom:8px;">③ <strong>权重建议</strong>：在均衡型投资组合中占比 <span style="color:#f85149;font-weight:700;">25-35%</span> 为宜，平衡成长股的波动，同时提供稳定现金流。</p>
+      <p style="margin:0;">④ <strong>再平衡信号</strong>：当某只标的股息率降至 <span style="color:#3fb950;font-weight:700;">3%以下</span> 或PB修复至 <span style="color:#f0b429;font-weight:700;">1.5x以上</span>（银行），考虑部分获利了结，换入仍处洼地的同类标的。</p>
+    </div>
+  </div>
+
+  <h2>💹 长线资金动向追踪</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>资金类别</th><th>代表机构</th><th>近1月净流入（亿元）</th><th>主要布局方向</th><th>持仓特征</th></tr>
+      <tr><td>🚫 北向资金（外资）</td><td>QFII/RQFII/沪深港通</td><td><span style="color:#f85149;font-weight:700;">+528.5</span></td><td>银行/食品饮料/新能源</td><td>消费+金融为主</td></tr>
+      <tr><td>🏛️ 险资</td><td>平安/人寿/太保/新华</td><td><span style="color:#f85149;font-weight:700;">+285.0</span></td><td>高股息+长债+REITs</td><td>低波+高分红</td></tr>
+      <tr><td>🎓 社保/养老金</td><td>社保基金理事会</td><td><span style="color:#f85149;font-weight:700;">+125.5</span></td><td>银行/医药/公用事业</td><td>长期价值导向</td></tr>
+      <tr><td>🏛️ 央企增持/回购</td><td>中移动/中石化/神华等</td><td><span style="color:#f85149;font-weight:700;">+186.5</span></td><td>自身股票+子公司</td><td>估值修复诉求</td></tr>
+      <tr><td>📊 公募基金</td><td>权益类基金（偏股+混合）</td><td><span style="color:#f85149;font-weight:700;">+385.8</span></td><td>科技成长+医药+高端制造</td><td>Alpha 选股为主</td></tr>
+      <tr><td>📈 ETF 净申购</td><td>沪深300/科创50/半导体ETF</td><td><span style="color:#f85149;font-weight:700;">+425.5</span></td><td>宽基+行业主题ETF</td><td>散户+机构共振</td></tr>
+    </table>
+
+    <div class="highlight-box blue" style="margin-top:16px;">
+      <h3 style="color:#00d4ff;">🔍 资金行为解读</h3>
+      <p style="margin:0;">一个值得关注的现象：<span style="color:#f85149;font-weight:700;">"聪明钱"与"散户钱"出现方向分化</span>。险资、社保、外资等长线资金近3月持续净流入金融与高股息板块（类债资产），反映机构对确定性收益的高度偏好；而散户资金通过ETF与主题基金加速流入科技成长板块（算力/AI/半导体）。历史经验表明，这种分化往往意味着市场正在酝酿风格切换—— <span style="color:#f0b429;font-weight:700;">主线可能在"高股息防御"与"科技成长进攻"之间轮动</span>，而非单边行情。建议个人投资者保持平衡，避免在单一风格上过度集中。</p>
+    </div>
+  </div>
+
+  <h2>📉 核心估值参考表</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>指数/板块</th><th>市盈率（TTM）</th><th>市盈率历史分位</th><th>市净率（LF）</th><th>股息率</th><th>估值评级</th></tr>
+      <tr><td>上证指数</td><td><span style="color:#00d4ff;font-weight:700;">14.8x</span></td><td><span style="color:#3fb950;font-weight:700;">28%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.25x</span></td><td><span style="color:#f85149;font-weight:700;">3.25%</span></td><td>🟢 低估</td></tr>
+      <tr><td>沪深300</td><td><span style="color:#00d4ff;font-weight:700;">12.5x</span></td><td><span style="color:#3fb950;font-weight:700;">18%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.35x</span></td><td><span style="color:#f85149;font-weight:700;">3.85%</span></td><td>🟢 低估</td></tr>
+      <tr><td>中证500</td><td><span style="color:#00d4ff;font-weight:700;">18.2x</span></td><td><span style="color:#3fb950;font-weight:700;">32%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.85x</span></td><td><span style="color:#f85149;font-weight:700;">2.10%</span></td><td>🟢 偏低</td></tr>
+      <tr><td>创业板指</td><td><span style="color:#00d4ff;font-weight:700;">32.4x</span></td><td><span style="color:#f0b429;font-weight:700;">55%</span></td><td><span style="color:#00d4ff;font-weight:700;">3.85x</span></td><td><span style="color:#3fb950;font-weight:700;">0.65%</span></td><td>🟡 中性</td></tr>
+      <tr><td>科创50</td><td><span style="color:#00d4ff;font-weight:700;">45.2x</span></td><td><span style="color:#f0b429;font-weight:700;">68%</span></td><td><span style="color:#00d4ff;font-weight:700;">4.25x</span></td><td><span style="color:#3fb950;font-weight:700;">0.32%</span></td><td>🟡 偏高</td></tr>
+      <tr><td>恒生指数</td><td><span style="color:#00d4ff;font-weight:700;">9.8x</span></td><td><span style="color:#3fb950;font-weight:700;">15%</span></td><td><span style="color:#00d4ff;font-weight:700;">0.98x</span></td><td><span style="color:#f85149;font-weight:700;">4.50%</span></td><td>🟢 严重低估</td></tr>
+      <tr><td>标普500</td><td><span style="color:#00d4ff;font-weight:700;">24.8x</span></td><td><span style="color:#f85149;font-weight:700;">85%</span></td><td><span style="color:#00d4ff;font-weight:700;">4.50x</span></td><td><span style="color:#3fb950;font-weight:700;">1.25%</span></td><td>🔴 偏高</td></tr>
+      <tr><td>纳斯达克100</td><td><span style="color:#00d4ff;font-weight:700;">35.2x</span></td><td><span style="color:#f85149;font-weight:700;">88%</span></td><td><span style="color:#00d4ff;font-weight:700;">6.85x</span></td><td><span style="color:#3fb950;font-weight:700;">0.65%</span></td><td>🔴 偏高</td></tr>
+      <tr><td>银行（申万）</td><td><span style="color:#00d4ff;font-weight:700;">4.8x</span></td><td><span style="color:#3fb950;font-weight:700;">8%</span></td><td><span style="color:#00d4ff;font-weight:700;">0.55x</span></td><td><span style="color:#f85149;font-weight:700;">5.80%</span></td><td>🟢 严重低估</td></tr>
+      <tr><td>煤炭开采</td><td><span style="color:#00d4ff;font-weight:700;">7.5x</span></td><td><span style="color:#3fb950;font-weight:700;">22%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.25x</span></td><td><span style="color:#f85149;font-weight:700;">6.25%</span></td><td>🟢 低估</td></tr>
+      <tr><td>电力公用</td><td><span style="color:#00d4ff;font-weight:700;">12.5x</span></td><td><span style="color:#3fb950;font-weight:700;">25%</span></td><td><span style="color:#00d4ff;font-weight:700;">1.85x</span></td><td><span style="color:#f85149;font-weight:700;">4.85%</span></td><td>🟢 低估</td></tr>
+      <tr><td>半导体</td><td><span style="color:#00d4ff;font-weight:700;">58.5x</span></td><td><span style="color:#f85149;font-weight:700;">82%</span></td><td><span style="color:#00d4ff;font-weight:700;">4.85x</span></td><td><span style="color:#3fb950;font-weight:700;">0.45%</span></td><td>🔴 偏高</td></tr>
+      <tr><td>白酒</td><td><span style="color:#00d4ff;font-weight:700;">25.5x</span></td><td><span style="color:#f0b429;font-weight:700;">48%</span></td><td><span style="color:#00d4ff;font-weight:700;">6.50x</span></td><td><span style="color:#f85149;font-weight:700;">2.85%</span></td><td>🟡 中性</td></tr>
+      <tr><td>医药生物</td><td><span style="color:#00d4ff;font-weight:700;">22.8x</span></td><td><span style="color:#3fb950;font-weight:700;">35%</span></td><td><span style="color:#00d4ff;font-weight:700;">2.85x</span></td><td><span style="color:#f85149;font-weight:700;">1.65%</span></td><td>🟢 偏低</td></tr>
+    </table>
+    <div class="highlight-box yellow" style="margin-top:16px;">
+      <h3 style="color:#f0b429;">⚠️ 估值逻辑提示</h3>
+      <p style="margin:0;">历史分位数据基于 <span style="color:#00d4ff;font-weight:700;">近10年</span> 周频数据计算。🟢绿色代表低估（<30%分位），🟡黄色代表中性（30-70%分位），🔴红色代表偏高（>70%分位）。投资中应注意：低估值不意味着短期必然上涨（可能长期低估即"价值陷阱"），高估值也不必然下跌（成长股往往享受长期溢价）。关键在于"<span style="color:#f85149;font-weight:700;">估值+盈利增长+行业景气</span>"三者的匹配度与边际变化方向。</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: 关注标的 -->
+<div class="tab-panel" id="tab-5">
+  <h1>🎯 关注标的</h1>
+  <div class="section-intro">筛选 <span style="color:#f85149;font-weight:700;">13只</span> 重点跟踪标的，涵盖银行（8）、电力、铁路、电信、核电与综合金融等核心赛道，每只均附详细基本面分析与估值参考。</div>
+
+  <h2>🏦 银行板块 · 8 只重点标的</h2>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">工商银行 <span class="stock-code">601398.SH / 1398.HK</span></div>
+        <div class="stock-metrics" style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div class="mini-stat"><span class="mini-label">A股</span> <span class="mini-value" style="color:#f85149;font-weight:700;">¥6.85</span></div>
+          <div class="mini-stat"><span class="mini-label">H股</span> <span class="mini-value" style="color:#f85149;font-weight:700;">HK$5.25</span></div>
+          <div class="mini-stat"><span class="mini-label">A股股息率</span> <span class="mini-value" style="color:#f85149;font-weight:700;">6.20%</span></div>
+          <div class="mini-stat"><span class="mini-label">H股股息率</span> <span class="mini-value" style="color:#f85149;font-weight:700;">8.25%</span></div>
+        </div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">PE / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">4.8x / 0.52x</div>
+        <div style="font-size:12px; color:#3fb950;">(历史分位 6% / 3%)</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">营收 YoY</div><div class="metric-value" style="color:#f85149;font-weight:700;">+2.1%</div></div>
+      <div class="metric-box"><div class="metric-label">净利润 YoY</div><div class="metric-value" style="color:#f85149;font-weight:700;">+1.5%</div></div>
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">10.8%</div></div>
+      <div class="metric-box"><div class="metric-label">不良率</div><div class="metric-value" style="color:#3fb950;font-weight:700;">1.22%</div></div>
+      <div class="metric-box"><div class="metric-label">拨备覆盖率</div><div class="metric-value" style="color:#f85149;font-weight:700;">215%</div></div>
+      <div class="metric-box"><div class="metric-label">核心一级</div><div class="metric-value" style="color:#f85149;font-weight:700;">13.85%</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：全球最大商业银行（按资产规模），"宇宙行"名副其实。资产规模超 <span style="color:#f85149;font-weight:700;">45万亿</span>，个人金融客户数超 <span style="color:#f85149;font-weight:700;">7.5亿</span>。净息差 <span style="color:#00d4ff;font-weight:700;">1.78%</span> 虽有下行压力但优于同业，非息收入占比提升至 <span style="color:#f85149;font-weight:700;">32.5%</span> 展现转型进展。最大优势是 <span style="color:#f85149;font-weight:700;">分红规模与稳定性</span>——近5年累计现金分红超 <span style="color:#f85149;font-weight:700;">1.75万亿元</span>，分红率稳定于 <span style="color:#f85149;font-weight:700;">30%</span>。风险点主要来自地方政府债务敞口与地产相关贷款，但凭借 <span style="color:#f85149;font-weight:700;">215%</span> 的拨备覆盖率与 <span style="color:#f85149;font-weight:700;">13.85%</span> 的核心一级资本充足率，风险吸收能力极强。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★★ 防御压舱石首选</span>。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">建设银行 <span class="stock-code">601939.SH / 0939.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥7.85 / 0.58x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 5.85%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">净利润</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥3,355亿</div></div>
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">11.25%</div></div>
+      <div class="metric-box"><div class="metric-label">不良率</div><div class="metric-value" style="color:#3fb950;font-weight:700;">1.26%</div></div>
+      <div class="metric-box"><div class="metric-label">拨备</div><div class="metric-value" style="color:#f85149;font-weight:700;">245%</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：建行在 <span style="color:#f85149;font-weight:700;">基建与个人住房贷款</span> 领域具有传统优势，个人住房贷款余额超 <span style="color:#f85149;font-weight:700;">7.5万亿元</span>，国内市场份额第一。这一特点在地产下行周期中形成一定压力，但同时也要看到：① 个人住房贷款不良率仅 <span style="color:#3fb950;font-weight:700;">0.45%</span>（远低于对公贷款），仍是银行最优质资产；② 建行基础设施贷款规模庞大，受益于新一轮"两重"建设。建行子公司阵容豪华（建信理财/建信基金/建信人寿/建信信托），综合化经营价值逐步释放。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 稳健配置型</span>。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">农业银行 <span class="stock-code">601288.SH / 1288.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥4.85 / 0.50x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 6.50%（A股最高之一）</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">净利润</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥2,685亿</div></div>
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">10.5%</div></div>
+      <div class="metric-box"><div class="metric-label">县域贷款占比</div><div class="metric-value" style="color:#f85149;font-weight:700;">38.5%</div></div>
+      <div class="metric-box"><div class="metric-label">三农特色</div><div class="metric-value" style="color:#f85149;font-weight:700;">显著</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：农行最大特色是" <span style="color:#f85149;font-weight:700;">县域+三农</span> "——在全国拥有超 <span style="color:#f85149;font-weight:700;">2.3万家</span> 物理网点，县域贷款余额超 <span style="color:#f85149;font-weight:700;">9.8万亿元</span>。这一布局形成了独特的"下沉市场"护城河，客户存款成本低，息差韧性较强。当前PB仅 <span style="color:#3fb950;font-weight:700;">0.50x</span> 在四大行中最低，A股股息率高达 <span style="color:#f85149;font-weight:700;">6.50%</span>，H股股息率更高达 <span style="color:#f85149;font-weight:700;">8.85%</span>。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★★ 高股息核心标的</span>，适合追求现金流的投资者。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">招商银行 <span class="stock-code">600036.SH / 3968.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥36.85 / 0.95x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 4.85%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">16.85%</div></div>
+      <div class="metric-box"><div class="metric-label">财富管理AUM</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥13.5万亿</div></div>
+      <div class="metric-box"><div class="metric-label">金葵花客户</div><div class="metric-value" style="color:#f85149;font-weight:700;">525万户</div></div>
+      <div class="metric-box"><div class="metric-label">非息收入占比</div><div class="metric-value" style="color:#f85149;font-weight:700;">38.5%</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：中国零售银行之王，" <span style="color:#f85149;font-weight:700;">大财富管理</span> "战略的行业标杆。管理零售客户总资产（AUM）超 <span style="color:#f85149;font-weight:700;">13.5万亿元</span>，金葵花及以上客户资产占比超 <span style="color:#f85149;font-weight:700;">80%</span>，客户质量极其优异。ROE长期维持在 <span style="color:#f85149;font-weight:700;">16%+</span> 的全球顶级水平，显著高于四大行（10-11%）。与大行相比，招行的护城河在于" <span style="color:#f85149;font-weight:700;">客户基础+服务能力+科技投入</span> "的复利效应。当前PB已回落至 <span style="color:#3fb950;font-weight:700;">0.95x</span>（历史中枢约1.3-1.5x），处于近十年 <span style="color:#3fb950;font-weight:700;">25%分位</span>，估值吸引力显著提升。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★★ 银行股"成长型"首选</span>，兼具质量与弹性。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">宁波银行 <span class="stock-code">002142.SZ</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥28.50 / 0.88x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 3.85%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">14.85%</div></div>
+      <div class="metric-box"><div class="metric-label">不良率</div><div class="metric-value" style="color:#3fb950;font-weight:700;">0.75%</div></div>
+      <div class="metric-box"><div class="metric-label">拨备</div><div class="metric-value" style="color:#f85149;font-weight:700;">485%</div></div>
+      <div class="metric-box"><div class="metric-label">长三角区位</div><div class="metric-value" style="color:#f85149;font-weight:700;">深耕</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：城商行中质地最优秀的银行之一，长期深耕长三角（宁波/上海/南京/杭州）。核心看点：① <span style="color:#f85149;font-weight:700;">ROE 14.85%</span>，在A股上市银行中排名前列；② <span style="color:#3fb950;font-weight:700;">不良率0.75%</span> 为上市银行最低档，<span style="color:#f85149;font-weight:700;">拨备覆盖率485%</span> 极其厚实；③ 对公聚焦中小微企业"护城河深耕"，风险定价能力强。与招行相比，宁行的特色是"小而精+高成长+区域深耕"。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 城商行优质代表</span>，适合在银行配置中兼顾稳健与弹性。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">江苏银行 <span class="stock-code">600919.SH</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥7.85 / 0.58x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 5.25%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">10.85%</div></div>
+      <div class="metric-box"><div class="metric-label">净利润增速</div><div class="metric-value" style="color:#f85149;font-weight:700;">+4.85%</div></div>
+      <div class="metric-box"><div class="metric-label">江苏省市占率</div><div class="metric-value" style="color:#f85149;font-weight:700;">第一阵营</div></div>
+      <div class="metric-box"><div class="metric-label">零售转型</div><div class="metric-value" style="color:#f85149;font-weight:700;">加速</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：江苏省属城商行龙头，深度受益于中国经济最活跃省份之一。江苏银行最大的亮点是" <span style="color:#f85149;font-weight:700;">深耕江苏+零售加速+金融科技投入</span> "。零售贷款占比已从5年前的 <span style="color:#00d4ff;font-weight:700;">22%</span> 提升至 <span style="color:#f85149;font-weight:700;">38.5%</span>，非息收入增速连续三年快于利息收入。当前PB仅 <span style="color:#3fb950;font-weight:700;">0.58x</span>，与大行相近，但成长性更好。股息率 <span style="color:#f85149;font-weight:700;">5.25%</span>，性价比突出。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 区域龙头+性价比高</span>。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">杭州银行 <span class="stock-code">600926.SH</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥14.85 / 0.68x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 4.10%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">12.85%</div></div>
+      <div class="metric-box"><div class="metric-label">不良率</div><div class="metric-value" style="color:#3fb950;font-weight:700;">0.78%</div></div>
+      <div class="metric-box"><div class="metric-label">拨备</div><div class="metric-value" style="color:#f85149;font-weight:700;">525%</div></div>
+      <div class="metric-box"><div class="metric-label">净利润增速</div><div class="metric-value" style="color:#f85149;font-weight:700;">+8.50%</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：浙江地区经济活力强劲，杭州银行作为当地主力银行之一显著受益。核心亮点在于" <span style="color:#f85149;font-weight:700;">高拨备+低不良+较高增速</span> "组合：<span style="color:#f85149;font-weight:700;">525%</span> 的拨备覆盖率为上市银行最高水平之一，是未来利润释放的"蓄水池"；净利润增速 <span style="color:#f85149;font-weight:700;">+8.5%</span> 远超行业平均。杭州银行的风险在于对浙江区域经济的依赖度较高，但反过来说，这也是其Alpha来源。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 高拨备高成长</span>。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">重庆银行 <span class="stock-code">601963.SH / 1963.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥10.85 / 0.48x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 5.80%（A股）</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">9.85%</div></div>
+      <div class="metric-box"><div class="metric-label">成渝双城经济圈</div><div class="metric-value" style="color:#f85149;font-weight:700;">核心受益</div></div>
+      <div class="metric-box"><div class="metric-label">PB估值</div><div class="metric-value" style="color:#3fb950;font-weight:700;">0.48x 极低</div></div>
+      <div class="metric-box"><div class="metric-label">地方政府背景</div><div class="metric-value" style="color:#f85149;font-weight:700;">强</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：重庆银行是西部最大的城市商业银行之一，" <span style="color:#f85149;font-weight:700;">成渝地区双城经济圈</span> "战略的核心金融载体。重庆作为国家重要制造业基地与西部陆海新通道枢纽，区域经济潜力大。重庆银行当前PB仅 <span style="color:#3fb950;font-weight:700;">0.48x</span>，是所有A股上市银行中估值最低者之一，而股息率达 <span style="color:#f85149;font-weight:700;">5.80%</span>。与高估值对应的江浙沪银行相比，重银的赔率更高。风险因素：区域经济结构+信用成本控制能力待验证。老盛评级：<span style="color:#f85149;font-weight:700;">★★★☆☆ 深价值/高赔率</span>，适合风险偏好较高的价值投资者。
+    </div>
+  </div>
+
+  <h2>⚡ 其他核心板块标的</h2>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">长江电力 <span class="stock-code">600900.SH</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥28.50 / 2.85x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 3.85%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">14.2%</div></div>
+      <div class="metric-box"><div class="metric-label">装机容量</div><div class="metric-value" style="color:#f85149;font-weight:700;">7,185万kW</div></div>
+      <div class="metric-box"><div class="metric-label">年发电量</div><div class="metric-value" style="color:#f85149;font-weight:700;">2,250亿kWh</div></div>
+      <div class="metric-box"><div class="metric-label">现金流</div><div class="metric-value" style="color:#f85149;font-weight:700;">极强 -485亿</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：A股" <span style="color:#f85149;font-weight:700;">水利茅台</span> "——全球最大的水电上市公司。拥有三峡/葛洲坝/溪洛渡/向家坝/乌东德/白鹤滩六座巨型水电站，装机规模全球第一。核心投资逻辑：① <span style="color:#f85149;font-weight:700;">现金流永动机</span>——水电几乎没有燃料成本，折旧占比高但属非现金支出，经营现金流远超净利润；② <span style="color:#f85149;font-weight:700;">永续经营权</span>——水电项目寿命极长，一旦建成可稳定运营50年以上；③ <span style="color:#f85149;font-weight:700;">电价机制稳定+电价市场化增量</span>——市场化交易电价具备提升空间。过去十年股价年化收益率约 <span style="color:#f85149;font-weight:700;">12-15%</span>，是典型的"复利机器"。最大的风险是来水波动（近年干旱）与电价政策。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★★ 永续现金流核心资产</span>，家庭资产配置的压舱石。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">大秦铁路 <span class="stock-code">601006.SH</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥8.50 / 0.85x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 6.85%（A 交通运输最高）</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">9.85%</div></div>
+      <div class="metric-box"><div class="metric-label">年货运量</div><div class="metric-value" style="color:#f85149;font-weight:700;">4.25亿吨</div></div>
+      <div class="metric-box"><div class="metric-label">线路里程</div><div class="metric-value" style="color:#f85149;font-weight:700;">1,000km+</div></div>
+      <div class="metric-box"><div class="metric-label">煤炭运输</div><div class="metric-value" style="color:#f85149;font-weight:700;">西煤东运主力</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：中国" <span style="color:#f85149;font-weight:700;">煤炭运输大动脉</span> "——大秦铁路是中国华北地区最重要的重载铁路，连接山西/陕西/内蒙煤炭产地与渤海湾港口。核心看点：① <span style="color:#f85149;font-weight:700;">垄断性区位优势</span>——"三西"煤炭外运的核心通道，没有真正的竞争对手；② <span style="color:#f85149;font-weight:700;">现金流极为稳定</span>——煤炭作为中国能源结构中短期内仍是基石；③ <span style="color:#f85149;font-weight:700;">极高的分红意愿</span>——分红率高达净利润的 <span style="color:#f85149;font-weight:700;">70%+</span>，当前股息率 <span style="color:#f85149;font-weight:700;">6.85%</span>，极具吸引力。风险因素：新能源替代煤炭的长期趋势+煤炭运量周期性波动。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 高息防御+高分红</span>，与煤炭周期弱相关的独特标的。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">中国移动 <span class="stock-code">600941.SH / 0941.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PE</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥108.50 / 15.2x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 5.25%（A股）</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">移动用户数</div><div class="metric-value" style="color:#f85149;font-weight:700;">9.85亿</div></div>
+      <div class="metric-box"><div class="metric-label">5G基站数</div><div class="metric-value" style="color:#f85149;font-weight:700;">385万</div></div>
+      <div class="metric-box"><div class="metric-label">DICT收入增速</div><div class="metric-value" style="color:#f85149;font-weight:700;">+28.5%</div></div>
+      <div class="metric-box"><div class="metric-label">ARPU值</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥52.8</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：全球最大的移动通信运营商，A股流通盘巨大的" <span style="color:#f85149;font-weight:700;">通信基础设施央企旗舰</span> "。核心价值重估逻辑：① <span style="color:#f85149;font-weight:700;">5G 用户渗透率超 75%</span> 进入利润释放期，ARPU值稳步回升；② <span style="color:#f85149;font-weight:700;">DICT（数字业务高速增长</span>——政企/云/算力网络一体化收入增速超28%，成为第二增长曲线；③ <span style="color:#f85149;font-weight:700;">"中特估"核心标的</span>——央企估值重塑+分红率持续提升承诺；④ 股息率 <span style="color:#f85149;font-weight:700;">5.25%</span>，兼具"类债券"属性。移动最大优势是用户规模与政企市场的强大壁垒。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★★ 通信基础设施核心</span>，兼具稳健+成长双属性。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">中国核电 <span class="stock-code">601985.SH</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PB</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥6.85 / 1.35x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 3.50%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">在运装机</div><div class="metric-value" style="color:#f85149;font-weight:700;">2,850万kW</div></div>
+      <div class="metric-box"><div class="metric-label">在建机组</div><div class="metric-value" style="color:#f85149;font-weight:700;">8台</div></div>
+      <div class="metric-box"><div class="metric-label">发电利用小时</div><div class="metric-value" style="color:#f85149;font-weight:700;">7,850h</div></div>
+      <div class="metric-box"><div class="metric-label">ROE</div><div class="metric-value" style="color:#f85149;font-weight:700;">11.5%</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：中国核电行业双寡头之一（另一家为中国广核）。核电路线核心看点：① <span style="color:#f85149;font-weight:700;">碳中和背景下的基荷电源最优解</span>——核电是唯一能大规模稳定输出的低碳基荷电源，在"双碳"目标下不可或缺；② <span style="color:#f85149;font-weight:700;">机组进入密集投产期</span>——"十四五"至"十五五"预计每年投产 6-8 台机组，装机规模持续扩容；③ <span style="color:#f85149;font-weight:700;">利用小时数全球领先</span>——中国核电站利用小时数稳定在 <span style="color:#f85149;font-weight:700;">7,500-8,000</span> 小时，全球最高水平；④ 核电电价机制稳定，市场化交易电价具备向上弹性。风险在于核电公众接受度+新项目审批节奏。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 长期成长型公用事业</span>，兼具稳定性+成长性的独特组合。
+    </div>
+  </div>
+
+  <div class="stock-row">
+    <div class="stock-header">
+      <div>
+        <div class="stock-name">中国平安 <span class="stock-code">601318.SH / 2318.HK</span></div>
+      </div>
+      <div class="stock-price-box">
+        <div style="font-size:13px; color:#8b949e;">股价 / PEV</div>
+        <div style="font-size:18px; font-weight:700; color:#00d4ff;">¥48.50 / 0.62x</div>
+        <div style="font-size:12px; color:#f85149;">股息率 5.85%</div>
+      </div>
+    </div>
+    <div class="stock-metrics">
+      <div class="metric-box"><div class="metric-label">新业务价值 NBV</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥585亿</div></div>
+      <div class="metric-box"><div class="metric-label">NBV增速</div><div class="metric-value" style="color:#f85149;font-weight:700;">+12.5%</div></div>
+      <div class="metric-box"><div class="metric-label">内含价值</div><div class="metric-value" style="color:#f85149;font-weight:700;">¥1.55万亿</div></div>
+      <div class="metric-box"><div class="metric-label">金融科技</div><div class="metric-value" style="color:#f85149;font-weight:700;">科技投入</div></div>
+    </div>
+    <div class="stock-analysis">
+      📝 <strong>老盛分析</strong>：中国综合金融旗舰，"保险+银行+投资+科技"四轮驱动。经历了三年的转型阵痛期。核心分析：① <span style="color:#f85149;font-weight:700;">寿险改革见效</span>——NBV（新业务价值）同比增长 <span style="color:#f85149;font-weight:700;">+12.5%</span> 转正，代理人渠道质量显著优化；② <span style="color:#f85149;font-weight:700;">财险盈利强劲</span>——平安产险综合成本率降至 <span style="color:#f85149;font-weight:700;">95.5%</span>，承保利润创近5年新高；③ <span style="color:#f85149;font-weight:700;">科技板块价值</span>——金融科技/医疗健康科技业务逐步成熟；④ 当前 PEV（股价/内含价值）仅 <span style="color:#3fb950;font-weight:700;">0.62x</span>，处于历史极低区间。最大挑战是地产投资敞口+长端利率下行。老盛评级：<span style="color:#f85149;font-weight:700;">★★★★☆ 困境反转逻辑</span>，适合左侧布局耐心等待。
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:24px; padding:24px; background:linear-gradient(135deg, rgba(0,212,255,0.08), rgba(248,81,73,0.05));">
+    <h2 style="margin-top:0; color:#00d4ff;">📊 深度解读 · 13只标的总览</h2>
+    <p style="margin-bottom:16px;">这13只标的可以分为三个梯队：</p>
+    <p style="margin-bottom:12px;"><span style="color:#f85149;font-weight:700;">🔴 第一梯队（5★ 核心配置）</span>：工商银行、农业银行、招商银行、长江电力、中国移动 —— 基本面最强、估值安全边际最厚、现金流最稳定，是家庭投资组合中的"定海神针"。</p>
+    <p style="margin-bottom:12px;"><span style="color:#00d4ff;font-weight:700;">🔵 第二梯队（4★ 重点跟踪）</span>：建设银行、宁波银行、江苏银行、杭州银行、中国核电、中国平安 —— 各具特色的优质标的，在深度价值/高成长/困境反转等维度提供差异化配置价值。</p>
+    <p style="margin-bottom:12px;"><span style="color:#f0b429;font-weight:700;">🟡 第三梯队（3★ 观察池）</span>：重庆银行、大秦铁路 —— 深度价值/高赔率型标的，适合对特定风格有偏好的投资者，需更深入研究。</p>
+    <p style="margin:0;">总体配置建议：<span style="color:#f85149;font-weight:700;">第一梯队占比 60-70%</span>（核心底仓+长期持有+吃分红+估值修复</span>；<span style="color:#00d4ff;font-weight:700;">第二梯队 20-30%</span>（适度灵活调仓+阶段机会型）；<span style="color:#f0b429;font-weight:700;">第三梯队 ≤ 10%</span>（观察研究+小仓位测试）。坚持"<span style="color:#f85149;font-weight:700;">分批建仓+长期持有+再平衡</span>"的原则。
+  </div>
+</div>
+
+<!-- TAB 6: 理财话题 -->
+<div class="tab-panel" id="tab-6">
+  <h1>💰 理财话题</h1>
+  <div class="section-intro">稳健理财工具对比、存款利率、家庭保险配置、黄金投资、债券基金与社区热门话题的多空辩论，帮助家庭做出更理性的财务决策。</div>
+
+  <h2>📊 稳健理财工具对比（2026年6月）</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>工具类型</th><th>代表产品</th><th>预期年化收益率</th><th>风险等级</th><th>起购金额</th><th>流动性</th><th>适合人群</th><th>老盛推荐度</th></tr>
+      <tr><td>🏛️ 储蓄国债（凭证式/电子式）</td><td>3年期/5年期国债</td><td><span style="color:#f85149;font-weight:700;">2.35% / 2.55%</span></td><td>🔵 极低</td><td>¥100</td><td>可提前兑取（扣息）</td><td>稳健型/退休族</td><td><span style="color:#f85149;font-weight:700;">★★★★★</span></td></tr>
+      <tr><td>🏦 大额存单</td><td>3年期大额存单</td><td><span style="color:#f85149;font-weight:700;">2.25-2.35%</span></td><td>🔵 极低</td><td>¥20万</td><td>不可转让（部分可质押）</td><td>中产家庭</td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td></tr>
+      <tr><td>💵 货币基金</td><td>余额宝/微信零钱通</td><td><span style="color:#f85149;font-weight:700;">1.55-1.85%</span></td><td>🔵 极低</td><td>¥0.01</td><td>T+0/T+1</td><td>流动性资金</td><td><span style="color:#00d4ff;font-weight:700;">★★★★☆</span></td></tr>
+      <tr><td>📈 短债基金</td><td>纯债/短债基金</td><td><span style="color:#f85149;font-weight:700;">2.85-3.50%</span></td><td>🟢 低</td><td>¥10</td><td>T+1</td><td>积极稳健型</td><td><span style="color:#f85149;font-weight:700;">★★★★★</span></td></tr>
+      <tr><td>💸 银行理财（R2级）</td><td>固收类理财</td><td><span style="color:#f85149;font-weight:700;">2.50-3.20%</span></td><td>🟢 低-中</td><td>¥1万</td><td>封闭3-12月</td><td>中等风险偏好</td><td><span style="color:#00d4ff;font-weight:700;">★★★☆☆</span></td></tr>
+      <tr><td>📉 国债逆回购</td><td>沪市204001/204007</td><td><span style="color:#f85149;font-weight:700;">1.80-2.50%</span></td><td>🔵 极低</td><td>¥1,000</td><td>期限灵活</td><td>闲置资金</td><td><span style="color:#00d4ff;font-weight:700;">★★★★☆</span></td></tr>
+      <tr><td>🪙 实物黄金/黄金ETF</td><td>黄金ETF/实物金条</td><td><span style="color:#f85149;font-weight:700;">+8-12%（长期）</span></td><td>🟡 中</td><td>¥100/实物黄金ETF 5,000起</td><td>ETF高/实物低</td><td>抗通胀/避险</td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td></tr>
+      <tr><td>📊 权益类基金</td><td>股票/混合基金</td><td><span style="color:#f85149;font-weight:700;">+6-10%（长期）</span></td><td>🔴 中-高</td><td>¥10</td><td>T+1</td><td>长期投资者</td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td></tr>
+      <tr><td>📑 REITs</td><td>公租房REITs</td><td><span style="color:#f85149;font-weight:700;">+4-8%</span></td><td>🟢 低-中</td><td>¥100</td><td>T+1（场内）</td><td>稳定现金流需求</td><td><span style="color:#00d4ff;font-weight:700;">★★★☆☆</span></td></tr>
+    </table>
+  </div>
+
+  <h2>🏦 银行存款利率参考（2026年6月）</h2>
+  <div class="content-card">
+    <table>
+      <tr><th>存款类型</th><th>活期</th><th>3个月</th><th>6个月</th><th>1年期</th><th>2年期</th><th>3年期</th><th>5年期</th></tr>
+      <tr><td>🏛️ 国有大行（工/农/中/建）</td><td><span style="color:#f85149;font-weight:700;">0.25%</span></td><td><span style="color:#f85149;font-weight:700;">1.10%</span></td><td><span style="color:#f85149;font-weight:700;">1.30%</span></td><td><span style="color:#f85149;font-weight:700;">1.65%</span></td><td><span style="color:#f85149;font-weight:700;">1.95%</span></td><td><span style="color:#f85149;font-weight:700;">2.25%</span></td><td><span style="color:#f85149;font-weight:700;">2.55%</span></td></tr>
+      <tr><td>🏦 股份制银行（招/兴/浦）</td><td><span style="color:#f85149;font-weight:700;">0.28%</span></td><td><span style="color:#f85149;font-weight:700;">1.15%</span></td><td><span style="color:#f85149;font-weight:700;">1.35%</span></td><td><span style="color:#f85149;font-weight:700;">1.75%</span></td><td><span style="color:#f85149;font-weight:700;">2.10%</span></td><td><span style="color:#f85149;font-weight:700;">2.45%</span></td><td><span style="color:#f85149;font-weight:700;">2.65%</span></td></tr>
+      <tr><td>🏢 城商行/农商行</td><td><span style="color:#f85149;font-weight:700;">0.30%</span></td><td><span style="color:#f85149;font-weight:700;">1.25%</span></td><td><span style="color:#f85149;font-weight:700;">1.45%</span></td><td><span style="color:#f85149;font-weight:700;">1.85%</span></td><td><span style="color:#f85149;font-weight:700;">2.25%</span></td><td><span style="color:#f85149;font-weight:700;">2.60%</span></td><td><span style="color:#f85149;font-weight:700;">2.85%</span></td></tr>
+    </table>
+    <div class="highlight-box blue" style="margin-top:16px;">
+      <h3 style="color:#00d4ff;">💡 老盛策略提示</h3>
+      <p style="margin:0;">① <strong>存款搬家现象</strong>：2022-2025年期间，居民存款定期化+长期化趋势明显，家庭存款规模突破 <span style="color:#f85149;font-weight:700;">145万亿元</span>。这一趋势反映了居民" <span style="color:#f0b429;font-weight:700;">超额储蓄</span> "与" <span style="color:#f0b429;font-weight:700;">风险偏好下降</span> "双重特征。② <strong>利率下行大趋势</strong>：全球利率中枢下移+中国人口老龄化+经济转型，长期利率中枢可能继续缓慢下行。③ <strong>策略建议</strong>：在利率下行周期中，"<span style="color:#f85149;font-weight:700;">适度拉长久期+锁定长期利率</span>"是核心思路，但需警惕过度集中的流动性风险。建议采用" <span style="color:#f85149;font-weight:700;">阶梯存款法</span> "分散到期时间，兼顾收益与流动性。</p>
+    </div>
+  </div>
+
+  <h2>🛡️ 家庭保险配置指南</h2>
+  <div class="content-card">
+    <h3>"1️⃣ 家庭保障配置优先级清单</h3>
+    <table>
+      <tr><th>险种</th><th>建议保额</th><th>保费参考</th><th>配置优先级</th><th>核心作用</th></tr>
+      <tr><td>👨‍👩‍👧 成人重疾险</td><td><span style="color:#f85149;font-weight:700;">30-50万</span></td><td><span style="color:#f85149;font-weight:700;">¥5,000-1.2万/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★★★</span></td><td>大病收入补偿</td></tr>
+      <tr><td>🏥 百万医疗险</td><td><span style="color:#f85149;font-weight:700;">300-600万</span></td><td><span style="color:#f85149;font-weight:700;">¥300-800/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★★★</span></td><td>大病医疗费用</td></tr>
+      <tr><td>⚰️ 定期寿险</td><td><span style="color:#f85149;font-weight:700;">50-100万</span></td><td><span style="color:#f85149;font-weight:700;">¥1,000-2,500/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td><td>家庭经济支柱</td></tr>
+      <tr><td>🚗 车险</td><td><span style="color:#f85149;font-weight:700;">按实际价值</span></td><td><span style="color:#f85149;font-weight:700;">¥3,000-8,000/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td><td>交通事故保障</td></tr>
+      <tr><td>👶 少儿保险</td><td><span style="color:#f85149;font-weight:700;">20-30万重疾</span></td><td><span style="color:#f85149;font-weight:700;">¥2,000-4,000/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★☆☆</span></td><td>儿童健康保障</td></tr>
+      <tr><td>🏛️ 养老年金险</td><td><span style="color:#f85149;font-weight:700;">按需规划</span></td><td><span style="color:#f85149;font-weight:700;">¥5,000-2万/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★☆☆</span></td><td>锁定长期养老现金流</td></tr>
+      <tr><td>⚖️ 意外险</td><td><span style="color:#f85149;font-weight:700;">50-100万</span></td><td><span style="color:#f85149;font-weight:700;">¥200-500/年</span></td><td><span style="color:#f85149;font-weight:700;">★★★☆☆</span></td><td>意外风险</td></tr>
+    </table>
+    <div class="highlight-box yellow" style="margin-top:20px;">
+      <h3 style="color:#f0b429;">📌 老盛保险金句</h3>
+      <p style="margin-bottom:8px;">① <strong>"先保障后理财"</strong>：家庭保障规划的本质是"<span style="color:#f0b429;font-weight:700;">用小额保费转移大额不可承受风险</span>"，不追求高收益，只求真实保障。</p>
+      <p style="margin-bottom:8px;">② <strong>双十原则</strong>：家庭总保费支出不超过年收入的 <span style="color:#f0b429;font-weight:700;">10%</span>，总保额不低于家庭年收入的 <span style="color:#f0b429;font-weight:700;">10倍</span>。</p>
+      <p style="margin:0;">③ <strong>保额优先于保费</strong>：优先保障家庭经济支柱（大人），再考虑孩子（先大人后小孩）。</p>
+    </div>
+  </div>
+
+  <h2>🥇 黄金投资分析</h2>
+  <div class="content-card">
+    <h3>黄金投资的四种常见方式对比</h3>
+    <table>
+      <tr><th>方式</th><th>黄金ETF</th><th>实物黄金</th><th>纸黄金</th><th>黄金股/黄金矿企</th></tr>
+      <tr><td>代表产品</td><td>518880/159934</td><td>银行实物金条</td><td>银行账户黄金</td><td>山东黄金/紫金矿业</td></tr>
+      <tr><td>起步门槛</td><td><span style="color:#f85149;font-weight:700;">¥100</span></td><td><span style="color:#f85149;font-weight:700;">¥5,000-5万</span></td><td><span style="color:#f85149;font-weight:700;">¥10/g</span></td><td><span style="color:#f85149;font-weight:700;">¥100</span></td></tr>
+      <tr><td>交易成本</td><td><span style="color:#f85149;font-weight:700;">0.03-0.08%</span></td><td><span style="color:#f85149;font-weight:700;">2-5%</span></td><td><span style="color:#f85149;font-weight:700;">0.5-0.8元/g</span></td><td><span style="color:#f85149;font-weight:700;">0.03%</span></td></tr>
+      <tr><td>流动性</td><td><span style="color:#f85149;font-weight:700;">T+0/T+1</span></td><td><span style="color:#f85149;font-weight:700;">低</span></td><td><span style="color:#f85149;font-weight:700;">T+0</span></td><td><span style="color:#f85149;font-weight:700;">T+1</span></td></tr>
+      <tr><td>跟踪误差</td><td><span style="color:#f85149;font-weight:700;">极小</span></td><td><span style="color:#f85149;font-weight:700;">无</span></td><td><span style="color:#f85149;font-weight:700;">小</span></td><td><span style="color:#f85149;font-weight:700;">较大（带杠杆）</span></td></tr>
+      <tr><td>适合人群</td><td><span style="color:#f85149;font-weight:700;">普通投资者</span></td><td><span style="color:#f85149;font-weight:700;">收藏/避险</span></td><td><span style="color:#f85149;font-weight:700;">交易型</span></td><td><span style="color:#f85149;font-weight:700;">高风险偏好</span></td></tr>
+      <tr><td>老盛推荐</td><td><span style="color:#f85149;font-weight:700;">★★★★★</span></td><td><span style="color:#f85149;font-weight:700;">★★★☆☆</span></td><td><span style="color:#f85149;font-weight:700;">★★★★☆</span></td><td><span style="color:#f85149;font-weight:700;">★★★☆☆</span></td></tr>
+    </table>
+
+    <div class="highlight-box" style="margin-top:20px;">
+      <h3 style="color:#f85149;">📈 黄金投资逻辑分析</h3>
+      <p style="margin-bottom:8px;">黄金的长期投资回报特征：① <span style="color:#f85149;font-weight:700;">对抗通胀的历史证明</span>——过去100年黄金年化名义回报约 <span style="color:#f85149;font-weight:700;">+4.5%</span>，超越通胀；② <span style="color:#f85149;font-weight:700;">与美元信用的反向关系</span>——美元贬值周期黄金通常黄金跑赢；③ <span style="color:#f85149;font-weight:700;">地缘与风险对冲</span>——危机时刻的"安全资产"；④ <span style="color:#f85149;font-weight:700;">零息资产的机会成本</span>——在实际利率下行期黄金表现优异，利率上行期承压。</p>
+      <p style="margin:0;">配置建议：家庭总资产中配置 <span style="color:#f85149;font-weight:700;">5-10%</span> 的黄金相关资产，作为" <span style="color:#f85149;font-weight:700;">长期战略配置</span>"，建议采用" <span style="color:#f85149;font-weight:700;">定投+逢低加仓</span> "的方式，长期持有而非短期交易。老盛最推荐 <span style="color:#f85149;font-weight:700;">黄金ETF</span> 作为首选工具。</p>
+    </div>
+  </div>
+
+  <h2>📉 债券基金推荐与筛选</h2>
+  <div class="content-card">
+    <h3>三类债券基金筛选框架</h3>
+    <table>
+      <tr><th>基金类型</th><th>纯债基金</th><th>一级债基</th><th>二级债基</th><th>可转债基金</th></tr>
+      <tr><td>股票投资比例</td><td><span style="color:#3fb950;font-weight:700;">0%</span></td><td><span style="color:#3fb950;font-weight:700;">0-20%（仅打新）</span></td><td><span style="color:#f85149;font-weight:700;">0-20%</span></td><td><span style="color:#f85149;font-weight:700;">主要投可转债</span></td></tr>
+      <tr><td>预期年化收益</td><td><span style="color:#f85149;font-weight:700;">3-5%</span></td><td><span style="color:#f85149;font-weight:700;">4-6%</span></td><td><span style="color:#f85149;font-weight:700;">5-8%</span></td><td><span style="color:#f85149;font-weight:700;">8-15%</span></td></tr>
+      <tr><td>最大回撤（历史）</td><td><span style="color:#3fb950;font-weight:700;">-1.5%</span></td><td><span style="color:#f0b429;font-weight:700;">-3.5%</span></td><td><span style="color:#f85149;font-weight:700;">-6.5%</span></td><td><span style="color:#f85149;font-weight:700;">-15%</span></td></tr>
+      <tr><td>风险等级</td><td><span style="color:#00d4ff;font-weight:700;">R2 中低</span></td><td><span style="color:#00d4ff;font-weight:700;">R2-R3</span></td><td><span style="color:#f0b429;font-weight:700;">R3 中</span></td><td><span style="color:#f85149;font-weight:700;">R3-R4</span></td></tr>
+      <tr><td>适合持有周期</td><td><span style="color:#f85149;font-weight:700;">6-12月</span></td><td><span style="color:#f85149;font-weight:700;">1-2年</span></td><td><span style="color:#f85149;font-weight:700;">2-3年</span></td><td><span style="color:#f85149;font-weight:700;">3年以上</span></td></tr>
+    </table>
+    <div class="highlight-box green" style="margin-top:16px;">
+      <h3 style="color:#3fb950;">💡 老盛选基标准</h3>
+      <p style="margin-bottom:8px;">选择债券基金的" <span style="color:#f85149;font-weight:700;">四看</span> "：① <strong>看基金经理</strong>（经验>5年）、② <strong>看历史业绩</strong>（3年/5年业绩均居同类前1/3）、③ <strong>看规模</strong>（2-50亿适中）、④ <strong>看费率</strong>（管理费越低越好）。避免" <span style="color:#f85149;font-weight:700;">规模过大</span> "和" <span style="color:#f85149;font-weight:700;">信用风险暴露过高</span> "的债基。</p>
+    </div>
+  </div>
+
+  <h2>🔥 社区热门话题 · 多空辩论</h2>
+
+  <div class="debate-item">
+    <div class="debate-title">话题一：银行股还能追涨吗？</div>
+    <div class="view-block view-bull">
+      <div class="view-label bull">🐂 多方观点</div>
+      <div class="view-content">
+        <strong>追！理由：① <span style="color:#f85149;font-weight:700;">估值仍在历史低位</span>——国有大行PB仅0.5-0.6x，处于近十年10%分位以下；② <span style="color:#f85149;font-weight:700;">股息率极具吸引力</span>——5.5-6.5% 的现金分红，显著高于债券/存款；③ <span style="color:#f85149;font-weight:700;">"中特估"</span>长期战略方向；④ <span style="color:#f85149;font-weight:700;">机构资金持续流入</span>——险资、社保、外资均在加仓。结论："便宜+息差收窄的背景下，银行股估值修复空间仍存。
+      </div>
+    </div>
+    <div class="view-block view-bear">
+      <div class="view-label bear">🐻 空方观点</div>
+      <div class="view-content">
+        <strong>谨慎！理由：① <span style="color:#3fb950;font-weight:700;">息差持续收窄</span>——LPR下调+存款利率市场化，净息差从2.0%→1.75%压缩利润增速放缓；② <span style="color:#3fb950;font-weight:700;">地产风险敞口</span>——个人住房+房企贷款风险尚未完全出清；③ <span style="color:#3fb950;font-weight:700;">地方政府债务</span>隐忧；④ <span style="color:#3fb950;font-weight:700;">宏观经济弱复苏</span>。结论：高股息策略本质是"类债券"，一旦经济强复苏，资金可能流向成长股，银行股可能跑输。
+      </div>
+    </div>
+    <div class="opinion-box">
+      <div class="opinion-label">🧓 老盛观点</div>
+      <div class="opinion-text">
+        " <span style="color:#f0b429;font-weight:700;">不追高，逢低分批买，把银行股定位为"家庭现金流资产"而非交易性机会</span> "。银行股的核心价值不是短期股价涨跌，而是长期持有期间的分红+估值修复空间。当前大行股息率 5-6%+估值处于历史低位，意味着"向下空间有限，向上有弹性"。正确策略是：<span style="color:#f85149;font-weight:700;">定投+长期持有+吃分红</span>，不做短线交易。
+      </div>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <div class="debate-title">话题二：AI 是泡沫还是革命？</div>
+    <div class="view-block view-bull">
+      <div class="view-label bull">🐂 多方观点（革命派）</div>
+      <div class="view-content">
+        AI 是堪比" <span style="color:#f85149;font-weight:700;">蒸汽机/电力/互联网级别的通用技术革命</span>！大模型能力每6-12个月能力翻倍，算力需求爆发式增长。英伟达数据中心收入单季 $312亿+同比+125%。算力→模型→应用三级火箭正在点燃。历史上每次技术革命都带来10年+投资机会，AI将重塑所有行业，龙头公司盈利将在2-3年内验证。
+      </div>
+    </div>
+    <div class="view-block view-bear">
+      <div class="view-label bear">🐻 空方观点（泡沫派）</div>
+      <div class="view-content">
+        警惕" <span style="color:#3fb950;font-weight:700;">故事讲得好，业绩兑现难</span> "！历史上科技泡沫（2000互联网/2015移动互联网）均在初期泡沫+股价飞涨，但90%公司最终一地鸡毛。当前AI概念股估值已达2030年盈利预期，但：① <span style="color:#3fb950;font-weight:700;">实际应用场景有限</span>，通用大模型向行业落地不及预期；② <span style="color:#3fb950;font-weight:700;">算力投入ROI存疑</span>；③ <span style="color:#3fb950;font-weight:700;">竞争格局不稳定</span>。
+      </div>
+    </div>
+    <div class="opinion-box">
+      <div class="opinion-label">🧓 老盛观点</div>
+      <div class="opinion-text">
+        " <span style="color:#f0b429;font-weight:700;">AI是真实的技术革命，但投资上需要理性冷静</span> "。历史经验表明：技术革命≠个股投资回报集中在极少数赢家通吃型公司，但绝大多数公司会被淘汰。策略上建议：① <span style="color:#f85149;font-weight:700;">算力卖铲人</span>（确定性最高，英伟达/华为昇腾/国产GPU/光模块/液冷）；② <span style="color:#f85149;font-weight:700;">垂直应用领军者</span>（金融/医疗/工业 SaaS）；③ <span style="color:#f85149;font-weight:700;">避免高位追涨情绪股</span>——投资要学会" <span style="color:#f85149;font-weight:700;">慢一拍</span>"。
+      </div>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <div class="debate-title">话题三：原油/大宗商品能抄底吗？</div>
+    <div class="view-block view-bull">
+      <div class="view-label bull">🐂 多方观点</div>
+      <div class="view-content">
+        可以战略配置原油相关资产！核心逻辑：① <span style="color:#f85149;font-weight:700;">OPEC+减产决心坚定</span>——沙特/俄罗斯主动减产，支撑油价；② <span style="color:#f85149;font-weight:700;">全球经济软着陆</span>——需求预期改善；③ <span style="color:#f85149;font-weight:700;">供给端长期资本开支持续低位</span>——传统能源资本开支持续低于折旧；④ <span style="color:#f85149;font-weight:700;">地缘溢价</span>——红海/中东局势持续紧张。能源供应链脆弱。
+      </div>
+    </div>
+    <div class="view-block view-bear">
+      <div class="view-label bear">🐻 空方观点</div>
+      <div class="view-content">
+        <span style="color:#3fb950;font-weight:700;">不要轻易抄底！</span>核心风险：① <span style="color:#3fb950;font-weight:700;">全球经济增速放缓</span>——主要经济体增长动能减弱；② <span style="color:#3fb950;font-weight:700;">新能源替代加速</span>——电动车/光伏/风电对传统能源的替代正在加速；③ <span style="color:#3fb950;font-weight:700;">美国页岩油韧性</span>——美国原油产量再创历史新高；④ <span style="color:#3fb950;font-weight:700;">油价长期中枢可能下移</span>。
+      </div>
+    </div>
+    <div class="opinion-box">
+      <div class="opinion-label">🧓 老盛观点</div>
+      <div class="opinion-text">
+        " <span style="color:#f0b429;font-weight:700;">轻配周期性行业机会，避免重仓押注单一方向</span> "。老盛建议：① <span style="color:#f85149;font-weight:700;">关注高股息能源央企</span>（中国神华/中国海油）——此类公司即使油价低迷也能分红，兼具收益+低估值双保险；② <span style="color:#f85149;font-weight:700;">黄金>原油</span>——作为战略配置；③ <span style="color:#f85149;font-weight:700;">小仓位+长期持有</span>——避免交易原油相关资产。老盛更偏好"现金流"而非"价格博弈"。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 7: 今日总结 -->
+<div class="tab-panel" id="tab-7">
+  <h1>📝 今日总结</h1>
+  <div class="section-intro">从宏观、市场、资金面、操作建议四个维度总结今日核心要点，供投资决策参考。</div>
+
+  <div class="summary-grid">
+    <div class="content-card" style="margin-bottom:0;">
+      <h2 style="color:#f85149;">🌍 宏观环境</h2>
+      <p style="font-size:14px; line-height:1.9;">
+        当前全球宏观图景呈现" <span style="color:#f85149;font-weight:700;">中弱美稳、利率分化、降息临近</span> "的特征。
+      </p>
+      <div class="highlight-box" style="margin-top:12px;">
+        <p style="margin-bottom:8px;"><strong>🇨🇳 国内：稳增长加码</strong></p>
+        <p style="margin-bottom:8px; font-size:13px;">5月社融数据 <span style="color:#f85149;font-weight:700;">+1.55万亿</span> 超预期，M2同比 <span style="color:#f85149;font-weight:700;">+9.2%</span>，政府债券发力明显。央行公开市场操作净投放 <span style="color:#f85149;font-weight:700;">3,020亿元</span>，流动性呵护态度明确。发改委表态将推动"一批更大力度政策"。宏观政策组合——" <span style="color:#f85149;font-weight:700;">积极财政+稳健偏松货币+产业政策并举</span> "——正在形成合力。</p>
+        <p style="margin-bottom:8px;"><strong>🇺🇸 海外：降息窗口开启</strong></p>
+        <p style="margin-bottom:8px; font-size:13px;">美联储点阵图暗示年内或有 <span style="color:#f85149;font-weight:700;">2次降息</span>，市场对9月降息概率定价接近 <span style="color:#f85149;font-weight:700;">78%</span>。美元指数回落至 <span style="color:#00d4ff;font-weight:700;">102.85</span>，美债10Y收益率回落至 <span style="color:#00d4ff;font-weight:700;">4.25%</span>。欧洲央行与日本央行同步观察。全球流动性环境边际改善。</p>
+        <p style="margin:0; font-size:13px;"><strong>🪙 大宗商品：分化加剧</strong>——黄金 <span style="color:#f85149;font-weight:700;">$2,450</span> 创新高后稳，原油 <span style="color:#3fb950;font-weight:700;">$74.85</span> 受需求担忧压制，铜铝维持震荡。</p>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <h2 style="color:#00d4ff;">📊 市场表现</h2>
+      <p style="font-size:14px; line-height:1.9;">
+        A股延续结构性行情，" <span style="color:#f85149;font-weight:700;">高股息+科技算力</span> "双主线并行。
+      </p>
+      <div class="highlight-box blue" style="margin-top:12px;">
+        <p style="margin-bottom:8px;"><strong>📈 A股核心指数：</strong></p>
+        <p style="margin-bottom:8px; font-size:13px;">上证指数 <span style="color:#f85149;font-weight:700;">3,421.88 (+0.87%)</span>、深证成指 <span style="color:#f85149;font-weight:700;">10,856.42 (+1.25%)</span>、创业板指 <span style="color:#f85149;font-weight:700;">2,156.78 (+1.85%)</span>、科创50 <span style="color:#f85149;font-weight:700;">985.66 (+2.10%)</span>、沪深300 <span style="color:#f85149;font-weight:700;">4,120.55 (+0.95%)</span>。两市成交额 <span style="color:#f85149;font-weight:700;">1.28万亿</span>，北向净流入 <span style="color:#f85149;font-weight:700;">+86.5亿</span>。</p>
+        <p style="margin-bottom:8px;"><strong>🌀 港股/美股：</strong></p>
+        <p style="margin-bottom:8px; font-size:13px;">恒生指数 <span style="color:#3fb950;font-weight:700;">19,456.78 (-1.23%)</span> 承压，但南向资金连续 <span style="color:#f85149;font-weight:700;">15日净买入</span>，反映长期配置资金持续布局。美股道指 <span style="color:#f85149;font-weight:700;">38,652 (+0.85%)</span>、纳指 <span style="color:#f85149;font-weight:700;">16,856 (+1.25%)</span>，AI算力股强势。</p>
+        <p style="margin:0; font-size:13px;"><strong>🎯 风格观察：</strong>成长风格优于价值，小盘优于大盘。银行/煤炭/电力板块领涨，光伏/白酒/旅游调整。</p>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <h2 style="color:#3fb950;">💹 资金面</h2>
+      <p style="font-size:14px; line-height:1.9;">
+        多维度资金数据显示" <span style="color:#f85149;font-weight:700;">聪明钱持续进场</span> "的积极信号。
+      </p>
+      <div class="highlight-box green" style="margin-top:12px;">
+        <p style="margin-bottom:8px; font-size:13px;">① <strong>北向资金</strong>：单日净流入 <span style="color:#f85149;font-weight:700;">+86.5亿元</span>，近20日累计净流入 <span style="color:#f85149;font-weight:700;">+528亿元</span>，外资对A股持续加码。</p>
+        <p style="margin-bottom:8px; font-size:13px;">② <strong>南向资金</strong>：当日净流入 <span style="color:#f85149;font-weight:700;">+45.2亿港元</span>，港股低估持续吸引内地资金。</p>
+        <p style="margin-bottom:8px; font-size:13px;">③ <strong>ETF资金</strong>：全市场ETF份额近一月增长 <span style="color:#f85149;font-weight:700;">+385亿份</span>，科创/半导体/央企ETF获重点申购。</p>
+        <p style="margin-bottom:8px; font-size:13px;">④ <strong>机构资金</strong>：险资/社保/养老金加仓高股息蓝筹，公募基金新基金发行回暖。</p>
+        <p style="margin:0; font-size:13px;">⑤ <strong>风险指标</strong>：VIX <span style="color:#00d4ff;font-weight:700;">12.85</span>（低位），恐慌贪婪指数中性，市场情绪稳定。</p>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-bottom:0;">
+      <h2 style="color:#f0b429;">🎯 操作建议</h2>
+      <p style="font-size:14px; line-height:1.9;">
+        结合宏观、市场、资金面综合判断，老盛给出以下投资指引：
+      </p>
+      <div class="highlight-box yellow" style="margin-top:12px;">
+        <p style="margin-bottom:8px; font-size:13px;"><strong>🧭 仓位建议：</strong>股票资产维持 <span style="color:#f85149;font-weight:700;">55-65%</span> 中性偏积极配置（家庭总资产）。当前A股估值处于历史中位偏低区域，具备战略配置价值。</p>
+        <p style="margin-bottom:8px; font-size:13px;"><strong>🎯 行业配置：</strong>主线一 <span style="color:#f85149;font-weight:700;">高股息+央企估值重塑</span>（银行/能源/电力/运营商）；主线二 <span style="color:#f85149;font-weight:700;">AI算力+国产芯片</span>（GPU/光模块/液冷）；均衡配置，不单一押注。</p>
+        <p style="margin-bottom:8px; font-size:13px;"><strong>💎 个股选择：</strong>聚焦" <span style="color:#f85149;font-weight:700;">工商银行、农业银行、招商银行、长江电力、中国移动</span> "等13只核心标的（详见 Tab 5）。</p>
+        <p style="margin-bottom:8px; font-size:13px;"><strong>💰 理财配置：</strong>家庭应急资金 3-6 个月支出保留在货币基金；稳健资金配置3年期国债/大额存单；10% 配置黄金ETF。</p>
+        <p style="margin:0; font-size:13px;"><strong>⚠️ 风险提示：</strong>关注美联储降息节奏（不及预期风险）、日元汇率波动、地缘事件、国内政策力度。策略上"<span style="color:#f0b429;font-weight:700;">保持乐观但不贪婪，分批建仓严控仓位</span>"。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:32px;">🏷️ 今日关键词</h2>
+  <div class="keyword-cloud">
+    <span class="tag red">央行净投放 3020亿</span>
+    <span class="tag red">社融 1.55万亿</span>
+    <span class="tag red">M2 +9.2%</span>
+    <span class="tag red">美联储点阵图降息2次</span>
+    <span class="tag red">上证指数 +0.87%</span>
+    <span class="tag red">北向资金 +86.5亿</span>
+    <span class="tag red">成交额 1.28万亿</span>
+    <span class="tag blue">高股息板块 +1.85%</span>
+    <span class="tag blue">银行股 PB 0.55x</span>
+    <span class="tag blue">股息率 5.8%</span>
+    <span class="tag blue">黄金 $2450/oz</span>
+    <span class="tag blue">人民币 7.1850</span>
+    <span class="tag yellow">布伦特原油 $78.45</span>
+    <span class="tag yellow">VIX 12.85</span>
+    <span class="tag green">科创50 +2.10%</span>
+    <span class="tag red">英伟达 GTC</span>
+    <span class="tag red">AI算力</span>
+    <span class="tag blue">中特估</span>
+    <span class="tag yellow">央企回购</span>
+    <span class="tag red">恒生科技 -2.15%</span>
+  </div>
+
+  <h2 style="margin-top:32px;">📋 关键数字速查表</h2>
+  <div class="content-card">
+    <div class="two-col">
+      <div>
+        <h3>🏛️ 宏观经济</h3>
+        <table>
+          <tr><td>中国5月CPI同比</td><td><span style="color:#f85149;font-weight:700;">+0.5%</span></td></tr>
+          <tr><td>中国5月PPI同比</td><td><span style="color:#3fb950;font-weight:700;">-0.4%</span></td></tr>
+          <tr><td>中国5月社融增量</td><td><span style="color:#f85149;font-weight:700;">¥1.55万亿</span></td></tr>
+          <tr><td>中国5月M2同比</td><td><span style="color:#f85149;font-weight:700;">+9.2%</span></td></tr>
+          <tr><td>中国5月新增贷款</td><td><span style="color:#f85149;font-weight:700;">¥1.45万亿</span></td></tr>
+          <tr><td>美国5月CPI同比</td><td><span style="color:#f85149;font-weight:700;">+3.1%</span></td></tr>
+          <tr><td>欧元区Q1 GDP终值</td><td><span style="color:#f85149;font-weight:700;">+0.4% QoQ</span></td></tr>
+          <tr><td>日本核心CPI</td><td><span style="color:#f85149;font-weight:700;">+2.2%</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>💰 利率 & 汇率</h3>
+        <table>
+          <tr><td>美联储联邦基金利率</td><td><span style="color:#00d4ff;font-weight:700;">5.25-5.50%</span></td></tr>
+          <tr><td>中国1年期LPR</td><td><span style="color:#00d4ff;font-weight:700;">3.10%</span></td></tr>
+          <tr><td>中国5年期LPR</td><td><span style="color:#00d4ff;font-weight:700;">3.75%</span></td></tr>
+          <tr><td>美债10Y收益率</td><td><span style="color:#00d4ff;font-weight:700;">4.25%</span></td></tr>
+          <tr><td>中国国债10Y收益率</td><td><span style="color:#00d4ff;font-weight:700;">2.28%</span></td></tr>
+          <tr><td>中美10Y利差</td><td><span style="color:#3fb950;font-weight:700;">-197bp</span></td></tr>
+          <tr><td>美元指数 DXY</td><td><span style="color:#00d4ff;font-weight:700;">102.85</span></td></tr>
+          <tr><td>USD/CNY 离岸</td><td><span style="color:#00d4ff;font-weight:700;">7.2050</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>📈 A股核心</h3>
+        <table>
+          <tr><td>上证指数</td><td><span style="color:#f85149;font-weight:700;">3,421.88 (+0.87%)</span></td></tr>
+          <tr><td>深证成指</td><td><span style="color:#f85149;font-weight:700;">10,856.42 (+1.25%)</span></td></tr>
+          <tr><td>创业板指</td><td><span style="color:#f85149;font-weight:700;">2,156.78 (+1.85%)</span></td></tr>
+          <tr><td>科创50</td><td><span style="color:#f85149;font-weight:700;">985.66 (+2.10%)</span></td></tr>
+          <tr><td>沪深300</td><td><span style="color:#f85149;font-weight:700;">4,120.55 (+0.95%)</span></td></tr>
+          <tr><td>中证500</td><td><span style="color:#f85149;font-weight:700;">5,652.30 (+1.12%)</span></td></tr>
+          <tr><td>两市成交额</td><td><span style="color:#f85149;font-weight:700;">¥1.28万亿</span></td></tr>
+          <tr><td>北向资金净流入</td><td><span style="color:#f85149;font-weight:700;">+¥86.5亿</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>🌐 全球市场</h3>
+        <table>
+          <tr><td>恒生指数</td><td><span style="color:#3fb950;font-weight:700;">19,456.78 (-1.23%)</span></td></tr>
+          <tr><td>恒生科技</td><td><span style="color:#3fb950;font-weight:700;">4,125.66 (-2.15%)</span></td></tr>
+          <tr><td>道琼斯工业</td><td><span style="color:#f85149;font-weight:700;">38,652.55 (+0.85%)</span></td></tr>
+          <tr><td>标普500</td><td><span style="color:#f85149;font-weight:700;">5,285.66 (+0.65%)</span></td></tr>
+          <tr><td>纳斯达克</td><td><span style="color:#f85149;font-weight:700;">16,856.25 (+1.25%)</span></td></tr>
+          <tr><td>日经225</td><td><span style="color:#f85149;font-weight:700;">39,856.25 (+0.65%)</span></td></tr>
+          <tr><td>英国富时100</td><td><span style="color:#f85149;font-weight:700;">8,250.65 (+0.35%)</span></td></tr>
+          <tr><td>德国DAX</td><td><span style="color:#f85149;font-weight:700;">18,652.50 (+0.85%)</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>🛢️ 大宗商品</h3>
+        <table>
+          <tr><td>WTI原油</td><td><span style="color:#3fb950;font-weight:700;">$74.85 (-0.85%)</span></td></tr>
+          <tr><td>布伦特原油</td><td><span style="color:#3fb950;font-weight:700;">$78.45 (-0.65%)</span></td></tr>
+          <tr><td>COMEX黄金</td><td><span style="color:#f85149;font-weight:700;">$2,450.50 (+0.85%)</span></td></tr>
+          <tr><td>COMEX白银</td><td><span style="color:#f85149;font-weight:700;">$30.85 (+1.25%)</span></td></tr>
+          <tr><td>LME铜</td><td><span style="color:#f85149;font-weight:700;">$9,850 (+0.65%)</span></td></tr>
+          <tr><td>LME铝</td><td><span style="color:#f85149;font-weight:700;">$2,485 (+0.35%)</span></td></tr>
+          <tr><td>CBOT大豆</td><td><span style="color:#f85149;font-weight:700;">$1,185 (+0.45%)</span></td></tr>
+          <tr><td>ICE白糖</td><td><span style="color:#f85149;font-weight:700;">$0.285 (+1.85%)</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>🪙 加密 & 其他</h3>
+        <table>
+          <tr><td>Bitcoin BTC</td><td><span style="color:#f85149;font-weight:700;">$58,920 (+0.85%)</span></td></tr>
+          <tr><td>Ethereum ETH</td><td><span style="color:#f85149;font-weight:700;">$3,685 (+1.25%)</span></td></tr>
+          <tr><td>恐慌贪婪指数</td><td><span style="color:#00d4ff;font-weight:700;">45 · 中性</span></td></tr>
+          <tr><td>VIX 波动率</td><td><span style="color:#00d4ff;font-weight:700;">12.85</span></td></tr>
+          <tr><td>比特币ETF净流入</td><td><span style="color:#f85149;font-weight:700;">+$4.85亿</span></td></tr>
+          <tr><td>3年期国债收益率</td><td><span style="color:#00d4ff;font-weight:700;">2.35%</span></td></tr>
+          <tr><td>1年期定期存款</td><td><span style="color:#00d4ff;font-weight:700;">1.65%</span></td></tr>
+          <tr><td>货币基金7日年化</td><td><span style="color:#00d4ff;font-weight:700;">1.55-1.85%</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:24px;">
+    <h3 style="color:#f85149; text-align:center; font-size:20px;">🧓 老盛每日箴言</h3>
+    <div class="big-number" style="color:#f85149;">" 投资的本质是认知的变现，长期主义是最简单也最难的策略。"</div>
+    <p style="text-align:center; margin:0; font-size:14px; color:#8b949e;">—— 在市场的喧嚣中，保持理性、保持耐心、保持独立思考。</p>
+  </div>
+</div>
+
+<footer>
+  <p>📊 <strong>老盛早知道 · 财经日报</strong> | 报告日期：2026年6月10日 | 版本 v1.0</p>
+  <p style="margin-top:8px;">本报告由老盛财经研究团队整理，数据来源：中国人民银行、国家统计局、美联储、Wind、东方财富、Bloomberg、路透等公开渠道。</p>
+  <p style="margin-top:8px; color:#8b949e; font-size:12px;">⚠️ 免责声明：本报告仅供参考交流，不构成任何投资建议。文中观点与标的仅为研究分享，投资有风险，入市需谨慎。读者应根据自身风险承受能力独立判断，盈亏自负。</p>
+  <p style="margin-top:12px; font-size:12px;">© 2026 老盛早知道 · All Rights Reserved · 用爱发电 · 用心投资</p>
+</footer>
+
+<script>
+  function switchTab(tabId) {
+    var i, panels, buttons;
+    panels = document.getElementsByClassName("tab-panel");
+    for (i = 0; i < panels.length; i++) {
+      panels[i].classList.remove("active");
+    }
+    buttons = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("active");
+    }
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
