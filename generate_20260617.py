@@ -289,32 +289,64 @@ replacements["{{市场情绪_北向资金}}"] = "+36.7亿"
 replacements["{{机构1_名称}}"] = "中信证券"
 replacements["{{机构1_简称}}"] = "中信"
 replacements["{{机构1_标签}}"] = "增持A股"
-replacements["{{机构1_观点}}"] = "当前A股处于估值修复与盈利改善的双重驱动期。建议关注AI算力产业链、高股息板块、政策受益方向三条主线"
+replacements["{{机构1_观点}}"] = """中信证券最新策略报告指出，当前A股处于<span style=\"color:#f85149;font-weight:700\">估值修复与盈利改善</span>的双重驱动期。建议重点关注三条主线：<br>
+1）AI算力产业链：PCB/光模块/芯片环节景气持续，中际旭创、沪电股份等龙头业绩超预期；<br>
+2）高股息板块：银行/电力/能源标的股息率<span style=\"color:#f85149;font-weight:700\">5.5-7.2%</span>，显著优于固收产品；<br>
+3）政策受益方向：国企改革+六张网建设受益标的，盈利弹性较大。<br>
+目标指数位：上证综指<span style=\"color:#f85149;font-weight:700\">4500点</span>，沪深300 <span style=\"color:#f85149;font-weight:700\">5200点</span>。"""
 
 replacements["{{机构2_名称}}"] = "高盛"
 replacements["{{机构2_简称}}"] = "GS"
 replacements["{{机构2_标签}}"] = "买入评级"
-replacements["{{机构2_观点}}"] = "维持对A股<span style=\"color:#f85149;font-weight:700\">增持</span>评级。中国经济复苏态势明确，企业盈利改善预期支撑市场上行"
+replacements["{{机构2_观点}}"] = """高盛亚太首席策略分析师团队维持对A股<span style=\"color:#f85149;font-weight:700\">增持</span>评级，对沪深300指数目标位上调至<span style=\"color:#f85149;font-weight:700\">5200点</span>。主要逻辑：<br>
+📌 中国经济复苏态势明确，5月制造业PMI重回扩张区间；<br>
+📌 A股盈利预期改善，2026年上半年业绩增速预期<span style=\"color:#f85149;font-weight:700\">+5-8%</span>；<br>
+📌 估值水平处于历史低位，沪深300 PB仅<span style=\"color:#3fb950;font-weight:700\">1.28x</span>，PE仅12.8x；<br>
+📌 外资配置比例提升空间大，当前全球主动型基金对A股超配比例仍偏低。<br>
+建议超配方向：科技（AI/半导体）、消费（白酒/免税）、高股息（银行/能源）。"""
 
 replacements["{{机构3_名称}}"] = "兴业证券"
 replacements["{{机构3_简称}}"] = "兴业"
 replacements["{{机构3_标签}}"] = "谨慎乐观"
-replacements["{{机构3_观点}}"] = "市场处于<span style=\"color:#f0b429;font-weight:700\">震荡上行</span>阶段，结构性机会突出。AI算力仍是主线"
+replacements["{{机构3_观点}}"] = """兴业证券王德伦团队认为，当前市场处于<span style=\"color:#f0b429;font-weight:700\">震荡上行</span>阶段，结构性机会突出。核心判断：<br>
+1）资金面：北向资金连续4日净流入（合计<span style=\"color:#f85149;font-weight:700\">+150亿</span>），主力资金活跃，两融余额突破1.52万亿；<br>
+2）情绪面：两市成交额<span style=\"color:#f85149;font-weight:700\">3.09万亿</span>，涨停超100只，赚钱效应改善；<br>
+3）主线判断：AI算力仍是核心主线，但估值波动可能加大，建议关注业绩兑现能力；<br>
+4）风险点：短期涨幅过快可能引发获利回吐，需关注板块轮动节奏。<br>
+配置建议：均衡配置（科技30%+红利30%+消费20%+周期20%）。"""
 
 replacements["{{机构4_名称}}"] = "中金公司"
 replacements["{{机构4_简称}}"] = "中金"
 replacements["{{机构4_标签}}"] = "中性偏多"
-replacements["{{机构4_观点}}"] = "A股市场<span style=\"color:#f85149;font-weight:700\">韧性较强</span>，政策面持续释放积极信号"
+replacements["{{机构4_观点}}"] = """中金公司最新报告判断，A股市场<span style=\"color:#f85149;font-weight:700\">韧性较强</span>，中期机会大于风险。核心观点：<br>
+📌 政策面持续释放积极信号：央行降准释放流动性<span style=\"color:#f85149;font-weight:700\">5000亿</span>，货币政策宽松周期开启；<br>
+📌 资本市场改革深化：IPO节奏优化，退市制度完善，提升上市公司整体质量；<br>
+📌 外资趋势：全球指数（MSCI/FTSE）纳入权重稳定，被动型基金配置需求持续；<br>
+📌 估值对比：A股主要指数估值低于欧美市场，股息率明显高于债券收益率；<br>
+📌 风险提示：海外市场波动、地缘政治、汇率变化可能阶段性影响市场情绪。<br>
+关注板块：先进制造（半导体/高端装备）、创新药、消费复苏线。"""
 
 replacements["{{机构5_名称}}"] = "摩根士丹利"
 replacements["{{机构5_简称}}"] = "大摩"
 replacements["{{机构5_标签}}"] = "超配A股"
-replacements["{{机构5_观点}}"] = "中国资产<span style=\"color:#f85149;font-weight:700\">吸引力提升</span>，外资持续流入"
+replacements["{{机构5_观点}}"] = """摩根士丹利中国策略团队维持对A股<span style=\"color:#f85149;font-weight:700\">超配</span>建议。核心逻辑：<br>
+1）流动性环境改善：全球货币政策转向宽松，美元指数回落至<span style=\"color:#3fb950;font-weight:700\">104.28</span>；<br>
+2）人民币资产吸引力提升：A股估值低+政策积极+盈利改善，形成多重利好共振；<br>
+3）资金流入趋势：北向资金月内累计净流入<span style=\"color:#f85149;font-weight:700\">+185亿</span>，北向持仓占比持续提升；<br>
+4）行业配置重点：电子（半导体/PCB）、通信（算力网络/光模块）、金融（银行/保险）；<br>
+5）港股观点：恒生科技指数PB仅0.85x，建议通过恒生科技ETF参与港股配置。<br>
+市场判断：未来12个月沪深300指数目标位<span style=\"color:#f85149;font-weight:700\">5000-5500点</span>区间。"""
 
 replacements["{{机构6_名称}}"] = "瑞银集团"
 replacements["{{机构6_简称}}"] = "UBS"
 replacements["{{机构6_标签}}"] = "增持建议"
-replacements["{{机构6_观点}}"] = "A股市场<span style=\"color:#f85149;font-weight:700\">估值合理</span>，盈利预期改善支撑上行空间"
+replacements["{{机构6_观点}}"] = """瑞银集团最新全球资产配置报告给予A股市场<span style=\"color:#f85149;font-weight:700\">增持</span>建议。要点：<br>
+📌 估值水平：沪深300 PE（TTM）<span style=\"color:#f85149;font-weight:700\">12.8倍</span>，显著低于标普500的22.5倍，估值安全边际充足；<br>
+📌 盈利预期：2026年A股上市公司盈利增速预期<span style=\"color:#f85149;font-weight:700\">+5.5%</span>，2027年<span style=\"color:#f85149;font-weight:700\">+7-9%</span>，盈利改善趋势明确；<br>
+📌 股息回报：A股整体股息率约<span style=\"color:#f85149;font-weight:700\">3.2%</span>，高股息板块5.5-7.2%，明显高于债券收益率；<br>
+📌 风险溢价：当前A股风险溢价处于历史75%分位，配置价值突出；<br>
+📌 结构性机会：新能源（电池/储能）、AI基础设施（算力/网络）、红利低波（防守配置）。<br>
+建议配置比例：A股在全球权益组合中占比<span style=\"color:#f85149;font-weight:700\">8-10%</span>。"""
 
 # --- 估值参考表 ---
 replacements["{{速查1_数值}}"] = "4091.89"
