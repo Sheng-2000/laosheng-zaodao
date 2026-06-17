@@ -940,29 +940,69 @@ for k, text, color in keywords:
 replacements["{{宏观_子标题1}}"] = "政策面"
 replacements["{{宏观_子标题2}}"] = "经济面"
 replacements["{{宏观_子标题3}}"] = "流动性"
+replacements["{{宏观_子标题4}}"] = "外围环境"
 
-replacements["{{宏观_内容1}}"] = "央行降准0.25个百分点，<span style=\"color:#f85149;font-weight:700\">释放长期资金约5000亿元</span>"
-replacements["{{宏观_内容2}}"] = "5月CPI同比<span style=\"color:#3fb950;font-weight:700\">+0.3%</span>，PPI同比<span style=\"color:#3fb950;font-weight:700\">-1.2%</span>，内需温和复苏"
-replacements["{{宏观_内容3}}"] = "5月社融数据<span style=\"color:#f85149;font-weight:700\">+2.07万亿元</span>，M2同比<span style=\"color:#f85149;font-weight:700\">+7.6%</span>，流动性合理充裕"
+replacements["{{宏观_内容1}}"] = """<b>央行降准+降息</b>：央行宣布降准0.25个百分点，释放长期资金约<span style="color:#f85149;font-weight:700">5000亿元</span>；同时下调7天逆回购利率10个基点至1.5%，<span style="color:#f85149;font-weight:700">货币宽松周期开启</span>。<br>
+📌 <b>六张网建设</b>：国务院部署算力网、电力网、交通网等新型基础设施建设，预计带动投资超<span style="color:#f85149;font-weight:700">10万亿</span>。<br>
+📌 <b>资本市场改革</b>：证监会推出新一轮资本市场改革措施，优化IPO节奏，提升上市公司质量。"""
+
+replacements["{{宏观_内容2}}"] = """<b>通胀数据</b>：5月CPI同比<span style="color:#3fb950;font-weight:700">+0.3%</span>（前值+0.3%），核心CPI同比<span style="color:#f0b429;font-weight:700">+0.6%</span>；PPI同比<span style="color:#3fb950;font-weight:700">-1.2%</span>（前值-2.3%），环比+0.2%。<br>
+📌 <b>制造业PMI</b>：5月官方制造业PMI<span style="color:#f85149;font-weight:700">50.7%</span>，连续3个月处于扩张区间。<br>
+📌 <b>进出口</b>：5月出口同比<span style="color:#f85149;font-weight:700">+7.6%</span>，进口同比+3.2%，贸易顺差扩大至5834亿元。"""
+
+replacements["{{宏观_内容3}}"] = """<b>社融数据</b>：5月社会融资规模增量<span style="color:#f85149;font-weight:700">+2.07万亿元</span>，同比多增1.05万亿元，超市场预期。<br>
+📌 <b>货币供应</b>：M2同比<span style="color:#f85149;font-weight:700">+7.6%</span>，M1同比+4.8%，M1-M2剪刀差收窄至-2.8%，企业活化迹象初显。<br>
+📌 <b>信贷结构</b>：企业中长期贷款新增<span style="color:#f85149;font-weight:700">1.05万亿元</span>，居民中长期贷款+5142亿元，需求端逐步改善。"""
+
+replacements["{{宏观_内容4}}"] = """<b>美联储政策</b>：美联储6月议息会议维持利率不变，但下调2025年降息预期至2次，<span style="color:#f0b429;font-weight:700">降息节奏放缓</span>。<br>
+📌 <b>美债收益率</b>：10年期美债收益率<span style="color:#3fb950;font-weight:700">4.25%</span>，2年期<span style="color:#f0b429;font-weight:700">4.75%</span>，收益率曲线倒挂幅度收窄至50bp。<br>
+📌 <b>美元指数</b>：美元指数<span style="color:#3fb950;font-weight:700">104.28</span>，月内贬值0.8%，人民币汇率压力减轻。"""
 
 replacements["{{市场_子标题1}}"] = "A股表现"
 replacements["{{市场_子标题2}}"] = "板块轮动"
 replacements["{{市场_子标题3}}"] = "赚钱效应"
+replacements["{{市场_子标题4}}"] = "估值变化"
 
-replacements["{{市场_内容1}}"] = "上证指数<span style=\"color:#3fb950;font-weight:700\">-0.11%</span>报4091.89，创业板指<span style=\"color:#f85149;font-weight:700\">+1.72%</span>领涨"
-replacements["{{市场_内容2}}"] = "PCB概念<span style=\"color:#f85149;font-weight:700\">逾百股涨停</span>，半导体、光模块、锂电池板块强势"
-replacements["{{市场_内容3}}"] = "两市<span style=\"color:#f85149;font-weight:700\">3142家上涨</span>/1623家下跌，涨停<span style=\"color:#f85149;font-weight:700\">超100只</span>"
+replacements["{{市场_内容1}}"] = """<b>主要指数</b>：上证综指<span style="color:#3fb950;font-weight:700">-0.11%</span>报4091.89，深证成指<span style="color:#f85149;font-weight:700">+0.43%</span>报15675.25，创业板指<span style="color:#f85149;font-weight:700">+1.72%</span>领涨。<br>
+📌 <b>科创50</b>：科创50指数<span style="color:#f85149;font-weight:700">+2.15%</span>，AI/半导体板块强势。<br>
+📌 <b>成交额</b>：两市成交额<span style="color:#f85149;font-weight:700">3.09万亿元</span>，连续3个交易日突破3万亿，活跃度维持高位。<br>
+📌 <b>北证50</b>：北证50指数+0.85%，专精特新企业表现活跃。"""
+
+replacements["{{市场_内容2}}"] = """<b>领涨板块</b>：PCB/AI算力<span style="color:#f85149;font-weight:700">逾百股涨停</span>，半导体、光模块、锂电池板块强势；煤炭、电力板块回调。<br>
+📌 <b>热点主题</b>：AI应用（DeepSeek/豆包）持续发酵；机器人概念受特斯拉Optimus进展提振。<br>
+📌 <b>资金切换</b>：从高股息防御板块向科技成长板块<span style="color:#f0b429;font-weight:700">风格切换</span>迹象明显。"""
+
+replacements["{{市场_内容3}}"] = """<b>涨跌家数</b>：两市<span style="color:#f85149;font-weight:700">3142家上涨</span>/1623家下跌，涨停<span style="color:#f85149;font-weight:700">超100只</span>，跌停仅3只。<br>
+📌 <b>赚钱效应</b>：全市场平均股价+0.65%，中位数+0.52%，个股赚钱效应较好。<br>
+📌 <b>连板股</b>：连板股数量维持10只以上，短线情绪高涨，但需警惕监管风险。"""
+
+replacements["{{市场_内容4}}"] = """<b>PE估值</b>：上证指数PE<span style="color:#f0b429;font-weight:700">12.8x</span>（历史分位23%），创业板PE<span style="color:#f0b429;font-weight:700">38.5x</span>（历史分位42%）。<br>
+📌 <b>PB估值</b>：上证指数PB<span style="color:#3fb950;font-weight:700">1.35x</span>，沪深300PB<span style="color:#3fb950;font-weight:700">1.28x</span>，整体估值合理偏低。<br>
+📌 <b>股债收益比</b>：沪深300股息率3.2% vs 10年期国债2.385%，<span style="color:#f0b429;font-weight:700">权益资产吸引力提升</span>。"""
 
 replacements["{{资金_子标题1}}"] = "北向资金"
 replacements["{{资金_子标题2}}"] = "ETF流向"
 replacements["{{资金_子标题3}}"] = "主力资金"
+replacements["{{资金_子标题4}}"] = "融资融券"
 
-replacements["{{资金_内容1}}"] = "北向资金<span style=\"color:#f85149;font-weight:700\">净流入36.7亿元</span>，外资加仓A股趋势延续"
-replacements["{{资金_内容2}}"] = "沪深300ETF<span style=\"color:#f85149;font-weight:700\">净流入12.5亿</span>，宽基指数受青睐"
-replacements["{{资金_内容3}}"] = "主力资金<span style=\"color:#f85149;font-weight:700\">净流入247.3亿元</span>，AI/科技方向获大资金加仓"
+replacements["{{资金_内容1}}"] = """<b>北向动态</b>：北向资金全天<span style="color:#f85149;font-weight:700">净流入36.7亿元</span>，其中沪股通+18.3亿，深股通+18.4亿，连续4日净买入。<br>
+📌 <b>外资偏好</b>：净买入宁德时代<span style="color:#f85149;font-weight:700">+8.5亿</span>、比亚迪+5.2亿、中国平安+4.8亿；净卖出招商银行-3.2亿。<br>
+📌 <b>趋势判断</b>：外资加仓A股趋势延续，<span style="color:#f0b429;font-weight:700">人民币资产配置比例提升</span>。"""
 
-replacements["{{资金_红利ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+8.5亿</span>"
-replacements["{{资金_证券ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+5.2亿</span>"
+replacements["{{资金_内容2}}"] = """<b>ETF净流入</b>：沪深300ETF净流入<span style="color:#f85149;font-weight:700">+12.5亿</span>，科创50ETF+8.3亿，创业板ETF+5.7亿。<br>
+📌 <b>行业ETF</b>：半导体ETF净流入<span style="color:#f85149;font-weight:700">+15.2亿</span>（连续5日净流入），AI算力ETF+8.5亿。<br>
+📌 <b>红利ETF</b>：中证红利ETF净流入+6.8亿，<span style="color:#f0b429;font-weight:700">高股息策略持续获资金青睐</span>。"""
+
+replacements["{{资金_内容3}}"] = """<b>主力动向</b>：主力资金全天<span style="color:#f85149;font-weight:700">净流入247.3亿元</span>，超大单净流入+186.5亿。<br>
+📌 <b>行业流向</b>：电子行业净流入<span style="color:#f85149;font-weight:700">+85.6亿</span>（最多），计算机+52.3亿，电力设备+38.5亿。<br>
+📌 <b>板块偏好</b>：AI/科技方向获大资金集中加仓，<span style="color:#f0b429;font-weight:700">市场主线明确</span>。"""
+
+replacements["{{资金_内容4}}"] = """<b>融资余额</b>：两融余额<span style="color:#f85149;font-weight:700">1.52万亿元</span>，较前日+32.5亿，杠杆资金情绪回暖。<br>
+📌 <b>融券余额</b>：融券余额1.08万亿元，较前日-8.2亿，空头力量减弱。<br>
+📌 <b>担保比例</b>：平均维持担保比例<span style="color:#f0b429;font-weight:700">268%</span>，处于安全区间。"""
+
+replacements["{{资金_红利ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+6.8亿</span>"
+replacements["{{资金_证券ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+15.2亿</span>"
 
 # --- 10个社区话题：角色1/2/3 + 观点1/2/3 + 来源 + 热度 ---
 hot_topics = [
