@@ -754,6 +754,79 @@ replacements["{{社区话题10_观点}}"] = "建议采用<span style=\"color:#f0
 # --- 社区话题标签 ---
 replacements["{{社区话题标签1}}"] = "热门话题"
 replacements["{{社区话题标签2}}"] = "AI科技"
+replacements["{{社区话题标签3}}"] = "高股息"
+replacements["{{社区话题标签4}}"] = "黄金"
+replacements["{{社区话题标签5}}"] = "港股"
+
+# --- 理财卡概览 (4张) ---
+replacements["{{理财卡1_标题}}"] = "银行理财平均收益"
+replacements["{{理财卡1_数值}}"] = "3.2%"
+replacements["{{理财卡2_标题}}"] = "货币基金七日年化"
+replacements["{{理财卡2_数值}}"] = "2.2%"
+replacements["{{理财卡3_标题}}"] = "国债3年期收益率"
+replacements["{{理财卡3_数值}}"] = "2.5%"
+replacements["{{理财卡4_标题}}"] = "黄金ETF年内涨幅"
+replacements["{{理财卡4_数值}}"] = "+18.5%"
+
+# --- 图表数据 ---
+replacements["{{图表_数据日期}}"] = "数据截至2026/06/16"
+replacements["{{图表_红利ETF_副标题}}"] = "近5年累计收益"
+replacements["{{图表_红利ETF_数值}}"] = "+42.5%"
+replacements["{{图表_银行股息率_注释}}"] = "平均股息率"
+replacements["{{图表_银行股息率_数值}}"] = "5.8%"
+replacements["{{图表_超长国债_数值}}"] = "2.38%"
+replacements["{{图表_银行理财_数值}}"] = "3.2%"
+replacements["{{图表_5年定存_数值}}"] = "2.0%"
+replacements["{{图表_1年定存_数值}}"] = "1.5%"
+replacements["{{图表_收益计算说明}}"] = "假设投入10万元，持有5年：红利ETF预期收益<span style=\"color:#f85149;font-weight:700\">4.25万元</span>；银行理财预期收益<span style=\"color:#f0b429;font-weight:700\">1.6万元</span>；5年定存预期收益<span style=\"color:#3fb950;font-weight:700\">1万元</span>"
+
+# --- 替代策略 ---
+replacements["{{替代策略_配置逻辑}}"] = "高股息策略可作为低利率环境下存款替代，银行/电力板块股息率普遍超过5%，显著优于定存利率"
+
+# --- 保险配置 ---
+replacements["{{保险_窗口提醒标题}}"] = "家庭保险配置提醒"
+replacements["{{保险_窗口提醒内容}}"] = "建议配置顺序：医疗险（优先）→ 重疾险 → 寿险（有家庭责任）→ 意外险。年保费预算建议控制在家庭年收入<span style=\"color:#f0b429;font-weight:700\">5-10%</span>"
+
+# --- 黄金走势图表 ---
+replacements["{{黄金_SVG路径}}"] = "M0,120 L40,100 L80,85 L120,60 L160,40 L200,20 L240,10 L280,25 L320,15 L360,0 L400,0"
+replacements["{{黄金_涨跌颜色}}"] = "red"
+
+# --- 理财参考数据 (6个) ---
+replacements["{{理财参考1_标题}}"] = "红利ETF"
+replacements["{{理财参考1_数值}}"] = "+42.5%"
+replacements["{{理财参考1_备注}}"] = "近5年累计"
+replacements["{{理财参考1_标题颜色}}"] = "#f85149"
+replacements["{{理财参考1_数值颜色}}"] = "#f85149"
+
+replacements["{{理财参考2_标题}}"] = "银行股息"
+replacements["{{理财参考2_数值}}"] = "5.8%"
+replacements["{{理财参考2_备注}}"] = "平均股息率"
+replacements["{{理财参考2_标题颜色}}"] = "#3fb950"
+replacements["{{理财参考2_数值颜色}}"] = "#3fb950"
+
+replacements["{{理财参考3_标题}}"] = "国债收益"
+replacements["{{理财参考3_数值}}"] = "2.5%"
+replacements["{{理财参考3_备注}}"] = "3年期"
+replacements["{{理财参考3_标题颜色}}"] = "#f0b429"
+replacements["{{理财参考3_数值颜色}}"] = "#f0b429"
+
+replacements["{{理财参考4_标题}}"] = "定存利率"
+replacements["{{理财参考4_数值}}"] = "2.0%"
+replacements["{{理财参考4_备注}}"] = "5年期"
+replacements["{{理财参考4_标题颜色}}"] = "#00d4ff"
+replacements["{{理财参考4_数值颜色}}"] = "#00d4ff"
+
+replacements["{{理财参考5_标题}}"] = "黄金涨幅"
+replacements["{{理财参考5_数值}}"] = "+18.5%"
+replacements["{{理财参考5_备注}}"] = "年内涨幅"
+replacements["{{理财参考5_标题颜色}}"] = "#f85149"
+replacements["{{理财参考5_数值颜色}}"] = "#f85149"
+
+replacements["{{理财参考6_标题}}"] = "货基收益"
+replacements["{{理财参考6_数值}}"] = "2.2%"
+replacements["{{理财参考6_备注}}"] = "七日年化"
+replacements["{{理财参考6_标题颜色}}"] = "#bc8cff"
+replacements["{{理财参考6_数值颜色}}"] = "#bc8cff"
 
 # --- 操作建议 (6个) ---
 replacements["{{操作建议1_内容}}"] = "高股息防御配置：重点关注银行（工商银行/建设银行）、电力（长江电力/中国核电）、能源（中国神华）等高股息龙头标的"
