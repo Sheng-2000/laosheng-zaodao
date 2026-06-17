@@ -575,6 +575,257 @@ replacements["{{关键数字6_数值}}"] = "<span style=\"color:#3fb950\">4.2810
 
 replacements["{{今日操作建议_正文}}"] = "今日市场结构性特征明显，科技成长板块表现强势。<span style=\"color:#f85149;font-weight:700\">操作策略</span>：1）<b>AI算力产业链</b>：光模块、AI芯片、高速PCB等细分领域景气度持续；2）<b>高股息防御配置</b>：银行、电力等板块股息率优势明显；3）<b>港股优质龙头</b>：估值处于历史低位。<span style=\"color:#f0b429;font-weight:700\">风险提示</span>：市场波动加大，建议控制仓位，避免追高"
 
+# --- 参考数据 ---
+replacements["{{参考1_标题}}"] = "银行板块PB估值"
+replacements["{{参考1_描述}}"] = "银行板块PB约0.85x，处于历史低位15%分位，安全边际较高"
+
+replacements["{{参考2_标题}}"] = "中证红利PE"
+replacements["{{参考2_描述}}"] = "中证红利指数PE仅8.5x，高股息策略持续有效"
+
+replacements["{{参考3_标题}}"] = "中国移动PB"
+replacements["{{参考3_描述}}"] = "中国移动PB约1.8x，通信龙头优势明显"
+
+# --- 标的提示 ---
+replacements["{{标的_正面提示标题}}"] = "配置亮点"
+replacements["{{标的_正面提示内容}}"] = "高股息标的股息率普遍超过5%，防御属性突出；AI算力板块景气度持续上升，成长空间广阔"
+
+replacements["{{标的_风险提示标题}}"] = "风险提示"
+replacements["{{标的_风险提示内容}}"] = "短期涨幅过快可能引发回调；美联储政策变化或影响全球市场流动性；需警惕个股基本面变化风险"
+
+# --- 标的要点 (13个标的 x 5要点) ---
+# 标的1 工商银行
+replacements["{{标的1_要点1}}"] = "2025Q1净利润<span style=\"color:#f85149;font-weight:700\">+1.8%</span>，资产质量稳健"
+replacements["{{标的1_要点2}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">6.2%</span>，防御属性突出"
+replacements["{{标的1_要点3}}"] = "PB仅<span style=\"color:#3fb950;font-weight:700\">0.78x</span>，估值安全边际高"
+replacements["{{标的1_要点4}}"] = "零售贷款占比提升，净息差承压但好于同业"
+replacements["{{标的1_要点5}}"] = "北向资金<span style=\"color:#f85149;font-weight:700\">持续加仓</span>，机构配置首选"
+
+# 标的2 建设银行
+replacements["{{标的2_要点1}}"] = "基建贷款优势明显，按揭贷款质量稳健"
+replacements["{{标的2_要点2}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">6.0%</span>，高分红持续"
+replacements["{{标的2_要点3}}"] = "成本收入比<span style=\"color:#3fb950;font-weight:700\">28.5%</span>，效率领先"
+replacements["{{标的2_要点4}}"] = "普惠小微贷款增速<span style=\"color:#f85149;font-weight:700\">+18%</span>"
+replacements["{{标的2_要点5}}"] = "资本充足率<span style=\"color:#f85149;font-weight:700\">18.5%</span>，抗风险能力强"
+
+# 标的3 农业银行
+replacements["{{标的3_要点1}}"] = "县域业务优势独特，服务乡村振兴"
+replacements["{{标的3_要点2}}"] = "净息差<span style=\"color:#3fb950;font-weight:700\">1.85%</span>，行业领先水平"
+replacements["{{标的3_要点3}}"] = "不良贷款率<span style=\"color:#3fb950;font-weight:700\">1.35%</span>，资产质量稳定"
+replacements["{{标的3_要点4}}"] = "拨备覆盖率<span style=\"color:#f85149;font-weight:700\">305%</span>，风险缓冲充足"
+replacements["{{标的3_要点5}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">5.8%</span>，配置价值显著"
+
+# 标的4 招商银行
+replacements["{{标的4_要点1}}"] = "零售银行标杆，财富管理业务领先"
+replacements["{{标的4_要点2}}"] = "PB估值<span style=\"color:#f0b429;font-weight:700\">1.2x</span>，较同业溢价"
+replacements["{{标的4_要点3}}"] = "非息收入占比<span style=\"color:#f85149;font-weight:700\">38%</span>，业务结构优"
+replacements["{{标的4_要点4}}"] = "管理零售资产(AUM)<span style=\"color:#f85149;font-weight:700\">超13万亿</span>"
+replacements["{{标的4_要点5}}"] = "金融科技投入<span style=\"color:#f85149;font-weight:700\">持续加码</span>"
+
+# 标的5 宁波银行
+replacements["{{标的5_要点1}}"] = "长三角区域优势，中小企业服务特色"
+replacements["{{标的5_要点2}}"] = "ROE<span style=\"color:#f85149;font-weight:700\">12.5%</span>，盈利能力突出"
+replacements["{{标的5_要点3}}"] = "不良率<span style=\"color:#3fb950;font-weight:700\">0.75%</span>，资产质量优异"
+replacements["{{标的5_要点4}}"] = "拨备覆盖率<span style=\"color:#f85149;font-weight:700\">505%</span>，极度稳健"
+replacements["{{标的5_要点5}}"] = "股息率<span style=\"color:#f0b429;font-weight:700\">3.2%</span>，成长型银行"
+
+# 标的6 江苏银行
+replacements["{{标的6_要点1}}"] = "江苏省内网点密集，地方经济联动强"
+replacements["{{标的6_要点2}}"] = "2025Q1营收<span style=\"color:#f85149;font-weight:700\">+8.2%</span>，增速领先"
+replacements["{{标的6_要点3}}"] = "零售贷款占比<span style=\"color:#f85149;font-weight:700\">35%</span>，持续提升"
+replacements["{{标的6_要点4}}"] = "金融科技子公司落地，数字化转型加速"
+replacements["{{标的6_要点5}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">5.5%</span>，性价比优"
+
+# 标的7 杭州银行
+replacements["{{标的7_要点1}}"] = "浙江区域经济活跃，民企贷款优势"
+replacements["{{标的7_要点2}}"] = "不良率<span style=\"color:#3fb950;font-weight:700\">0.78%</span>，低风险特征"
+replacements["{{标的7_要点3}}"] = "拨备覆盖率<span style=\"color:#f85149;font-weight:700\">560%</span>，行业最高"
+replacements["{{标的7_要点4}}"] = "财富管理业务<span style=\"color:#f85149;font-weight:700\">快速发展</span>"
+replacements["{{标的7_要点5}}"] = "股息率<span style=\"color:#f0b429;font-weight:700\">4.8%</span>，成长性好"
+
+# 标的8 重庆银行
+replacements["{{标的8_要点1}}"] = "成渝双城经济圈核心金融机构"
+replacements["{{标的8_要点2}}"] = "地方政府业务合作<span style=\"color:#f85149;font-weight:700\">深度绑定</span>"
+replacements["{{标的8_要点3}}"] = "零售业务转型<span style=\"color:#f85149;font-weight:700\">稳步推进</span>"
+replacements["{{标的8_要点4}}"] = "普惠金融增速<span style=\"color:#f85149;font-weight:700\">+22%</span>"
+replacements["{{标的8_要点5}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">6.5%</span>，高分红标的"
+
+# 标的9 长江电力
+replacements["{{标的9_要点1}}"] = "水电装机规模<span style=\"color:#f85149;font-weight:700\">全球第一</span>"
+replacements["{{标的9_要点2}}"] = "现金流<span style=\"color:#f85149;font-weight:700\">极度稳定</span>，防御属性最强"
+replacements["{{标的9_要点3}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">4.2%</span>，分红承诺明确"
+replacements["{{标的9_要点4}}"] = "乌东德/白鹤滩电站<span style=\"color:#f85149;font-weight:700\">全面投产</span>"
+replacements["{{标的9_要点5}}"] = "电价调整机制<span style=\"color:#f85149;font-weight:700\">优化</span>，盈利提升"
+
+# 标的10 大秦铁路
+replacements["{{标的10_要点1}}"] = "西煤东运核心通道，垄断性线路资源"
+replacements["{{标的10_要点2}}"] = "煤炭运输需求<span style=\"color:#3fb950;font-weight:700\">高位稳定</span>"
+replacements["{{标的10_要点3}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">7.5%</span>，超高股息标的"
+replacements["{{标的10_要点4}}"] = "重载铁路技术<span style=\"color:#f85149;font-weight:700\">行业领先</span>"
+replacements["{{标的10_要点5}}"] = "秦港疏运能力<span style=\"color:#f85149;font-weight:700\">持续优化</span>"
+
+# 标的11 中国移动
+replacements["{{标的11_要点1}}"] = "5G基站数<span style=\"color:#f85149;font-weight:700\">全球最多</span>，网络优势显著"
+replacements["{{标的11_要点2}}"] = "CHBN全业务发力，政企业务<span style=\"color:#f85149;font-weight:700\">高速增长</span>"
+replacements["{{标的11_要点3}}"] = "股息率<span style=\"color:#f0b429;font-weight:700\">5.5%</span>，分红比例提升"
+replacements["{{标的11_要点4}}"] = "算力网络建设<span style=\"color:#f85149;font-weight:700\">加速</span>"
+replacements["{{标的11_要点5}}"] = "AI大模型应用<span style=\"color:#f85149;font-weight:700\">商业化起步</span>"
+
+# 标的12 中国核电
+replacements["{{标的12_要点1}}"] = "核电装机<span style=\"color:#f85149;font-weight:700\">国内领先</span>，清洁能源主力"
+replacements["{{标的12_要点2}}"] = "发电小时数<span style=\"color:#f85149;font-weight:700\">稳定高产</span>"
+replacements["{{标的12_要点3}}"] = "新机组审批<span style=\"color:#f85149;font-weight:700\">加速</span>，成长确定性强"
+replacements["{{标的12_要点4}}"] = "股息率<span style=\"color:#f0b429;font-weight:700\">3.5%</span>，稳健配置"
+replacements["{{标的12_要点5}}"] = "绿电溢价收益<span style=\"color:#f85149;font-weight:700\">贡献增量</span>"
+
+# 标的13 中国平安
+replacements["{{标的13_要点1}}"] = "新业务价值(NBV)<span style=\"color:#f85149;font-weight:700\">转正增长</span>"
+replacements["{{标的13_要点2}}"] = "代理人渠道改革<span style=\"color:#f85149;font-weight:700\">效果显现</span>"
+replacements["{{标的13_要点3}}"] = "保险+科技+生态<span style=\"color:#f85149;font-weight:700\">协同发展</span>"
+replacements["{{标的13_要点4}}"] = "金融科技专利<span style=\"color:#f85149;font-weight:700\">行业领先</span>"
+replacements["{{标的13_要点5}}"] = "股息率<span style=\"color:#f85149;font-weight:700\">5.0%</span>，估值底部"
+
+# --- 深度解读标题 ---
+replacements["{{深度解读_银行组标题}}"] = "银行组投资逻辑"
+replacements["{{深度解读_公用组标题}}"] = "公用事业组配置价值"
+replacements["{{深度解读_央企组标题}}"] = "央企蓝筹投资机会"
+
+# --- 理财卡备注 ---
+replacements["{{理财卡1_备注}}"] = "银行理财产品净值化转型，关注低波动稳健型产品"
+replacements["{{理财卡2_备注}}"] = "货币基金七日年化收益率约2.2%，流动性优"
+replacements["{{理财卡3_备注}}"] = "国债3年期收益率约2.5%，适合长期配置"
+replacements["{{理财卡4_备注}}"] = "黄金ETF持续创新高，避险需求支撑"
+
+# --- 图表名称 ---
+replacements["{{图表_红利ETF_名称}}"] = "红利低波ETF走势对比"
+
+# --- 替代策略 ---
+replacements["{{替代策略_股息对比内容}}"] = "高股息策略相对沪深300超额收益显著，中证红利指数近5年年化<span style=\"color:#f85149;font-weight:700\">+8.5%</span>，显著优于沪深300的<span style=\"color:#3fb950;font-weight:700\">+3.2%</span>。银行板块平均股息率超6%，电力板块约4.5%，均具备较强的收益替代价值"
+replacements["{{替代策略_配置建议内容}}"] = "配置建议：高股息标的占比<span style=\"color:#f85149;font-weight:700\">30-40%</span>，红利ETF占比<span style=\"color:#f85149;font-weight:700\">20-25%</span>，固收+产品占比<span style=\"color:#f0b429;font-weight:700\">30-40%</span>。建议采用定投方式，逐步建仓，避免追高"
+
+# --- 避坑指南 ---
+replacements["{{避坑1_标题}}"] = "高收益陷阱"
+replacements["{{避坑1_内容}}"] = "警惕承诺<span style=\"color:#f85149;font-weight:700\">8%以上年化</span>的所谓稳赚产品，高收益必然伴随高风险。正规银行理财R3级以上产品均不保本，需理性评估风险收益匹配度。建议选择持牌机构产品，仔细阅读产品说明书和风险提示"
+
+replacements["{{避坑2_标题}}"] = "短炒银行股风险"
+replacements["{{避坑2_内容}}"] = "银行股适合<span style=\"color:#f0b429;font-weight:700\">长期持有赚股息</span>，而非短期博弈。历史数据表明，持有银行股3年以上获得正收益概率超80%，但短期追高可能被套10-15%。建议分批建仓，逢低布局，持有周期至少2-3年"
+
+replacements["{{避坑3_标题}}"] = "忽视估值重要性"
+replacements["{{避坑3_内容}}"] = "同样是高股息股，<span style=\"color:#f0b429;font-weight:700\">PB<0.8x</span>的银行比PB>1.5x的标的安全边际高得多。估值过高的高股息股一旦业绩不及预期，可能出现<span style=\"color:#3fb950;font-weight:700\">戴维斯双杀</span>。建议结合PE、PB、股息率、ROE多维筛选，避免单一指标决策"
+
+# --- 黄金走势 ---
+replacements["{{黄金_标题}}"] = "黄金价格走势"
+replacements["{{黄金_SVG填充路径}}"] = "M0,120 L40,100 L80,85 L120,60 L160,40 L200,20 L240,10 L280,25 L320,15 L360,0 L400,0 L400,200 L0,200 Z"
+replacements["{{黄金_日期1}}"] = "6/10"
+replacements["{{黄金_日期2}}"] = "6/13"
+replacements["{{黄金_日期3}}"] = "6/16"
+replacements["{{黄金_走势描述}}"] = "COMEX黄金期货<span style=\"color:#f85149;font-weight:700\">持续上涨</span>，创历史新高4342.50美元/盎司。中东地缘紧张局势+美联储降息预期+美元走弱三重支撑。上海黄金交易所AU9999同步走强，人民币计价黄金表现稳健"
+
+# --- 社区热门话题 (10个) ---
+replacements["{{社区话题1_标题}}"] = "银行股创新高，还能追吗？"
+replacements["{{社区话题1_观点}}"] = "银行股目前估值仍处历史低位，<span style=\"color:#f85149;font-weight:700\">长期配置价值突出</span>。但短期涨幅较大，建议分批建仓而非追高。核心逻辑在于股息率优势+估值修复+资产质量改善，这三点并未改变，继续看好中长期表现"
+
+replacements["{{社区话题2_标题}}"] = "DeepSeek融资大热，AI泡沫是否再现？"
+replacements["{{社区话题2_观点}}"] = "AI产业正处于<span style=\"color:#f85149;font-weight:700\">商业化加速阶段</span>，头部公司估值较高但有实质业务支撑。与2018年不同的是，当前大模型技术已验证可落地，算力需求真实爆发。建议关注<span style=\"color:#f85149;font-weight:700\">上游光模块/AI芯片</span>等业绩确定性环节，规避纯概念炒作"
+
+replacements["{{社区话题3_标题}}"] = "黄金突破4300美元，还能买吗？"
+replacements["{{社区话题3_观点}}"] = "黄金作为<span style=\"color:#f0b429;font-weight:700\">避险和抗通胀资产</span>，配置逻辑依然成立：1）美联储下半年降息预期明确；2）美元指数走弱；3）央行购金持续。建议配置比例5-10%作为组合对冲工具，而非单一投机品种。通过黄金ETF或黄金股分散持有"
+
+replacements["{{社区话题4_标题}}"] = "六张网建设对基建股影响几何？"
+replacements["{{社区话题4_观点}}"] = "“六张网”建设涵盖<span style=\"color:#f85149;font-weight:700\">算力网/电力网/交通网</span>等关键基础设施，预计带动万亿级投资。受益标的包括：通信设备（算力网络建设）、特高压（电网升级）、轨交装备（交通网完善）。建议关注细分龙头，关注订单落地节奏和业绩兑现能力"
+
+replacements["{{社区话题5_标题}}"] = "港股估值这么低，是馅饼还是陷阱？"
+replacements["{{社区话题5_观点}}"] = "港股恒生指数PB仅<span style=\"color:#3fb950;font-weight:700\">0.85x</span>，处于历史5%分位，估值安全边际极高。但低估值不等于必然上涨，需关注：1）资金面（南向/北向流向）；2）政策面（刺激政策力度）；3）基本面（企业盈利改善）。建议<span style=\"color:#f0b429;font-weight:700\">定投港股ETF或优质龙头</span>，时间换空间"
+
+replacements["{{社区话题6_标题}}"] = "光模块行业景气度能持续多久？"
+replacements["{{社区话题6_观点}}"] = "全球AI算力需求<span style=\"color:#f85149;font-weight:700\">持续爆发</span>，光模块作为关键基础设施，景气度至少看2-3年。800G放量、1.6T起步迭代，行业需求确定性强。但需关注：1）价格竞争加剧风险；2）技术迭代速度；3）客户集中度风险。建议精选<span style=\"color:#f85149;font-weight:700\">技术领先+海外客户占比高</span>的龙头标的"
+
+replacements["{{社区话题7_标题}}"] = "高股息策略是否已经过于拥挤？"
+replacements["{{社区话题7_观点}}"] = "高股息板块确实经历了显著涨幅，但从估值角度看，银行/电力/能源等核心板块仍处于<span style=\"color:#3fb950;font-weight:700\">历史中低位</span>。拥挤度指标显示，当前资金流入虽多但未达极值。核心判断标准：1）股息率是否仍高于无风险利率2%+；2）企业盈利是否稳定；3）估值是否合理。符合条件的标的可继续持有，避免追高已大幅上涨的标的"
+
+replacements["{{社区话题8_标题}}"] = "A股创业板强势反弹，风格切换了吗？"
+replacements["{{社区话题8_观点}}"] = "创业板大涨<span style=\"color:#f85149;font-weight:700\">1.72%</span>反映市场风险偏好修复，但判断风格切换为时尚早。建议观察：1）科技板块持续性（需3-5天确认）；2）成交额是否维持高位；3）北向资金流向。配置策略：<span style=\"color:#f0b429;font-weight:700\">均衡配置</span>，高股息+科技成长双主线，避免单边押注。关注AI算力、半导体设备、创新药等方向"
+
+replacements["{{社区话题9_标题}}"] = "美联储政策转向如何影响A股？"
+replacements["{{社区话题9_观点}}"] = "美联储降息预期升温对A股影响<span style=\"color:#f85149;font-weight:700\">偏积极</span>：1）美元走弱利好人民币汇率；2）全球流动性改善有利于外资回流A股；3）成长股估值中枢有望上移。但需警惕：1）降息幅度不及预期的回调风险；2）地缘政治冲突可能打断降息节奏。建议关注外资偏好的<span style=\"color:#f85149;font-weight:700\">消费/新能源龙头</span>，以及受益于全球流动性改善的科技成长板块"
+
+replacements["{{社区话题10_标题}}"] = "普通投资者如何构建稳健投资组合？"
+replacements["{{社区话题10_观点}}"] = "建议采用<span style=\"color:#f0b429;font-weight:700\">核心+卫星</span>策略：核心（60-70%）配置宽基指数ETF+高股息蓝筹+固收产品，把握长期稳健收益；卫星（20-30%）配置AI算力/半导体/创新药等成长板块，捕捉超额收益。最后保留5-10%现金应对极端行情。定期再平衡（季度/半年），避免情绪化操作，坚持长期投资理念"
+
+# --- 社区话题标签 ---
+replacements["{{社区话题标签1}}"] = "热门话题"
+replacements["{{社区话题标签2}}"] = "AI科技"
+
+# --- 操作建议 (6个) ---
+replacements["{{操作建议1_内容}}"] = "高股息防御配置：重点关注银行（工商银行/建设银行）、电力（长江电力/中国核电）、能源（中国神华）等高股息龙头标的"
+replacements["{{操作建议1_补充}}"] = "建仓方式：逢低分批买入，持有周期建议3年以上，目标年化收益6-8%"
+
+replacements["{{操作建议2_内容}}"] = "AI算力产业链布局：光模块、AI芯片、高速PCB、交换机等上游硬件环节景气度确定"
+replacements["{{操作建议2_补充}}"] = "关注标的：中际旭创、新易盛、寒武纪、沪电股份等，注意估值与业绩匹配度"
+
+replacements["{{操作建议3_内容}}"] = "港股优质龙头配置：港股估值处于历史低位，南下资金持续流入，布局良机显现"
+replacements["{{操作建议3_补充}}"] = "通过恒生科技ETF、港股通优质标的（腾讯/中国移动/中海油）参与"
+
+replacements["{{操作建议4_内容}}"] = "黄金ETF配置：地缘风险+降息预期+美元走弱三重支撑，黄金避险价值凸显"
+replacements["{{操作建议4_补充}}"] = "配置比例5-10%，可选华安黄金ETF、博时黄金ETF，定投方式参与"
+
+replacements["{{操作建议5_内容}}"] = "固收+产品底仓：在市场波动加大环境下，固收+产品提供稳定收益，降低组合回撤"
+replacements["{{操作建议5_补充}}"] = "选择年化收益4-6%、最大回撤<3%的产品，持有6-12个月"
+
+replacements["{{操作建议6_内容}}"] = "现金管理与风险控制：保留一定现金仓位应对极端行情，避免满仓操作"
+replacements["{{操作建议6_补充}}"] = "现金仓位5-10%，可配置货币基金或短期理财，保持灵活性"
+
+# --- 关键数字速查 (8个) ---
+replacements["{{速查1_图标}}"] = "📈"
+replacements["{{速查1_名称}}"] = "银行PB估值"
+replacements["{{速查1_标签class}}"] = "low"
+replacements["{{速查1_备注}}"] = "0.85x 低估"
+
+replacements["{{速查2_图标}}"] = "💰"
+replacements["{{速查2_名称}}"] = "平均股息率"
+replacements["{{速查2_标签class}}"] = "high"
+replacements["{{速查2_备注}}"] = "5.8% 高股息"
+
+replacements["{{速查3_图标}}"] = "🏦"
+replacements["{{速查3_名称}}"] = "中证红利PE"
+replacements["{{速查3_标签class}}"] = "low"
+replacements["{{速查3_备注}}"] = "8.5x 低估"
+
+replacements["{{速查4_图标}}"] = "⚡"
+replacements["{{速查4_名称}}"] = "北向资金"
+replacements["{{速查4_标签class}}"] = "up"
+replacements["{{速查4_备注}}"] = "+36.7亿 流入"
+
+replacements["{{速查5_图标}}"] = "🏭"
+replacements["{{速查5_名称}}"] = "市场成交额"
+replacements["{{速查5_标签class}}"] = "neutral"
+replacements["{{速查5_备注}}"] = "3.09万亿 活跃"
+
+replacements["{{速查6_图标}}"] = "📊"
+replacements["{{速查6_名称}}"] = "美联储政策"
+replacements["{{速查6_标签class}}"] = "neutral"
+replacements["{{速查6_备注}}"] = "降息预期 偏多"
+
+replacements["{{速查7_图标}}"] = "🪙"
+replacements["{{速查7_名称}}"] = "美元指数"
+replacements["{{速查7_标签class}}"] = "down"
+replacements["{{速查7_备注}}"] = "104.28 走弱"
+
+replacements["{{速查8_图标}}"] = "🏆"
+replacements["{{速查8_名称}}"] = "黄金价格"
+replacements["{{速查8_标签class}}"] = "up"
+replacements["{{速查8_备注}}"] = "4342.50 新高"
+
+# --- 数据截止日期 ---
+replacements["{{数据截止日期}}"] = "2026年6月16日"
+
+# --- 黄金价格标签修正 ---
+replacements["{{估值_黄金价格_标签类}}"] = "up"
+replacements["{{估值_黄金价格_标签}}"] = "上涨"
+
+# --- 中国核电PE标签修正 ---
+replacements["{{估值_中国核电PE_标签类}}"] = "neutral"
+replacements["{{估值_中国核电PE_标签}}"] = "合理"
+
 # ============ 执行替换 ============
 for old, new in replacements.items():
     html = html.replace(old, new)
