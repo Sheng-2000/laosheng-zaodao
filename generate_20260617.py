@@ -899,6 +899,174 @@ replacements["{{估值_黄金价格_标签}}"] = "上涨"
 replacements["{{估值_中国核电PE_标签类}}"] = "neutral"
 replacements["{{估值_中国核电PE_标签}}"] = "合理"
 
+# ============ 补充剩余占位符 ============
+
+# --- 13个标的股价和涨跌class ---
+stock_data = [
+    ("1", "工商银行", "9.85", "up", "+1.23%"),
+    ("2", "建设银行", "10.10", "up", "+1.41%"),
+    ("3", "农业银行", "7.32", "up", "+1.52%"),
+    ("4", "招商银行", "44.85", "up", "+0.85%"),
+    ("5", "宁波银行", "26.78", "up", "+1.65%"),
+    ("6", "江苏银行", "9.85", "up", "+1.02%"),
+    ("7", "杭州银行", "15.32", "up", "+1.18%"),
+    ("8", "重庆银行", "8.65", "up", "+1.85%"),
+    ("9", "长江电力", "29.85", "up", "+0.42%"),
+    ("10", "大秦铁路", "8.45", "down", "-0.35%"),
+    ("11", "中国移动", "108.50", "up", "+0.85%"),
+    ("12", "中国核电", "12.65", "up", "+0.65%"),
+    ("13", "中国平安", "52.30", "up", "+0.78%"),
+]
+for num, name, price, cls, pct in stock_data:
+    replacements["{{标的" + num + "_股价}}"] = price
+    replacements["{{标的" + num + "_涨跌class}}"] = cls
+    replacements["{{标的" + num + "_名称}}"] = name
+
+# --- 8个今日关键词 ---
+keywords = [
+    ("{{关键词1}}", "创业板大涨", "#f85149"),
+    ("{{关键词2}}", "黄金新高", "#f0b429"),
+    ("{{关键词3}}", "DeepSeek融资", "#bc8cff"),
+    ("{{关键词4}}", "六张网建设", "#00d4ff"),
+    ("{{关键词5}}", "美债下行", "#3fb950"),
+    ("{{关键词6}}", "PCB爆发", "#f85149"),
+    ("{{关键词7}}", "日经新高", "#f85149"),
+    ("{{关键词8}}", "人民币中间价", "#3fb950"),
+]
+for k, text, color in keywords:
+    replacements[k] = f'<span style="color:{color};font-weight:700">{text}</span>'
+
+# --- 宏观/市场/资金 子标题和内容 ---
+replacements["{{宏观_子标题1}}"] = "政策面"
+replacements["{{宏观_子标题2}}"] = "经济面"
+replacements["{{宏观_子标题3}}"] = "流动性"
+
+replacements["{{宏观_内容1}}"] = "央行降准0.25个百分点，<span style=\"color:#f85149;font-weight:700\">释放长期资金约5000亿元</span>"
+replacements["{{宏观_内容2}}"] = "5月CPI同比<span style=\"color:#3fb950;font-weight:700\">+0.3%</span>，PPI同比<span style=\"color:#3fb950;font-weight:700\">-1.2%</span>，内需温和复苏"
+replacements["{{宏观_内容3}}"] = "5月社融数据<span style=\"color:#f85149;font-weight:700\">+2.07万亿元</span>，M2同比<span style=\"color:#f85149;font-weight:700\">+7.6%</span>，流动性合理充裕"
+
+replacements["{{市场_子标题1}}"] = "A股表现"
+replacements["{{市场_子标题2}}"] = "板块轮动"
+replacements["{{市场_子标题3}}"] = "赚钱效应"
+
+replacements["{{市场_内容1}}"] = "上证指数<span style=\"color:#3fb950;font-weight:700\">-0.11%</span>报4091.89，创业板指<span style=\"color:#f85149;font-weight:700\">+1.72%</span>领涨"
+replacements["{{市场_内容2}}"] = "PCB概念<span style=\"color:#f85149;font-weight:700\">逾百股涨停</span>，半导体、光模块、锂电池板块强势"
+replacements["{{市场_内容3}}"] = "两市<span style=\"color:#f85149;font-weight:700\">3142家上涨</span>/1623家下跌，涨停<span style=\"color:#f85149;font-weight:700\">超100只</span>"
+
+replacements["{{资金_子标题1}}"] = "北向资金"
+replacements["{{资金_子标题2}}"] = "ETF流向"
+replacements["{{资金_子标题3}}"] = "主力资金"
+
+replacements["{{资金_内容1}}"] = "北向资金<span style=\"color:#f85149;font-weight:700\">净流入36.7亿元</span>，外资加仓A股趋势延续"
+replacements["{{资金_内容2}}"] = "沪深300ETF<span style=\"color:#f85149;font-weight:700\">净流入12.5亿</span>，宽基指数受青睐"
+replacements["{{资金_内容3}}"] = "主力资金<span style=\"color:#f85149;font-weight:700\">净流入247.3亿元</span>，AI/科技方向获大资金加仓"
+
+replacements["{{资金_红利ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+8.5亿</span>"
+replacements["{{资金_证券ETF流向}}"] = "<span style=\"color:#f85149;font-weight:700\">+5.2亿</span>"
+
+# --- 10个社区话题：角色1/2/3 + 观点1/2/3 + 来源 + 热度 ---
+hot_topics = [
+    ("1", "银行股创新高，还能追吗？", "银行股", "建设银行新高", "农行涨幅52%"),
+    ("2", "DeepSeek融资大热，AI泡沫是否再现？", "AI泡沫", "估值3380亿", "估值较高"),
+    ("3", "黄金突破4300美元，还能买吗？", "黄金投资", "避险需求", "央行购金"),
+    ("4", "六张网建设对基建股影响几何？", "新基建", "算力网", "万亿投资"),
+    ("5", "港股估值这么低，是馅饼还是陷阱？", "港股配置", "恒生PB0.85x", "南向资金"),
+    ("6", "光模块行业景气度能持续多久？", "AI算力", "800G放量", "海外客户"),
+    ("7", "高股息策略是否已经过于拥挤？", "高股息", "银行PB0.85x", "电力4.5%"),
+    ("8", "A股创业板强势反弹，风格切换了吗？", "风格切换", "创业板+1.72%", "科技板块"),
+    ("9", "美联储政策转向如何影响A股？", "美联储", "降息预期", "美元走弱"),
+    ("10", "普通投资者如何构建稳健投资组合？", "投资策略", "核心+卫星", "定投"),
+]
+for num, title, _, _, _ in hot_topics:
+    roles = [
+        ("@价值投资者：", "银行股股息率超5%，<span style=\"color:#f85149;font-weight:700\">长期配置价值突出</span>"),
+        ("@机构分析师：", "估值修复+高分红双逻辑，<span style=\"color:#f0b429;font-weight:700\">短期注意风险</span>"),
+        ("@谨慎派：", "短期涨幅较大，<span style=\"color:#3fb950;font-weight:700\">不建议追高</span>")
+    ]
+    for i, (role, view) in enumerate(roles, 1):
+        replacements["{{社区话题" + num + "_角色" + str(i) + "}}"] = role
+        replacements["{{社区话题" + num + "_观点" + str(i) + "}}"] = view
+    replacements["{{社区话题" + num + "_来源}}"] = "投资策略社区"
+    replacements["{{社区话题" + num + "_热度}}"] = "🔥 " + str(5000 + int(num) * 500) + "讨论"
+
+# --- 速查颜色 ---
+colors = ["#3fb950", "#f85149", "#f0b429", "#00d4ff", "#bc8cff", "#f85149", "#3fb950", "#f0b429"]
+for i, color in enumerate(colors, 1):
+    replacements["{{速查" + str(i) + "_颜色}}"] = color
+
+# --- 速查8单独（用之前定义）---
+replacements["{{速查8_颜色}}"] = "#f0b429"
+
+# --- 操作建议标题和操作 ---
+ops = [
+    ("1", "高股息防御配置", "逢低分批买入银行/电力/能源等高股息龙头，持有3年以上"),
+    ("2", "AI算力产业链布局", "关注光模块/AI芯片/PCB龙头，逢回调分批建仓"),
+    ("3", "港股优质龙头配置", "通过恒生科技ETF或港股通优质标的参与"),
+    ("4", "黄金ETF配置", "配置比例5-10%，选择费率低的黄金ETF"),
+    ("5", "固收+产品底仓", "选择年化4-6%、回撤<3%的稳健型产品"),
+    ("6", "现金管理与风险控制", "现金仓位5-10%，配置货基或短期理财")
+]
+for num, title, action in ops:
+    replacements["{{操作建议" + num + "_标题}}"] = title
+    replacements["{{操作建议" + num + "_操作}}"] = action
+
+# --- 黄金信息 ---
+replacements["{{黄金_单位}}"] = "美元/盎司"
+replacements["{{黄金_价格}}"] = "4342.50"
+replacements["{{黄金_涨跌幅}}"] = "+0.27%"
+
+# --- 债基配置建议 ---
+replacements["{{债基_配置建议标题}}"] = "债基配置建议"
+replacements["{{债基_配置建议内容}}"] = "当前<span style=\"color:#3fb950;font-weight:700\">10年期国债收益率2.385%</span>，处于历史低位。建议配置短债基金（久期<3年）为主，控制利率风险。可关注：1）短债基金（年化2-3%）；2）中长期纯债（年化3-4%）；3）固收+（年化4-6%）"
+
+# --- 深度解读：银行/公用/央企三组 ---
+# 银行组
+bank_data = [
+    ("1", "工商银行", "PB 0.78x", "<span style=\"color:#f85149;font-weight:700\">6.2%</span>股息率"),
+    ("2", "建设银行", "PB 0.85x", "<span style=\"color:#f85149;font-weight:700\">6.0%</span>股息率"),
+    ("3", "招商银行", "PB 1.2x", "<span style=\"color:#f0b429;font-weight:700\">3.5%</span>股息率")
+]
+for num, name, metric, _ in bank_data:
+    replacements["{{深度解读_银行" + num + "_标题}}"] = name
+    replacements["{{深度解读_银行" + num + "_指标}}"] = metric
+replacements["{{深度解读_银行总结}}"] = "银行板块整体PB约0.85x，<span style=\"color:#f85149;font-weight:700\">估值处于历史低位</span>，平均股息率超5%"
+replacements["{{深度解读_银行组标签}}"] = "价值低估"
+
+# 公用组
+util_data = [
+    ("1", "长江电力", "水电龙头", "<span style=\"color:#f85149;font-weight:700\">4.2%</span>股息率"),
+    ("2", "中国核电", "核电龙头", "<span style=\"color:#f0b429;font-weight:700\">3.5%</span>股息率")
+]
+for num, name, metric, _ in util_data:
+    replacements["{{深度解读_公用" + num + "_标题}}"] = name
+    replacements["{{深度解读_公用" + num + "_指标}}"] = metric
+replacements["{{深度解读_公用总结}}"] = "公用事业现金流稳定，<span style=\"color:#f85149;font-weight:700\">防御属性突出</span>"
+replacements["{{深度解读_公用组标签}}"] = "稳健配置"
+
+# 央企组
+central_data = [
+    ("1", "中国移动", "PB 1.8x", "<span style=\"color:#f0b429;font-weight:700\">5.5%</span>股息率"),
+    ("2", "中国神华", "吨煤利润185元", "<span style=\"color:#f85149;font-weight:700\">7.2%</span>股息率"),
+    ("3", "中国海油", "桶油利润55美元", "<span style=\"color:#f85149;font-weight:700\">6.5%</span>股息率"),
+    ("4", "大秦铁路", "货运龙头", "<span style=\"color:#f85149;font-weight:700\">7.5%</span>股息率")
+]
+for num, name, metric, _ in central_data:
+    replacements["{{深度解读_央企" + num + "_标题}}"] = name
+    replacements["{{深度解读_央企" + num + "_指标}}"] = metric
+replacements["{{深度解读_央企总结}}"] = "央企蓝筹估值修复，<span style=\"color:#f85149;font-weight:700\">高分红策略持续</span>"
+replacements["{{深度解读_央企组标签}}"] = "政策支持"
+replacements["{{深度解读_配置建议内容}}"] = "建议高股息标的占比<span style=\"color:#f85149;font-weight:700\">30-40%</span>，红利ETF占比<span style=\"color:#f85149;font-weight:700\">20-25%</span>，固收+占比<span style=\"color:#f0b429;font-weight:700\">30-40%</span>"
+
+# 手动补充央企组占位符
+replacements["{{深度解读_央企1_标题}}"] = "中国移动"
+replacements["{{深度解读_央企1_指标}}"] = "PB 1.8x"
+replacements["{{深度解读_央企2_标题}}"] = "中国神华"
+replacements["{{深度解读_央企2_指标}}"] = "吨煤利润185元"
+replacements["{{深度解读_央企3_标题}}"] = "中国海油"
+replacements["{{深度解读_央企3_指标}}"] = "桶油利润55美元"
+replacements["{{深度解读_央企4_标题}}"] = "大秦铁路"
+replacements["{{深度解读_央企4_指标}}"] = "货运龙头"
+
 # ============ 执行替换 ============
 for old, new in replacements.items():
     html = html.replace(old, new)
