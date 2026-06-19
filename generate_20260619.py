@@ -63,9 +63,9 @@ KC50_INDEX = "1911.51"
 KC50_CHANGE = "+3.84%"
 HS300_INDEX = "4941.60"
 HS300_CHANGE = "+0.21%"
-A_SHARES_VOLUME = "3.11万亿"
-A_SHARES_UP_DOWN = "跌多涨少（约3400家下跌）"
-A_NORTHBOUND = "净流入42.68亿元"
+A_SHARES_VOLUME = "3.31万亿"
+A_SHARES_UP_DOWN = "约2000只上涨 / 超3300只下跌"
+A_NORTHBOUND = "净流入28.3亿元"
 
 # 美股
 DJI_INDEX = "51492.55"
@@ -88,53 +88,53 @@ HSCEI_CHANGE = "-2.06%"
 H_SOUTHBOUND = "净卖出67.92亿元"
 
 # 亚太
-NI225_INDEX = "71250.06"
-NI225_CHANGE = "+0.28%"
-KOSPI_INDEX = "9097.95"
-KOSPI_CHANGE = "+0.38%"
+NI225_INDEX = "71053.49"
+NI225_CHANGE = "+1.65%"
+KOSPI_INDEX = "9063.84"
+KOSPI_CHANGE = "+2.25%"
 TAIWAN_INDEX = "46465.20"
 TAIWAN_CHANGE = "+1.28%"
 INDIA_INDEX = "76754.52"
-INDIA_CHANGE = "-0.85%"
-ASX_INDEX = "8821.70"
-ASX_CHANGE = "-1.00%"
+INDIA_CHANGE = "-0.25%"
+ASX_INDEX = "8911.10"
+ASX_CHANGE = "-0.62%"
 
 # 欧洲
 UK100_INDEX = "10399.70"
-UK100_CHANGE = "-1.04%"
+UK100_CHANGE = "-1.13%"
 DAX30_INDEX = "25026.80"
-DAX30_CHANGE = "+0.37%"
+DAX30_CHANGE = "+0.35%"
 CAC40_INDEX = "8467.98"
 CAC40_CHANGE = "+0.44%"
 STOXX50_INDEX = "6323.28"
-STOXX50_CHANGE = "+0.37%"
+STOXX50_CHANGE = "+0.34%"
 
 # 大宗商品
-WTI_OIL = "74.81"
-WTI_CHANGE = "-0.27%"
-BRENT_OIL = "78.16"
-BRENT_CHANGE = "-0.50%"
-GOLD_PRICE = "4297.65"
-GOLD_CHANGE = "+0.47%"
+WTI_OIL = "74.46"
+WTI_CHANGE = "-2.18%"
+BRENT_OIL = "77.58"
+BRENT_CHANGE = "-2.35%"
+GOLD_PRICE = "4276.3"
+GOLD_CHANGE = "-1.79%"
 SH_GOLD = "939"
-SILVER_PRICE = "67.88"
-SILVER_CHANGE = "-2.89%"
+SILVER_PRICE = "67.85"
+SILVER_CHANGE = "-3.04%"
 
 # 加密货币
-BTC_PRICE = "64500"
-BTC_CHANGE = "-4.2%"
-ETH_PRICE = "2080"
-ETH_CHANGE = "-6.0%"
-BTC_ETF_FLOW = "净流出"
-CRYPTO_SENTIMENT = "谨慎偏空"
+BTC_PRICE = "63970"
+BTC_CHANGE = "-2.72%"
+ETH_PRICE = "1729"
+ETH_CHANGE = "-3.65%"
+BTC_ETF_FLOW = "6月16日比特币现货ETF净流出6409万美元"
+CRYPTO_SENTIMENT = "谨慎，受美联储鹰派与美股风险偏好下降拖累"
 
 # 汇率债券
 USD_CNY_MID = "6.8130"
 USD_CNY_ONSHORE = "6.77"
 USD_INDEX = "100.38"
 USD_INDEX_CHANGE = "+0.87%"
-US_10Y = "4.46%"
-US_30Y = "4.90%"
+US_10Y = "4.4869%"
+US_30Y = "4.909%"
 CN_10Y = "1.73%"
 
 # 存款利率与理财
@@ -146,19 +146,19 @@ PURE_BOND_YIELD = "正收益"
 
 # ========== 关注标的（2026-06-18） ==========
 STOCKS = [
-    {"code": "601398", "name": "工商银行", "price": "7.16", "change": "+0.13%", "pb": "0.65"},
-    {"code": "601939", "name": "建设银行", "price": "9.92", "change": "+0.04%", "pb": "0.73"},
-    {"code": "601288", "name": "农业银行", "price": "6.37", "change": "+0.10%", "pb": "0.79"},
-    {"code": "600036", "name": "招商银行", "price": "37.26", "change": "+0.40%", "pb": "0.83"},
-    {"code": "002142", "name": "宁波银行", "price": "30.78", "change": "+0.63%", "pb": "0.87"},
-    {"code": "600919", "name": "江苏银行", "price": "11.22", "change": "+0.61%", "pb": "0.78"},
-    {"code": "600926", "name": "杭州银行", "price": "15.64", "change": "+0.57%", "pb": "0.81"},
-    {"code": "601963", "name": "重庆银行", "price": "10.85", "change": "+0.35%", "pb": "0.66"},
-    {"code": "600900", "name": "长江电力", "price": "26.66", "change": "+0.53%", "pb": "2.86"},
-    {"code": "601006", "name": "大秦铁路", "price": "4.94", "change": "+0.37%", "pb": "0.60"},
-    {"code": "600941", "name": "中国移动", "price": "91.65", "change": "+0.04%", "pb": "1.40"},
-    {"code": "601985", "name": "中国核电", "price": "9.12", "change": "+0.81%", "pb": "1.56"},
-    {"code": "601318", "name": "中国平安", "price": "49.38", "change": "+1.20%", "pb": "0.88"},
+    {"code": "601398", "name": "工商银行", "price": "7.16", "change": "-2.72%", "pb": "0.65"},
+    {"code": "601939", "name": "建设银行", "price": "9.92", "change": "-2.07%", "pb": "0.73"},
+    {"code": "601288", "name": "农业银行", "price": "6.37", "change": "-2.45%", "pb": "0.79"},
+    {"code": "600036", "name": "招商银行", "price": "37.26", "change": "-2.54%", "pb": "0.83"},
+    {"code": "002142", "name": "宁波银行", "price": "30.78", "change": "-2.10%", "pb": "0.87"},
+    {"code": "600919", "name": "江苏银行", "price": "11.22", "change": "-2.69%", "pb": "0.78"},
+    {"code": "600926", "name": "杭州银行", "price": "15.64", "change": "-2.25%", "pb": "0.81"},
+    {"code": "601963", "name": "重庆银行", "price": "10.85", "change": "-3.64%", "pb": "0.66"},
+    {"code": "600900", "name": "长江电力", "price": "26.66", "change": "-1.26%", "pb": "2.86"},
+    {"code": "601006", "name": "大秦铁路", "price": "4.94", "change": "-1.00%", "pb": "0.60"},
+    {"code": "600941", "name": "中国移动", "price": "91.65", "change": "-1.43%", "pb": "1.40"},
+    {"code": "601985", "name": "中国核电", "price": "9.12", "change": "-1.94%", "pb": "1.56"},
+    {"code": "601318", "name": "中国平安", "price": "49.38", "change": "-6.41%", "pb": "0.88"},
 ]
 
 
@@ -200,7 +200,7 @@ def main():
     content = replace_placeholder(content, '{{ticker_道指_数值}}', DJI_INDEX)
     content = replace_placeholder(content, '{{ticker_道指_涨跌幅}}', span_class(DJI_CHANGE, 'down'))
     content = replace_placeholder(content, '{{ticker_黄金_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{ticker_黄金_涨跌幅}}', span_class(GOLD_CHANGE, 'up'))
+    content = replace_placeholder(content, '{{ticker_黄金_涨跌幅}}', span_class(GOLD_CHANGE, 'down'))
 
     # 3. Tab 0: 要点速览
     content = replace_placeholder(content, '{{概览卡1_标题}}', 'A股分化调整')
@@ -222,11 +222,11 @@ def main():
     content = replace_placeholder(content, '{{概览卡3_描述}}',
         f'道指{color(DJI_CHANGE, "green")}，标普500{color(SPX_CHANGE, "green")}，纳指{color(NDX_CHANGE, "green")}，英伟达跌1.33%')
 
-    content = replace_placeholder(content, '{{概览卡4_标题}}', '黄金反弹')
+    content = replace_placeholder(content, '{{概览卡4_标题}}', '黄金回调')
     content = replace_placeholder(content, '{{概览卡4_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{概览卡4_标签}}', '震荡反弹')
+    content = replace_placeholder(content, '{{概览卡4_标签}}', '承压回落')
     content = replace_placeholder(content, '{{概览卡4_描述}}',
-        f'国际金价反弹{color(GOLD_CHANGE, "red")}，上海金约{color(SH_GOLD + "元/克", "cyan")}，白银{color(SILVER_CHANGE, "green")}')
+        f'国际金价{color(GOLD_CHANGE, "green")}，上海金约{color(SH_GOLD + "元/克", "cyan")}，白银{color(SILVER_CHANGE, "green")}')
 
     # 8张要点卡片
     content = replace_placeholder(content, '{{要点1_标题}}', 'A股极致分化')
@@ -245,21 +245,21 @@ def main():
     content = replace_placeholder(content, '{{要点4_内容}}',
         f'美伊签署临时协议，霍尔木兹海峡有望重开，原油、航运等地缘风险预期降温，WTI原油{color(WTI_CHANGE, "green")}，布伦特原油{color(BRENT_CHANGE, "green")}，全球能源供给预期改善。')
 
-    content = replace_placeholder(content, '{{要点5_标题}}', 'AI IPO竞速')
+    content = replace_placeholder(content, '{{要点5_标题}}', '银行板块大跌')
     content = replace_placeholder(content, '{{要点5_内容}}',
-        f'{color("OpenAI与Anthropic", "purple")}先后提交IPO申请，竞逐2026年秋季上市窗口，AI算力基础设施板块估值体系面临重塑，龙头公司融资能力提升。')
+        f"6月18日中证银行指数{color('跌约2.6%', 'green')}，工商银行、农业银行、招商银行跌幅均超2%，主因5-6月分红除权窗口期套利资金集中离场，短线形成明显抛压。")
 
-    content = replace_placeholder(content, '{{要点6_标题}}', '华为HDC 2026')
+    content = replace_placeholder(content, '{{要点6_标题}}', '中国平安重挫')
     content = replace_placeholder(content, '{{要点6_内容}}',
-        f'华为HDC 2026大会召开，{color("HarmonyOS 7", "purple")}进入Agent时代，发布{color("openPangu 2.0", "purple")}，端侧AI、AI医疗、自动驾驶等应用场景持续落地，中国AI大模型连续六周全球调用量领先美国。')
+        f"中国平安6月18日{color('大跌6.41%', 'green')}报49.38元，创60日新低，单日成交额109.55亿元，主力净流出19.63亿元；市场对险资地产敞口与负债端压力仍存担忧。")
 
-    content = replace_placeholder(content, '{{要点7_标题}}', '高股息银行抗跌')
+    content = replace_placeholder(content, '{{要点7_标题}}', '日韩股市创历史新高')
     content = replace_placeholder(content, '{{要点7_内容}}',
-        f'市场调整中银行、电力等高股息板块逆势飘红，工商银行涨0.13%、招商银行涨0.40%、长江电力涨0.53%，低估值高股息配置价值在震荡市中进一步凸显。')
+        f"6月18日日经225指数{color('涨1.65%', 'red')}报71053.49点，韩国KOSPI{color('涨2.25%', 'red')}报9063.84点，台湾加权{color('涨1.28%', 'red')}报46465.2点，均创收盘历史新高，亚太科技股表现强劲。")
 
-    content = replace_placeholder(content, '{{要点8_标题}}', '汇率与债市')
+    content = replace_placeholder(content, '{{要点8_标题}}', '原油大跌创阶段新低')
     content = replace_placeholder(content, '{{要点8_内容}}',
-        f'USD/CNY中间价报{color(USD_CNY_MID, "cyan")}，美元/人民币{color("上调34个基点", "green")}；在岸汇率约{color(USD_CNY_ONSHORE, "cyan")}；中10年期国债收益率{color(CN_10Y, "cyan")}维持低位，纯债基金保持正收益。')
+        f"6月18日布伦特原油{color('跌超2%', 'green')}报77.58美元/桶，WTI原油{color('跌超2%', 'green')}至74.46美元附近，双双刷新3月初以来新低；美军解除伊朗海上封锁令地缘溢价回落。")
 
     # 时间线
     content = replace_placeholder(content, '{{时间线1_日}}', '19')
@@ -303,7 +303,7 @@ def main():
         f'6月18日A股呈现极致分化格局：上证指数{color(SH_CHANGE, "green")}，深证成指{color(SZ_CHANGE, "red")}，创业板指{color(CYB_CHANGE, "red")}，科创50{color(KC50_CHANGE, "red")}。两市成交额约{color(A_SHARES_VOLUME, "cyan")}，算力硬件链批量涨停，但全市场约{color("3400家下跌", "green")}，结构性强弱分明。')
 
     content = replace_placeholder(content, '{{重点新闻4_标签和标题}}',
-        '<span class="tag tag-finance">💰 资金</span>北向资金净流入42.68亿元')
+        '<span class="tag tag-finance">💰 资金</span>北向资金净流入28.3亿元')
     content = replace_placeholder(content, '{{重点新闻4_正文}}',
         f'6月18日北向资金{color(A_NORTHBOUND, "red")}，结束此前连续流出态势。从资金流向看，外资加仓方向集中在{color("半导体、算力、光通信硬件", "purple")}等科技成长板块，而对部分传统蓝筹维持减持。北向回流有助于提振市场风险偏好，但持续性仍需观察外围流动性环境。')
 
@@ -330,9 +330,9 @@ def main():
         f'美股三大指数集体收跌：道指{color(DJI_CHANGE, "green")}报{color(DJI_INDEX, "cyan")}，标普500{color(SPX_CHANGE, "green")}报{color(SPX_INDEX, "cyan")}，纳斯达克{color(NDX_CHANGE, "green")}报{color(NDX_INDEX, "cyan")}。英伟达{color(NVDA_CHANGE, "green")}，特斯拉{color(TSLA_CHANGE, "green")}，ARM逆市{color(ARM_CHANGE, "red")}。科技股承压反映市场对高估值AI资产的担忧。')
 
     content = replace_placeholder(content, '{{财经新闻2_标签和标题}}',
-        '<span class="tag tag-finance">🏦 银行</span>高股息银行逆势上涨')
+        '<span class="tag tag-finance">🏦 银行</span>高股息银行因分红套利盘离场大跌')
     content = replace_placeholder(content, '{{财经新闻2_正文}}',
-        f'市场调整中，高股息银行股展现防御属性：工商银行涨0.13%、建设银行涨0.04%、农业银行涨0.10%、招商银行涨0.40%。银行板块PB约{color("0.6-0.8倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，在低利率环境下配置价值突出，险资与长线资金持续加仓。')
+        f'6月18日银行板块整体承压，工商银行{color("跌2.72%", "green")}、建设银行{color("跌2.07%", "green")}、农业银行{color("跌2.45%", "green")}、招商银行{color("跌2.54%", "green")}。分红除权窗口期套利资金集中离场是主因，但银行板块PB约{color("0.6-0.8倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，在低利率环境下长期配置价值仍突出。')
 
     content = replace_placeholder(content, '{{财经新闻3_标签和标题}}',
         '<span class="tag tag-finance">💱 汇率</span>人民币中间价下调34个基点')
@@ -340,9 +340,9 @@ def main():
         f'银行间外汇市场人民币对美元中间价报{color(USD_CNY_MID, "cyan")}，美元/人民币{color("上调34个基点", "green")}（即人民币贬值）。在岸汇率约{color(USD_CNY_ONSHORE, "cyan")}。人民币贬值对出口企业形成一定利好，但可能加大进口成本和资本外流压力，需关注后续央行稳汇率信号。')
 
     content = replace_placeholder(content, '{{财经新闻4_标签和标题}}',
-        '<span class="tag tag-energy">🥇 黄金</span>黄金震荡反弹0.47%')
+        '<span class="tag tag-energy">🥇 黄金</span>黄金回调1.79%')
     content = replace_placeholder(content, '{{财经新闻4_正文}}',
-        f'国际金价震荡反弹，现货黄金报{color(GOLD_PRICE + "美元/盎司", "cyan")}，{color(GOLD_CHANGE, "red")}；上海金约{color(SH_GOLD + "元/克", "cyan")}；白银{color(SILVER_CHANGE, "green")}报{color(SILVER_PRICE + "美元/盎司", "cyan")}。美联储鹰派言论压制金价，但地缘避险需求和央行购金提供支撑，黄金短期或维持震荡。')
+        f'国际金价承压回调，现货黄金报{color(GOLD_PRICE + "美元/盎司", "cyan")}，{color(GOLD_CHANGE, "green")}；上海金约{color(SH_GOLD + "元/克", "cyan")}；白银{color(SILVER_CHANGE, "green")}报{color(SILVER_PRICE + "美元/盎司", "cyan")}。美联储鹰派言论压制金价，地缘风险降温削弱避险需求，但央行购金与长期去美元化逻辑仍提供支撑，黄金短期或维持震荡。')
 
     # 5. Tab 2: AI前沿
     content = replace_placeholder(content, '{{大模型新闻1_标签和标题}}',
@@ -421,7 +421,7 @@ def main():
 
     # 正面/热点/风险
     content = replace_placeholder(content, '{{正面因素_内容}}',
-        f'创业板指{color(CYB_CHANGE, "red")}大涨，科创50{color(KC50_CHANGE, "red")}飙升；北向资金{color(A_NORTHBOUND, "red")}；算力硬件链批量涨停；黄金{color(GOLD_CHANGE, "red")}反弹；高股息银行股全线飘红。')
+        f'创业板指{color(CYB_CHANGE, "red")}大涨，科创50{color(KC50_CHANGE, "red")}飙升；北向资金{color(A_NORTHBOUND, "red")}；算力硬件链批量涨停；日韩股市{color("创历史新高", "red")}；科技成长资金回流明显。')
     content = replace_placeholder(content, '{{市场热点_内容}}',
         f'OpenAI/Anthropic IPO竞速；华为HDC 2026发布HarmonyOS 7与openPangu 2.0；霍尔木兹海峡重开预期；中国AI大模型调用量六周全球领先；算力硬件链批量涨停。')
     content = replace_placeholder(content, '{{风险提示_内容}}',
@@ -553,13 +553,13 @@ def main():
     # 情绪指标
     sentiment_items = [
         ("高股息", "80%", "80%", "hot", "银行、电力板块防御属性突出"),
-        ("银行", "75%", "75%", "hot", "低估值高股息，逆势上涨"),
+        ("银行", "75%", "75%", "hot", "低估值高股息，短期承压"),
         ("公用事业", "70%", "70%", "hot", "稳定现金流，防御配置"),
         ("电力", "72%", "72%", "hot", "水电核电业绩确定"),
         ("AI算力", "92%", "92%", "hot", "IPO预期+政策利好"),
         ("能源油价", "40%", "40%", "low", "霍尔木兹重开，油价承压"),
         ("新能源", "75%", "75%", "hot", "能源转型持续推进"),
-        ("黄金", "78%", "78%", "hot", "震荡反弹，避险需求"),
+        ("黄金", "78%", "78%", "hot", "承压回调，避险需求"),
         ("加密货币", "35%", "35%", "low", "BTC大跌，情绪谨慎偏空"),
     ]
     for name, width, pct, cls, desc in sentiment_items:
@@ -572,20 +572,20 @@ def main():
     # 社区话题标签
     content = replace_placeholder(content, '{{社区话题标签1}}', '算力链涨停')
     content = replace_placeholder(content, '{{社区话题标签2}}', '美联储鹰派')
-    content = replace_placeholder(content, '{{社区话题标签3}}', '黄金反弹')
+    content = replace_placeholder(content, '{{社区话题标签3}}', '黄金回调')
     content = replace_placeholder(content, '{{社区话题标签4}}', '高股息银行')
     content = replace_placeholder(content, '{{社区话题标签5}}', '港股低估值')
 
     # 高股息板块深度分析（每段120字以上）
     content = replace_placeholder(content, '{{高股息_银行标题}}', '银行板块：PB 0.6-0.8倍，股息率4.5-5.5%')
     content = replace_placeholder(content, '{{高股息_银行内容}}',
-        f'银行板块当前PB约{color("0.6-0.8倍", "cyan")}，处于历史低位，股息率{color("4.5-5.5%", "red")}，显著高于10年期国债{color(CN_10Y, "cyan")}和货币基金{color(MMF_YIELD, "green")}。6月18日工商银行涨0.13%、建设银行涨0.04%、招商银行涨0.40%，在市场调整中展现防御属性。险资、北向资金持续加仓银行股，估值修复逻辑清晰，适合作为稳健型投资者的底仓配置。')
+        f'银行板块当前PB约{color("0.6-0.8倍", "cyan")}，处于历史低位，股息率{color("4.5-5.5%", "red")}，显著高于10年期国债{color(CN_10Y, "cyan")}和货币基金{color(MMF_YIELD, "green")}。6月18日银行板块因分红除权窗口期套利资金集中离场而{color("集体回调", "green")}，工商银行跌2.72%、建设银行跌2.07%、招商银行跌2.54%，但低估值与高股息属性未变。险资、长线资金持续看好银行股，估值修复逻辑清晰，适合作为稳健型投资者的底仓配置。')
     content = replace_placeholder(content, '{{高股息_公用事业标题}}', '公用事业：稳定现金流，高股息防御强')
     content = replace_placeholder(content, '{{高股息_公用事业内容}}',
         f'水电、燃气等公用事业板块具备{color("稳定现金流", "cyan")}特征，不受经济周期影响。长江电力PB约{color("2.86倍", "cyan")}，股息率稳定，业绩确定性极强。在市场波动加大、美联储鹰派信号压制风险资产的背景下，公用事业板块的防御属性凸显，适合保守型投资者作为避险底仓。')
     content = replace_placeholder(content, '{{高股息_电力标题}}', '电力板块：PE 15-20倍，股息率3.5-4.5%')
     content = replace_placeholder(content, '{{高股息_电力内容}}',
-        f'电力板块PE约{color("15-20倍", "cyan")}，股息率{color("3.5-4.5%", "red")}。受益于能源转型，核电、水电等清洁能源装机持续增长。中国核电PE约{color("20倍", "cyan")}，6月18日涨0.81%，业绩增速稳定，现金流良好，具备长期投资价值，是成长性与高股息兼具的标的。')
+        f'电力板块PE约{color("15-20倍", "cyan")}，股息率{color("3.5-4.5%", "red")}。受益于能源转型，核电、水电等清洁能源装机持续增长。中国核电PE约{color("20倍", "cyan")}，6月18日{color("跌1.94%", "green")}，但业绩增速稳定，现金流良好，具备长期投资价值，是成长性与高股息兼具的标的。')
     content = replace_placeholder(content, '{{高股息_央企标题}}', '央企蓝筹：高股息+低估值，估值修复可期')
     content = replace_placeholder(content, '{{高股息_央企内容}}',
         f'中国移动PB约{color("1.40倍", "cyan")}，中国平安PB约{color("0.88倍", "cyan")}，大秦铁路PB约{color("0.60倍", "cyan")}，股息率普遍在{color("4%", "red")}以上。央企改革持续推进，ROE提升逻辑清晰，在中特估估值体系下，央企蓝筹估值修复空间较大，适合长线资金配置。')
@@ -595,7 +595,7 @@ def main():
     content = replace_placeholder(content, '{{估值_中证红利PE_今日涨幅}}', SH_CHANGE)
     content = replace_placeholder(content, '{{低估值1_收盘价}}', f'{SH_COMPONENT}点')
     content = replace_placeholder(content, '{{低估值1_描述}}',
-        f'低估值高股息策略有效，中证红利指数跟随上证震荡。当前银行、电力等高股息板块PB处于历史低位，股息率{color("4.5-5.5%", "red")}，显著高于无风险收益率，适合稳健型投资者。')
+        f'低估值高股息策略中长期仍有效，但6月18日银行板块短期承压。当前银行、电力等高股息板块PB处于历史低位，股息率{color("4.5-5.5%", "red")}，显著高于无风险收益率，分红除权窗口期带来的回调或为稳健型投资者提供布局机会。')
     content = replace_placeholder(content, '{{低估值2_名称}}', '港股恒生科技')
     content = replace_placeholder(content, '{{低估值2_今日涨幅}}', HSTECH_CHANGE)
     content = replace_placeholder(content, '{{低估值2_涨幅样式}}', 'down')
@@ -640,7 +640,7 @@ def main():
     content = replace_placeholder(content, '{{估值_中国核电PE_标签}}', '适中')
     content = replace_placeholder(content, '{{估值_中国核电PE_标签类}}', 'mid')
     content = replace_placeholder(content, '{{估值_黄金价格}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{估值_黄金价格_标签}}', '震荡反弹')
+    content = replace_placeholder(content, '{{估值_黄金价格_标签}}', '承压回调')
     content = replace_placeholder(content, '{{估值_黄金价格_标签类}}', 'hot')
 
     # 8. Tab 5: 关注标的
@@ -657,19 +657,19 @@ def main():
 
     # 标的要点（每个5条）
     stock_points = [
-        [f'{color("股息率约5%", "red")}，显著高于无风险收益率', f'{color("PB约0.65倍", "cyan")}，处于历史低位', f'{color("涨0.13%", "red")}，大行中表现稳健', f'{color("资产质量稳健", "green")}，不良贷款率可控', '长期配置价值凸显，适合险资和长线资金'],
-        [f'{color("股息率约5%", "red")}，大行中较高', f'{color("PB约0.73倍", "cyan")}，估值历史低位', f'{color("涨0.04%", "red")}，防御属性明显', f'{color("基本面稳定", "green")}，业绩确定性较强', '高股息防御配置首选'],
-        [f'{color("股息率约5.5%", "red")}，四大行最高', f'{color("PB约0.79倍", "cyan")}，破净状态', f'{color("涨0.10%", "red")}，走势稳健', f'{color("资产质量改善", "green")}，不良率持续下降', '高股息防御配置首选'],
-        [f'{color("PB约0.83倍", "cyan")}，零售银行龙头', f'{color("涨0.40%", "red")}，成交活跃', f'{color("零售业务强劲", "red")}，资产质量优异', f'{color("股息率约4.5%", "red")}，长期分红稳定', '长期看好，短期注意板块轮动'],
-        [f'{color("PB约0.87倍", "cyan")}，城商行中估值合理', f'{color("涨0.63%", "red")}，表现强于大行', f'{color("资产质量优异", "green")}，不良率控制良好', f'{color("区域经济活力强", "yellow")}，业务拓展空间大', '高成长性城商行代表'],
-        [f'{color("PB约0.78倍", "cyan")}，估值较低', f'{color("涨0.61%", "red")}，城商行中表现活跃', f'{color("股息率较高", "red")}，高股息策略适用', f'{color("规模较大", "yellow")}，江苏省经济活力强', '低估值高股息配置价值突出'],
-        [f'{color("PB约0.81倍", "cyan")}，城商行中估值合理', f'{color("涨0.57%", "red")}，走势强于板块', f'{color("业绩增长", "green")}，营收增速较快', f'{color("区域经济发达", "yellow")}，浙江民营经济活跃', '成长性突出的城商行'],
-        [f'{color("PB约0.66倍", "cyan")}，估值较低', f'{color("股息率较高", "red")}，高股息特征明显', f'{color("涨0.35%", "red")}，调整幅度有限', f'{color("成渝地区双城", "yellow")}，受益于区域发展', '低估值高股息标的'],
-        [f'{color("股息率约3.5%", "red")}，稳定现金牛', f'{color("PB约2.86倍", "cyan")}，水电龙头溢价', f'{color("涨0.53%", "red")}，防御属性显现', f'{color("现金流稳定", "green")}，不受经济周期影响', '长期投资者防御配置首选'],
-        [f'{color("股息率约5%", "red")}，高股息代表', f'{color("PB约0.60倍", "cyan")}，估值极低', f'{color("涨0.37%", "red")}，走势稳健', f'{color("运煤专线", "yellow")}，区域垄断优势', '稳健收益类投资者适合'],
-        [f'{color("股息率约4%", "red")}，运营商最高', f'{color("PB约1.40倍", "cyan")}，估值合理', f'{color("涨0.04%", "red")}，走势平稳', f'{color("5G龙头", "yellow")}，用户规模全球第一', '央企蓝筹，中特估受益标的'],
-        [f'{color("PE约20倍", "cyan")}，清洁能源估值合理', f'{color("核电龙头", "yellow")}，技术壁垒高', f'{color("涨0.81%", "red")}，走势稳健', f'{color("能源转型受益", "green")}，政策支持明确', '成长性+高股息兼具'],
-        [f'{color("PB约0.88倍", "cyan")}，保险龙头低估', f'{color("涨1.20%", "red")}，13只标的涨幅最大', f'{color("综合金融", "yellow")}，牌照齐全', f'{color("估值修复空间大", "red")}，ROE有望提升', '保险行业龙头，长期配置价值显现'],
+        [f'{color("股息率约5%", "red")}，显著高于无风险收益率', f'{color("PB约0.65倍", "cyan")}，处于历史低位', f'{color("6月18日跌2.72%", "green")}，分红除权套利盘离场', f'{color("资产质量稳健", "red")}，不良贷款率可控', '长期配置价值凸显，适合险资和长线资金'],
+        [f'{color("股息率约5%", "red")}，大行中较高', f'{color("PB约0.73倍", "cyan")}，估值历史低位', f'{color("6月18日跌2.07%", "green")}，前期涨幅后获利回吐', f'{color("基本面稳定", "red")}，业绩确定性较强', '高股息防御配置首选'],
+        [f'{color("股息率约5.5%", "red")}，四大行最高', f'{color("PB约0.79倍", "cyan")}，破净状态', f'{color("6月18日跌2.45%", "green")}，分红窗口抛压明显', f'{color("县域金融基本盘稳健", "red")}，不良率持续下降', '高股息防御配置首选'],
+        [f'{color("PB约0.83倍", "cyan")}，零售银行龙头', f'{color("6月18日跌2.54%", "green")}，成交活跃', f'{color("零售业务强劲", "red")}，资产质量优异', f'{color("股息率约4.5%", "red")}，长期分红稳定', '长期看好，短期注意板块轮动'],
+        [f'{color("PB约0.87倍", "cyan")}，城商行中估值合理', f'{color("6月18日跌2.10%", "green")}，短期受板块拖累', f'{color("资产质量优异", "red")}，不良率控制良好', f'{color("区域经济活力强", "yellow")}，业务拓展空间大', '高成长性城商行代表'],
+        [f'{color("PB约0.78倍", "cyan")}，估值较低', f'{color("6月18日跌2.69%", "green")}，城商行中跌幅较大', f'{color("股息率较高", "red")}，高股息策略适用', f'{color("2025年净利增速双位数", "red")}，江苏省经济活力强', '低估值高股息配置价值突出'],
+        [f'{color("PB约0.81倍", "cyan")}，城商行中估值合理', f'{color("6月18日跌2.25%", "green")}，分红套利盘离场压制', f'{color("业绩增长", "red")}，营收增速较快', f'{color("区域经济发达", "yellow")}，浙江民营经济活跃', '成长性突出的城商行'],
+        [f'{color("PB约0.66倍", "cyan")}，估值较低', f'{color("股息率较高", "red")}，高股息特征明显', f'{color("6月18日跌3.64%", "green")}，流通盘小波动大', f'{color("成渝地区双城", "yellow")}，受益于区域发展', '短期回避高波动，长期看估值修复'],
+        [f'{color("股息率约3.5%", "red")}，稳定现金牛', f'{color("PB约2.86倍", "cyan")}，水电龙头溢价', f'{color("6月18日跌1.26%", "green")}，高位回调', f'{color("现金流稳定", "red")}，不受经济周期影响', '长期投资者防御配置首选'],
+        [f'{color("股息率约5%", "red")}，高股息代表', f'{color("PB约0.60倍", "cyan")}，估值极低', f'{color("6月18日跌1.00%", "green")}，走势相对抗跌', f'{color("运煤专线", "yellow")}，区域垄断优势', '稳健收益类投资者适合'],
+        [f'{color("股息率约4%", "red")}，运营商最高', f'{color("PB约1.40倍", "cyan")}，估值合理', f'{color("6月18日跌1.43%", "green")}，走势平稳', f'{color("5G龙头", "yellow")}，用户规模全球第一', '央企蓝筹，中特估受益标的'],
+        [f'{color("PE约20倍", "cyan")}，清洁能源估值合理', f'{color("核电龙头", "yellow")}，技术壁垒高', f'{color("6月18日跌1.94%", "green")}，走势偏弱', f'{color("能源转型受益", "red")}，政策支持明确', '成长性+高股息兼具'],
+        [f'{color("PB约0.88倍", "cyan")}，保险龙头低估', f'{color("6月18日大跌6.41%", "green")}，创60日新低', f'{color("综合金融", "yellow")}，牌照齐全', f'{color("估值修复空间大", "red")}，ROE有望提升', '短期回避，等待右侧信号'],
     ]
     for i, points in enumerate(stock_points, 1):
         for j, pt in enumerate(points, 1):
@@ -685,7 +685,7 @@ def main():
     content = replace_placeholder(content, '{{深度解读_银行3_标题}}', '招商银行')
     content = replace_placeholder(content, '{{深度解读_银行3_指标}}', f'{STOCKS[3]["price"]}元 {STOCKS[3]["change"]}')
     content = replace_placeholder(content, '{{深度解读_银行总结}}',
-        f'银行板块PB约{color("0.6-0.8倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，处于历史估值底部。6月18日工商银行、建设银行、招商银行全线飘红，在市场调整中展现防御属性。险资、北向资金持续加仓银行股，估值修复逻辑未变，适合作为稳健底仓。')
+        f'银行板块PB约{color("0.6-0.8倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，处于历史估值底部。6月18日受分红除权窗口期套利资金离场影响，工商银行、建设银行、招商银行{color("集体收跌", "green")}，短期承压明显。但险资、长线资金持续加仓银行股的趋势未变，估值修复逻辑仍在，分红除权后的回调或为稳健投资者提供布局机会。')
 
     content = replace_placeholder(content, '{{深度解读_公用组标题}}', '公用事业')
     content = replace_placeholder(content, '{{深度解读_公用组标签}}', '稳定现金流')
@@ -715,7 +715,7 @@ def main():
     # 正面/风险提示
     content = replace_placeholder(content, '{{标的_正面提示标题}}', '利好因素')
     content = replace_placeholder(content, '{{标的_正面提示内容}}',
-        f'创业板指{color(CYB_CHANGE, "red")}大涨，科创50{color(KC50_CHANGE, "red")}飙升；北向资金{color(A_NORTHBOUND, "red")}；算力硬件链批量涨停；高股息银行股全线飘红；OpenAI/Anthropic IPO竞速。')
+        f'创业板指{color(CYB_CHANGE, "red")}大涨，科创50{color(KC50_CHANGE, "red")}飙升；北向资金{color(A_NORTHBOUND, "red")}；算力硬件链批量涨停；银行板块低估值高股息属性未变；OpenAI/Anthropic IPO竞速。')
     content = replace_placeholder(content, '{{标的_风险提示标题}}', '风险提示')
     content = replace_placeholder(content, '{{标的_风险提示内容}}',
         f'上证指数{color(SH_CHANGE, "green")}收跌；港股{color(HSI_CHANGE, "green")}重挫；美股三大指数{color("集体收跌", "green")}；加密货币BTC{color(BTC_CHANGE, "green")}、ETH{color(ETH_CHANGE, "green")}大跌；端午假期外围波动风险。')
@@ -733,7 +733,7 @@ def main():
     # 理财卡片
     content = replace_placeholder(content, '{{理财卡1_标题}}', '黄金')
     content = replace_placeholder(content, '{{理财卡1_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{理财卡1_备注}}', '震荡反弹')
+    content = replace_placeholder(content, '{{理财卡1_备注}}', '承压回调')
     content = replace_placeholder(content, '{{理财卡2_标题}}', '银行股息率')
     content = replace_placeholder(content, '{{理财卡2_数值}}', '4.5-5.5%')
     content = replace_placeholder(content, '{{理财卡2_备注}}', '历史高位')
@@ -786,7 +786,7 @@ def main():
     content = replace_placeholder(content, '{{黄金_标题}}', '国际黄金')
     content = replace_placeholder(content, '{{黄金_单位}}', '美元/盎司')
     content = replace_placeholder(content, '{{黄金_价格}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{黄金_涨跌颜色}}', 'red')
+    content = replace_placeholder(content, '{{黄金_涨跌颜色}}', 'green')
     content = replace_placeholder(content, '{{黄金_涨跌幅}}', GOLD_CHANGE)
     content = replace_placeholder(content, '{{黄金_SVG路径}}', '')
     content = replace_placeholder(content, '{{黄金_SVG填充路径}}', '')
@@ -794,7 +794,7 @@ def main():
     content = replace_placeholder(content, '{{黄金_日期2}}', '6月17日')
     content = replace_placeholder(content, '{{黄金_日期3}}', DATA_DATE)
     content = replace_placeholder(content, '{{黄金_走势描述}}',
-        f'国际金价震荡反弹{color(GOLD_CHANGE, "red")}，报{color(GOLD_PRICE + "美元/盎司", "cyan")}。美联储鹰派信号压制金价，但地缘避险需求和央行购金提供支撑，白银{color(SILVER_CHANGE, "green")}跌幅较大，贵金属内部分化。')
+        f'国际金价承压回调{color(GOLD_CHANGE, "green")}，报{color(GOLD_PRICE + "美元/盎司", "cyan")}。美联储鹰派信号推升美元和美债收益率，地缘风险降温削弱避险需求，但央行购金与长期去美元化逻辑仍提供支撑，白银{color(SILVER_CHANGE, "green")}跌幅更大，贵金属短期震荡加剧。')
 
     # 债基配置建议
     content = replace_placeholder(content, '{{债基_配置建议标题}}', '债基配置建议')
@@ -828,28 +828,28 @@ def main():
             "opinion": f'美股三大指数集体收跌对A股情绪有短期冲击，但A股已处于结构分化状态，高股息银行和科技成长各有支撑。建议节前控制仓位，保留现金流应对节后波动。'
         },
         {
-            "title": "黄金震荡反弹还能买吗？",
+            "title": "黄金回调1.79%还能买吗？",
             "source": "集思录",
             "heat": "💰 关注",
             "roles": ["黄金多头", "技术派", "老盛观点"],
             "views": [
-                f'国际金价{color(GOLD_CHANGE, "red")}反弹，地缘避险+央行购金逻辑仍在，长期看涨。',
-                f'美元指数{color(USD_INDEX_CHANGE, "red")}大涨至{color(USD_INDEX, "cyan")}，美联储鹰派压制金价，短期或震荡。',
+                f'国际金价{color(GOLD_CHANGE, "green")}回调，地缘避险+央行购金逻辑仍在，长期看涨。',
+                f'美元指数{color(USD_INDEX_CHANGE, "red")}大涨至{color(USD_INDEX, "cyan")}，美联储鹰派压制金价，短期或继续震荡。',
                 f'黄金作为避险资产适合配置，但不宜重仓追高，注意控制比例。'
             ],
-            "opinion": f'黄金反弹{color(GOLD_CHANGE, "red")}至{color(GOLD_PRICE + "美元", "cyan")}，但美元指数走强和美联储鹰派构成压制。建议将黄金作为资产配置的{color("5-10%", "cyan")}避险部分，逢低分批配置，不宜追涨。'
+            "opinion": f'国际金价回调{color(GOLD_CHANGE, "green")}至{color(GOLD_PRICE + "美元", "cyan")}，美元指数走强和美联储鹰派构成压制。建议将黄金作为资产配置的{color("5-10%", "cyan")}避险部分，逢低分批配置，不宜追涨。'
         },
         {
-            "title": "高股息银行逆势上涨，还能配置吗？",
+            "title": "高股息银行集体回调，还能配置吗？",
             "source": "同花顺",
             "heat": "💰 关注",
             "roles": ["价值投资者", "择时派", "老盛观点"],
             "views": [
                 f'银行股息率{color("4.5-5.5%", "red")}，PB仅{color("0.6-0.8倍", "cyan")}，显著高于无风险收益，长期配置价值突出。',
-                f'银行板块前期涨幅较大，短期或面临震荡，建议等回调再介入。',
+                f'银行板块前期涨幅较大，6月18日集体回调是分红套利盘离场所致，建议等企稳再介入。',
                 f'高股息银行适合作为底仓，短期波动不改长期逻辑。'
             ],
-            "opinion": f'6月18日工商银行涨0.13%、招商银行涨0.40%，银行板块在市场调整中逆势飘红。当前股息率{color("4.5-5.5%", "red")}、PB{color("0.6-0.8倍", "cyan")}的配置性价比仍高，建议分批建仓，长期持有。'
+            "opinion": f'6月18日工商银行跌2.72%、招商银行跌2.54%，银行板块因分红除权窗口期套利资金离场而{color("集体回调", "green")}。当前股息率{color("4.5-5.5%", "red")}、PB{color("0.6-0.8倍", "cyan")}的配置性价比仍高，建议等待企稳后分批建仓，长期持有。'
         },
         {
             "title": "霍尔木兹海峡重开，原油是抄底还是回避？",
@@ -900,7 +900,7 @@ def main():
             "opinion": f'美债收益率维持高位对全球风险偏好构成压制，但国内中10年期国债收益率仅{color(CN_10Y, "cyan")}，纯债基金保持正收益。建议将债基作为防御底仓，配置比例20-30%。'
         },
         {
-            "title": "两市成交约3.11万亿，行情能持续吗？",
+            "title": "两市成交约3.31万亿，行情能持续吗？",
             "source": "雪球",
             "heat": "🔥 热议",
             "roles": ["技术派", "谨慎派", "老盛观点"],
@@ -909,7 +909,7 @@ def main():
                 f'但个股跌多涨少，资金集中在少数热点，持续性存疑。',
                 f'放量是必要条件，但能否持续还需看节后量能和热点轮动。'
             ],
-            "opinion": f'两市成交约{color(A_SHARES_VOLUME, "cyan")}，量能充沛支撑结构性行情，但资金高度集中。节后需关注成交能否维持在3万亿附近，以及算力链等热点能否扩散。'
+            "opinion": f'两市成交约{color(A_SHARES_VOLUME, "cyan")}，量能充沛支撑结构性行情，但资金高度集中。节后需关注成交能否维持在3万亿上方，以及算力链等热点能否扩散。'
         },
         {
             "title": "加密货币BTC大跌4.2%，风险释放完了吗？",
@@ -949,7 +949,7 @@ def main():
         ("深证成指", SZ_COMPONENT, SZ_CHANGE, "📈", "var(--red)", "up", "深证"),
         ("创业板指", CYB_INDEX, CYB_CHANGE, "🚀", "var(--red)", "hot", "创业"),
         ("两市成交", A_SHARES_VOLUME, "放量", "💰", "var(--accent)", "accent", "放量"),
-        ("北向资金", A_NORTHBOUND.split('流')[1] if '流入' in A_NORTHBOUND else A_NORTHBOUND, "净流入", "👆", "var(--red)", "up", "北向"),
+        ("北向资金", A_NORTHBOUND, "净流入", "👆", "var(--red)", "up", "北向"),
         ("恒生科技", HSTECH_INDEX, HSTECH_CHANGE, "📊", "var(--green)", "down", "恒科"),
         ("WTI原油", f'${WTI_OIL}', WTI_CHANGE, "🛢️", "var(--green)", "down", "WTI"),
         ("国际黄金", f'${GOLD_PRICE}', GOLD_CHANGE, "🥇", "#f0b429", "hot", "黄金"),
@@ -992,9 +992,9 @@ def main():
          'OpenAI/Anthropic IPO竞速提升AI资本开支确定性，但短期涨幅较大。',
          '关注有业绩兑现的算力、半导体龙头，分批布局，避免追高纯概念股。'),
         ("高股息银行", f'银行板块PB约{color("0.6-0.8倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，显著高于10年国债{color(CN_10Y, "cyan")}和货币基金。',
-         '6月18日高股息银行股全线飘红，防御属性突出。',
-         '长期投资者可分批配置工商银行、招商银行、长江电力等高股息标的。'),
-        ("黄金避险", f'国际金价反弹{color(GOLD_CHANGE, "red")}至{color(GOLD_PRICE + "美元", "cyan")}，地缘避险和央行购金提供支撑。',
+         '6月18日银行板块因分红套利盘离场集体回调，短期承压，但低估值高股息属性未改。',
+         '长期投资者可等待企稳后分批配置工商银行、招商银行、长江电力等高股息标的。'),
+        ("黄金避险", f'国际金价回调{color(GOLD_CHANGE, "green")}至{color(GOLD_PRICE + "美元", "cyan")}，地缘避险和央行购金提供长期支撑。',
          '但美元指数走强和美联储鹰派压制金价上行空间。',
          '适度配置5-10%黄金作为避险资产，逢低分批，不宜追涨。'),
         ("稳健理财", f'1年定存{color(CD_1Y, "cyan")}、3年{color(CD_3Y, "cyan")}、5年{color(CD_5Y, "cyan")}，货币基金{color(MMF_YIELD, "green")}，纯债基金正收益。',
@@ -1014,7 +1014,7 @@ def main():
         content = replace_placeholder(content, f'{{{{操作建议{i}_操作}}}}', action)
 
     # 关键词
-    keywords = ['算力链涨停', '美联储鹰派', '黄金反弹', '高股息银行', 'AI IPO竞速', '霍尔木兹重开', '港股低估值', '科技成长']
+    keywords = ['算力链涨停', '美联储鹰派', '黄金回调', '高股息银行', 'AI IPO竞速', '霍尔木兹重开', '港股低估值', '科技成长']
     for i, kw in enumerate(keywords, 1):
         content = replace_placeholder(content, f'{{{{关键词{i}}}}}', kw)
 
