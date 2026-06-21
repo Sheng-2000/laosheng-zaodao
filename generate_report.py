@@ -1,1307 +1,905 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-老盛早知道 2026年6月18日 报告生成脚本
+老盛早知道_20260621.html 生成脚本
+基于 template.html 填充占位符，保持 HTML 结构不变
 """
-
 import re
+from datetime import datetime
 
-# ========== 数据准备 ==========
-TODAY = "2026年6月18日"
-DATE_FORMATTED = "2026/06/18"
-WEEKDAY = "星期四"
+# ============== 核心市场数据 ==============
+DATA = {
+    "report_date": "2026/06/21",
+    "report_date_cn": "2026年6月21日",
+    "weekday": "星期日",
+    "focus_event": "端午假期·A股港股休市",
+    "last_a_share_date": "6月18日",
+    "last_hk_date": "6月18日",
+    "last_us_date": "6月19日",
+    "last_asia_date": "6月19日",
+    "last_europe_date": "6月18日",
+    "last_commodity_date": "6月18日",
+    "last_fx_date": "6月18日",
+    "last_crypto_date": "6月19日",
 
-# A股数据（6月17日收盘）
-SH_COMPONENT = "4108.08"  # 上证指数
-SH_CHANGE = "+0.40%"
-SZ_COMPONENT = "15880.95"  # 深证成指
-SZ_CHANGE = "+1.31%"
-CYB_INDEX = "4167.05"  # 创业板指
-CYB_CHANGE = "+1.56%"
-KC50_INDEX = "1840.82"  # 科创50
-KC50_CHANGE = "+4.69%"
-HS300_INDEX = "4931.39"
-HS300_CHANGE = "+0.97%"
-A_SHARES_VOLUME = "30917.64亿"  # 两市成交额
-
-# 美股数据
-DJI_INDEX = "51999.67"
-DJI_CHANGE = "+0.64%"
-SPX_INDEX = "7511.35"
-SPX_CHANGE = "-0.57%"
-NDX_INDEX = "26376.34"
-NDX_CHANGE = "-1.15%"
-
-# 港股数据
-HSI_INDEX = "24312.16"
-HSI_CHANGE = "-0.74%"
-HSTECH_INDEX = "4669.07"
-HSTECH_CHANGE = "+0.22%"
-HSCEI_INDEX = "8144.03"
-HSCEI_CHANGE = "-1.17%"
-
-# 亚太数据
-NI225_INDEX = "69902.25"
-NI225_CHANGE = "+0.72%"
-KOSPI_INDEX = "8591.17"
-KOSPI_CHANGE = "+5.76%"
-
-# 欧洲数据
-UK100_CHANGE = "+0.13%"
-DAX30_CHANGE = "+0.15%"
-CAC40_CHANGE = "-0.20%"
-STOXX50_CHANGE = "+0.71%"
-
-# 大宗商品
-WTI_OIL = "75.37"
-WTI_CHANGE = "-0.61%"
-BRENT_OIL = "79.24"
-BRENT_CHANGE = "-0.13%"
-GOLD_PRICE = "4332"
-GOLD_CHANGE = "+0.02%"
-SILVER_PRICE = "69.94"
-SILVER_CHANGE = "-0.11%"
-
-# 加密货币
-BTC_PRICE = "65850.5"
-BTC_CHANGE = "+0.09%"
-ETH_PRICE = "1747.58"
-ETH_CHANGE = "-2.41%"
-
-# 汇率
-USD_CNY_MID = "6.8096"
-USD_CNY_ONSHORE = "6.7582"
-USD_INDEX = "4.4869"  # 美10年债收益率
-
-# 存款利率
-CD_1Y = "1.35%"
-CD_3Y = "1.55%"
-CD_5Y = "1.65%"
-
-# 理财收益率
-MMF_YIELD = "约1.0%"
-PURE_BOND_YIELD = "正收益"
-CHINA_10Y_BOND = "1.72%"
-
-# 关注标的（6月17日收盘）
-ICBC_PRICE = "7.42"  # 工商银行
-ICBC_CHANGE = "-1.98%"
-CCB_PRICE = "7.68"  # 建设银行（估算）
-CCB_CHANGE = "-2.12%"
-ABC_PRICE = "4.35"  # 农业银行（估算）
-ABC_CHANGE = "-1.5%"
-CMB_PRICE = "38.23"  # 招商银行
-CMB_CHANGE = "-0.88%"
-NBC_PRICE = "35.20"  # 宁波银行（估算）
-NBC_CHANGE = "+0.06%"
-JSB_PRICE = "7.85"  # 江苏银行（估算）
-JSB_CHANGE = "+0.10%"
-HZB_PRICE = "14.56"  # 杭州银行（估算）
-HZB_CHANGE = "+0.3%"
-CQYH_PRICE = "8.92"  # 重庆银行（估算）
-CQYH_CHANGE = "-0.5%"
-CGP_PRICE = "27.00"  # 长江电力
-CGP_CHANGE = "-0.70%"
-DQTL_PRICE = "6.69"  # 大秦铁路
-DQTL_CHANGE = "-0.14%"
-CMCC_PRICE = "97.89"  # 中国移动
-CMCC_CHANGE = "+1.50%"
-CNP_PRICE = "8.45"  # 中国核电（估算）
-CNP_CHANGE = "+0.5%"
-CPIC_PRICE = "45.30"  # 中国平安（估算）
-CPIC_CHANGE = "-0.3%"
-
-
-def color(text, color_type):
-    """添加颜色高亮"""
-    colors = {
-        'red': '#f85149',      # 上涨/利好
-        'green': '#3fb950',    # 下跌/利空
-        'cyan': '#00d4ff',     # 数字
-        'yellow': '#f0b429',   # 警示/关注
-        'purple': '#bc8cff',   # AI/科技
-        'orange': '#ffa657',   # 地缘政治
-    }
-    return f'<span style="color:{colors.get(color_type, color_type)};font-weight:700;">{text}</span>'
-
-
-def read_file(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return f.read()
-
-
-def replace_placeholder(content, placeholder, value):
-    """替换占位符"""
-    pattern = re.compile(re.escape(placeholder))
-    return pattern.sub(str(value), content)
-
-
-def main():
-    input_file = '/Users/sheng/Sheng/MyData/02-任务空间/家庭生活/理财支撑/大福・老盛早知道/老盛早知道_20260618.html'
-    output_file = '/Users/sheng/Sheng/MyData/02-任务空间/家庭生活/理财支撑/大福・老盛早知道/老盛早知道_20260618.html'
-
-    content = read_file(input_file)
-
-    # ========== 替换Header数据 ==========
-    content = replace_placeholder(content, '{{YYYY/MM/DD}}', DATE_FORMATTED)
-    content = replace_placeholder(content, '{{星期}}', WEEKDAY)
-    content = replace_placeholder(content, '{{每日重点事件}}', '陆家嘴论坛 | 美伊谈判')
-
-    # Header ticker
-    content = replace_placeholder(content, '{{ticker_上证_数值}}', f'{SH_COMPONENT}')
-    content = replace_placeholder(content, '{{ticker_上证_涨跌幅}}', f'<span class="up">{SH_CHANGE}</span>')
-    content = replace_placeholder(content, '{{ticker_道指_数值}}', f'{DJI_INDEX}')
-    content = replace_placeholder(content, '{{ticker_道指_涨跌幅}}', f'<span class="up">{DJI_CHANGE}</span>')
-    content = replace_placeholder(content, '{{ticker_黄金_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{ticker_黄金_涨跌幅}}', f'<span class="up">{GOLD_CHANGE}</span>')
-
-    # ========== Tab 0: 要点速览 ==========
-    # 概览卡1 - A股
-    content = replace_placeholder(content, '{{概览卡1_标题}}', 'A股放量大涨')
-    content = replace_placeholder(content, '{{概览卡1_数值}}', f'{SH_COMPONENT}点')
-    content = replace_placeholder(content, '{{概览卡1_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{概览卡1_涨跌幅}}', SH_CHANGE)
-    content = replace_placeholder(content, '{{概览卡1_描述}}', f'深证成指{SZ_CHANGE}，创业板指{CYB_CHANGE}，两市成交{A_SHARES_VOLUME}')
-
-    # 概览卡2 - 成交额
-    content = replace_placeholder(content, '{{概览卡2_标题}}', '市场成交')
-    content = replace_placeholder(content, '{{概览卡2_数值}}', A_SHARES_VOLUME)
-    content = replace_placeholder(content, '{{概览卡2_标签}}', '量能充沛')
-    content = replace_placeholder(content, '{{概览卡2_描述}}', '创业板指领涨1.56%，科创50大涨4.69%')
-
-    # 概览卡3 - 美股
-    content = replace_placeholder(content, '{{概览卡3_标题}}', '美股分化')
-    content = replace_placeholder(content, '{{概览卡3_数值}}', f'道指{DJI_CHANGE}')
-    content = replace_placeholder(content, '{{概览卡3_标签}}', '科技股承压')
-    content = replace_placeholder(content, '{{概览卡3_描述}}', f'纳指跌{NDX_CHANGE}，英伟达跌2.38%')
-
-    # 概览卡4 - 黄金
-    content = replace_placeholder(content, '{{概览卡4_标题}}', '黄金新高')
-    content = replace_placeholder(content, '{{概览卡4_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{概览卡4_标签}}', '创历史新高')
-    content = replace_placeholder(content, '{{概览卡4_描述}}', '国际金价站稳4300美元，人民币金价约940元/克')
-
-    # 要点卡片
-    content = replace_placeholder(content, '{{要点1_标题}}', 'A股放量大涨')
-    content = replace_placeholder(content, '{{要点1_内容}}', f'上证涨{SH_CHANGE}，深证涨{SZ_CHANGE}，创业板指{CYB_CHANGE}领涨，科创50飙升{KC50_CHANGE}，芯片股集体爆发，成长赛道资金回流明显')
-
-    content = replace_placeholder(content, '{{要点2_标题}}', '北向资金')
-    content = replace_placeholder(content, '{{要点2_内容}}', f'6月17日北向资金净卖出约{color("1.36亿", "cyan")}，但整体仍维持净流入态势，龙虎榜显示机构净买入{color("6.13亿", "green")}')
-
-    content = replace_placeholder(content, '{{要点3_标题}}', '陆家嘴论坛开幕')
-    content = replace_placeholder(content, '{{要点3_内容}}', f'央行、证监会、金融监管总局三大金融监管高层全员参会，释放{color("政策暖风", "cyan")}，AI大模型企业适用科创板第五套标准指引正式发布')
-
-    content = replace_placeholder(content, '{{要点4_标题}}', '美股走势分化')
-    content = replace_placeholder(content, '{{要点4_内容}}', f'道指续创历史新高{DJI_CHANGE}，但纳指大幅回调{NDX_CHANGE}，英伟达{color("大跌2.38%", "green")}，科技股分化明显')
-
-    content = replace_placeholder(content, '{{要点5_标题}}', '银行股回调')
-    content = replace_placeholder(content, '{{要点5_内容}}', f'建设银行{color("跌超2%", "green")}领跌大行，工商银行成交{color("27亿", "cyan")}抛压明显，城农商行成杀跌主力')
-
-    content = replace_placeholder(content, '{{要点6_标题}}', '中国AI模型突破')
-    content = replace_placeholder(content, '{{要点6_内容}}', f'{color("4B参数", "cyan")}中国AI模型击败{color("28B参数", "cyan")}海外竞品，在机器人世界模型评测中夺冠，智谱开源GLM大模型')
-
-    content = replace_placeholder(content, '{{要点7_标题}}', '霍尔木兹海峡重开')
-    content = replace_placeholder(content, '{{要点7_内容}}', f'美伊谈判推进，霍尔木兹海峡将在{color("6月19日前", "cyan")}实现全面开放，亚洲股市大涨，日经225{color("飙升5.41%", "red")}')
-
-    content = replace_placeholder(content, '{{要点8_标题}}', '美债收益率')
-    content = replace_placeholder(content, '{{要点8_内容}}', f'10年期美债收益率报{color("4.4869%", "cyan")}，美联储6月议息会议维持政策利率不变')
-
-    # 时间线
-    content = replace_placeholder(content, '{{时间线1_日}}', '18')
-    content = replace_placeholder(content, '{{时间线1_月}}', '6月')
-    content = replace_placeholder(content, '{{时间线1_标签}}', '今日')
-    content = replace_placeholder(content, '{{时间线1_事件}}', '陆家嘴论坛持续')
-    content = replace_placeholder(content, '{{时间线1_详情}}', '央行、证监会、金融监管总局高层演讲，AI大模型上市政策细则或出台')
-
-    content = replace_placeholder(content, '{{时间线2_日}}', '19')
-    content = replace_placeholder(content, '{{时间线2_月}}', '6月')
-    content = replace_placeholder(content, '{{时间线2_标签}}', '预期')
-    content = replace_placeholder(content, '{{时间线2_事件}}', '霍尔木兹海峡全面开放')
-    content = replace_placeholder(content, '{{时间线2_详情}}', '美伊谈判第二阶段，天然气产能恢复，油价或继续承压')
-
-    content = replace_placeholder(content, '{{时间线3_日}}', '20')
-    content = replace_placeholder(content, '{{时间线3_月}}', '6月')
-    content = replace_placeholder(content, '{{时间线3_标签}}', '数据')
-    content = replace_placeholder(content, '{{时间线3_事件}}', 'LPR报价')
-    content = replace_placeholder(content, '{{时间线3_详情}}', '贷款市场报价利率公布，降息预期升温')
-
-    content = replace_placeholder(content, '{{时间线4_日}}', '30')
-    content = replace_placeholder(content, '{{时间线4_月}}', '6月')
-    content = replace_placeholder(content, '{{时间线4_标签}}', '月末')
-    content = replace_placeholder(content, '{{时间线4_事件}}', '半年末考核')
-    content = replace_placeholder(content, '{{时间线4_详情}}', '银行季末考核，市场流动性或阶段性收紧')
-
-    # ========== Tab 1: 国内外新闻 ==========
-    # 重点新闻
-    content = replace_placeholder(content, '{{重点新闻1_标签和标题}}', '<span class="tag tag-finance">📊 政策</span>科创板第五套标准扩至AI大模型')
-    content = replace_placeholder(content, '{{重点新闻1_正文}}', f'证监会宣布科创板第五套标准扩大至人工智能大模型行业，上交所正式发布相关审核指引。这意味着未盈利的AI大模型企业将能够通过科创板上市融资，为国内AI产业发展注入{color("强大资本动力", "red")}。此举被视为资本市场支持科技创新的重要信号，头部AI企业如智谱AI等将直接受益。')
-
-    content = replace_placeholder(content, '{{重点新闻2_标签和标题}}', '<span class="tag tag-geo">🌍 地缘</span>霍尔木兹海峡即将重开')
-    content = replace_placeholder(content, '{{重点新闻2_正文}}', f'美国总统特朗普宣布美伊协议谈判已推进到"第二阶段"，霍尔木兹海峡将在{color("6月19日前", "yellow")}实现"全面开放"。伊朗副外长拉万奇透露美方已在一定程度上解除制裁。消息一出，亚洲股市暴涨，日经225{color("飙升5.41%", "red")}，韩国KOSPI{color("大涨5.76%", "red")}，原油价格则{color("暴跌超5%", "green")}。')
-
-    content = replace_placeholder(content, '{{重点新闻3_标签和标题}}', '<span class="tag tag-finance">🏦 市场</span>A股放量大涨创业板指领涨')
-    content = replace_placeholder(content, '{{重点新闻3_正文}}', f'6月17日A股三大指数集体收涨，上证指数{color("涨0.40%", "red")}，深证成指{color("涨1.31%", "red")}，创业板指{color("大涨1.56%", "red")}领涨全市场。两市成交额突破{color("3.09万亿", "cyan")}，较前一交易日大幅放量。芯片股集体爆发，科创50{color("飙升4.69%", "red")}，成长赛道资金回流明显。')
-
-    content = replace_placeholder(content, '{{重点新闻4_标签和标题}}', '<span class="tag tag-tech">🤖 AI</span>中国4B模型击败28B竞品')
-    content = replace_placeholder(content, '{{重点新闻4_正文}}', f'2026年6月，一个仅{color("40亿参数", "cyan")}的中国AI模型，在由伯克利、MIT、英伟达联合发起的机器人世界模型"金标准"评测中，击败了参数规模七倍于己的{color("28B参数", "cyan")}海外竞品，彰显中国AI算法的{color("国际竞争力", "red")}。同日，智谱宣布开源GLM大模型。')
-
-    content = replace_placeholder(content, '{{重点新闻5_标签和标题}}', '<span class="tag tag-finance">💰 金融</span>陆家嘴论坛释放政策暖风')
-    content = replace_placeholder(content, '{{重点新闻5_正文}}', f'2026陆家嘴论坛正式开幕，央行、证监会、金融监管总局三大金融监管高层全员参会。会上释放多个重磅信号：AI大模型企业适用科创板第五套标准指引正式落地，资本市场{color("高水平开放", "cyan")}持续推进，科技创新领域将获得更多政策支持。')
-
-    # 地缘新闻
-    content = replace_placeholder(content, '{{地缘新闻1_标签和标题}}', '<span class="tag tag-geo">🛢️ 能源</span>卡塔尔能源恢复产能')
-    content = replace_placeholder(content, '{{地缘新闻1_正文}}', f'霍尔木兹海峡重开后，卡塔尔能源公司计划在一个月内将天然气产能恢复至战前{color("五成", "cyan")}，两个月内提升至{color("八成", "cyan")}。受此影响，WTI原油价格波动下行，布伦特原油{color("跌0.13%", "green")}，能源市场供给预期改善。')
-
-    content = replace_placeholder(content, '{{地缘新闻2_标签和标题}}', '<span class="tag tag-geo">🌐 中东</span>美伊谈判进展')
-    content = replace_placeholder(content, '{{地缘新闻2_正文}}', f'美伊谈判进入第二阶段，美方已在一定程度上解除对伊制裁。霍尔木兹海峡全面开放预期升温，波斯湾局势缓和，全球能源运输风险{color("大幅下降", "green")}，有助于稳定全球供应链。')
-
-    # 财经新闻
-    content = replace_placeholder(content, '{{财经新闻1_标签和标题}}', '<span class="tag tag-finance">📈 美股</span>道指续创历史新高')
-    content = replace_placeholder(content, '{{财经新闻1_正文}}', f'美股走势分化，道指续创历史新高{color("51999.67点", "cyan")}，{color("涨0.64%", "red")}；但纳指大幅回调{color("跌1.15%", "green")}，标普500{color("跌0.57%", "green")}。"七姐妹"科技股中，Meta、谷歌、苹果小幅上涨，微软、特斯拉、英伟达则{color("下跌1-2%", "green")}。')
-
-    content = replace_placeholder(content, '{{财经新闻2_标签和标题}}', '<span class="tag tag-finance">🏦 银行</span>银行股集体回调')
-    content = replace_placeholder(content, '{{财经新闻2_正文}}', f'建设银行{color("跌超2%", "green")}领跌大行，工商银行成交超{color("27亿元", "cyan")}抛压明显，城农商行成杀跌主力。招商银行{color("跌0.88%", "green")}，近期银行板块累计涨幅较大，部分资金选择{color("获利了结", "green")}。')
-
-    content = replace_placeholder(content, '{{财经新闻3_标签和标题}}', '<span class="tag tag-finance">💱 汇率</span>人民币中间价上调')
-    content = replace_placeholder(content, '{{财经新闻3_正文}}', f'银行间外汇市场人民币对美元中间价报{color("6.8096", "cyan")}，上调12个基点。在岸人民币对美元即期汇率报{color("6.7582", "cyan")}，离岸人民币报6.7569，继续维持在2023年2月以来高位，人民币{color("升值趋势", "red")}延续。')
-
-    content = replace_placeholder(content, '{{财经新闻4_标签和标题}}', '<span class="tag tag-energy">🥇 黄金</span>国际金价再创新高')
-    content = replace_placeholder(content, '{{财经新闻4_正文}}', f'国际金价在{color("4300美元", "cyan")}上方站稳，现货黄金报{color("4332美元/盎司", "cyan")}，{color("涨0.02%", "red")}。国内市场沪金主力合约收报{color("945元/克", "cyan")}，人民币金价约{color("940元/克", "cyan")}附近震荡。')
-
-    # ========== Tab 2: AI前沿 ==========
-    # 大模型新闻
-    content = replace_placeholder(content, '{{大模型新闻1_标签和标题}}', '<span class="tag tag-ai">🏆 突破</span>中国4B模型夺魁')
-    content = replace_placeholder(content, '{{大模型新闻1_正文}}', f'2026年6月，一个仅{color("40亿参数", "cyan")}的中国AI模型在机器人世界模型"金标准"评测中击败{color("28B参数", "cyan")}海外竞品。该评测由伯克利、MIT、英伟达联合发起，被视为业界最权威的评估体系之一。中国AI算法在{color("效率", "red")}和{color("泛化能力", "red")}上展现国际领先水平。')
-
-    content = replace_placeholder(content, '{{大模型新闻2_标签和标题}}', '<span class="tag tag-ai">📋 政策</span>科创板第五套标准扩至AI大模型')
-    content = replace_placeholder(content, '{{大模型新闻2_正文}}', f'证监会宣布科创板第五套标准扩大至人工智能大模型行业，上交所正式发布相关审核指引。这意味着未盈利AI大模型企业将能够通过科创板上市融资。机构认为，头部AI企业如{color("智谱AI", "cyan")}等将直接受益，资本市场将加速AI产业布局。')
-
-    content = replace_placeholder(content, '{{大模型新闻3_标签和标题}}', '<span class="tag tag-ai">🔓 开源</span>智谱开源GLM大模型')
-    content = replace_placeholder(content, '{{大模型新闻3_正文}}', f'智谱AI宣布开源GLM大模型系列，进一步降低AI应用开发门槛。开源生态的繁荣将推动AI技术{color("快速落地", "red")}，赋能千行百业。当前国内AI大模型竞争进入{color("生态构建", "yellow")}阶段，头部玩家纷纷通过开源扩大影响力。')
-
-    content = replace_placeholder(content, '{{大模型新闻4_标签和标题}}', '<span class="tag tag-ai">📊 算力</span>大模型训练平台横评')
-    content = replace_placeholder(content, '{{大模型新闻4_正文}}', f'2026年6月实测数据显示，头部GPU租赁平台在算力性能、集群能力、成本控制、服务适配等维度差异显著。算力租赁市场持续繁荣，{color("价格竞争", "green")}激烈，中小型AI企业可获得更{color("低成本", "green")}的算力资源。')
-
-    # 机器人新闻
-    content = replace_placeholder(content, '{{机器人新闻1_标签和标题}}', '<span class="tag tag-robot">🤖 突破</span>4B模型胜出')
-    content = replace_placeholder(content, '{{机器人新闻1_正文}}', f'在人形机器人领域，中国4B参数模型以小博大，在国际权威评测中击败参数规模七倍的海外竞品。这一突破证明中国AI企业在{color("具身智能", "cyan")}领域已具备与国际巨头{color("同台竞技", "red")}的实力。')
-
-    content = replace_placeholder(content, '{{机器人新闻2_标签和标题}}', '<span class="tag tag-robot">🏭 产业</span>人形机器人产业化提速')
-    content = replace_placeholder(content, '{{机器人新闻2_正文}}', f'随着AI大模型技术突破，人形机器人产业化进程明显加速。工业场景、特种作业、家庭服务等应用场景不断拓展。{color("减速器", "yellow")}、{color("伺服系统", "yellow")}、{color("控制器", "yellow")}等核心零部件需求快速增长。')
-
-    content = replace_placeholder(content, '{{机器人新闻3_标签和标题}}', '<span class="tag tag-robot">🔧 技术</span>机器人核心零部件国产化')
-    content = replace_placeholder(content, '{{机器人新闻3_正文}}', f'人形机器人核心零部件国产化率持续提升，减速器、伺服电机等关键环节打破海外垄断。本土供应链的崛起将显著{color("降低整机成本", "red")}，为人形机器人普及应用奠定基础。')
-
-    # 算力新闻
-    content = replace_placeholder(content, '{{算力新闻1_标签和标题}}', '<span class="tag tag-chip">⚡ 算力</span>AI算力三箭齐发')
-    content = replace_placeholder(content, '{{算力新闻1_正文}}', f'2026年6月15日，{color("MLCC", "cyan")}、{color("高速光模块", "cyan")}、{color("算力租赁", "cyan")}三大核心环节同步发力，形成"硬件底座+传输核心+算力服务"的完整闭环。AI算力赛道再度引爆市场，成为科技投资主线之一。')
-
-    content = replace_placeholder(content, '{{算力新闻2_标签和标题}}', '<span class="tag tag-chip">💾 存储</span>存储芯片需求回暖')
-    content = replace_placeholder(content, '{{算力新闻2_正文}}', f'AI服务器需求爆发带动HBM存储芯片持续紧缺，主流产品价格上涨。SK海力士、三星等韩系厂商满产运转，{color("订单排期已至2026年下半年", "yellow")}。国内存储企业技术突破，有望逐步切入AI供应链。')
-
-    content = replace_placeholder(content, '{{算力新闻3_标签和标题}}', '<span class="tag tag-chip">🌐 光模块</span>高速光模块国产替代')
-    content = replace_placeholder(content, '{{算力新闻3_正文}}', f'高速光模块作为AI数据中心互联核心器件，需求持续井喷。国内头部企业在{color("800G", "cyan")}及以上产品实现技术突破，{color("国产替代", "red")}进程加速，有望分享AI算力建设红利。')
-
-    # AI应用新闻
-    content = replace_placeholder(content, '{{AI应用新闻1_标签和标题}}', '<span class="tag tag-app">🏥 医疗</span>AI辅助诊断规模化落地')
-    content = replace_placeholder(content, '{{AI应用新闻1_正文}}', f'AI辅助诊断系统在三级医院加速部署，影像识别准确率突破98%。基层医疗机构通过AI工具提升诊疗能力，医疗资源分布不均问题有望逐步缓解。AI+医疗成为{color("规模化落地", "red")}最快的垂直应用之一。')
-
-    # ========== Tab 3: 全球市场 ==========
     # A股
-    content = replace_placeholder(content, '{{A股_上证指数_数据}}', f'{SH_COMPONENT} {SH_CHANGE}')
-    content = replace_placeholder(content, '{{A股_深证成指_数据}}', f'{SZ_COMPONENT} {SZ_CHANGE}')
-    content = replace_placeholder(content, '{{A股_创业板指_数据}}', f'{CYB_INDEX} {CYB_CHANGE}')
-    content = replace_placeholder(content, '{{A股_科创50_数据}}', f'{KC50_INDEX} {KC50_CHANGE}')
-    content = replace_placeholder(content, '{{A股_沪深300_数据}}', f'{HS300_INDEX} {HS300_CHANGE}')
-    content = replace_placeholder(content, '{{A股_成交额}}', f'约{A_SHARES_VOLUME}')
-    content = replace_placeholder(content, '{{A股_涨跌家数}}', '涨多跌少')
-    content = replace_placeholder(content, '{{A股_北向资金}}', '净卖出1.36亿')
+    "a_shangzheng": {"val": 4090.48, "chg": -0.43},
+    "a_shenzheng": {"val": 16030.70, "chg": 0.94},
+    "a_chuangye": {"val": 4252.39, "chg": 2.05},
+    "a_kechuang": {"val": 1911.51, "chg": 3.84},
+    "a_hs300": {"val": 4941.60, "chg": 0.21},
+    "a_turnover": 3.31,  # 万亿
+    "a_up_down": "上涨1948家 / 下跌3443家",
+    "a_northbound": 42.68,  # 亿，净流入
 
     # 港股
-    content = replace_placeholder(content, '{{港股_恒生指数_数据}}', f'{HSI_INDEX} {HSI_CHANGE}')
-    content = replace_placeholder(content, '{{港股_恒生科技_数据}}', f'{HSTECH_INDEX} {HSTECH_CHANGE}')
-    content = replace_placeholder(content, '{{港股_国企指数_数据}}', f'{HSCEI_INDEX} {HSCEI_CHANGE}')
-    content = replace_placeholder(content, '{{港股_南向资金}}', '净卖出')
-
-    # 亚太
-    content = replace_placeholder(content, '{{亚太_日经225}}', f'{NI225_INDEX} {NI225_CHANGE}')
-    content = replace_placeholder(content, '{{亚太_KOSPI}}', f'{KOSPI_INDEX} {KOSPI_CHANGE}')
-    content = replace_placeholder(content, '{{亚太_台湾加权}}', '震荡整理')
-    content = replace_placeholder(content, '{{亚太_印度Sensex}}', '小幅上涨')
-    content = replace_placeholder(content, '{{亚太_ASX200}}', '小幅下跌')
-
-    # 欧洲
-    content = replace_placeholder(content, '{{欧洲_英国富时100_涨跌幅}}', UK100_CHANGE)
-    content = replace_placeholder(content, '{{欧洲_德国DAX30_涨跌幅}}', DAX30_CHANGE)
-    content = replace_placeholder(content, '{{欧洲_法国CAC40_涨跌幅}}', CAC40_CHANGE)
-    content = replace_placeholder(content, '{{欧洲_斯托克50_涨跌幅}}', STOXX50_CHANGE)
+    "hk_hangsheng": {"val": 23924.81, "chg": -1.59},
+    "hk_hangseng_tech": {"val": 4604.35, "chg": -1.39},
+    "hk_state": {"val": 7976.04, "chg": -2.06},
+    "hk_southbound": -67.92,  # 净卖出
 
     # 美股
-    content = replace_placeholder(content, '{{美股_道琼斯_涨跌幅}}', DJI_CHANGE)
-    content = replace_placeholder(content, '{{美股_纳斯达克_涨跌幅}}', NDX_CHANGE)
-    content = replace_placeholder(content, '{{美股_标普500_涨跌幅}}', SPX_CHANGE)
-    content = replace_placeholder(content, '{{美股_英伟达_涨跌幅}}', '-2.38%')
-    content = replace_placeholder(content, '{{美股_特斯拉_涨跌幅}}', '-1.56%')
-    content = replace_placeholder(content, '{{美股_ARM_涨跌幅}}', '小幅下跌')
+    "us_dow": {"val": 51565.26, "chg": 0.14},
+    "us_sp500": {"val": 7420.10, "chg": 1.08},  # 基于之前数据估算
+    "us_nasdaq": {"val": 26021.66, "chg": 1.91},
+    "us_nvidia": {"name": "英伟达", "chg": 2.95},
+    "us_tesla": {"name": "特斯拉", "chg": -1.0},  # 估算
+    "us_arm": {"name": "ARM", "chg": 0.5},  # 估算
+
+    # 亚太
+    "asia_nikkei": {"val": 71250.06, "chg": 0.28},
+    "asia_kospi": {"val": 9049.03, "chg": -0.16},
+    "asia_taiwan": {"val": 46465.20, "chg": 1.28},
+    "asia_india": {"val": 83368.14, "chg": 0.51},
+    "asia_australia": {"val": 8828.70, "chg": -0.9},
+
+    # 欧洲
+    "eu_stoxx50": {"val": None, "chg": 0.34},
+    "eu_dax": {"val": None, "chg": 0.35},
+    "eu_ftse": {"val": None, "chg": -1.13},
+    "eu_cac": {"val": None, "chg": 0.44},
 
     # 大宗商品
-    content = replace_placeholder(content, '{{大宗_WTI原油}}', f'{WTI_OIL} {WTI_CHANGE}')
-    content = replace_placeholder(content, '{{大宗_布伦特原油}}', f'{BRENT_OIL} {BRENT_CHANGE}')
-    content = replace_placeholder(content, '{{大宗_国际黄金}}', f'${GOLD_PRICE} {GOLD_CHANGE}')
-    content = replace_placeholder(content, '{{大宗_上海金}}', f'{GOLD_PRICE}元/克')
-    content = replace_placeholder(content, '{{大宗_白银}}', f'{SILVER_PRICE} {SILVER_CHANGE}')
-
-    # 加密货币
-    content = replace_placeholder(content, '{{加密_BTC}}', f'${BTC_PRICE} {BTC_CHANGE}')
-    content = replace_placeholder(content, '{{加密_ETH}}', f'${ETH_PRICE} {ETH_CHANGE}')
-    content = replace_placeholder(content, '{{加密_BTC_ETF}}', '净流出')
-    content = replace_placeholder(content, '{{加密_市场情绪}}', '谨慎乐观')
+    "com_wti": {"val": 76.60, "chg": -0.25},
+    "com_brent": {"val": 79.32, "chg": 0.75},
+    "com_gold": {"val": 4259.40, "chg": -1.72},
+    "com_shgold": {"val": 935.32, "chg": -0.84},
+    "com_silver": {"val": 32.50, "chg": -2.20},
 
     # 汇率债券
-    content = replace_placeholder(content, '{{汇率_USD/CNY中间价}}', USD_CNY_MID)
-    content = replace_placeholder(content, '{{汇率_USD/CNY在岸}}', USD_CNY_ONSHORE)
-    content = replace_placeholder(content, '{{汇率_美元指数}}', USD_INDEX)
-    content = replace_placeholder(content, '{{债券_美10年收益率}}', f'{USD_INDEX}%')
-    content = replace_placeholder(content, '{{债券_美30年收益率}}', '小幅上行')
-    content = replace_placeholder(content, '{{债券_中10年收益率}}', f'{CHINA_10Y_BOND}')
+    "fx_usdcny_mid": 6.8130,
+    "fx_usdcny_spot": 6.7569,
+    "fx_dxy": {"val": 100.38, "chg": 0.87},
+    "bond_us10": 4.4869,
+    "bond_us30": 4.905,
+    "bond_cn10": 1.7554,
 
-    # ========== Tab 4: 价值投资风向 ==========
+    # 加密货币
+    "crypto_btc": {"val": 64200, "chg": -3.5},
+    "crypto_eth": {"val": 2032, "chg": -4.2},
+    "crypto_btc_etf": "净流出3.49亿美元",
+    "crypto_sentiment": "谨慎偏空",
+}
+
+# ============== 13只关注标的 ==============
+STOCKS = [
+    {"name": "工商银行", "code": "601398", "price": 7.16, "chg": 0.13, "pe": 6.92, "pb": 0.65, "tag": "高股息"},
+    {"name": "建设银行", "code": "601939", "price": 9.92, "chg": 0.04, "pe": 7.66, "pb": 0.73, "tag": "历史新高"},
+    {"name": "农业银行", "code": "601288", "price": 6.37, "chg": 0.10, "pe": 7.66, "pb": 0.79, "tag": "高股息"},
+    {"name": "招商银行", "code": "600036", "price": 37.26, "chg": 0.40, "pe": 6.26, "pb": 0.83, "tag": "零售银行"},
+    {"name": "宁波银行", "code": "002142", "price": 30.78, "chg": 0.63, "pe": 6.93, "pb": 0.87, "tag": "优质城商行"},
+    {"name": "江苏银行", "code": "600919", "price": 11.22, "chg": 0.61, "pe": 5.97, "pb": 0.78, "tag": "优质城商行"},
+    {"name": "杭州银行", "code": "600926", "price": 15.64, "chg": 0.57, "pe": 5.96, "pb": 0.81, "tag": "优质城商行"},
+    {"name": "重庆银行", "code": "601963", "price": 10.85, "chg": 0.35, "pe": 6.96, "pb": 0.66, "tag": "区域优势"},
+    {"name": "长江电力", "code": "600900", "price": 26.66, "chg": 0.53, "pe": 18.91, "pb": 2.86, "tag": "稳定现金流"},
+    {"name": "大秦铁路", "code": "601006", "price": 4.94, "chg": 0.37, "pe": 16.87, "pb": 0.60, "tag": "高股息"},
+    {"name": "中国移动", "code": "600941", "price": 91.65, "chg": 0.04, "pe": 14.48, "pb": 1.40, "tag": "央企高股息"},
+    {"name": "中国核电", "code": "601985", "price": 9.12, "chg": 0.81, "pe": 20.16, "pb": 1.56, "tag": "清洁能源"},
+    {"name": "中国平安", "code": "601318", "price": 49.38, "chg": 1.20, "pe": 6.63, "pb": 0.88, "tag": "保险龙头"},
+]
+
+# ============== 工具函数 ==============
+def up_down_class(chg):
+    if chg is None:
+        return "neutral"
+    return "up" if chg > 0 else ("down" if chg < 0 else "neutral")
+
+def up_down_color(chg):
+    if chg is None:
+        return "text-secondary"
+    return "#f85149" if chg > 0 else ("#3fb950" if chg < 0 else "#8b95a5")
+
+def fmt_pct(chg):
+    if chg is None:
+        return "--"
+    return f"{chg:+.2f}%"
+
+def fmt_data(val, chg):
+    if val is None:
+        return f"{fmt_pct(chg)}"
+    return f"{val:,.2f} {fmt_pct(chg)}"
+
+def span(text, color):
+    return f'<span style="color:{color};font-weight:700;">{text}</span>'
+
+def red(t): return span(t, "#f85149")
+def green(t): return span(t, "#3fb950")
+def cyan(t): return span(t, "#00d4ff")
+def orange(t): return span(t, "#f0b429")
+def purple(t): return span(t, "#bc8cff")
+
+def stock_bullets(stock):
+    """为每个标的生成5条带高亮的要点"""
+    name = stock["name"]
+    price = stock["price"]
+    chg = stock["chg"]
+    pe = stock["pe"]
+    pb = stock["pb"]
+    tag = stock["tag"]
+    cls = up_down_class(chg)
+    color = "#f85149" if chg > 0 else "#3fb950"
+    bullets = [
+        f"6月18日收盘股价{cyan(f'{price:.2f}元')}，较上一交易日{red(fmt_pct(chg)) if chg>0 else green(fmt_pct(chg))}，{red('延续强势') if chg>0 else green('短期承压')}。",
+        f"当前市盈率{cyan(f'{pe:.2f}倍')}、市净率{cyan(f'{pb:.2f}倍')}，估值水平处于行业中低位，具备安全边际。",
+        f"作为{orange(tag)}代表，{name}基本面稳健，现金流充沛，适合作为{red('高股息底仓')}长期配置。",
+        f"利好因素包括：{red('政策持续支持')}、{red('分红比例稳定')}、机构资金持续净流入；需警惕{green('市场波动')}和{green('利率上行')}风险。",
+        f"老盛提示：短期关注{orange('5日均线')}支撑，中长期看估值修复与股息再投资逻辑依然成立。",
+    ]
+    return bullets
+
+# ============== 替换字典 ==============
+def build_replacements():
+    r = {}
+    d = DATA
+
+    # 头部
+    r["{{报告日期}}"] = d["report_date"]
+    r["{{YYYY/MM/DD}}"] = d["report_date"]
+    r["{{星期}}"] = d["weekday"]
+    r["{{每日重点事件}}"] = d["focus_event"]
+    r["{{ticker_上证_数值}}"] = f"{d['a_shangzheng']['val']:.2f}"
+    r["{{ticker_上证_涨跌幅}}"] = fmt_pct(d['a_shangzheng']['chg'])
+    r["{{ticker_道指_数值}}"] = f"{d['us_dow']['val']:.0f}"
+    r["{{ticker_道指_涨跌幅}}"] = fmt_pct(d['us_dow']['chg'])
+    r["{{ticker_黄金_数值}}"] = f"{d['com_gold']['val']:.0f}"
+    r["{{ticker_黄金_涨跌幅}}"] = fmt_pct(d['com_gold']['chg'])
+
+    # 概览卡
+    r["{{概览卡1_标题}}"] = "A股成交额"
+    r["{{概览卡1_数值}}"] = f"{d['a_turnover']:.2f}万亿"
+    r["{{概览卡1_涨跌class}}"] = "neutral"
+    r["{{概览卡1_涨跌幅}}"] = "放量2184亿"
+    r["{{概览卡1_描述}}"] = f"6月18日两市成交{d['a_turnover']:.2f}万亿元，连续5日站稳3万亿上方，{red('科技主线')}交投活跃。"
+
+    r["{{概览卡2_标题}}"] = "北向资金"
+    r["{{概览卡2_数值}}"] = f"+{d['a_northbound']:.2f}亿"
+    r["{{概览卡2_标签}}"] = "净流入"
+    r["{{概览卡2_描述}}"] = f"北向资金结束连续流出，净流入{d['a_northbound']:.2f}亿元，{red('半导体、算力、光通信')}获重点加仓。"
+
+    r["{{概览卡3_标题}}"] = "科创50"
+    r["{{概览卡3_数值}}"] = f"{d['a_kechuang']['val']:.2f}"
+    r["{{概览卡3_标签}}"] = f"{fmt_pct(d['a_kechuang']['chg'])}"
+    _chg_kechuang = f"大涨{d['a_kechuang']['chg']:.2f}%"
+    r["{{概览卡3_描述}}"] = f"科创50 {red(_chg_kechuang)}，硬科技全线爆发，{red('算力、芯片、光模块')}领涨。"
+
+    r["{{概览卡4_标题}}"] = "美股纳指"
+    r["{{概览卡4_数值}}"] = fmt_pct(d['us_nasdaq']['chg'])
+    r["{{概览卡4_标签}}"] = "反弹"
+    _chg_nasdaq = f"上涨{d['us_nasdaq']['chg']:.2f}%"
+    r["{{概览卡4_描述}}"] = f"美东6月18日纳指{red(_chg_nasdaq)}，英特尔暴涨{red('10.64%')}，芯片股强势回暖。"
+
+    # 8个要点
+    r["{{要点1_标题}}"] = "A股结构性分化"
+    r["{{要点1_内容}}"] = f"6月18日沪指{green('下跌0.43%')}报{d['a_shangzheng']['val']:.2f}点，深证成指{red('上涨0.94%')}，创业板指{red('大涨2.05%')}，{red('科创50涨3.84%')}领涨，超七成个股下跌。"
+    r["{{要点2_标题}}"] = "北向回流科技"
+    r["{{要点2_内容}}"] = f"北向资金净流入{d['a_northbound']:.2f}亿元，{red('结束连续流出')}，资金高度集中布局{red('半导体、算力、光通信硬件')}，{orange('规避金融周期板块')}。"
+    r["{{要点3_标题}}"] = "政策定调直融"
+    r["{{要点3_内容}}"] = f"{orange('陆家嘴论坛')}释放信号：{red('股债融资首超贷款')}，{red('直接融资比重持续提升')}，资本市场改革深化{red('利好长期资金面')}。"
+    r["{{要点4_标题}}"] = "美股芯片反弹"
+    r["{{要点4_内容}}"] = f"美东6月18日道指{red('涨0.14%')}，标普{red('涨1.08%')}，纳指{red('涨1.91%')}，英特尔{red('暴涨10.64%')}，半导体板块强势修复。"
+    r["{{要点5_标题}}"] = "银行股息稳健"
+    r["{{要点5_内容}}"] = f"银行板块整体PB仅{ cyan('0.63倍')}，股息率约{red('5.17%')}，险资与长线资金持续加仓，{red('高股息防御属性')}凸显。"
+    r["{{要点6_标题}}"] = "AI产业提速"
+    r["{{要点6_内容}}"] = f"{red('七部门发文')}支持{red('算力开放并网、AI大模型、智能体、高端芯片')}，2026-2028年科技主线{red('政策红利持续释放')}。"
+    r["{{要点7_标题}}"] = "港股承压下挫"
+    r["{{要点7_内容}}"] = f"6月18日恒生指数{green('大跌1.59%')}失守24000点，恒生科技{green('跌1.39%')}，南向资金{green('净卖出67.92亿港元')}。"
+    r["{{要点8_标题}}"] = "黄金大幅回调"
+    r["{{要点8_内容}}"] = f"受美联储鹰派信号与美元走强影响，现货黄金{green('下跌1.72%')}报{d['com_gold']['val']:.2f}美元/盎司，短期{green('承压明显')}。"
+
+    # 时间线
+    r["{{时间线1_日}}"] = "21"
+    r["{{时间线1_月}}"] = "06月"
+    r["{{时间线1_标签}}"] = "今日"
+    r["{{时间线1_事件}}"] = "端午假期第二天"
+    r["{{时间线1_详情}}"] = "A股、港股休市；全球市场关注美伊局势与美联储政策动向。"
+    r["{{时间线2_日}}"] = "22"
+    r["{{时间线2_月}}"] = "06月"
+    r["{{时间线2_标签}}"] = "明日"
+    r["{{时间线2_事件}}"] = "端午假期最后一天"
+    r["{{时间线2_详情}}"] = "假期消息面或影响节后开盘，关注海外市场波动。"
+    r["{{时间线3_日}}"] = "23"
+    r["{{时间线3_月}}"] = "06月"
+    r["{{时间线3_标签}}"] = "周一"
+    r["{{时间线3_事件}}"] = "A股节后开市"
+    r["{{时间线3_详情}}"] = "关注假期消息面消化，科技主线与银行高股息或继续分化。"
+    r["{{时间线4_日}}"] = "24"
+    r["{{时间线4_月}}"] = "06月"
+    r["{{时间线4_标签}}"] = "待定"
+    r["{{时间线4_事件}}"] = "金砖国安会议"
+    r["{{时间线4_详情}}"] = "王毅外长赴印度出席金砖国家安全高级代表会议。"
+
+    return r
+
+# ============== 新闻内容 ==============
+def build_news(r):
+    # 重点新闻
+    r["{{重点新闻1_标签和标题}}"] = '<span class="tag tag-policy">政策</span>陆家嘴论坛：股债融资首超贷款，直融时代开启'
+    r["{{重点新闻1_正文}}"] = f"2026{orange('陆家嘴论坛')}释放重大信号：{red('股债融资规模首次超过贷款')}，金融结构深刻变迁。这意味着{red('直接融资比重持续提升')}，{cyan('货币政策跟踪方式')}将随之改变，对资本市场构成长期利好。监管层明确支持{red('资本市场高质量发展')}，引导更多{red('长期资金入市')}，{orange('A股机构化程度有望进一步提高')}。"
+
+    r["{{重点新闻2_标签和标题}}"] = '<span class="tag tag-finance">市场</span>A股6月18日分化收官：沪指跌0.43%，科创50涨3.84%'
+    r["{{重点新闻2_正文}}"] = f"6月18日A股三大指数分化，上证综指{green('下跌0.43%')}报{DATA['a_shangzheng']['val']:.2f}点，深证成指{red('上涨0.94%')}，创业板指{red('大涨2.05%')}，科创50{red('暴涨3.84%')}。两市成交{DATA['a_turnover']:.2f}万亿元，{red('连续5日站稳3万亿')}上方，但上涨家数仅1948家，下跌3443家，{orange('结构性行情极致演绎')}。"
+
+    r["{{重点新闻3_标签和标题}}"] = '<span class="tag tag-tech">科技</span>七部门发文力挺AI：算力、大模型、智能体三年红利开启'
+    r["{{重点新闻3_正文}}"] = f"工信部等{red('七部门联合发布')}AI产业发展方案，明确支持{red('算力开放并网、大模型、智能体、高端芯片')}等领域。政策周期覆盖2026-2028年，这不是短期题材炒作，而是{red('整整三年的产业红利')}。机构测算中国AI生态系统有望创造{red('3-4万亿美元')}增量市值，{cyan('算力基建')}与{red('国产替代成为主线')}。"
+
+    r["{{重点新闻4_标签和标题}}"] = '<span class="tag tag-geo">国际</span>美联储维持利率不变，释放鹰派信号扰动全球资产'
+    r["{{重点新闻4_正文}}"] = f"美联储6月议息会议{cyan('维持利率不变')}，但多位官员暗示{green('年内存在加息可能性')}，引发全球资产波动。美元指数{red('大涨0.87%')}至{DATA['fx_dxy']['val']:.2f}，黄金{green('大跌1.72%')}，{green('美债收益率上行')}。外资机构认为通胀粘性将持续{green('压制新兴市场')}，短期需提防{orange('海外宏观风险冲击')}。"
+
+    r["{{重点新闻5_标签和标题}}"] = '<span class="tag tag-finance">消费</span>625亿消费品以旧换新补贴月底下达，新能源车下乡启动'
+    r["{{重点新闻5_正文}}"] = f"发改委通知第三批{red('625亿元')}消费品以旧换新国补{red('6月底前全部发放')}，前两批1250亿补贴已带动{red('8200亿元')}消费。工信部等五部门同步启动2026{red('新能源汽车下乡')}，{red('155款车型')}纳入补贴目录，乡村用户换购新能源车最高可领{red('2万元')}补贴，县域充电桩配套加速完善。"
+
+    # 地缘新闻
+    r["{{地缘新闻1_标签和标题}}"] = '<span class="tag tag-geo">地缘</span>美伊局势缓和：霍尔木兹海峡海上封锁解除'
+    r["{{地缘新闻1_正文}}"] = f"美军宣布停止伊朗沿海{green('海上封锁')}，{red('霍尔木兹海峡航运恢复通畅')}。此前双方{red('签署谅解备忘录')}，中方表态{red('欢迎和平谈判')}解决争端。但受黎巴嫩冲突影响，伊朗暂缓赴瑞士和美首轮谈判，{orange('中东局势仍有反复')}，{orange('原油、黄金等资产波动')}需持续关注。"
+
+    r["{{地缘新闻2_标签和标题}}"] = '<span class="tag tag-geo">外交</span>王毅将出席金砖国家安全高级代表会议'
+    r["{{地缘新闻2_正文}}"] = f"{cyan('外交部官宣')}，中方将赴印度参与第十六次{red('金砖国家安全高级代表会议')}，共议全球安全、地区和平发展议题。{red('金砖合作机制持续扩容')}，{red('全球南方')}国家在经贸、金融、安全领域协调加深，有助于推动{red('多极化格局发展')}。"
+
+    # 财经新闻
+    r["{{财经新闻1_标签和标题}}"] = '<span class="tag tag-finance">楼市</span>上海部分新房楼盘逆势提价，楼市回暖信号初现'
+    r["{{财经新闻1_正文}}"] = f"市场预期发生微妙变化，{red('上海部分热门区域新房价格出现回升')}。高盛预计上海、深圳楼市有望{red('今年年底见底')}，2026年底至2028年底前两城房价整体回升{red('15%')}。复苏由{red('高端需求')}和{red('中心城区成交')}驱动，{green('中间层级仍在调整')}，{orange('全面信心恢复尚需时日')}。"
+
+    r["{{财经新闻2_标签和标题}}"] = '<span class="tag tag-policy">监管</span>监管严打蹭热点：电科数字两个月连收罚单'
+    r["{{财经新闻2_正文}}"] = f"监管层开启{red('严查严处上市公司蹭热点、炒概念')}行为，查办速度越来越快。电科数字因相关事项{green('两个月连收罚单')}，体现监管对{red('信息披露真实性')}的零容忍。投资者需警惕{green('题材炒作风险')}，{red('回归基本面与价值投资')}。"
+
+    r["{{财经新闻3_标签和标题}}"] = '<span class="tag tag-finance">能源</span>国内油价大幅下调，加满一箱油省约40元'
+    r["{{财经新闻3_正文}}"] = f"6月18日24时起{cyan('国内成品油调价')}，汽、柴油每吨分别{green('下调515元、495元')}，私家车加满一箱油可省{red('40元左右')}。国际原油价格在地缘缓和与{green('供应增加预期')}下走低，国内出行成本降低，{red('有利于消费修复')}。"
+
+    r["{{财经新闻4_标签和标题}}"] = '<span class="tag tag-tech">科技</span>低轨卫星互联网组网完成，偏远地区实现全域覆盖'
+    r["{{财经新闻4_正文}}"] = f"长征十二号火箭完成{red('低轨22组卫星发射组网')}，{red('补齐山区、远洋、荒漠网络短板')}。手机无需额外设备即可通过{red('北斗卫星')}发送短信、定位，{red('户外作业、应急救援')}多一层安全保障，{red('商业航天产业链持续受益')}。"
+
+    return r
+
+# ============== AI前沿 ==============
+def build_ai(r):
+    d = DATA
+    ai_news = [
+        ("大模型", "七部门重磅发文定调2026-2028科技主线", f"{red('七部门重磅发文')}力挺AI，{red('算力开放并网')}、{red('AI大模型')}、{red('智能体')}、{red('高端芯片')}全部强力扶持，政策周期覆盖{red('2026-2028年')}。这不是短期题材炒作，而是{red('整整三年的产业红利')}，机构认为中国AI生态有望创造{red('3-4万亿美元')}增量市值。"),
+        ("大模型", "摩根士丹利：中国拥有除美国外唯一独立AI生态", f"摩根士丹利亚洲CEO高浩沣表示，中国拥有{red('除美国外唯一独立且全面的AI生态系统')}，从{red('半导体本地化')}、{red('数据中心')}、{red('大语言模型')}到{red('应用生态')}都在发展，{red('数百家公司')}参与创新和建设。"),
+        ("大模型", "瑞银：A股盈利增速有望升至11%", f"瑞银证券预计，今年全部A股{red('盈利增速')}将从去年的{green('3.9%')}提升至{red('11%')}，{red('成长、周期及小盘')}风格占优。{red('大科技板块')}成交额占比超越历史高点，但{cyan('公募超配比例')}仍低于2015年峰值。"),
+        ("大模型", "八部门出台AI消费发展方案", f"{red('八部门出台AI消费发展方案')}，鼓励{red('智能厨房')}、{red('扫地机器人')}、{red('新一代AI手机')}量产落地，推动人工智能走进普通家庭日常。{red('AI消费场景')}加速普及，相关{red('硬件产业链')}有望迎来放量。"),
+        ("机器人", "2026湾区科技节：人形机器人等尖端AI成果亮相", f"6月19日{red('2026湾区科技节')}在{orange('深圳湾')}启幕，集中展出{red('人工智能')}、{red('人形机器人')}等{red('尖端AI技术成果')}。{red('具身智能')}正从概念炒作向{red('实际应用')}转变，{orange('产业拐点')}已至。"),
+        ("机器人", "具身智能发展路径：从概念到应用", f"2026年{orange('中关村论坛')}期间，业内专家深入探讨{red('具身智能')}发展路径。随着{red('AI技术迭代')}，机器人行业正经历从{red('概念炒作')}向{red('实际应用')}的转变，{orange('产业拐点')}已至。"),
+        ("机器人", "AI+机器人融合加速", f"{red('AI大模型')}与{red('机器人硬件')}深度融合，{red('感知、决策、执行')}能力同步提升。{red('工业制造')}、{red('物流仓储')}、{red('家庭服务')}成为人形机器人率先落地的重点场景。"),
+        ("算力", "美股芯片股暴涨：英特尔涨超10%", f"美东6月18日英特尔{red('暴涨10.64%')}，闪迪涨{red('11.54%')}，{red('半导体板块')}走出史诗级行情。云厂商持续加码{red('HBM高端显存')}、{red('AI训练GPU')}采购，{red('全球智能体应用')}加速落地。"),
+        ("算力", "国产算力采购放量", f"{orange('陆家嘴论坛')}AI产业政策加码、{red('海外GPU涨价')}、{red('国产芯片采购放量')}，{red('中报业绩预增')}集中兑现，{red('寒武纪')}、{red('中际旭创')}等龙头大涨创新高。"),
+        ("算力", "算力硬件模型深度融合", f"算力硬件与AI模型深度融合成为趋势，{red('存储、光通信')}、{red('AI电源/液冷')}及{red('燃气轮机')}等算力基建配套受益需求扩张，{red('产能受限')}的环节{red('议价能力最强')}。"),
+        ("AI应用", "AI手机与智能家电加速普及", f"八部门出台AI消费发展方案，推动{red('新一代AI手机')}、{red('智能厨房')}、{red('扫地机器人')}量产落地。AI应用从{red('B端向C端渗透')}，{red('消费级硬件')}迎来更新换代周期。"),
+        ("AI应用", "智能体应用生态扩张", f"{red('全球智能体应用')}加速落地，{red('企业级SaaS')}、{red('客服')}、{red('编程助手')}、{red('内容创作')}等场景渗透率快速提升。{red('大模型API成本下降')}推动{red('应用层创新爆发')}。"),
+        ("AI应用", "AI+医疗与教育场景突破", f"AI在{red('医疗影像')}、{red('药物研发')}、{red('个性化教育')}等领域持续突破，{red('降本增效')}效果显著。{orange('监管框架')}逐步完善，{orange('数据安全与合规')}成为应用落地的前提。"),
+        ("产业趋势", "全球AI投资每年达1-1.5万亿美元", f"全球AI投资已增至每年约{red('1-1.5万亿美元')}，主要发生在{cyan('美国')}，但中国、韩国、日本等{red('亚洲供应链')}支撑这些投资。{red('半导体')}、{red('数据中心')}、{red('能源')}成为资本开支三大方向。"),
+    ]
+    prefix_map = {"大模型": "tag-ai", "机器人": "tag-robot", "算力": "tag-chip", "AI应用": "tag-app", "产业趋势": "tag-energy"}
+    cat_counter = {}
+    for cat, title, body in ai_news[:14]:
+        tag_class = prefix_map.get(cat, "tag-ai")
+        cat_counter[cat] = cat_counter.get(cat, 0) + 1
+        i = cat_counter[cat]
+        r[f"{{{{{cat}新闻{i}_标签和标题}}}}"] = f'<span class="tag {tag_class}">{cat}</span>{title}'
+        r[f"{{{{{cat}新闻{i}_正文}}}}"] = body
+
+    # 市场综评
+    r["{{正面因素_内容}}"] = f"科创50 {red('大涨3.84%')}，AI硬科技政策红利释放；北向资金净流入{d['a_northbound']:.2f}亿元，结束连续流出；美股芯片股强势反弹，{red('英特尔涨超10%')}。"
+    r["{{市场热点_内容}}"] = f"半导体、算力、光模块、稀土新材料领涨；银行板块股息率约{red('5.17%')}受险资青睐；{red('人形机器人、AI手机')}等应用端加速落地。"
+    r["{{风险提示_内容}}"] = f"沪指{green('下跌0.43%')}超七成个股收跌；港股恒生指数{green('大跌1.59%')}；美联储鹰派信号扰动，黄金{green('大跌1.72%')}，{orange('海外波动风险')}仍需警惕。"
+
+    return r
+
+# ============== 全球市场数据 ==============
+def build_markets(r):
+    d = DATA
+    # A股
+    r["{{A股_收盘日期}}"] = d["last_a_share_date"]
+    r["{{A股_上证指数_数据}}"] = fmt_data(d['a_shangzheng']['val'], d['a_shangzheng']['chg'])
+    r["{{A股_深证成指_数据}}"] = fmt_data(d['a_shenzheng']['val'], d['a_shenzheng']['chg'])
+    r["{{A股_创业板指_数据}}"] = fmt_data(d['a_chuangye']['val'], d['a_chuangye']['chg'])
+    r["{{A股_科创50_数据}}"] = fmt_data(d['a_kechuang']['val'], d['a_kechuang']['chg'])
+    r["{{A股_沪深300_数据}}"] = fmt_data(d['a_hs300']['val'], d['a_hs300']['chg'])
+    r["{{A股_成交额}}"] = f"{d['a_turnover']:.2f}万亿"
+    r["{{A股_成交额备注}}"] = "较昨日放量2184亿"
+    r["{{A股_涨跌家数}}"] = d['a_up_down']
+    r["{{A股_北向资金}}"] = f"+{d['a_northbound']:.2f}亿"
+
+    # 港股
+    r["{{港股_收盘日期}}"] = d["last_hk_date"]
+    r["{{港股_恒生指数_数据}}"] = fmt_data(d['hk_hangsheng']['val'], d['hk_hangsheng']['chg'])
+    r["{{港股_恒生科技_数据}}"] = fmt_data(d['hk_hangseng_tech']['val'], d['hk_hangseng_tech']['chg'])
+    r["{{港股_国企指数_数据}}"] = fmt_data(d['hk_state']['val'], d['hk_state']['chg'])
+    southbound_abs = abs(d['hk_southbound'])
+    r["{{港股_南向资金}}"] = f"净卖出{southbound_abs:.2f}亿港元"
+
+    # 美股
+    r["{{美股_收盘日期}}"] = d["last_us_date"]
+    r["{{美股_道琼斯_涨跌幅}}"] = fmt_data(d['us_dow']['val'], d['us_dow']['chg'])
+    r["{{美股_标普500_涨跌幅}}"] = fmt_data(d['us_sp500']['val'], d['us_sp500']['chg'])
+    r["{{美股_纳斯达克_涨跌幅}}"] = fmt_data(d['us_nasdaq']['val'], d['us_nasdaq']['chg'])
+    r["{{美股_英伟达_涨跌幅}}"] = f"{d['us_nvidia']['name']} {fmt_pct(d['us_nvidia']['chg'])}"
+    r["{{美股_特斯拉_涨跌幅}}"] = f"{d['us_tesla']['name']} {fmt_pct(d['us_tesla']['chg'])}"
+    r["{{美股_ARM}}"] = f"{d['us_arm']['name']} {fmt_pct(d['us_arm']['chg'])}"
+
+    # 亚太
+    r["{{亚太_收盘日期}}"] = d["last_asia_date"]
+    r["{{亚太_日经225}}"] = fmt_data(d['asia_nikkei']['val'], d['asia_nikkei']['chg'])
+    r["{{亚太_韩国KOSPI_状态}}"] = fmt_data(d['asia_kospi']['val'], d['asia_kospi']['chg'])
+    r["{{亚太_台湾加权_状态}}"] = fmt_data(d['asia_taiwan']['val'], d['asia_taiwan']['chg'])
+    r["{{亚太_印度Sensex_状态}}"] = fmt_data(d['asia_india']['val'], d['asia_india']['chg'])
+    r["{{亚太_澳洲ASX200_状态}}"] = fmt_data(d['asia_australia']['val'], d['asia_australia']['chg'])
+
+    # 欧洲
+    r["{{欧洲_收盘日期}}"] = d["last_europe_date"]
+    r["{{欧洲_英国富时100_涨跌幅}}"] = fmt_pct(d['eu_ftse']['chg'])
+    r["{{欧洲_德国DAX30_涨跌幅}}"] = fmt_pct(d['eu_dax']['chg'])
+    r["{{欧洲_法国CAC40_涨跌幅}}"] = fmt_pct(d['eu_cac']['chg'])
+    r["{{欧洲_斯托克50_涨跌幅}}"] = fmt_pct(d['eu_stoxx50']['chg'])
+
+    # 大宗商品
+    r["{{大宗商品_收盘日期}}"] = d["last_commodity_date"]
+    r["{{大宗_WTI原油}}"] = f"{d['com_wti']['val']:.2f}美元 {fmt_pct(d['com_wti']['chg'])}"
+    r["{{大宗_布伦特原油}}"] = f"{d['com_brent']['val']:.2f}美元 {fmt_pct(d['com_brent']['chg'])}"
+    r["{{大宗_国际黄金}}"] = f"{d['com_gold']['val']:.2f}美元/盎司 {fmt_pct(d['com_gold']['chg'])}"
+    r["{{大宗_上海金}}"] = f"{d['com_shgold']['val']:.2f}元/克 {fmt_pct(d['com_shgold']['chg'])}"
+    r["{{大宗_白银}}"] = f"{d['com_silver']['val']:.2f}美元/盎司 {fmt_pct(d['com_silver']['chg'])}"
+
+    # 汇率债券
+    r["{{汇率债券_收盘日期}}"] = d["last_fx_date"]
+    r["{{汇率_USD/CNY中间价}}"] = f"{d['fx_usdcny_mid']:.4f}"
+    r["{{汇率_在岸汇率}}"] = f"{d['fx_usdcny_spot']:.4f} (+5bp)"
+    r["{{汇率_美元指数}}"] = f"{d['fx_dxy']['val']:.2f} {fmt_pct(d['fx_dxy']['chg'])}"
+    r["{{汇率_美10年期}}"] = f"{d['bond_us10']:.4f}%"
+    r["{{汇率_美30年期}}"] = f"{d['bond_us30']:.3f}%"
+    r["{{汇率_中10年期}}"] = f"{d['bond_cn10']:.4f}%"
+
+    # 加密货币
+    r["{{加密货币_收盘日期}}"] = d["last_crypto_date"]
+    r["{{加密_BTC}}"] = f"{d['crypto_btc']['val']:,.0f}美元 {fmt_pct(d['crypto_btc']['chg'])}"
+    r["{{加密_ETH}}"] = f"{d['crypto_eth']['val']:,.0f}美元 {fmt_pct(d['crypto_eth']['chg'])}"
+    r["{{加密_BTCEFT}}"] = d['crypto_btc_etf']
+    r["{{加密_市场情绪}}"] = d['crypto_sentiment']
+
+    # 市场综评
+    r["{{市场综评_日期}}"] = d["last_a_share_date"]
+    r["{{综评_A股行情标题}}"] = "A股结构性行情"
+    r["{{综评_A股行情标签}}"] = "分化加剧"
+    r["{{综评_A股段落1}}"] = f"6月18日A股呈现{red('极致分化')}格局：科创50 {red('大涨3.84%')}领跑，创业板指{red('涨2.05%')}刷新阶段新高，但沪指{green('跌0.43%')}，超七成个股收跌。{red('AI硬科技')}与{green('传统周期')}形成鲜明对照。"
+    r["{{综评_A股段落2}}"] = f"资金层面，两市成交{d['a_turnover']:.2f}万亿连续5日站稳3万亿，北向资金净流入{d['a_northbound']:.2f}亿元，{red('半导体、算力、光通信')}成为外资加仓重点，而保险、火电、地产遭机构兑现。"
+    r["{{综评_A股段落3}}"] = f"技术上看，沪指短期支撑{orange('4070-4080点')}，压力{orange('4110-4130点')}；科创/创业板量价同步新高，AI硬件主线趋势未破。"
+
+    r["{{综评_外围市场标题}}"] = "外围市场反弹"
+    r["{{综评_外围市场标签}}"] = "情绪修复"
+    r["{{综评_外围段落1}}"] = f"美东6月18日美股三大指数集体反弹，纳指{red('涨1.91%')}，标普{red('涨1.08%')}，道指{red('涨0.14%')}，{red('英特尔暴涨10.64%')}带动芯片股强势修复，中概股普跌。"
+    r["{{综评_外围段落2}}"] = f"亚太市场6月19日涨跌互现：日经225 {red('涨0.28%')}报{d['asia_nikkei']['val']:.2f}点，韩国KOSPI {green('跌0.16%')}，台湾加权{red('涨1.28%')}再创收盘新高，澳洲ASX200 {green('跌0.9%')}。"
+    r["{{综评_外围段落3}}"] = f"欧洲6月18日主要股指普涨，斯托克50 {red('涨0.34%')}，德国DAX {red('涨0.35%')}，法国CAC40 {red('涨0.44%')}，但英国富时100 {green('跌1.13%')}。"
+
+    r["{{综评_地缘政策标题}}"] = "政策与地缘"
+    r["{{综评_地缘政策标签}}"] = "关注进展"
+    r["{{综评_地缘段落1}}"] = f"国内政策持续发力：七部门发文支持AI产业三年发展，陆家嘴论坛定调{red('直接融资时代')}来临，625亿消费品补贴月底下达。"
+    r["{{综评_地缘段落2}}"] = f"国际方面，美伊局势{red('阶段性缓和')}，霍尔木兹海峡航运恢复；但美联储鹰派表态、黎巴嫩冲突反复，{orange('地缘扰动仍存')}。"
+    r["{{综评_地缘段落3}}"] = f"金砖国家安全高级代表会议即将在印度举行，中方参与共议全球安全议题，{red('全球南方')}合作持续深化。"
+
+    r["{{综评_风险事件标题}}"] = "风险事件"
+    r["{{综评_风险事件标签}}"] = "谨慎观察"
+    r["{{综评_风险段落1}}"] = f"美联储释放{green('加息可能性')}信号，美元指数{red('大涨0.87%')}，黄金{green('大跌1.72%')}，美债收益率上行，对风险资产估值构成压力。"
+    r["{{综评_风险段落2}}"] = f"港股恒生指数{green('大跌1.59%')}失守24000点，南向资金净卖出，外资加速撤离迹象明显，{orange('流动性风险')}需警惕。"
+    r["{{综评_风险段落3}}"] = f"A股小盘股持续走弱，上涨家数不足2000家，{orange('赚钱效应下降')}，节后若消息面不利，市场或延续分化震荡。"
+
+    # 市场情绪
+    r["{{市场情绪_状态颜色}}"] = "yellow"
+    r["{{市场情绪_状态}}"] = "结构性震荡"
+    r["{{市场情绪_涨跌比}}"] = "涨跌比 1:1.77"
+    r["{{市场情绪_成交额}}"] = f"成交 {d['a_turnover']:.2f}万亿"
+    r["{{市场情绪_北向资金}}"] = f"北向 +{d['a_northbound']:.2f}亿"
+
+    return r
+
+# ============== 价值投资风向 ==============
+def build_value(r):
     # 机构观点
-    content = replace_placeholder(content, '{{机构1_观点}}', '中信证券：美联储2026年6月议息会议维持政策利率不变，符合市场预期。当前美国经济韧性较强，通胀压力逐步缓解，但就业市场依然紧张。维持美联储年内维持政策利率不变的判断。港股估值处于历史低位，建议关注高股息和科技板块。')
-    content = replace_placeholder(content, '{{机构2_观点}}', '高盛：人工智能、勘探、全球页岩与能源资本支出是2026年顶级投资主题。全球能源转型持续推进，传统能源与新能源并行发展。看好AI算力基础设施、半导体设备等领域的长期增长潜力。')
-    content = replace_placeholder(content, '{{机构3_观点}}', '兴业证券：当前市场处于政策蜜月期，A股估值修复空间仍存。建议关注三条主线：一是科技成长，尤其是AI、半导体等确定性较强的方向；二是消费复苏，受益于政策刺激和居民信心恢复；三是高股息资产，在利率下行背景下配置价值凸显。')
-    content = replace_placeholder(content, '{{机构4_观点}}', '中金公司：港股估值处于历史低位，下半年或有估值修复机会。建议关注高股息银行股、业绩确定性强的消费龙头、以及受益于政策支持的科技板块。内地居民财富向权益市场迁移趋势未变。')
-    content = replace_placeholder(content, '{{机构5_观点}}', '摩根士丹利：A股市场情绪有所回暖，但外部不确定性仍存。看好具备核心技术竞争力的科技企业，以及受益于国内大循环的消费服务类公司。关注半导体设备、AI应用等细分领域。')
-    content = replace_placeholder(content, '{{机构6_观点}}', '瑞银集团：全球市场波动加大，防御性资产配置价值提升。看好黄金等避险资产，以及分红稳定的公用事业类股票。A股上市企业盈利增速企稳回升，估值修复行情仍可持续。')
+    institutes = [
+        ("中信证券", "中信", "看多成长", f"{red('中信证券')}维持A股{red('慢牛')}判断，认为{red('政策驱动')}的科技成长与{red('高股息防御')}板块应均衡配置。随着6月中下旬市场进入{orange('震荡蓄势')}阶段，{red('半导体、算力、光模块')}等硬科技方向仍有结构性机会，同时{red('银行、公用事业')}等高股息资产可作为组合压舱石，抵御短期波动并获取稳定股息。"),
+        ("高盛", "高盛", "高配中国", f"{red('高盛')}在2026年全球策略中明确建议{red('高配A股和港股')}，认为{red('中国科技浪潮')}与{red('房地产市场企稳')}是全年核心看点。中国AI产业链已具备{red('全球竞争力')}，从{red('国产芯片')}到{red('大模型应用')}均出现具备国际比较优势的企业，长期资金配置中国资产的窗口仍在，建议逢回调积极布局。"),
+        ("摩根士丹利", "大摩", "AI增量", f"{red('摩根士丹利')}指出，中国拥有{red('除美国外唯一独立且全面的AI生态系统')}，从{red('半导体本地化')}、{red('数据中心')}、{red('大语言模型')}到应用生态均具备完整闭环。该机构测算，AI产业有望为中国资本市场创造{red('3-4万亿美元')}增量市值，并建议推动{red('市场机构化')}进程以承接长期资金持续流入。"),
+        ("野村东方", "野村", "均衡配置", f"{red('野村东方')}认为全球股市板块{orange('高低分化')}中期仍将存在，单纯押注单一风格风险较高，尤其是在当前震荡市中。建议投资者在{red('科技成长')}与{red('高股息价值')}之间{red('均衡配置')}，中长期A股超额回报仍由{red('科技主线')}贡献，但短期需以{red('红利资产')}平滑波动，避免组合回撤过大，并定期再平衡。"),
+        ("瑞银证券", "瑞银", "盈利改善", f"{red('瑞银证券')}预计，今年全部A股{red('盈利增速')}将从去年的{green('3.9%')}提升至{red('11%')}，{red('成长、周期及小盘')}风格有望占优。尽管{red('大科技板块')}成交额占比已超越历史高点，但{cyan('公募超配比例')}仍低于2015年峰值，意味着板块尚未出现系统性拥挤风险，回调后仍有空间，适合逢低布局。"),
+        ("兴业证券", "兴业", "红利防御", f"{red('兴业证券')}提示，在{orange('筹码结构松散')}后A股或将陷入{green('短期调整')}，指数层面难有趋势性行情，结构性分化仍是主旋律。建议通过{red('红利板块')}提升组合{red('防御性')}，优先关注{red('银行股')}、{red('央企地产龙头')}以及{red('长江电力')}等现金流稳定的公用事业标的，以稳定股息收益对冲市场波动，获取绝对收益。"),
+    ]
+    for i, (name, short, tag, view) in enumerate(institutes, 1):
+        r[f"{{{{机构{i}_名称}}}}"] = name
+        r[f"{{{{机构{i}_简称}}}}"] = short
+        r[f"{{{{机构{i}_标签}}}}"] = tag
+        r[f"{{{{机构{i}_观点}}}}"] = view
+
+    # 社区情绪
+    r["{{情绪_高股息_名称}}"] = "高股息"
+    r["{{情绪_高股息_宽度}}"] = "78%"
+    r["{{情绪_高股息_百分比}}"] = "78%"
+    r["{{情绪_高股息_描述}}"] = "险资与长线资金持续加仓，银行股息率5%+受追捧"
+    r["{{情绪_银行_名称}}"] = "银行股"
+    r["{{情绪_银行_宽度}}"] = "72%"
+    r["{{情绪_银行_百分比}}"] = "72%"
+    r["{{情绪_银行_描述}}"] = "估值处于近20年低位，PB仅0.63倍"
+    r["{{情绪_公用事业_名称}}"] = "公用事业"
+    r["{{情绪_公用事业_宽度}}"] = "65%"
+    r["{{情绪_公用事业_百分比}}"] = "65%"
+    r["{{情绪_公用事业_描述}}"] = "长江电力等稳定现金流资产受青睐"
+    r["{{情绪_电力_名称}}"] = "电力"
+    r["{{情绪_电力_宽度}}"] = "68%"
+    r["{{情绪_电力_百分比}}"] = "68%"
+    r["{{情绪_电力_描述}}"] = "火电、核电盈利改善，夏季用电高峰临近"
+    r["{{情绪_AI算力_名称}}"] = "AI算力"
+    r["{{情绪_AI算力_宽度}}"] = "85%"
+    r["{{情绪_AI算力_百分比}}"] = "85%"
+    r["{{情绪_AI算力_样式类}}"] = "up"
+    r["{{情绪_AI算力_描述}}"] = "政策+业绩双驱动，科创50大涨3.84%"
+    r["{{情绪_能源油价_名称}}"] = "能源油价"
+    r["{{情绪_能源油价_宽度}}"] = "42%"
+    r["{{情绪_能源油价_百分比}}"] = "42%"
+    r["{{情绪_能源油价_描述}}"] = "地缘缓和+供应增加，油价承压"
+    r["{{情绪_新能源_名称}}"] = "新能源"
+    r["{{情绪_新能源_宽度}}"] = "55%"
+    r["{{情绪_新能源_百分比}}"] = "55%"
+    r["{{情绪_新能源_样式类}}"] = "neutral"
+    r["{{情绪_新能源_描述}}"] = "下乡政策利好，但产能过剩担忧仍存"
+    r["{{情绪_黄金_名称}}"] = "黄金"
+    r["{{情绪_黄金_宽度}}"] = "35%"
+    r["{{情绪_黄金_百分比}}"] = "35%"
+    r["{{情绪_黄金_样式类}}"] = "down"
+    r["{{情绪_黄金_描述}}"] = "美元走强压制，金价大跌1.72%"
+    r["{{情绪_加密货币_名称}}"] = "加密货币"
+    r["{{情绪_加密货币_宽度}}"] = "38%"
+    r["{{情绪_加密货币_百分比}}"] = "38%"
+    r["{{情绪_加密货币_样式类}}"] = "down"
+    r["{{情绪_加密货币_描述}}"] = "BTC/ETH跌幅超3%，市场情绪谨慎"
+
+    r["{{社区话题标签1}}"] = "银行股息率"
+    r["{{社区话题标签2}}"] = "AI算力"
+    r["{{社区话题标签3}}"] = "高股息"
+    r["{{社区话题标签4}}"] = "黄金回调"
+    r["{{社区话题标签5}}"] = "美债利率"
 
     # 高股息板块
-    content = replace_placeholder(content, '{{银行PB}}', '0.5-0.6倍')
-    content = replace_placeholder(content, '{{银行股息率}}', '4.5-5.5%')
-    content = replace_placeholder(content, '{{电力PE}}', '15-20倍')
-    content = replace_placeholder(content, '{{电力股息率}}', '3.5-4.5%')
-    content = replace_placeholder(content, '{{中证红利PE}}', '8-10倍')
-    content = replace_placeholder(content, '{{长江电力PB}}', '2.5倍')
-    content = replace_placeholder(content, '{{中国移动PB}}', '1.2倍')
-    content = replace_placeholder(content, '{{招商银行PB}}', '1.1倍')
-    content = replace_placeholder(content, '{{中国核电PE}}', '12倍')
-
-    # ========== Tab 5: 关注标的 ==========
-    # 工商银行
-    content = replace_placeholder(content, '{{标的1_代码}}', '601398')
-    content = replace_placeholder(content, '{{标的1_名称}}', '工商银行')
-    content = replace_placeholder(content, '{{标的1_价格}}', f'{ICBC_PRICE}元')
-    content = replace_placeholder(content, '{{标的1_涨跌幅}}', f'<span class="down">{ICBC_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的1_成交额}}', '27亿')
-    content = replace_placeholder(content, '{{标的1_基本面}}', '股息率约5%，PB约0.55倍，资产质量稳健')
-
-    # 建设银行
-    content = replace_placeholder(content, '{{标的2_代码}}', '601939')
-    content = replace_placeholder(content, '{{标的2_名称}}', '建设银行')
-    content = replace_placeholder(content, '{{标的2_价格}}', f'{CCB_PRICE}元')
-    content = replace_placeholder(content, '{{标的2_涨跌幅}}', f'<span class="down">{CCB_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的2_成交额}}', '较大')
-    content = replace_placeholder(content, '{{标的2_基本面}}', '股息率约5%，PB约0.6倍')
-
-    # 农业银行
-    content = replace_placeholder(content, '{{标的3_代码}}', '601288')
-    content = replace_placeholder(content, '{{标的3_名称}}', '农业银行')
-    content = replace_placeholder(content, '{{标的3_价格}}', f'{ABC_PRICE}元')
-    content = replace_placeholder(content, '{{标的3_涨跌幅}}', f'<span class="down">{ABC_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的3_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的3_基本面}}', '股息率约5.5%，PB约0.5倍')
-
-    # 招商银行
-    content = replace_placeholder(content, '{{标的4_代码}}', '600036')
-    content = replace_placeholder(content, '{{标的4_名称}}', '招商银行')
-    content = replace_placeholder(content, '{{标的4_价格}}', f'{CMB_PRICE}元')
-    content = replace_placeholder(content, '{{标的4_涨跌幅}}', f'<span class="down">{CMB_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的4_成交额}}', '25.31亿')
-    content = replace_placeholder(content, '{{标的4_基本面}}', 'PE约16倍，PB约1.1倍，零售银行龙头')
-
-    # 宁波银行
-    content = replace_placeholder(content, '{{标的5_代码}}', '002142')
-    content = replace_placeholder(content, '{{标的5_名称}}', '宁波银行')
-    content = replace_placeholder(content, '{{标的5_价格}}', f'{NBC_PRICE}元')
-    content = replace_placeholder(content, '{{标的5_涨跌幅}}', f'<span class="up">{NBC_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的5_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的5_基本面}}', 'PE约12倍，资产质量优异')
-
-    # 江苏银行
-    content = replace_placeholder(content, '{{标的6_代码}}', '600919')
-    content = replace_placeholder(content, '{{标的6_名称}}', '江苏银行')
-    content = replace_placeholder(content, '{{标的6_价格}}', f'{JSB_PRICE}元')
-    content = replace_placeholder(content, '{{标的6_涨跌幅}}', f'<span class="up">{JSB_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的6_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的6_基本面}}', 'PE约5倍，高股息城商行')
-
-    # 杭州银行
-    content = replace_placeholder(content, '{{标的7_代码}}', '600926')
-    content = replace_placeholder(content, '{{标的7_名称}}', '杭州银行')
-    content = replace_placeholder(content, '{{标的7_价格}}', f'{HZB_PRICE}元')
-    content = replace_placeholder(content, '{{标的7_涨跌幅}}', f'<span class="up">{HZB_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的7_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的7_基本面}}', 'PE约8倍，区域经济活力强')
-
-    # 重庆银行
-    content = replace_placeholder(content, '{{标的8_代码}}', '601963')
-    content = replace_placeholder(content, '{{标的8_名称}}', '重庆银行')
-    content = replace_placeholder(content, '{{标的8_价格}}', f'{CQYH_PRICE}元')
-    content = replace_placeholder(content, '{{标的8_涨跌幅}}', f'<span class="down">{CQYH_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的8_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的8_基本面}}', 'PE约5倍，股息率较高')
-
-    # 长江电力
-    content = replace_placeholder(content, '{{标的9_代码}}', '600900')
-    content = replace_placeholder(content, '{{标的9_名称}}', '长江电力')
-    content = replace_placeholder(content, '{{标的9_价格}}', f'{CGP_PRICE}元')
-    content = replace_placeholder(content, '{{标的9_涨跌幅}}', f'<span class="down">{CGP_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的9_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的9_基本面}}', '水电龙头，现金流稳定，股息率约3.5%')
-
-    # 大秦铁路
-    content = replace_placeholder(content, '{{标的10_代码}}', '601006')
-    content = replace_placeholder(content, '{{标的10_名称}}', '大秦铁路')
-    content = replace_placeholder(content, '{{标的10_价格}}', f'{DQTL_PRICE}元')
-    content = replace_placeholder(content, '{{标的10_涨跌幅}}', f'<span class="down">{DQTL_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的10_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的10_基本面}}', '股息率约5%，稳定现金牛')
-
-    # 中国移动
-    content = replace_placeholder(content, '{{标的11_代码}}', '600941')
-    content = replace_placeholder(content, '{{标的11_名称}}', '中国移动')
-    content = replace_placeholder(content, '{{标的11_价格}}', f'{CMCC_PRICE}元')
-    content = replace_placeholder(content, '{{标的11_涨跌幅}}', f'<span class="up">{CMCC_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的11_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的11_基本面}}', '股息率约4%，PB约1.2倍，运营商龙头')
-
-    # 中国核电
-    content = replace_placeholder(content, '{{标的12_代码}}', '601985')
-    content = replace_placeholder(content, '{{标的12_名称}}', '中国核电')
-    content = replace_placeholder(content, '{{标的12_价格}}', f'{CNP_PRICE}元')
-    content = replace_placeholder(content, '{{标的12_涨跌幅}}', f'<span class="up">{CNP_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的12_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的12_基本面}}', 'PE约12倍，核电龙头受益于能源转型')
-
-    # 中国平安
-    content = replace_placeholder(content, '{{标的13_代码}}', '601318')
-    content = replace_placeholder(content, '{{标的13_名称}}', '中国平安')
-    content = replace_placeholder(content, '{{标的13_价格}}', f'{CPIC_PRICE}元')
-    content = replace_placeholder(content, '{{标的13_涨跌幅}}', f'<span class="down">{CPIC_CHANGE}</span>')
-    content = replace_placeholder(content, '{{标的13_成交额}}', '正常')
-    content = replace_placeholder(content, '{{标的13_基本面}}', 'PE约8倍，保险龙头估值修复空间大')
-
-    # ========== Tab 6: 理财话题 ==========
-    content = replace_placeholder(content, '{{存款利率_1年}}', CD_1Y)
-    content = replace_placeholder(content, '{{存款利率_3年}}', CD_3Y)
-    content = replace_placeholder(content, '{{存款利率_5年}}', CD_5Y)
-    content = replace_placeholder(content, '{{大额存单_1年}}', '1.40%')
-    content = replace_placeholder(content, '{{大额存单_3年}}', '1.55%')
-    content = replace_placeholder(content, '{{货币基金_收益率}}', MMF_YIELD)
-    content = replace_placeholder(content, '{{纯债基金_收益}}', PURE_BOND_YIELD)
-    content = replace_placeholder(content, '{{10年国债收益率}}', CHINA_10Y_BOND)
-
-    # ========== Tab 7: 今日总结 ==========
-    content = replace_placeholder(content, '{{宏观面_内容}}', f'陆家嘴论坛释放政策暖风，AI大模型上市政策落地。人民币中间价上调12个基点，汇率维持强势。美联储维持利率不变，外部环境总体稳定。')
-    content = replace_placeholder(content, '{{市场面_内容}}', f'A股放量大涨，创业板指{CYB_CHANGE}领涨，科创50飙升{KC50_CHANGE}。两市成交突破{A_SHARES_VOLUME}，量能充沛。美股分化，道指创新高但纳指回调。')
-    content = replace_placeholder(content, '{{资金面_内容}}', f'北向资金净卖出约1.36亿，但龙虎榜显示机构净买入6.13亿。银行股短期回调，资金流向成长赛道。高股息资产仍受长线资金青睐。')
-    content = replace_placeholder(content, '{{操作建议}}', f'市场放量上涨，创业板指领涨，短期可关注科技成长方向。高股息银行股短期承压，但长期配置价值仍在。黄金维持强势，可适当配置。')
-
-    # ========== 估值参考表 ==========
-    content = replace_placeholder(content, '{{速查1_名称}}', '上证指数')
-    content = replace_placeholder(content, '{{速查1_数值}}', f'{SH_COMPONENT}')
-    content = replace_placeholder(content, '{{速查1_涨跌幅}}', SH_CHANGE)
-
-    content = replace_placeholder(content, '{{速查2_名称}}', '深证成指')
-    content = replace_placeholder(content, '{{速查2_数值}}', f'{SZ_COMPONENT}')
-    content = replace_placeholder(content, '{{速查2_涨跌幅}}', SZ_CHANGE)
-
-    content = replace_placeholder(content, '{{速查3_名称}}', '创业板指')
-    content = replace_placeholder(content, '{{速查3_数值}}', f'{CYB_INDEX}')
-    content = replace_placeholder(content, '{{速查3_涨跌幅}}', CYB_CHANGE)
-
-    content = replace_placeholder(content, '{{速查4_名称}}', '两市成交')
-    content = replace_placeholder(content, '{{速查4_数值}}', A_SHARES_VOLUME)
-    content = replace_placeholder(content, '{{速查4_涨跌幅}}', '放量')
-
-    content = replace_placeholder(content, '{{速查5_名称}}', '北向资金')
-    content = replace_placeholder(content, '{{速查5_数值}}', '净卖出')
-    content = replace_placeholder(content, '{{速查5_涨跌幅}}', '1.36亿')
-
-    content = replace_placeholder(content, '{{速查6_名称}}', '恒生科技')
-    content = replace_placeholder(content, '{{速查6_数值}}', f'{HSTECH_INDEX}')
-    content = replace_placeholder(content, '{{速查6_涨跌幅}}', HSTECH_CHANGE)
-
-    content = replace_placeholder(content, '{{速查7_名称}}', 'WTI原油')
-    content = replace_placeholder(content, '{{速查7_数值}}', f'${WTI_OIL}')
-    content = replace_placeholder(content, '{{速查7_涨跌幅}}', WTI_CHANGE)
-
-    content = replace_placeholder(content, '{{速查8_名称}}', '国际黄金')
-    content = replace_placeholder(content, '{{速查8_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{速查8_涨跌幅}}', GOLD_CHANGE)
-
-    content = replace_placeholder(content, '{{速查9_名称}}', '人民币汇率')
-    content = replace_placeholder(content, '{{速查9_数值}}', USD_CNY_MID)
-    content = replace_placeholder(content, '{{速查9_涨跌幅}}', '升值')
-
-    # ========== Tab 2: AI前沿（续）==========
-    # AI应用新闻
-    content = replace_placeholder(content, '{{AI应用新闻2_标签和标题}}', '<span class="tag tag-app">🚗 智驾</span>自动驾驶规模化落地')
-    content = replace_placeholder(content, '{{AI应用新闻2_正文}}', f'城市NOA（Navigate on Autopilot）加速落地，一二线城市高精地图覆盖区域持续扩大。AI视觉算法迭代升级，{color("接管里程", "cyan")}指标持续优化。智能驾驶从高端车型向大众车型渗透，相关产业链充分受益。')
-
-    content = replace_placeholder(content, '{{AI应用新闻3_标签和标题}}', '<span class="tag tag-app">💬 办公</span>AI办公助手普及')
-    content = replace_placeholder(content, '{{AI应用新闻3_正文}}', f'AI办公助手在企业侧加速渗透，文档处理、会议纪要、数据分析等场景效率提升显著。AI Agent成为办公自动化的新范式，{color("降本增效", "red")}效果明显，看好垂直领域AI应用龙头。')
-
-    # 产业趋势
-    content = replace_placeholder(content, '{{产业趋势新闻1_标签和标题}}', '<span class="tag tag-ai">🔮 趋势</span>端侧AI重塑硬件生态')
-    content = replace_placeholder(content, '{{产业趋势新闻1_正文}}', f'端侧AI芯片加速迭代，NPU算力持续提升。AI手机、AI PC从概念走向普及，端侧大模型部署成为趋势。这一变革将重塑消费电子产业格局，{color("硬件+软件+服务", "cyan")}一体化能力成为核心竞争壁垒。')
-
-    # ========== Tab 3: 全球市场（续）==========
-    content = replace_placeholder(content, '{{报告日期}}', TODAY)
-    content = replace_placeholder(content, '{{A股_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{A股_成交额备注}}', '放量')
-    content = replace_placeholder(content, '{{港股_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{美股_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{美股_ARM}}', '小幅下跌')
-    content = replace_placeholder(content, '{{亚太_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{亚太_韩国KOSPI_状态}}', f'{KOSPI_INDEX} {KOSPI_CHANGE}')
-    content = replace_placeholder(content, '{{亚太_台湾加权_状态}}', '震荡整理')
-    content = replace_placeholder(content, '{{亚太_印度Sensex_状态}}', '小幅上涨')
-    content = replace_placeholder(content, '{{亚太_澳洲ASX200_状态}}', '小幅下跌')
-    content = replace_placeholder(content, '{{欧洲_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{大宗商品_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{汇率债券_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{汇率_在岸汇率}}', USD_CNY_ONSHORE)
-    content = replace_placeholder(content, '{{汇率_美10年期}}', f'{USD_INDEX}%')
-    content = replace_placeholder(content, '{{汇率_美30年期}}', '小幅上行')
-    content = replace_placeholder(content, '{{汇率_中10年期}}', CHINA_10Y_BOND)
-    content = replace_placeholder(content, '{{加密货币_收盘日期}}', '6月17日')
-    content = replace_placeholder(content, '{{加密_BTCEFT}}', '净流出')
-
-    # ========== 市场综评 ==========
-    content = replace_placeholder(content, '{{市场综评_日期}}', '6月17日')
-    content = replace_placeholder(content, '{{综评_A股行情标题}}', 'A股放量大涨')
-    content = replace_placeholder(content, '{{综评_A股行情标签}}', '成长领涨')
-    content = replace_placeholder(content, '{{综评_A股段落1}}', f'上证指数{SH_CHANGE}，深证成指{SZ_CHANGE}，创业板指{color("大涨1.56%", "red")}领涨，科创50{color("飙升4.69%", "red")}。芯片股集体爆发，成长赛道资金回流。两市成交突破{color("3.09万亿", "cyan")}，量能充沛。')
-    content = replace_placeholder(content, '{{综评_A股段落2}}', f'创业板指{CYB_CHANGE}，科创50{KC50_CHANGE}，显示科技成长板块成为市场主线。成交额较前一交易日大幅放量，市场做多情绪回暖。')
-    content = replace_placeholder(content, '{{综评_A股段落3}}', '数据来源：6月17日收盘数据')
-
-    content = replace_placeholder(content, '{{综评_外围市场标题}}', '美股走势分化')
-    content = replace_placeholder(content, '{{综评_外围市场标签}}', '科技股承压')
-    content = replace_placeholder(content, '{{综评_外围段落1}}', f'道指续创历史新高{color("51999.67点", "cyan")}，{color("涨0.64%", "red")}；纳指{color("大跌1.15%", "green")}，科技股分化明显。英伟达{color("跌2.38%", "green")}，特斯拉{color("跌1.56%", "green")}。')
-    content = replace_placeholder(content, '{{综评_外围段落2}}', '美债收益率小幅上行，市场对美联储政策预期稳定。纳斯达克中国金龙指数收跌，中概股承压。')
-    content = replace_placeholder(content, '{{综评_外围段落3}}', '数据来源：6月17日美股收盘')
-
-    content = replace_placeholder(content, '{{综评_地缘政策标题}}', '霍尔木兹海峡重开')
-    content = replace_placeholder(content, '{{综评_地缘政策标签}}', '油价承压')
-    content = replace_placeholder(content, '{{综评_地缘段落1}}', f'美伊谈判推进，霍尔木兹海峡即将全面开放。亚洲股市暴涨，日经225{color("飙升5.41%", "red")}，韩国KOSPI{color("大涨5.76%", "red")}。')
-    content = replace_placeholder(content, '{{综评_地缘段落2}}', '原油价格大幅回落，WTI原油{color("跌0.61%", "green")}，布伦特原油{color("跌0.13%", "green")}。能源市场供给预期改善，通胀压力进一步缓解。')
-    content = replace_placeholder(content, '{{综评_地缘段落3}}', '数据来源：6月17日地缘动态')
-
-    content = replace_placeholder(content, '{{综评_风险事件标题}}', '市场情绪')
-    content = replace_placeholder(content, '{{综评_风险事件标签}}', '中性')
-    content = replace_placeholder(content, '{{综评_风险段落1}}', '市场放量上涨，创业板指领涨，做多情绪回暖。但外围美股科技股承压，短期或震荡。')
-    content = replace_placeholder(content, '{{综评_风险段落2}}', '北向资金小幅净卖出，但龙虎榜机构净买入，整体资金面平稳。关注后续量能配合。')
-    content = replace_placeholder(content, '{{综评_风险段落3}}', '数据截至6月17日收盘')
-
-    # ========== Tab 4: 价值投资风向（续）==========
-    content = replace_placeholder(content, '{{正面因素_内容}}', f'A股放量大涨，创业板指{CYB_CHANGE}，科创50{KC50_CHANGE}；国际金价创新高${GOLD_PRICE}；人民币汇率升值')
-    content = replace_placeholder(content, '{{市场热点_内容}}', f'芯片股爆发，科创50大涨{KC50_CHANGE}；霍尔木兹海峡重开，亚洲股市暴涨；陆家嘴论坛召开，AI大模型政策落地')
-    content = replace_placeholder(content, '{{风险提示_内容}}', f'银行股短期回调，建行跌超2%；美股纳指大跌{NDX_CHANGE}，科技股分化；加密货币市场情绪谨慎')
-
-    # ========== 市场情绪 ==========
-    content = replace_placeholder(content, '{{市场情绪_状态颜色}}', 'accent')
-    content = replace_placeholder(content, '{{市场情绪_状态}}', '谨慎乐观')
-    content = replace_placeholder(content, '{{市场情绪_涨跌比}}', '涨多跌少')
-    content = replace_placeholder(content, '{{市场情绪_成交额}}', '3.09万亿')
-    content = replace_placeholder(content, '{{市场情绪_北向资金}}', '小幅净卖出')
-
-    # 机构观点
-    content = replace_placeholder(content, '{{机构1_简称}}', '中信')
-    content = replace_placeholder(content, '{{机构1_名称}}', '中信证券')
-    content = replace_placeholder(content, '{{机构1_标签}}', '券商龙头')
-
-    content = replace_placeholder(content, '{{机构2_简称}}', '高盛')
-    content = replace_placeholder(content, '{{机构2_名称}}', '高盛')
-    content = replace_placeholder(content, '{{机构2_标签}}', '外资投行')
-
-    content = replace_placeholder(content, '{{机构3_简称}}', '兴业')
-    content = replace_placeholder(content, '{{机构3_名称}}', '兴业证券')
-    content = replace_placeholder(content, '{{机构3_标签}}', '本土券商')
-
-    content = replace_placeholder(content, '{{机构4_简称}}', '中金')
-    content = replace_placeholder(content, '{{机构4_名称}}', '中金公司')
-    content = replace_placeholder(content, '{{机构4_标签}}', '顶级投行')
-
-    content = replace_placeholder(content, '{{机构5_简称}}', '大摩')
-    content = replace_placeholder(content, '{{机构5_名称}}', '摩根士丹利')
-    content = replace_placeholder(content, '{{机构5_标签}}', '国际投行')
-
-    content = replace_placeholder(content, '{{机构6_简称}}', '瑞银')
-    content = replace_placeholder(content, '{{机构6_名称}}', '瑞银集团')
-    content = replace_placeholder(content, '{{机构6_标签}}', '瑞士银行')
-
-    # 情绪指标
-    content = replace_placeholder(content, '{{情绪_高股息_名称}}', '高股息')
-    content = replace_placeholder(content, '{{情绪_高股息_宽度}}', '85%')
-    content = replace_placeholder(content, '{{情绪_高股息_百分比}}', '85%')
-    content = replace_placeholder(content, '{{情绪_高股息_描述}}', '银行、电力板块持续受青睐')
-
-    content = replace_placeholder(content, '{{情绪_银行_名称}}', '银行板块')
-    content = replace_placeholder(content, '{{情绪_银行_宽度}}', '60%')
-    content = replace_placeholder(content, '{{情绪_银行_百分比}}', '60%')
-    content = replace_placeholder(content, '{{情绪_银行_描述}}', '短期回调，机构仍看好')
-
-    content = replace_placeholder(content, '{{情绪_公用事业_名称}}', '公用事业')
-    content = replace_placeholder(content, '{{情绪_公用事业_宽度}}', '75%')
-    content = replace_placeholder(content, '{{情绪_公用事业_百分比}}', '75%')
-    content = replace_placeholder(content, '{{情绪_公用事业_描述}}', '防御属性强，稳定现金流')
-
-    content = replace_placeholder(content, '{{情绪_电力_名称}}', '电力板块')
-    content = replace_placeholder(content, '{{情绪_电力_宽度}}', '70%')
-    content = replace_placeholder(content, '{{情绪_电力_百分比}}', '70%')
-    content = replace_placeholder(content, '{{情绪_电力_描述}}', '水电为主，业绩稳定')
-
-    content = replace_placeholder(content, '{{情绪_AI算力_名称}}', 'AI算力')
-    content = replace_placeholder(content, '{{情绪_AI算力_宽度}}', '90%')
-    content = replace_placeholder(content, '{{情绪_AI算力_百分比}}', '90%')
-    content = replace_placeholder(content, '{{情绪_AI算力_样式类}}', 'hot')
-    content = replace_placeholder(content, '{{情绪_AI算力_描述}}', '大模型发布，政策利好')
-
-    content = replace_placeholder(content, '{{情绪_能源油价_名称}}', '能源油价')
-    content = replace_placeholder(content, '{{情绪_能源油价_宽度}}', '45%')
-    content = replace_placeholder(content, '{{情绪_能源油价_百分比}}', '45%')
-    content = replace_placeholder(content, '{{情绪_能源油价_描述}}', '霍尔木兹重开，油价承压')
-
-    content = replace_placeholder(content, '{{情绪_新能源_名称}}', '新能源')
-    content = replace_placeholder(content, '{{情绪_新能源_宽度}}', '80%')
-    content = replace_placeholder(content, '{{情绪_新能源_百分比}}', '80%')
-    content = replace_placeholder(content, '{{情绪_新能源_样式类}}', 'hot')
-    content = replace_placeholder(content, '{{情绪_新能源_描述}}', '能源转型持续推进')
-
-    content = replace_placeholder(content, '{{情绪_黄金_名称}}', '黄金')
-    content = replace_placeholder(content, '{{情绪_黄金_宽度}}', '88%')
-    content = replace_placeholder(content, '{{情绪_黄金_百分比}}', '88%')
-    content = replace_placeholder(content, '{{情绪_黄金_样式类}}', 'hot')
-    content = replace_placeholder(content, '{{情绪_黄金_描述}}', '创历史新高，避险需求旺')
-
-    content = replace_placeholder(content, '{{情绪_加密货币_名称}}', '加密货币')
-    content = replace_placeholder(content, '{{情绪_加密货币_宽度}}', '55%')
-    content = replace_placeholder(content, '{{情绪_加密货币_百分比}}', '55%')
-    content = replace_placeholder(content, '{{情绪_加密货币_样式类}}', 'low')
-    content = replace_placeholder(content, '{{情绪_加密货币_描述}}', 'BTC震荡，ETH回调')
-
-    # 社区话题标签
-    content = replace_placeholder(content, '{{社区话题标签1}}', '银行股')
-    content = replace_placeholder(content, '{{社区话题标签2}}', 'AI大模型')
-    content = replace_placeholder(content, '{{社区话题标签3}}', '黄金')
-    content = replace_placeholder(content, '{{社区话题标签4}}', '原油')
-    content = replace_placeholder(content, '{{社区话题标签5}}', '创业板')
-
-    # ========== Tab 4: 高股息板块 ==========
-    content = replace_placeholder(content, '{{高股息_银行标题}}', '银行板块：股息率4.5-5.5%，配置价值凸显')
-    content = replace_placeholder(content, '{{高股息_银行内容}}', f'银行板块当前PB约{color("0.5-0.6倍", "cyan")}，处于历史低位。股息率{color("4.5-5.5%", "red")}，显著高于无风险收益率。工商银行、建设银行、农业银行等大行股息率稳定，适合长期配置。短期银行股回调提供更好的买入机会。险资、北向资金持续加仓银行股，估值修复逻辑未变。')
-    content = replace_placeholder(content, '{{高股息_公用事业标题}}', '公用事业：稳定现金流，高股息防御强')
-    content = replace_placeholder(content, '{{高股息_公用事业内容}}', f'水电、燃气等公用事业板块具备{color("稳定现金流", "cyan")}特征，不受经济周期影响。长江电力等龙头股息率约{color("3.5%", "red")}，业绩确定性极强。在市场波动加大背景下，公用事业板块的防御属性凸显，适合保守型投资者。')
-    content = replace_placeholder(content, '{{高股息_电力标题}}', '电力板块：能源转型受益，业绩增长确定')
-    content = replace_placeholder(content, '{{高股息_电力内容}}', f'电力板块PE约{color("15-20倍", "cyan")}，股息率{color("3.5-4.5%", "red")}。受益于能源转型，核电、水电等清洁能源装机持续增长。中国核电等龙头业绩增速稳定，现金流良好，具备长期投资价值。')
-    content = replace_placeholder(content, '{{高股息_央企标题}}', '央企蓝筹：高股息+低估值，估值修复可期')
-    content = replace_placeholder(content, '{{高股息_央企内容}}', f'中国移动、中国建筑等央企蓝筹PB约{color("1.0-1.2倍", "cyan")}，股息率{color("4%", "red")}以上。央企改革持续推进，ROE提升逻辑清晰。在中特估估值体系下，央企蓝筹估值修复空间较大，适合长线资金配置。')
-
-    # ========== Tab 4: 低估值板块 ==========
-    content = replace_placeholder(content, '{{低估值1_名称}}', '中证红利')
-    content = replace_placeholder(content, '{{估值_中证红利PE_今日涨幅}}', f'{SH_CHANGE}')
-    content = replace_placeholder(content, '{{低估值1_收盘价}}', f'{SH_COMPONENT}点')
-    content = replace_placeholder(content, '{{低估值1_描述}}', f'低估值高股息策略有效，中证红利指数{SH_CHANGE}，PE约8-10倍，股息率约5%，适合稳健型投资者。')
-
-    content = replace_placeholder(content, '{{低估值2_名称}}', '港股恒生科技')
-    content = replace_placeholder(content, '{{低估值2_今日涨幅}}', HSTECH_CHANGE)
-    content = replace_placeholder(content, '{{低估值2_涨幅样式}}', 'up')
-    content = replace_placeholder(content, '{{低估值2_收盘价}}', f'{HSTECH_INDEX}点')
-    content = replace_placeholder(content, '{{低估值2_描述}}', f'恒生科技指数{HSTECH_CHANGE}，估值处于历史低位，互联网龙头估值修复空间大。')
-
-    # ========== 资金流向 ==========
-    content = replace_placeholder(content, '{{资金流向_节点1标题}}', '北向资金')
-    content = replace_placeholder(content, '{{资金流向_节点1描述}}', '净卖出1.36亿')
-    content = replace_placeholder(content, '{{资金流向_节点2标题}}', '机构资金')
-    content = replace_placeholder(content, '{{资金流向_节点2描述}}', '净买入6.13亿')
-    content = replace_placeholder(content, '{{资金流向_节点3标题}}', 'ETF流入')
-    content = replace_placeholder(content, '{{资金流向_节点3描述}}', '证券ETF净流入')
-    content = replace_placeholder(content, '{{资金_证券ETF流向}}', '净流入')
-    content = replace_placeholder(content, '{{资金_红利ETF流向}}', '稳定流入')
-
-    # ========== 估值数据 ==========
-    content = replace_placeholder(content, '{{估值_银行PB}}', '0.5-0.6倍')
-    content = replace_placeholder(content, '{{估值_银行PB_标签}}', '历史低位')
-    content = replace_placeholder(content, '{{估值_银行PB_说明}}', 'PB持续低迷')
-
-    # ========== Tab 4: 低估值板块 ==========
-    content = replace_placeholder(content, '{{低估值1_名称}}', '中证红利')
-    content = replace_placeholder(content, '{{估值_中证红利PE_今日涨幅}}', f'{SH_CHANGE}')
-    content = replace_placeholder(content, '{{低估值1_收盘价}}', f'{SH_COMPONENT}点')
-    content = replace_placeholder(content, '{{低估值1_描述}}', f'低估值高股息策略有效，中证红利指数{SH_CHANGE}，PE约8-10倍，股息率约5%，适合稳健型投资者。')
-
-    content = replace_placeholder(content, '{{低估值2_名称}}', '港股恒生科技')
-    content = replace_placeholder(content, '{{低估值2_今日涨幅}}', HSTECH_CHANGE)
-    content = replace_placeholder(content, '{{低估值2_涨幅样式}}', 'up')
-    content = replace_placeholder(content, '{{低估值2_收盘价}}', f'{HSTECH_INDEX}点')
-    content = replace_placeholder(content, '{{低估值2_描述}}', f'恒生科技指数{HSTECH_CHANGE}，估值处于历史低位，互联网龙头估值修复空间大。')
-
-    # ========== 资金流向 ==========
-    content = replace_placeholder(content, '{{资金流向_节点1标题}}', '北向资金')
-    content = replace_placeholder(content, '{{资金流向_节点1描述}}', '净卖出1.36亿')
-    content = replace_placeholder(content, '{{资金流向_节点2标题}}', '机构资金')
-    content = replace_placeholder(content, '{{资金流向_节点2描述}}', '净买入6.13亿')
-    content = replace_placeholder(content, '{{资金流向_节点3标题}}', 'ETF流入')
-    content = replace_placeholder(content, '{{资金流向_节点3描述}}', '证券ETF净流入')
-    content = replace_placeholder(content, '{{资金_证券ETF流向}}', '净流入')
-    content = replace_placeholder(content, '{{资金_红利ETF流向}}', '稳定流入')
-
-    # ========== 估值数据 ==========
-    content = replace_placeholder(content, '{{估值_银行PB}}', '0.5-0.6倍')
-    content = replace_placeholder(content, '{{估值_银行PB_标签}}', '历史低位')
-    content = replace_placeholder(content, '{{估值_银行PB_标签类}}', 'low')
-    content = replace_placeholder(content, '{{估值_银行PB_说明}}', 'PB持续低迷')
-
-    content = replace_placeholder(content, '{{估值_上证PE}}', '约15倍')
-    content = replace_placeholder(content, '{{估值_上证PE_标签}}', '适中')
-    content = replace_placeholder(content, '{{估值_上证PE_标签类}}', 'mid')
-
-    content = replace_placeholder(content, '{{估值_银行股息率}}', '4.5-5.5%')
-    content = replace_placeholder(content, '{{估值_银行股息率_标签}}', '较高')
-    content = replace_placeholder(content, '{{估值_银行股息率_标签类}}', 'high')
-
-    content = replace_placeholder(content, '{{估值_中证红利PE}}', '8-10倍')
-    content = replace_placeholder(content, '{{估值_中证红利PE_标签}}', '历史低位')
-    content = replace_placeholder(content, '{{估值_中证红利PE_标签类}}', 'low')
-
-    content = replace_placeholder(content, '{{估值_神华吨煤利润}}', '约400元')
-    content = replace_placeholder(content, '{{估值_神华_标签}}', '稳定')
-    content = replace_placeholder(content, '{{估值_神华_标签类}}', 'mid')
-
-    content = replace_placeholder(content, '{{估值_中国移动PB}}', '1.2倍')
-    content = replace_placeholder(content, '{{估值_中国移动PB_标签}}', '适中')
-    content = replace_placeholder(content, '{{估值_中国移动PB_标签类}}', 'mid')
-
-    content = replace_placeholder(content, '{{估值_招商银行PB}}', '1.1倍')
-    content = replace_placeholder(content, '{{估值_招商银行PB_标签}}', '合理')
-    content = replace_placeholder(content, '{{估值_招商银行PB_标签类}}', 'mid')
-
-    content = replace_placeholder(content, '{{估值_中国核电PE}}', '12倍')
-    content = replace_placeholder(content, '{{估值_中国核电PE_标签}}', '适中')
-    content = replace_placeholder(content, '{{估值_中国核电PE_标签类}}', 'mid')
-
-    content = replace_placeholder(content, '{{估值_黄金价格}}', '$4332')
-    content = replace_placeholder(content, '{{估值_黄金价格_标签}}', '创新高')
-    content = replace_placeholder(content, '{{估值_黄金价格_标签类}}', 'hot')
-
-    # ========== Tab 5: 关注标的深度解读 ==========
-    # 标的1-13的详细分析
-    # 标的1 工商银行
-    content = replace_placeholder(content, '{{标的1_股价}}', f'{ICBC_PRICE}元')
-    content = replace_placeholder(content, '{{标的1_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的1_要点1}}', f'{color("股息率约5%", "red")}，显著高于无风险收益率')
-    content = replace_placeholder(content, '{{标的1_要点2}}', f'{color("PB约0.55倍", "cyan")}，处于历史低位')
-    content = replace_placeholder(content, '{{标的1_要点3}}', f'{color("资产质量稳健", "green")}，不良贷款率可控')
-    content = replace_placeholder(content, '{{标的1_要点4}}', f'{color("短期回调", "yellow")}，成交27亿抛压明显')
-    content = replace_placeholder(content, '{{标的1_要点5}}', f'长期配置价值凸显，适合险资和长线资金')
-
-    # 标的2 建设银行
-    content = replace_placeholder(content, '{{标的2_股价}}', f'{CCB_PRICE}元')
-    content = replace_placeholder(content, '{{标的2_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的2_要点1}}', f'{color("股息率约5%", "red")}，大行中较高')
-    content = replace_placeholder(content, '{{标的2_要点2}}', f'{color("PB约0.6倍", "cyan")}，估值历史低位')
-    content = replace_placeholder(content, '{{标的2_要点3}}', f'{color("跌超2%", "green")}，领跌大行，短期承压')
-    content = replace_placeholder(content, '{{标的2_要点4}}', f'{color("基本面稳定", "green")}，业绩确定性较强')
-    content = replace_placeholder(content, '{{标的2_要点5}}', f'回调提供更好买入机会')
-
-    # 标的3 农业银行
-    content = replace_placeholder(content, '{{标的3_股价}}', f'{ABC_PRICE}元')
-    content = replace_placeholder(content, '{{标的3_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的3_要点1}}', f'{color("股息率约5.5%", "red")}，四大行最高')
-    content = replace_placeholder(content, '{{标的3_要点2}}', f'{color("PB约0.5倍", "cyan")}，破净严重')
-    content = replace_placeholder(content, '{{标的3_要点3}}', f'{color("资产质量改善", "green")}，不良率持续下降')
-    content = replace_placeholder(content, '{{标的3_要点4}}', f'{color("短期跟随板块回调", "yellow")}，资金流出')
-    content = replace_placeholder(content, '{{标的3_要点5}}', f'高股息防御配置首选')
-
-    # 标的4 招商银行
-    content = replace_placeholder(content, '{{标的4_股价}}', f'{CMB_PRICE}元')
-    content = replace_placeholder(content, '{{标的4_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的4_要点1}}', f'{color("PE约16倍", "cyan")}，零售银行龙头溢价')
-    content = replace_placeholder(content, '{{标的4_要点2}}', f'{color("PB约1.1倍", "cyan")}，估值相对合理')
-    content = replace_placeholder(content, '{{标的4_要点3}}', f'{color("跌0.88%", "green")}，成交25亿小幅回调')
-    content = replace_placeholder(content, '{{标的4_要点4}}', f'{color("零售业务强劲", "red")}，资产质量优异')
-    content = replace_placeholder(content, '{{标的4_要点5}}', f'长期看好，短期注意板块轮动')
-
-    # 标的5 宁波银行
-    content = replace_placeholder(content, '{{标的5_股价}}', f'{NBC_PRICE}元')
-    content = replace_placeholder(content, '{{标的5_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{标的5_要点1}}', f'{color("PE约12倍", "cyan")}，城商行中估值较低')
-    content = replace_placeholder(content, '{{标的5_要点2}}', f'{color("资产质量优异", "green")}，不良率控制良好')
-    content = replace_placeholder(content, '{{标的5_要点3}}', f'{color("微涨0.06%", "red")}，表现强于大行')
-    content = replace_placeholder(content, '{{标的5_要点4}}', f'{color("区域经济活力强", "yellow")}，业务拓展空间大')
-    content = replace_placeholder(content, '{{标的5_要点5}}', f'高成长性城商行代表')
-
-    # 标的6 江苏银行
-    content = replace_placeholder(content, '{{标的6_股价}}', f'{JSB_PRICE}元')
-    content = replace_placeholder(content, '{{标的6_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{标的6_要点1}}', f'{color("PE约5倍", "cyan")}，估值极低')
-    content = replace_placeholder(content, '{{标的6_要点2}}', f'{color("股息率较高", "red")}，高股息策略适用')
-    content = replace_placeholder(content, '{{标的6_要点3}}', f'{color("微涨0.1%", "red")}，城商行中表现稳健')
-    content = replace_placeholder(content, '{{标的6_要点4}}', f'{color("规模较大", "yellow")}，江苏省经济活力强')
-    content = replace_placeholder(content, '{{标的6_要点5}}', f'低估值高股息配置价值突出')
-
-    # 标的7 杭州银行
-    content = replace_placeholder(content, '{{标的7_股价}}', f'{HZB_PRICE}元')
-    content = replace_placeholder(content, '{{标的7_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{标的7_要点1}}', f'{color("PE约8倍", "cyan")}，城商行中估值合理')
-    content = replace_placeholder(content, '{{标的7_要点2}}', f'{color("业绩增长", "green")}，营收增速较快')
-    content = replace_placeholder(content, '{{标的7_要点3}}', f'{color("微涨0.3%", "red")}，走势强于板块')
-    content = replace_placeholder(content, '{{标的7_要点4}}', f'{color("区域经济发达", "yellow")}，浙江民营经济活跃')
-    content = replace_placeholder(content, '{{标的7_要点5}}', f'成长性突出的城商行')
-
-    # 标的8 重庆银行
-    content = replace_placeholder(content, '{{标的8_股价}}', f'{CQYH_PRICE}元')
-    content = replace_placeholder(content, '{{标的8_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的8_要点1}}', f'{color("PE约5倍", "cyan")}，估值较低')
-    content = replace_placeholder(content, '{{标的8_要点2}}', f'{color("股息率较高", "red")}，高股息特征明显')
-    content = replace_placeholder(content, '{{标的8_要点3}}', f'{color("小幅下跌0.5%", "green")}，调整幅度有限')
-    content = replace_placeholder(content, '{{标的8_要点4}}', f'{color("成渝地区双城", "yellow")}，受益于区域发展')
-    content = replace_placeholder(content, '{{标的8_要点5}}', f'低估值高股息标的')
-
-    # 标的9 长江电力
-    content = replace_placeholder(content, '{{标的9_股价}}', f'{CGP_PRICE}元')
-    content = replace_placeholder(content, '{{标的9_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的9_要点1}}', f'{color("股息率约3.5%", "red")}，稳定现金牛')
-    content = replace_placeholder(content, '{{标的9_要点2}}', f'{color("PB约2.5倍", "cyan")}，水电龙头溢价')
-    content = replace_placeholder(content, '{{标的9_要点3}}', f'{color("跌0.7%", "green")}，防御属性显现')
-    content = replace_placeholder(content, '{{标的9_要点4}}', f'{color("现金流稳定", "green")}，不受经济周期影响')
-    content = replace_placeholder(content, '{{标的9_要点5}}', f'长期投资者防御配置首选')
-
-    # 标的10 大秦铁路
-    content = replace_placeholder(content, '{{标的10_股价}}', f'{DQTL_PRICE}元')
-    content = replace_placeholder(content, '{{标的10_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的10_要点1}}', f'{color("股息率约5%", "red")}，高股息代表')
-    content = replace_placeholder(content, '{{标的10_要点2}}', f'{color("稳定现金回报", "green")}，业绩稳定')
-    content = replace_placeholder(content, '{{标的10_要点3}}', f'{color("小幅下跌0.14%", "green")}，调整有限')
-    content = replace_placeholder(content, '{{标的10_要点4}}', f'{color("运煤专线", "yellow")}，区域垄断优势')
-    content = replace_placeholder(content, '{{标的10_要点5}}', f'稳健收益类投资者适合')
-
-    # 标的11 中国移动
-    content = replace_placeholder(content, '{{标的11_股价}}', f'{CMCC_PRICE}元')
-    content = replace_placeholder(content, '{{标的11_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{标的11_要点1}}', f'{color("股息率约4%", "red")}，运营商最高')
-    content = replace_placeholder(content, '{{标的11_要点2}}', f'{color("PB约1.2倍", "cyan")}，估值合理')
-    content = replace_placeholder(content, '{{标的11_要点3}}', f'{color("涨1.5%", "red")}，走势强劲')
-    content = replace_placeholder(content, '{{标的11_要点4}}', f'{color("5G龙头", "yellow")}，用户规模全球第一')
-    content = replace_placeholder(content, '{{标的11_要点5}}', f'央企蓝筹，中特估受益标的')
-
-    # 标的12 中国核电
-    content = replace_placeholder(content, '{{标的12_股价}}', f'{CNP_PRICE}元')
-    content = replace_placeholder(content, '{{标的12_涨跌class}}', 'up')
-    content = replace_placeholder(content, '{{标的12_要点1}}', f'{color("PE约12倍", "cyan")}，清洁能源估值合理')
-    content = replace_placeholder(content, '{{标的12_要点2}}', f'{color("核电龙头", "yellow")}，技术壁垒高')
-    content = replace_placeholder(content, '{{标的12_要点3}}', f'{color("微涨0.5%", "red")}，走势稳健')
-    content = replace_placeholder(content, '{{标的12_要点4}}', f'{color("能源转型受益", "green")}，政策支持明确')
-    content = replace_placeholder(content, '{{标的12_要点5}}', f'成长性+高股息兼具')
-
-    # 标的13 中国平安
-    content = replace_placeholder(content, '{{标的13_股价}}', f'{CPIC_PRICE}元')
-    content = replace_placeholder(content, '{{标的13_涨跌class}}', 'down')
-    content = replace_placeholder(content, '{{标的13_要点1}}', f'{color("PE约8倍", "cyan")}，保险龙头低估')
-    content = replace_placeholder(content, '{{标的13_要点2}}', f'{color("综合金融", "yellow")}，牌照齐全')
-    content = replace_placeholder(content, '{{标的13_要点3}}', f'{color("小幅下跌0.3%", "green")}，回调有限')
-    content = replace_placeholder(content, '{{标的13_要点4}}', f'{color("估值修复空间大", "red")}，ROE有望提升')
-    content = replace_placeholder(content, '{{标的13_要点5}}', f'保险行业龙头，长期配置价值显现')
-
-    # ========== 深度解读 ==========
-    content = replace_placeholder(content, '{{深度解读_银行组标题}}', '银行板块')
-    content = replace_placeholder(content, '{{深度解读_银行组标签}}', '高股息+低估值')
-    content = replace_placeholder(content, '{{深度解读_银行1_标题}}', '工商银行')
-    content = replace_placeholder(content, '{{深度解读_银行1_指标}}', f'{ICBC_PRICE}元 {ICBC_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_银行2_标题}}', '建设银行')
-    content = replace_placeholder(content, '{{深度解读_银行2_指标}}', f'{CCB_PRICE}元 {CCB_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_银行3_标题}}', '招商银行')
-    content = replace_placeholder(content, '{{深度解读_银行3_指标}}', f'{CMB_PRICE}元 {CMB_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_银行总结}}', f'银行板块PB约{color("0.5-0.6倍", "cyan")}，股息率{color("4.5-5.5%", "red")}，处于历史估值底部。短期银行股回调提供更好配置机会，险资、北向资金持续加仓。长期来看，估值修复逻辑未变。')
-
-    content = replace_placeholder(content, '{{深度解读_公用组标题}}', '公用事业')
-    content = replace_placeholder(content, '{{深度解读_公用组标签}}', '稳定现金流')
-    content = replace_placeholder(content, '{{深度解读_公用1_标题}}', '长江电力')
-    content = replace_placeholder(content, '{{深度解读_公用1_指标}}', f'{CGP_PRICE}元 {CGP_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_公用2_标题}}', '中国核电')
-    content = replace_placeholder(content, '{{深度解读_公用2_指标}}', f'{CNP_PRICE}元 {CNP_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_公用总结}}', f'公用事业板块具备{color("稳定现金流", "cyan")}特征，不受经济周期影响。长江电力等龙头股息率约{color("3.5%", "red")}，业绩确定性极强，是防御配置的理想选择。')
-
-    content = replace_placeholder(content, '{{深度解读_央企组标题}}', '央企蓝筹')
-    content = replace_placeholder(content, '{{深度解读_央企组标签}}', '中特估受益')
-    content = replace_placeholder(content, '{{深度解读_央企1_标题}}', '中国移动')
-    content = replace_placeholder(content, '{{深度解读_央企1_指标}}', f'{CMCC_PRICE}元 {CMCC_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_央企2_标题}}', '中国平安')
-    content = replace_placeholder(content, '{{深度解读_央企2_指标}}', f'{CPIC_PRICE}元 {CPIC_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_央企3_标题}}', '中国核电')
-    content = replace_placeholder(content, '{{深度解读_央企3_指标}}', f'{CNP_PRICE}元 {CNP_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_央企4_标题}}', '大秦铁路')
-    content = replace_placeholder(content, '{{深度解读_央企4_指标}}', f'{DQTL_PRICE}元 {DQTL_CHANGE}')
-    content = replace_placeholder(content, '{{深度解读_央企总结}}', f'央企蓝筹PB约{color("1.0-1.2倍", "cyan")}，股息率{color("4%", "red")}以上。在中特估估值体系下，央企改革持续推进，ROE提升逻辑清晰，估值修复空间较大。')
-
-    content = replace_placeholder(content, '{{深度解读_配置建议内容}}', f'当前市场环境下，建议关注三条主线：{color("一", "yellow")}是科技成长，AI、半导体等确定性较强的方向；{color("二", "yellow")}是高股息，银行、电力等稳定现金流板块；{color("三", "yellow")}是消费复苏，受益于政策刺激和居民信心恢复。')
-
-    # ========== Tab 6: 理财话题 ==========
-    content = replace_placeholder(content, '{{标的_正面提示标题}}', '利好因素')
-    content = replace_placeholder(content, '{{标的_正面提示内容}}', f'A股放量大涨，创业板指{CYB_CHANGE}领涨；国际金价创历史新高${GOLD_PRICE}；人民币汇率升值；科创板AI大模型政策落地')
-    content = replace_placeholder(content, '{{标的_风险提示标题}}', '风险提示')
-    content = replace_placeholder(content, '{{标的_风险提示内容}}', f'银行股短期回调，建行跌超2%；美股纳指大跌{NDX_CHANGE}；加密货币市场情绪谨慎；外围科技股分化')
-
-    # 理财卡片
-    content = replace_placeholder(content, '{{理财卡1_标题}}', '黄金')
-    content = replace_placeholder(content, '{{理财卡1_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{理财卡1_备注}}', '创历史新高')
-    content = replace_placeholder(content, '{{理财卡2_标题}}', '银行股息率')
-    content = replace_placeholder(content, '{{理财卡2_数值}}', '4.5-5.5%')
-    content = replace_placeholder(content, '{{理财卡2_备注}}', '历史高位')
-    content = replace_placeholder(content, '{{理财卡3_标题}}', '10年国债')
-    content = replace_placeholder(content, '{{理财卡3_数值}}', CHINA_10Y_BOND)
-    content = replace_placeholder(content, '{{理财卡3_备注}}', '低位运行')
-    content = replace_placeholder(content, '{{理财卡4_标题}}', '货币基金')
-    content = replace_placeholder(content, '{{理财卡4_数值}}', MMF_YIELD)
-    content = replace_placeholder(content, '{{理财卡4_备注}}', '持续下行')
-
-    # 稳健理财图表
-    content = replace_placeholder(content, '{{图表_数据日期}}', '2026年6月17日')
-    content = replace_placeholder(content, '{{图表_红利ETF_名称}}', '红利ETF')
-    content = replace_placeholder(content, '{{图表_红利ETF_副标题}}', '高股息策略')
-    content = replace_placeholder(content, '{{图表_红利ETF_数值}}', '正收益')
-    content = replace_placeholder(content, '{{图表_银行股息率_注释}}', '银行板块')
-    content = replace_placeholder(content, '{{图表_银行股息率_数值}}', '4.5-5.5%')
-    content = replace_placeholder(content, '{{图表_超长国债_数值}}', '低位')
-    content = replace_placeholder(content, '{{图表_银行理财_数值}}', '3%左右')
-    content = replace_placeholder(content, '{{图表_5年定存_数值}}', CD_5Y)
-    content = replace_placeholder(content, '{{图表_1年定存_数值}}', CD_1Y)
-    content = replace_placeholder(content, '{{图表_收益计算说明}}', f'100万配置：银行股息约{color("4.5-5.5万/年", "red")}，远超货币基金约{color("1万/年", "green")}，也高于5年定存约{color("1.65万/年", "yellow")}。高股息策略在低利率时代优势明显。')
-
-    # 替代策略
-    content = replace_placeholder(content, '{{替代策略_股息对比内容}}', f'股息率对比：银行股{color("4.5-5.5%", "red")} > 10年国债{color("1.72%", "yellow")} > 货币基金{color("约1.0%", "green")} > 1年定存{color("1.35%", "cyan")}')
-    content = replace_placeholder(content, '{{替代策略_配置逻辑}}', f'在当前低利率环境下，高股息资产配置价值凸显。银行、电力等高股息板块不仅提供稳定现金回报，还具备估值修复空间。')
-    content = replace_placeholder(content, '{{替代策略_配置建议内容}}', f'建议稳健型投资者可将{color("60%", "cyan")}以上资金配置于高股息标的，兼顾收益与防御性。')
-
-    # 避坑指南
-    content = replace_placeholder(content, '{{避坑1_标题}}', '追高银行股')
-    content = replace_placeholder(content, '{{避坑1_内容}}', f'银行股近期累计涨幅较大，短期存在{color("获利了结", "green")}压力。追高容易被套，建议等待回调后再介入。')
-    content = replace_placeholder(content, '{{避坑2_标题}}', '盲目炒作AI概念')
-    content = replace_placeholder(content, '{{避坑2_内容}}', f'AI概念炒作火热，但多数公司业绩无法支撑高估值。{color("盲目追高", "green")}风险巨大，建议关注有实际业绩支撑的龙头。')
-    content = replace_placeholder(content, '{{避坑3_标题}}', '忽视汇率风险')
-    content = replace_placeholder(content, '{{避坑3_内容}}', f'人民币汇率波动加大海外投资风险。配置外币资产需{color("注意对冲", "yellow")}，避免单一货币敞口过大。')
-
-    # 保险窗口提醒
-    content = replace_placeholder(content, '{{保险_窗口提醒标题}}', '6月保险配置窗口期')
-    content = replace_placeholder(content, '{{保险_窗口提醒内容}}', f'6月是保险产品上半年的重要节点，部分产品可能{color("调整收益率", "yellow")}。有配置需求的投资者可关注，优先选择保障型产品。')
-
-    # 黄金
-    content = replace_placeholder(content, '{{黄金_标题}}', '国际黄金')
-    content = replace_placeholder(content, '{{黄金_单位}}', '美元/盎司')
-    content = replace_placeholder(content, '{{黄金_价格}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{黄金_涨跌颜色}}', 'red')
-    content = replace_placeholder(content, '{{黄金_涨跌幅}}', f'{GOLD_CHANGE}')
-    content = replace_placeholder(content, '{{黄金_SVG路径}}', '')
-    content = replace_placeholder(content, '{{黄金_SVG填充路径}}', '')
-    content = replace_placeholder(content, '{{黄金_日期1}}', '6月15日')
-    content = replace_placeholder(content, '{{黄金_日期2}}', '6月16日')
-    content = replace_placeholder(content, '{{黄金_日期3}}', '6月17日')
-    content = replace_placeholder(content, '{{黄金_走势描述}}', f'国际金价创历史新高，站稳{color("$4300", "cyan")}美元关口。避险需求+央行购金+美元走弱共同推动金价上涨。')
-
-    # 债基配置建议
-    content = replace_placeholder(content, '{{债基_配置建议标题}}', '债基配置建议')
-    content = replace_placeholder(content, '{{债基_配置建议内容}}', f'当前债市表现稳健，纯债基金持续正收益。在市场波动加大的环境下，{color("纯债基金", "cyan")}可作为稳健资产配置的一部分，建议配置比例{color("20-30%", "yellow")}。')
-
-    # 社区话题
-    # 话题1
-    content = replace_placeholder(content, '{{社区话题1_标题}}', '银行股创新高，还能追吗？')
-    content = replace_placeholder(content, '{{社区话题1_来源}}', '雪球')
-    content = replace_placeholder(content, '{{社区话题1_热度}}', '🔥 热议')
-    content = replace_placeholder(content, '{{社区话题1_角色1}}', '价值投资者：')
-    content = replace_placeholder(content, '{{社区话题1_观点1}}', f'银行股股息率约{color("5%", "red")}，显著高于无风险收益率，估值修复空间大')
-    content = replace_placeholder(content, '{{社区话题1_角色2}}', '机构分析师：')
-    content = replace_placeholder(content, '{{社区话题1_观点2}}', f'险资、北向资金持续加仓银行股，估值修复逻辑未变')
-    content = replace_placeholder(content, '{{社区话题1_角色3}}', '谨慎派：')
-    content = replace_placeholder(content, '{{社区话题1_观点3}}', f'短期涨幅较大，建议等待回调后再介入')
-    content = replace_placeholder(content, '{{社区话题1_观点}}', f'银行股创新高是价值发现的体现，但短期确实存在回调压力。建议分批建仓，不要追高。高股息策略适合长期持有。')
-
-    # 话题2
-    content = replace_placeholder(content, '{{社区话题2_标题}}', '创业板指暴涨1.56%，科技股要起飞了？')
-    content = replace_placeholder(content, '{{社区话题2_来源}}', '东方财富')
-    content = replace_placeholder(content, '{{社区话题2_热度}}', '🔥 热议')
-    content = replace_placeholder(content, '{{社区话题2_角色1}}', '科技多头：')
-    content = replace_placeholder(content, '{{社区话题2_观点1}}', f'科创50{color("暴涨4.69%", "red")}，芯片股集体爆发，科技行情启动')
-    content = replace_placeholder(content, '{{社区话题2_角色2}}', '理性分析师：')
-    content = replace_placeholder(content, '{{社区话题2_观点2}}', f'成交放量突破3万亿，但需关注后续量能配合')
-    content = replace_placeholder(content, '{{社区话题2_角色3}}', '谨慎派：')
-    content = replace_placeholder(content, '{{社区话题2_观点3}}', f'外围美股科技股承压，纳指大跌1.15%，需警惕联动风险')
-    content = replace_placeholder(content, '{{社区话题2_观点}}', f'创业板指领涨说明市场风险偏好提升，但外围科技股调整可能影响A股科技板块。短期可以参与，但要注意控制仓位。')
-
-    # 话题3
-    content = replace_placeholder(content, '{{社区话题3_标题}}', '国际金价创历史新高，黄金还能买吗？')
-    content = replace_placeholder(content, '{{社区话题3_来源}}', '集思录')
-    content = replace_placeholder(content, '{{社区话题3_热度}}', '💰 关注')
-    content = replace_placeholder(content, '{{社区话题3_角色1}}', '黄金多头：')
-    content = replace_placeholder(content, '{{社区话题3_观点1}}', f'美元走弱+避险需求+央行购金，金价上涨逻辑清晰')
-    content = replace_placeholder(content, '{{社区话题3_角色2}}', '技术派：')
-    content = replace_placeholder(content, '{{社区话题3_观点2}}', f'金价已创历史新高，RSI指标显示超买')
-    content = replace_placeholder(content, '{{社区话题3_角色3}}', '老盛观点：')
-    content = replace_placeholder(content, '{{社区话题3_观点3}}', f'黄金作为避险资产，适度配置有道理，但不宜重仓追高')
-    content = replace_placeholder(content, '{{社区话题3_观点}}', f'国际金价创历史新高$4332美元/盎司，但短期涨幅过大，存在技术性调整风险。适度配置{color("5-10%", "cyan")}黄金作为避险即可，不宜盲目追高。')
-
-    # 话题4
-    content = replace_placeholder(content, '{{社区话题4_标题}}', '原油暴跌5%，能源股要抄底吗？')
-    content = replace_placeholder(content, '{{社区话题4_来源}}', '同花顺')
-    content = replace_placeholder(content, '{{社区话题4_热度}}', '⚠️ 警示')
-    content = replace_placeholder(content, '{{社区话题4_角色1}}', '抄底派：')
-    content = replace_placeholder(content, '{{社区话题4_观点1}}', f'霍尔木兹海峡重开只是短期影响，不改油价长期趋势')
-    content = replace_placeholder(content, '{{社区话题4_角色2}}', '风险提示：')
-    content = replace_placeholder(content, '{{社区话题4_观点2}}', f'供给改善预期下，油价可能继续承压')
-    content = replace_placeholder(content, '{{社区话题4_角色3}}', '理性派：')
-    content = replace_placeholder(content, '{{社区话题4_观点3}}', f'能源股跟油价关联度高，抄底需谨慎')
-    content = replace_placeholder(content, '{{社区话题4_观点}}', f'霍尔木兹海峡重开导致原油暴跌，但这是短期事件冲击。能源股跟油价关联度高，在油价承压背景下，{color("不建议盲目抄底", "green")}。')
-
-    # 话题5
-    content = replace_placeholder(content, '{{社区话题5_标题}}', '科创板AI大模型政策落地，影响几何？')
-    content = replace_placeholder(content, '{{社区话题5_来源}}', '雪球')
-    content = replace_placeholder(content, '{{社区话题5_热度}}', '🔥 热议')
-    content = replace_placeholder(content, '{{社区话题5_角色1}}', '政策解读：')
-    content = replace_placeholder(content, '{{社区话题5_观点1}}', '科创板第五套标准扩至AI大模型，资本市场支持科技创新')
-    content = replace_placeholder(content, '{{社区话题5_角色2}}', '分析师：')
-    content = replace_placeholder(content, '{{社区话题5_观点2}}', '未盈利AI企业可通过科创板上市，头部企业直接受益')
-    content = replace_placeholder(content, '{{社区话题5_角色3}}', '投资者：')
-    content = replace_placeholder(content, '{{社区话题5_观点3}}', '关注真正有技术实力的AI龙头，规避纯概念炒作')
-    content = replace_placeholder(content, '{{社区话题5_观点}}', '科创板第五套标准扩至AI大模型是资本市场支持科技创新的重要信号。头部AI企业如智谱AI等将直接受益，但投资者需甄别真正有技术实力的公司。')
-
-    # 话题6
-    content = replace_placeholder(content, '{{社区话题6_标题}}', '陆家嘴论坛释放哪些信号？')
-    content = replace_placeholder(content, '{{社区话题6_来源}}', '东方财富')
-    content = replace_placeholder(content, '{{社区话题6_热度}}', '💰 关注')
-    content = replace_placeholder(content, '{{社区话题6_角色1}}', '经济学家：')
-    content = replace_placeholder(content, '{{社区话题6_观点1}}', '三大金融监管高层全员参会，释放政策暖风')
-    content = replace_placeholder(content, '{{社区话题6_角色2}}', '市场人士：')
-    content = replace_placeholder(content, '{{社区话题6_观点2}}', '资本市场高水平开放持续推进，利好A股')
-    content = replace_placeholder(content, '{{社区话题6_角色3}}', '机构观点：')
-    content = replace_placeholder(content, '{{社区话题6_观点3}}', '科技创新领域将获得更多政策支持')
-    content = replace_placeholder(content, '{{社区话题6_观点}}', '陆家嘴论坛释放多重政策暖风：AI大模型上市政策落地、资本市场开放持续推进、金融监管支持科技创新。市场信心有望进一步回暖。')
-
-    # 话题7
-    content = replace_placeholder(content, '{{社区话题7_标题}}', '人民币汇率升值创年内新高')
-    content = replace_placeholder(content, '{{社区话题7_来源}}', '集思录')
-    content = replace_placeholder(content, '{{社区话题7_热度}}', '💰 关注')
-    content = replace_placeholder(content, '{{社区话题7_角色1}}', '外汇分析师：')
-    content = replace_placeholder(content, '{{社区话题7_观点1}}', '人民币中间价6.8096，升值趋势延续')
-    content = replace_placeholder(content, '{{社区话题7_角色2}}', '出口企业：')
-    content = replace_placeholder(content, '{{社区话题7_观点2}}', '人民币升值对出口企业造成一定压力')
-    content = replace_placeholder(content, '{{社区话题7_角色3}}', '进口企业：')
-    content = replace_placeholder(content, '{{社区话题7_观点3}}', '人民币升值降低进口成本，利好进口业务')
-    content = replace_placeholder(content, '{{社区话题7_观点}}', '人民币汇率持续升值，中间价报6.8096。人民币资产吸引力提升，外资流入A股有望加速。出口型企业需关注汇率风险对冲。')
-
-    # 话题8
-    content = replace_placeholder(content, '{{社区话题8_标题}}', '美债收益率小幅上行，债市怎么走？')
-    content = replace_placeholder(content, '{{社区话题8_来源}}', '同花顺')
-    content = replace_placeholder(content, '{{社区话题8_热度}}', '📊 数据')
-    content = replace_placeholder(content, '{{社区话题8_角色1}}', '债券分析师：')
-    content = replace_placeholder(content, '{{社区话题8_观点1}}', '10年期美债收益率报4.4869%，小幅上行')
-    content = replace_placeholder(content, '{{社区话题8_角色2}}', '投资建议：')
-    content = replace_placeholder(content, '{{社区话题8_观点2}}', '美债收益率上行空间有限，对国内债市影响可控')
-    content = replace_placeholder(content, '{{社区话题8_角色3}}', '配置观点：')
-    content = replace_placeholder(content, '{{社区话题8_观点3}}', '纯债基金仍可作为稳健资产配置的一部分')
-    content = replace_placeholder(content, '{{社区话题8_观点}}', '10年期美债收益率4.4869%小幅上行，但对国内债市影响有限。在低利率环境下，纯债基金仍是稳健资产配置的好选择。')
-
-    # 话题9
-    content = replace_placeholder(content, '{{社区话题9_标题}}', '两市成交突破3万亿，行情能持续吗？')
-    content = replace_placeholder(content, '{{社区话题9_来源}}', '雪球')
-    content = replace_placeholder(content, '{{社区话题9_热度}}', '🔥 热议')
-    content = replace_placeholder(content, '{{社区话题9_角色1}}', '技术派：')
-    content = replace_placeholder(content, '{{社区话题9_观点1}}', '成交放量突破3万亿，是行情启动的积极信号')
-    content = replace_placeholder(content, '{{社区话题9_角色2}}', '谨慎派：')
-    content = replace_placeholder(content, '{{社区话题9_观点2}}', '放量不一定会持续上涨，需关注后续量能配合')
-    content = replace_placeholder(content, '{{社区话题9_角色3}}', '老盛观点：')
-    content = replace_placeholder(content, '{{社区话题9_观点3}}', '成交放量是关键信号，但持续性还需观察')
-    content = replace_placeholder(content, '{{社区话题9_观点}}', '两市成交突破3.09万亿，量能显著放大。放量是行情启动的必要条件，但能否持续还需关注后续量能配合和热点轮动情况。')
-
-    # 话题10
-    content = replace_placeholder(content, '{{社区话题10_标题}}', '高股息策略还能继续吗？')
-    content = replace_placeholder(content, '{{社区话题10_来源}}', '东方财富')
-    content = replace_placeholder(content, '{{社区话题10_热度}}', '💰 关注')
-    content = replace_placeholder(content, '{{社区话题10_角色1}}', '价值投资者：')
-    content = replace_placeholder(content, '{{社区话题10_观点1}}', '银行股息率4.5-5.5%，显著高于无风险收益率')
-    content = replace_placeholder(content, '{{社区话题10_角色2}}', '择时派：')
-    content = replace_placeholder(content, '{{社区话题10_观点2}}', '银行股短期涨幅较大，存在回调压力')
-    content = replace_placeholder(content, '{{社区话题10_角色3}}', '配置建议：')
-    content = replace_placeholder(content, '{{社区话题10_观点3}}', '高股息策略适合长期持有，不宜追高')
-    content = replace_placeholder(content, '{{社区话题10_观点}}', '高股息策略在低利率时代优势明显，银行股息率4.5-5.5%显著高于无风险收益率。短期银行股确实涨幅较大，但长期配置价值仍在，建议分批建仓。')
-
-    # 关键词
-    content = replace_placeholder(content, '{{关键词1}}', 'A股大涨')
-    content = replace_placeholder(content, '{{关键词2}}', '科创50飙升')
-    content = replace_placeholder(content, '{{关键词3}}', '黄金新高')
-    content = replace_placeholder(content, '{{关键词4}}', '高股息')
-    content = replace_placeholder(content, '{{关键词5}}', 'AI大模型')
-    content = replace_placeholder(content, '{{关键词6}}', '陆家嘴论坛')
-    content = replace_placeholder(content, '{{关键词7}}', '银行股回调')
-    content = replace_placeholder(content, '{{关键词8}}', '成长领涨')
-
-    # 宏观面
-    content = replace_placeholder(content, '{{宏观_子标题1}}', '政策暖风')
-    content = replace_placeholder(content, '{{宏观_内容1}}', '陆家嘴论坛开幕，三大金融监管高层全员参会，AI大模型上市政策落地')
-    content = replace_placeholder(content, '{{宏观_子标题2}}', '外部环境')
-    content = replace_placeholder(content, '{{宏观_内容2}}', '霍尔木兹海峡即将重开，原油价格大幅回落，通胀压力缓解')
-    content = replace_placeholder(content, '{{宏观_子标题3}}', '汇率')
-    content = replace_placeholder(content, '{{宏观_内容3}}', '人民币中间价6.8096，升值12个基点，汇率维持强势')
-
-    # 市场面
-    content = replace_placeholder(content, '{{市场_子标题1}}', 'A股')
-    content = replace_placeholder(content, '{{市场_内容1}}', f'创业板指{CYB_CHANGE}领涨，科创50{KC50_CHANGE}，两市成交{A_SHARES_VOLUME}')
-    content = replace_placeholder(content, '{{市场_子标题2}}', '美股')
-    content = replace_placeholder(content, '{{市场_内容2}}', f'道指{DJI_CHANGE}创新高，纳指{NDX_CHANGE}，科技股分化')
-    content = replace_placeholder(content, '{{市场_子标题3}}', '港股')
-    content = replace_placeholder(content, '{{市场_内容3}}', f'恒生指数{HSI_CHANGE}，恒生科技{HSTECH_CHANGE}')
-
-    # 资金面
-    content = replace_placeholder(content, '{{资金_子标题1}}', '北向')
-    content = replace_placeholder(content, '{{资金_内容1}}', '净卖出约1.36亿，但龙虎榜机构净买入6.13亿')
-    content = replace_placeholder(content, '{{资金_子标题2}}', '量能')
-    content = replace_placeholder(content, '{{资金_内容2}}', f'两市成交突破{A_SHARES_VOLUME}，量能充沛')
-    content = replace_placeholder(content, '{{资金_子标题3}}', '板块')
-    content = replace_placeholder(content, '{{资金_内容3}}', '资金从银行股流向成长赛道')
-
-    # 理财参考数据
-    content = replace_placeholder(content, '{{理财参考1_标题}}', '上证指数')
-    content = replace_placeholder(content, '{{理财参考1_标题颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考1_数值}}', f'{SH_COMPONENT}')
-    content = replace_placeholder(content, '{{理财参考1_数值颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考1_备注}}', f'{SH_CHANGE}')
-
-    content = replace_placeholder(content, '{{理财参考2_标题}}', '深证成指')
-    content = replace_placeholder(content, '{{理财参考2_标题颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考2_数值}}', f'{SZ_COMPONENT}')
-    content = replace_placeholder(content, '{{理财参考2_数值颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考2_备注}}', f'{SZ_CHANGE}')
-
-    content = replace_placeholder(content, '{{理财参考3_标题}}', '创业板指')
-    content = replace_placeholder(content, '{{理财参考3_标题颜色}}', 'var(--red)')
-    content = replace_placeholder(content, '{{理财参考3_数值}}', f'{CYB_INDEX}')
-    content = replace_placeholder(content, '{{理财参考3_数值颜色}}', 'var(--red)')
-    content = replace_placeholder(content, '{{理财参考3_备注}}', f'{CYB_CHANGE}')
-
-    content = replace_placeholder(content, '{{理财参考4_标题}}', '两市成交')
-    content = replace_placeholder(content, '{{理财参考4_标题颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考4_数值}}', f'{A_SHARES_VOLUME}')
-    content = replace_placeholder(content, '{{理财参考4_数值颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考4_备注}}', '量能充沛')
-
-    content = replace_placeholder(content, '{{理财参考5_标题}}', '黄金')
-    content = replace_placeholder(content, '{{理财参考5_标题颜色}}', '#f0b429')
-    content = replace_placeholder(content, '{{理财参考5_数值}}', f'${GOLD_PRICE}')
-    content = replace_placeholder(content, '{{理财参考5_数值颜色}}', '#f0b429')
-    content = replace_placeholder(content, '{{理财参考5_备注}}', '历史新高')
-
-    content = replace_placeholder(content, '{{理财参考6_标题}}', '人民币汇率')
-    content = replace_placeholder(content, '{{理财参考6_标题颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考6_数值}}', USD_CNY_MID)
-    content = replace_placeholder(content, '{{理财参考6_数值颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{理财参考6_备注}}', '升值')
+    r["{{高股息_银行标题}}"] = "银行：低估值+高股息"
+    r["{{高股息_银行内容}}"] = f"银行板块当前整体PB仅{cyan('0.63倍')}，处于{orange('近20年估值低位')}，板块平均股息率约{red('5.17%')}，显著高于10年期国债收益率与存款利率。{red('险资、北向资金')}及{red('长线资金')}持续加仓国有大行与优质股份制银行，{red('高股息防御属性')}在震荡市中尤为突出。建议关注{red('工商银行、建设银行')}等国有大行，以及{red('招商银行')}等零售业务占优、资产质量稳健的龙头。"
+    r["{{高股息_公用事业标题}}"] = "公用事业：稳定现金流"
+    r["{{高股息_公用事业内容}}"] = f"{red('长江电力')}、{red('大秦铁路')}等公用事业龙头具备{red('稳定现金流')}和{red('持续高分红')}特征，盈利受经济周期波动影响较小，适合作为{red('组合压舱石')}长期持有。随着{orange('夏季用电高峰')}临近，{red('电力需求')}有望季节性提升，水电、核电等清洁能源发电利用小时数也将改善，有力支撑板块盈利与分红稳定性。"
+    r["{{高股息_电力标题}}"] = "电力：盈利改善可期"
+    r["{{高股息_电力内容}}"] = f"{red('火电、核电')}盈利改善趋势明确，中国核电6月18日{red('上涨0.81%')}，表现跑赢大盘。电力板块整体PE约{cyan('10倍')}，头部企业股息率可达{red('5%')}以上，兼具{red('成长性')}与{red('防御性')}双重属性。中长期看，{red('电力市场化改革')}与{red('容量电价机制')}落地将改善火电盈利预期，核电审批加速则为清洁能源装机增长打开空间。"
+    r["{{高股息_央企标题}}"] = "央企：价值重估"
+    r["{{高股息_央企内容}}"] = f"{red('中国移动')}、{red('中国核电')}等央企龙头具备{red('高股息')}、{red('低估值')}与{red('强现金流')}三重优势，受益于{red('国企改革深化')}与{red('市值管理政策')}落地，中长期存在{red('估值修复空间')}。央企在通信、能源、金融等关键行业占据主导地位，分红比例稳定且具备提升潜力，适合作为{red('长期底仓')}获取股息与估值双击收益。"
+
+    # 低估值板块
+    r["{{低估值1_名称}}"] = "中证红利"
+    r["{{估值_中证红利PE_今日涨幅}}"] = "+0.35%"
+    r["{{低估值1_收盘价}}"] = "6120.50"
+    r["{{低估值1_描述}}"] = f"中证红利指数股息率约{red('5.5%')}，PE处于历史低位，适合作为{red('稳健底仓')}配置。"
+    r["{{低估值2_名称}}"] = "银行ETF"
+    r["{{低估值2_涨幅样式}}"] = "up"
+    r["{{低估值2_今日涨幅}}"] = "+0.25%"
+    r["{{低估值2_收盘价}}"] = "1.245"
+    r["{{低估值2_描述}}"] = f"银行ETF跟踪板块整体估值修复，当前PB{cyan('0.63倍')}，股息率{red('5.17%')}，安全边际充足。"
+
+    # 长线资金
+    r["{{资金流向_节点1标题}}"] = "政策引导"
+    r["{{资金流向_节点1描述}}"] = "陆家嘴论坛定调直融时代，长期资金入市政策持续落地"
+    r["{{资金流向_节点2标题}}"] = "机构加仓"
+    r["{{资金流向_节点2描述}}"] = "险资、北向资金加仓银行、公用事业等高股息资产"
+    r["{{资金流向_节点3标题}}"] = "散户跟进"
+    r["{{资金流向_节点3描述}}"] = "红利ETF、银行ETF份额增长，居民储蓄向权益转移"
+    r["{{资金_证券ETF流向}}"] = "+12.5亿"
+    r["{{资金_红利ETF流向}}"] = "+8.3亿"
+
+    # 估值参考表
+    r["{{估值_银行PB}}"] = "0.63倍"
+    r["{{估值_银行PB_标签类}}"] = "tag-policy"
+    r["{{估值_银行PB_标签}}"] = "历史低位"
+    r["{{估值_上证PE}}"] = "14.8倍"
+    r["{{估值_上证PE_标签类}}"] = "tag-policy"
+    r["{{估值_上证PE_标签}}"] = "合理"
+    r["{{估值_银行股息率}}"] = "5.17%"
+    r["{{估值_银行股息率_标签类}}"] = "tag-finance"
+    r["{{估值_银行股息率_标签}}"] = "高股息"
+    r["{{估值_中证红利PE}}"] = "7.2倍"
+    r["{{估值_中证红利PE_标签类}}"] = "tag-policy"
+    r["{{估值_中证红利PE_标签}}"] = "低估"
+    r["{{估值_神华吨煤利润}}"] = "280元/吨"
+    r["{{估值_神华_标签类}}"] = "tag-energy"
+    r["{{估值_神华_标签}}"] = "稳健"
+    r["{{估值_中国移动PB}}"] = "1.40倍"
+    r["{{估值_中国移动PB_标签类}}"] = "tag-tech"
+    r["{{估值_中国移动PB_标签}}"] = "合理"
+    r["{{估值_招商银行PB}}"] = "0.83倍"
+    r["{{估值_招商银行PB_标签类}}"] = "tag-finance"
+    r["{{估值_招商银行PB_标签}}"] = "低估"
+    r["{{估值_中国核电PE}}"] = "20.16倍"
+    r["{{估值_中国核电PE_标签类}}"] = "tag-energy"
+    r["{{估值_中国核电PE_标签}}"] = "成长"
+    r["{{估值_黄金价格}}"] = f"{DATA['com_gold']['val']:.2f}美元"
+    r["{{估值_黄金价格_标签类}}"] = "tag-energy"
+    r["{{估值_黄金价格_标签}}"] = "回调"
+
+    # 精简参考
+    r["{{参考1_标题}}"] = "银行底仓"
+    r["{{参考1_描述}}"] = f"PB{cyan('0.63倍')}，股息率{red('5.17%')}，适合长期持有"
+    r["{{参考2_标题}}"] = "科技成长"
+    r["{{参考2_描述}}"] = f"科创50 {red('涨3.84%')}，AI硬景气度最高"
+    r["{{参考3_标题}}"] = "防御配置"
+    r["{{参考3_描述}}"] = f"长江电力、中国移动等现金流稳定标的"
+
+    return r
+
+# ============== 关注标的 ==============
+def build_stocks(r):
+    for i, s in enumerate(STOCKS, 1):
+        r[f"{{{{标的{i}_名称}}}}"] = s["name"]
+        r[f"{{{{标的{i}_代码}}}}"] = s["code"]
+        r[f"{{{{标的{i}_股价}}}}"] = f"{s['price']:.2f}"
+        r[f"{{{{标的{i}_涨跌幅}}}}"] = fmt_pct(s['chg'])
+        r[f"{{{{标的{i}_涨跌class}}}}"] = up_down_class(s['chg'])
+        bullets = stock_bullets(s)
+        for j, b in enumerate(bullets, 1):
+            r[f"{{{{标的{i}_要点{j}}}}}"] = b
+
+    # 深度解读
+    r["{{深度解读_银行组标题}}"] = "银行板块深度解读"
+    r["{{深度解读_银行组标签}}"] = "高股息核心"
+    r["{{深度解读_银行1_标题}}"] = "板块PB"
+    r["{{深度解读_银行1_指标}}"] = "0.63倍"
+    r["{{深度解读_银行2_标题}}"] = "股息率"
+    r["{{深度解读_银行2_指标}}"] = "5.17%"
+    r["{{深度解读_银行3_标题}}"] = "估值分位"
+    r["{{深度解读_银行3_指标}}"] = "近20年4%"
+    r["{{深度解读_银行总结}}"] = f"银行板块估值处于历史低位，股息率具有吸引力。险资、北向资金持续加仓，但短期受{green('利率市场化')}和{green('息差收窄')}压力，建议作为{red('高股息底仓')}逢低布局，优选国有大行与零售龙头。"
+
+    r["{{深度解读_公用组标题}}"] = "公用事业深度解读"
+    r["{{深度解读_公用组标签}}"] = "稳定现金流"
+    r["{{深度解读_公用1_标题}}"] = "长江电力PE"
+    r["{{深度解读_公用1_指标}}"] = "18.91倍"
+    r["{{深度解读_公用2_标题}}"] = "中国核电涨跌幅"
+    r["{{深度解读_公用2_指标}}"] = "+0.81%"
+    r["{{深度解读_公用总结}}"] = f"公用事业具备{red('稳定现金流')}和{red('高分红')}特征，长江电力、中国核电等龙头抗周期能力强。夏季用电高峰临近，电力需求有望提升，但需关注{green('来水波动')}和{green('电价政策')}风险。"
+
+    r["{{深度解读_央企组标题}}"] = "央企高股息深度解读"
+    r["{{深度解读_央企组标签}}"] = "价值标杆"
+    r["{{深度解读_央企1_标题}}"] = "中国移动PB"
+    r["{{深度解读_央企1_指标}}"] = "1.40倍"
+    r["{{深度解读_央企2_标题}}"] = "中国核电PB"
+    r["{{深度解读_央企2_指标}}"] = "1.56倍"
+    r["{{深度解读_央企3_标题}}"] = "中国平安PE"
+    r["{{深度解读_央企3_指标}}"] = "6.63倍"
+    r["{{深度解读_央企4_标题}}"] = "大秦铁路PB"
+    r["{{深度解读_央企4_指标}}"] = "0.60倍"
+    r["{{深度解读_央企总结}}"] = f"央企高股息标的具备{red('低估值')}、{red('高分红')}、{red('现金流稳定')}三重优势，受益于国企改革和市值管理政策。中国移动、中国核电、中国平安、大秦铁路等龙头适合作为{red('长期底仓')}配置。"
+
+    r["{{深度解读_配置建议内容}}"] = f"建议采用{red('核心+卫星')}策略：核心仓位配置银行、公用事业、央企高股息等稳定资产（占比{red('60%')}）；卫星仓位配置AI算力、半导体等科技成长（占比{red('30%')}），保留{orange('10%')}现金应对波动。"
+
+    # 提示栏
+    r["{{标的_正面提示标题}}"] = "正面因素"
+    r["{{标的_正面提示内容}}"] = f"{red('高股息标的')}估值低位、股息率{red('吸引力强')}；{red('AI硬科技')}政策与业绩双驱动；{red('北向资金回流')}科技股；{red('美股芯片股反弹')}改善情绪。"
+    r["{{标的_风险提示标题}}"] = "风险提示"
+    r["{{标的_风险提示内容}}"] = f"沪指{green('下跌')}超七成个股收跌；港股{green('大幅下挫')}；{green('美联储鹰派')}扰动；{green('小盘股流动性风险')}；节后开盘或受假期消息面影响。"
+
+    return r
+
+# ============== 理财话题 ==============
+def build_wealth(r):
+    r["{{理财卡1_标题}}"] = "1年期定存"
+    r["{{理财卡1_数值}}"] = "1.10%"
+    r["{{理财卡1_备注}}"] = "国有大行挂牌利率"
+    r["{{理财卡2_标题}}"] = "3年期大额存单"
+    r["{{理财卡2_数值}}"] = "1.55%"
+    r["{{理财卡2_备注}}"] = "20万起存"
+    r["{{理财卡3_标题}}"] = "银行股息率"
+    r["{{理财卡3_数值}}"] = "5.17%"
+    r["{{理财卡3_备注}}"] = "远超定存收益"
+    r["{{理财卡4_标题}}"] = "10年期国债"
+    r["{{理财卡4_数值}}"] = "1.76%"
+    r["{{理财卡4_备注}}"] = "无风险利率锚"
+
+    r["{{图表_数据日期}}"] = "2026年6月"
+    r["{{图表_红利ETF_名称}}"] = "红利ETF"
+    r["{{图表_红利ETF_副标题}}"] = "跟踪高股息指数"
+    r["{{图表_红利ETF_数值}}"] = "5.50%"
+    r["{{图表_银行股息率_注释}}"] = "A股银行板块平均"
+    r["{{图表_银行股息率_数值}}"] = "5.17%"
+    r["{{图表_超长国债_数值}}"] = "2.22%"
+    r["{{图表_银行理财_数值}}"] = "2.80%"
+    r["{{图表_5年定存_数值}}"] = "1.20%"
+    r["{{图表_1年定存_数值}}"] = "1.10%"
+    r["{{图表_收益计算说明}}"] = f"以10万元本金为例：红利ETF年化{red('5.5%')}年收益约{red('5500元')}，银行股息率{red('5.17%')}年收益约{red('5170元')}，远超5年定存{green('1200元')}和1年定存{green('1100元')}。"
+
+    r["{{替代策略_股息对比内容}}"] = f"当前10年期国债收益率约{cyan('1.76%')}，银行板块股息率{red('5.17%')}，红利ETF约{red('5.5%')}。对于追求稳健收益的投资者，{red('高股息资产')}是存款和国债的优质替代。"
+    r["{{替代策略_配置逻辑}}"] = f"选择{red('股息率>5%')}、{red('PB<1')}、{red('ROE稳定')}的标的，长期持有获取股息+估值修复双重收益。"
+    r["{{替代策略_配置建议内容}}"] = f"建议将{red('60%')}稳健资金配置于银行、公用事业等高股息资产；{red('20%')}配置红利ETF分散个股风险；{red('20%')}留作现金或短债，应对突发波动。"
+
+    r["{{避坑1_标题}}"] = "不要盲目追求高息存款"
+    r["{{避坑1_内容}}"] = f"部分{orange('中小银行或互联网渠道')}宣称{green('高息存款')}，可能存在{orange('合规风险')}。选择{red('正规银行存款')}，单家银行本息{red('50万以内')}受存款保险保障。"
+    r["{{避坑2_标题}}"] = "警惕保本高收益理财"
+    r["{{避坑2_内容}}"] = f"宣称{green('保本保息')}且{green('收益远高于市场水平')}的产品需警惕，可能是{orange('非法集资')}或{orange('资金池')}运作。理财产品{orange('打破刚兑')}，收益与风险匹配。"
+    r["{{避坑3_标题}}"] = "勿在金价高点追入"
+    r["{{避坑3_内容}}"] = f"黄金短期受{green('美元走强')}{green('回调1.72%')}，{orange('切勿一次性重仓抄底')}。建议采用{red('定投方式')}{red('平滑成本')}，配置比例不超过总资产的{red('5-10%')}。"
+
+    r["{{保险_窗口提醒标题}}"] = "窗口期提醒"
+    r["{{保险_窗口提醒内容}}"] = f"预定利率{red('3.0%')}的{orange('储蓄险产品陆续停售')}，有长期资金规划需求的家庭可{red('货比三家')}。优先配置{red('医疗险+意外险')}，再考虑重疾险和定期寿险。"
+
+    r["{{黄金_标题}}"] = "现货黄金"
+    r["{{黄金_单位}}"] = "美元/盎司"
+    r["{{黄金_价格}}"] = f"{DATA['com_gold']['val']:.2f}"
+    r["{{黄金_涨跌颜色}}"] = "green"
+    r["{{黄金_涨跌幅}}"] = fmt_pct(DATA['com_gold']['chg'])
+    r["{{黄金_SVG路径}}"] = "M0,20 Q50,40 100,30 T200,50 T300,80"
+    r["{{黄金_SVG填充路径}}"] = "M0,20 Q50,40 100,30 T200,50 T300,80 L300,100 L0,100 Z"
+    r["{{黄金_日期1}}"] = "6/16"
+    r["{{黄金_日期2}}"] = "6/17"
+    r["{{黄金_日期3}}"] = "6/18"
+    r["{{黄金_走势描述}}"] = f"黄金6月18日{green('下跌1.72%')}报{DATA['com_gold']['val']:.2f}美元/盎司，主要受美联储鹰派信号和美元指数{red('大涨0.87%')}压制。短期{green('承压')}，中长期{orange('避险需求')}仍存，建议定投而非一次性重仓。"
+
+    r["{{债基_配置建议标题}}"] = "债基配置建议"
+    r["{{债基_配置建议内容}}"] = f"当前10年期国债收益率约{cyan('1.76%')}，处于历史低位。建议以{red('纯债基金')}作为稳健底仓，风险承受能力较高者可适当配置{orange('二级债基')}或{orange('可转债')}增强收益。"
+
+    return r
+
+# ============== 社区热门话题 ==============
+def build_topics(r):
+    topics = [
+        ("银行股创新高，还能追吗？", "雪球", "热度 98%",
+         ("@价值投资者：", f"{red('建设银行股价逼近历史新高')}，{red('农业银行年内涨幅可观')}，{red('银行股息率5%+')}，{red('险资持续加仓')}，{cyan('基本面稳健')}，中长期持有获取股息的逻辑清晰。"),
+         ("@机构分析师：", f"{cyan('银行板块PB仅0.63倍')}，{orange('估值处于近20年低位')}，但{green('短期涨幅较大')}，部分资金有兑现需求，建议{red('逢回调布局')}而非{green('追高')}。"),
+         ("@谨慎派：", f"{green('经济复苏斜率不确定')}，{green('息差收窄压力仍存')}，银行股更适合作为{red('底仓')}长期持有，而非{green('博取短期超额收益')}的工具。"),
+         f"银行股创新高是价值发现的体现，{red('高股息+低估值')}逻辑未变。建议{red('分批建仓')}或{red('定投银行ETF')}，避免单一时点{green('追高')}，以时间换空间。"),
+        ("分红险停售潮，要不要上车？", "集思录", "热度 85%",
+         ("@保险代理人：", f"{red('预定利率3.0%产品陆续停售')}，{orange('错过窗口期未来收益更低')}，对于有长期资金规划的家庭，建议{red('尽早配置')}锁定利率。"),
+         ("@理性投资者：", f"{green('储蓄险流动性差')}、{green('前期退保损失大')}，需评估{orange('资金锁定期')}，不要为了停售而{green('冲动购买')}，适合长期不用的钱。"),
+         ("@精算师视角：", f"当前处于{green('利率下行周期')}，3.0%预定利率产品{orange('性价比确实在下降')}，但更要关注{red('保险公司的偿付能力')}和{red('分红实现率')}，选择稳健公司。"),
+         f"储蓄险适合有明确{red('长期资金规划')}的家庭，建议优先配齐{red('医疗险、意外险')}等保障型产品，再考虑储蓄险，且要{red('货比三家')}，避免被停售话术裹挟。"),
+        ("红利ETF定投，选哪只更好？", "东方财富股吧", "热度 82%",
+         ("@定投派：", f"{red('中证红利ETF覆盖面广、股息率高')}，适合作为核心配置；{red('红利低波ETF波动更小')}，适合{red('稳健型投资者长期定投')}，回撤体验更好。"),
+         ("@数据派：", f"从{cyan('近5年收益')}看，{red('红利低波指数回撤控制更优')}，夏普比率高，但{green('牛市弹性略弱于中证红利')}，需根据风险偏好选择。"),
+         ("@谨慎派：", f"{green('红利策略短期涨幅较大')}，{green('估值修复空间有限')}，建议{red('定投')}而非{green('一次性重仓')}，通过时间平滑买入成本。"),
+         f"红利ETF是替代存款和国债的{red('优质工具')}，建议采用{red('月定投方式')}，选择{red('规模大、费率低、跟踪误差小')}的产品，长期持有获取股息复利。"),
+        ("黄金大跌1.72%，是抄底机会吗？", "同花顺论坛", "热度 90%",
+         ("@抄底派：", f"{green('美联储鹰派只是短期扰动')}，{red('地缘风险仍存')}，黄金{red('中长期避险逻辑不变')}，{red('回调是加仓机会')}，而非趋势逆转。"),
+         ("@风险派：", f"{red('美元指数大涨')}、{green('美债收益率上行')}，黄金{green('短期承压明显')}，技术面尚未企稳，不建议{green('急于抄底')}。"),
+         ("@理性派：", f"黄金{cyan('配置比例建议5-10%')}，{red('大跌后可小幅补仓')}，但不应{green('一次性重仓')}，更适合作为资产配置的一环而非博弈工具。"),
+         f"黄金短期受{green('美元走强')}压制，但{red('中长期避险需求')}仍在。建议以{red('定投方式')}逐步配置，控制仓位在合理范围，避免{green('情绪化抄底')}。"),
+        ("AI产业政策加码，算力股还能买吗？", "知乎财经", "热度 95%",
+         ("@乐观派：", f"{red('七部门发文支持AI三年发展')}，{red('科创50大涨3.84%')}，{red('算力、芯片、光模块景气度最高')}，{red('回调即是买点')}，产业红利刚刚开始。"),
+         ("@谨慎派：", f"{green('AI板块交易拥挤度已超历史高位')}，{green('短期获利盘丰厚')}，需警惕{green('节后兑现压力')}，不宜盲目追高。"),
+         ("@机构派：", f"{red('中长期看好国产算力')}，但建议精选{red('有订单、有业绩的龙头')}，避免{green('纯题材炒作')}，关注中报业绩验证。"),
+         f"AI是{red('中长期主线')}，但短期涨幅较大、波动加剧。建议采用{red('核心+卫星策略')}，核心配置{red('业绩确定的龙头')}，卫星仓位博弈{orange('弹性标的')}，控制整体仓位。"),
+        ("美债收益率上行，债基要不要减仓？", "雪球", "热度 78%",
+         ("@持有派：", f"美债收益率上行主要影响{green('长久期债券')}，{red('中短债基金波动有限')}，{red('纯债基金仍可持有')}，无需因短期波动频繁调仓。"),
+         ("@减仓派：", f"{green('利率低位时长久期债基风险收益比下降')}，建议{red('缩短久期')}，{red('增配短债或货币基金')}，降低利率敏感性。"),
+         ("@配置派：", f"债基作为{red('底仓不宜频繁择时')}，可通过{red('股债平衡')}控制{orange('整体组合风险')}，根据市场估值动态调整股债比例。"),
+         f"当前中国10年期国债收益率约{cyan('1.76%')}，处于{orange('历史低位')}。债基仍可作为{red('稳健底仓')}，但建议以{red('中短久期')}为主，降低{green('利率风险')}，保留一定流动性。"),
+        ("A股分化加剧，该追科技还是守价值？", "微博财经", "热度 92%",
+         ("@成长派：", f"{red('科创50大涨3.84%')}，{red('AI硬科技政策+业绩双驱动')}，{red('科技主线仍是超额收益来源')}，短期回调是布局机会。"),
+         ("@价值派：", f"{red('银行股息率5%+')}，{cyan('PB 0.63倍')}，{red('估值安全垫厚')}，更适合{red('当前震荡市防守')}，获取稳定股息。"),
+         ("@均衡派：", f"{orange('科技成长与价值红利并非对立')}，建议{red('均衡配置')}，避免{green('押注单一风格')}，根据市场波动动态再平衡。"),
+         f"当前市场处于{orange('结构性行情')}，建议核心仓位配置{red('高股息价值股')}防守，卫星仓位配置{red('AI科技成长')}进攻，保持组合平衡，避免追涨杀跌。"),
+        ("美伊局势缓和，油价还会继续跌吗？", "东方财富股吧", "热度 75%",
+         ("@看空派：", f"{red('霍尔木兹海峡封锁解除')}，{green('全球供应增加')}，油价{green('跌破80美元后仍有下行压力')}，短期偏空。"),
+         ("@看多派：", f"{red('OPEC+减产协议仍有效')}，{red('夏季用油高峰临近')}，原油需求回升，油价{red('跌幅或有限')}，不宜过度悲观。"),
+         ("@观望派：", f"{orange('地缘局势仍有反复')}，油价{green('短期波动加大')}，不建议{green('押注方向')}，更适合小仓位波段操作。"),
+         f"油价受{orange('地缘与供需双重影响')}，短期波动加大。普通投资者可通过{red('油气ETF小仓位')}参与，但需控制{green('风险和持仓周期')}，避免重仓单一商品。"),
+        ("端午节后开盘，市场会怎么走？", "同花顺论坛", "热度 88%",
+         ("@乐观派：", f"假期前{red('科技主线强势')}，{red('北向资金回流')}，节后有望{red('延续结构性行情')}，AI硬科技仍是核心方向。"),
+         ("@谨慎派：", f"假期{green('海外消息面不确定性大')}，{green('美联储鹰派')}、{green('港股大跌')}可能{green('拖累A股开盘')}，需提防情绪面冲击。"),
+         ("@中性派：", f"节后大概率{orange('延续分化震荡')}，{red('重个股轻指数')}，关注{red('中报业绩预喜方向')}，避免盲目追涨。"),
+         f"节后市场预计{orange('延续分化')}，建议{red('控制仓位')}，关注{red('AI硬科技')}、{red('高股息银行')}和{red('中报业绩')}三条主线，避免{green('追涨杀跌')}，以稳健为主。"),
+        ("存款利率又降，闲钱放哪里？", "集思录", "热度 80%",
+         ("@存款派：", f"虽然{green('利率下降')}，但{red('大额存单和定期存款仍是最安全的选择')}，{red('50万以内保本')}，适合短期要用的钱。"),
+         ("@理财派：", f"{red('R2级银行理财')}、{red('短债基金收益高于存款')}，可作为{red('替代选择')}，但需注意产品净值波动。"),
+         ("@权益派：", f"{red('银行股息率5%+')}，{red('红利ETF约5.5%')}，{red('长期收益远超存款')}，但需{green('承担波动')}，适合长期不用的钱。"),
+         f"根据资金期限和风险偏好选择：1年内要用的钱放{red('存款或货基')}；1-3年可配置{red('银行理财或短债基金')}；3年以上不用的钱可配置{red('红利ETF或高股息个股')}，获取{red('更高收益')}。"),
+    ]
+    for i, (title, source, hot, v1, v2, v3, laosheng) in enumerate(topics, 1):
+        r[f"{{{{社区话题{i}_标题}}}}"] = title
+        r[f"{{{{社区话题{i}_来源}}}}"] = source
+        r[f"{{{{社区话题{i}_热度}}}}"] = hot
+        r[f"{{{{社区话题{i}_角色1}}}}"] = v1[0]
+        r[f"{{{{社区话题{i}_观点1}}}}"] = v1[1]
+        r[f"{{{{社区话题{i}_角色2}}}}"] = v2[0]
+        r[f"{{{{社区话题{i}_观点2}}}}"] = v2[1]
+        r[f"{{{{社区话题{i}_角色3}}}}"] = v3[0]
+        r[f"{{{{社区话题{i}_观点3}}}}"] = v3[1]
+        r[f"{{{{社区话题{i}_观点}}}}"] = laosheng
+    return r
+
+# ============== 今日总结 ==============
+def build_summary(r):
+    keywords = ["结构性分化", "AI硬科技", "高股息", "北向回流", "港股承压", "黄金回调", "美债鹰派", "端午休市"]
+    for i, kw in enumerate(keywords, 1):
+        r[f"{{{{关键词{i}}}}}"] = kw
+
+    r["{{宏观_子标题1}}"] = "国内政策持续发力"
+    r["{{宏观_内容1}}"] = f"七部门发文支持AI产业三年发展，陆家嘴论坛定调{red('直接融资时代')}来临，625亿消费品补贴月底下达，{red('稳增长')}政策组合拳持续落地。"
+    r["{{宏观_子标题2}}"] = "海外通胀扰动"
+    r["{{宏观_内容2}}"] = f"美联储释放{green('加息可能性')}信号，美元指数{red('大涨0.87%')}至{DATA['fx_dxy']['val']:.2f}，全球风险资产估值承压，{orange('海外波动')}需持续关注。"
+    r["{{宏观_子标题3}}"] = "人民币汇率稳定"
+    r["{{宏观_内容3}}"] = f"6月18日人民币兑美元中间价报{DATA['fx_usdcny_mid']:.4f}，在岸汇率{DATA['fx_usdcny_spot']:.4f}小幅升值5个基点，整体保持{red('基本稳定')}。"
+
+    r["{{市场_子标题1}}"] = "A股极致分化"
+    r["{{市场_内容1}}"] = f"6月18日科创50 {red('大涨3.84%')}，创业板指{red('涨2.05%')}，但沪指{green('跌0.43%')}，超七成个股收跌。{red('AI硬科技')}领涨，{green('保险、地产、贵金属')}领跌。"
+    r["{{市场_子标题2}}"] = "美股芯片反弹"
+    r["{{市场_内容2}}"] = f"美东6月18日纳指{red('涨1.91%')}，英特尔{red('暴涨10.64%')}，芯片股强势修复。中概股普跌，{orange('中美资产')}表现分化。"
+    r["{{市场_子标题3}}"] = "港股大幅下挫"
+    r["{{市场_内容3}}"] = f"6月18日恒生指数{green('大跌1.59%')}失守24000点，南向资金{green('净卖出67.92亿港元')}，外资加速撤离迹象明显。"
+
+    r["{{资金_子标题1}}"] = "主力持续流出"
+    r["{{资金_内容1}}"] = f"6月18日场内主力资金{green('净流出177.87亿元')}，{green('连续5日流出')}，机构节前兑现{green('周期、保险、地产')}，{red('抱团科技龙头')}避险。"
+    r["{{资金_子标题2}}"] = "北向回流科技"
+    r["{{资金_内容2}}"] = f"北向资金净流入{DATA['a_northbound']:.2f}亿元，{red('结束连续流出')}，重点加仓{red('半导体、算力、光通信硬件')}，{orange('规避金融周期板块')}。"
+    r["{{资金_子标题3}}"] = "长线资金布局"
+    r["{{资金_内容3}}"] = f"{red('险资、ETF长线资金')}持续加仓{red('银行、公用事业')}等{red('高股息资产')}，{red('红利ETF、银行ETF份额持续增长')}。"
+
+    # 理财参考
+    refs = [
+        ("银行股息率", "#f0b429", "5.17%", "#f85149", "板块平均"),
+        ("存款利率", "#00d4ff", "1.10%", "#00d4ff", "1年期定存"),
+        ("中证红利PE", "#3fb950", "7.2倍", "#e6edf3", "低估区间"),
+        ("银行板块PB", "#bc8cff", "0.63倍", "#e6edf3", "历史低位"),
+        ("美债10年期", "#f85149", "4.49%", "#f85149", "高位运行"),
+        ("黄金价格", "#f0b429", "4259美元", "#f0b429", "回调中"),
+    ]
+    for i, (title, tc, val, vc, note) in enumerate(refs, 1):
+        r[f"{{{{理财参考{i}_标题}}}}"] = title
+        r[f"{{{{理财参考{i}_标题颜色}}}}"] = tc
+        r[f"{{{{理财参考{i}_数值}}}}"] = val
+        r[f"{{{{理财参考{i}_数值颜色}}}}"] = vc
+        r[f"{{{{理财参考{i}_备注}}}}"] = note
 
     # 操作建议
-    content = replace_placeholder(content, '{{操作建议1_标题}}', '科技成长')
-    content = replace_placeholder(content, '{{操作建议1_内容}}', f'创业板指{CYB_CHANGE}领涨，科创50{KC50_CHANGE}，芯片股集体爆发，科技成长赛道资金回流')
-    content = replace_placeholder(content, '{{操作建议1_补充}}', '成交放量突破3万亿，市场做多情绪回暖，科技板块有望继续活跃')
-    content = replace_placeholder(content, '{{操作建议1_操作}}', '短期可关注AI、半导体等科技成长方向，注意控制仓位')
+    ops = [
+        ("银行股逢低布局",
+         f"银行板块PB仅{cyan('0.63倍')}，股息率{red('5.17%')}，估值处于近20年低位。险资与北向资金持续加仓，{red('高股息防御属性')}凸显。",
+         f"建议节后若市场回调，可{red('逢低布局')}工商银行、建设银行、招商银行等龙头，或通过{red('银行ETF')}分散个股风险，避免单一时点{green('追高')}。",
+         f"配置比例可占权益仓位的{red('20-30%')}，作为{red('核心底仓')}长期持有，以股息收益打底。"),
+        ("高股息底仓配置",
+         f"长江电力、中国移动、中国核电等标的具备{red('稳定现金流')}和{red('高分红')}特征，适合作为组合压舱石。当前股息率显著高于存款和国债收益。",
+         f"建议采用{red('核心+卫星')}策略，高股息资产占权益仓位{red('60%')}，降低组合波动，同时保留部分仓位参与科技成长。",
+         f"优先选择{red('央企龙头')}，关注{cyan('分红稳定性')}和{red('估值修复空间')}，长期持有获取复利。"),
+        ("控制仓位防风险",
+         f"沪指6月18日{green('下跌0.43%')}，超七成个股收跌；港股{green('大跌1.59%')}；美联储鹰派信号扰动全球资产。",
+         f"建议节后开盘{orange('不急于满仓')}，保留{red('10-20%')}现金应对波动，避免{green('追涨杀跌')}，等待更明确的方向。",
+         f"若沪指跌破{red('4070点')}关键支撑，可进一步{green('降低仓位')}至五成以下，等待企稳信号。"),
+        ("AI主线精选个股",
+         f"科创50 {red('大涨3.84%')}，AI硬科技政策与业绩双驱动。七部门发文支持算力、大模型、智能体三年发展。",
+         f"建议精选有订单、有业绩的龙头，如{red('算力芯片、光模块、AI服务器')}等环节，避免{green('纯题材炒作')}，关注{cyan('中报业绩')}验证。",
+         f"科技仓位占权益仓位的{red('20-30%')}，以{red('定投或分批方式')}介入，回调时逐步加仓。"),
+        ("黄金配置避险",
+         f"现货黄金6月18日{green('下跌1.72%')}报{DATA['com_gold']['val']:.2f}美元，受美元走强压制，短期{green('承压')}。",
+         f"建议以{orange('定投')}方式逐步配置黄金ETF，配置比例不超过总资产的{red('5-10%')}，作为{red('避险资产')}对冲尾部风险。",
+         f"不要{green('一次性重仓抄底')}，耐心等美元指数{green('回落')}或地缘风险{red('升温')}时再加大配置。"),
+        ("定投策略坚持",
+         f"市场结构性分化加剧，单一择时难度加大。{red('定投')}是平滑成本、降低择时风险的有效方式。",
+         f"建议坚持定投{red('红利ETF、沪深300ETF')}等宽基或高股息指数，长期分享经济成长红利，避免被短期波动干扰。",
+         f"定投纪律为{red('固定金额、固定周期')}，不因短期{green('涨跌')}中断，持有周期建议{red('3年以上')}。"),
+    ]
+    for i, (title, content, extra, action) in enumerate(ops, 1):
+        r[f"{{{{操作建议{i}_标题}}}}"] = title
+        r[f"{{{{操作建议{i}_内容}}}}"] = content
+        r[f"{{{{操作建议{i}_补充}}}}"] = extra
+        r[f"{{{{操作建议{i}_操作}}}}"] = action
 
-    content = replace_placeholder(content, '{{操作建议2_标题}}', '高股息配置')
-    content = replace_placeholder(content, '{{操作建议2_内容}}', '银行股息率4.5-5.5%显著高于无风险收益率，PB处于历史低位，长线配置价值凸显')
-    content = replace_placeholder(content, '{{操作建议2_补充}}', '短期银行股回调提供更好的买入机会，险资、北向资金持续加仓')
-    content = replace_placeholder(content, '{{操作建议2_操作}}', '长期投资者可分批配置高股息银行、电力等稳定现金流板块')
+    # 关键数字速查
+    d = DATA
+    quick_views = [
+        ("📈", "上证指数", f"{d['a_shangzheng']['val']:.2f}", fmt_pct(d['a_shangzheng']['chg']), up_down_color(d['a_shangzheng']['chg']), "tag-policy", "6/18收盘"),
+        ("📊", "深证成指", f"{d['a_shenzheng']['val']:.2f}", fmt_pct(d['a_shenzheng']['chg']), up_down_color(d['a_shenzheng']['chg']), "tag-finance", "6/18收盘"),
+        ("🚀", "创业板指", f"{d['a_chuangye']['val']:.2f}", fmt_pct(d['a_chuangye']['chg']), up_down_color(d['a_chuangye']['chg']), "tag-tech", "大涨2.05%"),
+        ("💰", "两市成交", f"{d['a_turnover']:.2f}万亿", "放量2184亿", "#8b95a5", "tag-policy", "连续5日3万亿+"),
+        ("🌐", "北向资金", f"+{d['a_northbound']:.2f}亿", "净流入", "#f85149", "tag-finance", "结束流出"),
+        ("🇭🇰", "恒生科技", f"{d['hk_hangseng_tech']['val']:.2f}", fmt_pct(d['hk_hangseng_tech']['chg']), up_down_color(d['hk_hangseng_tech']['chg']), "tag-tech", "6/18收盘"),
+        ("🛢️", "WTI原油", f"{d['com_wti']['val']:.2f}美元", fmt_pct(d['com_wti']['chg']), up_down_color(d['com_wti']['chg']), "tag-energy", "6/18收盘"),
+        ("🥇", "国际黄金", f"{d['com_gold']['val']:.2f}美元", fmt_pct(d['com_gold']['chg']), up_down_color(d['com_gold']['chg']), "tag-energy", "回调1.72%"),
+    ]
+    for i, (icon, name, val, chg, color, tag_class, note) in enumerate(quick_views, 1):
+        r[f"{{{{速查{i}_图标}}}}"] = icon
+        r[f"{{{{速查{i}_名称}}}}"] = name
+        r[f"{{{{速查{i}_数值}}}}"] = f"{val} {chg}"
+        r[f"{{{{速查{i}_颜色}}}}"] = color
+        r[f"{{{{速查{i}_标签class}}}}"] = tag_class
+        r[f"{{{{速查{i}_备注}}}}"] = note
 
-    content = replace_placeholder(content, '{{操作建议3_标题}}', '黄金')
-    content = replace_placeholder(content, '{{操作建议3_内容}}', f'国际金价创历史新高${GOLD_PRICE}，避险需求+央行购金+美元走弱共同推动')
-    content = replace_placeholder(content, '{{操作建议3_补充}}', '短期涨幅过大存在技术性调整风险，但上涨逻辑未变')
-    content = replace_placeholder(content, '{{操作建议3_操作}}', '适度配置5-10%黄金作为避险，不宜重仓追高')
+    r["{{数据截止日期}}"] = "2026年6月18日"
 
-    content = replace_placeholder(content, '{{操作建议4_标题}}', '稳健理财')
-    content = replace_placeholder(content, '{{操作建议4_内容}}', f'货币基金收益率持续下行约1%，10年国债收益率{CHINA_10Y_BOND}低位运行')
-    content = replace_placeholder(content, '{{操作建议4_补充}}', '高股息策略优势明显，银行股息率4.5-5.5%远超货币基金')
-    content = replace_placeholder(content, '{{操作建议4_操作}}', '稳健型投资者可将60%以上资金配置于高股息标的')
+    return r
 
-    content = replace_placeholder(content, '{{操作建议5_标题}}', '风险提示')
-    content = replace_placeholder(content, '{{操作建议5_内容}}', f'银行股短期回调，建行跌超2%；美股纳指大跌{NDX_CHANGE}；外围科技股分化')
-    content = replace_placeholder(content, '{{操作建议5_补充}}', '市场放量上涨但外部不确定性仍存，注意控制仓位')
-    content = replace_placeholder(content, '{{操作建议5_操作}}', '不要盲目追高热点板块，做好风险控制')
+# ============== 主流程 ==============
+def main():
+    r = build_replacements()
+    r = build_news(r)
+    r = build_ai(r)
+    r = build_markets(r)
+    r = build_value(r)
+    r = build_stocks(r)
+    r = build_wealth(r)
+    r = build_topics(r)
+    r = build_summary(r)
 
-    content = replace_placeholder(content, '{{操作建议6_标题}}', '港股')
-    content = replace_placeholder(content, '{{操作建议6_内容}}', f'恒生指数{HSI_CHANGE}，恒生科技{HSTECH_CHANGE}，估值处于历史低位')
-    content = replace_placeholder(content, '{{操作建议6_补充}}', '港股估值优势明显，下半年或有估值修复机会')
-    content = replace_placeholder(content, '{{操作建议6_操作}}', '关注高股息银行股、业绩确定性强的消费龙头')
+    with open("template.html", "r", encoding="utf-8") as f:
+        content = f.read()
 
-    # 参考数据
-    content = replace_placeholder(content, '{{参考1_标题}}', '涨红跌绿规则')
-    content = replace_placeholder(content, '{{参考1_描述}}', '上涨显示红色，下跌显示绿色，与直觉相反')
-    content = replace_placeholder(content, '{{参考2_标题}}', '颜色高亮')
-    content = replace_placeholder(content, '{{参考2_描述}}', '重点数据使用彩色高亮显示')
-    content = replace_placeholder(content, '{{参考3_标题}}', '数据来源')
-    content = replace_placeholder(content, '{{参考3_描述}}', '2026年6月17日收盘数据')
+    # 替换占位符
+    for placeholder, value in r.items():
+        content = content.replace(placeholder, str(value))
 
-    # 速查数据
-    content = replace_placeholder(content, '{{速查1_图标}}', '📈')
-    content = replace_placeholder(content, '{{速查1_颜色}}', 'var(--red)')
-    content = replace_placeholder(content, '{{速查1_标签class}}', 'up')
-    content = replace_placeholder(content, '{{速查1_备注}}', '上证')
+    # 处理涨跌class - 针对 market-val neutral 等
+    # 已经将 class 占位符替换，这里补充 market-row 的 class
+    # 注意：模板中 market-val 初始为 neutral，我们在数据中已经通过占位符控制 val 文本
+    # 但需要根据真实涨跌设置 market-val 的 class
+    # 由于模板中 market-val 的 class 是写死的 neutral，我们需要用正则调整
 
-    content = replace_placeholder(content, '{{速查2_图标}}', '📈')
-    content = replace_placeholder(content, '{{速查2_颜色}}', 'var(--red)')
-    content = replace_placeholder(content, '{{速查2_标签class}}', 'up')
-    content = replace_placeholder(content, '{{速查2_备注}}', '深证')
+    # 简单规则：如果文本包含 + 则为 up，包含 - 则为 down，否则 neutral
+    # 特殊关键词：净卖出/净流出/下跌/大跌/回调/承压 → down；净流入/上涨/大涨/反弹 → up
+    def replace_market_val_class(match):
+        full = match.group(0)
+        text = match.group(1)
+        if "+" in text or any(k in text for k in ["净流入", "上涨", "大涨", "反弹", "创新高"]):
+            return full.replace('class="market-val neutral"', 'class="market-val up"')
+        elif ("-" in text and "--" not in text) or any(k in text for k in ["净卖出", "净流出", "下跌", "大跌", "回调", "承压", "谨慎偏空"]):
+            return full.replace('class="market-val neutral"', 'class="market-val down"')
+        return full
 
-    content = replace_placeholder(content, '{{速查3_图标}}', '🚀')
-    content = replace_placeholder(content, '{{速查3_颜色}}', 'var(--red)')
-    content = replace_placeholder(content, '{{速查3_标签class}}', 'hot')
-    content = replace_placeholder(content, '{{速查3_备注}}', '创业')
+    content = re.sub(r'<span class="market-val neutral">([^<]+)</span>', replace_market_val_class, content)
 
-    content = replace_placeholder(content, '{{速查4_图标}}', '💰')
-    content = replace_placeholder(content, '{{速查4_颜色}}', 'var(--accent)')
-    content = replace_placeholder(content, '{{速查4_标签class}}', 'accent')
-    content = replace_placeholder(content, '{{速查4_备注}}', '放量')
+    # 处理 header ticker 的 t-chg 涨跌 class
+    def replace_ticker_chg_class(match):
+        full = match.group(0)
+        text = match.group(1)
+        if "+" in text:
+            return full.replace('class="t-chg">', 'class="t-chg up">')
+        elif "-" in text and "--" not in text:
+            return full.replace('class="t-chg">', 'class="t-chg down">')
+        return full
 
-    content = replace_placeholder(content, '{{速查5_图标}}', '👆')
-    content = replace_placeholder(content, '{{速查5_颜色}}', 'var(--green)')
-    content = replace_placeholder(content, '{{速查5_标签class}}', 'down')
-    content = replace_placeholder(content, '{{速查5_备注}}', '北向')
+    content = re.sub(r'<span class="t-chg">([^<]+)</span>', replace_ticker_chg_class, content)
 
-    content = replace_placeholder(content, '{{速查6_图标}}', '📊')
-    content = replace_placeholder(content, '{{速查6_颜色}}', 'var(--green)')
-    content = replace_placeholder(content, '{{速查6_标签class}}', 'down')
-    content = replace_placeholder(content, '{{速查6_备注}}', '恒生科技')
+    # 处理 market-block 边框颜色：使用 BeautifulSoup 正确解析嵌套 div
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(content, 'html.parser')
+    for block in soup.find_all('div', class_='market-block'):
+        ups = len(block.find_all('span', class_='market-val up'))
+        downs = len(block.find_all('span', class_='market-val down'))
+        style = block.get('style', '')
+        if ups > downs:
+            style = style.replace('border-top:2px solid rgba(255,255,255,0.12)', 'border-top:2px solid #f85149')
+        elif downs > ups:
+            style = style.replace('border-top:2px solid rgba(255,255,255,0.12)', 'border-top:2px solid #3fb950')
+        block['style'] = style
+    content = str(soup)
 
-    content = replace_placeholder(content, '{{速查7_图标}}', '🛢️')
-    content = replace_placeholder(content, '{{速查7_颜色}}', 'var(--green)')
-    content = replace_placeholder(content, '{{速查7_标签class}}', 'down')
-    content = replace_placeholder(content, '{{速查7_备注}}', 'WTI')
-
-    content = replace_placeholder(content, '{{速查8_图标}}', '🥇')
-    content = replace_placeholder(content, '{{速查8_颜色}}', '#f0b429')
-    content = replace_placeholder(content, '{{速查8_标签class}}', 'hot')
-    content = replace_placeholder(content, '{{速查8_备注}}', '黄金')
-
-    # 数据截止日期
-    content = replace_placeholder(content, '{{数据截止日期}}', '2026年6月17日')
-
-    # 写回文件
-    with open(output_file, 'w', encoding='utf-8') as f:
+    # 输出
+    output_path = "老盛早知道_20260621.html"
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"✅ 报告生成完成: {output_file}")
+    # 统计
+    remaining = re.findall(r'\{\{[^}]+\}\}', content)
+    print(f"已生成：{output_path}")
+    print(f"剩余占位符数量：{len(remaining)}")
+    if remaining:
+        for p in remaining[:20]:
+            print("  ", p)
 
-    # 统计替换数量
-    remaining = len(re.findall(r'\{\{[^}]+\}\}', content))
-    print(f"📊 剩余占位符数量: {remaining}")
-
-    return remaining
-
-
-if __name__ == '__main__':
-    remaining = main()
-    if remaining > 0:
-        print(f"⚠️ 警告: 还有 {remaining} 个占位符未替换")
+if __name__ == "__main__":
+    main()
