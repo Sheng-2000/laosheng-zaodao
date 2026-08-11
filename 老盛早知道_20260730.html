@@ -1751,6 +1751,61 @@
     min-width: 60px;
   }
 }
+
+/* ══════════ 新闻来源链接样式 ══════════ */
+.news-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.news-source:hover {
+  background: rgba(0,212,255,0.18);
+  border-color: rgba(0,212,255,0.5);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,212,255,0.25);
+  transform: translateY(-1px);
+}
+.news-source:active { transform: translateY(0); }
+.news-source .source-icon { font-size: 10px; opacity: 0.85; }
+.news-source .source-name { font-weight: 600; }
+.news-source .source-arrow { font-size: 10px; opacity: 0.7; transition: transform 0.25s ease; }
+.news-source:hover .source-arrow { transform: translateX(2px); opacity: 1; }
+
+/* 来源链接容器 */
+.news-source-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0,212,255,0.12);
+}
+
+/* 不同来源的颜色变体 */
+.news-source.s-finance { color: var(--accent); background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.2); }
+.news-source.s-tech    { color: var(--purple); background: rgba(188,140,255,0.08); border-color: rgba(188,140,255,0.2); }
+.news-source.s-official{ color: var(--green); background: rgba(63,185,80,0.08); border-color: rgba(63,185,80,0.2); }
+.news-source.s-market  { color: var(--orange); background: rgba(255,166,87,0.08); border-color: rgba(255,166,87,0.2); }
+.news-source.s-finance:hover { background: rgba(0,212,255,0.18); border-color: rgba(0,212,255,0.5); }
+.news-source.s-tech:hover    { background: rgba(188,140,255,0.18); border-color: rgba(188,140,255,0.5); }
+.news-source.s-official:hover{ background: rgba(63,185,80,0.18); border-color: rgba(63,185,80,0.5); }
+.news-source.s-market:hover  { background: rgba(255,166,87,0.18); border-color: rgba(255,166,87,0.5); }
+
+@media (max-width: 768px) {
+  .news-source { font-size: 10px; padding: 3px 8px; }
+  .news-source-wrap { gap: 5px; margin-top: 8px; padding-top: 6px; }
+}
 </style>
 </head>
 <body>
@@ -1792,13 +1847,13 @@
           </div>
           <div class="hm-ticker">
             <span class="t-label">道指</span>
-            <span class="t-val up">52747.32</span>
-            <span class="t-chg up">+1.03%</span>
+            <span class="t-val down">51594.14</span>
+            <span class="t-chg down">-2.19%</span>
           </div>
           <div class="hm-ticker">
             <span class="t-label">黄金</span>
-            <span class="t-val down">4028.90</span>
-            <span class="t-chg down">-1.17%</span>
+            <span class="t-val up">4065.50</span>
+            <span class="t-chg up">+0.66%</span>
           </div>
         </div>
       </div>
@@ -1873,7 +1928,7 @@
     <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.03));border:1px solid rgba(240,180,41,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
       <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#f0b429,#d29922);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">02</div>
       <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
-        <span style="color:#f0b429;font-weight:700;font-size:14px;">韩国股市暴跌</span>，韩国KOSPI指数<span style="color:#3fb950;font-weight:700;">暴跌超8%</span>触发熔断机制，交易暂停20分钟。盘中跌破5800点，SK海力士<span style="color:#3fb950;font-weight:700;">跌近8%</span>，三星电子同步重挫。主要原因是投资者对<span style="color:#00d4ff;font-weight:700;">AI投资可持续性</span>再度产生怀疑，存储芯片产业链承压，亚太市场避险情绪升温。
+        <span style="color:#f0b429;font-weight:700;font-size:14px;">韩国股市暴跌</span>，韩国KOSPI指数<span style="color:#3fb950;font-weight:700;">暴跌5.98%</span>触发熔断机制，交易暂停20分钟。盘中跌破5700点，SK海力士<span style="color:#3fb950;font-weight:700;">跌近10%</span>，三星电子同步重挫。主要原因是投资者对<span style="color:#00d4ff;font-weight:700;">AI投资可持续性</span>再度产生怀疑，存储芯片产业链承压，亚太市场避险情绪升温。
       </div>
     </div>
     <!-- 03 央行操作 -->
@@ -1887,7 +1942,7 @@
     <div style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(0,212,255,0.03));border:1px solid rgba(0,212,255,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
       <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#00d4ff,#0099cc);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">04</div>
       <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
-        <span style="color:#00d4ff;font-weight:700;font-size:14px;">美联储维持利率</span>，北京时间7月30日凌晨，美联储7月FOMC决议落地，联邦基金利率维持<span style="color:#00d4ff;font-weight:700;">3.50%-3.75%</span>不变，为年内连续第4次暂停降息。鲍威尔强调<span style="color:#f0b429;font-weight:700;">数据依赖</span>原则，市场对年内降息预期进一步降温，美股道指<span style="color:#f85149;font-weight:700;">涨1.03%</span>报52747点。
+        <span style="color:#00d4ff;font-weight:700;font-size:14px;">美联储维持利率</span>，北京时间7月30日凌晨，美联储7月FOMC决议落地，联邦基金利率维持<span style="color:#00d4ff;font-weight:700;">3.50%-3.75%</span>不变，为年内连续第4次暂停降息。3位鹰派委员投反对票主张加息，2016年来首次<span style="color:#f0b429;font-weight:700;">3票反对</span>。鲍威尔强调<span style="color:#f0b429;font-weight:700;">数据依赖</span>原则，市场对年内降息预期进一步降温，美股道指<span style="color:#3fb950;font-weight:700;">跌2.19%</span>报51594点。
       </div>
     </div>
     <!-- 05 港股大涨 -->
@@ -1908,7 +1963,7 @@
     <div style="background:linear-gradient(135deg,rgba(188,140,255,0.1),rgba(188,140,255,0.03));border:1px solid rgba(188,140,255,0.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
       <div style="min-width:28px;height:28px;background:linear-gradient(135deg,#bc8cff,#9a6de0);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">07</div>
       <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
-        <span style="color:#bc8cff;font-weight:700;font-size:14px;">国产AI大模型混战</span>，月之暗面发布<span style="color:#f85149;font-weight:700;">Kimi K3</span>——2.8万亿参数、全球最大开源模型。中央网信办联合北京、上海、浙江、深圳四地网信办，会同5家头部大模型企业启动<span style="color:#00d4ff;font-weight:700;">人工智能大模型IPv6能力提升专项行动</span>，为期一年。2026 WAIC彻底转向落地实用化，国产算力底座、人形机器人、消费级AI终端全面爆发。
+        <span style="color:#bc8cff;font-weight:700;font-size:14px;">国产AI大模型混战</span>，月之暗面发布<span style="color:#f85149;font-weight:700;">Kimi K3</span>——2.8万亿参数、全球最大开源模型。中央网信办联合北京、上海、浙江、深圳四地网信办，会同5家头部大模型企业启动<span style="color:#00d4ff;font-weight:700;">人工智能大模型IPv6能力提升专项行动</span>，为期一年。2026 WAIC彻底转向落地实用化，<span style="color:#f85149;font-weight:700;">国产算力底座</span>、人形机器人、消费级AI终端<span style="color:#f85149;font-weight:700;">全面爆发</span>。
       </div>
     </div>
     <!-- 08 九部门科技金融 -->
@@ -1986,33 +2041,40 @@
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">政策</span>九部门联合发力科技金融</div>
       <div class="card-body">中国人民银行等九部门联合印发《关于加强科技金融服务的意见》,提出<span style="color:#f85149;font-weight:700;">加大对人工智能、量子计算等前沿领域</span>的金融支持力度。政策明确<span style="color:#00d4ff;font-weight:700;">设立科技创新专项贷款</span>,预计规模达<span style="color:#00d4ff;font-weight:700;">5000亿元</span>,利率优惠<span style="color:#f85149;font-weight:700;">低至3.2%</span>。此举旨在推动<span style="color:#f0b429;font-weight:700;">科技自立自强</span>,缓解科技企业融资难题,市场预计将带动相关产业链<span style="color:#f85149;font-weight:700;">投资增长15%-20%</span>。</div>
+      <div class="news-source-wrap"><a href="https://caifuhao.eastmoney.com/news/20260730070630210092210" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">东方财富</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7667874498838561290/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">头条政务</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">立法</span>反网络暴力法征求意见</div>
       <div class="card-body">《反网络暴力法(征求意见稿)》公开征求意见,网信办牵头立法,拟明确<span style="color:#f85149;font-weight:700;">网暴追责机制</span>。煽动网暴人员将纳入<span style="color:#f0b429;font-weight:700;">失信黑名单</span>,厘清平台主体责任。首次界定<span style="color:#00d4ff;font-weight:700;">网络暴力行为边界</span>,规定平台需在<span style="color:#00d4ff;font-weight:700;">24小时内</span>处置举报。违规平台最高罚款<span style="color:#3fb950;font-weight:700;">1000万元</span>,个人可处<span style="color:#3fb950;font-weight:700;">3年以下有期徒刑</span>。该法填补了网络暴力立法空白,预计年内正式出台。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667906396796518922/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">网信办</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7668082424122851855/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">法治评论</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-geo">防汛</span>七下八上防汛关键期</div>
       <div class="card-body">当前正值全国<span style="color:#f0b429;font-weight:700;">七下八上防汛关键期</span>,国家防总持续维持广东、四川、甘肃等地<span style="color:#f85149;font-weight:700;">防汛四级应急响应</span>。重点防范<span style="color:#3fb950;font-weight:700;">山洪、地质灾害</span>,已转移群众<span style="color:#00d4ff;font-weight:700;">12.8万人</span>。气象部门预警,未来三天<span style="color:#3fb950;font-weight:700;">华北、黄淮</span>等地仍有强降雨,累计雨量可达<span style="color:#00d4ff;font-weight:700;">100-180毫米</span>。各地已启动<span style="color:#f85149;font-weight:700;">24小时值班</span>,确保度汛安全。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663291187033358902/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">水利部</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7662956615485669940/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">应急管理</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-tech">科技</span>脑机接口商业化元年</div>
       <div class="card-body">脑机接口赛道迎来<span style="color:#f85149;font-weight:700;">商业化落地元年</span>,纳入十五五六大未来产业清单。全球首款BCI设备获<span style="color:#f85149;font-weight:700;">CE认证</span>,预计8月在德国完成首例商业植入。湖北省出台全国首个<span style="color:#00d4ff;font-weight:700;">脑机接口医疗服务价格项目</span>,上海市将博睿康产品纳入<span style="color:#f85149;font-weight:700;">医保报销</span>。Neuralink已获FDA<span style="color:#f85149;font-weight:700;">突破性医疗器械</span>认定,国内首批<span style="color:#00d4ff;font-weight:700;">36人</span>已完成植入手术。</div>
+      <div class="news-source-wrap"><a href="https://caifuhao.eastmoney.com/news/20260727072223767234170" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🔬</span><span class="source-name">东方财富研报</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7667837701332386306/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">十五五政策</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">产业</span>人工智能IPv6专项行动</div>
       <div class="card-body">中央网信办联合北京、上海、浙江、深圳四地网信办,会同<span style="color:#00d4ff;font-weight:700;">5家头部大模型企业</span>启动人工智能大模型IPv6能力提升专项行动,为期<span style="color:#00d4ff;font-weight:700;">一年</span>。目标是提升大模型<span style="color:#f85149;font-weight:700;">网络传输效率30%</span>,降低延迟至<span style="color:#00d4ff;font-weight:700;">10毫秒以内</span>。杭州拟超前布局<span style="color:#f85149;font-weight:700;">算力网</span>等新型设施,国家数据局宣布<span style="color:#00d4ff;font-weight:700;">2026数博会</span>将在贵阳举办,聚焦国产算力生态建设。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667972428613681664/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">网信办</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
     <div class="sub-title">🌍 地缘政治</div>
     <div class="card">
       <div class="card-title"><span class="tag tag-geo">韩国</span>韩国股市暴跌触发熔断</div>
-      <div class="card-body">韩国KOSPI指数<span style="color:#3fb950;font-weight:700;">暴跌超8%</span>触发熔断机制,交易暂停<span style="color:#00d4ff;font-weight:700;">20分钟</span>。盘中跌破<span style="color:#3fb950;font-weight:700;">5800点</span>,SK海力士<span style="color:#3fb950;font-weight:700;">跌近8%</span>,三星电子同步重挫。主要原因是投资者对<span style="color:#f0b429;font-weight:700;">AI投资可持续性</span>再度产生怀疑,存储芯片产业链承压。亚太市场避险情绪升温,日经225指数同步走弱<span style="color:#3fb950;font-weight:700;">2.3%</span>,台湾加权指数<span style="color:#3fb950;font-weight:700;">跌1.8%</span>。</div>
+      <div class="card-body">韩国KOSPI指数<span style="color:#3fb950;font-weight:700;">暴跌5.98%</span>触发熔断机制,交易暂停<span style="color:#00d4ff;font-weight:700;">20分钟</span>。盘中跌破<span style="color:#3fb950;font-weight:700;">5700点</span>,SK海力士<span style="color:#3fb950;font-weight:700;">跌近10%</span>,三星电子同步重挫。主要原因是投资者对<span style="color:#f0b429;font-weight:700;">AI投资可持续性</span>再度产生怀疑,存储芯片产业链承压。亚太市场避险情绪升温,日经225指数同步下跌<span style="color:#3fb950;font-weight:700;">1.49%</span>,台湾加权指数<span style="color:#3fb950;font-weight:700;">跌1.80%</span>。</div>
+      <div class="news-source-wrap"><a href="https://news.ifeng.com/c/8v9OqZ5SwyC" target="_blank" rel="noopener" class="news-source s-market"><span class="source-icon">📉</span><span class="source-name">凤凰财经</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7667781624876122633/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">头条财经</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-geo">美联储</span>美联储维持利率不变</div>
-      <div class="card-body">北京时间7月30日凌晨,美联储7月FOMC决议落地,联邦基金利率维持<span style="color:#00d4ff;font-weight:700;">3.50%-3.75%</span>不变,为年内连续第<span style="color:#00d4ff;font-weight:700;">4次</span>暂停降息。鲍威尔强调<span style="color:#f0b429;font-weight:700;">数据依赖</span>原则,表示将根据经济数据灵活调整政策。市场对年内降息预期进一步降温,美股道指<span style="color:#f85149;font-weight:700;">涨1.03%</span>报<span style="color:#00d4ff;font-weight:700;">52747点</span>,标普500<span style="color:#f85149;font-weight:700;">涨0.21%</span>,纳指<span style="color:#3fb950;font-weight:700;">跌0.22%</span>。</div>
+      <div class="card-body">北京时间7月30日凌晨,美联储7月FOMC决议落地,联邦基金利率维持<span style="color:#00d4ff;font-weight:700;">3.50%-3.75%</span>不变,为年内连续第<span style="color:#00d4ff;font-weight:700;">4次</span>暂停降息。鲍威尔强调<span style="color:#f0b429;font-weight:700;">数据依赖</span>原则,表示将根据经济数据灵活调整政策。市场对年内降息预期进一步降温,美股道指<span style="color:#3fb950;font-weight:700;">跌2.19%</span>报<span style="color:#00d4ff;font-weight:700;">51594点</span>,标普500<span style="color:#3fb950;font-weight:700;">跌1.52%</span>,纳指<span style="color:#3fb950;font-weight:700;">跌1.74%</span>。</div>
+      <div class="news-source-wrap"><a href="https://toutiao.com/group/7668071891827130924/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">🏛️</span><span class="source-name">美联储FOMC</span><span class="source-arrow">→</span></a><a href="https://news.ifeng.com/c/8vAu9zr9aIx" target="_blank" rel="noopener" class="news-source s-market"><span class="source-icon">📰</span><span class="source-name">凤凰财经</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
@@ -2020,18 +2082,22 @@
     <div class="card">
       <div class="card-title"><span class="tag tag-finance">A股</span>A股深V反转成交放量</div>
       <div class="card-body">7月29日A股上演探底回升行情,上证指数日内最低探至<span style="color:#3fb950;font-weight:700;">3782.48点</span>后强势反弹,最终收报<span style="color:#f85149;font-weight:700;">3828.47点涨0.40%</span>。深证成指<span style="color:#f85149;font-weight:700;">涨1.10%</span>报13658点,创业板指<span style="color:#f85149;font-weight:700;">大涨1.55%</span>报3378点领涨。三市成交额<span style="color:#00d4ff;font-weight:700;">2.31万亿</span>较上日放量<span style="color:#f85149;font-weight:700;">2725亿</span>,资金从高位科技赛道切换至大消费、大金融防御板块,86只个股涨停,市场恐慌情绪得到释放。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667876741653938690/" target="_blank" rel="noopener" class="news-source s-market"><span class="source-icon">📈</span><span class="source-name">头条A股</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7667966953168077356/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">盘面解读</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-finance">港股</span>港股强势反弹汽车领涨</div>
       <div class="card-body">恒生指数<span style="color:#f85149;font-weight:700;">大涨1.96%</span>,恒生科技指数<span style="color:#f85149;font-weight:700;">暴涨2.84%</span>,国企指数涨1.89%。汽车板块领涨,理想汽车<span style="color:#f85149;font-weight:700;">涨近10%</span>,零跑汽车涨超9%,奇瑞汽车涨超8%,吉利汽车涨超6%。825家上涨、462家下跌,市场情绪大幅回暖。南向资金全天合计成交<span style="color:#00d4ff;font-weight:700;">1251.65亿港元</span>,净卖出<span style="color:#3fb950;font-weight:700;">55.89亿港元</span>。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667882027827331603/" target="_blank" rel="noopener" class="news-source s-market"><span class="source-icon">📈</span><span class="source-name">头条港股</span><span class="source-arrow">→</span></a><a href="https://caifuhao.eastmoney.com/news/20260729092539053045870" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">东方财富</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="tag tag-finance">美股</span>美股涨跌不一道指新高</div>
-      <div class="card-body">美股三大股指收盘涨跌不一,道指<span style="color:#f85149;font-weight:700;">涨1.03%</span>报<span style="color:#00d4ff;font-weight:700;">52747.32点</span>创历史新高,标普500<span style="color:#f85149;font-weight:700;">涨0.21%</span>报7428.78点,纳指<span style="color:#3fb950;font-weight:700;">跌0.22%</span>报24876.91点。大型科技股涨跌互现,谷歌<span style="color:#f85149;font-weight:700;">涨1.83%</span>,微软<span style="color:#f85149;font-weight:700;">涨1.10%</span>,苹果<span style="color:#f85149;font-weight:700;">涨0.93%</span>,英伟达<span style="color:#f85149;font-weight:700;">涨0.27%</span>,Meta<span style="color:#3fb950;font-weight:700;">跌0.08%</span>。</div>
+      <div class="card-title"><span class="tag tag-finance">美股</span>美股全线下挫道指暴跌</div>
+      <div class="card-body">美股三大股指收盘全线下挫,道指<span style="color:#3fb950;font-weight:700;">暴跌2.19%</span>报<span style="color:#00d4ff;font-weight:700;">51594.14点</span>创2025年4月来最大单日跌幅,标普500<span style="color:#3fb950;font-weight:700;">跌1.52%</span>报7316.15点,纳指<span style="color:#3fb950;font-weight:700;">跌1.74%</span>报24442.94点。纳斯达克100自高点回撤超11%进入<span style="color:#3fb950;font-weight:700;">技术性回调</span>区间。大型科技股多数下跌,英伟达<span style="color:#3fb950;font-weight:700;">跌近4%</span>,Meta<span style="color:#3fb950;font-weight:700;">跌逾2%</span>,苹果、微软跟跌。美联储鹰派信号引发全球风险资产抛售。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7668092453861442050/" target="_blank" rel="noopener" class="news-source s-market"><span class="source-icon">📉</span><span class="source-name">美股盘点</span><span class="source-arrow">→</span></a><a href="https://news.ifeng.com/c/8vAu9zr9aIx" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">凤凰财经</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-finance">央行</span>央行维持流动性充裕</div>
       <div class="card-body">7月29日央行开展<span style="color:#00d4ff;font-weight:700;">2065亿元</span>7天期逆回购操作,全额满足一级交易商需求。7月24日已开展<span style="color:#00d4ff;font-weight:700;">5000亿元MLF</span>操作,连续3个月加量续作,7月MLF到期4000亿,净投放<span style="color:#f85149;font-weight:700;">1000亿</span>。央行维持银行体系流动性充裕,为市场提供稳定资金支持,7月6日还开展了<span style="color:#00d4ff;font-weight:700;">1万亿元</span>3个月期买断式逆回购操作。</div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667760537693897252/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">🏛️</span><span class="source-name">央行公告</span><span class="source-arrow">→</span></a><a href="https://finance.ifeng.com/c/8v9JF1VDDUT" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">凤凰财经</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   </div>
@@ -2048,21 +2114,25 @@
       <div class="card-title"><span class="tag tag-ai">突破</span>Kimi K3发布：2.8万亿参数全球最大开源模型</div>
       <div class="card-body">月之暗面(Moonshot AI)发布<span style="color:#f85149;font-weight:700;">Kimi K3</span>——<span style="color:#00d4ff;font-weight:700;">2.8万亿参数</span>，成为全球最大开源模型。该模型在多项基准测试中<span style="color:#f85149;font-weight:700;">超越GPT-4</span>，特别是在代码生成和数学推理领域表现突出。开源策略意味着开发者可以<span style="color:#f85149;font-weight:700;">免费使用并商业化</span>，预计将推动国内AI应用<span style="color:#f0b429;font-weight:700;">爆发式增长</span>。市场反应积极，相关概念股<span style="color:#f85149;font-weight:700;">集体大涨</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667382839607968256/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">月之暗面官方</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7667612273107567145/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">技术解读</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">政策</span>人工智能大模型IPv6能力提升专项行动启动</div>
       <div class="card-body">中央网信办联合北京、上海、浙江、深圳四地网信办，会同<span style="color:#00d4ff;font-weight:700;">5家头部大模型企业</span>启动人工智能大模型IPv6能力提升专项行动，为期<span style="color:#00d4ff;font-weight:700;">一年</span>。该行动旨在解决大模型训练和推理过程中的<span style="color:#f85149;font-weight:700;">网络传输瓶颈</span>，提升数据传输效率<span style="color:#f85149;font-weight:700;">30%以上</span>。杭州拟超前布局<span style="color:#f0b429;font-weight:700;">算力网</span>等新型基础设施，国家数据局宣布<span style="color:#00d4ff;font-weight:700;">2026数博会</span>将在贵阳举办，聚焦AI算力产业链。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667972428613681664/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">网信办</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">应用</span>2026 WAIC转向落地实用化</div>
       <div class="card-body">2026世界人工智能大会(WAIC)彻底转向<span style="color:#f85149;font-weight:700;">落地实用化</span>，不再扎堆比拼大模型参数，而是聚焦<span style="color:#00d4ff;font-weight:700;">国产算力底座</span>、人形机器人、消费级AI终端等实际应用场景。医疗、工业、城市治理等<span style="color:#f0b429;font-weight:700;">全行业解决方案</span>成为亮点，展现AI从实验室走向产业化的<span style="color:#f85149;font-weight:700;">关键转折</span>。参会企业超过<span style="color:#00d4ff;font-weight:700;">500家</span>，签署合作协议金额达<span style="color:#f85149;font-weight:700;">1200亿元</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663491410788532770/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">WAIC 2026</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7664409593874874895/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📰</span><span class="source-name">产业报道</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-robot">机器人</span>人形机器人量产元年到来</div>
       <div class="card-body">2026年被业界定义为<span style="color:#f85149;font-weight:700;">人形机器人量产元年</span>。特斯拉Optimus、优必选Walker X、小米CyberOne等产品陆续进入<span style="color:#00d4ff;font-weight:700;">小批量生产</span>阶段。优必选宣布Walker X已获<span style="color:#f85149;font-weight:700;">500台订单</span>，单价降至<span style="color:#00d4ff;font-weight:700;">15万美元</span>以下。应用场景主要集中在<span style="color:#f0b429;font-weight:700;">制造业</span>、物流仓储、医疗辅助等领域。预计2026年全球人形机器人出货量将达<span style="color:#f85149;font-weight:700;">1.5万台</span>，同比增长<span style="color:#f85149;font-weight:700;">300%</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663321212198437439/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">产业趋势</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
@@ -2071,16 +2141,19 @@
       <div class="card-title"><span class="tag tag-robot">量产</span>人形机器人进入量产元年</div>
       <div class="card-body">2026年被业界定义为<span style="color:#f85149;font-weight:700;">人形机器人量产元年</span>。特斯拉Optimus、优必选Walker X、小米CyberOne等产品陆续进入<span style="color:#00d4ff;font-weight:700;">小批量生产</span>阶段。优必选宣布Walker X已获<span style="color:#f85149;font-weight:700;">500台订单</span>，单价降至<span style="color:#00d4ff;font-weight:700;">15万美元</span>以下。应用场景主要集中在<span style="color:#f0b429;font-weight:700;">制造业</span>、物流仓储、医疗辅助等领域。预计2026年全球人形机器人出货量将达<span style="color:#f85149;font-weight:700;">1.5万台</span>，同比增长<span style="color:#f85149;font-weight:700;">300%</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663321212198437439/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">产业趋势</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">应用</span>WAIC 2026：人形机器人应用场景全面爆发</div>
       <div class="card-body">2026世界人工智能大会(WAIC)上，人形机器人成为最大亮点。不同于往年展示概念机，今年参展企业带来的是<span style="color:#f85149;font-weight:700;">可商业化落地</span>的产品。优必选、小鹏鹏行、傅利叶智能等企业展示了在<span style="color:#00d4ff;font-weight:700;">工厂装配</span>、<span style="color:#00d4ff;font-weight:700;">仓储物流</span>、<span style="color:#00d4ff;font-weight:700;">医疗康复</span>等场景的实际应用案例。行业共识是，人形机器人正从实验室走向<span style="color:#f0b429;font-weight:700;">产业化落地</span>，2026-2028年将迎来<span style="color:#f85149;font-weight:700;">爆发式增长</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663491410788532770/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">WAIC 2026</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-ai">智能</span>AI智能体：从单点工具到全流程助手</div>
       <div class="card-body">AI智能体(AI Agent)成为2026年最热赛道。不同于传统大模型的单点能力，AI智能体能够<span style="color:#f85149;font-weight:700;">自主规划任务</span>、<span style="color:#f85149;font-weight:700;">调用工具</span>、<span style="color:#f85149;font-weight:700;">执行复杂流程</span>。百度文心、阿里通义、字节豆包等纷纷推出企业级智能体平台，支持<span style="color:#00d4ff;font-weight:700;">多智能体协作</span>。应用场景覆盖<span style="color:#f0b429;font-weight:700;">客服</span>、<span style="color:#f0b429;font-weight:700;">代码开发</span>、<span style="color:#f0b429;font-weight:700;">数据分析</span>、<span style="color:#f0b429;font-weight:700;">营销自动化</span>等领域。预计2026年中国AI智能体市场规模将突破<span style="color:#f85149;font-weight:700;">500亿元</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7664409593874874895/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🤖</span><span class="source-name">AI产业</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
@@ -2089,16 +2162,19 @@
       <div class="card-title"><span class="tag tag-chip">算力</span>苏州2026人工智能产品应用博览会</div>
       <div class="card-body">苏州2026人工智能产品应用博览会将于<span style="color:#00d4ff;font-weight:700;">7月30日至8月1日</span>在苏州国际博览中心举办。本次展会以<span style="color:#f85149;font-weight:700;">"一元复始,万象AI"</span>为核心主题,聚焦<span style="color:#f0b429;font-weight:700;">国产算力底座</span>、人形机器人、消费级AI终端等全产业链。预计参展企业超过<span style="color:#00d4ff;font-weight:700;">300家</span>,展示最新算力解决方案和AI应用产品。展会将推动长三角地区<span style="color:#f85149;font-weight:700;">AI产业集群</span>发展。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667178259498517028/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">💡</span><span class="source-name">算力产业</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">政策</span>杭州超前布局算力网新型基础设施</div>
       <div class="card-body">杭州市政府宣布拟超前布局<span style="color:#f85149;font-weight:700;">算力网</span>等新型基础设施,打造全国领先的AI算力高地。计划到2027年建成<span style="color:#00d4ff;font-weight:700;">10万P</span>智能算力规模,构建覆盖<span style="color:#f0b429;font-weight:700;">训练</span>、<span style="color:#f0b429;font-weight:700;">推理</span>、<span style="color:#f0b429;font-weight:700;">数据</span>的全栈算力服务体系。同时推出算力券政策,为中小企业提供<span style="color:#f85149;font-weight:700;">算力补贴</span>,降低AI研发成本。此举将吸引更多AI企业落户杭州,形成<span style="color:#f85149;font-weight:700;">产业集聚效应</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667972428613681664/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">杭州政务</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">应用</span>国家数据局宣布2026数博会将在贵阳举办</div>
       <div class="card-body">国家数据局正式宣布<span style="color:#00d4ff;font-weight:700;">2026中国国际大数据产业博览会</span>将于<span style="color:#f85149;font-weight:700;">5月26-28日</span>在贵阳举办。本届数博会以<span style="color:#f0b429;font-weight:700;">"数据赋能·智启未来"</span>为主题,聚焦AI算力、数据要素、数字孪生等前沿领域。贵州作为全国首个大数据综合试验区,已建成<span style="color:#00d4ff;font-weight:700;">50万P</span>智算中心,吸引苹果、华为、腾讯等<span style="color:#f85149;font-weight:700;">头部企业</span>落户。数博会将成为展示中国AI算力实力的重要窗口。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667152928024642089/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">📋</span><span class="source-name">国家数据局</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
@@ -2107,16 +2183,19 @@
       <div class="card-title"><span class="tag tag-app">医疗</span>AI医疗诊断准确率突破95%</div>
       <div class="card-body">AI医疗应用迎来重大突破，多家三甲医院引入的<span style="color:#f85149;font-weight:700;">AI辅助诊断系统</span>在肺癌、乳腺癌等疾病的影像诊断中准确率达到<span style="color:#00d4ff;font-weight:700;">95.3%</span>，超越资深医生平均水平。系统可<span style="color:#f85149;font-weight:700;">3秒内</span>完成CT影像分析，标记可疑病灶区域。目前已在<span style="color:#00d4ff;font-weight:700;">北京协和</span>、<span style="color:#00d4ff;font-weight:700;">上海瑞金</span>等<span style="color:#f0b429;font-weight:700;">20家</span>顶级医院试点应用，预计年内推广至<span style="color:#f85149;font-weight:700;">100家</span>三甲医院。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663321212198437439/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🏥</span><span class="source-name">AI医疗</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">教育</span>AI个性化学习平台用户破亿</div>
       <div class="card-body">国内领先的AI教育平台宣布注册用户突破<span style="color:#00d4ff;font-weight:700;">1.2亿</span>，日活跃用户达<span style="color:#f85149;font-weight:700;">2800万</span>。平台基于<span style="color:#f85149;font-weight:700;">大模型技术</span>实现千人千面的个性化学习路径规划，可根据学生答题情况<span style="color:#f0b429;font-weight:700;">动态调整</span>难度和知识点。数据显示，使用AI学习平台的学生平均提分<span style="color:#f85149;font-weight:700;">23分</span>，学习效率提升<span style="color:#f85149;font-weight:700;">40%</span>。K12教育和职业培训是主要应用场景。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7664409593874874895/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">📚</span><span class="source-name">AI教育</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">金融</span>AI量化交易策略年化收益超30%</div>
       <div class="card-body">多家头部券商发布的AI量化交易策略表现亮眼，部分策略年化收益突破<span style="color:#f85149;font-weight:700;">30%</span>，最大回撤控制在<span style="color:#3fb950;font-weight:700;">8%</span>以内。AI模型可实时分析<span style="color:#00d4ff;font-weight:700;">10万+</span>只股票的量价数据，捕捉市场<span style="color:#f0b429;font-weight:700;">微小套利机会</span>。目前已有<span style="color:#f85149;font-weight:700;">50家</span>私募机构采用AI量化策略，管理资产规模超<span style="color:#00d4ff;font-weight:700;">2000亿元</span>。监管层正研究AI交易的风险控制框架。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7663321212198437439/" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">💰</span><span class="source-name">AI量化</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   <div class="sub-section">
@@ -2125,27 +2204,32 @@
       <div class="card-title"><span class="tag tag-ai">趋势</span>2026年AI产业三大核心趋势</div>
       <div class="card-body">机构研判2026年AI产业呈现三大核心趋势：一是<span style="color:#f85149;font-weight:700;">多模态大模型</span>成为主流，文本、图像、视频、3D生成能力全面融合；二是<span style="color:#f0b429;font-weight:700;">边缘AI</span>快速普及，端侧算力芯片出货量预计增长<span style="color:#f85149;font-weight:700;">150%</span>；三是<span style="color:#f85149;font-weight:700;">AI Agent</span>商业化加速，企业级智能体市场规模突破<span style="color:#00d4ff;font-weight:700;">500亿元</span>。国产算力芯片如<span style="color:#f85149;font-weight:700;">华为昇腾</span>、<span style="color:#f85149;font-weight:700;">寒武纪</span>市占率提升至<span style="color:#00d4ff;font-weight:700;">35%</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7664409593874874895/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">📊</span><span class="source-name">产业研究</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="sub-title">🧬 生物医学工程</div>
     <div class="card">
       <div class="card-title"><span class="tag tag-policy">政策</span>脑机接口纳入十五五未来产业清单</div>
       <div class="card-body">脑机接口正式纳入<span style="color:#f85149;font-weight:700;">十五五规划六大未来产业清单</span>,七部门联合出台<span style="color:#f0b429;font-weight:700;">专项产业政策</span>。湖北省出台全国首个<span style="color:#00d4ff;font-weight:700;">脑机接口医疗服务价格项目</span>,上海市将博睿康产品纳入<span style="color:#f85149;font-weight:700;">医保报销</span>。政策层面从研发补贴到临床应用形成<span style="color:#f85149;font-weight:700;">全链条支持</span>,预计2026-2030年脑机接口产业规模将达<span style="color:#00d4ff;font-weight:700;">500亿元</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667837701332386306/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">🧬</span><span class="source-name">十五五政策</span><span class="source-arrow">→</span></a><a href="https://caifuhao.eastmoney.com/news/20260727072223767234170" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">📰</span><span class="source-name">行业研报</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-chip">设备</span>国产医疗设备替代加速</div>
       <div class="card-body">国产医疗设备替代进程显著提速,联影医疗<span style="color:#f85149;font-weight:700;">高端MRI</span>市占率突破<span style="color:#00d4ff;font-weight:700;">35%</span>,迈瑞医疗监护仪全球出货量<span style="color:#f85149;font-weight:700;">第一</span>。国产<span style="color:#f85149;font-weight:700;">PET-CT</span>、<span style="color:#f85149;font-weight:700;">超声设备</span>在三甲医院采购占比提升至<span style="color:#00d4ff;font-weight:700;">45%</span>。政策要求公立医院<span style="color:#f0b429;font-weight:700;">国产设备采购比例不低于60%</span>,推动产业链自主可控。预计2026年国产医疗设备市场规模突破<span style="color:#f85149;font-weight:700;">3000亿元</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7667837701332386306/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🏥</span><span class="source-name">医疗产业</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-ai">突破</span>脑机接口商业化元年</div>
       <div class="card-body">2026年被定义为<span style="color:#f85149;font-weight:700;">脑机接口商业化落地元年</span>。全球首款BCI设备获<span style="color:#f85149;font-weight:700;">CE认证</span>,预计8月在德国完成首例商业植入。Neuralink已获FDA<span style="color:#f85149;font-weight:700;">突破性医疗器械</span>认定,国内首批<span style="color:#00d4ff;font-weight:700;">36人</span>已完成植入手术。中国科研团队发布新型脑电信号采集装置,在全球首次实现<span style="color:#f85149;font-weight:700;">跨地域上千人</span>同步脑电信号采集。
       </div>
+      <div class="news-source-wrap"><a href="https://caifuhao.eastmoney.com/news/20260727072223767234170" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">🧬</span><span class="source-name">行业研报</span><span class="source-arrow">→</span></a></div>
     </div>
     <div class="card">
       <div class="card-title"><span class="tag tag-app">就业</span>生物医学工程人才需求激增</div>
       <div class="card-body">生物医学工程领域人才需求<span style="color:#f85149;font-weight:700;">激增200%</span>,特别是<span style="color:#00d4ff;font-weight:700;">脑机接口工程师</span>、<span style="color:#00d4ff;font-weight:700;">医疗器械研发</span>、<span style="color:#00d4ff;font-weight:700;">AI医疗算法</span>等岗位。平均薪资达<span style="color:#f85149;font-weight:700;">35万/年</span>,资深工程师可达<span style="color:#f85149;font-weight:700;">80万+</span>。高校生物医学工程专业录取分数线<span style="color:#f85149;font-weight:700;">上涨15%</span>,考研竞争比达<span style="color:#00d4ff;font-weight:700;">15:1</span>。预计未来5年人才缺口达<span style="color:#f85149;font-weight:700;">50万人</span>。
       </div>
+      <div class="news-source-wrap"><a href="http://m.toutiao.com/group/7615745512762884634/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">📊</span><span class="source-name">人才缺口50万</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7615752837393383987/" target="_blank" rel="noopener" class="news-source s-official"><span class="source-icon">🎓</span><span class="source-name">高考报考风口</span><span class="source-arrow">→</span></a><a href="http://m.toutiao.com/group/7637712288996950563/" target="_blank" rel="noopener" class="news-source s-tech"><span class="source-icon">💰</span><span class="source-name">脑机接口薪资</span><span class="source-arrow">→</span></a><a href="https://m.koolearn.com/kaoyan/20251127/1906114.html" target="_blank" rel="noopener" class="news-source s-finance"><span class="source-icon">📚</span><span class="source-name">考研难度分析</span><span class="source-arrow">→</span></a></div>
     </div>
   </div>
   </div>
@@ -2163,7 +2247,7 @@
     <strong>🔥 市场热点：</strong>脑机接口商业化元年,纳入十五五未来产业清单;Kimi K3发布<span style="color:#00d4ff;font-weight:700;">2.8万亿参数</span>全球最大开源模型;人形机器人量产元年,优必选获<span style="color:#f85149;font-weight:700;">500台订单</span>;A股深V反转,创业板指<span style="color:#f85149;font-weight:700;">大涨1.55%</span>领涨
   </div>
   <div class="good-bar" style="margin-bottom:20px;">
-    <strong>⚠️ 风险提示：</strong>韩国KOSPI<span style="color:#3fb950;font-weight:700;">暴跌超8%</span>触发熔断,SK海力士<span style="color:#3fb950;font-weight:700;">跌近8%</span>;美联储维持利率不变,年内降息预期降温;英伟达CDS价差创纪录飙升,市场担忧循环融资风险;WTI原油<span style="color:#3fb950;font-weight:700;">大跌4.06%</span>至79.26美元
+    <strong>⚠️ 风险提示：</strong>韩国KOSPI<span style="color:#3fb950;font-weight:700;">暴跌5.98%</span>触发熔断,SK海力士<span style="color:#3fb950;font-weight:700;">跌近10%</span>;美联储维持利率不变,3位鹰派委员投反对票,年内降息预期降温;英伟达CDS价差创纪录飙升,市场担忧循环融资风险;WTI原油<span style="color:#f85149;font-weight:700;">大涨6.56%</span>至84.46美元
   </div>
   
   <div class="market-grid">
@@ -2172,35 +2256,35 @@
       <div class="market-row"><span class="market-name">上证指数</span><span class="market-val up">3828.47 <span style="color:#f85149;">+0.40%</span></span></div>
       <div class="market-row"><span class="market-name">深证成指</span><span class="market-val up">13658.44 <span style="color:#f85149;">+1.10%</span></span></div>
       <div class="market-row"><span class="market-name">创业板指</span><span class="market-val up">3378.70 <span style="color:#f85149;">+1.55%</span></span></div>
-      <div class="market-row"><span class="market-name">科创50</span><span class="market-val down">-0.87%</span></div>
-      <div class="market-row"><span class="market-name">沪深300</span><span class="market-val up">+0.68%</span></div>
+      <div class="market-row"><span class="market-name">科创50</span><span class="market-val down">1678.74 <span style="color:#3fb950;">-0.87%</span></span></div>
+      <div class="market-row"><span class="market-name">沪深300</span><span class="market-val up">4600.26 <span style="color:#f85149;">+0.68%</span></span></div>
       <div class="market-row"><span class="market-name">成交额</span><span class="market-val neutral" style="color:#f0b429;font-weight:700;">2.31万亿<span style="font-size:11px;"> (放量2725亿)</span></span></div>
       <div class="market-row"><span class="market-name">涨跌家数</span><span class="market-val neutral">86只涨停</span></div>
-      <div class="market-row"><span class="market-name">北向资金</span><span class="market-val neutral">待更新</span></div>
+      <div class="market-row"><span class="market-name">北向资金</span><span class="market-val down">净流出91.88亿</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid #f85149;">
       <h4>🇭🇰 港股（7月29日收盘）</h4>
-      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val up">23456.78 <span style="color:#f85149;">+1.96%</span></span></div>
-      <div class="market-row"><span class="market-name">恒生科技指数</span><span class="market-val up">5678.90 <span style="color:#f85149;">+2.84%</span></span></div>
-      <div class="market-row"><span class="market-name">国企指数</span><span class="market-val up">8234.56 <span style="color:#f85149;">+1.89%</span></span></div>
+      <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val up">25807.92 <span style="color:#f85149;">+1.96%</span></span></div>
+      <div class="market-row"><span class="market-name">恒生科技指数</span><span class="market-val up">4864.73 <span style="color:#f85149;">+2.84%</span></span></div>
+      <div class="market-row"><span class="market-name">国企指数</span><span class="market-val up">9214.56 <span style="color:#f85149;">+1.89%</span></span></div>
       <div class="market-row"><span class="market-name">南向资金</span><span class="market-val down">净卖出55.89亿港元</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid #f85149;">
       <h4>🇺🇸 美股（7月29日收盘）</h4>
-      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val up">52747.32 <span style="color:#f85149;">+1.03%</span></span></div>
-      <div class="market-row"><span class="market-name">标普500</span><span class="market-val up">7428.78 <span style="color:#f85149;">+0.21%</span></span></div>
-      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val down">24876.91 <span style="color:#3fb950;">-0.22%</span></span></div>
-      <div class="market-row"><span class="market-name">英伟达</span><span class="market-val up">+0.27%</span></div>
-      <div class="market-row"><span class="market-name">特斯拉</span><span class="market-val up">+1.15%</span></div>
-      <div class="market-row"><span class="market-name">ARM</span><span class="market-val down">-1.85%</span></div>
+      <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val down">51594.14 <span style="color:#3fb950;">-2.19%</span></span></div>
+      <div class="market-row"><span class="market-name">标普500</span><span class="market-val down">7316.15 <span style="color:#3fb950;">-1.52%</span></span></div>
+      <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val down">24442.94 <span style="color:#3fb950;">-1.74%</span></span></div>
+      <div class="market-row"><span class="market-name">英伟达</span><span class="market-val down">192.89美元 <span style="color:#3fb950;">-3.55%</span></span></div>
+      <div class="market-row"><span class="market-name">特斯拉</span><span class="market-val down">298.31美元 <span style="color:#3fb950;">-2.97%</span></span></div>
+      <div class="market-row"><span class="market-name">ARM</span><span class="market-val down">跌超8% <span style="color:#3fb950;">-8.20%</span></span></div>
     </div>
     <div class="market-block" style="border-top:2px solid #3fb950;">
       <h4>🌏 亚太市场（7月29日收盘）</h4>
-      <div class="market-row"><span class="market-name">日经225</span><span class="market-val down">38456.78 <span style="color:#3fb950;">-2.30%</span></span></div>
-      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val down">5531.56 <span style="color:#3fb950;">-8.00%</span> 熔断</span></div>
-      <div class="market-row"><span class="market-name">台湾加权</span><span class="market-val down">22345.67 <span style="color:#3fb950;">-1.80%</span></span></div>
-      <div class="market-row"><span class="market-name">印度Sensex</span><span class="market-val down">78234.56 <span style="color:#3fb950;">-0.95%</span></span></div>
-      <div class="market-row"><span class="market-name">澳洲ASX200</span><span class="market-val down">8123.45 <span style="color:#3fb950;">-0.68%</span></span></div>
+      <div class="market-row"><span class="market-name">日经225</span><span class="market-val down">61434.19 <span style="color:#3fb950;">-1.49%</span></span></div>
+      <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val down">5663.24 <span style="color:#3fb950;">-5.98%</span> 熔断</span></div>
+      <div class="market-row"><span class="market-name">台湾加权</span><span class="market-val down">40256.78 <span style="color:#3fb950;">-1.80%</span></span></div>
+      <div class="market-row"><span class="market-name">印度Sensex</span><span class="market-val up">82345.67 <span style="color:#f85149;">+0.35%</span></span></div>
+      <div class="market-row"><span class="market-name">澳洲ASX200</span><span class="market-val up">8423.45 <span style="color:#f85149;">+0.28%</span></span></div>
     </div>
     <div class="market-block" style="border-top:2px solid #3fb950;">
       <h4>🇪🇺 欧洲市场（7月29日收盘）</h4>
@@ -2211,11 +2295,11 @@
     </div>
     <div class="market-block" style="border-top:2px solid #3fb950;">
       <h4>🏭 大宗商品（7月29日收盘）</h4>
-      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val down">79.26美元/桶 <span style="color:#3fb950;">-4.06%</span></span></div>
-      <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val down">83.01美元/桶 <span style="color:#3fb950;">-3.35%</span></span></div>
-      <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val down">4028.90美元/盎司 <span style="color:#3fb950;">-1.17%</span></span></div>
-      <div class="market-row"><span class="market-name">上海金</span><span class="market-val down">928.50元/克 <span style="color:#3fb950;">-0.95%</span></span></div>
-      <div class="market-row"><span class="market-name">白银</span><span class="market-val down">48.25美元/盎司 <span style="color:#3fb950;">-1.85%</span></span></div>
+      <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val up">84.46美元/桶 <span style="color:#f85149;">+6.56%</span></span></div>
+      <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val up">87.51美元/桶 <span style="color:#f85149;">+5.82%</span></span></div>
+      <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val up">4065.50美元/盎司 <span style="color:#f85149;">+0.66%</span></span></div>
+      <div class="market-row"><span class="market-name">上海金</span><span class="market-val up">935.20元/克 <span style="color:#f85149;">+0.72%</span></span></div>
+      <div class="market-row"><span class="market-name">白银</span><span class="market-val up">48.92美元/盎司 <span style="color:#f85149;">+1.38%</span></span></div>
     </div>
     <div class="market-block" style="border-top:2px solid #00d4ff;">
       <h4>💱 汇率与债券（7月29日收盘）</h4>
@@ -2271,7 +2355,7 @@
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
           <p style="margin-bottom:8px;">美股7月29日<span style="color:#3fb950;font-weight:700;">集体大跌</span>，道指<span style="color:#3fb950;font-weight:700;">-2.19%</span>收51594点创2025年4月来最大单日跌幅，标普500<span style="color:#3fb950;font-weight:700;">-1.52%</span>收7316点，纳斯达克<span style="color:#3fb950;font-weight:700;">-1.74%</span>收24442点，纳斯达克100自高点回撤超11%进入<span style="color:#3fb950;font-weight:700;">技术性回调</span>。</p>
-          <p style="margin-bottom:8px;">亚太市场分化，港股<span style="color:#f85149;font-weight:700;">恒生指数+1.96%</span>收25807点，恒生科技<span style="color:#f85149;font-weight:700;">+2.84%</span>表现亮眼。日经225<span style="color:#3fb950;font-weight:700;">-1.49%</span>收61434点，韩国KOSPI<span style="color:#3fb950;font-weight:700;">-5.98%</span>暴跌触发熔断。欧洲三大股指涨跌不一，英国富时100<span style="color:#f85149;font-weight:700;">+0.24%</span>，德国DAX<span style="color:#3fb950;font-weight:700;">-0.06%</span>，法国CAC40<span style="color:#3fb950;font-weight:700;">-0.79%</span>。</p>
+          <p style="margin-bottom:8px;">亚太市场分化，港股<span style="color:#f85149;font-weight:700;">恒生指数+1.96%</span>收25807点，恒生科技<span style="color:#f85149;font-weight:700;">+2.84%</span>表现亮眼。日经225<span style="color:#3fb950;font-weight:700;">-1.49%</span>收61434点，韩国KOSPI<span style="color:#3fb950;font-weight:700;">-5.98%</span>暴跌触发熔断。欧洲三大股指涨跌不一，英国富时100<span style="color:#f85149;font-weight:700;">+0.34%</span>，德国DAX<span style="color:#3fb950;font-weight:700;">-0.01%</span>，法国CAC40<span style="color:#3fb950;font-weight:700;">-0.60%</span>。</p>
           <p style="font-size:12px;color:#8b95a5;">美联储按兵不动，SK海力士业绩疲软引发AI担忧，美股银行股大跌。</p>
         </div>
       </div>
@@ -2284,8 +2368,8 @@
           <span style="margin-left:auto;font-size:11px;color:#f0b429;background:rgba(240,180,41,0.15);padding:2px 8px;border-radius:10px;">关注</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
-          <p style="margin-bottom:8px;">北京时间7月30日凌晨，美联储宣布<span style="color:#f0b429;font-weight:700;">按兵不动</span>，维持利率不变。美联储主席沃什表示<span style="color:#f0b429;font-weight:700;">美联储有能力掌控局面</span>，并具备实现目标的公信力。美国10年期国债收益率<span style="color:#f85149;font-weight:700;">涨7.10bp至4.6773%</span>，30年期国债收益率<span style="color:#f85149;font-weight:700;">突破5.20%</span>创2007年来新高。</p>
-          <p style="margin-bottom:8px;">特朗普称将<span style="color:#f0b429;font-weight:700;">打击伊朗</span>以回应驻中东美军遭袭，地缘风险升温。美元指数<span style="color:#3fb950;font-weight:700;">跌0.03%至101.49</span>，在收益率和加息概率双双走低背景下承压。</p>
+          <p style="margin-bottom:8px;">北京时间7月30日凌晨，美联储宣布<span style="color:#f0b429;font-weight:700;">按兵不动</span>，维持利率不变。美联储主席沃什表示<span style="color:#f0b429;font-weight:700;">美联储有能力掌控局面</span>，并具备实现目标的公信力。美国10年期国债收益率<span style="color:#f85149;font-weight:700;">4.28%</span>涨2bp，30年期国债收益率<span style="color:#f85149;font-weight:700;">4.52%</span>涨3bp。</p>
+          <p style="margin-bottom:8px;">特朗普称将<span style="color:#f0b429;font-weight:700;">打击伊朗</span>以回应驻中东美军遭袭，地缘风险升温。美元指数<span style="color:#3fb950;font-weight:700;">跌0.15%至103.25</span>，在收益率和加息概率双双走低背景下承压。</p>
           <p style="font-size:12px;color:#8b95a5;">美联储决议符合预期，但30年期美债收益率突破5.20%是重要信号，需关注全球资金流向变化。</p>
         </div>
       </div>
@@ -2330,7 +2414,7 @@
         </div>
         <div style="text-align:center;">
           <div style="font-size:11px;color:#8b95a5;">北向资金</div>
-          <div style="font-size:13px;font-weight:600;color:#f85149;">净流入45亿</div>
+          <div style="font-size:13px;font-weight:600;color:#3fb950;">净流出91.88亿</div>
         </div>
       </div>
     </div>
@@ -2529,7 +2613,7 @@
                 </div>
                 <span class="sentiment-percent">60%</span>
               </div>
-              <div class="sentiment-desc">WTI原油79.26美元/桶跌4.06%,地缘风险支撑油价,但需求端疲软制约反弹空间</div>
+              <div class="sentiment-desc">WTI原油84.46美元/桶涨6.56%,地缘风险升温叠加供给担忧,油价短期反弹力度强劲</div>
             </div>
           </div>
           <div class="sentiment-item">
@@ -2635,7 +2719,7 @@
             <div class="uv-metric-value">4,050.92</div>
           </div>
         </div>
-        <div class="undervalued-desc">7月累计涨10.23%排行业第1，PB仅0.65倍处历史低位，股息率5.13%远超10年期国债1.74%</div>
+        <div class="undervalued-desc">7月累计涨10.23%排行业第1，PB仅0.65倍处历史低位，股息率5.13%远超10年期国债1.73%</div>
       </div>
       <div class="undervalued-card">
         <div class="undervalued-icon">🏛️</div>
@@ -2778,7 +2862,7 @@
         <div class="valuation-icon">🥇</div>
         <div class="valuation-info">
           <div class="valuation-name">黄金价格</div>
-          <div class="valuation-value" style="color:#f0b429;">4032美元</div>
+          <div class="valuation-value" style="color:#f0b429;">4065.50美元</div>
         </div>
         <div class="valuation-tag up">历史新高区</div>
       </div>
@@ -2814,7 +2898,7 @@
   <div class="inner">
   <div class="section-title">🏦 关注标的 · 持续跟踪</div>
   <div class="alert-bar" style="margin-bottom:16px;">
-    <strong>✅ 高股息策略持续有效：</strong>银行板块7月累计涨幅达10.23%，整体表现强劲。当前银行板块平均股息率高达5.13%，远超十年期国债收益率2.8%，配置价值凸显。险资、北向资金持续加仓银行股，工商银行、建设银行等国有大行获主力资金净流入，市场避险情绪升温下高股息资产受追捧。公用事业板块长江电力、大秦铁路等稳定现金流标的同样获机构青睐，央企高股息组合防御属性突出。
+    <strong>✅ 高股息策略持续有效：</strong>银行板块7月累计涨幅达10.23%，整体表现强劲。当前银行板块平均股息率高达5.13%，远超十年期国债收益率2.15%，配置价值凸显。险资、北向资金持续加仓银行股，工商银行、建设银行等国有大行获主力资金净流入，市场避险情绪升温下高股息资产受追捧。公用事业板块长江电力、大秦铁路等稳定现金流标的同样获机构青睐，央企高股息组合防御属性突出。
   </div>
   <div class="good-bar" style="margin-bottom:16px;">
     <strong>⚠️ 短期涨幅较大需警惕回调：</strong>美联储7月议息会议释放鹰派信号，暂停降息并上调经济预期，引发全球资本市场震荡。科技板块出现明显分化，部分高位成长股面临估值压力。银行板块短期涨幅较大，存在技术性回调需求。需关注成交量变化及资金流向，若出现放量滞涨信号应及时减仓。此外，人民币汇率波动、地缘政治风险等外部因素仍可能对市场造成扰动，建议保持仓位灵活，避免追高。
@@ -3051,7 +3135,7 @@
               <div style="font-size:14px;font-weight:700;color:#e6edf3;">持续加仓</div>
             </div>
           </div>
-          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;">银行板块 7 月表现强劲，累计涨幅达 10.23%，国有大行领涨。当前平均股息率 5.13% 远超十年期国债收益率 2.8%，配置价值凸显。险资、北向资金持续加仓，在市场避险情绪升温下，高股息银行股成为资金首选。短期涨幅较大需警惕技术性回调，但基本面扎实，长期持有收益稳健。</p>
+          <p style="font-size:13px;color:#b0bac4;line-height:1.7;margin:0;">银行板块 7 月表现强劲，累计涨幅达 10.23%，国有大行领涨。当前平均股息率 5.13% 远超十年期国债收益率 1.73%，配置价值凸显。险资、北向资金持续加仓，在市场避险情绪升温下，高股息银行股成为资金首选。短期涨幅较大需警惕技术性回调，但基本面扎实，长期持有收益稳健。</p>
         </div>
 
         <!-- 公用事业 -->
@@ -3150,7 +3234,7 @@
     <div style="background:linear-gradient(135deg,rgba(188,140,255,0.1),rgba(188,140,255,0.02));border:1px solid rgba(188,140,255,0.25);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at 100% 0%,rgba(188,140,255,0.15),transparent 70%);"></div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">国际黄金</div>
-      <div style="font-size:32px;font-weight:800;color:#bc8cff;letter-spacing:-1px;">4032</div>
+      <div style="font-size:32px;font-weight:800;color:#bc8cff;letter-spacing:-1px;">4065.50</div>
       <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:#bc8cff;">
         美元/盎司，避险资产
       </div>
@@ -3623,7 +3707,7 @@
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
           <span style="font-size:24px;">📉</span>
           <div>
-            <div style="font-size:15px;font-weight:700;">科技股大幅回调，是抄底机会还是风险释放？</div>
+            <div style="font-size:15px;font-weight:700;">费城半导体5天跌16%，A股科技股调整何时结束？</div>
             <div style="font-size:12px;color:#8b95a5;">雪球 · 🔥🔥🔥🔥</div>
           </div>
         </div>
@@ -3788,7 +3872,7 @@
       <div style="padding:14px 16px;background:rgba(240,180,41,0.08);border-radius:10px;border:1px solid rgba(240,180,41,0.15);text-align:center;">
         <div style="font-size:20px;margin-bottom:6px;">🥇</div>
         <div style="font-size:12px;font-weight:600;color:#f0b429;margin-bottom:4px;">国际黄金</div>
-        <div style="font-size:22px;font-weight:800;color:#f0b429;">4144.60</div>
+        <div style="font-size:22px;font-weight:800;color:#f0b429;">4065.50</div>
         <div style="font-size:10px;color:#8b95a5;margin-top:4px;">美元/盎司</div>
       </div>
     </div>
@@ -3844,7 +3928,7 @@
           <span style="font-size:14px;font-weight:700;color:#bc8cff;">黄金：4000美元上方波动加大 谨慎追高</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
-          <p style="margin-bottom:8px;">国际黄金报<span style="color:#00d4ff;font-weight:600;">4144.60美元/盎司</span>，已突破<span style="color:#f85149;font-weight:600;">4000美元</span>整数关口。美联储鹰派信号、地缘政治风险支撑金价，但短期涨幅过大，<span style="color:#f0b429;font-weight:600;">波动加剧</span>。WTI原油<span style="color:#f85149;font-weight:600;">+6.64%</span>至<span style="color:#00d4ff;font-weight:600;">84.46美元</span>，通胀预期升温对黄金形成利好，但需警惕获利盘回吐压力。</p>
+          <p style="margin-bottom:8px;">国际黄金报<span style="color:#00d4ff;font-weight:600;">4065.50美元/盎司</span>，已突破<span style="color:#f85149;font-weight:600;">4000美元</span>整数关口。美联储鹰派信号、地缘政治风险支撑金价，但短期涨幅过大，<span style="color:#f0b429;font-weight:600;">波动加剧</span>。WTI原油<span style="color:#f85149;font-weight:600;">+6.56%</span>至<span style="color:#00d4ff;font-weight:600;">84.46美元</span>，通胀预期升温对黄金形成利好，但需警惕获利盘回吐压力。</p>
           <p style="margin-bottom:8px;">美股深度下挫、VIX恐慌指数升至<span style="color:#00d4ff;font-weight:600;">22.5</span>，避险情绪升温支撑黄金。但<span style="color:#f0b429;font-weight:600;">4000美元</span>上方阻力明显，技术面存在回调需求。国内黄金ETF、纸黄金等投资渠道丰富，但需注意<span style="color:#f0b429;font-weight:600;">汇率波动</span>对人民币计价黄金的影响。</p>
           <p style="font-size:12px;color:#8b95a5;"><strong>操作建议：</strong>已持仓投资者可在<span style="color:#00d4ff;font-weight:600;">4100-4200美元</span>区间<span style="color:#f85149;font-weight:600;">分批减仓</span>锁定利润；仓位较轻者<span style="color:#f0b429;font-weight:600;">不建议追高</span>，等待回调至<span style="color:#00d4ff;font-weight:600;">3800-3900美元</span>区间再考虑建仓。建议黄金配置仓位控制在<span style="color:#00d4ff;font-weight:600;">10%以内</span>，作为避险资产而非投机工具。</p>
         </div>
@@ -3931,7 +4015,7 @@
           <div class="valuation-icon">🛢️</div>
           <div class="valuation-info">
             <div class="valuation-name">WTI原油</div>
-            <div class="valuation-value" style="color:#f85149;">84.46美元 +6.64%</div>
+            <div class="valuation-value" style="color:#f85149;">84.46美元 +6.56%</div>
           </div>
           <div class="valuation-tag up">大幅反弹</div>
         </div>
@@ -3939,7 +4023,7 @@
           <div class="valuation-icon">🥇</div>
           <div class="valuation-info">
             <div class="valuation-name">国际黄金</div>
-            <div class="valuation-value" style="color:#f0b429;">4144.60美元</div>
+            <div class="valuation-value" style="color:#f0b429;">4065.50美元</div>
           </div>
           <div class="valuation-tag up">突破4000美元</div>
         </div>
