@@ -1050,7 +1050,7 @@
 }
 .flow-diagram {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
@@ -1064,7 +1064,8 @@
   background: rgba(0,0,0,0.2);
   border: 1px solid var(--border);
   border-radius: 12px;
-  min-width: 100px;
+  flex: 1;
+  min-width: 0;
   transition: all 0.3s ease;
 }
 .flow-node:hover {
@@ -1101,10 +1102,11 @@
   font-size: 24px;
   color: var(--accent);
   opacity: 0.6;
+  flex-shrink: 0;
 }
 .capital-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .capital-card {
@@ -2674,8 +2676,8 @@
           <div class="capital-icon">📊</div>
           <div class="capital-title">ETF长线资金</div>
           <div class="capital-stats">
-            <span class="capital-stat" style="background:rgba(29,198,100,0.15);color:#3fb950;">阶段性净流出</span>
-            <span class="capital-stat" style="background:rgba(0,212,255,0.15);color:#00d4ff;"><span style="color:#f85149;font-weight:700;">净流入</span></span>
+            <span class="capital-stat" style="background:rgba(248,81,73,0.15);color:#f85149;">股票ETF净流入</span>
+            <span class="capital-stat" style="background:rgba(63,185,80,0.15);color:#3fb950;">红利加仓</span>
           </div>
           <div class="capital-desc">机构资金持续加仓券商和红利方向，布局低估值高股息资产。</div>
         </div>
@@ -2687,6 +2689,15 @@
             <span class="capital-stat" style="background:rgba(63,185,80,0.15);color:#3fb950;">公用事业 +</span>
           </div>
           <div class="capital-desc">保险资金偏好高股息资产，银行和公用事业成为配置重点。</div>
+        </div>
+        <div class="capital-card">
+          <div class="capital-icon">🏦</div>
+          <div class="capital-title">南向资金</div>
+          <div class="capital-stats">
+            <span class="capital-stat" style="background:rgba(248,81,73,0.15);color:#f85149;">净买入36.67亿</span>
+            <span class="capital-stat" style="background:rgba(0,212,255,0.15);color:#00d4ff;">结束净卖出</span>
+          </div>
+          <div class="capital-desc">8月13日南向资金净买入36.67亿港元，结束连续净卖出，港股高股息（银行/运营商）配置意愿回升，长线资金回流迹象显现。</div>
         </div>
       </div>
     </div>
