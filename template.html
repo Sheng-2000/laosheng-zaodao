@@ -176,6 +176,10 @@
   }
   .stock-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding:20px 24px; margin-bottom:14px; transition: border-color 0.2s; }
   .stock-card:hover { border-color: var(--accent-border); }
+  .stock-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:8px; }
+  .stock-grid .stock-card { margin-bottom:0; }
+  .stock-grid .sub-title { grid-column:1 / -1; }
+  @media (max-width:768px){ .stock-grid { grid-template-columns:1fr; } }
   .stock-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
   .stock-name { font-size:16px; font-weight:700; color:var(--text-primary); }
   .stock-code { font-size:12px; color:var(--text-muted); background:var(--bg-hover); padding:2px 8px; border-radius:4px; }
@@ -2802,6 +2806,7 @@
     <strong>⚠️ {{标的_风险提示标题}}：</strong>{{标的_风险提示内容}}
   </div>
   
+  <div class="stock-grid">
   <div class="sub-title" style="margin:28px 0 18px;">国有大行 · 高股息核心</div>
 
     <!-- ⚠️ 关注标的13个stock-card：每个bullet必须用span高亮关键信息（股价/涨跌幅→#00d4ff青色，利好→#f85149红色，利空→#3fb950绿色，警示→#f0b429橙色），每条li至少2-3处高亮，每个标的4-5条bullet -->
@@ -3008,6 +3013,7 @@
       </ul>
     </div>
 
+  </div>
     <!-- 📊 关注标的深度解读（汇总卡片） -->
     <div class="card" style="border-left:3px solid var(--accent);margin-top:24px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(29,198,100,0.04));">
       <div class="card-title">📊 关注标的深度解读（{{报告日期}}）</div>
