@@ -23,6 +23,12 @@
 - 网格卡片最小宽度：highlight-grid 340px、market-grid 310px（全屏后卡片不过窄）。
 - 调布局时只动容器 max-width / padding / 网格 minmax，**不得**触碰红涨绿、涨跌色语义、高亮字号、占位符结构。
 
+## 字号规范（全站统一，2026-08-26）
+- 正文（阅读文本）统一 **14.5px**：`body`/`card-title`(与body等大同权重区分)/`card-body`/`highlight-text`/`market-row`/`stock-bullets li`/`summary-card p`/`.alert-bar/.hot-bar/.good-bar` 及行内 `color:#b0bac4` muted 段落。
+- 行内加粗关键词强调 span = **15px**（略大于正文，保持强调层级）。
+- 标题层级保留差异（`section-title` 21 / `sub-title` 13.5 小标签 / `stock-name` `stock-price` / 大数字），这些非"正文"不动。
+- 调字号只动上述阅读文本类，**不得**触碰红涨绿、涨跌色语义、高亮字号铁律、占位符结构。
+
 ## 质控要点（QC 脚本 /tmp/qc_*.py 已沉淀）
 - 占位符 `{{` 剩余 = 0；`暂无数据` = 0；破折号（正文） = 0。
 - 涨跌 class↔符号 矛盾 = 0（注意排除无符号百分比如"跌超10%"）。
