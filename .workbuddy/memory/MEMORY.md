@@ -23,6 +23,10 @@
 - 网格卡片最小宽度：highlight-grid 320px、market-grid 290px。
 - 调布局时只动容器 max-width / padding / 网格 minmax，**不得**触碰红涨绿、涨跌色语义、高亮字号、占位符结构。
 
+## 页眉头条字数铁律（2026-08-27）
+- `{{每日重点事件}}`（页眉 `hm-sub` 日期下副标题）**须 ≤20 字**（含数字、分隔点·）。2026-08-27 由 113 字长文案压缩为「净投放2395亿·A股收红·油价回落」(18字)。
+- 生成器数据源 `/tmp/harvested.json` 的 `每日重点事件` 值须同步保持 ≤20 字，否则重生成反弹。
+
 ## 字号规范（全站统一，2026-08-26）
 - 正文（阅读文本）统一 **14.5px**：`body`/`card-title`(与body等大同权重区分)/`card-body`/`highlight-text`/`market-row`/`stock-bullets li`/`summary-card p`/`.alert-bar/.hot-bar/.good-bar` 及行内 `color:#b0bac4` muted 段落。
 - 行内加粗关键词强调 span = **15px**（略大于正文，保持强调层级）。
