@@ -861,9 +861,130 @@ body{
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ══════════ THEME TOGGLE ══════════ */
+.hm-row { display:flex;align-items:center;gap:12px; }
+.theme-toggle {
+  width:32px;height:32px;padding:0;
+  border-radius:50%;
+  border:1px solid rgba(0,212,255,0.28);
+  background:rgba(0,212,255,0.06);
+  color:var(--accent);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.25s ease;
+  flex-shrink:0;
+}
+.theme-toggle:hover { background:rgba(0,212,255,0.16);transform:rotate(18deg) scale(1.06);border-color:rgba(0,212,255,0.5); }
+.theme-toggle svg { width:16px;height:16px;display:block; }
+.theme-toggle .ico-moon { display:none; }
+@media (max-width:768px) {
+  .theme-toggle { width:28px;height:28px; }
+  .theme-toggle svg { width:14px;height:14px; }
+  .hm-row { gap:8px; }
+}
+
+/* ══════════ LIGHT THEME（白底黑字 · 新闻阅读风格） ══════════ */
+body.light-theme {
+  color-scheme:light;
+  --bg-primary:#f6f7f9;
+  --bg-secondary:#eef0f3;
+  --bg-card:#ffffff;
+  --bg-hover:#f2f4f7;
+  --accent:#0a66c2;
+  --accent-dim:rgba(10,102,194,0.10);
+  --accent-border:rgba(10,102,194,0.30);
+  --green:#1a7f37;
+  --red:#cf222e;
+  --yellow:#9a6700;
+  --purple:#8250df;
+  --orange:#bc4c00;
+  --text-primary:#1f2328;
+  --text-secondary:#474f59;
+  --text-muted:#6b7280;
+  --border:#dfe3e8;
+  background-image:radial-gradient(ellipse 80% 40% at 50% -5%,rgba(10,102,194,0.06) 0%,transparent 60%);
+}
+/* 密码门 */
+body.light-theme .pw-box {
+  background:rgba(255,255,255,0.92);
+  border-color:rgba(10,102,194,0.25);
+  box-shadow:0 10px 60px rgba(31,35,40,0.15),0 0 0 1px rgba(10,102,194,0.06),inset 0 1px 0 rgba(255,255,255,0.9);
+}
+body.light-theme .pw-box .pw-icon {
+  background:linear-gradient(145deg,rgba(10,102,194,0.08),rgba(10,102,194,0.02));
+  border-color:rgba(10,102,194,0.3);
+  box-shadow:0 0 30px rgba(10,102,194,0.12);
+}
+body.light-theme .pw-box .pw-icon svg path { fill:#0a66c2; }
+body.light-theme .pw-box input[type="password"] {
+  background:#ffffff;
+  border-color:#dfe3e8;
+}
+body.light-theme .pw-box input[type="password"]:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(10,102,194,0.1);
+}
+body.light-theme .pw-btn {
+  background:linear-gradient(135deg,#0a66c2,#084d94);
+  color:#ffffff;
+}
+body.light-theme .pw-btn:hover { box-shadow:0 0 30px rgba(10,102,194,0.3); }
+/* 头部 */
+body.light-theme .header {
+  background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
+  border-bottom:1px solid rgba(10,102,194,0.22);
+  box-shadow:0 1px 14px rgba(31,35,40,0.07);
+}
+body.light-theme .header::before { box-shadow:none; }
+body.light-theme .header::after { opacity:0.35; }
+body.light-theme .brand-icon {
+  background:linear-gradient(145deg,#eaf3fd 0%,#dcecfa 60%,#e6f1fb 100%);
+  border-color:rgba(10,102,194,0.35);
+  box-shadow:0 2px 10px rgba(10,102,194,0.14),inset 0 1px 0 rgba(255,255,255,0.7);
+}
+body.light-theme .brand-icon svg path:first-child { stroke:#0a66c2; }
+body.light-theme .brand-icon svg path:not(:first-child) { stroke:rgba(10,102,194,0.35); }
+body.light-theme .brand-name { color:#1f2328; }
+body.light-theme .brand-zaodao { text-shadow:none; }
+body.light-theme .hm-date { text-shadow:none; }
+body.light-theme .live-dot { box-shadow:0 0 6px rgba(26,127,55,0.55); }
+/* 切换按钮（亮色态显示月亮） */
+body.light-theme .theme-toggle { border-color:rgba(10,102,194,0.3);background:rgba(10,102,194,0.06); }
+body.light-theme .theme-toggle:hover { background:rgba(10,102,194,0.12);border-color:rgba(10,102,194,0.5); }
+body.light-theme .theme-toggle .ico-sun { display:none; }
+body.light-theme .theme-toggle .ico-moon { display:block; }
+/* 区块标题与Hero卡片 */
+body.light-theme .section-title::after { background:linear-gradient(90deg,rgba(10,102,194,0.25),transparent); }
+body.light-theme .hero-card::before { background:linear-gradient(180deg,rgba(10,102,194,0.04) 0%,transparent 100%); }
+body.light-theme .hero-date-block {
+  background:linear-gradient(160deg,rgba(10,102,194,0.05) 0%,rgba(10,102,194,0.01) 100%);
+  border-right-color:rgba(10,102,194,0.12);
+}
+body.light-theme .hero-date-day { text-shadow:none; }
+body.light-theme .hero-date-weekday { background:rgba(10,102,194,0.08); }
+body.light-theme .hero-badge { background:linear-gradient(135deg,#0a66c2,#084d94);color:#ffffff; }
+body.light-theme .hero-badge-dot { background:#ffffff; }
+body.light-theme .hero-tag { background:rgba(10,102,194,0.05);border-color:rgba(10,102,194,0.15); }
+body.light-theme .hero-tag:nth-child(1) { border-color:rgba(10,102,194,0.3);color:#0a66c2; }
+body.light-theme .hero-tag:nth-child(2) { border-color:rgba(130,80,223,0.3);color:#8250df; }
+body.light-theme .hero-tag:nth-child(3) { border-color:rgba(26,127,55,0.3);color:#1a7f37; }
+/* 时间线 */
+body.light-theme .tl-weekday { background:rgba(10,102,194,0.07); }
+body.light-theme .timeline-item:hover .timeline-content { box-shadow:0 6px 20px rgba(31,35,40,0.10); }
+/* 页脚 */
+body.light-theme .footer-divider::before { box-shadow:0 0 10px rgba(10,102,194,0.35); }
+/* 选区 */
+body.light-theme ::selection { background:rgba(10,102,194,0.22);color:#1f2328; }
+/* 平滑过渡 */
+body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
+  transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease;
+}
+.hero-card { transition:transform 0.3s ease,box-shadow 0.3s ease,background-color 0.35s ease,border-color 0.35s ease; }
 </style>
 </head>
 <body>
+<script>(function(){try{if(localStorage.getItem('lszd-theme')==='light'){document.body.classList.add('light-theme');}}catch(e){}})();</script>
 
 <!-- 密码锁遮罩层 -->
 <div id="pw-overlay" class="pw-overlay">
@@ -924,7 +1045,13 @@ body{
 
     <!-- 右栏：信息 -->
     <div class="header-meta">
-      <div class="hm-date" id="latest-date">--</div>
+      <div class="hm-row">
+        <div class="hm-date" id="latest-date">--</div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切换日间/夜间阅读模式" aria-label="切换日间/夜间阅读模式">
+          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8z"/></svg>
+        </button>
+      </div>
       <div class="hm-sub">
         <span id="latest-weekday">--</span>
         <span>·</span>
@@ -1032,6 +1159,12 @@ archive.forEach(r => {
   `;
   timeline.appendChild(item);
 });
+
+// ══════════ 主题切换 ══════════
+window.toggleTheme = function() {
+  var isLight = document.body.classList.toggle('light-theme');
+  try { localStorage.setItem('lszd-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+};
 
 // ══════════ 密码锁 ══════════
 (function() {
