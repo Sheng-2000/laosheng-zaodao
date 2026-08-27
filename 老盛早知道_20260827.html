@@ -1782,9 +1782,158 @@
   ::-webkit-scrollbar-thumb:hover { background: rgba(0,212,255,0.42); }
   .tag { transition: transform 0.18s ease, filter 0.18s ease; }
   .tag:hover { transform: translateY(-1px); filter: brightness(1.12); }
+
+  /* ===== 主题切换按钮 ===== */
+  .hm-row { display: flex; align-items: center; gap: 12px; }
+  .theme-toggle {
+    width: 32px; height: 32px; padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,255,0.28);
+    background: rgba(0,212,255,0.06);
+    color: var(--accent);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { background: rgba(0,212,255,0.16); transform: rotate(18deg) scale(1.06); border-color: rgba(0,212,255,0.5); }
+  .theme-toggle svg { width: 16px; height: 16px; display: block; }
+  .theme-toggle .ico-moon { display: none; }
+  @media (max-width:768px) {
+    .theme-toggle { width: 28px; height: 28px; }
+    .theme-toggle svg { width: 14px; height: 14px; }
+    .hm-row { gap: 8px; }
+  }
+
+  /* ===== 亮色阅读主题（白底黑字 · 新闻阅读风格） ===== */
+  body.light-theme {
+    color-scheme: light;
+    --bg-primary: #f6f7f9;
+    --bg-secondary: #eef0f3;
+    --bg-card: #ffffff;
+    --bg-hover: #f2f4f7;
+    --accent: #0a66c2;
+    --accent-dim: rgba(10,102,194,0.10);
+    --accent-border: rgba(10,102,194,0.30);
+    --green: #1a7f37;
+    --red: #cf222e;
+    --yellow: #9a6700;
+    --purple: #8250df;
+    --orange: #bc4c00;
+    --text-primary: #1f2328;
+    --text-secondary: #474f59;
+    --text-muted: #6b7280;
+    --border: #dfe3e8;
+    --card-grad: linear-gradient(157deg, #ffffff 0%, #fcfdfe 100%);
+    --shadow-soft: 0 1px 2px rgba(31,35,40,0.04), 0 4px 16px rgba(31,35,40,0.06);
+    background-image: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(10,102,194,0.06) 0%, transparent 60%);
+  }
+  /* 头部 */
+  body.light-theme .header {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-bottom: 1px solid rgba(10,102,194,0.22);
+    box-shadow: 0 1px 14px rgba(31,35,40,0.07);
+  }
+  body.light-theme .header::before { box-shadow: none; }
+  body.light-theme .header-meta { border-left-color: rgba(10,102,194,0.16); }
+  body.light-theme .hm-date { text-shadow: none; }
+  body.light-theme .hm-sub .sep { color: rgba(10,102,194,0.4); }
+  body.light-theme .hm-ticker { background: rgba(10,102,194,0.05); border-color: rgba(10,102,194,0.18); }
+  /* 品牌区 */
+  body.light-theme .brand-icon {
+    background: linear-gradient(145deg, #eaf3fd 0%, #dcecfa 60%, #e6f1fb 100%);
+    border-color: rgba(10,102,194,0.35);
+    box-shadow: 0 2px 10px rgba(10,102,194,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
+  }
+  body.light-theme .brand-icon::before { background: radial-gradient(circle, rgba(10,102,194,0.14) 0%, transparent 70%); }
+  body.light-theme .brand-icon::after { background: linear-gradient(135deg, rgba(10,102,194,0.06) 0%, transparent 55%); }
+  body.light-theme .brand-name { color: #1f2328; }
+  body.light-theme .brand-zaodao { text-shadow: none; }
+  body.light-theme .brand-sep { background: rgba(10,102,194,0.25); }
+  body.light-theme .brand-sep::after { box-shadow: 0 0 6px rgba(10,102,194,0.55), 0 0 14px rgba(10,102,194,0.2); }
+  body.light-theme .brand-subtitle .dot { color: rgba(10,102,194,0.4); }
+  body.light-theme .brand-en { opacity: 0.55; }
+  /* 切换按钮（亮色态显示月亮） */
+  body.light-theme .theme-toggle { border-color: rgba(10,102,194,0.3); background: rgba(10,102,194,0.06); }
+  body.light-theme .theme-toggle:hover { background: rgba(10,102,194,0.12); border-color: rgba(10,102,194,0.5); }
+  body.light-theme .theme-toggle .ico-sun { display: none; }
+  body.light-theme .theme-toggle .ico-moon { display: block; }
+  /* 涨跌色与信号灯（白底加深保证对比度） */
+  body.light-theme .up { color: #d1242f; }
+  body.light-theme .down { color: #1a7f37; }
+  body.light-theme .gold { color: #9a6700; }
+  body.light-theme .live-dot { box-shadow: 0 0 6px rgba(26,127,55,0.55); }
+  /* Tab导航 */
+  body.light-theme .tab-btn:hover { background: rgba(10,102,194,0.06); }
+  body.light-theme .tab-btn.active { background: rgba(10,102,194,0.09); text-shadow: none; }
+  body.light-theme .tab-btn.active::after { box-shadow: 0 0 8px rgba(10,102,194,0.45); }
+  /* 卡片悬浮阴影转柔和浅阴影 */
+  body.light-theme .card:hover { box-shadow: 0 6px 22px rgba(31,35,40,0.10), 0 0 0 1px var(--accent-border); }
+  body.light-theme .highlight-item:hover { box-shadow: 0 6px 20px rgba(31,35,40,0.10); }
+  body.light-theme .highlight-item-v2:hover { box-shadow: 0 6px 18px rgba(31,35,40,0.09); }
+  body.light-theme .institute-card:hover { box-shadow: 0 6px 20px rgba(31,35,40,0.10); }
+  body.light-theme .stock-card:hover { box-shadow: 0 6px 22px rgba(31,35,40,0.10), 0 0 0 1px var(--accent-border); }
+  /* 硬编码深底组件转白 */
+  body.light-theme .summary-card { background: linear-gradient(135deg, #ffffff, #f7fafd); }
+  body.light-theme .summary-card-icon { background: rgba(31,35,40,0.05); }
+  body.light-theme .summary-card-change.up { color: #d1242f; background: rgba(248,81,73,0.12); }
+  body.light-theme .summary-card-change.down { color: #1a7f37; background: rgba(63,185,80,0.12); }
+  body.light-theme .summary-card-tag { color: #9a6700; background: rgba(240,180,41,0.16); }
+  /* 老盛观点卡片 */
+  body.light-theme .laosheng-view {
+    color: #474f59;
+    background: linear-gradient(135deg, rgba(240,180,41,0.10), rgba(130,80,223,0.05));
+    border-left-color: #0a66c2;
+  }
+  body.light-theme .laosheng-view .lv-label { color: #0a66c2; }
+  /* 市场行与情绪卡片 */
+  body.light-theme .market-row { border-bottom-color: rgba(31,35,40,0.10); }
+  body.light-theme .sentiment-item { background: #f8fafc; border-color: #e3e7ec; }
+  body.light-theme .sentiment-item:hover { background: #f1f5f9; }
+  /* 时间线标签 */
+  body.light-theme .timeline-item.today .timeline-label { color: #d1242f; }
+  body.light-theme .timeline-item.future .timeline-label { color: #9a6700; }
+  /* 提示条与机构卡片 */
+  body.light-theme .good-bar strong { color: #1a7f37; }
+  body.light-theme .good-bar { border-left-color: #1a7f37; }
+  body.light-theme .hot-bar strong { color: #9a6700; }
+  body.light-theme .hot-bar { border-left-color: #b08325; }
+  body.light-theme .institute-header { background: linear-gradient(135deg, rgba(31,35,40,0.02), transparent); }
+  body.light-theme .institute-cicc { border-left-color: #0a66c2; }
+  body.light-theme .institute-gs { border-left-color: #8250df; }
+  body.light-theme .institute-xy { border-left-color: #1a7f37; }
+  body.light-theme .institute-cicc .institute-tag { color: #0a66c2; }
+  body.light-theme .institute-gs .institute-tag { color: #8250df; }
+  body.light-theme .institute-xy .institute-tag { color: #1a7f37; }
+  /* 选区与滚动条 */
+  body.light-theme ::selection { background: rgba(10,102,194,0.22); color: #1f2328; }
+  body.light-theme ::-webkit-scrollbar-thumb { background: rgba(10,102,194,0.28); border-color: var(--bg-primary); }
+  body.light-theme ::-webkit-scrollbar-thumb:hover { background: rgba(10,102,194,0.45); }
+  /* ===== 内联高亮颜色适配（白底加深保证可读性） ===== */
+  body.light-theme [style*="color:#f0b429"], body.light-theme [style*="color: #f0b429"] { color: #9a6700 !important; }
+  body.light-theme [style*="color:#00d4ff"], body.light-theme [style*="color: #00d4ff"] { color: #0a66c2 !important; }
+  body.light-theme [style*="color:#3fb950"], body.light-theme [style*="color: #3fb950"] { color: #1a7f37 !important; }
+  body.light-theme [style*="color:#f85149"], body.light-theme [style*="color: #f85149"] { color: #d1242f !important; }
+  body.light-theme [style*="color:#8b95a5"], body.light-theme [style*="color: #8b95a5"] { color: #6b7280 !important; }
+  body.light-theme [style*="color:#b0bac4"], body.light-theme [style*="color: #b0bac4"] { color: #57606a !important; }
+  body.light-theme [style*="color:#e6edf3"], body.light-theme [style*="color: #e6edf3"] { color: #1f2328 !important; }
+  body.light-theme [style*="color:#bc8cff"], body.light-theme [style*="color: #bc8cff"] { color: #8250df !important; }
+  body.light-theme [style*="color:#ffa657"], body.light-theme [style*="color: #ffa657"] { color: #bc4c00 !important; }
+  /* 深色数字徽章转浅蓝 */
+  body.light-theme [style*="#3a4150"] {
+    background: linear-gradient(135deg, #d9eafc, #c7dff7) !important;
+    color: #0a5aa8 !important;
+  }
+  /* 内联黑色半透明底转浅灰 */
+  body.light-theme [style*="background:rgba(0,0,0,0.2)"], body.light-theme [style*="background: rgba(0,0,0,0.2)"] { background: rgba(31,35,40,0.07) !important; }
+  /* 平滑过渡 */
+  body, .header, .card, .market-block, .stock-card, .highlight-item, .highlight-item-v2, .institute-card, .sentiment-item, .summary-card, .tab-btn, .hm-ticker, .brand-icon, .timeline-section {
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+  }
 </style>
 </head>
 <body>
+<script>(function(){try{if(localStorage.getItem('lszd-theme')==='light'){document.body.classList.add('light-theme');}}catch(e){}})();</script>
 <div class="header">
   <div class="header-inner">
     <div class="header-top">
@@ -1813,7 +1962,13 @@
         </div>
       </div>
       <div class="header-meta">
-        <div class="hm-date">2026-08-27</div>
+        <div class="hm-row">
+          <div class="hm-date">2026-08-27</div>
+          <button class="theme-toggle" onclick="toggleTheme()" title="切换日间/夜间阅读模式" aria-label="切换日间/夜间阅读模式">
+            <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+            <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8z"/></svg>
+          </button>
+        </div>
         <div class="hm-sub"><span>星期四</span><span class="sep">|</span><span>净投放2395亿·A股收红·油价回落</span></div>
         <div class="hm-tickers">
           <div class="hm-ticker">
@@ -4007,6 +4162,10 @@ function switchTab(idx) {
     b.classList.toggle('active', i === idx);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleTheme() {
+  var isLight = document.body.classList.toggle('light-theme');
+  try { localStorage.setItem('lszd-theme', isLight ? 'light' : 'dark'); } catch(e) {}
 }
 </script>
 </body>
