@@ -59,3 +59,19 @@
 - 国有大行由 3 增至 **4**：工行(601398)/建行(601939)/农行(601288)/**中行(601988，新增标的16)**。
 - 新增中行走"标的16"通道：模板插 `{{标的16_*}}` 占位卡、生成器 `stocks` 列表追加元组、两者须同步，避免重生成丢失。
 - 中行股息率用权威 TTM（约3.7%），与报告内工行等"国有大行统一估算4.8%"口径不同，属真实差异，如实标注不强行对齐。
+
+## 生成器工程约定（2026-08-29 沉淀）
+- **占位符规模**：`template.html` 共 **794 处 / 779 个唯一**占位符。生成器字典键名必须写成 `{{键名}}`（带花括号）再 `re.sub`，否则 779 个全部不匹配、静默失败。
+- **页眉 ticker 无涨跌类占位符**：模板只有 `<span class="t-chg">{{ticker_X_涨跌幅}}</span>`，必须在生成后按符号后处理为 `up/down/neutral` 并加 ▲▼ 箭头；同时**在内层再包一层语义色 span**（如 `<span style="color:#3fb950;font-weight:700;">▼0.11%</span>`），否则 booster 会把去掉符号的百分比染成青色。
+- **债券/利率行不要写 +/- 符号**：写成 `4.714%（上行3.97bp）`、`1.69%（持平）`，避免"收益率上行"被自动着色成红色造成语义误导（保持 neutral）。
+- **语义着色边界**：动作/建议类短语（"逢回调分批建仓""需等待…改善"）用橙 `#ffa657`，不要用红/绿；只有明确的涨跌/利好利空语义才用红绿。
+- **booster 后仍有低密度卡**：关键词库再全也覆盖不到纯政策类新闻，需在数据层定向补 `S()` 高亮 span（本次补 9 张卡：限售股个税、券商接入规范、港交所合并、中东局势、MHS、AI 办公×3、脑机接口国产替代）。
+- **card-body 密度统计必须用 balanced-div 提取**（扫描 `<div`/`</div>` 计数配平），非贪婪正则 `<div class="card-body">(.*?)</div>` 会在首个 `</div>` 截断，误判「深度解读」「关键数字速查」两张卡低密度。
+- **质检脚本 QC 阈值以模板为准**：sub-title 数、tab-panel 数、情绪条宽度（9 条须都带 `%`）等从 `template.html` 动态取数比对，不写死旧阈值。
+
+## GitHub 推送：网络异常时的 API 兜底（2026-08-29）
+- **现象**：`git push` 报 `unable to access https://github.com/... Recv failure`，`curl https://github.com` 超时（IPv4/IPv6 均失败），但 **`api.github.com` 可达**、`gh auth status` 已登录（token 含 `repo` 权限）。
+- **兜底方案**：用 GitHub Git Data API 推送——`POST /git/blobs`(base64) → `POST /git/trees`(base_tree+entries) → `POST /git/commits` → `PATCH /git/refs/heads/main`。脚本 `/tmp/gh_push.py`（改 `FILES`/`MSG` 即可复用）。
+- **注意**：API 提交会以**远端 HEAD** 为父提交。若本地还有未推送的历史提交，需单独再推一次对应文件补齐，否则这些改动会丢失在远端。
+- **推送后校验**：`gh api repos/{owner}/{repo}/contents/{file}` 比对 `size` 与本地字节数一致。
+- **历史分叉处置**：API 推送会造成本地与远端历史顺序不同（内容一致）。网络恢复后 `git fetch origin && git reset --soft origin/main` 即可对齐（内容相同，工作区不受影响）。
