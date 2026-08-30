@@ -33,11 +33,15 @@ body{
   color:var(--text-primary);
   line-height:1.7;
   min-height:100vh;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.14) 0%, transparent 60%),
-    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,212,255,0.008) 3px, rgba(0,212,255,0.008) 4px);
+  background-image: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0,80,160,0.10) 0%, transparent 60%);
   -webkit-font-smoothing:antialiased;
 }
+
+/* 滚动条 */
+::-webkit-scrollbar { width:6px;height:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(139,148,158,0.35);border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:rgba(139,148,158,0.55); }
 
 /* ══════════ PASSWORD GATE ══════════ */
 .pw-overlay {
@@ -176,10 +180,10 @@ body{
 
 /* ══════════ HEADER ══════════ */
 .header {
-  background:linear-gradient(180deg, #080e18 0%, #0a1422 100%);
-  border-bottom:1px solid rgba(0,212,255,0.18);
+  background:linear-gradient(180deg, #0a1018 0%, #0c1523 100%);
+  border-bottom:1px solid rgba(0,212,255,0.14);
   position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 40px rgba(0,0,0,0.7),0 1px 0 rgba(0,212,255,0.12);
+  box-shadow:0 2px 20px rgba(0,0,0,0.4);
   overflow:hidden;
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
@@ -187,14 +191,14 @@ body{
 .header::before {
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent 0%,var(--accent) 25%,var(--purple) 75%,transparent 100%);
-  box-shadow:0 0 18px var(--accent);
+  opacity:0.6;
 }
 
 .header::after {
   content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
   background-size:60px 60px;
   animation:header-grid-move 20s linear infinite;
   pointer-events:none;
@@ -222,10 +226,10 @@ body{
 .brand-icon {
   width:56px;height:56px;
   background:linear-gradient(145deg,#0a1e35 0%,#0d2040 60%,#091828 100%);
-  border:1px solid rgba(0,212,255,0.38);
+  border:1px solid rgba(0,212,255,0.32);
   border-radius:14px;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 20px rgba(0,212,255,0.25),inset 0 1px 0 rgba(255,255,255,0.08);
+  box-shadow:0 2px 12px rgba(0,212,255,0.16),inset 0 1px 0 rgba(255,255,255,0.08);
   flex-shrink:0;
   position:relative;
   overflow:hidden;
@@ -415,7 +419,7 @@ body{
 
 .hero-date-block {
   flex-shrink:0;
-  width:140px;
+  width:124px;
   background:linear-gradient(160deg,rgba(0,212,255,0.08) 0%,rgba(0,212,255,0.02) 100%);
   border-right:1px solid rgba(0,212,255,0.1);
   display:flex;
@@ -933,10 +937,10 @@ body.light-theme .pw-btn:hover { box-shadow:0 0 30px rgba(10,102,194,0.3); }
 /* 头部 */
 body.light-theme .header {
   background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
-  border-bottom:1px solid rgba(10,102,194,0.22);
-  box-shadow:0 1px 14px rgba(31,35,40,0.07);
+  border-bottom:1px solid rgba(10,102,194,0.18);
+  box-shadow:0 1px 10px rgba(31,35,40,0.06);
 }
-body.light-theme .header::before { box-shadow:none; }
+body.light-theme .header::before { opacity:0.5; }
 body.light-theme .header::after { opacity:0.35; }
 body.light-theme .brand-icon {
   background:linear-gradient(145deg,#eaf3fd 0%,#dcecfa 60%,#e6f1fb 100%);
@@ -956,6 +960,8 @@ body.light-theme .theme-toggle .ico-sun { display:none; }
 body.light-theme .theme-toggle .ico-moon { display:block; }
 /* 区块标题与Hero卡片 */
 body.light-theme .section-title::after { background:linear-gradient(90deg,rgba(10,102,194,0.25),transparent); }
+body.light-theme .hero-card { box-shadow:0 1px 2px rgba(31,35,40,0.04),0 6px 24px rgba(31,35,40,0.08); }
+body.light-theme .hero-card-border { animation:none;background:linear-gradient(135deg,rgba(10,102,194,0.45),rgba(130,80,223,0.35),rgba(10,102,194,0.45));opacity:0.55; }
 body.light-theme .hero-card::before { background:linear-gradient(180deg,rgba(10,102,194,0.04) 0%,transparent 100%); }
 body.light-theme .hero-date-block {
   background:linear-gradient(160deg,rgba(10,102,194,0.05) 0%,rgba(10,102,194,0.01) 100%);
@@ -971,11 +977,14 @@ body.light-theme .hero-tag:nth-child(2) { border-color:rgba(130,80,223,0.3);colo
 body.light-theme .hero-tag:nth-child(3) { border-color:rgba(26,127,55,0.3);color:#1a7f37; }
 /* 时间线 */
 body.light-theme .tl-weekday { background:rgba(10,102,194,0.07); }
+body.light-theme .timeline-content { box-shadow:0 1px 2px rgba(31,35,40,0.04); }
 body.light-theme .timeline-item:hover .timeline-content { box-shadow:0 6px 20px rgba(31,35,40,0.10); }
 /* 页脚 */
 body.light-theme .footer-divider::before { box-shadow:0 0 10px rgba(10,102,194,0.35); }
-/* 选区 */
+/* 选区与滚动条 */
 body.light-theme ::selection { background:rgba(10,102,194,0.22);color:#1f2328; }
+body.light-theme ::-webkit-scrollbar-thumb { background:rgba(31,35,40,0.22);border-radius:3px; }
+body.light-theme ::-webkit-scrollbar-thumb:hover { background:rgba(31,35,40,0.38); }
 /* 平滑过渡 */
 body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
   transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease;
@@ -1084,7 +1093,9 @@ body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
 
 <script>
 // 所有快报数据（按日期倒序）- 只保留最近10天
-const reports = [{ date: "20260829", weekday: "星期六", title: "沃什放鹰·金价跌3%·A股缩量" },
+const reports = [{ date: "20260830", weekday: "星期日", title: "地产三箭齐发·沃什放鹰·金价重挫" },
+
+{ date: "20260829", weekday: "星期六", title: "沃什放鹰·金价跌3%·A股缩量" },
 
 { date: "20260828", weekday: "星期五", title: "净投放6065亿·A股三指涨超1%" },
 
@@ -1096,7 +1107,6 @@ const reports = [{ date: "20260829", weekday: "星期六", title: "沃什放鹰�
 { date: "20260822", weekday: "星期六", title: "周末休市·A股微涨·楼市新政落地" },
 { date: "20260821", weekday: "星期五", title: "A股收红守3900·银行创新高·美股跌" },
 { date: "20260820", weekday: "星期四", title: "A股放量大跌·银行独红·亚太重挫" },
-{ date: "20260819", weekday: "星期三", title: "A股放量普涨·港股走强·机器人大会" },
 
   ];
 
