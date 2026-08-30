@@ -75,3 +75,9 @@
 - **注意**：API 提交会以**远端 HEAD** 为父提交。若本地还有未推送的历史提交，需单独再推一次对应文件补齐，否则这些改动会丢失在远端。
 - **推送后校验**：`gh api repos/{owner}/{repo}/contents/{file}` 比对 `size` 与本地字节数一致。
 - **历史分叉处置**：API 推送会造成本地与远端历史顺序不同（内容一致）。网络恢复后 `git fetch origin && git reset --soft origin/main` 即可对齐（内容相同，工作区不受影响）。
+
+## index.html 维护约定（2026-08-29 修复 bug 后补）
+- **密码锁密码**：硬编码在 JS 里（base64 混淆），当前生效密码 = **`12345678`**（解码 `_0x1a` 数组得 `MTIzNDU2Nzg=`）。改密码须重算 `btoa(新密码)` 对应的 `_0x1a` 编码数组（每个字符 `+1` 取 ASCII 码）。
+- **致命坑：`reports` 数组裁剪务必只留一个 `];`**。2026-08-29 用脚本插入/裁剪 reports 条目时，误多生成一处孤立 `];`（第1104行），导致全局 `<script>` 解析失败——密码锁 `checkPassword` 与首页列表渲染全部不执行、遮罩永远关不掉、页面进不去。修复：`node --check` 两段 `<script>` 必须无 SyntaxError；提交前确认 `function getLink` 前无孤立 `];`。
+- **前端锁无安全性**：base64 混淆可被任何人从源码解出，仅防君子。如需真正访问控制，应迁到带鉴权的静态托管或 Serverless Function。
+- **本地 `file://` 兼容**：Safari 对 `file://` 的 Web Storage 可能限制；密码锁 IIFE 未包 try-catch，若 `sessionStorage` 抛错会导致按钮无反应。后续若需兼容本地双击打开，应给 IIFE 加 try/catch 兜底（失败则直接放行）。
