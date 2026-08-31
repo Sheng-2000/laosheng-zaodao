@@ -245,12 +245,12 @@ body{
 .brand-icon svg { width:28px;height:28px;position:relative;z-index:1; }
 /* 闪电本体特效：霓虹辉光 + 呼吸脉动（仅作用于主闪电 path:first-child，装饰弧不动） */
 .brand-icon svg path:first-child {
-  filter:drop-shadow(0 0 2px rgba(0,212,255,0.75)) drop-shadow(0 0 4px rgba(0,212,255,0.4));
+  filter:drop-shadow(0 0 1.5px rgba(0,212,255,0.55)) drop-shadow(0 0 3px rgba(0,212,255,0.25));
   animation:bolt-glow 3.2s ease-in-out infinite;
 }
 @keyframes bolt-glow {
-  0%,100% { filter:drop-shadow(0 0 2px rgba(0,212,255,0.75)) drop-shadow(0 0 4px rgba(0,212,255,0.4)); }
-  50%     { filter:drop-shadow(0 0 3px rgba(0,212,255,1)) drop-shadow(0 0 9px rgba(0,212,255,0.65)); }
+  0%,100% { filter:drop-shadow(0 0 1.5px rgba(0,212,255,0.55)) drop-shadow(0 0 3px rgba(0,212,255,0.25)); }
+  50%     { filter:drop-shadow(0 0 2px rgba(0,212,255,0.75)) drop-shadow(0 0 6px rgba(0,212,255,0.45)); }
 }
 @media (prefers-reduced-motion:reduce) {
   .brand-icon svg path:first-child { animation:none; }
@@ -963,11 +963,11 @@ body.light-theme .brand-icon {
   border-color:rgba(10,102,194,0.18);
   box-shadow:0 2px 10px rgba(10,102,194,0.14),inset 0 1px 0 rgba(255,255,255,0.7);
 }
-body.light-theme .brand-icon svg path:first-child { stroke:#0a66c2;filter:drop-shadow(0 0 2px rgba(10,102,194,0.6)) drop-shadow(0 0 4px rgba(10,102,194,0.3));animation:bolt-glow-light 3.2s ease-in-out infinite; }
+body.light-theme .brand-icon svg path:first-child { stroke:#0a66c2;filter:drop-shadow(0 0 1.5px rgba(10,102,194,0.45)) drop-shadow(0 0 3px rgba(10,102,194,0.2));animation:bolt-glow-light 3.2s ease-in-out infinite; }
 body.light-theme .brand-icon svg path:not(:first-child) { stroke:rgba(10,102,194,0.35); }
 @keyframes bolt-glow-light {
-  0%,100% { filter:drop-shadow(0 0 2px rgba(10,102,194,0.6)) drop-shadow(0 0 4px rgba(10,102,194,0.3)); }
-  50%     { filter:drop-shadow(0 0 3px rgba(10,102,194,0.85)) drop-shadow(0 0 8px rgba(10,102,194,0.5)); }
+  0%,100% { filter:drop-shadow(0 0 1.5px rgba(10,102,194,0.45)) drop-shadow(0 0 3px rgba(10,102,194,0.2)); }
+  50%     { filter:drop-shadow(0 0 2px rgba(10,102,194,0.6)) drop-shadow(0 0 5px rgba(10,102,194,0.35)); }
 }
 body.light-theme .brand-name { color:#1f2328; }
 body.light-theme .brand-zaodao { text-shadow:none; }
