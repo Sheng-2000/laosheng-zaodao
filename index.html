@@ -333,6 +333,17 @@ body{
 }
 .brand-subtitle .dot { color:rgba(0,212,255,0.25);margin:0 4px; }
 
+.market-marquee { margin-top:9px; overflow:hidden; width:100%; max-width:600px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent); mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent); }
+.market-marquee .mq-track { display:inline-flex; white-space:nowrap; will-change:transform; animation:mq-scroll 32s linear infinite; }
+.market-marquee:hover .mq-track { animation-play-state:paused; }
+.market-marquee .mq-item { padding:0 16px; font-size:12px; color:var(--text-muted); font-family:'SF Mono','Fira Code','Consolas',monospace; }
+.market-marquee .mq-item b { color:var(--accent); font-weight:600; margin-right:5px; font-family:inherit; }
+.market-marquee .mq-item .up { color:#f85149; font-weight:600; }
+.market-marquee .mq-item .down { color:#3fb950; font-weight:600; }
+.market-marquee .mq-item .flat { color:#8b949e; font-weight:600; }
+@keyframes mq-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@media (prefers-reduced-motion: reduce){ .market-marquee .mq-track { animation:none; } }
+
 .live-dot {
   display:inline-block;width:6px;height:6px;
   background:var(--green);border-radius:50%;
@@ -851,6 +862,9 @@ body{
   .brand-zaodao { font-size:16px;letter-spacing:1px; }
   .brand-subtitle { font-size:8px; }
 
+  .market-marquee { max-width:100%; margin-top:7px; }
+  .market-marquee .mq-item { font-size:11px; padding:0 12px; }
+
   .hm-date { font-size:12px; }
   .hm-sub { font-size:8px; }
 
@@ -1069,6 +1083,30 @@ body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
         <span class="live-dot"></span>AI驱动情报
         <span class="dot"> </span><span class="live-dot" style="background:#f5c842;box-shadow:0 0 6px #f5c842;"></span>数据实时
         <span class="dot"> </span><span class="live-dot" style="background:#ff4444;box-shadow:0 0 6px #ff4444;"></span>价值投资
+      </div>
+      <div class="market-marquee" aria-label="实时行情速览">
+        <div class="mq-track">
+          <span class="mq-item"><b>上证</b>3952.18 <span class="down">-0.11%</span></span>
+          <span class="mq-item"><b>深成指</b>13953.07 <span class="down">-0.68%</span></span>
+          <span class="mq-item"><b>创业板</b>3424.40 <span class="down">-1.41%</span></span>
+          <span class="mq-item"><b>沪深300</b>4609.18 <span class="down">-0.46%</span></span>
+          <span class="mq-item"><b>纳指</b>26402.42 <span class="down">-0.52%</span></span>
+          <span class="mq-item"><b>标普500</b>7711.76 <span class="down">-0.25%</span></span>
+          <span class="mq-item"><b>恒生</b>25584.79 <span class="up">+0.07%</span></span>
+          <span class="mq-item"><b>黄金</b>965.00 <span class="down">-3.02%</span></span>
+          <span class="mq-item"><b>离岸人民币</b>6.7217 <span class="flat">贬</span></span>
+          <span class="mq-item"><b>10Y国债</b>1.698 <span class="down">-0.29%</span></span>
+          <span class="mq-item"><b>上证</b>3952.18 <span class="down">-0.11%</span></span>
+          <span class="mq-item"><b>深成指</b>13953.07 <span class="down">-0.68%</span></span>
+          <span class="mq-item"><b>创业板</b>3424.40 <span class="down">-1.41%</span></span>
+          <span class="mq-item"><b>沪深300</b>4609.18 <span class="down">-0.46%</span></span>
+          <span class="mq-item"><b>纳指</b>26402.42 <span class="down">-0.52%</span></span>
+          <span class="mq-item"><b>标普500</b>7711.76 <span class="down">-0.25%</span></span>
+          <span class="mq-item"><b>恒生</b>25584.79 <span class="up">+0.07%</span></span>
+          <span class="mq-item"><b>黄金</b>965.00 <span class="down">-3.02%</span></span>
+          <span class="mq-item"><b>离岸人民币</b>6.7217 <span class="flat">贬</span></span>
+          <span class="mq-item"><b>10Y国债</b>1.698 <span class="down">-0.29%</span></span>
+        </div>
       </div>
     </div>
 
