@@ -101,6 +101,19 @@
   .hm-sub span { white-space: nowrap; flex-shrink: 0; }
   .hm-sub span:last-child { flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; }
   .hm-sub .sep { color: rgba(0,212,255,0.25); }
+  /* 页眉副标题下方：核心指数小跑马灯（可见宽度由JS约束为 ≤.hm-sub 行宽） */
+  .hm-mq { margin-top: 5px; overflow: hidden; max-width: 280px; white-space: nowrap; font-size: 10px; line-height: 1.5; color: var(--text-muted);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+  .hm-mq .mq-track { display: inline-flex; white-space: nowrap; will-change: transform; animation: hm-mq-scroll 24s linear infinite; }
+  .hm-mq:hover .mq-track { animation-play-state: paused; }
+  .hm-mq .mq-item { padding: 0 11px; font-family: 'SF Mono','Fira Code','Consolas',monospace; white-space: nowrap; }
+  .hm-mq .mq-item b { font-weight: 600; margin-right: 5px; color: var(--text); }
+  .hm-mq .mq-chg.up { color: #f85149; }
+  .hm-mq .mq-chg.down { color: #3fb950; }
+  .hm-mq .mq-chg.flat { color: #8b949e; }
+  @keyframes hm-mq-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .hm-mq .mq-track { animation: none; } }
   .hm-tickers { display:flex; gap:8px; align-items:stretch; }
   .hm-ticker { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; min-width: 58px; gap: 1px; }
   .hm-ticker .t-label { font-size: 9px; color: var(--text-muted); letter-spacing: 0.5px; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
@@ -1992,6 +2005,29 @@
           </button>
         </div>
         <div class="hm-sub"><span>{{星期}}</span><span class="sep">|</span><span>{{每日重点事件}}</span></div>
+        <div class="hm-mq" aria-label="核心指数速览">
+          <div class="mq-track">
+            <span class="mq-item"><b>上证</b><span class="mq-chg">{{ticker_上证_数值}} {{ticker_上证_涨跌幅}}</span></span>
+            <span class="mq-item"><b>深证</b><span class="mq-chg">{{ticker_深证_数值}} {{ticker_深证_涨跌幅}}</span></span>
+            <span class="mq-item"><b>纳指</b><span class="mq-chg">{{ticker_纳指_数值}} {{ticker_纳指_涨跌幅}}</span></span>
+            <span class="mq-item"><b>道指</b><span class="mq-chg">{{ticker_道指_数值}} {{ticker_道指_涨跌幅}}</span></span>
+            <span class="mq-item"><b>上海金</b><span class="mq-chg">{{ticker_上海金_数值}} {{ticker_上海金_涨跌幅}}</span></span>
+            <span class="mq-item"><b>上证</b><span class="mq-chg">{{ticker_上证_数值}} {{ticker_上证_涨跌幅}}</span></span>
+            <span class="mq-item"><b>深证</b><span class="mq-chg">{{ticker_深证_数值}} {{ticker_深证_涨跌幅}}</span></span>
+            <span class="mq-item"><b>纳指</b><span class="mq-chg">{{ticker_纳指_数值}} {{ticker_纳指_涨跌幅}}</span></span>
+            <span class="mq-item"><b>道指</b><span class="mq-chg">{{ticker_道指_数值}} {{ticker_道指_涨跌幅}}</span></span>
+            <span class="mq-item"><b>上海金</b><span class="mq-chg">{{ticker_上海金_数值}} {{ticker_上海金_涨跌幅}}</span></span>
+          </div>
+        </div>
+        <script>
+          (function(){
+            function fitHmMq(){ var sub=document.querySelector('.hm-sub'); var mq=document.querySelector('.hm-mq'); if(!sub||!mq) return; mq.style.maxWidth=sub.offsetWidth+'px'; }
+            function colorHmMq(){ document.querySelectorAll('.hm-mq .mq-chg').forEach(function(el){ var t=el.textContent||''; el.classList.remove('up','down','flat'); if(t.indexOf('-')>=0) el.classList.add('down'); else if(t.indexOf('+')>=0) el.classList.add('up'); else el.classList.add('flat'); }); }
+            function run(){ fitHmMq(); colorHmMq(); }
+            if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
+            window.addEventListener('resize', fitHmMq);
+          })();
+        </script>
       </div>
     </div>
   </div>
