@@ -1762,7 +1762,7 @@
 </style>
 </head>
 <body>
-<script>(function(){try{var s=localStorage.getItem('lszd-theme');var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;var d=s?(s==='dark'):(m?m.matches:false);document.body.classList.toggle('light-theme',!d);if(m){var f=function(){if(localStorage.getItem('lszd-theme'))return;document.body.classList.toggle('light-theme',!m.matches);};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
+<script>(function(){try{var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;function apply(){document.body.classList.toggle('light-theme',!(m?m.matches:false));}apply();if(m){var f=function(){apply();};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
 <div class="header">
   <div class="header-inner">
     <div class="header-top">
@@ -3997,8 +3997,7 @@ function switchTab(idx) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function toggleTheme() {
-  var isLight = document.body.classList.toggle('light-theme');
-  try { localStorage.setItem('lszd-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+  document.body.classList.toggle('light-theme');
 }
 </script>
 </body>
