@@ -43,4 +43,4 @@
 
 ## index.html 维护
 - 密码锁密码 `12345678`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
-- logo 设计维持暗色原版（青闪 `#00d4ff`，勿擅改形状/配色）；**主题已支持跟随系统**：init 脚本用 `matchMedia('(prefers-color-scheme: dark)')` 检测，无手动 `lszd-theme` 偏好时自动跟随系统暗/亮并实时监听变化；手动点 ☀️/🌙 切换后存偏好并阻断系统监听。index.html 默认 light-theme 类、template.html 默认暗色（body 无类），两处 init 逻辑统一用 `classList.toggle('light-theme', !isDark)`。再提 logo 改造先问清风格再动手。
+- logo 设计维持暗色原版（青闪 `#00d4ff`，勿擅改形状/配色）；**主题已支持跟随系统**：init 脚本用 `matchMedia('(prefers-color-scheme: dark)')` 检测，无手动 `lszd-theme` 偏好时自动跟随系统暗/亮并实时监听变化；手动点 ☀️/🌙 切换后存偏好并阻断系统监听。index.html 默认 light-theme 类、template.html 默认暗色（body 无类），两处 init 逻辑统一用 `classList.toggle('light-theme', !isDark)`。三文件 head 已加 `<meta name="color-scheme" content="light dark">`，让原生滚动条/下拉等控件也跟随系统主题。再提 logo 改造先问清风格再动手。
