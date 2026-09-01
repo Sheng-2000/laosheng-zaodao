@@ -1761,7 +1761,7 @@
 </style>
 </head>
 <body>
-<script>(function(){try{if(localStorage.getItem('lszd-theme')==='light'){document.body.classList.add('light-theme');}}catch(e){}})();</script>
+<script>(function(){try{var s=localStorage.getItem('lszd-theme');var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;var d=s?(s==='dark'):(m?m.matches:false);document.body.classList.toggle('light-theme',!d);if(m){var f=function(){if(localStorage.getItem('lszd-theme'))return;document.body.classList.toggle('light-theme',!m.matches);};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
 <div class="header">
   <div class="header-inner">
     <div class="header-top">

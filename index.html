@@ -1015,7 +1015,7 @@ body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
 </style>
 </head>
 <body class="light-theme">
-<script>(function(){try{var t=localStorage.getItem('lszd-theme');if(t==='dark'){document.body.classList.remove('light-theme');}}catch(e){}})();</script>
+<script>(function(){try{var s=localStorage.getItem('lszd-theme');var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;var d=s?(s==='dark'):(m?m.matches:false);document.body.classList.toggle('light-theme',!d);if(m){var f=function(){if(localStorage.getItem('lszd-theme'))return;document.body.classList.toggle('light-theme',!m.matches);};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
 
 <!-- 密码锁遮罩层 -->
 <div id="pw-overlay" class="pw-overlay">
