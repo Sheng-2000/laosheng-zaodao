@@ -16,6 +16,10 @@ D = {}
 D.update(d1.D)
 D.update(d2.D)
 
+# 1) 高亮密度增强（必须合并后执行，两个数据文件的键都要覆盖）
+hb = load("hl_boost")
+hb.apply(D)
+
 TPL = os.path.join(HERE, "template.html")
 OUT = os.path.join(HERE, "老盛早知道_20260901.html")
 
