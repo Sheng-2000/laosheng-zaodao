@@ -60,8 +60,9 @@ def fix_block(m):
 html = re.sub(r'<span class="market-val neutral">([\s\S]*?)</span>', fix_block, html)
 
 # 4) header ticker 额外保险：若 mq-chg 内无 class，按符号包一层（已在数据里包，这里补兜底）
-# 5) 清理可能出现的 data-page-node-id 追踪属性
-html = re.sub(r'\sdata-page-node-id="[^"]*"', "", html)
+# 5) 清理可能出现的 data-page-node-id 追踪属性（present_files 预览会回注，提交前必须清除）
+html = re.sub(r'\s*data-page-node-id="[^"]*"', "", html)
+html = re.sub(r'data-page-node-id="[^"]*"', "", html)  # 兜底：无前置空白的情况
 
 open(OUT, "w", encoding="utf-8").write(html)
 
