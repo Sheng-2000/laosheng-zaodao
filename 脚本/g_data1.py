@@ -429,3 +429,70 @@ D["债基_配置建议内容"] = "9/1十年期国债1.684%，国内债市偏强�
 D["市场热点_内容"] = "美军空袭伊朗、油价飙升5.74%、黄金重挫2.48%、全球股债双杀、加息概率飙至68%、银行逆势新高、燧原科技今日申购，构成今日七大主线。"
 D["今日总结_核心结论"] = "隔夜美军空袭伊朗引爆油价与通胀预期，全球股债双杀、金价重挫；A股9月开门红落空但结构仍活跃，银行与农业逆势走强。宜以高股息为底、能源小仓位波段、成长控仓，警惕本周五非农与美联储议息的预期再定价。"
 D["市场综评_日期"] = "2026-09-01"
+
+# ===================== 实时取数覆盖（B 方案）=====================
+# 仅覆盖可实时获取的数值键；失败项保留上方硬编码兜底值（离线/接口受限时非实时）。
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+try:
+    import fetch_market as _fm
+    _M = _fm.get_market()
+
+    def _ov_idx(sym, data_key=None, ticker_num=None, ov=None, qc=None):
+        v = _M.get(sym)
+        if not v:
+            return
+        close, pct, _ = v
+        if data_key:
+            D[data_key] = "%.2f %s" % (close, _fm.pct_str(pct))
+        if ticker_num:
+            D["ticker_%s_数值" % ticker_num] = "%.2f" % close
+            D["ticker_%s_涨跌幅" % ticker_num] = '<span class="%s">%s</span>' % (_fm.cls_of(pct), _fm.pct_str(pct))
+        if ov:
+            D["%s_数值" % ov] = "%.2f" % close
+            D["%s_涨跌幅" % ov] = _fm.pct_str(pct)
+            D["%s_涨跌class" % ov] = _fm.cls_of(pct)
+        if qc:
+            D["速查%d_数值" % qc] = "%.2f" % close
+            D["速查%d_标签class" % qc] = _fm.cls_of(pct)
+
+    _ov_idx("sh000001", "A股_上证指数_数据", "上证", "概览卡1", 1)
+    _ov_idx("sz399001", "A股_深证成指_数据", "深证", None, 2)
+    _ov_idx("sz399006", "A股_创业板指_数据", None, None, 3)
+    _ov_idx("sh000300", "A股_沪深300_数据")
+    _ov_idx("sh000688", "A股_科创50_数据")
+
+    for _sym, _key, _tnum in [("dji", "道琼斯", "道指"), ("ixic", "纳斯达克", "纳指"), ("inx", "标普500", None)]:
+        _v = _M.get(_sym)
+        if _v:
+            D["美股_%s_涨跌幅" % _key] = _fm.pct_str(_v[1])
+            if _tnum:
+                D["ticker_%s_数值" % _tnum] = "%.2f" % _v[0]
+                D["ticker_%s_涨跌幅" % _tnum] = '<span class="%s">%s</span>' % (_fm.cls_of(_v[1]), _fm.pct_str(_v[1]))
+
+    def _bond_str(key, base):
+        chg = _M.get(key + "_chg")
+        if chg is not None and chg != 0:
+            suf = "（较前日升%.0fbp）" % chg if chg > 0 else "（较前日降%.0fbp）" % abs(chg)
+        elif chg == 0:
+            suf = "（较前日持平）"
+        else:
+            suf = "（实时抓取）"
+        return "%.2f%%%s" % (base, suf)
+
+    if _M.get("us10y") is not None:
+        D["汇率_美10年期"] = _bond_str("us10y", _M["us10y"])
+        D["速查7_数值"] = "%.2f%%" % _M["us10y"]
+    if _M.get("us30y") is not None:
+        D["汇率_美30年期"] = _bond_str("us30y", _M["us30y"])
+        D["图表_超长国债_数值"] = "%.2f%%" % _M["us30y"]
+    if _M.get("cn10y") is not None:
+        D["汇率_中10年期"] = _bond_str("cn10y", _M["cn10y"])
+        D["速查8_数值"] = "%.2f%%" % _M["cn10y"]
+        D["理财参考6_数值"] = "%.2f%%" % _M["cn10y"]
+
+    if _fm.FALLBACK:
+        print("[fetch_market] 以下项使用硬编码兜底(非实时):", ", ".join(_fm.FALLBACK[:10]),
+              "…(共%d项)" % len(_fm.FALLBACK))
+except Exception as _e:
+    print("[WARN] fetch_market 覆盖失败，沿用硬编码数值:", repr(_e)[:120])

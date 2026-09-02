@@ -223,6 +223,24 @@ for i,(name,code,price,chg,cls,points) in enumerate(标的,1):
     for j,p in enumerate(points,1):
         D["标的%d_要点%d"%(i,j)] = p
 
+# ===================== 实时取数覆盖 16 标的（B 方案）=====================
+# 仅覆盖可实时获取的 股价/涨跌幅/涨跌class；要点(叙事)保留上方硬编码，由 agent 每轮基于搜索重写。
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+try:
+    import fetch_market as _fm
+    _M = _fm.get_market()
+    _stocks = _M.get("stocks", {})
+    for i,(name,code,price,chg,cls,points) in enumerate(标的,1):
+        v = _stocks.get(code)
+        if v:
+            close, pct, _ = v
+            D["标的%d_股价"%i] = "%.2f" % close
+            D["标的%d_涨跌幅"%i] = _fm.pct_str(pct)
+            D["标的%d_涨跌class"%i] = _fm.cls_of(pct)
+except Exception as _e:
+    print("[WARN] 标的实时取数失败，沿用硬编码:", repr(_e)[:120])
+
 # ===================== 标的 正面/风险 提示 =====================
 D["标的_正面提示标题"] = "银行板块正面信号"
 D["标的_正面提示内容"] = "二季度商业银行净息差1.41%环比升1bp，为2022年一季度以来首次回升；42家上市银行中期营收3.14万亿+7.4%、归母净利1.13万亿+2.96%；六大行中期分红2209.89亿同比+7.98%创纪录；七只银行股9/1逆势创历史新高；1年定存降至0.95%凸显股息稀缺性。"

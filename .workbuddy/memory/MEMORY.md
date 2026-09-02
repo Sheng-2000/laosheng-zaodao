@@ -80,3 +80,12 @@
 - 生成/质检脚本统一放 **脚本/** 目录，保持根目录清晰：`build.py`/`g_data1.py`/`g_data2.py`/`hl_boost.py`/`qc_check.py` 全部 `git mv` 至 `脚本/`。
 - `build.py` 用 `HERE = 脚本目录`、`ROOT = os.path.dirname(HERE)` 回指根目录读写 `规则/template.html` 与报告输出（TPL/OUT 用 `ROOT` 拼接）；`g_data1/2/hl_boost` 同目录 `load()` 不受影响。运行：`python 脚本/build.py`、`python 脚本/qc_check.py 老盛早知道_YYYYMMDD.html`。
 - 移动文件坑：用普通 `mv` 会让 git 失联 rename（显示旧路径 D + 新路径 ??），须 `git add` 旧路径(删)+新路径(增) 让相似度识别连成 R，或直接用 `git mv`。中文文件名在 `git status/ls-files` 会被转义成八进制，`grep` 中文易漏配，核对 git 状态优先看 `git status --short` 转义串或 `git diff --cached --stat`。
+
+## 实时取数机制（B 方案，2026-09-02 落地，根治"利旧照抄"）
+- **机制铁律**：定时任务触发 agent 走 5 步（搜→重写 g_data1/g_data2 叙事→build→高亮→质检→推送）；`build.py` 仅作"渲染器"，每轮被喂入**当天搜索重写的数据**，旧文件/旧数据非真相来源。严禁"跳过重写直接 build 旧 g_data"。
+- **`脚本/fetch_market.py`（实时数字层）**：akshare 隔离 venv（`/Users/sheng/.workbuddy/binaries/python/envs/default/bin/python3` 已装 akshare）；`ThreadPoolExecutor` 8s 硬超时 + 16 标的并行 + 进程内缓存 + FALLBACK 列表。
+  - 实时覆盖键：A股5指数 / 美股3指数 / 中美国债收益率(us10y/us30y/cn10y/cn30y + `_chg` bp变动) / 16 标的(股价/涨跌幅/涨跌class)。`g_data1/g_data2` 末尾 `import fetch_market` 重叠覆盖，失败保留硬编码兜底。
+  - 沙箱可用端点：指数(sina `stock_zh_index_daily`)、美股(`stock_us_daily`)、债券(`bond_zh_us_rate`)，返回 2026-09-01 真实收盘。**受限**：A股个股(`stock_zh_a_daily`)/港股/商品/外汇 sina 源 → 硬编码兜底（值仍正确 T-1）。
+  - `_bond_str` 安全：仅当 `_M[key+"_chg"]` 真实返回才显"升/降N bp"，缺数据显"实时抓取"，**绝不编造涨跌**。
+- **`脚本/freshness_gate.py`（防照抄门禁）**：句子级比对新报告 vs 上一期，剥离 `<script>/<style>`+代码句；区分「市场数据句(T-1共享,可接受)」与「叙事/分析句(逐字复制=照抄,硬 FAIL)」。`build.py` 第7步调用，仅告警不 exit（稳定16标的要点属固定参考不硬阻断）。
+- **提交前必清**：`present_files` 回注 `data-page-node-id` → 提交前 regex 清除（`git diff`=0），或先 commit 再 present_files。

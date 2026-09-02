@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 # 老盛早知道 生成器：合并数据 -> 填充模板 -> 涨跌后处理 -> QC
-import re, importlib.util, os, sys
+import re, importlib.util, os, sys, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)  # 项目根目录（脚本目录的父级）
+
+# 按系统日期动态输出，绝不复盖旧报告（防"直接重跑旧脚本"覆盖成品）
+TODAY = datetime.date.today().strftime("%Y%m%d")
 
 def load(modname):
     spec = importlib.util.spec_from_file_location(modname, os.path.join(HERE, modname + ".py"))
@@ -22,7 +25,7 @@ hb = load("hl_boost")
 hb.apply(D)
 
 TPL = os.path.join(ROOT, "规则", "template.html")
-OUT = os.path.join(ROOT, "老盛早知道_20260902.html")
+OUT = os.path.join(ROOT, "老盛早知道_%s.html" % TODAY)
 
 html = open(TPL, encoding="utf-8").read()
 
@@ -67,9 +70,21 @@ ph = len(re.findall(r"\{\{[^{}]+\}\}", html))
 dash = len(re.findall(r'"--"', html)) + len(re.findall(r">--<", html))
 none = html.count("暂无数据")
 print("=== QC ===")
+print("输出文件:", os.path.basename(OUT))
 print("占位符残留:", ph)
 print('"--" 数量:', dash)
 print("暂无数据数量:", none)
 print("文件行数:", html.count(chr(10))+1)
 print("数据项填充数:", len(D))
 print("模板中未使用的数据键(可忽略):", len(missing))
+
+# 7) 防照抄门禁：与上一期做句子级比对，列出叙事照抄候选供人工/AI 复核
+#    说明：市场数据句(T-1共享)视为正常；叙事/分析句逐字复制即提示需基于当天搜索重写。
+#    此处仅作"检查并告警"，不阻断流水线——根治靠 B 方案(数字实时抓取+叙事每轮重写)。
+try:
+    fg = load("freshness_gate")
+    ok, ratio, repeats = fg.run(OUT)
+    if not ok:
+        print("⚠️ 检测到叙事照抄候选：请基于当天搜索重写上述句子，勿照抄上一期")
+except Exception as e:
+    print("[WARN] 防照抄门禁未运行:", repr(e)[:120])
