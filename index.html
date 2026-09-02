@@ -1115,8 +1115,10 @@ body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
 </div>
 
 <script>
-// 所有快报数据（按日期倒序）- 只保留最近10天
+// 所有快报数据（按日期倒序）- 最新一期 + 最近6天历史（不含当天）；历史区取 slice(1,7) 强制只列6天
 const reports = [
+{ date: "20260902", weekday: "星期三", title: "美军空袭伊朗·油价飙升5.7%·股债双杀" },
+
 { date: "20260901", weekday: "星期二", title: "六大行中报超预期·内银领涨·油价破85" },
 
 { date: "20260831", weekday: "星期一", title: "PMI回升49.8%·银行齐创新高·油价破90" },
@@ -1129,9 +1131,7 @@ const reports = [
 
 { date: "20260827", weekday: "星期四", title: "央行净投放2395亿·A股收红·油价回落" },
 
-{ date: "20260826", weekday: "星期三", title: "A股分化收跌·银行独强·油价大跌" },
-
-{ date: "20260825", weekday: "星期二", title: "A股放量大跌·银行独强·港股重挫" }
+{ date: "20260826", weekday: "星期三", title: "A股分化收跌·银行独强·油价大跌" }
   ];
 
 function getLink(dateStr) {
@@ -1175,8 +1175,8 @@ document.getElementById('latest-section').innerHTML = `
   </a>
 `;
 
-// 历史列表 - 时间线样式
-const archive = reports.slice(1);
+// 历史列表 - 时间线样式（只列最近6天，不含当天）
+const archive = reports.slice(1, 7);
 const timeline = document.getElementById('archive-timeline');
 archive.forEach(r => {
   const d = r.date;

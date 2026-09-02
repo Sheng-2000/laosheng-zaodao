@@ -20,8 +20,8 @@ D.update(d2.D)
 hb = load("hl_boost")
 hb.apply(D)
 
-TPL = os.path.join(HERE, "template.html")
-OUT = os.path.join(HERE, "老盛早知道_20260901.html")
+TPL = os.path.join(HERE, "规则", "template.html")
+OUT = os.path.join(HERE, "老盛早知道_20260902.html")
 
 html = open(TPL, encoding="utf-8").read()
 
