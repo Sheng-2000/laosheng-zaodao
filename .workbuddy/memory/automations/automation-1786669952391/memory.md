@@ -47,3 +47,27 @@
 - **重要修正**：理财利率口径（1年 0.95%/3年 1.25%/5年 1.30%，上期数值偏高）；新增 qc_check.py 以模板对照判定 Tailwind/font-size 污染（避免误报 4/8 处）
 - **Git**：commit `aac3884` 已 push origin/main（含报告+生成器+index+qc_check+记忆）；推送后已 regex 清 data-page-node-id 并校验 size/SHA256 一致
 - **状态**：完成（生成→QC→修复→推送 全流程通过）
+
+---
+
+## 20260902 续跑（回应"机制不应直接调旧脚本" + B方案收尾验证）
+
+- **背景**：上一轮用户质疑"下次生成会直接调用旧脚本、应基于搜索重新生成脚本"；已澄清机制并落地 B 方案（实时取数）+ freshness_gate 门禁。
+- **本轮回合动作**：
+  1. 核实 `build.py` 端到端重建产物：`老盛早知道_20260902.html` 已用实时债券值重写（美30年期 5.27% 升2bp、中10年期 1.68% 降0bp），占位符0、暂无数据0、"--"0、data-page-node-id 污染0。
+  2. 全量 QC：qc_check ✅ / deep_qc ✅ / cover_qc ✅（无 FAIL）；高亮591处未改字号、四区≥120字、社区5话题全问句+三角色+老盛观点≥120字、Tab5十六卡同名同码。
+  3. freshness_gate 复跑：9/2 vs 9/1 抓 23 条叙事相同句——溯源绝大多数为稳定16标的投资要点与板块特征参考（非时效新闻），用户点名的"增长动能/PMI"宏观句不在复制列表（已上轮重写解决）；门禁保留为常态护栏。
+  4. 准确性核验：`_bond_str` 仅当 akshare 真实返回 `_chg` 才显"升/降N bp"，缺数据显"实时抓取"，无编造。
+  5. 提交 `b3d43de` + push `00d330b..b3d43de`（含重建报告 + fetch_market.py + freshness_gate.py + 改造 build/g_data1/g_data2 + 记忆文件）；污染0、字节干净。
+- **机制结论（答用户）**：定时任务触发 agent 走 5 步（搜→重写 g_data1/g_data2 叙事→build→高亮→质检→推送）；`build.py` 仅作渲染器，每轮喂入当天数据；`fetch_market` 实时抓数字替换硬编码；`freshness_gate` 拦时效叙事利旧。旧文件/旧数据非真相来源。
+- **遗留**：`fetch_news.py`(联网搜当日新闻/AI/机构/社区叙事) 未建；生产环境若 sina/akshare 其他源可达，16标的/HK/商品/外汇可自动变实时。
+
+## 20260902 续跑·三（fetch_news 落地 + build 挂死根治）
+
+- **fetch_news.py 建成并接入**：`stock_info_global_em`(真实 标题/摘要/发布时间/链接，200条) + `stock_news_em` + `stock_hot_keyword_em`。`apply(D)` 覆盖新闻卡头条为真实带日期标题，保留 agent 分析正文（维持高亮密度）。9/2 报告已注入真实头条（含"印度外长苏杰生…"）。
+- **build 挂死根因修复（关键）**：`fetch_market._run` 原 `with ThreadPoolExecutor`+`fut.result(timeout)` 在底层网络挂死时，`__exit__` 的 `shutdown(wait=True)` 无限阻塞主线程 → build 卡 7-11 分钟。改为 `threading.Thread(daemon=True)`+`join(timeout)`。同步加 `get_market` 整体 90s 上限 + fetch_market/fetch_news 当日磁盘缓存(importlib 为 g_data1/g_data2 各建独立实例、进程内缓存不共享，磁盘缓存避免重复抓网)，build 降到 ~15-90s。`build.py` 的 `data-page-node-id` 清理正则强化为两段防漏清。
+- **重建 + 全 QC 通过**：qc_check/deep_qc/cover_qc 全 PASS、无 FAIL；占位符0/暂无数据0/污染0。
+- **提交**：`beca2e4` → push `b3d43de..beca2e4`（fetch_news.py + 改造 fetch_market/g_data2/build + 重建报告 + 记忆）。
+- **机制现状（答用户"不应直接调旧脚本"）**：定时任务 agent 走 5步（搜→重写 g_data1/g_data2 叙事→build→高亮→质检→推送）；`build.py` 仅渲染器、动态日期输出；`fetch_market` 实时抓数字、`fetch_news` 实时抓头条；`freshness_gate` 拦时效叙事利旧。数字与头条每轮真·重搜，旧文件非真相来源。
+- **机构/社区/生物医学**：多角色结构化叙事无法机械合成而不编造，保留 agent 每轮重写（fetch_news 仅提供取数接口）。
+- **2026-09-02 下午 用户指令：社区情绪板块 新能源→半导体**：三处联动改（`规则/template.html` 占位符/emoji/渐变、`脚本/g_data1.py` 情绪字典键+描述、`脚本/hl_boost.py` _TEC 补"半导体"），重建 9/2 报告全QC通过；提交 `e684861`→push `beca2e4..e684861`。污染坑：build 输出本干净，工具预览回注 data-page-node-id，须 build+QC+commit 同 Bash 完成再 present_files。
