@@ -39,11 +39,12 @@
 - 阈值从 `template.html` 动态取，不写死；统计 `--`/老盛观点前须剔注释与 `<style>`。
 - **基线判定原则（关键）**：Tailwind 污染正则会命中项目自有类名 `grid-2/3/4`；「高亮 span 含 font-size」会命中模板自带的强调 span（15px）。这两项**必须与 `规则/template.html` 对比计数**，模板里同样存在的记为继承项，不算缺陷——否则必误报（本期各误报 4 处 / 8 处）。
 
-## 全面质检双脚本（2026-09-02 补 deep_qc.py）
+## 全面质检三脚本（2026-09-02 补 deep_qc.py / cover_qc.py）
 - `脚本/qc_check.py`（规范统一入口）：数据及时性 / 结构与样式（行数·tab-panel·sub-title·stock-card·sentiment-item·market-block·Tailwind·占位符·"--"·暂无数据）/ 涨红跌绿 class↔符号 / 高亮 span 总数与字号 / 交互 switchTab / 四区≥120字 / 社区话题格式 / 8大市场块日期。
 - `脚本/deep_qc.py`（补充逐项）：语义色强矛盾（利好红·利空绿）、涨跌 class↔符号全量、逐卡高亮密度（新闻/AI≥5、其余≥2、数据卡豁免）、Tab5 十六卡同名同码、页头指数速览填充、关键指数/标的名词覆盖、8大市场块着色。
-- 运行：`python 脚本/qc_check.py 老盛早知道_YYYYMMDD.html` 与 `python 脚本/deep_qc.py 老盛早知道_YYYYMMDD.html`，两者均 PASS 才算全面通过。
-- **deep_qc 已踩坑（写/改脚本务必规避）**：①语义色机械正则会把「美债收益率上行→绿(利空)」误判为矛盾，须用具体字符串豁免（`突破5.27%`/`突破4.79%`/`收益率突破`等）或上下文窗口查"收益率/利率/债"；②`HTML.find('hm-mq')` 会命中 CSS 里的 `.hm-mq` 选择器，须查 `class="hm-mq"`；③逐卡高亮用 `re.split`+`finditer` 索引易错位（CSS 里也含 `card-body` 字样），须直接对 `finditer('<div class="card-body')` 起点切片；④数据展示卡（股息率对比 / 关键数字速查 / 指数速览含"收盘·"）豁免高亮密度，否则必误报。
+- `脚本/cover_qc.py`（规范 2.3 逐 Tab 覆盖）：Tab0-7 逐 Tab 高亮密度（Tab0 summary+时间线+要点速览 / Tab1 新闻≥5 / Tab2 AI≥5+生物医学 / Tab3 综评4维度≥3 / Tab4 机构≥2 / Tab5 16股+深度解读+着色 / Tab6 理财≥2+板块覆盖 / Tab7 非数据卡≥2）、标签语义（利好红·利空绿）、数据标注日期（8市场块 2026-09-01）。
+- 运行：三脚本均 `python 脚本/xxx.py 老盛早知道_YYYYMMDD.html`，**三者均 PASS 才算全面通过**。
+- **deep_qc / cover_qc 已踩坑（写/改脚本务必规避）**：①语义色机械正则会把「美债收益率上行→绿(利空)」误判为矛盾，须用具体字符串豁免（`突破5.27%`/`突破4.79%`/`收益率突破`等）或上下文窗口查"收益率/利率/债"；②`HTML.find('hm-mq')` 会命中 CSS 里的 `.hm-mq` 选择器，须查 `class="hm-mq"`；③逐卡高亮用 `re.split`+`finditer` 索引易错位（CSS 里也含 `card-body` 字样），须直接对 `finditer('<div class="card-body')` 起点切片；④数据展示卡（股息率对比 / 关键数字速查 / 指数速览含"收盘·"）豁免高亮密度，否则必误报；⑤**Tab0/Tab3/Tab5 不用 `card-body` 结构**（Tab0=summary-card+timeline-item+要点速览；Tab3 综评维度卡用 `border-radius:12px;padding:16px` 但风险事件维度卡 padding 值不同；Tab5=stock-card+stock-change/stock-bullets 着色）——用 `card-body` 切分必漏报，须按组件/真实标题定位（`cover_qc` 已按 g_data1 的 综评_A股/外围/地缘/风险事件 四标题定位 4 维度）；⑥`import importlib.util as _iu` 后须用 `_iu.spec_from_file_location`（不要多写一层 `.util`）；⑦脚本末尾提示句「（FAIL 项见上方明细）」含 FAIL 字样，`grep -c FAIL` 会误计 1，须用 `grep "  FAIL "` 查真实失败行。
 - **结论判定铁律**：初始 FAIL 先甄别「报告真缺陷」vs「检查脚本误报/逻辑缺陷」，禁止一见 FAIL 就改报告；本项目数据展示卡与利率上行语境已明确豁免，属预期内。
 
 ## 数据时点（2026-09-02 明确）
