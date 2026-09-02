@@ -3,6 +3,7 @@
 import re, importlib.util, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)  # 项目根目录（脚本目录的父级）
 
 def load(modname):
     spec = importlib.util.spec_from_file_location(modname, os.path.join(HERE, modname + ".py"))
@@ -20,8 +21,8 @@ D.update(d2.D)
 hb = load("hl_boost")
 hb.apply(D)
 
-TPL = os.path.join(HERE, "规则", "template.html")
-OUT = os.path.join(HERE, "老盛早知道_20260902.html")
+TPL = os.path.join(ROOT, "规则", "template.html")
+OUT = os.path.join(ROOT, "老盛早知道_20260902.html")
 
 html = open(TPL, encoding="utf-8").read()
 
