@@ -89,3 +89,5 @@
   - `_bond_str` 安全：仅当 `_M[key+"_chg"]` 真实返回才显"升/降N bp"，缺数据显"实时抓取"，**绝不编造涨跌**。
 - **`脚本/freshness_gate.py`（防照抄门禁）**：句子级比对新报告 vs 上一期，剥离 `<script>/<style>`+代码句；区分「市场数据句(T-1共享,可接受)」与「叙事/分析句(逐字复制=照抄,硬 FAIL)」。`build.py` 第7步调用，仅告警不 exit（稳定16标的要点属固定参考不硬阻断）。
 - **提交前必清**：`present_files` 回注 `data-page-node-id` → 提交前 regex 清除（`git diff`=0），或先 commit 再 present_files。
+- **`脚本/fetch_news.py`（叙事实时化，2026-09-02 落地）**：akshare `stock_info_global_em`(真实 标题/摘要/发布时间/链接，200条) + `stock_news_em`(个股) + `stock_hot_keyword_em`(热搜概念)。`apply(D)` 覆盖新闻卡 `标签和标题` 为真实带日期头条（按分类匹配），保留正文(agent分析)。机构/社区/生物医学 多角色叙事无法机械合成→保留 agent 维护，仅提供 get_news/get_stock_news/get_hot_keywords 取数接口。
+- **致命坑·ThreadPoolExecutor 挂死**：网络取数**绝不可用** `with ThreadPoolExecutor` + `fut.result(timeout)` ——底层调用挂死时 `__exit__` 的 `shutdown(wait=True)` 会无限阻塞主线程（build 卡 7-11 分钟）。一律改用 `threading.Thread(daemon=True)` + `join(timeout)`，残留线程随进程退出回收。另：`importlib.load()` 每次建独立模块实例、模块内 `_CACHE` 不共享 → 跨 g_data1/g_data2 重复抓网；用**当日磁盘缓存**(temp json, TTL 600s) 复用。
