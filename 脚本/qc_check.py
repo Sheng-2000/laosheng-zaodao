@@ -3,10 +3,11 @@
 import re, os, sys, importlib.util
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)  # 项目根目录（脚本目录的父级）
 TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_20260902.html"
-TPL = os.path.join(HERE, "规则", "template.html")
+TPL = os.path.join(ROOT, "规则", "template.html")
 
-html = open(os.path.join(HERE, TARGET), encoding="utf-8").read()
+html = open(os.path.join(ROOT, TARGET), encoding="utf-8").read()
 tpl = open(TPL, encoding="utf-8").read()
 
 # 剔除注释与 <style> 后再做文本类统计

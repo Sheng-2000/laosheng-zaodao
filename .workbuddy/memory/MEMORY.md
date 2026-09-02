@@ -58,5 +58,9 @@
 
 ## 文件位置（2026-09-01 归置）
 - `template.html`、`报告生成规范.md`、`报告质量检查.md` 已移入 **规则/** 子目录；根目录不再散放。
-- `build.py` 的 `TPL` 已改为 `os.path.join(HERE, "规则", "template.html")`；定时任务 `automation-1786669952391` 提示词路径同步为 `规则/报告生成规范.md`、`规则/报告质量检查.md`。
+- 定时任务 `automation-1786669952391` 提示词路径同步为 `规则/报告生成规范.md`、`规则/报告质量检查.md`。
+
+## 脚本目录（2026-09-02 归置）
+- 生成/质检脚本统一放 **脚本/** 目录，保持根目录清晰：`build.py`/`g_data1.py`/`g_data2.py`/`hl_boost.py`/`qc_check.py` 全部 `git mv` 至 `脚本/`。
+- `build.py` 用 `HERE = 脚本目录`、`ROOT = os.path.dirname(HERE)` 回指根目录读写 `规则/template.html` 与报告输出（TPL/OUT 用 `ROOT` 拼接）；`g_data1/2/hl_boost` 同目录 `load()` 不受影响。运行：`python 脚本/build.py`、`python 脚本/qc_check.py 老盛早知道_YYYYMMDD.html`。
 - 移动文件坑：用普通 `mv` 会让 git 失联 rename（显示旧路径 D + 新路径 ??），须 `git add` 旧路径(删)+新路径(增) 让相似度识别连成 R，或直接用 `git mv`。中文文件名在 `git status/ls-files` 会被转义成八进制，`grep` 中文易漏配，核对 git 状态优先看 `git status --short` 转义串或 `git diff --cached --stat`。
