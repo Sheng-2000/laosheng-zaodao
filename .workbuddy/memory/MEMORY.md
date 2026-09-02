@@ -45,3 +45,8 @@
 ## index.html 维护
 - 密码锁密码 `12345678`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
 - logo 设计维持暗色原版（青闪 `#00d4ff`，勿擅改形状/配色）；**主题跟随系统（系统优先·手动临时）**：init 用 `matchMedia('(prefers-color-scheme: dark)')` 始终按系统值设置并实时监听变化；**不读也不写 localStorage 偏好**，手动点 ☀️/🌙 只是临时 flip `light-theme` 类，系统主题一变即被覆盖（系统判断优先）。index.html 默认 light-theme 类、template.html 默认暗色（body 无类），三处 init 统一用 `classList.toggle('light-theme', !isDark)`、toggleTheme 仅做 class 翻转。三文件 head 已加 `<meta name="color-scheme" content="light dark">`，原生控件也跟随系统主题。再提 logo 改造先问清风格再动手。
+
+## 文件位置（2026-09-01 归置）
+- `template.html`、`报告生成规范.md`、`报告质量检查.md` 已移入 **规则/** 子目录；根目录不再散放。
+- `build.py` 的 `TPL` 已改为 `os.path.join(HERE, "规则", "template.html")`；定时任务 `automation-1786669952391` 提示词路径同步为 `规则/报告生成规范.md`、`规则/报告质量检查.md`。
+- 移动文件坑：用普通 `mv` 会让 git 失联 rename（显示旧路径 D + 新路径 ??），须 `git add` 旧路径(删)+新路径(增) 让相似度识别连成 R，或直接用 `git mv`。中文文件名在 `git status/ls-files` 会被转义成八进制，`grep` 中文易漏配，核对 git 状态优先看 `git status --short` 转义串或 `git diff --cached --stat`。
