@@ -147,12 +147,16 @@ print()
 print("=" * 64)
 print("规范 3.2 数据标注日期核查")
 print("=" * 64)
-# market-block 含日期 2026-09-01
-mb_date = re.findall(r'class="[^"]*market-block[^"]*"[\s\S]{0,250}?2026-09-01', HTML)
-chk("8大市场块均标注数据日期", len(mb_date) == 8, "命中 %d/8" % len(mb_date))
+# market-block 含日期：数据日从当期数据层动态取，禁止硬编码上期日期
+DATA_DATE = str(_m.D.get("市场综评_日期", "")).strip()
+if not DATA_DATE:
+    import datetime as _dt
+    DATA_DATE = (_dt.date.today() - _dt.timedelta(days=1)).strftime("%Y-%m-%d")
+mb_date = re.findall(r'class="[^"]*market-block[^"]*"[\s\S]{0,250}?%s' % DATA_DATE, HTML)
+chk("8大市场块均标注数据日期", len(mb_date) == 8, "命中 %d/8 (数据日 %s)" % (len(mb_date), DATA_DATE))
 # 关键指数是否带收盘日标注（market-name 附近有日期）
-has_close = HTML.count("收盘") + HTML.count("2026-09-01")
-chk("报告含数据日期标注(2026-09-01)", "2026-09-01" in HTML, "出现 %d 次" % HTML.count("2026-09-01"))
+has_close = HTML.count("收盘") + HTML.count(DATA_DATE)
+chk("报告含数据日期标注(%s)" % DATA_DATE, DATA_DATE in HTML, "出现 %d 次" % HTML.count(DATA_DATE))
 
 print()
 print("=" * 64)
