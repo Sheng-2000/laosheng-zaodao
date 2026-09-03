@@ -34,11 +34,14 @@
 - `cover_qc.py`：Tab0-7 逐 Tab 高亮密度、标签语义（利好红·利空绿）、数据标注日期。
 - **基线判定原则**：Tailwind 污染正则会命中自有类名 `grid-2/3/4`；「高亮 span 含 font-size」会命中模板自带 15px span。二者必须与 `规则/template.html` 对比计数，模板里也有的记为继承项，不算缺陷。
 - **结论判定铁律**：初始 FAIL 先甄别「报告真缺陷」vs「脚本误报」，禁止一见 FAIL 就改报告。
-- 已知脚本坑：①语义色正则会误判「美债收益率上行→绿」，须字符串豁免（`突破5.27%`/`收益率突破`）或上下文查"收益率/利率/债"；②查 `class="hm-mq"` 而非 `hm-mq`（会命中 CSS）；③切卡须对 `finditer('<div class="card-body')` 起点切片，勿用 `re.split`；④Tab0/3/5 不用 `card-body`，须按组件/真实标题定位；⑤`importlib.util as _iu` → `_iu.spec_from_file_location`；⑥查真实失败用 `grep "  FAIL "`（末尾提示句含 FAIL 会误计 1）。
+- **关键数值/数据日一律动态取，禁硬编码上期值**（2026-09-03 已修）：qc_check 关键数据、deep_qc（上证/现货金/美10Y）、cover_qc（数据日）原写死上期数字 → 每期必误报。现均从数据层提取。注意变量名差异：**`cover_qc.py` 的数据层叫 `_m`，`deep_qc.py`/`qc_check.py` 叫 `d1`/`d2`**。
+- 运行命令统一：`LAOSHENG_STATIC=1 <akshare venv python> -u 脚本/xxx.py 老盛早知道_YYYYMMDD.html`；`-u` 必加（经 `| tail` 管道时 stdout 块缓冲，脚本其实早跑完却看不到输出，易误判成挂死）。
+- 已知脚本坑：①语义色正则会误判「美债收益率上行→绿」，须字符串豁免（`突破5.27%`/`收益率突破`）或上下文查"收益率/利率/债"；另有字面含利空词但整体利好的（`相对受益`/`美元指数回落`/`美元走弱`）→ 加 `EXEMPT_POS` 豁免；②查 `class="hm-mq"` 而非 `hm-mq`（会命中 CSS）；③切卡须对 `finditer('<div class="card-body')` 起点切片，勿用 `re.split`；④Tab0/3/5 不用 `card-body`，须按组件/真实标题定位；⑤`importlib.util as _iu` → `_iu.spec_from_file_location`；⑥查真实失败用 `grep "  FAIL "`（末尾提示句含 FAIL 会误计 1）。
 
 ## 7. 防照抄门禁
 - `freshness_gate.py`：句子级比对新报告 vs 上一期，剥离 script/style/代码句；区分「市场数据句(T-1 共享，可接受)」与「叙事句（逐字复制 = 硬 FAIL）」。build 第7步调用，仅告警不 exit。
 - 核查标准：核心叙事区块完全相同句占比 **0%~4%** 合格；全局 ~4% 属正常（共享 T-1 收盘数据 + 通用框架表述）。
+- **模板静态文案豁免**（2026-09-03 加）：模板骨架固定句（如"💡 收益计算器思路："）在任意两期必然逐字相同，属结构性继承。因其常嵌 `{{占位符}}`、填充后数字每期不同，**精确串匹配失效** → 用归一化（仅保留汉字）子串匹配豁免。注意区分：像 `图表_收益计算说明` 是**数据键**占位符里的内容，属数据层，必须重写而非豁免。
 
 ## 8. 实时取数
 - `fetch_market.py`：akshare 隔离 venv（`/Users/sheng/.workbuddy/binaries/python/envs/default/bin/python3` 已装 akshare）。覆盖键：A股5指数 / 美股3指数 / 中美国债收益率(+bp) / 16 标的。可用端点：指数 `stock_zh_index_daily`、美股 `stock_us_daily`、债券 `bond_zh_us_rate`；个股/港股/商品/外汇受限 → 硬编码兜底。
