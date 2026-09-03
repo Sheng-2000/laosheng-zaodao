@@ -52,6 +52,29 @@ def _sents(text):
         out.append(p)
     return out
 
+def _norm(s):
+    """归一化：只保留汉字，剔除数字/标点/emoji。
+    模板固定文案里嵌有 {{占位符}}，填充后数字每期不同，精确串匹配会失效；
+    归一化后即可识别"同一句模板文案"。"""
+    return re.sub(r'[^一-鿿]', '', s)
+
+
+def _tpl_sents(new_path):
+    """模板静态文案：骨架里的固定句（如"险资动向/收益计算器/资产配置建议"等
+    通用框架）在任意两期报告中必然相同，属结构性继承，不构成照抄。
+    返回 (精确句集合, 归一化长串)——后者用于含占位符填充值的句子。"""
+    here = os.path.dirname(os.path.abspath(__file__))
+    tpl = os.path.join(os.path.dirname(here), '规则', 'template.html')
+    if not os.path.exists(tpl):
+        return set(), ''
+    try:
+        t = open(tpl, encoding='utf-8').read()
+    except Exception:
+        return set(), ''
+    t2 = re.sub(r'\{\{[^}]*\}\}', ' ', t)     # 占位符位置无实义文本
+    return set(_sents(_strip(t2))), _norm(_strip(t))
+
+
 def run(new_path, prev_path=None):
     html_new = open(new_path, encoding='utf-8').read()
     sents_new = _sents(_strip(html_new))
@@ -68,7 +91,16 @@ def run(new_path, prev_path=None):
 
     html_prev = open(prev_path, encoding='utf-8').read()
     sents_prev = set(_sents(_strip(html_prev)))
-    repeats = [s for s in sents_new if s in sents_prev]
+    tpl_s, tpl_norm = _tpl_sents(new_path)
+
+    def _from_tpl(s):
+        """该句是否源自模板固定文案（含仅数字被填充替换的情形）"""
+        if s in tpl_s:
+            return True
+        n = _norm(s)
+        return len(n) >= 12 and n in tpl_norm
+
+    repeats = [s for s in sents_new if s in sents_prev and not _from_tpl(s)]
     ratio = (len(repeats) / len(sents_new)) if sents_new else 0.0
 
     data_repeats = [s for s in repeats if _is_data(s)]

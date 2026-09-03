@@ -37,14 +37,18 @@ POS = ["飙升", "大涨", "创新高", "领涨", "逆势涨", "上调", "净买
 NEG = ["重挫", "暴跌", "抛售", "净流出", "领跌", "失血", "跌超", "承压", "回落", "走弱", "大跌"]
 # 利率/收益率/债市上行=利空(染绿正确)、下行=利好(染红正确)，此类强语义豁免
 EXEMPT_STR = ["突破5.27%", "突破4.79%", "升至4.79%", "破95美元", "收益率突破", "美债收益率", "美10年", "美30年"]
+# 语境豁免：字面含利空词("回落/走弱")但整体表达的是利好 → 染红正确，不算矛盾
+#   例："风险偏好回落时红利相对受益"（条件状语）、"美元指数回落"（美元走弱利好A股/金银）
+EXEMPT_POS = ["相对受益", "美元指数回落", "美元走弱", "美元回落", "实际利率回落", "通胀回落"]
 bad = []
 for m in re.finditer(r'<span style="color:(#f85149|#3fb950);font-weight:700;">([\s\S]{0,80}?)</span>', HTML):
     col, txt = m.group(1), re.sub(r"<[^>]+>", "", m.group(2))
     ctx = HTML[max(0, m.start() - 90):m.end() + 20]
     rate_exempt = any(x in ctx for x in ["收益率", "利率", "债"]) or any(s in txt for s in EXEMPT_STR)
+    pos_exempt = rate_exempt or any(s in txt for s in EXEMPT_POS)
     if col == GREEN and any(w in txt for w in POS) and not rate_exempt:
         bad.append(("利好染绿", txt))
-    if col == RED and any(w in txt for w in NEG) and not rate_exempt:
+    if col == RED and any(w in txt for w in NEG) and not pos_exempt:
         bad.append(("利空染红", txt))
 chk("语义色无强矛盾(中性词已豁免)", len(bad) == 0, str(bad[:6]))
 
@@ -126,14 +130,24 @@ chk("每话题三观点高亮 ≥4处", not hl_bad, str(hl_bad))
 # ===== F. 关键数据块填充（基于 HTML 实际内容，不依赖源键名）=====
 print("\n【F. 关键数据块填充】")
 # 页头 核心指数速览（class="hm-mq"）：含真实点位且无占位符
+# 关键数值一律从当期数据层动态提取，禁止硬编码上期数字（否则每期必误报）
+def _num(s, pat=r"(\d+\.\d+)"):
+    m = re.search(pat, str(s))
+    return m.group(1) if m else ""
+
+_SH = str(d1.D.get("ticker_上证_数值", "")).strip()
+_GOLD = _num(d1.D.get("大宗_国际黄金", ""))
+_US10Y = _num(d1.D.get("汇率_美10年期", ""))
+
 mi = HTML.find('class="hm-mq"')
 ticker_zone = HTML[mi:mi + 6000] if mi >= 0 else ""
 chk("页头指数速览已填充(含上证点位且无占位符)",
-    ("3979.89" in ticker_zone) and ("{{" not in ticker_zone))
+    bool(_SH) and (_SH in ticker_zone) and ("{{" not in ticker_zone),
+    "上证 %s" % _SH)
 # 银行板块 PB / 现货金 / 美10Y 用 HTML 实际数值判断
-chk("银行板块PB已填充", "0.69倍" in HTML or "估值低位" in HTML)
-chk("现货黄金已填充", "4327.29" in HTML)
-chk("美10Y已填充", "4.79%" in HTML or "4.801%" in HTML)
+chk("银行板块PB已填充", "0.70倍" in HTML or "0.69倍" in HTML or "估值低位" in HTML)
+chk("现货黄金已填充", bool(_GOLD) and _GOLD in HTML, "现货金 %s" % _GOLD)
+chk("美10Y已填充", bool(_US10Y) and _US10Y in HTML, "美10Y %s" % _US10Y)
 
 # ===== G. 关键指数/标的 名词覆盖 与 缺失标记 =====
 print("\n【G. 关键指数填充（无缺失）】")

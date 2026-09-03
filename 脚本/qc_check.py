@@ -30,14 +30,40 @@ print("\n【一、数据及时性】")
 old_dates = re.findall(r"2026-0[78]-(?:0[1-9]|1[0-9]|2[0-9]|3[01])", html)
 t3_old = [d for d in old_dates if d <= "2026-08-30"]
 chk("旧日期残留(T-3及更早) <=3处", len(t3_old) <= 3, "实际 %d 处 %s" % (len(t3_old), sorted(set(t3_old))[:6]))
-new_keys = ["90.68", "4327.29", "52766.88", "5.74%", "2209.89", "3979.89", "2.48%", "68%", "142.18", "1.88%", "95.19", "4.79%"]
-hit = sum(html.count(k) for k in new_keys)
-chk("新数据覆盖 >=10处", hit >= 10, "关键数据命中 %d 次" % hit)
-# 一致性：同一指标全报告一致
-cons = [("WTI价格", ["90.68"]), ("道指点位", ["52766.88"]), ("现货金", ["4327.29"]), ("上证", ["3979.89"])]
+# 注意：关键数值须从当期数据层动态提取，禁止硬编码上期数字（否则每期必误报）
+def _dyn_keys():
+    """从 g_data1 提取本期关键数值：上证点位 / 道指点位 / WTI / 现货金"""
+    import importlib.util as _iu
+    spec = _iu.spec_from_file_location("_d1qc", os.path.join(HERE, "g_data1.py"))
+    m = _iu.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    D = m.D
+    sh = str(D.get("ticker_上证_数值", "")).strip()
+    dji = str(D.get("ticker_道指_数值", "")).strip()
+    wti = re.search(r"(\d+\.\d+)", str(D.get("大宗_WTI原油", "")))
+    gold = re.search(r"(\d+\.\d+)", str(D.get("大宗_国际黄金", "")))
+    return {
+        "上证": sh,
+        "道指点位": dji,
+        "WTI价格": wti.group(1) if wti else "",
+        "现货金": gold.group(1) if gold else "",
+    }
+
+try:
+    _DK = _dyn_keys()
+except Exception as _e:
+    print("  [WARN] 关键数值动态提取失败:", repr(_e)[:100])
+    _DK = {}
+
+# 一致性：同一指标必须在报告中出现（值取自当期数据层）
+cons = [(nm, [v]) for nm, v in _DK.items() if v]
 for nm, vals in cons:
     bad = [v for v in vals if html.count(v) < 1]
-    chk("数据一致性·%s" % nm, not bad, "缺失 %s" % bad if bad else "已出现")
+    chk("数据一致性·%s" % nm, not bad, "缺失 %s" % bad if bad else "%s 已出现" % vals[0])
+# 新数据覆盖：关键数值 + 本期叙事高频数字，总计应充分出现
+new_keys = [v for v in _DK.values() if v]
+hit = sum(html.count(k) for k in new_keys)
+chk("关键数据覆盖 >=10处", hit >= 10, "关键数据(%s)命中 %d 次" % ("/".join(new_keys), hit))
 
 # ---------- 二、结构与样式 ----------
 print("\n【二、结构与样式】")
