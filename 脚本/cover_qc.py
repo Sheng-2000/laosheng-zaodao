@@ -79,7 +79,9 @@ _m = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_m)
 _dtitles = [_m.D.get("综评_A股行情标题", ""), _m.D.get("综评_外围市场标题", ""),
             _m.D.get("综评_地缘政策标题", ""), _m.D.get("综评_风险事件标题", "")]
 _b = t3.find("市场综评")
-_zone = t3[_b:_b + 6000] if _b >= 0 else ""
+# 窗口需覆盖整段综评：4 张维度卡 + 每卡 3 段正文，实测约 1.0-1.2 万字符，
+# 旧值 6000 会把第 4 张「风险」卡切在窗外，误报"维度缺失"。
+_zone = t3[_b:_b + 20000] if _b >= 0 else ""
 _pos = sorted([(t, _zone.find(t)) for t in _dtitles if t and _zone.find(t) >= 0], key=lambda x: x[1])
 _dims_hl = []
 for i, (t, p) in enumerate(_pos):
@@ -129,17 +131,51 @@ print("=" * 64)
 # 找带语义的标签：领涨/大涨/创新高 标签应为红色系；净流出/大跌/暴跌 应为绿色系
 POS_TAG = ["领涨", "大涨", "创新高", "走强", "利好"]
 NEG_TAG = ["净流出", "大跌", "暴跌", "承压", "走弱", "利空"]
+# 语境豁免：字面含利空词（"走弱/回落"）但整体表达的是利好 → 染红正确，不算矛盾
+CTX_EXEMPT = ["美元走弱", "美元指数回落", "美元回落", "相对受益", "加息预期", "加息的押注"]
+
+
+def enclosing_span_text(s, pos):
+    """取包住 pos 的那个颜色 span 的纯文本，用于语境豁免判定。"""
+    head = s[:pos]
+    so = head.rfind('<span style="color:')
+    if so < 0:
+        return ""
+    end = s.find("</span>", pos)
+    return re.sub(r"<[^>]+>", "", s[so:end]) if end > 0 else ""
+
+
+def enclosing_color(s, pos):
+    """返回覆盖 pos 的「最内层」<span style="color:..."> 色值；未被 span 包裹则返回 None。
+
+    旧实现用「前 60 字符内是否出现某颜色/最近两个 class」做判定，会把相邻高亮的颜色
+    张冠李戴（例：<red>净流入</red>；<green>净流出</green> 会把 green 段误判成“利空误用红”）。
+    改为回溯找最后一个未闭合的颜色 span，只认真正包住关键词的那一个。
+    """
+    head = s[:pos]
+    so = head.rfind('<span style="color:')
+    sc = head.rfind('</span>')
+    if so > sc:
+        mm = re.match(r'<span style="color:(#[0-9a-fA-F]{6})', head[so:])
+        if mm:
+            return mm.group(1).lower()
+    return None
+
+
 bad_tag = []
 for kw in POS_TAG + NEG_TAG:
     for m in re.finditer(re.escape(kw), HTML):
-        seg = HTML[max(0, m.start() - 160):m.end() + 10]
-        cls = re.findall(r'class="([^"]*)"', seg)
-        near = " ".join(cls[-2:])
+        col = enclosing_color(HTML, m.start())
+        if col is None:
+            continue  # 未被着色（纯文本/中性），不做方向判定
+        # 语境豁免：字面含利空词("走弱/回落")但整体表达的是利好 → 染红正确。
+        # 与 deep_qc 的 EXEMPT_POS 保持同一口径（例："美元走弱"对金银与加密货币是利好）。
+        if any(x in enclosing_span_text(HTML, m.start()) for x in CTX_EXEMPT):
+            continue
         is_pos = kw in POS_TAG
-        # 标签若为 up/红 或 down/绿
-        if is_pos and ("down" in near or GREEN in seg[max(0, m.start() - 60):m.start()]):
+        if is_pos and col == GREEN.lower():
             bad_tag.append(("利好误用绿", kw))
-        if (not is_pos) and ("up" in near or RED in seg[max(0, m.start() - 60):m.start()]):
+        if (not is_pos) and col == RED.lower():
             bad_tag.append(("利空误用红", kw))
 chk("标签语义方向正确", len(bad_tag) == 0, "异常:%s" % bad_tag[:6])
 
