@@ -233,16 +233,9 @@ def apply(D):
             used.add(id(x))
             d = ("（%s）" % x["date"]) if x["date"] else ""
             D["%s%d_标签和标题" % (prefix, i)] = (x["title"] + d)[:48]
-    # 生物医学：仅当取到生物类真实条目才覆盖，否则保留 agent 维护
-    bio = [x for x in news if x["cat"] == "bio" and id(x) not in used]
-    if bio:
-        for j, suf in enumerate(["政策", "设备", "脑机接口", "就业", "安全"][:len(bio)]):
-            x = bio[j]
-            used.add(id(x))
-            d = ("（%s）" % x["date"]) if x["date"] else ""
-            D["生物医学_%s_标签和标题" % suf] = (x["title"] + d)[:40]
-    else:
-        _NOTE.append("生物医学(agent维护)")
+    # 生物医学：多角色叙事，按规范保留 agent 维护（g_data2 硬编码 5 主题 tag+正文），
+    # 不覆盖——新闻源 bio 分类不纯净，曾将"辽宁中考减负"等教育/社会新闻误归入生物医学。
+    _NOTE.append("生物医学(agent维护)")
     # 机构 / 社区 保留 agent 维护，本模块仅提供取数接口
     _NOTE.append("机构观点(agent维护)")
     _NOTE.append("社区话题(agent维护)")
