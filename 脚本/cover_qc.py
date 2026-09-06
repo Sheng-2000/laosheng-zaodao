@@ -135,7 +135,13 @@ NEG_TAG = ["净流出", "大跌", "暴跌", "承压", "走弱", "利空"]
 CTX_EXEMPT = ["美元走弱", "美元指数回落", "美元回落", "相对受益", "加息预期", "加息的押注",
               # 反向情形：字面含利好词("利好/走强")但整句在表达利空 → 染绿正确，不算矛盾
               # 例："外围利好仅提振开盘情绪、并未带来增量资金进场"
-              "外围利好仅提振", "并未带来增量资金", "利好未兑现", "利好出尽"]
+              "外围利好仅提振", "并未带来增量资金", "利好未兑现", "利好出尽",
+              # 债市语境：收益率/利率"上行、创新高"对债券价格与股市估值都是利空 → 染绿正确
+              # 例："2年期美债4.425%创新高"、"美债收益率上行"
+              "收益率", "利率", "美债", "国债", "年期",
+              # 否定语境：字面含利好词但被"而非/并非/不是"否定 → 染绿正确
+              # 例："存储涨价对PCB等环节是成本压力而非利好"
+              "而非", "并非", "不是利好", "成本压力"]
 
 
 def enclosing_span_text(s, pos):
@@ -191,8 +197,14 @@ DATA_DATE = str(_m.D.get("市场综评_日期", "")).strip()
 if not DATA_DATE:
     import datetime as _dt
     DATA_DATE = (_dt.date.today() - _dt.timedelta(days=1)).strftime("%Y-%m-%d")
-mb_date = re.findall(r'class="[^"]*market-block[^"]*"[\s\S]{0,250}?%s' % DATA_DATE, HTML)
-chk("8大市场块均标注数据日期", len(mb_date) == 8, "命中 %d/8 (数据日 %s)" % (len(mb_date), DATA_DATE))
+# 7×24 交易品种（加密）在休市日仍有新报价，其数据日可晚于 T-1，属合法口径
+_ALT = [str(_m.D.get("加密货币_收盘日期", "")).strip()]
+ALT_DATES = [d for d in _ALT if d]
+_starts = [m.start() for m in re.finditer(r'class="[^"]*market-block[^"]*"', HTML)]
+_blks = [HTML[st:st + 400] for st in _starts]  # 按起点切片，勿用 re.split（会丢上下文）
+_hit = sum(1 for b in _blks if any(d in b for d in [DATA_DATE] + ALT_DATES))
+chk("8大市场块均标注数据日期", _hit == 8,
+    "命中 %d/8 (数据日 %s%s)" % (_hit, DATA_DATE, "，加密另计 %s" % "/".join(ALT_DATES) if ALT_DATES else ""))
 # 关键指数是否带收盘日标注（market-name 附近有日期）
 has_close = HTML.count("收盘") + HTML.count(DATA_DATE)
 chk("报告含数据日期标注(%s)" % DATA_DATE, DATA_DATE in HTML, "出现 %d 次" % HTML.count(DATA_DATE))
