@@ -1132,13 +1132,7 @@ const reports = [
 
 { date: "20260902", weekday: "星期三", title: "美军空袭伊朗·油价飙升5.7%·股债双杀" },
 
-{ date: "20260901", weekday: "星期二", title: "六大行中报超预期·内银领涨·油价破85" },
-
-{ date: "20260831", weekday: "星期一", title: "PMI回升49.8%·银行齐创新高·油价破90" },
-
-{ date: "20260830", weekday: "星期日", title: "地产三箭齐发·沃什放鹰·金价重挫" },
-
-{ date: "20260829", weekday: "星期六", title: "沃什放鹰·金价跌3%·A股缩量" }
+{ date: "20260901", weekday: "星期二", title: "六大行中报超预期·内银领涨·油价破85" }
   ];
 
 function getLink(dateStr) {
@@ -1182,8 +1176,8 @@ document.getElementById('latest-section').innerHTML = `
   </a>
 `;
 
-// 历史列表 - 时间线样式（只列最近6天，不含当天）
-const archive = reports.slice(1, 7);
+// 历史列表 - 时间线样式（列出全部历史，不含当天；与本地文件数保持一致，避免截断打不到）
+const archive = reports.slice(1);
 const timeline = document.getElementById('archive-timeline');
 archive.forEach(r => {
   const d = r.date;
