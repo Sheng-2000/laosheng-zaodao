@@ -58,8 +58,10 @@
 - 移动文件须用 `git mv`（普通 mv 会失联 rename）；中文文件名在 git 输出被转义成八进制，核对用 `git status --short` / `git diff --cached --stat`。
 
 ## 11. 预览污染 / 推送
-- `present_files` 会回注 `data-page-node-id` → 提交前 regex 清除（`git diff` 应为 0），或先 commit 再 present。
-- GitHub 超时兜底：github.com 不可达但 api.github.com 可达 → 用 Git Data API（`/tmp/gh_push.py`：blobs→trees→commits→PATCH ref）；远端 HEAD 为父，内容一致后 `git reset --soft origin/main` 对齐；推送后校验 size/SHA256 一致。
+- ⚠️ `present_files` 双破坏（铁律）：①回注 `data-page-node-id` 属性（~2600处，致 qc_check 高亮计数误报0）；②**结构性破坏 HTML 头部**——删除 `<html>/<head>/<meta>/<body>` 标签、合并首部多行（diff 1511 行）。**present 后本地磁盘文件绝不能当成品/直接提交**。
+- **正确流程**：present 仅开预览面板（指向 static 副本，不影响）；每次 present 后必须 `git checkout -- 老盛早知道_YYYYMMDD.html`（恢复到 HEAD 干净 build 版）或 `LAOSHENG_STATIC=1 python3 -u 脚本/build.py` 重建，再 `git status` 确认干净。
+- present 还可能误删历史报告文件（曾误删 20260829/30/31.html，已 `git checkout` 恢复）——present 后务必 `git status` 检查有无意外删除。
+- Git Data API 兜底：github.com 不可达但 api.github.com 可达 → `/tmp/gh_push.py`（blobs→trees→commits→PATCH ref）。
 
 ## 12. index.html 维护
 - 密码锁 `123457`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
