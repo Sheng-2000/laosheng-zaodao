@@ -65,5 +65,7 @@
 
 ## 12. index.html 维护
 - **文件一致性（铁律）**：index 的 `reports` 数组必须与本地 `老盛早知道_*.html` **双向一一对应**（数量、date、weekday 全对）——index 列了本地没有 → 点击 404；本地有 index 没列 → 报告藏起来。每期生成/清理后必须跑 `python3 -u 脚本/index_sync_check.py`（退出码 0 才算通过）。删除旧报告时，必须同时删本地文件与 index 条目，不可单边操作。
+- **三方一致（不只是两方）**：除「index数组 ↔ 本地文件」外，还要核对**界面可见数**——历史区 `const archive = reports.slice(1, N)` 若带 N 会截断末几期，导致文件在本地但门户点不到。2026-09-07 已将 `slice(1, 7)` 改为 **`slice(1)`（列全部历史）** 根治该盲点；此后 界面可见 = 数组数 = 文件数 恒成立。`index_sync_check.py` 已升级为三方比对（会读取 slice 参数解析可见数）。
+- **存档清理默认口径**：本地只保留与 index 一致的期数（20260907 起为最近 7 期：20260901–20260907）。删前先 `cp` 到 `/tmp/laosheng_archive_YYYYMMDD/`，用 `git rm` 删（勿用普通 `rm`），并同步删 index 条目。git 历史可随时 `git checkout` 恢复。
 - 密码锁 `123457`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
 - logo 维持暗色原版（青闪 `#00d4ff`）。**主题跟随系统（系统优先·手动临时）**：init 用 `matchMedia('(prefers-color-scheme: dark)')` 设置并实时监听；**不读不写 localStorage**；手动 ☀️/🌙 仅临时 flip `light-theme` 类。三处 init 统一 `classList.toggle('light-theme', !isDark)`，toggleTheme 仅做 class 翻转。三文件 head 已加 `<meta name="color-scheme" content="light dark">`。改 logo 前先问清风格。
