@@ -256,3 +256,56 @@ try:
     _fn.apply(D)
 except Exception as _e:
     print("[WARN] fetch_news 覆盖失败，沿用硬编码叙事:", repr(_e)[:120])
+
+# ===================== 老盛持仓分析（个人持仓快照·目标配比 国有:股份:城商=4:3:3） =====================
+# 持仓股数为个人固定快照；现价取 2026-09-04 收盘（与报告标的卡一致）。类型归类：工行/农行=国有大行，招行=股份行，宁波/江苏/杭州=城商行。
+_HOLDS = [
+    ("工商银行", "601398", 127200, 8.13, "国有大行"),
+    ("农业银行", "601288", 500, 6.96, "国有大行"),
+    ("招商银行", "600036", 40000, 41.69, "股份行"),
+    ("宁波银行", "002142", 10000, 34.50, "城商行"),
+    ("江苏银行", "600919", 40000, 12.28, "城商行"),
+    ("杭州银行", "600926", 20000, 17.25, "城商行"),
+]
+_HOLD_TOTAL = sum(sh * px for _, _, sh, px, _ in _HOLDS)
+def _hp(v):
+    return v / _HOLD_TOTAL * 100
+_gg = sum(sh * px for _, _, sh, px, t in _HOLDS if t == "国有大行")
+_gf = sum(sh * px for _, _, sh, px, t in _HOLDS if t == "股份行")
+_cs = sum(sh * px for _, _, sh, px, t in _HOLDS if t == "城商行")
+_ggp, _gfp, _csp = _hp(_gg), _hp(_gf), _hp(_cs)
+_T = _gf / 0.30                       # 股份行不卖、稀释至30%时的目标总盘
+_DA_GG = 0.40 * _T - _gg              # 国有大行需补金额
+_DA_CS = 0.30 * _T - _cs              # 城商行需补金额
+_rows = ""
+for nm, code, sh, px, typ in _HOLDS:
+    mv = sh * px
+    _rows += (f'<tr style="border-bottom:1px solid rgba(255,255,255,0.07);">'
+        f'<td style="padding:7px 9px;color:#e6edf3;white-space:nowrap;">{nm} <span style="color:#5b6573;">{code}</span></td>'
+        f'<td style="padding:7px 9px;text-align:right;color:#b0bac4;">{sh:,}</td>'
+        f'<td style="padding:7px 9px;text-align:right;color:#b0bac4;">{px:.2f}</td>'
+        f'<td style="padding:7px 9px;text-align:right;color:#00d4ff;font-weight:700;">{mv/10000:.2f}</td>'
+        f'<td style="padding:7px 9px;text-align:right;color:#00d4ff;">{mv/_HOLD_TOTAL*100:.2f}%</td>'
+        f'<td style="padding:7px 9px;text-align:center;color:#8b95a5;font-size:12px;">{typ}</td></tr>')
+D["持仓分析_表格"] = (f'<table style="width:100%;border-collapse:collapse;font-size:12.5px;margin:4px 0 6px;">'
+    f'<thead><tr style="color:#8b95a5;border-bottom:1px solid rgba(255,255,255,0.18);font-size:12px;">'
+    f'<th style="padding:6px 9px;text-align:left;">银行</th><th style="padding:6px 9px;text-align:right;">股数</th>'
+    f'<th style="padding:6px 9px;text-align:right;">现价</th><th style="padding:6px 9px;text-align:right;">市值(万)</th>'
+    f'<th style="padding:6px 9px;text-align:right;">占比</th><th style="padding:6px 9px;text-align:center;">类型</th></tr></thead>'
+    f'<tbody>{_rows}'
+    f'<tr style="border-top:1px solid rgba(255,255,255,0.22);font-weight:700;color:#e6edf3;">'
+    f'<td style="padding:8px 9px;">合计</td><td style="padding:8px 9px;text-align:right;color:#8b95a5;">—</td>'
+    f'<td style="padding:8px 9px;text-align:right;color:#8b95a5;">—</td>'
+    f'<td style="padding:8px 9px;text-align:right;color:#e6edf3;">{_HOLD_TOTAL/10000:.2f}</td>'
+    f'<td style="padding:8px 9px;text-align:right;color:#e6edf3;">100%</td>'
+    f'<td style="padding:8px 9px;text-align:center;color:#8b95a5;">—</td></tr>'
+    f'<tr style="color:#8b95a5;font-size:12px;">'
+    f'<td style="padding:4px 9px;">类型小计</td><td colspan="3" style="padding:4px 9px;text-align:right;">国有 {_gg/10000:.2f}万 / 股份 {_gf/10000:.2f}万 / 城商 {_cs/10000:.2f}万</td>'
+    f'<td style="padding:4px 9px;text-align:right;">{_ggp:.1f}% / {_gfp:.1f}% / {_csp:.1f}%</td>'
+    f'<td style="padding:4px 9px;"></td></tr></tbody></table>')
+D["持仓分析_导语"] = ("截至2026-09-07，老盛A股持仓为" + H(CYAN, f"6只银行、合计市值约{_HOLD_TOTAL/10000:.0f}万元") + "，全部为银行股。"
+    + "当前结构" + H(ORANGE, f"国有大行占{_ggp:.1f}%、股份行占{_gfp:.1f}%、城商行占{_csp:.1f}%") + "，与目标" + H(RED, "国有:股份:城商=4:3:3") + "相比，" + H(GREEN, "股份行（招行）明显偏高、国有大行偏低") + "，是组合再平衡的核心矛盾。")
+D["持仓分析_配比"] = ("目标 4:3:3 即国有 40%、股份 30%、城商 30%。现状国有 " + H(ORANGE, f"{_ggp:.1f}%") + "、股份 " + H(ORANGE, f"{_gfp:.1f}%") + "、城商 " + H(ORANGE, f"{_csp:.1f}%") + "——" + H(GREEN, f"股份行超配约 {_gfp-30:.0f} 个百分点、国有大行欠配约 {40-_ggp:.0f} 个百分点") + "。若招行不动、靠加仓把股份行稀释到 30%，总盘需扩到约 " + H(CYAN, f"{_T/10000:.0f} 万元") + "：国有大行要补 " + H(RED, f"{_DA_GG/10000:.0f} 万元") + "、城商行补 " + H(RED, f"{_DA_CS/10000:.0f} 万元") + "。")
+D["持仓分析_分析"] = ("组合几乎全是银行，本质是" + H(CYAN, "高股息+低估值+类债属性") + "的防御型底仓。当前银行基本面正迎来拐点：" + H(RED, "42家上市银行中报营收+7.4%、净利+2.96%，超八成五正增长") + "，" + H(RED, "二季度净息差1.41%为四年来首次单季回升") + "；更关键的是" + H(RED, "财政部3600亿注资（农行拟募1600亿、工行在列）+六大行分红比例统一提至31%") + "，对国有大行构成" + H(RED, "资本与分红双击") + "。风险在于：招行单名占比高达 " + H(ORANGE, f"{_gfp:.0f}%") + "，一旦零售资产质量或市场风格切换，回撤会集中；宁波银行PE(TTM)偏高、年内已涨约20%+，估值并不便宜；农行仅500股、占比可忽略，恰是结构上最该补的短板。")
+D["持仓分析_操作"] = ("方向已明确——" + H(RED, "优先加仓国有大行补足最大缺口") + "：农行受注资+分红提升双重催化、确定性最高，建议在 " + H(CYAN, "6.9-7.2元区间分批吸纳，目标加到约17万股使国有大行占比逼近40%") + "。" + H(GREEN, "招行不卖") + "、靠加仓自然稀释至30%，其ROE与股息率仍是核心底仓。" + H(ORANGE, "宁波银行当前34.5元、估值偏高、年内涨幅大，不建议追高") + "；若坚持加城商行，额度更应给 " + H(CYAN, "江苏/杭州（估值与股息率更优）") + "，且城商行已接近目标、边际额度有限。总仓位控在 " + H(CYAN, "7成以内") + "，留现金等9/11 CPI与9/15-16 FOMC。")
+D["持仓分析_判断"] = ("12-18个月维度，" + H(RED, "国有大行（工行/农行）在注资+分红逻辑下仍有重估空间") + "，组合向4:3:3收敛是更优的风险收益结构；" + H(CYAN, "险资已配2.1万亿红利、仍欠配约1.9万亿") + "，长线资金对高股息的承接尚未结束。" + H(GREEN, "主要风险在美债利率反弹（10Y 4.782%）压制类债估值、以及经济复苏与地产链拖累") + "。结论：以农行加仓为主线、招行持有不动、宁波谨慎、江苏杭州小幅摊薄，用时间换空间，不追高、不加杠杆。")
