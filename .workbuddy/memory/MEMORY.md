@@ -64,5 +64,6 @@
 - Git Data API 兜底：github.com 不可达但 api.github.com 可达 → `/tmp/gh_push.py`（blobs→trees→commits→PATCH ref）。
 
 ## 12. index.html 维护
+- **文件一致性（铁律）**：index 的 `reports` 数组必须与本地 `老盛早知道_*.html` **双向一一对应**（数量、date、weekday 全对）——index 列了本地没有 → 点击 404；本地有 index 没列 → 报告藏起来。每期生成/清理后必须跑 `python3 -u 脚本/index_sync_check.py`（退出码 0 才算通过）。删除旧报告时，必须同时删本地文件与 index 条目，不可单边操作。
 - 密码锁 `123457`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
 - logo 维持暗色原版（青闪 `#00d4ff`）。**主题跟随系统（系统优先·手动临时）**：init 用 `matchMedia('(prefers-color-scheme: dark)')` 设置并实时监听；**不读不写 localStorage**；手动 ☀️/🌙 仅临时 flip `light-theme` 类。三处 init 统一 `classList.toggle('light-theme', !isDark)`，toggleTheme 仅做 class 翻转。三文件 head 已加 `<meta name="color-scheme" content="light dark">`。改 logo 前先问清风格。
