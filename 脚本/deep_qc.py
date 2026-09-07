@@ -42,6 +42,9 @@ EXEMPT_STR = ["突破5.27%", "突破4.79%", "升至4.79%", "破95美元", "收�
 # 语境豁免（绿色侧）：字面含"涨超/涨停/盈利"等利好词，但整句在提示风险
 #   例："19股涨超5%的涨停潮往往对应情绪高点" → 是风险提示，染绿正确，不算矛盾
 EXEMPT_GREEN_CTX = ["涨停潮", "情绪高点", "往往对应", "追高容易被套", "需警惕", "注意风险"]
+# 成本侧豁免：字面含"上调/突破/涨"等利好词，但讲的是上游涨价、BOM成本抬升，
+#   对下游制造商是利空 → 染绿正确，不算矛盾（例："台积电2nm单片报价突破3万美元"）
+EXEMPT_GREEN_COST = ["成本", "BOM", "报价", "涨价压力", "毛利", "利润率", "挤压"]
 EXEMPT_POS = ["相对受益", "美元指数回落", "美元走弱", "美元回落", "实际利率回落", "通胀回落",
               # 加息预期"回落/降温/收敛"对风险资产是利好，染红正确，不算矛盾
               "加息的押注", "加息预期", "加息概率", "加息押注", "加息预期降温", "加息路径"]
@@ -51,7 +54,8 @@ for m in re.finditer(r'<span style="color:(#f85149|#3fb950);font-weight:700;">([
     ctx = HTML[max(0, m.start() - 90):m.end() + 20]
     rate_exempt = any(x in ctx for x in ["收益率", "利率", "债"]) or any(s in txt for s in EXEMPT_STR)
     pos_exempt = rate_exempt or any(s in txt for s in EXEMPT_POS)
-    green_exempt = any(x in ctx for x in EXEMPT_GREEN_CTX)
+    green_exempt = any(x in ctx for x in EXEMPT_GREEN_CTX) \
+        or any(x in txt for x in EXEMPT_GREEN_COST)
     if col == GREEN and any(w in txt for w in POS) and not rate_exempt and not green_exempt:
         bad.append(("利好染绿", txt))
     if col == RED and any(w in txt for w in NEG) and not pos_exempt:
