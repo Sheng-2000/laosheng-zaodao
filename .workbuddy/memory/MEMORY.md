@@ -62,5 +62,5 @@
 - GitHub 超时兜底：github.com 不可达但 api.github.com 可达 → 用 Git Data API（`/tmp/gh_push.py`：blobs→trees→commits→PATCH ref）；远端 HEAD 为父，内容一致后 `git reset --soft origin/main` 对齐；推送后校验 size/SHA256 一致。
 
 ## 12. index.html 维护
-- 密码锁 `12345678`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
+- 密码锁 `123457`（base64 混淆）；`reports` 数组只留一个 `];`，提交前 `node --check` 两段 `<script>`。
 - logo 维持暗色原版（青闪 `#00d4ff`）。**主题跟随系统（系统优先·手动临时）**：init 用 `matchMedia('(prefers-color-scheme: dark)')` 设置并实时监听；**不读不写 localStorage**；手动 ☀️/🌙 仅临时 flip `light-theme` 类。三处 init 统一 `classList.toggle('light-theme', !isDark)`，toggleTheme 仅做 class 翻转。三文件 head 已加 `<meta name="color-scheme" content="light dark">`。改 logo 前先问清风格。
