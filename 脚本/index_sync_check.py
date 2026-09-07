@@ -14,6 +14,11 @@ index_sync_check.py —— 门户 index.html 与本地报告文件的一致性�
   4. weekday 与实际不符   → 元信息错误（FAIL）
   5. 排序非倒序           → 最新一期不在首位（WARN）
   6. 标题缺失/为空        → 门户标题空（FAIL）
+  7. 三方数量（界面可见 / 数组 / 本地文件）→ 界面被 slice 截断导致有文件门户打不到（WARN）
+
+说明第 7 项：门户 = 最新一期大卡(reports[0]) + 历史区(archive = reports.slice(a,b))。
+若 archive 切片右界小于数组长度，靠后的条目在界面上被隐藏，
+但本地文件还在 → 门户访问不到这些报告（看起来"本地比 index 多"）。
 
 用法：  python3 脚本/index_sync_check.py
 退出码：0 = 全部通过；1 = 存在 FAIL
@@ -60,6 +65,24 @@ def local_files():
         if m:
             out.append(m.group(1))
     return sorted(out)
+
+
+def visible_count(idx_len):
+    """解析门户实际可见条数 = 1(最新一期大卡) + 历史区 slice 长度
+
+    常见写法：const archive = reports.slice(1, 7);
+    若找不到显式切片，则默认历史区列出剩余全部。
+    """
+    s = open(INDEX, encoding="utf-8").read()
+    m = re.search(r"reports\.slice\(\s*(\d+)\s*,\s*(\d+)\s*\)", s)
+    if m:
+        a, b = int(m.group(1)), int(m.group(2))
+        return 1 + max(0, min(b, idx_len) - a), "reports.slice(%d,%d)" % (a, b)
+    m2 = re.search(r"reports\.slice\(\s*(\d+)\s*\)", s)
+    if m2:
+        a = int(m2.group(1))
+        return 1 + max(0, idx_len - a), "reports.slice(%d)" % a
+    return idx_len, "无切片(全部显示)"
 
 
 def real_weekday(d):
@@ -117,10 +140,20 @@ def main():
     if idx_dates != sorted(idx_dates, reverse=True):
         warns.append("index 条目非倒序(最新一期不在首位): 当前顺序 %s" % idx_dates)
 
+    # 7. 三方数量：界面可见 / 数组 / 本地文件
+    vis, vis_rule = visible_count(len(idx_dates))
+    if vis < len(local):
+        warns.append(
+            "门户界面只显示 %d 条(%s)，但本地有 %d 个文件 —— 末 %d 期(如 %s)门户打不到，"
+            "要么删本地文件，要么放宽切片"
+            % (vis, vis_rule, len(local), len(local) - vis, local[:len(local) - vis])
+        )
+
     print("=" * 60)
     print("index.html ↔ 本地报告文件 一致性校验")
     print("=" * 60)
     print("index 条目 : %d 条" % len(idx_dates))
+    print("界面可见   : %d 条  (%s)" % (vis, vis_rule))
     print("本地文件   : %d 个" % len(local))
     print("-" * 60)
 
