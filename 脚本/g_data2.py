@@ -304,3 +304,11 @@ D["持仓分析_配比"] = ("目标 4:3:3 即国有 40%、股份 30%、城商 30
 D["持仓分析_分析"] = ("组合几乎全是银行，本质是" + H(CYAN, "高股息+低估值+类债属性") + "的防御型底仓。当前银行基本面正迎来拐点：" + H(RED, "42家上市银行中报营收+7.4%、净利+2.96%，超八成五正增长") + "，" + H(RED, "二季度净息差1.41%为四年来首次单季回升") + "；更关键的是" + H(RED, "财政部3600亿注资（农行拟募1600亿、工行在列）+六大行分红比例统一提至31%") + "，对国有大行构成" + H(RED, "资本与分红双击") + "。风险在于：招行单名占比高达 " + H(ORANGE, f"{_gfp:.0f}%") + "，一旦零售资产质量或市场风格切换，回撤会集中；宁波银行PE(TTM)偏高、年内已涨约20%+，估值并不便宜；" + H(GREEN, "农行持仓极少、占比可忽略，恰是结构上最该补的短板") + "。")
 D["持仓分析_操作"] = ("方向已明确——" + H(RED, "优先加仓国有大行补足最大缺口") + "：农行受注资+分红提升双重催化、确定性最高，建议在" + H(CYAN, "合理回调区间分批吸纳，把国有大行占比提至逼近40%") + "。" + H(GREEN, "招行不卖") + "、靠加仓自然稀释至30%，其ROE与股息率仍是核心底仓。" + H(ORANGE, "宁波银行估值偏高、年内涨幅大，不建议追高") + "；若坚持加城商行，额度更应给 " + H(CYAN, "江苏/杭州（估值与股息率更优）") + "，且城商行已接近目标、边际额度有限。总仓位控在 " + H(CYAN, "7成以内") + "，留现金等9/11 CPI与9/15-16 FOMC。")
 D["持仓分析_判断"] = ("12-18个月维度，" + H(RED, "国有大行（工行/农行）在注资+分红逻辑下仍有重估空间") + "，组合向4:3:3收敛是更优的风险收益结构；" + H(CYAN, "险资已配2.1万亿红利、仍欠配约1.9万亿") + "，长线资金对高股息的承接尚未结束。" + H(GREEN, "主要风险在美债利率反弹（10Y 4.782%）压制类债估值、以及经济复苏与地产链拖累") + "。结论：以农行加仓为主线、招行持有不动、宁波谨慎、江苏杭州小幅摊薄，用时间换空间，不追高、不加杠杆。")
+# 占比对比可视化条（现状 vs 目标 4:3:3）：条形长度=占组合比重，数值用高亮 span（不带字号），整体单行注入不增报告行数
+_bars = [("国有大行", _ggp, 40.0, "#00d4ff"), ("股份行", _gfp, 30.0, "#ffa657"), ("城商行", _csp, 30.0, "#3fb950")]
+_bar_html = ""
+for _nm, _cur, _tgt, _col in _bars:
+    _d = _cur - _tgt
+    _dev = H("#3fb950", "基本达标") if abs(_d) < 1.0 else (H("#ffa657", f"超配 {_d:.0f}pct") if _d > 0 else H("#00d4ff", f"欠配 {abs(_d):.0f}pct"))
+    _bar_html += f'<div style="display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12px;"><div style="width:60px;color:#8b95a5;flex-shrink:0;">{_nm}</div><div style="flex:1;height:16px;background:rgba(255,255,255,0.06);border-radius:8px;overflow:hidden;"><div style="width:{_cur:.1f}%;height:100%;background:{_col};border-radius:8px;opacity:0.85;"></div></div><div style="width:172px;text-align:right;color:#b0bac4;flex-shrink:0;">现状 {H(_col, f"{_cur:.1f}%")} · 目标 {_tgt:.0f}% → {_dev}</div></div>'
+D["持仓分析_对比条"] = f'<div style="margin:10px 0 14px;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;"><div style="font-size:12px;color:#8b95a5;margin-bottom:8px;">现状占比 vs 目标 4:3:3（条形长度=占组合比重）</div>{_bar_html}</div>'
