@@ -277,27 +277,6 @@ _ggp, _gfp, _csp = _hp(_gg), _hp(_gf), _hp(_cs)
 _T = _gf / 0.30                       # 股份行不卖、稀释至30%时的目标总盘
 _DA_GG = 0.40 * _T - _gg              # 国有大行需补金额
 _DA_CS = 0.30 * _T - _cs              # 城商行需补金额
-_rows = ""
-for nm, code, sh, px, typ in _HOLDS:
-    mv = sh * px
-    _rows += (f'<tr style="border-bottom:1px solid rgba(255,255,255,0.07);">'
-        f'<td style="padding:7px 9px;color:#e6edf3;white-space:nowrap;">{nm}</td>'
-        f'<td style="padding:7px 9px;text-align:right;color:#00d4ff;font-weight:700;">{mv/_HOLD_TOTAL*100:.1f}%</td>'
-        f'<td style="padding:7px 9px;text-align:center;color:#8b95a5;font-size:12px;">{typ}</td></tr>')
-D["持仓分析_表格"] = (f'<table style="width:100%;border-collapse:collapse;font-size:12.5px;margin:4px 0 6px;">'
-    f'<thead><tr style="color:#8b95a5;border-bottom:1px solid rgba(255,255,255,0.18);font-size:12px;">'
-    f'<th style="padding:6px 9px;text-align:left;">银行</th>'
-    f'<th style="padding:6px 9px;text-align:right;">占组合比重</th>'
-    f'<th style="padding:6px 9px;text-align:center;">类型</th></tr></thead>'
-    f'<tbody>{_rows}'
-    f'<tr style="border-top:1px solid rgba(255,255,255,0.22);font-weight:700;color:#e6edf3;">'
-    f'<td style="padding:8px 9px;">合计</td>'
-    f'<td style="padding:8px 9px;text-align:right;color:#e6edf3;">100%</td>'
-    f'<td style="padding:8px 9px;text-align:center;color:#8b95a5;">—</td></tr>'
-    f'<tr style="color:#8b95a5;font-size:12px;">'
-    f'<td style="padding:4px 9px;">类型小计</td>'
-    f'<td style="padding:4px 9px;text-align:right;">国有 {_ggp:.1f}% / 股份 {_gfp:.1f}% / 城商 {_csp:.1f}%</td>'
-    f'<td style="padding:4px 9px;"></td></tr></tbody></table>')
 D["持仓分析_导语"] = ("截至2026-09-07，老盛A股持仓为" + H(CYAN, "6只银行、全部为银行股") + "。"
     + "当前结构" + H(ORANGE, f"国有大行占{_ggp:.1f}%、股份行占{_gfp:.1f}%、城商行占{_csp:.1f}%") + "，与目标" + H(RED, "国有:股份:城商=4:3:3") + "相比，" + H(GREEN, "股份行（招行）明显偏高、国有大行偏低") + "，是组合再平衡的核心矛盾。")
 D["持仓分析_配比"] = ("目标 4:3:3 即国有 40%、股份 30%、城商 30%。现状国有 " + H(ORANGE, f"{_ggp:.1f}%") + "、股份 " + H(ORANGE, f"{_gfp:.1f}%") + "、城商 " + H(ORANGE, f"{_csp:.1f}%") + "——" + H(GREEN, f"股份行超配约 {_gfp-30:.0f} 个百分点、国有大行欠配约 {40-_ggp:.0f} 个百分点") + "。若要向目标收敛，在招行不卖、靠加仓稀释股份行的思路下，需把" + H(RED, "国有大行仓位提升至约40%、城商行补至约30%") + "；整体加仓幅度不小，宜分批、等回调、不追高。")
