@@ -34,6 +34,7 @@
 - `cover_qc.py`：Tab0-7 逐 Tab 高亮密度、标签语义（利好红·利空绿）、数据标注日期。
 - **基线判定原则**：Tailwind 污染正则会命中自有类名 `grid-2/3/4`；「高亮 span 含 font-size」会命中模板自带 15px span。二者必须与 `规则/template.html` 对比计数，模板里也有的记为继承项，不算缺陷。
 - **结论判定铁律**：初始 FAIL 先甄别「报告真缺陷」vs「脚本误报」，禁止一见 FAIL 就改报告。
+- **跨期检查守卫**（2026-09-08 加）：三套脚本的期望值取自**当前** g_data，因此**只能可信地检查当期报告**。检查往期报告时，数值/文案类断言（综评4维度标题、关键数据、指数点位、数据日）必然误报。脚本已自动检测：数据层主数据日不在 `[报告日-1, 报告日-5]` 内 → 判跨期，输出 `⚠️ 跨期检查` 警告并把 FAIL 标为「可能含误报项」；结构性断言（卡片数/market-block/高亮分布）始终有效。**结论：复核历史报告时只认结构性断言。**
 - **关键数值/数据日一律动态取，禁硬编码上期值**（2026-09-03 已修）：qc_check 关键数据、deep_qc（上证/现货金/美10Y）、cover_qc（数据日）原写死上期数字 → 每期必误报。现均从数据层提取。注意变量名差异：**`cover_qc.py` 的数据层叫 `_m`，`deep_qc.py`/`qc_check.py` 叫 `d1`/`d2`**。
 - 运行命令统一：`LAOSHENG_STATIC=1 <akshare venv python> -u 脚本/xxx.py 老盛早知道_YYYYMMDD.html`；`-u` 必加（经 `| tail` 管道时 stdout 块缓冲，脚本其实早跑完却看不到输出，易误判成挂死）。
 - 已知脚本坑：①语义色正则会误判「美债收益率上行→绿」，须字符串豁免（`突破5.27%`/`收益率突破`）或上下文查"收益率/利率/债"；另有字面含利空词但整体利好的（`相对受益`/`美元指数回落`/`美元走弱`）→ 加 `EXEMPT_POS` 豁免；②查 `class="hm-mq"` 而非 `hm-mq`（会命中 CSS）；③切卡须对 `finditer('<div class="card-body')` 起点切片，勿用 `re.split`；④Tab0/3/5 不用 `card-body`，须按组件/真实标题定位；⑤`importlib.util as _iu` → `_iu.spec_from_file_location`；⑥查真实失败用 `grep "  FAIL "`（末尾提示句含 FAIL 会误计 1）。
@@ -61,6 +62,8 @@
 - ⚠️ `present_files` 双破坏（铁律）：①回注 `data-page-node-id` 属性（~2600处，致 qc_check 高亮计数误报0）；②**结构性破坏 HTML 头部**——删除 `<html>/<head>/<meta>/<body>` 标签、合并首部多行（diff 1511 行）。**present 后本地磁盘文件绝不能当成品/直接提交**。
 - **正确流程**：present 仅开预览面板（指向 static 副本，不影响）；每次 present 后必须 `git checkout -- 老盛早知道_YYYYMMDD.html`（恢复到 HEAD 干净 build 版）或 `LAOSHENG_STATIC=1 python3 -u 脚本/build.py` 重建，再 `git status` 确认干净。
 - present 还可能误删历史报告文件（曾误删 20260829/30/31.html，已 `git checkout` 恢复）——present 后务必 `git status` 检查有无意外删除。
+- **污染落在磁盘副本、远端可能是干净的**（2026-09-08 核实）：`index.html` 清理 72 处污染后 `git diff HEAD` 为空 → 说明已推送的远端版本本就干净，污染是 present 之后才写到磁盘的。**判据：清理后若 `git diff HEAD` 为空，则无需重新提交。**
+- **体积变小 ≠ 内容变少（铁律）**：20260907 报告 406KB 中有 112KB 是 `data-page-node-id` 污染（2611 处），去污后 304KB，其中文正文反而比干净的 20260908（313KB）**少 2977 字**。判断内容量必须数中文字符，绝不能用文件字节数横比。
 - Git Data API 兜底：github.com 不可达但 api.github.com 可达 → `/tmp/gh_push.py`（blobs→trees→commits→PATCH ref）。
 
 ## 12. index.html 维护
