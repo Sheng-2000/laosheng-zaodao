@@ -9,8 +9,11 @@ fetch_news.py — 实时新闻 / AI / 社区 素材层（B 方案·叙事实时�
 
 - 所有注入文本均来自数据源真实返回（标题 / 摘要 / 发布时间 / 链接），**绝不编造**。
 - 网络受限或取数失败时，记录 FALLBACK 并保留 g_data2 硬编码兜底，流水线不中断。
-- 头条(标签和标题)实时覆盖；正文(分析)保留 g_data2 既有的、由 agent 每轮重写的版本，
-  以维持高亮密度与报告风格（cover_qc 要求新闻/AI 卡 ≥5 处高亮）。
+- ⚠️ 2026-09-08 修正：头条(标签和标题)**默认不再实时覆盖**。
+  教训：真实头条按分类顺序取前 N 条塞进标题位，而正文是 agent 按主题撰写的结构化分析，
+  两者来自不同源 → 16 张新闻卡「标题与正文全部对不上」（例：标题讲"一线城市租金六连涨"，
+  正文却是"9月7日A股深强沪弱"）。**标题必须与正文同源**。
+  现默认关闭覆盖（LAOSHENG_NEWS_TITLE=1 可强制开启），真实新闻改为落盘供 agent 校验事实。
 - 机构 / 社区 / 生物医学 为多角色结构化叙事，无法机械合成而不编造，
   故保留为 agent 维护（5步流程「搜→写 g_data2」），本模块仅提供 get_* 取数接口供 agent 使用。
 
@@ -27,6 +30,7 @@ import re as _re
 import json as _json
 import tempfile as _tf
 import time as _time
+import io as _io
 
 try:
     import akshare as ak
@@ -215,6 +219,24 @@ _NEWS_CARDS = [
 ]
 
 
+# 标题覆盖开关：默认关闭（保证 标题↔正文 同源语义一致）
+# 仅在明确需要"真实标题"且能接受与正文脱节时，设 LAOSHENG_NEWS_TITLE=1 强制开启
+TITLE_OVERRIDE = _os.environ.get("LAOSHENG_NEWS_TITLE", "0") == "1"
+
+
+def dump_news(news, tag="news"):
+    """真实新闻落盘，供 agent 在「搜→写 g_data2」阶段校验/引用事实，不注入报告正文。"""
+    try:
+        # 落系统临时目录，避免污染仓库（.workbuddy 属项目数据目录，会被 git 跟踪）
+        _dir = _tf.gettempdir()
+        _p = _os.path.join(_dir, "laosheng_news_%s_%s.json" % (tag, _time.strftime("%Y%m%d")))
+        with _io.open(_p, "w", encoding="utf-8") as f:
+            _json.dump(news, f, ensure_ascii=False, indent=1)
+        return _p
+    except Exception:
+        return ""
+
+
 def apply(D):
     """把真实头条注入 g_data2 新闻卡（覆盖 标签和标题，保留 正文）。
     仅当取到该分类真实条目才覆盖；否则保留硬编码（记 FALLBACK）。
@@ -223,6 +245,17 @@ def apply(D):
     if not news:
         print("[fetch_news] 取数失败，新闻头条沿用硬编码兜底")
         return
+
+    # 真实新闻落盘（供 agent 校验事实），不改动报告内容
+    _p = dump_news(news)
+    if not TITLE_OVERRIDE:
+        print("[fetch_news] 已取到 %d 条真实新闻（标题覆盖默认关闭，保证标题↔正文同源）" % len(news))
+        print("[fetch_news] 落盘供事实校验: %s" % (_p or "(失败)"))
+        for x in news[:5]:
+            print("   · [%s] %s" % (x.get("date", ""), x.get("title", "")[:46]))
+        _NOTE.append("标题覆盖已关闭(同源)")
+        return
+
     used = set()
     for prefix, n, cat in _NEWS_CARDS:
         pool = [x for x in news if (cat is None or x["cat"] == cat) and id(x) not in used]
