@@ -203,6 +203,45 @@ print("=" * 64)
 print("规范 3.2 数据标注日期核查")
 print("=" * 64)
 # market-block 含日期：数据日从当期数据层动态取，禁止硬编码上期日期
+
+# ===== 跨期检查守卫 =====
+# 用途：用「当期数据层」去检查「往期报告」时，数值/文案类断言（综评维度标题、关键数据值、
+# 指数点位、数据日）必然误报——因为期望值取自当前 g_data，而非该期报告当年的数据。
+# 判定：数据层主数据日 若不在 [报告日-1, 报告日-5] 区间内 → 判为跨期，仅结构性断言可信。
+try:
+    import re as _reX, datetime as _dtX
+    _mx = _reX.search(r"(\d{4})(\d{2})(\d{2})", os.path.basename(TARGET))
+    _rdobj = _dtX.date(*map(int, _mx.groups())) if _mx else None
+    _pool = [x for x in (globals().get("d1"), globals().get("d2"),
+                         getattr(globals().get("_m"), "D", None)) if isinstance(x, dict)]
+    _major = ""
+    for _p in _pool:
+        if "市场综评_日期" in _p:
+            _major = str(_p["市场综评_日期"]).strip(); break
+    if not _major:
+        _cnt = {}
+        for _p in _pool:
+            for _v in _p.values():
+                _s = str(_v).strip()
+                if _reX.fullmatch(r"\d{4}-\d{2}-\d{2}", _s):
+                    _cnt[_s] = _cnt.get(_s, 0) + 1
+        _major = max(_cnt, key=_cnt.get) if _cnt else ""
+    if _rdobj and _major:
+        _exp = {(_rdobj - _dtX.timedelta(days=k)).strftime("%Y-%m-%d") for k in range(1, 6)}
+        CROSS_PERIOD = _major not in _exp
+    else:
+        CROSS_PERIOD = False
+    MAJOR_DATE = _major
+except Exception:
+    CROSS_PERIOD = False; MAJOR_DATE = ""
+
+if CROSS_PERIOD:
+    print("\n" + "!" * 64)
+    print("⚠️  跨期检查：本报告日期与当前数据层主数据日(%s)不匹配" % MAJOR_DATE)
+    print("   数值/文案类断言（综评维度、关键数据、指数点位、数据日）系用当期数据比对，")
+    print("   对历史报告属误报高发区；结构性断言（卡片数/market-block/高亮分布）仍然有效。")
+    print("!" * 64)
+
 DATA_DATE = str(_m.D.get("市场综评_日期", "")).strip()
 if not DATA_DATE:
     import datetime as _dt
@@ -226,6 +265,7 @@ print()
 print("=" * 64)
 _fails = [n for n, ok in _RESULTS if not ok]
 if _fails:
-    print("❌ 未通过 %d 项：%s" % (len(_fails), "；".join(_fails[:8])))
+    _tag = "   ⚠️ 跨期检查：可能含误报项" if CROSS_PERIOD else ""
+    print("❌ 未通过 %d 项：%s%s" % (len(_fails), "；".join(_fails[:8]), _tag))
 else:
     print("✅ 覆盖率质检全部通过（共 %d 项）" % len(_RESULTS))
