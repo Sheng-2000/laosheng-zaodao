@@ -1118,8 +1118,10 @@ body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
 </div>
 
 <script>
-// 所有快报数据（按日期倒序）- 最新一期 + 最近6天历史（不含当天）；历史区取 slice(1,7) 强制只列6天
+// 所有快报数据（按日期倒序）- 最新一期 + 全部历史；历史区取 slice(1) 列出所有历史期，界面可见数=数组数=本地文件数
 const reports = [
+{ date: "20260908", weekday: "星期二", title: "算力全线反攻·创业板涨3.41%·银行42家全绿利好反跌" },
+
 { date: "20260907", weekday: "星期一", title: "财政部3600亿注资8家金融央企·央行5000亿等量续作·DeepSeek采购16万颗昇腾" },
 
 { date: "20260906", weekday: "星期日", title: "美伊互袭油轮·非农重定价·六大行分红提至31%" },
@@ -1132,8 +1134,7 @@ const reports = [
 
 { date: "20260902", weekday: "星期三", title: "美军空袭伊朗·油价飙升5.7%·股债双杀" },
 
-{ date: "20260901", weekday: "星期二", title: "六大行中报超预期·内银领涨·油价破85" }
-  ];
+];
 
 function getLink(dateStr) {
   return `老盛早知道_${dateStr}.html`;
