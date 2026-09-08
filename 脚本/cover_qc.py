@@ -32,7 +32,11 @@ def card_bodies(t):
         out.append(t[s2:e2])
     return out
 
+_RESULTS = []   # 汇总用：避免尾部写死"（FAIL 项见上方明细）"造成误判
+
+
 def chk(name, cond, detail=""):
+    _RESULTS.append((name, bool(cond)))
     print("  %s %s  %s" % ("PASS" if cond else "FAIL", name, detail))
 
 print("=" * 64)
@@ -136,6 +140,8 @@ CTX_EXEMPT = ["美元走弱", "美元指数回落", "美元回落", "相对受�
               # 反向情形：字面含利好词("利好/走强")但整句在表达利空 → 染绿正确，不算矛盾
               # 例："外围利好仅提振开盘情绪、并未带来增量资金进场"
               "外围利好仅提振", "并未带来增量资金", "利好未兑现", "利好出尽",
+              # "利好被提前透支/落地即兑现"：讲的是利好出尽后的获利了结，整体利空 → 染绿正确
+              "提前透支", "落地即兑现", "落地反而成为兑现", "利好兑现",
               # 成本侧：字面含"大涨/利好"等词，但讲的是上游涨价与BOM成本抬升、
               #   或利好不覆盖某一板块 → 对下游是利空，染绿正确
               # 例："存储价格大涨带来的BOM成本抬升"、"本轮注资利好并不覆盖公用事业"
@@ -202,8 +208,11 @@ if not DATA_DATE:
     import datetime as _dt
     DATA_DATE = (_dt.date.today() - _dt.timedelta(days=1)).strftime("%Y-%m-%d")
 # 7×24 交易品种（加密）在休市日仍有新报价，其数据日可晚于 T-1，属合法口径
-_ALT = [str(_m.D.get("加密货币_收盘日期", "")).strip()]
-ALT_DATES = [d for d in _ALT if d]
+# 各市场各自的"最近交易日"均属合法口径：加密为 7×24 报价；美股可能因假期休市
+# 而落在更早的交易日（例：2026-09-07 美国劳动节休市，美股块取 09-04 收盘）
+_ALT_KEYS = [k for k in _m.D if str(k).endswith("_收盘日期")]
+_ALT = [str(_m.D.get(k, "")).strip() for k in _ALT_KEYS]
+ALT_DATES = sorted({d for d in _ALT if d})
 _starts = [m.start() for m in re.finditer(r'class="[^"]*market-block[^"]*"', HTML)]
 _blks = [HTML[st:st + 400] for st in _starts]  # 按起点切片，勿用 re.split（会丢上下文）
 _hit = sum(1 for b in _blks if any(d in b for d in [DATA_DATE] + ALT_DATES))
@@ -215,5 +224,8 @@ chk("报告含数据日期标注(%s)" % DATA_DATE, DATA_DATE in HTML, "出现 %d
 
 print()
 print("=" * 64)
-ALL_OK = True
-print("（FAIL 项见上方明细）")
+_fails = [n for n, ok in _RESULTS if not ok]
+if _fails:
+    print("❌ 未通过 %d 项：%s" % (len(_fails), "；".join(_fails[:8])))
+else:
+    print("✅ 覆盖率质检全部通过（共 %d 项）" % len(_RESULTS))
