@@ -45,6 +45,11 @@ EXEMPT_GREEN_CTX = ["涨停潮", "情绪高点", "往往对应", "追高容易�
 # 成本侧豁免：字面含"上调/突破/涨"等利好词，但讲的是上游涨价、BOM成本抬升，
 #   对下游制造商是利空 → 染绿正确，不算矛盾（例："台积电2nm单片报价突破3万美元"）
 EXEMPT_GREEN_COST = ["成本", "BOM", "报价", "涨价压力", "毛利", "利润率", "挤压"]
+# 冲高回落豁免：字面含"大涨/涨超"，但整句讲的是日内冲高后翻绿、或前一日大涨后今日回调
+#   → 净结果是跌，染绿正确，不算矛盾
+#   例："韩国KOSPI从盘中涨超2.50%一路翻绿收跌0.58%"、"前一日大涨的液冷服务器方向回调"
+EXEMPT_GREEN_REV = ["翻绿", "收跌", "转跌", "跳水", "回吐", "回调", "重挫",
+                    "盘中一度涨", "盘中涨超", "前一日大涨", "前一交易日大涨", "涨幅回吐"]
 EXEMPT_POS = ["相对受益", "美元指数回落", "美元走弱", "美元回落", "实际利率回落", "通胀回落",
               # 加息预期"回落/降温/收敛"对风险资产是利好，染红正确，不算矛盾
               "加息的押注", "加息预期", "加息概率", "加息押注", "加息预期降温", "加息路径"]
@@ -55,7 +60,8 @@ for m in re.finditer(r'<span style="color:(#f85149|#3fb950);font-weight:700;">([
     rate_exempt = any(x in ctx for x in ["收益率", "利率", "债"]) or any(s in txt for s in EXEMPT_STR)
     pos_exempt = rate_exempt or any(s in txt for s in EXEMPT_POS)
     green_exempt = any(x in ctx for x in EXEMPT_GREEN_CTX) \
-        or any(x in txt for x in EXEMPT_GREEN_COST)
+        or any(x in txt for x in EXEMPT_GREEN_COST) \
+        or any(x in txt for x in EXEMPT_GREEN_REV)
     if col == GREEN and any(w in txt for w in POS) and not rate_exempt and not green_exempt:
         bad.append(("利好染绿", txt))
     if col == RED and any(w in txt for w in NEG) and not pos_exempt:
@@ -155,7 +161,9 @@ chk("页头指数速览已填充(含上证点位且无占位符)",
     bool(_SH) and (_SH in ticker_zone) and ("{{" not in ticker_zone),
     "上证 %s" % _SH)
 # 银行板块 PB / 现货金 / 美10Y 用 HTML 实际数值判断
-chk("银行板块PB已填充", "0.70倍" in HTML or "0.69倍" in HTML or "估值低位" in HTML)
+# 动态取当期银行板块PB（禁硬编码上期值：每期必误报）
+_pb = str(d1.D.get("估值_银行PB", "")).strip()
+chk("银行板块PB已填充", bool(_pb) and (_pb in HTML or "估值低位" in HTML), "当期值 %s" % (_pb or "缺失"))
 chk("现货黄金已填充", bool(_GOLD) and _GOLD in HTML, "现货金 %s" % _GOLD)
 chk("美10Y已填充", bool(_US10Y) and _US10Y in HTML, "美10Y %s" % _US10Y)
 
