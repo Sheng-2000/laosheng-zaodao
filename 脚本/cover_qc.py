@@ -107,7 +107,7 @@ t5 = tabs[5] if len(tabs) > 5 else ""
 sc = len(re.findall(r'class="[^"]*stock-card[^"]*"', t5))
 deep = "深度解读" in t5
 color_cls = len(re.findall(r'class="[^"]*stock-change[^"]*"', t5)) + len(re.findall(r'class="[^"]*stock-bullets[^"]*"', t5))
-chk("Tab5 stock-card数量(期望16)", sc == 16, "实际 %d" % sc)
+chk("Tab5 stock-card数量(期望19)", sc == 19, "实际 %d" % sc)
 chk("Tab5 深度解读汇总卡存在", deep, "")
 chk("Tab5 个股涨跌着色(涨跌class/要点)存在", color_cls >= 16, "着色元素 %d" % color_cls)
 
