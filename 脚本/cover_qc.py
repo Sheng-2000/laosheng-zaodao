@@ -4,11 +4,11 @@
    作为 qc_check.py + deep_qc.py 的补充，确保规范每一条都有对应检查。
    用法: python 脚本/cover_qc.py 老盛早知道_YYYYMMDD.html
 """
-import os, re, sys
+import os, re, sys, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_20260902.html"
+TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_%s.html" % datetime.date.today().strftime("%Y%m%d")
 HTML = open(os.path.join(ROOT, TARGET), encoding="utf-8").read()
 TPL = open(os.path.join(ROOT, "规则", "template.html"), encoding="utf-8").read()
 
@@ -155,7 +155,15 @@ CTX_EXEMPT = ["美元走弱", "美元指数回落", "美元回落", "相对受�
               # 冲高回落：字面含"大涨/涨超"，但整句是日内冲高翻绿或前日大涨后今日回调
               #   → 净结果为跌，染绿正确（与 deep_qc 的 EXEMPT_GREEN_REV 同口径）
               "翻绿", "收跌", "转跌", "跳水", "回吐", "回调", "重挫",
-              "盘中一度涨", "盘中涨超", "前一日大涨"]
+              "盘中一度涨", "盘中涨超", "前一日大涨",
+              # 转折式利好：字面含"大跌/走弱"，但落脚点是"反而利多"，净结果为利好 → 染红正确
+              "反而利多", "反而利好", "反而受益", "削弱了未来的通胀预期", "削弱未来通胀预期",
+              # 逆势收红：句中的"跌/重挫"描写的是其他板块，主体是个股上涨 → 染红正确
+              "逆势收红", "逆势收涨", "唯一收涨", "唯一收红", "少数收红",
+              # 警示/否定式：字面夹带"利好"，但整句是风险提示或否定式 → 染绿正确
+              #   例："警示：…这部分利好只能按年去兑现"、"别把放量当利好"
+              "风险：", "警示：", "提示：", "需要冷静", "更适合作为观察",
+              "别把", "不能把", "不要把", "而非配置", "只能按年", "按年去兑现"]
 
 
 def enclosing_span_text(s, pos):
