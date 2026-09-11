@@ -28,6 +28,7 @@ title_body_qc.py —— 标题 ⇄ 正文 一致性守门（第 4 套质检）
 import io
 import re
 import sys
+import datetime
 
 # 覆盖率阈值：低于此值判为"疑似错位"。
 # 实测：正确卡最低约 0.12（"中东·封锁升级与新导弹" vs 霍尔木兹正文）；
@@ -41,7 +42,7 @@ SKIP_WORDS = [
     "资产配置", "老盛复盘", "操作建议", "风险提示",
 ]
 
-TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_20260908.html"
+TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_%s.html" % datetime.date.today().strftime("%Y%m%d")
 VERBOSE = "--verbose" in sys.argv
 
 

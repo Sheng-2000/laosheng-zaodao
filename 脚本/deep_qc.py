@@ -2,11 +2,11 @@
 # 老盛早知道 深度质检（补充 qc_check.py 未覆盖的逐项语义/逐卡项）
 # 用法: python 脚本/deep_qc.py [报告文件名]
 # 对应 规则/报告质量检查.md v2.3
-import re, os, sys, importlib.util
+import re, os, sys, importlib.util, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)            # 项目根目录
-TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_20260902.html"
+TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_%s.html" % datetime.date.today().strftime("%Y%m%d")
 TPL = os.path.join(ROOT, "规则", "template.html")
 HTML = open(os.path.join(ROOT, TARGET), encoding="utf-8").read()
 TPLH = open(TPL, encoding="utf-8").read()
@@ -52,7 +52,28 @@ EXEMPT_GREEN_REV = ["翻绿", "收跌", "转跌", "跳水", "回吐", "回调", 
                     "盘中一度涨", "盘中涨超", "前一日大涨", "前一交易日大涨", "涨幅回吐"]
 EXEMPT_POS = ["相对受益", "美元指数回落", "美元走弱", "美元回落", "实际利率回落", "通胀回落",
               # 加息预期"回落/降温/收敛"对风险资产是利好，染红正确，不算矛盾
-              "加息的押注", "加息预期", "加息概率", "加息押注", "加息预期降温", "加息路径"]
+              "加息的押注", "加息预期", "加息概率", "加息押注", "加息预期降温", "加息路径",
+              # 转折式利好：句首讲利空事件，但落脚点是"反而利多/利多"，净结果为利好 → 染红正确
+              #   例："油价当天大跌近3%，削弱了未来的通胀预期，反而利多"（对金银是利好）
+              "反而利多", "反而利好", "反而受益", "反而形成支撑", "削弱了未来的通胀预期",
+              "削弱未来通胀预期", "削弱通胀预期",
+              # 逆势收红：句中"油价跌/有色重挫"描写的是其他板块的背景，主体是个股上涨
+              #   例："涨0.49%报47.51元，在油价跌近3%、有色重挫的一天里逆势收红"
+              "逆势收红", "逆势收涨", "逆势上涨", "唯一收涨", "唯一收红", "少数收红",
+              # 对比句式：主体是"收红的X、Y、Z都是…"，后半段用"而领跌的…"做反面对照
+              #   例："收红的长江电力、中国移动、中国神华都是现金流最稳的央企，而领跌的…"
+              "而领跌", "而下跌", "而收跌", "而走弱", "收红的",
+              # 社区话题角色观点标题（"看领跌的是谁"）：@价值投资者 固定为红色角色色，
+              #   不是涨跌语义着色，不做方向判定
+              "看领跌的是谁", "领跌的是谁", "的是谁"]
+# 警示/否定式豁免（绿色侧）：整句以"风险/警示/需要冷静/别把…当利好"开头或收尾，
+#   字面夹带"利好/补充/盈利/突破"等正向词，但整体是风险提示 → 染绿正确，不算矛盾
+#   例："风险：1600亿元募资…资本补充对盈利的帮助要等两三个报告期才看得出来"
+#       "警示：…增发会摊薄股本…这部分利好只能按年去兑现"
+#       "别把放量当利好"、"当前更适合作为观察而非配置"
+EXEMPT_GREEN_WARN = ["风险：", "警示：", "提示：", "需要冷静", "当前更适合作为观察",
+                     "更适合作为观察", "别把", "不能把", "不要把", "而非配置",
+                     "只能按年", "按年去兑现", "不适合作为"]
 bad = []
 for m in re.finditer(r'<span style="color:(#f85149|#3fb950);font-weight:700;">([\s\S]{0,80}?)</span>', HTML):
     col, txt = m.group(1), re.sub(r"<[^>]+>", "", m.group(2))
@@ -61,7 +82,8 @@ for m in re.finditer(r'<span style="color:(#f85149|#3fb950);font-weight:700;">([
     pos_exempt = rate_exempt or any(s in txt for s in EXEMPT_POS)
     green_exempt = any(x in ctx for x in EXEMPT_GREEN_CTX) \
         or any(x in txt for x in EXEMPT_GREEN_COST) \
-        or any(x in txt for x in EXEMPT_GREEN_REV)
+        or any(x in txt for x in EXEMPT_GREEN_REV) \
+        or any(x in txt for x in EXEMPT_GREEN_WARN)
     if col == GREEN and any(w in txt for w in POS) and not rate_exempt and not green_exempt:
         bad.append(("利好染绿", txt))
     if col == RED and any(w in txt for w in NEG) and not pos_exempt:

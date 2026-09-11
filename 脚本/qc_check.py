@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 # 大福·老盛早知道 质量检查（对应 规则/报告质量检查.md v2.3）
-import re, os, sys, importlib.util
+import re, os, sys, importlib.util, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)  # 项目根目录（脚本目录的父级）
-TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_20260902.html"
+TARGET = sys.argv[1] if len(sys.argv) > 1 else "老盛早知道_%s.html" % datetime.date.today().strftime("%Y%m%d")
 TPL = os.path.join(ROOT, "规则", "template.html")
 
 html = open(os.path.join(ROOT, TARGET), encoding="utf-8").read()
