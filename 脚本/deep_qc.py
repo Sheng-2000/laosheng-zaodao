@@ -108,20 +108,20 @@ for i, st in enumerate(starts):
 chk("文本卡高亮达标(新闻/AI≥5 其余≥2, 数据卡豁免)", len(low) == 0,
     "未达标 %d: %s" % (len(low), str(low[:8])))
 
-# ===== D. Tab5 关注标的 16 卡 顺序/同名同码 =====
-print("\n【D. Tab5 关注标的 16 卡】")
-order = [1, 2, 3, 4, 16, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+# ===== D. Tab5 关注标的 19 卡 顺序/同名同码 =====
+print("\n【D. Tab5 关注标的 19 卡】")
+order = [1, 2, 3, 4, 16, 17, 5, 6, 7, 8, 9, 18, 19, 10, 11, 12, 13, 14, 15]
 blocks = [b for b in re.split(r'(?=<div class="stock-card)', HTML) if b.startswith('<div class="stock-card')]
 ok = True
 for i, (b, idx) in enumerate(zip(blocks, order), 1):
     name = d2.D['标的%d_名称' % idx]; code = d2.D['标的%d_代码' % idx]
     seg = b[:3000]
     hit = (name in seg) and (code in seg)
-    others = [c for j in range(1, 17) if j != idx and d2.D['标的%d_代码' % j] in seg]
+    others = [c for j in range(1, 20) if j != idx and d2.D['标的%d_代码' % j] in seg]
     if not (hit and not others):
         ok = False
         print("    MISMATCH 卡%d 标的%d %s" % (i, idx, others))
-chk("16 卡同名同码且未串位", ok, "%d 块" % len(blocks))
+chk("19 卡同名同码且未串位", ok, "%d 块" % len(blocks))
 
 # ===== E. 社区话题格式（规范五·2）=====
 print("\n【E. 社区话题格式】")
