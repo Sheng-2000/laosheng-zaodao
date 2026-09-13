@@ -125,7 +125,20 @@ chk("Tab6 板块覆盖", len(miss6) == 0, "缺失:%s" % miss6)
 t7 = tabs[7] if len(tabs) > 7 else ""
 c7 = card_bodies(t7)
 h7 = [hl(c) for c in c7]
-low7 = [i + 1 for i, c in enumerate(c7) if hl(c) < 2 and not ("收盘·" in c or "mq-item" in c or "数字速查" in c)]
+def _is_data_card7(c):
+    """数据展示卡豁免：速查类卡片数值已按 up/down 着色，不再要求文字高亮。
+    卡片标题（如“关键数字速查”）在 card-body 之外，故需回溯其所在 card 的上下文判断。"""
+    if "收盘·" in c or "mq-item" in c or "数字速查" in c or "valuation-cards" in c:
+        return True
+    pos = t7.find(c)
+    if pos > 0:
+        ctx = t7[max(0, pos - 600):pos]
+        if "数字速查" in ctx or "valuation-cards" in ctx:
+            return True
+    return False
+
+
+low7 = [i + 1 for i, c in enumerate(c7) if hl(c) < 2 and not _is_data_card7(c)]
 chk("Tab7 非数据卡≥2处高亮", len(low7) == 0, "高亮分布=%s 未达标:%s" % (h7, low7))
 
 print()

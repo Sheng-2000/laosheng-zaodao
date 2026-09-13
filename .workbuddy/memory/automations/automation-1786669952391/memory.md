@@ -252,3 +252,9 @@
 - 兜底检索再捞出 3 条 9/11 高权重漏发并补入：GPT-6 Astra+黄仁勋AGI、宁德时代首次回购、*ST卓然财务造假退市；四套 QC 复跑全绿。
 - 透明度提示：主力资金净流出口径差异（本报321.96亿/证券时报410.49亿/中国商报>600亿），本报子项与总数同源自洽，未跨源改动。
 - 推送 dadb39b。
+
+## 2026-09-12 推送分叉提示（重要，下次必读）
+- 本期(含全面质检补漏 dadb39b、理财区优化)最终经 Git Data API 推送，远端 main=fc0538e。
+- 本地 main=1f6fee3 与远端内容等价但 SHA 分叉（github.com 智能 HTTP 超时导致普通 push/fetch 均失败，API 兜底只能建新 commit）。
+- 下次自动化执行前，若 github.com 恢复，务必先对齐：`git fetch origin main && git reset --hard origin/main`（reset 到远端等价 commit，working tree 不变、无冲突），否则 `git push origin main` 会 non-fast-forward 失败。
+- 建议将此"开头对齐远端"步骤固化进自动化主流程（fetch+reset 失败则忽略，成功则避免分叉）。
