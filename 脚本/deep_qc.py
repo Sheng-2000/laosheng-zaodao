@@ -71,7 +71,8 @@ EXEMPT_POS = ["相对受益", "美元指数回落", "美元走弱", "美元回�
 #   例："风险：1600亿元募资…资本补充对盈利的帮助要等两三个报告期才看得出来"
 #       "警示：…增发会摊薄股本…这部分利好只能按年去兑现"
 #       "别把放量当利好"、"当前更适合作为观察而非配置"
-EXEMPT_GREEN_WARN = ["风险：", "警示：", "提示：", "需要冷静", "当前更适合作为观察",
+EXEMPT_GREEN_WARN = ["风险：", "风险一", "风险二", "风险三", "风险四", "风险五", "风险六",
+                     "警示：", "提示：", "需要冷静", "当前更适合作为观察",
                      "更适合作为观察", "别把", "不能把", "不要把", "而非配置",
                      "只能按年", "按年去兑现", "不适合作为"]
 bad = []
@@ -117,6 +118,7 @@ for i, st in enumerate(starts):
     is_data = (any(k in tname for k in EXEMPT_TITLE)
                or any(k in subname for k in EXEMPT_SUB)
                or 'market-val' in b or 'market-row' in b
+               or 'valuation-cards' in b   # 关键数字速查卡（数值已按 up/down 着色）
                or '收盘·' in b)   # 指数速览/关键数字速览卡（数字已 up/down 着色）
     if is_data:
         continue
