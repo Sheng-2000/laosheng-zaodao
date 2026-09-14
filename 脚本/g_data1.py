@@ -1201,7 +1201,8 @@ for i, k in enumerate(关键词, 1):
 ]
 for name, w, p, desc, cls in 情绪:
     D["情绪_%s_名称" % name] = name
-    D["情绪_%s_宽度" % name] = w
+    # 宽度必须是合法 CSS 长度（带 %），否则浏览器丢弃该声明导致进度条塌缩、与百分比文字不匹配
+    D["情绪_%s_宽度" % name] = (str(w) + "%") if not str(w).rstrip().endswith("%") else str(w)
     D["情绪_%s_百分比" % name] = p
     D["情绪_%s_描述" % name] = desc
     D["情绪_%s_样式类" % name] = cls
