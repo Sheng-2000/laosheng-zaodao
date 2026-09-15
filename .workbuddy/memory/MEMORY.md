@@ -83,3 +83,10 @@
 - 存档口径：本地只保留最近 7 期。删前 `cp` 到 `/tmp/laosheng_archive_YYYYMMDD/`，用 `git rm` 并同步删 index 条目。
 - 密码锁 `123457`；`reports` 只留一个 `];`，提交前 `node --check` 两段 `<script>`。
 - logo 维持暗色原版（青闪 `#00d4ff`）。**主题跟随系统**：init 用 `matchMedia('(prefers-color-scheme: dark)')` 并监听，**不读不写 localStorage**；手动 ☀️/🌙 仅临时 flip `light-theme`。三文件 head 均加 `<meta name="color-scheme" content="light dark">`。
+
+## 13. CloudBase 静态托管部署（laosheng）
+- 环境 `laosheng-zaozidao-d3dvll28342c42`（体验版，ap-shanghai，到期 2026-10-23）。CLI 工具：`/Users/sheng/.workbuddy/binaries/node/cli-connector-packages/bin/tcb`（v3.8.1，已登录）。
+- 应用 `laosheng` = 静态托管型云托管：**Build type GIT**，部署命令 `tcb hosting deploy . /laosheng`（把仓库根目录部署到静态托管路径 `/laosheng`），App path `/laosheng`，访问 `https://laosheng-laosheng-zaozidao-d3dvll28342c42.webapps.tcloudbase.com/`。
+- "更新服务" = 重新部署最新 GitHub 提交。CLI：`tcb app deploy laosheng --env-id laosheng-zaozidao-d3dvll28342c42 --force --yes`（本地 ZIP 上传，生成新版本 `laosheng-0NN`，旧版保留可回滚；push 未自动触发构建，需手动）。注：该命令会在项目根生成 `cloudbaserc.json`（本地上传配置），用完需删除以免把仓库从 GIT 工作流改成本地上传、并被误提交。
+- ⚠️ **公网隐私暴露（20260914 发现）**：`.gitignore` 仅忽略 `__pycache__/`、`.DS_Store`、`.trae-html-share-packages/`，**未忽略 `.workbuddy/`/`脚本/`/`规则/`** → 这些私有目录已被公开部署到 `/laosheng/.workbuddy/...` 等公网路径（含个人记忆/自动化 memory）。建议：在 `.gitignore` 追加 `.workbuddy/`、`脚本/`、`规则/`（或用 hosting ignore），并清理线上已泄露文件。
+- **下次精准指令（用户可直接粘贴）**："用 tcb CLI 对 CloudBase 云托管应用 `laosheng`（环境 `laosheng-zaozidao-d3dvll28342c42`，部署路径 `/laosheng`）执行更新服务：从项目目录重新部署最新内容生成新版本并切换线上（命令 `tcb app deploy laosheng --env-id laosheng-zaozidao-d3dvll28342c42 --force --yes`）；部署后删除误生成的 `cloudbaserc.json`；下载线上最新报告核验关键修复生效。注：先 `git push` 再部署才能保证线上=仓库 HEAD；`.gitignore` 未排除私有目录，若已加固则忽略公网暴露提醒。"
