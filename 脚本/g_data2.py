@@ -794,7 +794,7 @@ D.update({
     '地缘新闻2_标签和标题': '🛢️ 沙特管道抢修·原油走弱',
     '地缘新闻2_正文': '<span style="color:#f0b429;font-weight:700;">沙特正通过绕开上周遭无人机袭击受损的管段</span>，争取在数日内将东西原油管道运力恢复至<span style="color:#f85149;font-weight:700;">约一半水平</span>，并用<span style="color:#00d4ff;font-weight:700;">约六周时间实现满负荷恢复</span>；同时调整出口路线、经阿曼增加霍尔木兹海峡外侧的现货销售。<span style="color:#3fb950;font-weight:700;">WTI跌1.58%报100.30美元、布伦特跌0.91%报103.87美元</span>。',
     '产业趋势新闻1_标签和标题': '🧵 电子布迎来紧缺周期',
-    '产业趋势新闻1_正文': 'AI服务器带动PCB高多层化，电子布供需格局被重塑：<span style="color:#f85149;font-weight:700;">7628厚布出厂价由年初约4.6元/米升至9月的11至12元/米</span>，经销商报价已达15元/米；<span style="color:#f85149;font-weight:700;">薄布1080与2116年内涨幅超140%，Low-Dk二代布年内涨幅超200%</span>。9月18日先进封装爆发，<span style="color:#00d4ff;font-weight:700;">覆铜板与上游玻纤材料的价格弹性正在被重新定价</span>。',
+    '产业趋势新闻1_正文': 'AI服务器带动PCB高多层化，电子布供需格局被重塑：<span style="color:#f85149;font-weight:700;">7628厚布出厂价由年初约4.6元/米升至9月的11至12元/米</span>，经销商报价已达15元/米；<span style="color:#f85149;font-weight:700;">薄布1080与2116年内涨幅超140%，Low-Dk二代布年内涨幅超200%</span>。9月18日先进封装爆发，<span style="color:#00d4ff;font-weight:700;">覆铜板与上游玻纤材料的价格弹性正在被重新定价</span>。<span style="color:#f85149;font-weight:700;">AI资本开支正从GPU外溢至电力基础设施</span>——Generac与亚马逊签署最高80亿美元数据中心备用发电机协议，算力“算电协同”从口号走向订单，电力设备与备用电源链获新增量逻辑。',
     '大模型新闻1_标签和标题': '🤖 豆包Seed-2.1-Pro全量上线',
     '大模型新闻1_正文': '字节豆包<span style="color:#f85149;font-weight:700;">Doubao-Seed-2.1-Pro-0915</span>已在火山方舟全量上线并接入豆包工作与TRAE，<span style="color:#f85149;font-weight:700;">图像与视频推理的token消耗较上代下降30%以上</span>；官方称其可在28万行传统Java ERP老系统上约<span style="color:#00d4ff;font-weight:700;">2小时梳理清采购全流程</span>。<span style="color:#00d4ff;font-weight:700;">模型竞争重心从跑分转向真实工程场景的可用性</span>。',
     '大模型新闻2_标签和标题': '🏭 华为发布《智能世界2035》',
