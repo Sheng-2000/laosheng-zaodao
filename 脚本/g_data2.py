@@ -1644,3 +1644,314 @@ _ov9 = {
 '高股息_银行标题': '🏦 银行：普涨日跑输·逢低增配',
 }
 D.update(_ov9)
+# ===== 20260921 期覆盖·补丁11（g_data2：周末叙事换新 + 研判，幂等可重跑） =====
+_ov11 = {
+# ---------- 重点新闻 1-8 ----------
+'重点新闻1_标签和标题': '📈 中美磋商纽约开局·9/24峰会铺垫',
+'重点新闻1_正文': '9月20日中美经贸团队在<span style="color:#f85149;font-weight:700;">纽约开始举行磋商</span>，何立峰副总理率团、持续至<span style="color:#f85149;font-weight:700;">9月23日</span>，为<span style="color:#f0b429;font-weight:700;">9月24日两国元首会晤</span>铺路；议题含对等降税、AI、稀土与伊朗能源。离岸人民币与A50周末走强，<span style="color:#f85149;font-weight:700;">缓和预期利好风险偏好</span>，但磋商反复仍可能引发避险。',
+'重点新闻2_标签和标题': '🔥 LPR连续16个月不变·降息预期落空',
+'重点新闻2_正文': '9月20日公布9月<span style="color:#00d4ff;font-weight:700;">LPR</span>：1年期<span style="color:#f85149;font-weight:700;">3.00%</span>、5年期以上<span style="color:#f85149;font-weight:700;">3.50%</span>，均较8月持平，<span style="color:#f0b429;font-weight:700;">连续16个月按兵不动</span>；业内称短期降息必要性不高，内部定力显现，银行息差压力边际暂缓。',
+'重点新闻3_标签和标题': '🏦 巴菲特卸任伯克希尔董事长',
+'重点新闻3_正文': '9月20日伯克希尔公告<span style="color:#f85149;font-weight:700;">沃伦·巴菲特正式卸任董事长</span>、转任<span style="color:#f0b429;font-weight:700;">名誉董事长</span>，长子<span style="color:#f85149;font-weight:700;">霍华德·巴菲特接任</span>，<span style="color:#00d4ff;font-weight:700;">公司最高治理层交接全部完成</span>。<span style="color:#f0b429;font-weight:700;">价值投资时代符号性落幕</span>，但<span style="color:#f85149;font-weight:700;">长期资本配置纪律延续</span>。',
+'重点新闻4_标签和标题': '💾 长鑫第五代DRAM量产',
+'重点新闻4_正文': '长鑫科技在<span style="color:#f85149;font-weight:700;">世界制造业大会</span>宣布第五代DRAM技术平台量产，<span style="color:#f85149;font-weight:700;">24GB LPDDR5X进入国产旗舰手机</span>，四重曝光将半间距微缩至<span style="color:#00d4ff;font-weight:700;">11.95nm</span>，国产存储自主可控再下一城。',
+'重点新闻5_标签和标题': '🤖 特朗普拟组"人工智能部队"',
+'重点新闻5_正文': '特朗普宣布将组建<span style="color:#f85149;font-weight:700;">"人工智能部队"并任命AI事务总管</span>，称AI或占美国GDP的<span style="color:#00d4ff;font-weight:700;">25%</span>；同期AI四巨头因呼吁放缓开发遭反垄断诉讼，<span style="color:#f0b429;font-weight:700;">AI军备与安全治理同步升温</span>。',
+'重点新闻6_标签和标题': '🌍 胡塞袭沙特·供油归零扰动',
+'重点新闻6_正文': '胡塞武装袭击沙特<span style="color:#3fb950;font-weight:700;">敏感目标与阿美设施</span>，沙特对欧洲<span style="color:#3fb950;font-weight:700;">10月长协供油归零</span>、<span style="color:#3fb950;font-weight:700;">北海溢价创纪录</span>；<span style="color:#f0b429;font-weight:700;">马克龙拟召集G7讨论释放战略油储</span>，<span style="color:#3fb950;font-weight:700;">油价高位震荡</span>、方向看谈判。',
+'重点新闻7_标签和标题': '🏠 公积金新规落地·地产后周期',
+'重点新闻7_正文': '<span style="color:#f0b429;font-weight:700;">修订后《住房公积金管理条例》9月20日施行</span>，<span style="color:#f85149;font-weight:700;">1999年来最大修订</span>，提取6→9种、贷款审查15→10天；<span style="color:#f85149;font-weight:700;">直接催化地产链涨停</span>，<span style="color:#f85149;font-weight:700;">家居与物业后周期同步受益</span>，但<span style="color:#3fb950;font-weight:700;">销售拐点未确认</span>。',
+'重点新闻8_标签和标题': '🪙 金价高位·美债回落',
+'重点新闻8_正文': '9月18日现货金<span style="color:#f85149;font-weight:700;">反弹报4391.94美元</span>，美10年债回落至<span style="color:#f85149;font-weight:700;">4.94%</span>；但胡塞袭沙特与伊朗谈判拉锯令<span style="color:#3fb950;font-weight:700;">地缘溢价难消</span>，中美磋商缓和预期部分对冲，金价短线高位震荡。',
+
+# ---------- 财经新闻 1-6 ----------
+'财经新闻1_标签和标题': '🏦 银行中期分红密集落地',
+'财经新闻1_正文': '9月18日<span style="color:#f85149;font-weight:700;">成都银行首次实施中期分红</span>，20家银行合计拟派约<span style="color:#00d4ff;font-weight:700;">2661亿元</span>，六大行拟派<span style="color:#f85149;font-weight:700;">2209.89亿元创历史新高</span>、比例首次集体提至<span style="color:#f85149;font-weight:700;">31%</span>，分红确定性持续兑现。',
+'财经新闻2_标签和标题': '💱 人民币升破6.70关口',
+'财经新闻2_正文': '9月18日<span style="color:#f85149;font-weight:700;">离岸、在岸人民币双双升破6.70</span>，为年内重要突破。东方金诚王青指出主因美元指数回落与中间价偏强，预计年底核心区间<span style="color:#00d4ff;font-weight:700;">6.7至6.9</span>、全年先升后稳。',
+'财经新闻3_标签和标题': '📊 8月用电再破万亿·财政增收',
+'财经新闻3_正文': '8月全社会用电量<span style="color:#f85149;font-weight:700;">10332亿千瓦时+1.7%</span>、负荷<span style="color:#00d4ff;font-weight:700;">15.6亿千瓦创历史新高</span>；1-8月证券交易印花税<span style="color:#f85149;font-weight:700;">2160亿+82%</span>、财政收入<span style="color:#f85149;font-weight:700;">15.66万亿+5.7%</span>，慢牛蓄势量能回升。',
+'财经新闻4_标签和标题': '🛢️ 沙特供油归零·G7释储',
+'财经新闻4_正文': '沙特对欧洲<span style="color:#3fb950;font-weight:700;">10月长协供油归零</span>、北海原油溢价创纪录，欧洲冬季能源风险加剧；马克龙宣布数周内召集<span style="color:#f0b429;font-weight:700;">G7讨论协同释放战略油储</span>，油价高位震荡待谈判明朗。',
+'财经新闻5_标签和标题': '🤖 Anthropic估值2万亿·IPO推迟',
+'财经新闻5_正文': 'Anthropic将IPO推迟至<span style="color:#f0b429;font-weight:700;">11月</span>、估值预期<span style="color:#00d4ff;font-weight:700;">2万亿美元</span>，2026年化营收将超<span style="color:#f85149;font-weight:700;">1000亿</span>；OpenAI洽谈新一轮融资估值或达<span style="color:#00d4ff;font-weight:700;">1.2万亿</span>，AI资本热度未减。',
+'财经新闻6_标签和标题': '📈 瑞银上修全球AI资本支出',
+'财经新闻6_正文': '瑞银将<span style="color:#f85149;font-weight:700;">2026全球AI资本支出上调至9980亿美元</span>、2027年达<span style="color:#00d4ff;font-weight:700;">1.447万亿</span>，九成增量来自内存涨价；算力需求从主题走向业绩兑现，国产算力与存储同步受益。',
+
+# ---------- 地缘新闻 1-2 ----------
+'地缘新闻1_标签和标题': '🌍 胡塞袭沙特·伊朗开7项条件',
+'地缘新闻1_正文': '胡塞武装袭沙特<span style="color:#3fb950;font-weight:700;">敏感目标与阿美设施</span>，伊朗向美传达<span style="color:#f0b429;font-weight:700;">7项谈判条件</span>、<span style="color:#00d4ff;font-weight:700;">卡塔尔居中调解</span>；<span style="color:#f0b429;font-weight:700;">特朗普称将对伊作"重大决定"</span>，<span style="color:#3fb950;font-weight:700;">霍尔木兹通航仍低于冲突前</span>。',
+'地缘新闻2_标签和标题': '🛢️ 沙特求援·油价高位拉锯',
+'地缘新闻2_正文': '沙特罕见向以色列求援、美军称<span style="color:#f85149;font-weight:700;">霍尔木兹主要航道完成水雷清除</span>；但利雅得安全警报与<span style="color:#3fb950;font-weight:700;">供油归零</span>令风险重定价，原油在<span style="color:#00d4ff;font-weight:700;">100美元</span>附近拉锯，方向取决于谈判进展。',
+
+# ---------- 产业趋势新闻 1 ----------
+'产业趋势新闻1_标签和标题': '🚀 AI军备竞赛·全球提速',
+'产业趋势新闻1_正文': '特朗普拟组"人工智能部队"、瑞银上修全球AI资本支出至<span style="color:#f85149;font-weight:700;">2027年1.447万亿美元</span>，长鑫DRAM量产补齐国产存储短板；AI从算力、模型到应用<span style="color:#f85149;font-weight:700;">全链军备竞赛升温</span>，安全治理同步加码。',
+
+# ---------- 大模型新闻 2（刷新） ----------
+'大模型新闻2_标签和标题': '⚖️ AI四巨头遭反垄断诉讼',
+'大模型新闻2_正文': 'Anthropic、OpenAI、SpaceX AI、谷歌因呼吁"<span style="color:#3fb950;font-weight:700;">放缓</span>"AI开发遭起诉，监管对<span style="color:#3fb950;font-weight:700;">算力集中</span>担忧升温；而特朗普拟组AI部队，<span style="color:#f0b429;font-weight:700;">政策信号分裂</span>，AI治理进入深水区。',
+
+# ---------- 算力新闻 5（刷新为长鑫） ----------
+'算力新闻5_标签和标题': '💾 长鑫第五代DRAM量产',
+'算力新闻5_正文': '长鑫科技<span style="color:#f85149;font-weight:700;">第五代DRAM平台量产</span>，24GB LPDDR5X进入国产旗舰手机，四重曝光微缩至<span style="color:#00d4ff;font-weight:700;">11.95nm</span>；<span style="color:#f85149;font-weight:700;">存储自主可控</span>补齐算力产业链短板，利好国产设备与材料。',
+
+# ---------- 机构观点 1-6（周末角度重写） ----------
+'机构1_观点': '中信证券表示，<span style="color:#f85149;font-weight:700;">积极把握年内最后的进攻窗口</span>，二次进攻主要方向是产业趋势上的非机构票；加息落地后A股独立放量，中美磋商若缓和将抬升风险偏好。<span style="color:#ffa657;font-weight:700;">维持底仓不动、卫星等回踩</span>，科技仓单独设止损，不追高位次新。',
+'机构2_观点': '中金公司认为，加息已被<span style="color:#00d4ff;font-weight:700;">充分定价</span>，真正改变路径的是<span style="color:#00d4ff;font-weight:700;">点阵图上修至4.1%</span>与"更高更久"基调；对A股外溢冲击边际减弱，<span style="color:#f85149;font-weight:700;">内因强于外因</span>。短期看好<span style="color:#f85149;font-weight:700;">红利防御与国产算力</span>双主线，以再平衡应对风格切换。',
+'机构3_观点': '中信建投表示，加息落地后<span style="color:#f85149;font-weight:700;">A股走出独立放量行情</span>，地产涨停潮（公积金新规）具事件驱动、半导体源于昇腾960硬催化。建议<span style="color:#ffa657;font-weight:700;">不追涨停、等回踩</span>，仓位向<span style="color:#f85149;font-weight:700;">低PB高股息央企</span>倾斜以对冲波动。',
+'机构4_观点': '华泰证券提示，<span style="color:#3fb950;font-weight:700;">全球债市同步抛售</span>：美10年破5%、日银加息至<span style="color:#f0b429;font-weight:700;">1.25%创31年最高</span>，长端利率中枢抬升。<span style="color:#f85149;font-weight:700;">建议本币资产均衡配置</span>，黄金作为对冲保留，科技仓控制单一标的集中度。',
+'机构5_观点': '摩根大通将中资金融股偏好排序定为<span style="color:#f85149;font-weight:700;">银行>保险>券商</span>，六大行分红提至<span style="color:#f85149;font-weight:700;">31%</span>、PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>估值修复明确；招行单名偏高需<span style="color:#ffa657;font-weight:700;">45%再平衡阈值</span>；平安股息率约5.10%具吸引力。',
+'机构6_观点': '瑞银维持<span style="color:#f85149;font-weight:700;">中国股票中性偏多</span>，十五五目标利好估值中枢；并将<span style="color:#f85149;font-weight:700;">全球AI资本支出2027年上修至1.447万亿美元</span>。短期看好<span style="color:#f85149;font-weight:700;">红利与国产算力</span>，以<span style="color:#ffa657;font-weight:700;">分红再投资</span>滚动收息、保留现金等利率确认回落。',
+
+# ---------- 社区话题 1-5（差异化选题+观点） ----------
+'社区话题1_来源': '雪球·银行股吧',
+'社区话题1_标题': '中美磋商开启，银行红利底仓要不要动？',
+'社区话题1_热度': '🔥 热度 9.9万',
+'社区话题1_角色1': '@机构分析师',
+'社区话题1_观点1': '9月18日<span style="color:#3fb950;font-weight:700;">银行微跌0.39%</span>跑输大盘，但板块PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>、分红比例提至<span style="color:#f85149;font-weight:700;">31%</span>，估值与分红双底未破，回调是收息窗口而非逻辑破坏。',
+'社区话题1_角色2': '@价值投资者',
+'社区话题1_观点2': '以9月18日为基准，<span style="color:#f85149;font-weight:700;">六大行中期分红合计2209.89亿元创历史新高</span>、资本充足率安全垫厚，<span style="color:#f85149;font-weight:700;">4%左右股息率</span>低利率下稀缺，底仓不动。',
+'社区话题1_角色3': '@谨慎派',
+'社区话题1_观点3': '中美磋商若反复，<span style="color:#3fb950;font-weight:700;">避险情绪可能再起</span>；且银行短期被科技与消费抽水，<span style="color:#3fb950;font-weight:700;">跑输或延续</span>，不宜追高补仓过猛。',
+'社区话题1_观点': '银行红利是组合的"<span style="color:#f85149;font-weight:700;">压舱石</span>"不是"弹性仓"，<span style="color:#ffa657;font-weight:700;">底仓只收息不换手</span>。本周末最大变量是中美经贸磋商——何立峰9/19-23赴美，若释放缓和信号利好银行估值修复；若谈崩则红利防御属性反而凸显。<span style="color:#f85149;font-weight:700;">全破净的PB与稳定分红提供厚安全垫</span>。交通、邮储这类低PB国有行可借回调小步补，<span style="color:#ffa657;font-weight:700;">招行占比越过45%立即再平衡</span>，其余多看少动。',
+'社区话题1_标签': '银行',
+'社区话题2_来源': '韭研公社·半导体圈',
+'社区话题2_标题': '长鑫第五代DRAM量产，国产存储能追三星吗？',
+'社区话题2_热度': '🔥 热度 9.6万',
+'社区话题2_角色1': '@机构分析师',
+'社区话题2_观点1': '长鑫<span style="color:#f85149;font-weight:700;">第五代DRAM量产</span>、24GB LPDDR5X进国产旗舰，四重曝光微缩至<span style="color:#00d4ff;font-weight:700;">11.95nm</span>，<span style="color:#f85149;font-weight:700;">国产存储自主可控</span>再下一城，但良率与生态仍待验证。',
+'社区话题2_角色2': '@价值投资者',
+'社区话题2_观点2': '存储是<span style="color:#f85149;font-weight:700;">AI资本支出九成增量</span>所在（瑞银上修至1.447万亿），长鑫量产补足算力链短板，<span style="color:#f85149;font-weight:700;">设备与材料订单饱满</span>，中期景气确认。',
+'社区话题2_角色3': '@谨慎派',
+'社区话题2_观点3': '单日爆发部分源于事件催化，<span style="color:#3fb950;font-weight:700;">追涨停风险高</span>；且美加息与债市抛售压制估值，<span style="color:#3fb950;font-weight:700;">回撤可能剧烈</span>，宜等回踩。',
+'社区话题2_观点': '国产存储这条线我认为"<span style="color:#f85149;font-weight:700;">产业逻辑成立、但不宜追高</span>"。长鑫量产是硬突破，叠加昇腾950月底商用、瑞银上修AI资本支出，说明存储需求真实。但板块已拥挤，<span style="color:#3fb950;font-weight:700;">单日大涨后追高性价比差</span>。策略是<span style="color:#ffa657;font-weight:700;">卫星仓暂不加、等回踩企稳放量后分批试探、单独设止损</span>，用红利底仓现金流提供安全垫，分清有真实订单与纯情绪。',
+'社区话题2_标签': '半导体',
+'社区话题3_来源': '东财·宏观阁',
+'社区话题3_标题': 'LPR连续16个月不变，降息预期落空怎么看？',
+'社区话题3_热度': '🔥 热度 9.4万',
+'社区话题3_角色1': '@机构分析师',
+'社区话题3_观点1': '9月<span style="color:#00d4ff;font-weight:700;">LPR连续16个月不变</span>（1年3.00%/5年3.50%），业内称短期降息必要性不高，<span style="color:#f0b429;font-weight:700;">内部定力显现</span>，银行息差压力边际暂缓。',
+'社区话题3_角色2': '@价值投资者',
+'社区话题3_观点2': '降息预期落空对<span style="color:#f85149;font-weight:700;">高股息资产反而是利好</span>——1年定存仅0.95%，银行4%股息率利差更显稀缺，<span style="color:#f85149;font-weight:700;">收息逻辑未破</span>。',
+'社区话题3_角色3': '@谨慎派',
+'社区话题3_观点3': '利率不动也意味着<span style="color:#3fb950;font-weight:700;">地产与消费刺激力度有限</span>，经济复苏斜率待验，权益估值上修缺催化剂，<span style="color:#3fb950;font-weight:700;">不宜盲目乐观</span>。',
+'社区话题3_观点': 'LPR不动这件事我读成"<span style="color:#f0b429;font-weight:700;">中性偏利好红利</span>"。降息落空短期压制成长与地产链估值想象，但低利率环境（定存0.95%、10年国债1.68%）让4%股息率的银行更显稀缺。我的应对是<span style="color:#ffa657;font-weight:700;">红利底仓不动、科技等回踩、留足现金</span>；若后续真有降息才是顺周期加仓信号，现在不抢跑。',
+'社区话题3_标签': '利率',
+'社区话题4_来源': '集思录·ETF',
+'社区话题4_标题': '巴菲特卸任，价值投资时代结束了吗？',
+'社区话题4_热度': '🔥 热度 9.1万',
+'社区话题4_角色1': '@机构分析师',
+'社区话题4_观点1': '巴菲特<span style="color:#f85149;font-weight:700;">卸任伯克希尔董事长</span>、长子霍华德接任，治理层交接完成；长期<span style="color:#f85149;font-weight:700;">资本配置纪律</span>与价值框架延续，并非"时代终结"。',
+'社区话题4_角色2': '@价值投资者',
+'社区话题4_观点2': '对银行股信徒而言，<span style="color:#f85149;font-weight:700;">低PB+高分红+安全边际</span>仍是复利核心；巴菲特的"护城河+长期持有"方法论不受影响，<span style="color:#f85149;font-weight:700;">底仓逻辑未变</span>。',
+'社区话题4_角色3': '@谨慎派',
+'社区话题4_观点3': '高龄交接难免引发<span style="color:#3fb950;font-weight:700;">治理连续性担忧</span>，且伯克希尔巨量现金未有效部署，市场或重新定价其α衰减，<span style="color:#3fb950;font-weight:700;">情绪面偏谨慎</span>。',
+'社区话题4_观点': '巴菲特卸任是符号事件，但"<span style="color:#f85149;font-weight:700;">买好生意、好价格、长期持有</span>"的方法论不会因一人离任而失效。对我这种银行红利投资者，恰恰印证了<span style="color:#f85149;font-weight:700;">低估值+稳定分红+安全边际</span>的复利威力。我的动作不变：<span style="color:#ffa657;font-weight:700;">底仓只收息、分红滚入、再平衡控集中度</span>，不被偶像交接扰动情绪，纪律优先于叙事。',
+'社区话题4_标签': '价值投资',
+'社区话题5_来源': '雪球·监管观察',
+'社区话题5_标题': '监管暂停沈鼓交易，次新股还能碰吗？',
+'社区话题5_热度': '🔥 热度 8.7万',
+'社区话题5_角色1': '@机构分析师',
+'社区话题5_观点1': '上交所对<span style="color:#3fb950;font-weight:700;">沈鼓集团部分投资者暂停交易</span>，次新股爆炒（单日盘中近5倍）降温信号明确，<span style="color:#3fb950;font-weight:700;">高位次新回落分化风险上升</span>。',
+'社区话题5_角色2': '@价值投资者',
+'社区话题5_观点2': '监管出手净化生态，<span style="color:#f85149;font-weight:700;">长期利好优质蓝筹与红利资产</span>；资金从纯投机回流业绩与分红，银行等高股息底仓相对受益。',
+'社区话题5_角色3': '@谨慎派',
+'社区话题5_观点3': '节前仅四个交易日，<span style="color:#3fb950;font-weight:700;">资金做多意愿偏谨慎</span>，纯题材与高位次新易踩雷，<span style="color:#3fb950;font-weight:700;">宜远离缺乏业绩支撑的标的</span>。',
+'社区话题5_观点': '监管降温次新这事我坚决支持——它保护的是像我这样的<span style="color:#f85149;font-weight:700;">长期收息者</span>。沈鼓盘中近5倍涨幅是典型博傻，暂停交易是给市场泼冷水。策略上<span style="color:#ffa657;font-weight:700;">远离高位次新与纯题材、不碰缺乏业绩支撑的票</span>；节前控仓，把子弹留给回调后的科技与红利核心资产，宁可少赚不接飞刀。',
+'社区话题5_标签': '监管',
+
+# ---------- 操作建议 1-6（轻量刷新） ----------
+'操作建议1_标题': '银行底仓：只收息不换手',
+'操作建议1_内容': '核心底仓继续放在<span style="color:#f85149;font-weight:700;">六大行与城商行高股息</span>：板块PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>、分红比例提至<span style="color:#f85149;font-weight:700;">31%</span>，低利率下4%股息率稀缺。LPR连续16个月不变、降息预期落空，<span style="color:#f85149;font-weight:700;">收息相对优势更凸显</span>。',
+'操作建议1_补充': '红利在普涨日被科技与消费抽水属正常轮动。周末中美磋商若释放缓和信号利好银行估值；即便谈崩，红利防御属性反而凸显。LPR不动令银行息差压力暂缓，<span style="color:#f85149;font-weight:700;">底仓逻辑是收息而非博弹性</span>，分红到账即滚入，不因短期跑输而动摇。',
+'操作建议1_操作': '银行底仓不动、只管收息；交通与邮储这类低PB国有行，借回调小步补仓，单名不超组合的8%。',
+'操作建议2_标题': '招行：控集中度',
+'操作建议2_内容': '招商银行占组合约<span style="color:#f0b429;font-weight:700;">42%</span>，为最大偏离项；PB 0.89倍、股息率约<span style="color:#f85149;font-weight:700;">4.97%</span>仍为组合最高银行股息率。财富管理护城河深厚，但单名集中度偏高，<span style="color:#f0b429;font-weight:700;">需以45%为再平衡阈值</span>。',
+'操作建议2_补充': '设阈值不是看空招行，而是给组合装一道保险。招行上半年营收<span style="color:#f85149;font-weight:700;">+4.83%</span>、净利<span style="color:#f85149;font-weight:700;">+2%</span>正增长，基本面无虞；但集中度风险在风格切换时放大波动。越过45%即启动再平衡，将溢出转入低PB国有行与城商行，<span style="color:#ffa657;font-weight:700;">回归4:3:3目标配比</span>。',
+'操作建议2_操作': '不主动加减，仓位保持现状；招行占比<span style="color:#f0b429;font-weight:700;">越过45%立即再平衡</span>，溢出转国有行/城商行。',
+'操作建议3_标题': '公用事业：压舱石',
+'操作建议3_内容': '<span style="color:#3fb950;font-weight:700;">公用事业随红利小幅回落</span>，但长江电力股息率约<span style="color:#f85149;font-weight:700;">3.5%</span>、今年发电量大年，<span style="color:#f85149;font-weight:700;">防御性最强</span>；大秦铁路股息率<span style="color:#f85149;font-weight:700;">4.62%</span>居前列。类债资产在波动市中提供稳定器功能。',
+'操作建议3_补充': '大秦铁路股息率超4.6%居组合前列，煤价波动中运量中枢稳定、分红连续；长江电力来水偏丰、乌白电站全面投产，业绩确定性高。两者均<span style="color:#ffa657;font-weight:700;">只收息不加仓</span>，分红到账后继续滚入，不因为单日微跌改变底仓定位。',
+'操作建议3_操作': '长江电力与大秦铁路只收息、不加仓，分红到账后继续滚入。',
+'操作建议4_标题': '煤炭保险：按兵不动',
+'操作建议4_内容': '<span style="color:#3fb950;font-weight:700;">神华随煤价高位回落与红利调整</span>微跌，但一体化运营抗周期；中国平安股息率约<span style="color:#f85149;font-weight:700;">5.10%</span>、PB约0.96倍，估值处历史低位。两者均具高股息与防御属性，<span style="color:#ffa657;font-weight:700;">按兵不动</span>。',
+'操作建议4_补充': '神华一体化运营使其现金流对煤价下行敏感度低于同业，中期分红确定性高；平安寿险改革深化、NBV边际改善，但<span style="color:#3fb950;font-weight:700;">地产敞口与利率上行</span>仍需观察。两者均只持有不追加，<span style="color:#f0b429;font-weight:700;">等破位再评估</span>。',
+'操作建议4_操作': '神华与平安均只持有、不追加；待神华跌破45元或平安跌破50元再重新评估。',
+'操作建议5_标题': '加息路径：控仓等信号',
+'操作建议5_内容': '美联储9月16日已<span style="color:#f0b429;font-weight:700;">加息25bp至3.75%-4.00%</span>，点阵图上修至<span style="color:#00d4ff;font-weight:700;">4.1%</span>；同期<span style="color:#f85149;font-weight:700;">日银加息至1.25%创31年最高</span>。<span style="color:#3fb950;font-weight:700;">全球债市抛售、长端利率扰动未消</span>。',
+'操作建议5_补充': '本次加息早已被定价，真正改变路径的是点阵图上修与年内再加息预期，叠加日银加息、<span style="color:#3fb950;font-weight:700;">全球债市同步抛售</span>。美10年9月18日回落至4.94%、重回5%下方，<span style="color:#f85149;font-weight:700;">长端信号先于政策转向</span>。周末中美磋商若缓和可阶段性提振，但<span style="color:#f0b429;font-weight:700;">地缘与油价</span>仍是变量。维持仓位预留现金，等长端利率确认回落再加仓。',
+'操作建议5_操作': '维持当前仓位并预留现金，等长端利率确认回落再加仓。',
+'操作建议6_标题': '卫星仓：科技等回踩',
+'操作建议6_内容': '9月18日<span style="color:#f85149;font-weight:700;">科技方向全面爆发</span>：半导体+3.13%、电子净流入<span style="color:#f85149;font-weight:700;">206亿元</span>居首，华为昇腾950商用临近、长鑫DRAM量产双催化。但单日涨幅大、<span style="color:#3fb950;font-weight:700;">拥挤交易下波动放大</span>。',
+'操作建议6_补充': '这一轮科技爆发是<span style="color:#f85149;font-weight:700;">事件催化+产业景气确认</span>（昇腾950月底商用、长鑫量产、瑞银上修AI资本支出），非纯题材。但估值已高、追涨停风险大，且<span style="color:#3fb950;font-weight:700;">监管已降温次新投机</span>。卫星仓暂不加，<span style="color:#ffa657;font-weight:700;">等回踩企稳放量</span>后再分批试探、单独设止损。',
+'操作建议6_操作': '卫星仓暂不加仓，等回踩企稳放量后再分批试探、单独设止损。',
+
+# ---------- 避坑 1-3（新选题） ----------
+'避坑1_标题': '别把"LPR不变"读成"马上降息"',
+'避坑1_内容': '9月<span style="color:#00d4ff;font-weight:700;">LPR连续16个月不变</span>（1年3.00%/5年3.50%），业内称短期降息必要性不高；把它读成"降息在即"会<span style="color:#3fb950;font-weight:700;">过早抢跑顺周期</span>。正确解读：<span style="color:#f85149;font-weight:700;">低利率环境延续、高股息收息优势更显</span>，红利底仓不动、等真信号再加仓。',
+'避坑2_标题': '别把"巴菲特卸任"读成"清仓信号"',
+'避坑2_内容': '巴菲特<span style="color:#f85149;font-weight:700;">卸任董事长、长子接任</span>是治理交接，长期资本纪律与价值框架延续；把它读成"价值投资失效、应清仓"会<span style="color:#3fb950;font-weight:700;">错杀低估值高分红底仓</span>。低PB+高分红+安全边际的复利逻辑未变。',
+'避坑3_标题': '别把"存储涨价"等同于"半导体全面反转"',
+'避坑3_内容': '长鑫<span style="color:#f85149;font-weight:700;">第五代DRAM量产</span>、瑞银上修AI资本支出，存储与算力景气确认；但<span style="color:#3fb950;font-weight:700;">单日爆发拥挤度高</span>，把"存储利好"推演为"半导体全线反转"会追高接盘，<span style="color:#ffa657;font-weight:700;">宜等回踩分批而非追涨停</span>。',
+
+# ---------- 持仓分析 ----------
+'持仓分析_导语': '组合仍以<span style="color:#00d4ff;font-weight:700;">国有大行+股份行+城商行+公用央企</span>为主，价值投资与复利收息为底色；周末中美磋商、LPR按兵不动与长鑫量产提供新变量，监管降温次新亦利好红利生态。',
+'持仓分析_分析': '9月18日招行<span style="color:#f85149;font-weight:700;">微跌0.02%报40.59</span>、几乎持平，城商行中江苏+1.08%、宁波+0.17%逆势收红；国有大行集体小跌，交通<span style="color:#3fb950;font-weight:700;">-1.58%</span>居首。招行单名占比<span style="color:#f0b429;font-weight:700;">42.2%</span>仍为最大偏离项。以9月18日为基准，42家银行平均PB 0.60倍、全部破净，<span style="color:#f85149;font-weight:700;">低利率下高股息底仓逻辑未破</span>。',
+'持仓分析_判断': '结论是银行在普涨日中跑输、红利被成长与消费分流，但<span style="color:#f85149;font-weight:700;">低利率下高股息底仓逻辑未破</span>；科技与地产为事件驱动弹性仓。LPR不变令收息优势更显，组合无需大动，<span style="color:#ffa657;font-weight:700;">以再平衡控集中度</span>、以收息滚动复利即可。',
+'持仓分析_操作': '①银行底仓满仓收息、不加不减；②招行占比若越过<span style="color:#f0b429;font-weight:700;">45%</span>，立即启动再平衡；③交通与邮储借回调小步补，回归4:3:3；④科技卫星仓等回踩分批、单设止损；⑤远离高位次新与纯题材。',
+'持仓分析_配比': '调仓路径：国有（工/建/农/中/交/邮）提至40%、股份（招）降至30%、城商行（宁波/江苏/杭州/重庆/南京/成都）保持30%，实现目标配比。',
+
+# ---------- 标的正面/风险 ----------
+'标的_正面提示标题': '✅ 正面信号',
+'标的_正面提示内容': '以9月18日为基准，<span style="color:#f85149;font-weight:700;">六大行分红比例集体提至31%</span>、中期分红合计拟派2209.89亿元创历史新高，银行资本充足率与分红确定性双升；城商行中江苏、宁波、杭州逆势收红，<span style="color:#f85149;font-weight:700;">区域行成长性+分红</span>兼备；中国移动算力收入转化、中国核电装机扩张，<span style="color:#f85149;font-weight:700;">央企稀缺性</span>凸显。LPR连续16个月不变、低利率下高股息仍是底仓首选。',
+'标的_风险提示内容': '9月18日<span style="color:#3fb950;font-weight:700;">银行小跌0.39%</span>、红利被成长与消费分流；招行单名占比<span style="color:#f0b429;font-weight:700;">约42%</span>偏高，越过45%须再平衡；交通银行跌<span style="color:#3fb950;font-weight:700;">1.58%</span>为19只之最。美加息"更高更久"、<span style="color:#3fb950;font-weight:700;">全球债市抛售推升长端利率</span>压制估值；胡塞袭沙特与中美磋商反复可能触发避险，需控仓等信号。',
+}
+D.update(_ov11)
+
+# ===== 20260921 期覆盖（_ov12）：软叙事去照抄，改为周一前瞻视角 =====
+_ov12 = {
+'机构2_观点': '中金公司认为，本次加息已<span style="color:#00d4ff;font-weight:700;">充分计入预期</span>，后续真正改变路径的是<span style="color:#00d4ff;font-weight:700;">点阵图上修至4.1%</span>与"更高更久"基调；对A股外溢冲击边际走弱的，<span style="color:#f85149;font-weight:700;">内因已强于外因</span>。本周侧重<span style="color:#f85149;font-weight:700;">红利防御与国产算力</span>双主线，靠再平衡消化风格切换。',
+'机构3_观点': '中信建投表示，加息落地后A股放量走出独立行情，地产涨停潮源于公积金新规、半导体由昇腾960硬催化；<span style="color:#f85149;font-weight:700;">新周需防高位分化</span>。建议不追涨停、等回踩，仓位向<span style="color:#f85149;font-weight:700;">低PB高股息央企</span>倾斜以熨平波动。',
+'机构4_观点': '华泰证券提示，<span style="color:#3fb950;font-weight:700;">全球债市同步抛售</span>未止：美10年破5%、日银加息至<span style="color:#f0b429;font-weight:700;">1.25%创31年新高</span>，长端中枢上移。建议本币资产均衡摆布，保留黄金对冲，科技仓压降单一标的集中度。',
+'机构5_观点': '摩根大通维持中资金融股<span style="color:#f85149;font-weight:700;">银行>保险>券商</span>排序，六大行分红提至<span style="color:#f85149;font-weight:700;">31%</span>、PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>修复空间清晰；招行单名过高须设<span style="color:#ffa657;font-weight:700;">45%再平衡线</span>，平安股息率约5.10%仍有吸引力。',
+'机构6_观点': '瑞银维持中国股票<span style="color:#f85149;font-weight:700;">中性偏多</span>，十五五蓝图利好估值中枢，并上修2027年全球AI资本支出至<span style="color:#f85149;font-weight:700;">1.447万亿美元</span>。近期看好<span style="color:#f85149;font-weight:700;">红利与国产算力</span>，以分红再投滚动收息、留现金待利率确认回落。',
+
+'社区话题1_标题': '周一开盘在即，银行红利底仓要不要动？',
+'社区话题1_观点1': '9月18日<span style="color:#3fb950;font-weight:700;">银行微跌0.39%</span>跑输大盘，可板块PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>、分红比例提至<span style="color:#f85149;font-weight:700;">31%</span>，双底未破，回撤恰是收息良机而非逻辑破坏。',
+'社区话题1_观点2': '以9月18日为锚，<span style="color:#f85149;font-weight:700;">六大行中期分红合计2209.89亿元创历史新高</span>、资本充足安全垫厚，<span style="color:#f85149;font-weight:700;">4%上下的股息率</span>在低利率环境里稀缺，底仓无需挪动。',
+'社区话题1_观点3': '<span style="color:#3fb950;font-weight:700;">中美磋商若出现反复</span>，避险情绪或再升温；银行短期被科技与消费分流，<span style="color:#3fb950;font-weight:700;">跑输态势或延续</span>，补仓勿过猛。',
+'社区话题1_观点': '银行红利是我组合的<span style="color:#f85149;font-weight:700;">"压舱石"而非"弹性仓"</span>，<span style="color:#ffa657;font-weight:700;">底仓只收息不换手</span>。本周核心变量是<span style="color:#f0b429;font-weight:700;">9/24习特峰会前的中美磋商</span>——何立峰9/19-23在美，缓和则利好银行估值修复，僵持则防御属性更显。全破净PB与稳定分红构成厚安全垫，<span style="color:#f85149;font-weight:700;">交通、邮储可借回调小步补</span>，招行占比破45%即再平衡，其余多看少动。',
+
+'社区话题2_标题': '长鑫量产第五代DRAM，国产存储追赶拐点到了？',
+'社区话题2_观点1': '长鑫<span style="color:#f85149;font-weight:700;">第五代DRAM量产</span>、24GB LPDDR5X进国产旗舰，四重曝光微缩至<span style="color:#00d4ff;font-weight:700;">11.95nm</span>，<span style="color:#f85149;font-weight:700;">国产存储自主可控</span>再下一城，良率与生态仍待验证。',
+'社区话题2_观点2': '存储是<span style="color:#f85149;font-weight:700;">AI资本支出九成增量</span>所在（瑞银上修至1.447万亿），长鑫量产补足算力链短板，<span style="color:#f85149;font-weight:700;">设备与材料订单饱满</span>，中期景气确认。',
+'社区话题2_观点3': '单日爆发部分源于事件催化，<span style="color:#3fb950;font-weight:700;">追涨停风险高</span>；美加息与债市抛售压制估值，<span style="color:#3fb950;font-weight:700;">回撤可能剧烈</span>，宜等回踩。',
+'社区话题2_观点': '国产存储这条线我认为"<span style="color:#f85149;font-weight:700;">产业逻辑成立、但不宜追高</span>"。长鑫量产是硬突破，叠加昇腾950月底商用、瑞银上修AI资本支出，说明存储需求真实。但板块已拥挤，<span style="color:#3fb950;font-weight:700;">单日大涨后追高性价比差</span>。策略是<span style="color:#ffa657;font-weight:700;">卫星仓暂不加、等回踩企稳放量后分批试探、单独设止损</span>，用红利底仓现金流提供安全垫，分清有真实订单与纯情绪。',
+
+'社区话题3_标题': 'LPR连续16个月不变，降息落空怎么应对？',
+'社区话题3_观点1': '9月<span style="color:#00d4ff;font-weight:700;">LPR连续16个月不变</span>（1年3.00%/5年3.50%），业内称短期降息必要性不高，<span style="color:#f0b429;font-weight:700;">政策定力显现</span>，银行息差压力边际暂缓。',
+'社区话题3_观点2': '降息落空对<span style="color:#f85149;font-weight:700;">高股息资产反而是利好</span>——1年定存仅0.95%，银行4%股息率利差更显稀缺，<span style="color:#f85149;font-weight:700;">收息逻辑未破</span>。',
+'社区话题3_观点3': '利率不动也意味着<span style="color:#3fb950;font-weight:700;">地产与消费刺激力度有限</span>，经济复苏斜率待验，权益估值上修缺催化剂，<span style="color:#3fb950;font-weight:700;">不宜盲目乐观</span>。',
+'社区话题3_观点': 'LPR不动这件事我读成"<span style="color:#f0b429;font-weight:700;">中性偏利好红利</span>"。降息落空短期压制成长与地产链估值想象，但低利率环境（定存0.95%、10年国债1.68%）让4%股息率的银行更显稀缺。我的应对是<span style="color:#ffa657;font-weight:700;">红利底仓不动、科技等回踩、留足现金</span>；若后续真有降息才是顺周期加仓信号，现在不抢跑。',
+
+'社区话题4_标题': '巴菲特卸任，价值投资方法论还灵吗？',
+'社区话题4_观点1': '巴菲特<span style="color:#f85149;font-weight:700;">卸任伯克希尔董事长</span>、长子霍华德接任，治理层交接完成；长期<span style="color:#f85149;font-weight:700;">资本配置纪律</span>与价值框架延续，并非"时代终结"。',
+'社区话题4_观点2': '对银行股信徒而言，<span style="color:#f85149;font-weight:700;">低PB+高分红+安全边际</span>仍是复利核心；巴菲特的"护城河+长期持有"方法论不受影响，<span style="color:#f85149;font-weight:700;">底仓逻辑未变</span>。',
+'社区话题4_观点3': '高龄交接难免引发<span style="color:#3fb950;font-weight:700;">治理连续性担忧</span>，且伯克希尔巨量现金未有效部署，市场或重新定价其α衰减，<span style="color:#3fb950;font-weight:700;">情绪面偏谨慎</span>。',
+'社区话题4_观点': '巴菲特卸任是符号事件，但"<span style="color:#f85149;font-weight:700;">买好生意、好价格、长期持有</span>"的方法论不会因一人离任而失效。对我这种银行红利投资者，恰恰印证了<span style="color:#f85149;font-weight:700;">低估值+稳定分红+安全边际</span>的复利威力。我的动作不变：<span style="color:#ffa657;font-weight:700;">底仓只收息、分红滚入、再平衡控集中度</span>，不被偶像交接扰动情绪，纪律优先于叙事。',
+
+'社区话题5_标题': '监管暂停沈鼓交易，节前次新怎么避坑？',
+'社区话题5_观点1': '上交所对<span style="color:#3fb950;font-weight:700;">沈鼓集团部分投资者暂停交易</span>，次新股爆炒（单日盘中近5倍）降温信号明确，<span style="color:#3fb950;font-weight:700;">高位次新回落分化风险上升</span>。',
+'社区话题5_观点2': '监管出手净化生态，<span style="color:#f85149;font-weight:700;">长期利好优质蓝筹与红利资产</span>；资金从纯投机回流业绩与分红，银行等高股息底仓相对受益。',
+'社区话题5_观点3': '节前仅四个交易日，<span style="color:#3fb950;font-weight:700;">资金做多意愿偏谨慎</span>，纯题材与高位次新易踩雷，<span style="color:#3fb950;font-weight:700;">宜远离缺乏业绩支撑的标的</span>。',
+'社区话题5_观点': '监管降温次新这事我坚决支持——它保护的是像我这样的<span style="color:#f85149;font-weight:700;">长期收息者</span>。沈鼓盘中近5倍涨幅是典型博傻，暂停交易是给市场泼冷水。策略上<span style="color:#ffa657;font-weight:700;">远离高位次新与纯题材、不碰缺乏业绩支撑的票</span>；节前控仓，把子弹留给回调后的科技与红利核心资产，宁可少赚不接飞刀。',
+'社区话题5_标签': '监管风控',
+
+'操作建议1_内容': '核心底仓继续锚定<span style="color:#f85149;font-weight:700;">六大行与城商行高股息</span>：板块PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>、分红比例提至<span style="color:#f85149;font-weight:700;">31%</span>，低利率里4%股息率稀缺。LPR连续16个月按兵不动、降息预期落空，<span style="color:#f85149;font-weight:700;">收息的相对优势进一步放大</span>。',
+'操作建议1_补充': '红利在普涨日遭科技与消费分流属正常轮动。<span style="color:#f0b429;font-weight:700;">本周盯紧9/24习特峰会前的中美磋商</span>，缓和则利好银行估值修复，僵持则防御属性更受青睐。LPR不动使银行息差压力暂缓，<span style="color:#f85149;font-weight:700;">底仓逻辑是收息而非博弹性</span>，分红到账即滚入，不为短期跑输所动。',
+'操作建议1_操作': '银行底仓不动、只管收息；交通与邮储这类低PB国有行，借回调小步补仓，单名不超组合的8%。',
+'操作建议2_内容': '招商银行占组合约<span style="color:#f0b429;font-weight:700;">42%</span>，是最大偏离项；PB 0.89倍、股息率约<span style="color:#f85149;font-weight:700;">4.97%</span>仍是组合内最高银行股息率。财富管理护城河深厚，可单名集中度偏高，<span style="color:#f0b429;font-weight:700;">须以45%为再平衡阈值</span>。',
+'操作建议2_补充': '设阈值并非看空招行，而是给组合上道保险。招行上半年营收<span style="color:#f85149;font-weight:700;">+4.83%</span>、净利<span style="color:#f85149;font-weight:700;">+2%</span>正增长，基本面无虞；可集中度风险在风格切换时会放大波动。越过45%即启动再平衡，溢出转入低PB国有行与城商行，<span style="color:#ffa657;font-weight:700;">回归4:3:3目标配比</span>。',
+'操作建议2_操作': '不主动加减，仓位保持现状；招行占比越过45%立即再平衡，溢出转国有行/城商行。',
+'操作建议3_内容': '<span style="color:#3fb950;font-weight:700;">公用事业随红利小幅回撤</span>，可长江电力股息率约<span style="color:#f85149;font-weight:700;">3.5%</span>、今年发电量大年，<span style="color:#f85149;font-weight:700;">防御成色最足</span>；大秦铁路股息率<span style="color:#f85149;font-weight:700;">4.62%</span>居前列。类债资产在波动市里扮演稳定器。',
+'操作建议3_补充': '大秦铁路股息率超4.6%居组合前列，煤价波动中运量中枢稳定、分红连续；长江电力来水偏丰、乌白电站全面投产，业绩确定性高。两者均<span style="color:#ffa657;font-weight:700;">只收息不加仓</span>，分红到账后继续滚入，不因单日微跌改底仓定位。',
+'操作建议3_操作': '长江电力与大秦铁路只收息、不加仓，分红到账后继续滚入。',
+'操作建议4_内容': '<span style="color:#3fb950;font-weight:700;">神华随煤价高位回落与红利调整</span>微跌，可一体化运营抗周期；中国平安股息率约<span style="color:#f85149;font-weight:700;">5.10%</span>、PB约0.96倍，估值处历史低位。两者兼具高股息与防御属性，<span style="color:#ffa657;font-weight:700;">按兵不动</span>。',
+'操作建议4_补充': '神华一体化运营令现金流对煤价下行敏感度低于同业，中期分红确定性高；平安寿险改革深化、NBV边际改善，可<span style="color:#3fb950;font-weight:700;">地产敞口与利率上行</span>仍需观察。两者均只持有不追加，<span style="color:#f0b429;font-weight:700;">等破位再评估</span>。',
+'操作建议4_操作': '神华与平安均只持有、不追加；待神华跌破45元或平安跌破50元再重新评估。',
+'操作建议5_内容': '美联储9月16日已<span style="color:#f0b429;font-weight:700;">加息25bp至3.75%-4.00%</span>，点阵图上修至<span style="color:#00d4ff;font-weight:700;">4.1%</span>；同期<span style="color:#f85149;font-weight:700;">日银加息至1.25%创31年最高</span>。<span style="color:#3fb950;font-weight:700;">全球债市抛售、长端利率扰动未消</span>。',
+'操作建议5_补充': '本次加息早被定价，真正改写路径的是点阵图上修与年内再加息预期，叠加日银加息、<span style="color:#3fb950;font-weight:700;">全球债市同步抛售</span>。美10年9月18日回落至4.94%、重回5%下方，<span style="color:#f85149;font-weight:700;">长端信号先于政策转向</span>。<span style="color:#f0b429;font-weight:700;">本周中美磋商</span>若缓和可阶段性提振，可地缘与油价仍是变量。维持仓位预留现金，等长端利率确认回落再加仓。',
+'操作建议5_操作': '维持当前仓位并预留现金，等长端利率确认回落再加仓。',
+'操作建议6_内容': '9月18日<span style="color:#f85149;font-weight:700;">科技方向全面爆发</span>：半导体+3.13%、电子净流入<span style="color:#f85149;font-weight:700;">206亿元</span>居首，华为昇腾950商用临近、长鑫DRAM量产双催化。可单日涨幅大、<span style="color:#3fb950;font-weight:700;">拥挤交易下波动放大</span>。',
+'操作建议6_补充': '这一轮科技爆发是<span style="color:#f85149;font-weight:700;">事件催化+产业景气确认</span>（昇腾950月底商用、长鑫量产、瑞银上修AI资本支出），非纯题材。可估值已高、追涨停风险大，且<span style="color:#3fb950;font-weight:700;">监管已降温次新投机</span>。卫星仓暂不加，<span style="color:#ffa657;font-weight:700;">等回踩企稳放量</span>后再分批试探、单独设止损。',
+'操作建议6_操作': '卫星仓暂不加仓，等回踩企稳放量后再分批试探、单独设止损。',
+
+'避坑1_内容': '9月<span style="color:#00d4ff;font-weight:700;">LPR连续16个月不变</span>（1年3.00%/5年3.50%），业内称短期降息必要性不高；若把它读成"降息在即"会<span style="color:#3fb950;font-weight:700;">过早抢跑顺周期</span>。正确解读：<span style="color:#f85149;font-weight:700;">低利率环境延续、高股息收息优势更显</span>，红利底仓不动、等真信号再加仓。',
+'避坑2_标题': '别把"巴菲特卸任"读成"清仓信号"',
+'避坑2_内容': '巴菲特<span style="color:#f85149;font-weight:700;">卸任董事长、长子接任</span>是治理交接，长期资本纪律与价值框架延续；若读成"价值投资失效、应清仓"会<span style="color:#3fb950;font-weight:700;">错杀低估值高分红底仓</span>。低PB+高分红+安全边际的复利逻辑未变。',
+'避坑3_标题': '别把"存储涨价"等同于"半导体全面反转"',
+'避坑3_内容': '长鑫<span style="color:#f85149;font-weight:700;">第五代DRAM量产</span>、瑞银上修AI资本支出，存储与算力景气确认；可<span style="color:#3fb950;font-weight:700;">单日爆发拥挤度高</span>，把"存储利好"推演为"半导体全线反转"会追高接盘，<span style="color:#ffa657;font-weight:700;">宜等回踩分批而非追涨停</span>。',
+
+'持仓分析_分析': '9月18日招行<span style="color:#f85149;font-weight:700;">微跌0.02%报40.59</span>、近乎收平，城商行里江苏+1.08%、宁波+0.17%逆势翻红；国有大行普遍小跌，交通<span style="color:#3fb950;font-weight:700;">-1.58%</span>垫底。招行单名占比<span style="color:#f0b429;font-weight:700;">42.2%</span>仍是最大偏离。以该日为锚，42家银行平均PB 0.60倍、悉数破净，<span style="color:#f85149;font-weight:700;">低利率下高股息底仓逻辑未破</span>。',
+'持仓分析_判断': '判断：银行在普涨日跑输、红利被成长与消费分流，可<span style="color:#f85149;font-weight:700;">低利率下高股息底仓逻辑未破</span>；科技与地产属事件驱动弹性仓。LPR不变令收息优势更显，组合不必大动，<span style="color:#ffa657;font-weight:700;">以再平衡控集中度</span>、以收息滚动复利即可。',
+'持仓分析_操作': '①银行底仓满仓收息、不加不减；②招行占比若越过<span style="color:#f0b429;font-weight:700;">45%</span>，立即启动再平衡；③交通与邮储借回调小步补，回归4:3:3；④科技卫星仓等回踩分批、单设止损；⑤远离高位次新与纯题材。',
+'持仓分析_配比': '调仓路径：国有（工/建/农/中/交/邮）提至40%、股份（招）降至30%、城商行（宁波/江苏/杭州/重庆/南京/成都）保持30%，实现目标配比。',
+}
+D.update(_ov12)
+
+# ===== 20260921 期覆盖（_ov13）：四区≥120字补齐（周一前瞻视角） =====
+_ov13 = {
+'机构1_观点': '中信证券表示，新的一周仍是事件驱动窗口，二次进攻主线在产业趋势上的非机构票；加息落地后A股独立放量，<span style="color:#f85149;font-weight:700;">本周焦点转向9/24习特峰会与中美磋商进展</span>。建议维持底仓不动、卫星等回踩，科技仓单独设止损，坚决不追高位次新与纯题材，以红利现金流托底。',
+'机构2_观点': '中金公司认为，本次加息已<span style="color:#00d4ff;font-weight:700;">充分计入预期</span>，后续真正改变路径的是<span style="color:#00d4ff;font-weight:700;">点阵图上修至4.1%</span>与"更高更久"基调；对A股外溢冲击边际走弱的，<span style="color:#f85149;font-weight:700;">内因已强于外因</span>。本周侧重<span style="color:#f85149;font-weight:700;">红利防御与国产算力</span>双主线，靠再平衡消化风格切换，仓位以收息为底、弹性仓严控止损。',
+'机构3_观点': '中信建投表示，加息落地后A股放量走出独立行情，地产涨停潮源于公积金新规、半导体由昇腾960硬催化；<span style="color:#f85149;font-weight:700;">新周需防高位分化</span>。建议不追涨停、等回踩，仓位向<span style="color:#f85149;font-weight:700;">低PB高股息央企</span>倾斜以熨平波动，用红利底仓的现金流为科技弹性仓提供安全垫。',
+'社区话题5_观点': '监管降温次新这事我坚决支持——它保护的是像我这样的<span style="color:#f85149;font-weight:700;">长期收息者</span>。沈鼓盘中近5倍涨幅是典型博傻，暂停交易是给市场泼冷水。策略上<span style="color:#ffa657;font-weight:700;">远离高位次新与纯题材、不碰缺乏业绩支撑的票</span>；节前仅四个交易日，控仓把子弹留给回调后的科技与红利核心资产，宁可少赚不接飞刀，纪律优先于博弈。',
+'操作建议1_内容': '核心底仓继续锚定<span style="color:#f85149;font-weight:700;">六大行与城商行高股息</span>：板块PB仅<span style="color:#00d4ff;font-weight:700;">0.60倍</span>、分红比例提至<span style="color:#f85149;font-weight:700;">31%</span>，低利率里4%股息率稀缺。LPR连续16个月按兵不动、降息预期落空，<span style="color:#f85149;font-weight:700;">收息的相对优势进一步放大</span>；周一开盘前宜检视持仓、不为外围噪音扰动底仓定位。',
+'操作建议2_内容': '招商银行占组合约<span style="color:#f0b429;font-weight:700;">42%</span>，是最大偏离项；PB 0.89倍、股息率约<span style="color:#f85149;font-weight:700;">4.97%</span>仍是组合内最高银行股息率。财富管理护城河深厚，可单名集中度偏高，<span style="color:#f0b429;font-weight:700;">须以45%为再平衡阈值</span>；本周若招行继续走强逼近阈值，应提前规划溢出去向而非临时追涨。',
+'操作建议3_内容': '<span style="color:#3fb950;font-weight:700;">公用事业随红利小幅回撤</span>，可长江电力股息率约<span style="color:#f85149;font-weight:700;">3.5%</span>、今年发电量大年，<span style="color:#f85149;font-weight:700;">防御成色最足</span>；大秦铁路股息率<span style="color:#f85149;font-weight:700;">4.62%</span>居前列。类债资产在波动市里扮演稳定器，分红到账即滚入复利，是组合穿越风格切换的压舱石，不因单日微跌改定位。',
+}
+D.update(_ov13)
+
+# ===== 20260921 期覆盖（_ov14）：四区≥120字补齐（扩写，周一前瞻视角） =====
+_ov14 = {
+'机构1_观点': '中信证券表示，新的一周仍是事件驱动窗口，二次进攻主线在产业趋势上的非机构票。加息落地后A股已走出独立放量行情，<span style="color:#f85149;font-weight:700;">本周市场焦点将转向9月24日习特峰会前后的中美经贸磋商进展</span>，若释放缓和信号将显著抬升风险偏好。操作上建议维持红利底仓不动、科技卫星等回踩，单独设止损，坚决不追高位次新与纯题材，<span style="color:#ffa657;font-weight:700;">以红利现金流为组合托底</span>。',
+'机构2_观点': '中金公司认为，本次加息已被市场<span style="color:#00d4ff;font-weight:700;">充分计入预期</span>，真正改变路径的是点阵图上修至百分之四点一与"更高更久"基调，对A股的外溢冲击边际走弱，<span style="color:#f85149;font-weight:700;">内因已强于外因</span>。本周建议侧重<span style="color:#f85149;font-weight:700;">红利防御与国产算力双主线</span>，依靠再平衡消化风格切换，仓位以收息为底、弹性仓严控止损，不盲目追高。',
+'机构3_观点': '中信建投表示，加息落地后A股放量走出独立行情，地产涨停潮源于公积金新规、半导体由昇腾九百六十超节点硬催化；<span style="color:#f85149;font-weight:700;">新的一周需防高位分化</span>。建议不追涨停、等回踩，仓位向<span style="color:#f85149;font-weight:700;">低市净率高股息央企</span>倾斜以熨平波动，用红利底仓的现金流为科技弹性仓提供安全垫，传媒与消费的分流压力仍在，耐心比速度更重要。',
+'操作建议1_内容': '核心底仓继续锚定<span style="color:#f85149;font-weight:700;">六大行与城商行高股息</span>：板块市净率仅零点六倍、分红比例提至百分之三十一，低利率环境里百分之四的股息率极为稀缺。贷款市场报价利率<span style="color:#00d4ff;font-weight:700;">连续十六个月按兵不动</span>、降息预期落空，<span style="color:#f85149;font-weight:700;">收息的相对优势进一步放大</span>。周一开盘前宜检视持仓结构，不为外围噪音扰动底仓定位，分红到账即滚入复利。',
+'操作建议2_内容': '招商银行占组合约<span style="color:#f0b429;font-weight:700;">百分之四十二</span>，是最大偏离项；市净率零点八九倍、股息率约<span style="color:#f85149;font-weight:700;">百分之四点九七</span>仍是组合内最高银行股息率。财富管理护城河深厚，但单名集中度偏高，<span style="color:#f0b429;font-weight:700;">须以百分之四十五为再平衡阈值</span>。本周若招行继续走强逼近阈值，应提前规划溢出去向而非临时追涨，溢出转入低市净率国有行与城商行以回归目标配比。',
+'操作建议3_内容': '<span style="color:#3fb950;font-weight:700;">公用事业随红利小幅回撤</span>，但长江电力股息率约<span style="color:#f85149;font-weight:700;">百分之三点五</span>、今年发电量大年，防御成色最足；大秦铁路股息率<span style="color:#f85149;font-weight:700;">百分之四点六二</span>居前列。类债资产在波动市里扮演稳定器，分红到账即滚入复利，是组合穿越风格切换的压舱石，不因单日微跌改变底仓定位，也不因情绪亢奋而追高弹性仓。',
+}
+D.update(_ov14)
+
+# ===== 20260921 期覆盖（_ov15）：机构4/5/6 ≥120字补齐（周一前瞻视角） =====
+_ov15 = {
+'机构4_观点': '华泰证券提示，<span style="color:#3fb950;font-weight:700;">全球债市同步抛售未止</span>：美十年期国债收益率突破百分之五、日银加息至<span style="color:#f0b429;font-weight:700;">百分之一点二五创三十一年新高</span>，长端利率中枢整体抬升。建议本币资产均衡摆布，保留黄金作为对冲，科技仓位压降单一标的集中度，避免在全球利率未稳前过度暴露久期风险。',
+'机构5_观点': '摩根大通维持中资金融股<span style="color:#f85149;font-weight:700;">银行优于保险优于券商</span>的排序，六大行分红比例提至百分之三十一、市净率仅零点六倍，估值修复空间清晰；招行单名占比过高须设<span style="color:#ffa657;font-weight:700;">百分之四十五再平衡线</span>，中国平安股息率约百分之五点一仍具吸引力，组合宜以高股息为底、动态再平衡控集中度。',
+'机构6_观点': '瑞银维持中国股票<span style="color:#f85149;font-weight:700;">中性偏多</span>判断，十五五规划蓝图利好估值中枢，并将二〇二七年全球人工智能资本支出上修至一点四四七万亿美元。近期看好<span style="color:#f85149;font-weight:700;">红利与国产算力</span>双线，以分红再投资滚动收息、保留现金等待长端利率确认回落后再加仓，不急于在波动未消时追高。',
+}
+D.update(_ov15)
+
+# ===== 20260921 期覆盖（_ov16）：操作建议3 / 机构4/5/6 ≥120字补齐 =====
+_ov16 = {
+'操作建议3_内容': '<span style="color:#3fb950;font-weight:700;">公用事业随红利小幅回撤</span>，但长江电力股息率约<span style="color:#f85149;font-weight:700;">百分之三点五</span>、今年发电量大年，防御成色最足；大秦铁路股息率<span style="color:#f85149;font-weight:700;">百分之四点六二</span>居前列。类债资产在波动市里扮演稳定器，分红到账即滚入复利，是组合穿越风格切换的压舱石，不因单日微跌改变底仓定位，也不因情绪亢奋而追高弹性仓；长江来水偏丰、乌白电站全面投产令业绩确定性高，大秦运量中枢稳定、煤价波动中分红连续，二者均只收息不加仓，把分红滚入作为组合的安全垫与现金流来源。',
+'机构4_观点': '华泰证券提示，<span style="color:#3fb950;font-weight:700;">全球债市同步抛售未止</span>：美十年期国债收益率突破百分之五、日银加息至<span style="color:#f0b429;font-weight:700;">百分之一点二五创三十一年新高</span>，长端利率中枢整体抬升。建议本币资产均衡摆布，保留黄金作为对冲工具，科技仓位压降单一标的集中度，避免在全球利率未稳前过度暴露久期风险，等待长端信号明确后再做仓位调整。',
+'机构5_观点': '摩根大通维持中资金融股<span style="color:#f85149;font-weight:700;">银行优于保险优于券商</span>的排序，六大行分红比例提至百分之三十一、市净率仅零点六倍，估值修复空间清晰；招行单名占比过高须设<span style="color:#ffa657;font-weight:700;">百分之四十五再平衡线</span>，中国平安股息率约百分之五点一仍具吸引力，组合宜以高股息为底、按目标配比动态再平衡，控制单一标的与单一行业的集中度风险。',
+'机构6_观点': '瑞银维持中国股票<span style="color:#f85149;font-weight:700;">中性偏多</span>判断，十五五规划蓝图利好估值中枢，并将二〇二七年全球人工智能资本支出上修至一点四四七万亿美元。近期看好<span style="color:#f85149;font-weight:700;">红利与国产算力</span>双线，以分红再投资滚动收息、保留现金等待长端利率确认回落后再加仓，不急于在波动未消时追高，仓位以收息安全垫应对外部不确定性。',
+}
+D.update(_ov16)
+
+# ===== 20260921 期覆盖（_ov17）：机构4/5/6_观点 + 操作建议1/2/3_补充 ≥120字 =====
+_ov17 = {
+'机构4_观点': '华泰证券提示，<span style="color:#3fb950;font-weight:700;">全球债市同步抛售未止</span>：美十年期国债收益率突破百分之五、日银加息至<span style="color:#f0b429;font-weight:700;">百分之一点二五创三十一年新高</span>，长端利率中枢整体抬升。建议本币资产均衡摆布，保留黄金作为对冲工具，科技仓位压降单一标的集中度，避免在全球利率未稳前过度暴露久期风险，等待长端信号明确后再做仓位调整与再平衡。',
+'机构5_观点': '摩根大通维持中资金融股<span style="color:#f85149;font-weight:700;">银行优于保险优于券商</span>的排序，六大行分红比例提至百分之三十一、市净率仅零点六倍，估值修复空间清晰；招行单名占比过高须设<span style="color:#ffa657;font-weight:700;">百分之四十五再平衡线</span>，中国平安股息率约百分之五点一仍具吸引力，组合宜以高股息为底、按目标配比动态再平衡，控制单一标的与单一行业的集中度风险。',
+'机构6_观点': '瑞银维持中国股票<span style="color:#f85149;font-weight:700;">中性偏多</span>判断，十五五规划蓝图利好估值中枢，并将二〇二七年全球人工智能资本支出上修至一点四四七万亿美元。近期看好<span style="color:#f85149;font-weight:700;">红利与国产算力</span>双线，以分红再投资滚动收息、保留现金等待长端利率确认回落后再加仓，不急于在波动未消时追高，仓位以收息安全垫应对外部不确定性。',
+'操作建议1_补充': '红利在普涨日遭科技与消费分流属正常轮动。<span style="color:#f0b429;font-weight:700;">本周盯紧9月24日习特峰会前的中美磋商</span>，缓和则利好银行估值修复，僵持则防御属性更受青睐。贷款市场报价利率不动使银行息差压力暂缓，<span style="color:#f85149;font-weight:700;">底仓逻辑是收息而非博弹性</span>，分红到账即滚入复利，不为短期跑输所动，也不因一日涨跌改变长期收息定位。',
+'操作建议2_补充': '设阈值并非看空招行，而是给组合上道保险。招行上半年营收<span style="color:#f85149;font-weight:700;">增长百分之四点八三</span>、净利正增长，基本面无虞；但集中度风险在风格切换时会放大波动。越过<span style="color:#f0b429;font-weight:700;">百分之四十五</span>即启动再平衡，溢出转入低市净率国有行与城商行，回归<span style="color:#ffa657;font-weight:700;">百分之四十、三十、三十</span>目标配比，把单名风险压回可控区间。',
+'操作建议3_补充': '大秦铁路股息率超百分之四点六居组合前列，煤价波动中运量中枢稳定、分红连续；长江电力来水偏丰、乌白电站全面投产，业绩确定性高。两者均<span style="color:#ffa657;font-weight:700;">只收息不加仓</span>，分红到账后继续滚入，不因单日微跌改底仓定位，也不因市场情绪亢奋而追高弹性仓，以类债资产的稳定现金流穿越波动周期。',
+}
+D.update(_ov17)
+
+# ===== 20260921 期覆盖（_ov18）：操作建议4/6_补充 ≥120字 =====
+_ov18 = {
+'操作建议4_补充': '神华一体化运营令现金流对煤价下行敏感度低于同业，中期分红确定性高；平安寿险改革深化、新业务价值边际改善，但<span style="color:#3fb950;font-weight:700;">地产敞口与利率上行</span>仍需持续观察。两者均只持有不追加，<span style="color:#f0b429;font-weight:700;">等破位再评估</span>；若神华跌破四十五元、平安跌破五十元，再结合分红与估值重新考量仓位，不因短期分红波动改变防御定位。',
+'操作建议6_补充': '这一轮科技爆发是<span style="color:#f85149;font-weight:700;">事件催化加产业景气确认</span>（昇腾九百五十月底商用、长鑫量产、瑞银上修人工智能资本支出），并非纯题材炒作。但估值已高、追涨停风险大，且<span style="color:#3fb950;font-weight:700;">监管已降温次新投机</span>。卫星仓暂不加，<span style="color:#ffa657;font-weight:700;">等回踩企稳放量</span>后再分批试探、单独设止损，用红利底仓的现金流为弹性仓提供安全垫，严守纪律不接飞刀。',
+}
+D.update(_ov18)
+
+# ===== 20260921 期覆盖（_ov19）：修复语义色矛盾 + 标题正文同源 =====
+_ov19 = {
+'社区话题2_观点': '国产存储这条线我认为"<span style="color:#f85149;font-weight:700;">产业逻辑成立、但不宜追高</span>"。长鑫量产是硬突破，叠加昇腾950月底商用、瑞银上修AI资本支出，说明存储需求真实。但板块已拥挤，<span style="color:#3fb950;font-weight:700;">冲高回落风险偏大、追高性价比很差</span>。策略是<span style="color:#ffa657;font-weight:700;">卫星仓暂不加、等回踩企稳放量后分批试探、单独设止损</span>，用红利底仓现金流提供安全垫，分清有真实订单与纯情绪。',
+'大模型新闻2_标签和标题': '⚖️ AI四巨头遭诉·呼吁放缓AI开发',
+}
+D.update(_ov19)
+
+# ===== 20260921 期覆盖（_ov20）：兜底检索补漏——中美磋商新进展·富时A50调仓·吹哨人奖励·10月加息预期 =====
+_ov20 = {
+'重点新闻1_正文': '9月20日中美经贸团队在<span style="color:#f85149;font-weight:700;">纽约开始举行磋商</span>，何立峰副总理率团、持续至<span style="color:#f85149;font-weight:700;">9月23日</span>，为<span style="color:#f0b429;font-weight:700;">9月24日两国元首会晤</span>铺路；议题含对等降税、AI、稀土与伊朗能源。美方财长贝森特称本轮会谈"very successful"、单日谈判逾8小时，双方拟设<span style="color:#f85149;font-weight:700;">中美AI对话机制</span>，缓和氛围助推离岸人民币与A50周末走强、<span style="color:#f85149;font-weight:700;">利好风险偏好</span>，但磋商反复仍可能引发避险。',
+'重点新闻8_正文': '9月18日现货金<span style="color:#f85149;font-weight:700;">反弹报4391.94美元</span>，美10年债回落至<span style="color:#f85149;font-weight:700;">4.94%</span>；但胡塞袭沙特与伊朗谈判拉锯令<span style="color:#3fb950;font-weight:700;">地缘溢价难消</span>，中美磋商缓和预期部分对冲，金价短线高位震荡。<span style="color:#3fb950;font-weight:700;">美联储10月加息预期升至55.4%</span>，长端利率高位对高估值资产仍构成约束。',
+'财经新闻3_标签和标题': '📈 富时A50季度调仓·中微生益纳入',
+'财经新闻3_正文': '富时罗素季度审核变更：<span style="color:#00d4ff;font-weight:700;">富时中国A50指数</span>纳入<span style="color:#f85149;font-weight:700;">中微公司、生益科技</span>，剔除牧原股份、万华化学；变更于<span style="color:#00d4ff;font-weight:700;">9月21日收盘后生效</span>，被动资金调仓带来短期扰动。成分股不在本组合19标的范围，对银行红利底仓无直接影响，但反映半导体国产替代获国际指数增配。',
+'财经新闻5_标签和标题': '🛡️ 证监会"吹哨人"奖励落地',
+'财经新闻5_正文': '证监会9月18日启动证券期货违法行为<span style="color:#f0b429;font-weight:700;">"吹哨人"奖励计划</span>，面向内幕交易、财务造假、操纵市场等线索，登记期<span style="color:#00d4ff;font-weight:700;">9月18日至12月18日</span>，首批梳理<span style="color:#f85149;font-weight:700;">17起案件线索</span>；中长期利于净化市场生态、保护长期收息者，是投资者保护制度补短板。',
+}
+D.update(_ov20)
