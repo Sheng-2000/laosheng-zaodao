@@ -1963,3 +1963,10 @@ _ov21 = {
 '星期': '星期一',
 }
 D.update(_ov21)
+
+# ===== 20260921 期覆盖（_ov22）：补两条遗漏周末要闻——MLCC缺货涨价·词元经济行动方案 =====
+_ov22 = {
+'财经新闻3_正文': '富时罗素季度审核变更：<span style="color:#00d4ff;font-weight:700;">富时中国A50指数</span>纳入<span style="color:#f85149;font-weight:700;">中微公司、生益科技</span>，剔除牧原股份、万华化学；变更于<span style="color:#00d4ff;font-weight:700;">9月21日收盘后生效</span>，被动资金调仓带来短期扰动。成分股不在本组合19标的范围，对银行红利底仓无直接影响，但反映半导体国产替代获国际指数增配。同期<span style="color:#f85149;font-weight:700;">AI服务器高容量MLCC现缺货涨价、部分型号数月暴涨数倍</span>，存储与被动元件景气共振，需留意涨价向后道模组传导推升BOM成本。',
+'财经新闻6_正文': '瑞银将<span style="color:#f85149;font-weight:700;">2026全球AI资本支出上调至9980亿美元</span>、2027年达<span style="color:#00d4ff;font-weight:700;">1.447万亿</span>，九成增量来自内存涨价；算力需求从主题走向业绩兑现，国产算力与存储同步受益。北京同步印发<span style="color:#00d4ff;font-weight:700;">《词元经济发展行动方案（2026—2028）》</span>，以Token计量与流通为核心培育AI原生产业，地方AI扶持由"算力补贴"转向"Token经济"。',
+}
+D.update(_ov22)
