@@ -29,13 +29,26 @@ _OPIN = re.compile(r'建议|宜|不宜|值得|看好|谨慎|风险|逻辑|框架
                    r'底色|弹性|买点|退潮|拥挤|情绪|分批|定投|止损|溢出|阈值|锚定|比价|'
                    r'利差|偏离|集中度|健康|抽水|托底|旗手|补涨|防御')
 
-def _strip(html):
+# 块级边界：展平时必须保留为换行，否则相邻数据单元格（如「纳指涨跌幅」与
+# 「英伟达涨跌幅」、导航条各 Tab）会被粘成一条"伪叙事句"，造成门禁误报。
+#   （20260928 修复：此前 6 条 FAIL 中有 3 条属此类）
+_BLOCK = re.compile(
+    r'</?(?:div|p|td|th|tr|li|ul|ol|section|article|header|footer|nav|h[1-6]|table|br)\b[^>]*>',
+    re.I)
+
+
+def _strip(html, keep_blocks=True):
     h = re.sub(r'<script.*?</script>', ' ', html, flags=re.S)
     h = re.sub(r'<style.*?</style>', ' ', html, flags=re.S)
+    if keep_blocks:
+        h = _BLOCK.sub('\n', h)
     h = re.sub(r'<[^>]+>', ' ', h)
     h = re.sub(r'&[a-z]+;', ' ', h)
-    h = re.sub(r'\s+', ' ', h)
-    return h
+    h = re.sub(r'[^\S\n]+', ' ', h)          # 压缩非换行空白，保留块边界
+    h = re.sub(r'\n\s+', '\n', h)
+    h = re.sub(r'\s+\n', '\n', h)
+    h = re.sub(r'\n{2,}', '\n', h)
+    return h.strip()
 
 def _cjk_len(s):
     return len(_CJK.findall(s))
@@ -55,7 +68,10 @@ def _is_data(s):
 
 def _sents(text):
     # 只保留"有信息量的中文叙事句"：含中文、非代码片段、长度足够
-    parts = re.split(r'[。！？；.!?;]', text)
+    # 先按块级边界（换行）切单元，再按句读切句——避免跨单元格粘连成伪句
+    parts = []
+    for _blk in text.split('\n'):
+        parts.extend(re.split(r'[。！？；.!?;]', _blk))
     out = []
     for p in parts:
         p = p.strip()
