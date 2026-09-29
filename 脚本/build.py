@@ -7,6 +7,7 @@ ROOT = os.path.dirname(HERE)  # 项目根目录（脚本目录的父级）
 
 # 按系统日期动态输出，绝不复盖旧报告（防"直接重跑旧脚本"覆盖成品）
 TODAY = datetime.date.today().strftime("%Y%m%d")
+TODAY_D = datetime.date(int(TODAY[:4]), int(TODAY[4:6]), int(TODAY[6:8]))
 
 def load(modname):
     spec = importlib.util.spec_from_file_location(modname, os.path.join(HERE, modname + ".py"))
@@ -19,6 +20,27 @@ d2 = load("g_data2")
 D = {}
 D.update(d1.D)
 D.update(d2.D)
+
+# 0) 数据新鲜度闸门（仅告警，不阻断）：报告日期须为近期，避免"忘重新生成"导致旧内容续命
+try:
+    _rd = d2.D.get("报告日期", "")
+    if not _rd or "年" not in _rd:
+        print("⚠️ 数据新鲜度闸门: g_data2.报告日期 为空或异常，疑似未重置/未填写，请确认已生成当日数据")
+    else:
+        _m = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", _rd)
+        if _m:
+            _rdate = datetime.date(int(_m.group(1)), int(_m.group(2)), int(_m.group(3)))
+            _diff = (TODAY_D - _rdate).days
+            if _diff > 5:
+                print("⚠️ 数据新鲜度闸门: 报告日期(%s) 距今天 %d 天，疑似使用了过期数据，请确认已重新生成" % (_rd, _diff))
+            elif _diff < -5:
+                print("⚠️ 数据新鲜度闸门: 报告日期(%s) 超前今天 %d 天，请核对" % (_rd, -_diff))
+            else:
+                print("✅ 数据新鲜度闸门: 报告日期 %s 在合理窗口内" % _rd)
+        else:
+            print("⚠️ 数据新鲜度闸门: 报告日期(%s) 格式异常，请核对" % _rd)
+except Exception as e:
+    print("[WARN] 数据新鲜度闸门未运行:", repr(e)[:120])
 
 # 1) 高亮密度增强（必须合并后执行，两个数据文件的键都要覆盖）
 hb = load("hl_boost")
