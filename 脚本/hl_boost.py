@@ -115,13 +115,17 @@ def apply(D):
             # 新闻类：若完全没有高亮，做全增强；若已有高亮，仅补足数量不足的情况
             if "<span" not in v:
                 D[k] = boost_text(v, min_hits=5)
-        elif k.startswith(("机构", "话题", "操作建议", "要点", "综评", "持仓",
+        elif k.startswith(("机构", "话题", "社区话题", "操作建议", "要点", "综评", "持仓",
                             "深度解读", "避坑", "高股息", "今日总结", "市场热点",
                             "正面因素", "风险提示", "理财", "保险", "债基",
                             "替代策略", "宏观", "市场", "资金", "低估值",
-                            "今日总结", "时间线", "资金流向", "参考", "标的_",
-                            "深度解读")):
+                            "时间线", "资金流向", "参考", "标的_")):
             if "<span" not in v:
-                mh = 3 if k.startswith("要点") else 2
+                if k.startswith("社区话题"):
+                    mh = 4
+                elif k.startswith("要点"):
+                    mh = 3
+                else:
+                    mh = 2
                 D[k] = boost_text(v, min_hits=mh)
     return D
