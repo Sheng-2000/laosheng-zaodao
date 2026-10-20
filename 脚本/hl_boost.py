@@ -41,6 +41,18 @@ def _wrap(text, color, weight=700):
 def _is_wrapped(seg):
     return seg.startswith('<span') and 'style="color:' in seg
 
+
+def _wrap_first(out, w, color):
+    """包裹首个未被包裹的词（词首紧跟 '>' 说明它本身已在 span 内，跳过以免嵌套）。"""
+    i = 0
+    while True:
+        p = out.find(w, i)
+        if p < 0:
+            return out
+        if not out[:p].endswith(">"):
+            return out[:p] + _wrap(w, color) + out[p + len(w):]
+        i = p + len(w)
+
 def boost_text(text, min_hits=3, force=True):
     """给一段纯文本自动加高亮。已含 <span> 的文本跳过（避免重复包裹）。
     顺序：先涨跌数字着色（涨红/跌绿），再方向词着色，再警示/信息词补足。"""
@@ -83,23 +95,31 @@ def boost_text(text, min_hits=3, force=True):
 
     # 2) 方向词着色补足
     for w in POS_WORDS:
-        if w in out and hits < min_hits:
-            out = out.replace(w, _wrap(w, RED), 1)
-            hits += 1
+        if hits >= min_hits:
+            break
+        new = _wrap_first(out, w, RED)
+        if new != out:
+            out, hits = new, hits + 1
     for w in NEG_WORDS:
-        if w in out and hits < min_hits:
-            out = out.replace(w, _wrap(w, GREEN), 1)
-            hits += 1
+        if hits >= min_hits:
+            break
+        new = _wrap_first(out, w, GREEN)
+        if new != out:
+            out, hits = new, hits + 1
     # 3) 警示词（黄）
     for w in WARN_WORDS:
-        if w in out and hits < min_hits:
-            out = out.replace(w, _wrap(w, YELLOW), 1)
-            hits += 1
+        if hits >= min_hits:
+            break
+        new = _wrap_first(out, w, YELLOW)
+        if new != out:
+            out, hits = new, hits + 1
     # 4) 关键信息词（蓝）
     for w in INFO_WORDS:
-        if w in out and hits < min_hits:
-            out = out.replace(w, _wrap(w, BLUE), 1)
-            hits += 1
+        if hits >= min_hits:
+            break
+        new = _wrap_first(out, w, BLUE)
+        if new != out:
+            out, hits = new, hits + 1
     return out
 
 NEWS_KEYS = ("新闻", "生物医学", "AI应用", "大模型", "算力", "机器人", "产业趋势", "地缘")
@@ -110,6 +130,9 @@ def apply(D):
         if not isinstance(v, str) or len(v) < 20:
             continue
         if k in ("报告日期", "数据截止日期", "YYYY/MM/DD", "星期"):
+            continue
+        # 标题/标签是短抬头，高亮由正文承载；包裹进标题会破坏质检脚本的字面比对
+        if k.endswith(("标题", "标签")):
             continue
         if any(nk in k for nk in NEWS_KEYS):
             # 新闻类：若完全没有高亮，做全增强；若已有高亮，仅补足数量不足的情况
