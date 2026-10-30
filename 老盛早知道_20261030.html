@@ -151,10 +151,10 @@
   .tag { display:inline-block; padding:2px 9px; border-radius:5px; font-size:11px; font-weight:600; letter-spacing:0.5px; flex-shrink:0; margin-top:1px; }  .market-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 16px; margin-bottom: 20px; }
   .market-block { background: var(--card-grad); border: 1px solid var(--border); border-radius: var(--radius); padding:16px 20px; box-shadow: var(--shadow-soft); }
   .market-block h4 { font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; border-bottom: 1px solid var(--border); padding-bottom:8px; }
-  .market-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid rgba(60,68,78,0.5); font-size:13px; }
+  .market-row { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px; padding:6px 0; border-bottom:1px solid rgba(60,68,78,0.5); font-size:13px; }
   .market-row:last-child { border-bottom:none; }
-  .market-name { color:var(--text-secondary); }
-  .market-val { font-weight:600; font-family: var(--font-mono); }  /* 老盛观点卡片 */
+  .market-name { color:var(--text-secondary); flex:0 0 auto; white-space:nowrap; }
+  .market-val { font-weight:600; font-family: var(--font-mono); flex:0 1 auto; max-width:100%; text-align:right; line-height:1.65; overflow-wrap:anywhere; }  .emo-chips { flex-wrap:wrap; } .emo-chip { flex:0 1 auto; min-width:0; max-width:100%; }  /* 老盛观点卡片 */
   .laosheng-view {
     margin-top: 10px;
     padding: 10px 14px;
@@ -219,7 +219,7 @@
   .sub-title { font-size: 13.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; padding-left: 11px; border-left: 3px solid var(--accent); border-radius: 2px; }
   .stock-info-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   /* 响应式grid工具类 */
-  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; } .grid-4 > div > div:last-child { display:block !important; line-height:1.6; }
   .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }  @media (max-width:768px) {
     .header-inner, .tab-nav-wrap, .inner { padding-left: 16px; padding-right: 16px; }
@@ -945,7 +945,7 @@
 }
 .capital-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 .capital-card {
@@ -953,8 +953,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  display: flex;
-  gap: 14px;
+  display: flex; flex-direction: column;
+  gap: 10px;
   transition: all 0.3s ease;
 }
 .capital-card:hover {
@@ -991,13 +991,13 @@
 /* 估值参考卡片 */
 .valuation-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 .valuation-item {
-  display: flex;
+  display: flex; flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 8px 12px;
   padding: 14px 16px;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1013,7 +1013,7 @@
   flex-shrink: 0;
 }
 .valuation-info {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 .valuation-name {
@@ -1034,7 +1034,7 @@
   padding: 3px 10px;
   border-radius: 12px;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: normal; flex: 0 0 100%; max-width: 100%; line-height: 1.5; text-align: left;
 }
 .valuation-tag.low {
   background: rgba(63,185,80,0.15);
@@ -1184,33 +1184,33 @@
   }
   
   .flow-diagram {
-    flex-direction: row;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 8px;
+    overflow-x: visible;
+    padding-bottom: 0;
     -webkit-overflow-scrolling: touch;
   }
   .flow-arrow {
     font-size: 13px;
-    flex-shrink: 0;
+    flex-shrink: 0; align-self: center; transform: rotate(90deg);
   }
   .flow-node {
     flex: 0 0 auto;
-    min-width: 90px;
-    max-width: 110px;
-    padding: 10px 8px;
+    min-width: 0;
+    max-width: none;
+    padding: 12px 14px;
   }
   .flow-node-icon {
     font-size: 18px;
   }
   .flow-node-title {
     font-size: 10px;
-    white-space: nowrap;
+    white-space: normal;
   }
   .flow-node-desc {
     font-size: 9px;
-    white-space: nowrap;
+    white-space: normal; text-align: left; line-height: 1.6;
   }
   .capital-cards {
     grid-template-columns: 1fr;
@@ -1421,7 +1421,7 @@
 }
 
 /* 超小屏幕适配 */
-@media (max-width: 480px) {
+@media (max-width: 480px) { .tab-nav { flex-wrap: wrap; overflow-x: visible; gap: 4px; } .tab-btn { flex: 0 0 auto; }
   .sentiment-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -1429,7 +1429,7 @@
     font-size: 18px !important;
   }
   .grid-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: 1fr !important;
     gap: 10px !important;
   }
   [style*="grid-template-columns:repeat(3,1fr)"] {
@@ -2380,16 +2380,16 @@
           <div style="width:20px;height:6px;background:rgba(139,149,165,0.3);border-radius:3px;"></div>
         </div>
       </div>
-      <div style="display:flex;gap:16px;">
-        <div style="text-align:center;">
+      <div class="emo-chips" style="display:flex;gap:16px;">
+        <div class="emo-chip" style="text-align:center;">
           <div style="font-size:11px;color:#8b95a5;">涨跌比</div>
           <div style="font-size:13px;font-weight:600;color:#f85149;">781涨/4728跌（10月29日）</div>
         </div>
-        <div style="text-align:center;">
+        <div class="emo-chip" style="text-align:center;">
           <div style="font-size:11px;color:#8b95a5;">成交额</div>
           <div style="font-size:13px;font-weight:600;color:#f0b429;">1.56万亿（缩量720亿）</div>
         </div>
-        <div style="text-align:center;">
+        <div class="emo-chip" style="text-align:center;">
           <div style="font-size:11px;color:#8b95a5;">北向资金</div>
           <div style="font-size:13px;font-weight:600;color:#f85149;">净买额已停止逐日披露，<span style="color:#00d4ff;font-weight:700;">10</span>月<span style="color:#00d4ff;font-weight:700;">29</span>日沪深股通成交合计<span style="color:#00d4ff;font-weight:700;">2484.50</span>亿元、占两市成交<span style="color:#00d4ff;font-weight:700;">15.96%</span>；沪股通成交前三贵州茅台<span style="color:#00d4ff;font-weight:700;">24.22</span>亿元、招商银行<span style="color:#00d4ff;font-weight:700;">18.67</span>亿元、寒武纪16.09亿元；深股通成交前三中际旭创35.63亿元、宁德时代28.46亿元、北方华创22.09亿元</div>
         </div>
