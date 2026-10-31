@@ -169,10 +169,12 @@ roles_ok = all(
     and d2.D.get("社区话题%d_角色3" % i) == "@谨慎派"
     for i in range(1, 6))
 chk("三角色齐全(机构/价值/谨慎)", roles_ok)
+# 高亮计数需同时认两种写法：源键里的 {r|…} 标记（build 第3步展开）和手写 <span style="color:…">
+HL_ANY = r'<span style="color:|\{[rgyco]\|'
 hl_bad = []
 for i in range(1, 6):
     seg = "".join(d2.D.get("社区话题%d_观点%d" % (i, j), "") for j in range(1, 4))
-    n = len(re.findall(r"<span style=\"color:", seg))
+    n = len(re.findall(HL_ANY, seg))
     if n < 4:
         hl_bad.append((i, n))
 chk("每话题三观点高亮 ≥4处", not hl_bad, str(hl_bad))

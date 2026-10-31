@@ -278,6 +278,19 @@ try:
             _major_obj = _dtX.date(*map(int, _dm.groups())) if _dm else None
         except ValueError:
             _major_obj = None
+        # 兼容省略年份的 "10月30日（周五收盘）"：年份取报告日，再向前顺一年以覆盖跨年报告
+        if _major_obj is None:
+            _dm2 = _reX.search(r"(?<!\d)(\d{1,2})\s*月\s*(\d{1,2})\s*日", _major)
+            if _dm2:
+                _mm, _dd = int(_dm2.group(1)), int(_dm2.group(2))
+                for _yy in (_rdobj.year, _rdobj.year - 1):
+                    try:
+                        _cand = _dtX.date(_yy, _mm, _dd)
+                    except ValueError:
+                        continue
+                    if _cand <= _rdobj:
+                        _major_obj = _cand
+                        break
         _exp = {(_rdobj - _dtX.timedelta(days=k)) for k in range(0, 6)}
         CROSS_PERIOD = _major_obj is None or _major_obj not in _exp
     else:

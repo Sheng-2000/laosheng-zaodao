@@ -21,6 +21,22 @@ D = {}
 D.update(d1.D)
 D.update(d2.D)
 
+# 0) 高亮标记展开：{r|文本} -> 红span（r红 g绿 y黄 c青 o橙）
+#    放在 hl_boost 之前，展开后含 <span> 的值会被 hl_boost 跳过，手写高亮因此拥有最终决定权。
+_MARK = re.compile(r"\{(r|g|y|c|o)\|([^{}]*?)\}")
+_MARK_COLOR = {"r": "#f85149", "g": "#3fb950", "y": "#f0b429", "c": "#00d4ff", "o": "#ffa657"}
+_unknown_marks = []
+for _k, _v in D.items():
+    if isinstance(_v, str) and _MARK.search(_v):
+        D[_k] = _MARK.sub(lambda m: '<span style="color:%s;font-weight:700;">%s</span>'
+                          % (_MARK_COLOR[m.group(1)], m.group(2)), _v)
+    if isinstance(_v, str) and "{{" not in _v:
+        for _frag in re.findall(r"\{[^{}]*\}", _v):
+            if not re.match(r"^\{(r|g|y|c|o)\|", _frag):
+                _unknown_marks.append("%s:%s" % (_k, _frag))
+if _unknown_marks:
+    print("⚠️ 无法识别的花括号标记（将原样渲染进HTML，请改正）:", _unknown_marks[:10])
+
 # 0) 数据新鲜度闸门（仅告警，不阻断）：报告日期须为近期，避免"忘重新生成"导致旧内容续命
 try:
     _rd = d2.D.get("报告日期", "")

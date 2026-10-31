@@ -179,10 +179,11 @@ chk("三角色齐全(机构/价值/谨慎)", roles)
 low_v = [(i, len(re.sub(r"<[^>]+>", "", d2.D.get("社区话题%d_观点" % i, ""))))
          for i in range(1, 6) if len(re.sub(r"<[^>]+>", "", d2.D.get("社区话题%d_观点" % i, ""))) < 120]
 chk("老盛观点每条 ≥120字", not low_v, str(low_v))
-hl_bad = [(i, len(re.findall(r'<span style="color:',
-                              "".join(d2.D.get("社区话题%d_观点%d" % (i, j), "") for j in range(1, 4)))))
+HL_ANY = r'<span style="color:|\{[rgyco]\|'
+hl_bad = [(i, len(re.findall(HL_ANY,
+                             "".join(d2.D.get("社区话题%d_观点%d" % (i, j), "") for j in range(1, 4)))))
           for i in range(1, 6)
-          if len(re.findall(r'<span style="color:',
+          if len(re.findall(HL_ANY,
                             "".join(d2.D.get("社区话题%d_观点%d" % (i, j), "") for j in range(1, 4)))) < 4]
 chk("每话题三观点高亮 ≥4处", not hl_bad, str(hl_bad))
 

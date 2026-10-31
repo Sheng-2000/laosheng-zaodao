@@ -154,7 +154,7 @@
   .market-row { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:2px 12px; padding:6px 0; border-bottom:1px solid rgba(60,68,78,0.5); font-size:13px; }
   .market-row:last-child { border-bottom:none; }
   .market-name { color:var(--text-secondary); flex:0 0 auto; white-space:nowrap; }
-  .market-val { font-weight:600; font-family: var(--font-mono); flex:0 1 auto; max-width:100%; text-align:right; line-height:1.65; overflow-wrap:anywhere; }  .emo-chips { flex-wrap:wrap; } .emo-chip { flex:0 1 auto; min-width:0; max-width:100%; }  /* 老盛观点卡片 */
+  .market-val { font-weight:600; font-family: var(--font-mono); flex:0 1 auto; max-width:100%; text-align:right; line-height:1.65; overflow-wrap:anywhere; }  .emo-chips { flex-wrap:wrap; } .emo-chip { flex:0 1 auto; min-width:0; max-width:100%; }  /* 市场情绪行：标签列不参与压缩，长状态句换行到下一行 */  .emo-inner { flex-wrap:wrap; } .emo-label { flex:0 0 auto; white-space:nowrap; }  /* 综评四维度头：窄屏改回正文流，避免长标题把标签压成一字一行 */  @media (max-width:600px){ .dim-head { display:block !important; line-height:1.6; } .dim-head .dim-tag { display:inline-block; margin-left:6px; margin-top:2px; white-space:nowrap; } }  /* 老盛观点卡片 */
   .laosheng-view {
     margin-top: 10px;
     padding: 10px 14px;
@@ -2311,10 +2311,10 @@
       
       <!-- A股行情 -->
       <div style="background:linear-gradient(135deg,rgba(248,81,73,0.1),rgba(248,81,73,0.03));border:1px solid rgba(248,81,73,0.2);border-radius:12px;padding:16px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div class="dim-head" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <span style="font-size:18px;">🇨🇳</span>
-          <span style="font-size:14px;font-weight:700;color:#f85149;">{{综评_A股行情标题}}</span>
-          <span style="margin-left:auto;font-size:11px;color:#f85149;background:rgba(248,81,73,0.15);padding:2px 8px;border-radius:10px;">{{综评_A股行情标签}}</span>
+          <span class="dim-title" style="font-size:14px;font-weight:700;color:#f85149;">{{综评_A股行情标题}}</span>
+          <span class="dim-tag" style="margin-left:auto;font-size:11px;color:#f85149;background:rgba(248,81,73,0.15);padding:2px 8px;border-radius:10px;">{{综评_A股行情标签}}</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
           <p style="margin-bottom:8px;">{{综评_A股段落1}}</p>
@@ -2325,10 +2325,10 @@
       
       <!-- 外围市场 -->
       <div style="background:linear-gradient(135deg,rgba(63,185,80,0.1),rgba(63,185,80,0.03));border:1px solid rgba(63,185,80,0.2);border-radius:12px;padding:16px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div class="dim-head" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <span style="font-size:18px;">🌍</span>
-          <span style="font-size:14px;font-weight:700;color:#3fb950;">{{综评_外围市场标题}}</span>
-          <span style="margin-left:auto;font-size:11px;color:#3fb950;background:rgba(63,185,80,0.15);padding:2px 8px;border-radius:10px;">{{综评_外围市场标签}}</span>
+          <span class="dim-title" style="font-size:14px;font-weight:700;color:#3fb950;">{{综评_外围市场标题}}</span>
+          <span class="dim-tag" style="margin-left:auto;font-size:11px;color:#3fb950;background:rgba(63,185,80,0.15);padding:2px 8px;border-radius:10px;">{{综评_外围市场标签}}</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
           <p style="margin-bottom:8px;">{{综评_外围段落1}}</p>
@@ -2339,10 +2339,10 @@
       
       <!-- 地缘政策 -->
       <div style="background:linear-gradient(135deg,rgba(240,180,41,0.1),rgba(240,180,41,0.03));border:1px solid rgba(240,180,41,0.2);border-radius:12px;padding:16px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div class="dim-head" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <span style="font-size:18px;">🏛️</span>
-          <span style="font-size:14px;font-weight:700;color:#f0b429;">{{综评_地缘政策标题}}</span>
-          <span style="margin-left:auto;font-size:11px;color:#f0b429;background:rgba(240,180,41,0.15);padding:2px 8px;border-radius:10px;">{{综评_地缘政策标签}}</span>
+          <span class="dim-title" style="font-size:14px;font-weight:700;color:#f0b429;">{{综评_地缘政策标题}}</span>
+          <span class="dim-tag" style="margin-left:auto;font-size:11px;color:#f0b429;background:rgba(240,180,41,0.15);padding:2px 8px;border-radius:10px;">{{综评_地缘政策标签}}</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
           <p style="margin-bottom:8px;">{{综评_地缘段落1}}</p>
@@ -2353,10 +2353,10 @@
       
       <!-- 风险事件 -->
       <div style="background:linear-gradient(135deg,rgba(139,149,165,0.1),rgba(139,149,165,0.03));border:1px solid rgba(139,149,165,0.2);border-radius:12px;padding:16px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div class="dim-head" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           <span style="font-size:18px;">⚠️</span>
-          <span style="font-size:14px;font-weight:700;color:#8b95a5;">{{综评_风险事件标题}}</span>
-          <span style="margin-left:auto;font-size:11px;color:#8b95a5;background:rgba(139,149,165,0.15);padding:2px 8px;border-radius:10px;">{{综评_风险事件标签}}</span>
+          <span class="dim-title" style="font-size:14px;font-weight:700;color:#8b95a5;">{{综评_风险事件标题}}</span>
+          <span class="dim-tag" style="margin-left:auto;font-size:11px;color:#8b95a5;background:rgba(139,149,165,0.15);padding:2px 8px;border-radius:10px;">{{综评_风险事件标签}}</span>
         </div>
         <div style="font-size:13px;color:#b0bac4;line-height:1.7;">
           <p style="margin-bottom:8px;">{{综评_风险段落1}}</p>
@@ -2369,8 +2369,8 @@
     
     <!-- 底部市场情绪指示器 -->
     <div style="margin-top:16px;padding:14px 18px;background:rgba(0,0,0,0.2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:13px;color:#8b95a5;">市场情绪：</span>
+      <div class="emo-inner" style="display:flex;align-items:center;gap:8px;">
+        <span class="emo-label" style="font-size:13px;color:#8b95a5;">市场情绪：</span>
         <span style="font-size:13px;font-weight:600;color:var(--{{市场情绪_状态颜色}});">{{市场情绪_状态}}</span>
         <div style="display:flex;gap:3px;margin-left:6px;">
           <div style="width:20px;height:6px;background:#f85149;border-radius:3px;"></div>
@@ -2915,7 +2915,7 @@
     <!-- 建设银行 -->
     <div class="stock-card">
       <div class="stock-header">
-        <div class="stock-info-row"><span class="stock-name">{{标的2_名称}}</span><span class="stock-code">{{标的2_代码}}</span><span class="tag" style="background:rgba(248,81,73,0.15);color:#f85149;">历史新高</span></div>
+        <div class="stock-info-row"><span class="stock-name">{{标的2_名称}}</span><span class="stock-code">{{标的2_代码}}</span><span class="tag" style="background:rgba(0,212,255,0.15);color:#00d4ff;">国有大行</span></div>
         <div class="stock-price-area"><div class="stock-price">{{标的2_股价}}</div><div class="stock-change {{标的2_涨跌class}}">{{标的2_涨跌幅}}</div></div>
       </div>
       <ul class="stock-bullets">
