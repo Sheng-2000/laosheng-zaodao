@@ -147,6 +147,7 @@
   .card { background: var(--card-grad); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; margin-bottom: 18px; transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease; box-shadow: var(--shadow-soft); }
   .card:hover { border-color: var(--accent-border); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
   .card-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 9px; display:flex; align-items:flex-start; gap:10px; letter-spacing: 0.2px; }
+  .card-title .tag-hl { flex: 0 0 auto; white-space: nowrap; }  /* 标题内标签不参与 flex 压缩，窄屏避免逐字竖排 */
   .card-body { font-size:13px; color:var(--text-secondary); line-height:1.78; }
   .tag { display:inline-block; padding:2px 9px; border-radius:5px; font-size:11px; font-weight:600; letter-spacing:0.5px; flex-shrink:0; margin-top:1px; }  .market-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 16px; margin-bottom: 20px; }
   .market-block { background: var(--card-grad); border: 1px solid var(--border); border-radius: var(--radius); padding:16px 20px; box-shadow: var(--shadow-soft); }
@@ -2229,7 +2230,7 @@
   
   <div class="market-grid">
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇨🇳 A股（{{A股_收盘日期}}收盘）</h4>
+      <h4>🇨🇳 A股（{{A股_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">上证指数</span><span class="market-val neutral">{{A股_上证指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">深证成指</span><span class="market-val neutral">{{A股_深证成指_数据}}</span></div>
       <div class="market-row"><span class="market-name">创业板指</span><span class="market-val neutral">{{A股_创业板指_数据}}</span></div>
@@ -2240,14 +2241,14 @@
       <div class="market-row"><span class="market-name">北向资金</span><span class="market-val neutral">{{A股_北向资金}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇭🇰 港股（{{港股_收盘日期}}收盘）</h4>
+      <h4>🇭🇰 港股（{{港股_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">恒生指数</span><span class="market-val neutral">{{港股_恒生指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">恒生科技指数</span><span class="market-val neutral">{{港股_恒生科技_数据}}</span></div>
       <div class="market-row"><span class="market-name">国企指数</span><span class="market-val neutral">{{港股_国企指数_数据}}</span></div>
       <div class="market-row"><span class="market-name">南向资金</span><span class="market-val neutral">{{港股_南向资金}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇺🇸 美股（{{美股_收盘日期}}收盘）</h4>
+      <h4>🇺🇸 美股（{{美股_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">道琼斯</span><span class="market-val neutral">{{美股_道琼斯_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">标普500</span><span class="market-val neutral">{{美股_标普500_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">纳斯达克</span><span class="market-val neutral">{{美股_纳斯达克_涨跌幅}}</span></div>
@@ -2256,7 +2257,7 @@
       <div class="market-row"><span class="market-name">ARM</span><span class="market-val neutral">{{美股_ARM}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🌏 亚太市场（{{亚太_收盘日期}}收盘）</h4>
+      <h4>🌏 亚太市场（{{亚太_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">日经225</span><span class="market-val neutral">{{亚太_日经225}}</span></div>
       <div class="market-row"><span class="market-name">韩国KOSPI</span><span class="market-val neutral">{{亚太_韩国KOSPI_状态}}</span></div>
       <div class="market-row"><span class="market-name">台湾加权</span><span class="market-val neutral">{{亚太_台湾加权_状态}}</span></div>
@@ -2264,14 +2265,14 @@
       <div class="market-row"><span class="market-name">澳洲ASX200</span><span class="market-val neutral">{{亚太_澳洲ASX200_状态}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🇪🇺 欧洲市场（{{欧洲_收盘日期}}收盘）</h4>
+      <h4>🇪🇺 欧洲市场（{{欧洲_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">英国富时100</span><span class="market-val neutral">{{欧洲_英国富时100_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">德国DAX30</span><span class="market-val neutral">{{欧洲_德国DAX30_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">法国CAC40</span><span class="market-val neutral">{{欧洲_法国CAC40_涨跌幅}}</span></div>
       <div class="market-row"><span class="market-name">斯托克50</span><span class="market-val neutral">{{欧洲_斯托克50_涨跌幅}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🏭 大宗商品（{{大宗商品_收盘日期}}收盘）</h4>
+      <h4>🏭 大宗商品（{{大宗商品_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">WTI原油</span><span class="market-val neutral">{{大宗_WTI原油}}</span></div>
       <div class="market-row"><span class="market-name">布伦特原油</span><span class="market-val neutral">{{大宗_布伦特原油}}</span></div>
       <div class="market-row"><span class="market-name">国际黄金</span><span class="market-val neutral">{{大宗_国际黄金}}</span></div>
@@ -2279,7 +2280,7 @@
       <div class="market-row"><span class="market-name">白银</span><span class="market-val neutral">{{大宗_白银}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>💱 汇率与债券（{{汇率债券_收盘日期}}收盘）</h4>
+      <h4>💱 汇率与债券（{{汇率债券_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">USD/CNY中间价</span><span class="market-val neutral">{{汇率_USD/CNY中间价}}</span></div>
       <div class="market-row"><span class="market-name">在岸汇率</span><span class="market-val neutral">{{汇率_在岸汇率}}</span></div>
       <div class="market-row"><span class="market-name">美元指数</span><span class="market-val neutral">{{汇率_美元指数}}</span></div>
@@ -2288,7 +2289,7 @@
       <div class="market-row"><span class="market-name">中10年期</span><span class="market-val neutral">{{汇率_中10年期}}</span></div>
     </div>
     <div class="market-block" style="border-top:2px solid rgba(255,255,255,0.12);">
-      <h4>🪙 加密货币（{{加密货币_收盘日期}}收盘）</h4>
+      <h4>🪙 加密货币（{{加密货币_收盘日期}}）</h4>
       <div class="market-row"><span class="market-name">比特币BTC</span><span class="market-val neutral">{{加密_BTC}}</span></div>
       <div class="market-row"><span class="market-name">以太坊ETH</span><span class="market-val neutral">{{加密_ETH}}</span></div>
       <div class="market-row"><span class="market-name">BTC ETF</span><span class="market-val neutral">{{加密_BTCEFT}}</span></div>
@@ -2694,7 +2695,7 @@
         <div class="undervalued-name">{{低估值1_名称}}</div>
         <div class="undervalued-metrics">
           <div class="uv-metric">
-            <div class="uv-metric-label">今日涨幅</div>
+            <div class="uv-metric-label">数据日涨幅</div>
             <div class="uv-metric-value {{低估值1_涨幅样式}}">{{估值_中证红利PE_今日涨幅}}</div>
           </div>
           <div class="uv-metric">
@@ -2709,7 +2710,7 @@
         <div class="undervalued-name">{{低估值2_名称}}</div>
         <div class="undervalued-metrics">
           <div class="uv-metric">
-            <div class="uv-metric-label">今日涨幅</div>
+            <div class="uv-metric-label">数据日涨幅</div>
             <div class="uv-metric-value {{低估值2_涨幅样式}}">{{低估值2_今日涨幅}}</div>
           </div>
           <div class="uv-metric">
