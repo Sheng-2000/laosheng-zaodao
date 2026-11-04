@@ -21,8 +21,12 @@ D = {}
 D.update(d1.D)
 D.update(d2.D)
 
+# 0) 高亮密度增强：必须在 {r|...} 标记展开之前运行——此时值仍是原始文本（无 <span>），
+#    才能对新闻/AI 卡补足至≥5、其余叙事卡补足至≥2 处高亮；手写 {r|...} 标记随后照常展开叠加。
+hb = load("hl_boost")
+hb.apply(D)
+
 # 0) 高亮标记展开：{r|文本} -> 红span（r红 g绿 y黄 c青 o橙）
-#    放在 hl_boost 之前，展开后含 <span> 的值会被 hl_boost 跳过，手写高亮因此拥有最终决定权。
 _MARK = re.compile(r"\{(r|g|y|c|o)\|([^{}]*?)\}")
 _MARK_COLOR = {"r": "#f85149", "g": "#3fb950", "y": "#f0b429", "c": "#00d4ff", "o": "#ffa657"}
 _unknown_marks = []
@@ -57,10 +61,6 @@ try:
             print("⚠️ 数据新鲜度闸门: 报告日期(%s) 格式异常，请核对" % _rd)
 except Exception as e:
     print("[WARN] 数据新鲜度闸门未运行:", repr(e)[:120])
-
-# 1) 高亮密度增强（必须合并后执行，两个数据文件的键都要覆盖）
-hb = load("hl_boost")
-hb.apply(D)
 
 TPL = os.path.join(ROOT, "规则", "template.html")
 OUT = os.path.join(ROOT, "老盛早知道_%s.html" % TODAY)
