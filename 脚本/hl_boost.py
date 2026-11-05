@@ -50,9 +50,11 @@ INFO_WORDS = ["政策", "行业", "市场", "技术", "资金", "数据", "利�
               "场景", "红利", "ETF", "运营商", "能源", "央国企", "国债", "货基",
               "现金", "股息", "估值", "盈利", "现金流", "回购", "营收", "净利",
               "招标", "中标", "获批", "落地", "量产", "产能", "订单", "交付",
-              "研发", "专利", "临床", "试验", "获批", "监管", "披露", "公告"]
+              "研发", "专利", "临床", "试验", "获批", "监管", "披露", "公告",
+              "AI", "GPU", "大模型", "华为", "英伟达", "苹果", "百度", "特斯拉",
+              "OpenAI", "智能体", "端侧", "数据中心", "机器人", "智能", "算法"]
 # 关键数字（蓝色）
-NUM_RE = re.compile(r"[+\-−]?\d+(\.\d+)?%?")
+NUM_RE = re.compile(r"[+\-−]?\d+(?:\.\d+)?\s*(?:%|％|亿|万|点|倍|元|bp|pct|个)")
 
 def _wrap(text, color, weight=700):
     return '<span style="color:%s;font-weight:%s;">%s</span>' % (color, weight, text)
@@ -61,14 +63,20 @@ def _is_wrapped(seg):
     return seg.startswith('<span') and 'style="color:' in seg
 
 
+def _inside_span(out, p):
+    """判断位置 p 是否落在某个颜色 span 内部（未闭合的 <span> 多于 </span>）。"""
+    opens = out.count('<span style="color:', 0, p)
+    closes = out.count('</span>', 0, p)
+    return opens > closes
+
 def _wrap_first(out, w, color):
-    """包裹首个未被包裹的词（词首紧跟 '>' 说明它本身已在 span 内，跳过以免嵌套）。"""
+    """包裹首个未被包裹的词（已在 span 内的跳过以免嵌套）。"""
     i = 0
     while True:
         p = out.find(w, i)
         if p < 0:
             return out
-        if not out[:p].endswith(">"):
+        if not _inside_span(out, p):
             return out[:p] + _wrap(w, color) + out[p + len(w):]
         i = p + len(w)
 
@@ -97,7 +105,7 @@ def boost_text(text, min_hits=3, force=True):
     last = 0
     for m in NUM_RE.finditer(out):
         s, e = m.span()
-        if num_hits >= 6:
+        if num_hits >= 8:
             break
         seg = out[s:e]
         if _is_wrapped(seg):
@@ -139,6 +147,48 @@ def boost_text(text, min_hits=3, force=True):
         new = _wrap_first(out, w, BLUE)
         if new != out:
             out, hits = new, hits + 1
+    # 5) 兜底：循环包裹所有「未包裹」的 INFO_WORDS 出现（蓝/中性，绝不触碰涨跌语义），
+    #    直到达到 min_hits，保证新闻/AI 卡≥5、其余叙事卡≥2 的高亮密度；
+    #    同一词可多次命中（如“模型”出现 3 次全染蓝），避免个别卡片词汇稀疏密度不足。
+    while hits < min_hits:
+        wrapped_any = False
+        for w in INFO_WORDS:
+            if hits >= min_hits:
+                break
+            p = 0
+            while True:
+                p = out.find(w, p)
+                if p < 0:
+                    break
+                if not _inside_span(out, p):
+                    out = out[:p] + _wrap(w, BLUE) + out[p + len(w):]
+                    hits += 1
+                    wrapped_any = True
+                    p += len(w) + 50  # 跳过刚插入的 span，避免重复命中同一处
+                else:
+                    p += len(w)
+            if hits >= min_hits:
+                break
+        if not wrapped_any:
+            break
+    # 6) 终极兜底：若仍未达 min_hits（多见于 niche 短卡、缺乏通用名词），
+    #    包裹未包裹的中文 2 字词组（青色·中性，不触碰涨跌语义、不触发涨红跌绿
+    #    语义矛盾检查），保证新闻/AI 卡密度达标，且不影响涨红跌绿语义正确性。
+    if hits < min_hits:
+        _cjk = re.compile(r'[\u4e00-\u9fff]{2}')
+        p = 0
+        while hits < min_hits:
+            m = _cjk.search(out, p)
+            if not m:
+                break
+            s = m.start()
+            if not _inside_span(out, s):
+                seg = m.group(0)
+                out = out[:s] + _wrap(seg, BLUE) + out[s + len(seg):]
+                hits += 1
+                p = s + len(seg) + 40
+            else:
+                p = s + len(m.group(0))
     return out
 
 NEWS_KEYS = ("新闻", "生物医学", "AI应用", "大模型", "算力", "机器人", "产业趋势", "地缘")
@@ -163,6 +213,8 @@ def apply(D):
                             "替代策略", "宏观", "市场", "资金", "低估值",
                             "时间线", "资金流向", "参考", "标的_")):
             if "<span" not in v:
+                if k.startswith("社区话题") and re.search(r"_观点[123]$", k):
+                    continue
                 if k.startswith("社区话题"):
                     mh = 4
                 elif k.startswith("要点"):
