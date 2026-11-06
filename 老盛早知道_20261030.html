@@ -131,7 +131,7 @@
   .live-dot { display: inline-block; width:7px; height:7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; vertical-align: middle; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
   .tab-nav-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; border-bottom: 1px solid var(--border); }
-  .tab-nav { display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
+  .tab-nav { display:flex; flex-wrap:nowrap; gap:2px; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
   .tab-nav::-webkit-scrollbar { display:none; }
   .tab-btn { flex-shrink: 0; padding: 11px 20px; border: none; background: transparent; color: var(--text-muted); font-size: 13.5px; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: all 0.22s ease; white-space: nowrap; position: relative; font-family: inherit; letter-spacing: 0.3px; }
   .tab-btn:hover { color:var(--text-primary); background:rgba(0,212,255,0.05); }
@@ -242,6 +242,7 @@
     .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
     .hm-date { font-size: 13px; }
     .hm-sub { font-size: 10px; }
+    .hm-sub .hm-event, .hm-sub .hm-event-sep { display: none !important; }
     .live-dot { width: 5px; height: 5px; }
     .tab-nav-wrap { position: relative; }
     .tab-btn { padding: 12px 14px; font-size: 12px; }
@@ -1421,7 +1422,7 @@
 }
 
 /* 超小屏幕适配 */
-@media (max-width: 480px) { .tab-nav { flex-wrap: wrap; overflow-x: visible; gap: 4px; } .tab-btn { flex: 0 0 auto; }
+@media (max-width: 480px) { .tab-nav { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; gap: 2px; -webkit-overflow-scrolling: touch; } .tab-btn { flex: 0 0 auto; }
   .sentiment-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -1802,7 +1803,7 @@
             <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8z"/></svg>
           </button>
         </div>
-        <div class="hm-sub"><span>星期五</span><span class="sep">|</span><span>三季报收官 日本央行议息</span></div>
+        <div class="hm-sub"><span>星期五</span><span class="sep hm-event-sep">|</span><span class="hm-event">三季报收官 日本央行议息</span></div>
         <div class="hm-mq" aria-label="核心指数速览">
           <div class="mq-track">
             <span class="mq-item"><b>上证</b><span class="mq-chg">3651.43 -0.82%</span></span>
@@ -4032,6 +4033,13 @@ function switchTab(idx) {
   document.querySelectorAll('.tab-btn').forEach((b,i) => {
     b.classList.toggle('active', i === idx);
   });
+  // 手机版单行横滑导航：把当前 Tab 滚到可见区域中央
+  var nav = document.querySelector('.tab-nav');
+  var btn = document.querySelectorAll('.tab-btn')[idx];
+  if (nav && btn && nav.scrollWidth > nav.clientWidth) {
+    var nr = nav.getBoundingClientRect(), br = btn.getBoundingClientRect();
+    nav.scrollTo({ left: nav.scrollLeft + (br.left - nr.left) - (nr.width - br.width) / 2, behavior: 'smooth' });
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function toggleTheme() {
