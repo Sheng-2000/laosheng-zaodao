@@ -708,9 +708,10 @@ body{
   .header-inner { padding:12px 16px 10px; }
 
   .header-top {
-    grid-template-columns:auto 1fr;
-    gap:10px;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    gap:8px;
   }
+  .brand-title { min-width:0; }
 
   .brand-icon {
     width:44px;height:44px;
@@ -731,18 +732,21 @@ body{
   }
   .brand-subtitle .dot { margin:0 3px; }
 
-  /* Header Meta - 水平排列 */
+  /* Header Meta - 手机端收拢到右上角 */
   .header-meta {
-    flex-direction:row;
-    align-items:center;
-    gap:8px;
-    padding-left:12px;
-    grid-column:1 / -1;
-    border-left:1px solid rgba(0,212,255,0.1);
-    padding-top:6px;
-    border-top:1px solid rgba(0,212,255,0.05);
-    margin-top:2px;
+    grid-column:auto;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:3px;
+    padding-left:0;
+    border-left:none;
+    padding-top:0;
+    border-top:none;
+    margin-top:0;
   }
+  .hm-row { gap:4px; }
+  .hm-date { font-size:12px;letter-spacing:0;white-space:nowrap;flex-shrink:0; }
+  .theme-toggle { width:20px;height:20px; }
   .hm-date { font-size:14px;letter-spacing:0.5px; }
   .hm-sub { font-size:9px; }
   /* 手机版只保留星期，去掉其后的装饰说明 */

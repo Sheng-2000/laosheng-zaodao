@@ -227,7 +227,9 @@
     .header-inner { padding-top: 14px; }
     .tab-panel .inner { padding-top: 20px; padding-bottom: 8px; }
     .highlight-grid, .market-grid { grid-template-columns: 1fr; }
-    .header-top { grid-template-columns: 48px 1fr; gap: 10px; padding-bottom: 14px; }
+    .header-top { grid-template-columns: 42px minmax(0,1fr) auto; gap: 8px; padding-bottom: 14px; }
+    .brand-title { min-width: 0; }
+    .brand-subtitle { flex-wrap: wrap; }
     .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
     .brand-icon svg { width: 22px; height: 22px; }
     .brand-name { font-size: 20px; letter-spacing: 2px; }
@@ -240,7 +242,8 @@
 
     .brand-main-row { flex-wrap: wrap; }
     .hm-tickers { display: none; }
-    .header-meta { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; grid-column: 1 / -1; padding-top: 0; }
+    .header-meta { border-left: none; padding-left: 0; flex-direction: column; flex-wrap: nowrap; align-items: flex-end; gap: 4px; grid-column: auto; padding-top: 0; }
+    .hm-row { gap: 6px; }
     .hm-date { font-size: 13px; }
     .hm-sub { font-size: 10px; }
     .hm-sub .hm-event, .hm-sub .hm-event-sep { display: none !important; }
@@ -1431,9 +1434,12 @@
     font-size: 18px !important;
   }
   .grid-4 {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
     gap: 10px !important;
   }
+  /* 两列时收紧卡片，避免拥挤 */
+  .grid-4 > div { padding: 14px !important; }
+  .grid-4 [style*="font-size:32px"] { font-size: 24px !important; }
   [style*="grid-template-columns:repeat(3,1fr)"] {
     grid-template-columns: 1fr !important;
   }
