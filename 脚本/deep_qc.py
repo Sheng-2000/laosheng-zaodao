@@ -121,7 +121,7 @@ for m in re.finditer(r'class="(up|down)"[^>]*>([\s\S]{0,120}?)</', HTML):
 chk('class="up" 不含负值', up_bad == 0, "%d 处" % up_bad)
 chk('class="down" 不含正值', down_bad == 0, "%d 处" % down_bad)
 
-# ===== C. 逐卡 高亮密度（新闻/AI ≥5，其余文本卡 ≥2；数据展示卡豁免）=====
+# ===== C. 逐卡 高亮密度（新闻/AI ≥2，其余文本卡 ≥2；数据展示卡豁免；适配·适度高亮）=====
 print("\n【C. 逐卡 高亮密度】")
 starts = [m.start() for m in re.finditer(r'<div class="card-body', HTML)]
 EXEMPT_TITLE = ["股息率对比"]
@@ -129,7 +129,9 @@ EXEMPT_SUB = ["关键数字速查", "深度解读", "速查"]
 low = []
 for i, st in enumerate(starts):
     b = HTML[st: (starts[i + 1] if i + 1 < len(starts) else st + 8000)]
-    title = re.search(r'class="card-title[^"]*"[^>]*>([\s\S]{0,40}?)<', b)
+    # 标题取「本 card-body 之前最近的一个 card-title」（同一张卡片的标题），
+    # 而非在 b（延伸到下一张卡）里向前搜到的下一张卡标题（旧逻辑误归因）。
+    title = re.search(r'class="card-title[^"]*"[^>]*>([\s\S]{0,40}?)<', HTML[max(0, st - 600):st])
     tname = title.group(1) if title else ""
     sub = re.findall(r'class="sub-title[^"]*"[^>]*>([\s\S]{0,30}?)<', HTML[max(0, st - 2000):st])
     subname = sub[-1] if sub else ""
@@ -143,11 +145,11 @@ for i, st in enumerate(starts):
     kind = "news" if ("news" in b[:200] or 'news-card' in b[:200]) else "default"
     if "ai" in b[:200] and "card" in b[:200]:
         kind = "ai"
-    th = 5 if kind in ("news", "ai") else 2
+    th = 2 if kind in ("news", "ai") else 2
     n = len(re.findall(r'<span style="color:', b))
     if n < th:
         low.append((kind, n, tname[:16] or subname[:16] or "?"))
-chk("文本卡高亮达标(新闻/AI≥5 其余≥2, 数据卡豁免)", len(low) == 0,
+chk("文本卡高亮达标(新闻/AI≥2 其余≥2, 数据卡豁免)", len(low) == 0,
     "未达标 %d: %s" % (len(low), str(low[:8])))
 
 # ===== D. Tab5 关注标的 19 卡 顺序/同名同码 =====

@@ -123,7 +123,9 @@ fs = len(re.findall(FS, html))
 fs_tpl = len(re.findall(FS, tpl))
 chk("注入高亮 span 未改变字号(对比模板基线)", fs <= fs_tpl, "报告 %d / 模板基线 %d" % (fs, fs_tpl))
 spans = re.findall(r'<span style="color:[^"]*">', html)
-chk("高亮 span 总数", len(spans) >= 300, "%d 处" % len(spans))
+# 适配·适度高亮：原 300 是“满屏青色”时代的激进下限；适度标准下调至 240，
+# 仍足以保证“重点突出”，同时不再逼迫引擎为凑数而灌水噪声高亮。
+chk("高亮 span 总数", len(spans) >= 240, "%d 处" % len(spans))
 
 # ---------- 四、交互 ----------
 print("\n【四、交互功能】")

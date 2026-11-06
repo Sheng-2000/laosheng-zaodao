@@ -32,27 +32,18 @@ NEG_WORDS = ["大跌", "领跌", "下跌", "走低", "回调", "新低", "净流
              "不及预期", "低于预期", "放缓", "踩踏", "踩雷", "暴雷", "违约"]
 # 中性关注词（黄色/蓝色补足用）
 WARN_WORDS = ["关注", "注意", "警惕", "跟踪", "提示", "需注意", "留意"]
-# 中性·青色（#00d4ff）可标注词：均为“中性口径/数据青”类名词，染蓝永不构成涨跌语义矛盾，
+# 中性·青色（#00d4ff）可标注词：仅保留“价值投资/红利策略语境下真正关键”的术语，
 # 用于补足高亮密度（新闻/AI≥5、其余≥2）而绝不触碰涨红跌绿语义。
-INFO_WORDS = ["政策", "行业", "市场", "技术", "资金", "数据", "利率", "行情",
-              "产业链", "资产", "配置", "投资", "布局", "方向", "趋势", "观点",
-              "公司", "板块", "指数", "估值", "业绩", "需求", "供给", "价格",
-              "产能", "订单", "央行", "监管", "披露", "公告", "财报", "增长",
-              "营收", "净利", "回购", "分红", "风险", "流动性", "基本面", "盈利",
-              "现金流", "股息", "PB", "PE", "机构", "外资", "北向", "南向",
-              "成交额", "换手率", "波动率", "通胀", "就业", "消费", "出口",
-              "进口", "财政", "货币", "信用", "杠杆", "仓位", "组合", "策略",
-              "模型", "算力", "芯片", "半导体", "机器人", "医药", "新能源",
-              "地产", "基建", "消费电子", "互联网", "金融", "保险", "银行",
-              "模型", "机器人", "芯片", "半导体", "数据", "技术", "公司", "产品",
-              "发布", "合作", "融资", "营收", "用户", "应用", "训练", "参数",
-              "性能", "平台", "开源", "智能", "算法", "终端", "设备", "系统",
-              "场景", "红利", "ETF", "运营商", "能源", "央国企", "国债", "货基",
-              "现金", "股息", "估值", "盈利", "现金流", "回购", "营收", "净利",
-              "招标", "中标", "获批", "落地", "量产", "产能", "订单", "交付",
-              "研发", "专利", "临床", "试验", "获批", "监管", "披露", "公告",
-              "AI", "GPU", "大模型", "华为", "英伟达", "苹果", "百度", "特斯拉",
-              "OpenAI", "智能体", "端侧", "数据中心", "机器人", "智能", "算法"]
+# ⚠️ 适配（2026-11-06）：原先 60+ 通用名词（市场/政策/数据/公司/板块/指数…）泛滥成青色噪声，
+#    失去重点；现收敛为约 40 个“真有关键信息量”的术语，避免满屏青色。
+#    —— 红/绿（涨红跌绿+方向词）与关键数字才是真正要突出的“重点”，青色只做少量锚点。
+KEY_TERMS = ["红利", "高股息", "股息率", "估值", "低估", "PB", "PE", "净资产",
+             "ROE", "净息差", "分红", "分红率", "现金流", "再平衡", "避险",
+             "防御", "护盘", "确定性", "复利", "央企", "央国企", "配置", "仓位",
+             "安全边际", "宽基", "蓝筹", "龙头", "护城河", "国债", "货基", "ETF",
+             "保费", "利差", "久期", "信用", "盈利", "营收", "净利", "回购",
+             "成长", "景气", "利率", "收益率", "美债", "美联储", "通胀", "降息",
+             "加息", "汇率", "美元", "油价", "金价", "流动性", "逆回购", "非农", "就业"]
 # 关键数字（蓝色）
 NUM_RE = re.compile(r"[+\-−]?\d+(?:\.\d+)?\s*(?:%|％|亿|万|点|倍|元|bp|pct|个)")
 
@@ -80,9 +71,8 @@ def _wrap_first(out, w, color):
             return out[:p] + _wrap(w, color) + out[p + len(w):]
         i = p + len(w)
 
-def boost_text(text, min_hits=3, force=True):
-    """给一段纯文本自动加高亮。已含 <span> 的文本跳过（避免重复包裹）。
-    顺序：先涨跌数字着色（涨红/跌绿），再方向词着色，再警示/信息词补足。"""
+def _boost_core(text, min_hits=3, force=True):
+    """给一段纯文本自动加高亮（标记已在外层保护）。顺序：先涨跌数字着色（涨红/跌绿），再方向词着色，再警示/信息词补足。"""
     if not text or '<span' in text:
         return text
     out = text
@@ -105,7 +95,7 @@ def boost_text(text, min_hits=3, force=True):
     last = 0
     for m in NUM_RE.finditer(out):
         s, e = m.span()
-        if num_hits >= 8:
+        if num_hits >= 6:
             break
         seg = out[s:e]
         if _is_wrapped(seg):
@@ -140,19 +130,19 @@ def boost_text(text, min_hits=3, force=True):
         new = _wrap_first(out, w, YELLOW)
         if new != out:
             out, hits = new, hits + 1
-    # 4) 关键信息词（蓝）
-    for w in INFO_WORDS:
+    # 4) 关键信息词（蓝·仅 KEY_TERMS 真有关键信息量）
+    for w in KEY_TERMS:
         if hits >= min_hits:
             break
         new = _wrap_first(out, w, BLUE)
         if new != out:
             out, hits = new, hits + 1
-    # 5) 兜底：循环包裹所有「未包裹」的 INFO_WORDS 出现（蓝/中性，绝不触碰涨跌语义），
+    # 5) 兜底：循环包裹所有「未包裹」的 KEY_TERMS 出现（蓝/中性，绝不触碰涨跌语义），
     #    直到达到 min_hits，保证新闻/AI 卡≥5、其余叙事卡≥2 的高亮密度；
-    #    同一词可多次命中（如“模型”出现 3 次全染蓝），避免个别卡片词汇稀疏密度不足。
+    #    ⚠️ 适配：仅用收敛后的 KEY_TERMS（不再用 60+ 通用名词），避免青色泛滥失去重点。
     while hits < min_hits:
         wrapped_any = False
-        for w in INFO_WORDS:
+        for w in KEY_TERMS:
             if hits >= min_hits:
                 break
             p = 0
@@ -171,24 +161,29 @@ def boost_text(text, min_hits=3, force=True):
                 break
         if not wrapped_any:
             break
-    # 6) 终极兜底：若仍未达 min_hits（多见于 niche 短卡、缺乏通用名词），
-    #    包裹未包裹的中文 2 字词组（青色·中性，不触碰涨跌语义、不触发涨红跌绿
-    #    语义矛盾检查），保证新闻/AI 卡密度达标，且不影响涨红跌绿语义正确性。
-    if hits < min_hits:
-        _cjk = re.compile(r'[\u4e00-\u9fff]{2}')
-        p = 0
-        while hits < min_hits:
-            m = _cjk.search(out, p)
-            if not m:
-                break
-            s = m.start()
-            if not _inside_span(out, s):
-                seg = m.group(0)
-                out = out[:s] + _wrap(seg, BLUE) + out[s + len(seg):]
-                hits += 1
-                p = s + len(seg) + 40
-            else:
-                p = s + len(m.group(0))
+    return out
+
+
+def boost_text(text, min_hits=3, force=True):
+    """给一段纯文本自动加高亮。已含 <span> 的文本跳过（避免重复包裹）。
+    若含 build 期标记 {r|…}/{c|…} 等，先将其暂存为占位符、填充其余文本后再还原，
+    既避免在标记内部二次包裹数字导致嵌套 span 错乱，仍对非标记部分补足高亮。
+    使用 re.sub 回调统一处理，避免逐段替换时的偏移错位（曾导致占位符泄漏/嵌套错乱）。"""
+    if not text or '<span' in text:
+        return text
+    protected = {}
+    counter = [0]
+    def _stash(m):
+        ph = '\x00%d\x00' % counter[0]
+        protected[ph] = m.group(0)
+        counter[0] += 1
+        return ph
+    t = re.sub(r'\{[rgcyo]\|[^}]*\}', _stash, text)
+    if not protected:
+        return _boost_core(text, min_hits)
+    out = _boost_core(t, min_hits)
+    for ph, p in protected.items():
+        out = out.replace(ph, p)
     return out
 
 NEWS_KEYS = ("新闻", "生物医学", "AI应用", "大模型", "算力", "机器人", "产业趋势", "地缘")
@@ -206,7 +201,7 @@ def apply(D):
         if any(nk in k for nk in NEWS_KEYS):
             # 新闻类：若完全没有高亮，做全增强；若已有高亮，仅补足数量不足的情况
             if "<span" not in v:
-                D[k] = boost_text(v, min_hits=5)
+                D[k] = boost_text(v, min_hits=3)
         elif k.startswith(("机构", "话题", "社区话题", "操作建议", "要点", "综评", "持仓",
                             "深度解读", "避坑", "高股息", "今日总结", "市场热点",
                             "正面因素", "风险提示", "理财", "保险", "债基",
@@ -218,7 +213,7 @@ def apply(D):
                 if k.startswith("社区话题"):
                     mh = 4
                 elif k.startswith("要点"):
-                    mh = 3
+                    mh = 2
                 else:
                     mh = 2
                 D[k] = boost_text(v, min_hits=mh)
