@@ -228,14 +228,16 @@
     .highlight-grid, .market-grid { grid-template-columns: 1fr; }
     .header-top { grid-template-columns: 42px minmax(0,1fr) auto; gap: 8px; padding-bottom: 14px; }
     .brand-title { min-width: 0; }
-    .brand-subtitle { flex-wrap: wrap; }
+    .brand-subtitle { flex-wrap: nowrap; white-space: nowrap; font-size: 9px; letter-spacing: 0; }
+    .brand-subtitle .dot { margin: 0 3px; }
+    .brand-subtitle .live-dot { margin-right: 3px !important; width: 4px; height: 4px; }
     .brand-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
     .brand-icon svg { width: 22px; height: 22px; }
     .brand-name { font-size: 20px; letter-spacing: 2px; }
     .brand-zaodao { font-size: 20px; letter-spacing: 2px; }
     .brand-sep { margin: 0 6px; height: 16px; }
     .brand-tag { font-size: 10px; margin-left: 6px; }
-    .brand-subtitle { font-size: 11px; flex-wrap: wrap; }
+    .brand-subtitle { font-size: 9px; flex-wrap: nowrap; white-space: nowrap; }
     .brand-en { font-size: 9px; letter-spacing: 1.5px; }
     .brand-en-row { flex-wrap: wrap; gap: 4px; }
 
@@ -1604,9 +1606,9 @@
   .theme-toggle svg { width: 10px; height: 10px; display: block; }
   .theme-toggle .ico-moon { display: none; }
   @media (max-width:768px) {
-    .theme-toggle { width: 20px; height: 20px; }
-    .theme-toggle svg { width: 9px; height: 9px; }
-    .hm-row { gap: 8px; }
+    .theme-toggle { width: 16px; height: 16px; }
+    .theme-toggle svg { width: 8px; height: 8px; }
+    .hm-row { gap: 6px; }
   }
 
   /* ===== 亮色阅读主题（白底黑字 · 新闻阅读风格） ===== */
@@ -1764,11 +1766,15 @@
   .brand-tag { display: none; }
   .hm-date { font-size: 12px; letter-spacing: 1px; }
   .hm-sub { font-size: 9.5px; }
+  .brand-subtitle { font-size: clamp(6.5px, 2.1vw, 8px); letter-spacing: 0; white-space: nowrap; }
+  .brand-subtitle .dot { margin: 0 2px; }
+  .brand-subtitle .live-dot { margin-right: 2px !important; width: 4px; height: 4px; }
   .card, .stock-card { padding: 14px 15px; }
   .section-title { font-size: 16px; }
   .tab-btn { padding: 10px 14px; font-size: 12.5px; }
   .tab-icon { margin-right: 3px; }
-  .theme-toggle { padding: 6px; }
+  .theme-toggle { width: 14px; height: 14px; padding: 0; }
+  .theme-toggle svg { width: 7px; height: 7px; }
 }
 </style>
 </head>
