@@ -181,6 +181,26 @@ chk("每话题三观点高亮 ≥4处", not hl_bad, str(hl_bad))
 dup = [v for k, v in d2.D.items() if "观点" in k and "老盛观点：" in v]
 chk("老盛观点无重复前缀", not dup, "%d 处重复" % len(dup))
 
+# ---------- 五·五、持仓隐私铁律扫描（不可逾越） ----------
+print("\n【五·五、持仓隐私（铁律·不可逾越）】")
+_hp_bad = []
+# 强个人标识词：绝不应出现在任何对外报告中（用「组合总市值」而非「总市值」，避免误伤工商银行等市场总市值）
+HP_HARD = ["组合总市值", "年分红", "万股底仓", "持仓金额", "个人持仓", "老盛持仓", "实际持仓"]
+_html_text = open(TARGET, encoding="utf-8").read() if os.path.exists(TARGET) else ""
+for _w in HP_HARD:
+    if _w in _html_text:
+        _hp_bad.append("HTML含强个人标识词: %s" % _w)
+# 真实个人数字仅在「持仓分析」字段禁止（避免误伤新闻/市场数据/雪球讨论数）
+_holding_text = " ".join(str(v) for k, v in d2.D.items() if k.startswith("持仓分析"))
+for _num in ("13万", "4万", "1万", "2万股", "2万", "3000股", "500股"):
+ if _num in _holding_text:
+  _hp_bad.append("持仓分析字段含真实个人数字: %s" % _num)
+# 持仓分析字段只允许比例类(PE/PB/股息率/评分/%/配比)，禁止绝对金额/数量(万/亿/元/股)
+import re as _reH
+if _reH.search(r"[\d,]+\.?\d*\s*(万|亿|元|股)", _holding_text) and "示例" not in _holding_text:
+ _hp_bad.append("持仓分析含绝对金额/数量(万/亿/元/股)，违反隐私铁律")
+chk("持仓隐私：无个人真实持仓数量/金额泄露", not _hp_bad, str(_hp_bad))
+
 # ---------- 六、Tab3 market-block 完整性 ----------
 print("\n【六、关键数据块填充】")
 blocks = ["A股_收盘日期", "港股_收盘日期", "亚太_收盘日期", "欧洲_收盘日期", "美股_收盘日期",

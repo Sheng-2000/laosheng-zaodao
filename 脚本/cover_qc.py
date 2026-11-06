@@ -308,9 +308,20 @@ if CROSS_PERIOD:
 
 DATA_DATE = str(_m.D.get("市场综评_日期", "")).strip()
 if not DATA_DATE:
+    # 兜底：取"截至此刻最近一个已收盘交易日"（早间<T-15:00 为前一交易日，15:00 后为当日；跳过周末）。
+    # 正常报告由 g_data2 的 市场综评_日期 驱动，此处仅在缺字段时兜底，仍遵循动态日期规则而非写死 T-1。
     import datetime as _dt
-    DATA_DATE = (_dt.date.today() - _dt.timedelta(days=1)).strftime("%Y-%m-%d")
-# 7×24 交易品种（加密）在休市日仍有新报价，其数据日可晚于 T-1，属合法口径
+    def _most_recent_close_date():
+        _now = _dt.datetime.now()
+        _d = _now.date()
+        if _d.weekday() < 5 and _now.hour >= 15:
+            return _d.strftime("%Y-%m-%d")
+        while True:
+            _d = _d - _dt.timedelta(days=1)
+            if _d.weekday() < 5:
+                return _d.strftime("%Y-%m-%d")
+    DATA_DATE = _most_recent_close_date()
+# 7×24 交易品种（加密）在休市日仍有新报价，其数据日可晚于主数据日（最近可得收盘日），属合法口径
 # 各市场各自的"最近交易日"均属合法口径：加密为 7×24 报价；美股可能因假期休市
 # 而落在更早的交易日（例：2026-09-07 美国劳动节休市，美股块取 09-04 收盘）
 _ALT_KEYS = [k for k in _m.D if str(k).endswith("_收盘日期")]
