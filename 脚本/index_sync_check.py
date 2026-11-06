@@ -123,6 +123,8 @@ def main():
     # 4. weekday / 标题
     bad_wd = []
     bad_title = []
+    long_title = []
+    TITLE_MAX = 50  # 门户描述须精简：每条≤50字
     for r in reports:
         if not r["date"]:
             continue
@@ -131,10 +133,14 @@ def main():
             bad_wd.append("%s(index=%s,实际=%s)" % (r["date"], r["weekday"], rw))
         if not r["title"].strip():
             bad_title.append(r["date"])
+        elif len(r["title"]) > TITLE_MAX:
+            long_title.append("%s(%d字>%d)" % (r["date"], len(r["title"]), TITLE_MAX))
     if bad_wd:
         fails.append("weekday 与实际不符: %s" % bad_wd)
     if bad_title:
         fails.append("title 为空: %s" % bad_title)
+    if long_title:
+        fails.append("title 超过 %d 字(门户描述须精简): %s" % (TITLE_MAX, long_title))
 
     # 5. 排序（应倒序，最新在前）
     if idx_dates != sorted(idx_dates, reverse=True):
@@ -173,6 +179,8 @@ def main():
         print("  PASS weekday 全部正确")
     if not bad_title:
         print("  PASS title 全部非空")
+    if not long_title:
+        print("  PASS title 全部≤%d字(精简)" % TITLE_MAX)
 
     for w in warns:
         print("  WARN %s" % w)
