@@ -198,7 +198,8 @@ body{
   display:flex;
   align-items:center;
   gap:4px;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
+  white-space:nowrap;
   margin-top:2px;
 }
 .brand-subtitle .dot { color:rgba(0,212,255,0.25);margin:0 4px; }
@@ -582,6 +583,8 @@ body{
   .brand-subtitle {
     font-size:9px;
     gap:2px;
+    flex-wrap:nowrap;
+    white-space:nowrap;
   }
   .brand-subtitle .dot { margin:0 3px; }
 
@@ -712,7 +715,7 @@ body{
   .brand-name { font-size:16px;letter-spacing:1px; }
   .brand-sep { height:12px;margin:0 4px; }
   .brand-zaodao { font-size:16px;letter-spacing:1px; }
-  .brand-subtitle { font-size:8px; }
+  .brand-subtitle { font-size:clamp(6.5px, 2.1vw, 8px); flex-wrap:nowrap; white-space:nowrap; }
 
 
   .hm-date { font-size:12px; }
@@ -941,10 +944,22 @@ const reports = [
 { date: "20261102", weekday: "星期一", title: "11/2 周一·六大宽基转红·建行创新高·两融年内最低" },
 { date: "20261031", weekday: "星期六", title: "10/31 周六·沪指跌1.44%·六大宽基最低·银行收最高" },
 { date: "20261030", weekday: "星期五", title: "10/30 周五·沪指跌0.82%·创业板跌4.45%·银行煤炭涨" }]
-// 云端：把各期资料库页面链接按日期填入本表；未填则退回相对文件名（便于同步静态站）
-const REPORT_URLS = {};
+// ⚠️ 云端门户跳转铁律（2026-11-06 修复）：所有链接必须是绝对 URL。
+// REPORT_URLS 优先指向资料库中已生成的报告 page 节点；资料库尚未生成的期次指向公开静态站。
+// 每期生成报告后，把该期 page 节点链接写进本表，并删除超出 7 期窗口的旧条目。
+// 🚫 严禁退回相对文件名：资料库页面环境下会解析成 /space/d/老盛早知道_xxx.html 而 404。
+const REPORT_URLS = {
+  "20261106": "https://www.workbuddy.cn/space/d/uJRUsOs9bLdloozAJxTiMN",
+  "20261105": "https://www.workbuddy.cn/space/d/IIzjm55icIQsgxatsS9YhU",
+  "20261104": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261104.html",
+  "20261103": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261103.html",
+  "20261102": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261102.html",
+  "20261031": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261031.html",
+  "20261030": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261030.html"
+};
+const STATIC_BASE = "https://sheng-2000.github.io/laosheng-zaodao/";
 function getLink(dateStr) {
-  return REPORT_URLS[dateStr] || `老盛早知道_${dateStr}.html`;
+  return REPORT_URLS[dateStr] || STATIC_BASE + `老盛早知道_${dateStr}.html`;
 }
 
 // 从标题中提取前3个关键词（用·分割）
@@ -963,7 +978,7 @@ const keywords = extractKeywords(latest.title);
 const heroTagsHtml = keywords.map(k => `<span class="hero-tag">${k}</span>`).join('');
 document.getElementById('latest-section').innerHTML = `
   <div class="section-title">最新一期</div>
-  <a class="hero-card" href="${getLink(latest.date)}">
+  <a class="hero-card" href="${getLink(latest.date)}" target="_blank" rel="noopener noreferrer">
     <div class="hero-card-border"></div>
     <div class="hero-card-inner">
       <div class="hero-date-block">
@@ -992,6 +1007,8 @@ archive.forEach(r => {
   const item = document.createElement('a');
   item.className = 'timeline-item';
   item.href = getLink(d);
+  item.target = '_blank';
+  item.rel = 'noopener noreferrer';
   item.innerHTML = `
     <div class="timeline-dot"></div>
     <div class="timeline-content">
