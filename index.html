@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="color-scheme" content="light dark">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>老盛早知道 - 每日快讯</title>
-<style>
+<html data-page-node-id="8lYa6xxI1TcX7Dt9VcJNY6" lang="zh-CN">
+<head data-page-node-id="YsImSPP4ae2r8i0ezyS9PD">
+<script data-page-node-id="qXzRBknbYxYO591CQJ2sd3" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="IEfdjCGxNiLwMzn7W2TtFV" charset="UTF-8">
+<meta data-page-node-id="8DP8wzw9yMXaHQRWQUQ7LZ" content="light dark" name="color-scheme">
+<meta data-page-node-id="xHwQzeelrpwTEVoVVorrx0" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title data-page-node-id="pbx5Iuqq0sW2eIfLL1EIHh" data-pnid-children="7gfozju1FvIIijnbqVOZR2">大福・老盛早知道 · 云端门户</title>
+<style data-page-node-id="SYM6ZHShttu1qKObkZQDfD" data-pnid-children="q6ngngi3wbaohCKifKKyq7">
 /* ══════════ CSS VARIABLES ══════════ */
 :root {
   --bg-primary:#0d1117;
@@ -332,7 +333,8 @@ body{
   display:flex;
   align-items:center;
   gap:4px;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
+  white-space:nowrap;
   margin-top:2px;
 }
 .brand-subtitle .dot { color:rgba(0,212,255,0.25);margin:0 4px; }
@@ -634,6 +636,14 @@ body{
   padding:2px 8px;border-radius:4px;
   white-space:nowrap;
 }
+/* 时段标签：盘前/盘后（黄），与星期标签同款紧凑 */
+.tl-slot-badge {
+  font-size:10px;color:#f0b429;
+  background:rgba(240,180,41,0.10);
+  border:1px solid rgba(240,180,41,0.3);
+  padding:1px 7px;border-radius:4px;
+  white-space:nowrap;
+}
 .tl-title {
   font-size:12px;color:var(--text-secondary);line-height:1.5;
   transition:color 0.3s;
@@ -690,7 +700,7 @@ body{
   /* 通用 */
   body { line-height:1.6; }
 
-  /* 密码锁 */
+/* 密码锁 */
   .pw-box {
     padding:28px 20px;
     max-width:320px;
@@ -729,6 +739,8 @@ body{
   .brand-subtitle {
     font-size:9px;
     gap:2px;
+    flex-wrap:nowrap;
+    white-space:nowrap;
   }
   .brand-subtitle .dot { margin:0 3px; }
 
@@ -859,7 +871,7 @@ body{
   .brand-name { font-size:16px;letter-spacing:1px; }
   .brand-sep { height:12px;margin:0 4px; }
   .brand-zaodao { font-size:16px;letter-spacing:1px; }
-  .brand-subtitle { font-size:8px; }
+  .brand-subtitle { font-size:clamp(6.5px, 2.1vw, 8px); flex-wrap:nowrap; white-space:nowrap; }
 
 
   .hm-date { font-size:12px; }
@@ -963,6 +975,7 @@ body.light-theme .pw-btn {
   color:#ffffff;
 }
 body.light-theme .pw-btn:hover { box-shadow:0 0 30px rgba(10,102,194,0.3); }
+
 /* 头部 */
 body.light-theme .header {
   background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
@@ -1019,129 +1032,159 @@ body.light-theme ::selection { background:rgba(10,102,194,0.22);color:#1f2328; }
 body.light-theme ::-webkit-scrollbar-thumb { background:rgba(31,35,40,0.22);border-radius:3px; }
 body.light-theme ::-webkit-scrollbar-thumb:hover { background:rgba(31,35,40,0.38); }
 /* 平滑过渡 */
-body, .header, .brand-icon, .pw-box, .pw-box .pw-icon {
+body, .header, .brand-icon {
   transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease;
 }
 .hero-card { transition:transform 0.3s ease,box-shadow 0.3s ease,background-color 0.35s ease,border-color 0.35s ease; }
 </style>
 </head>
-<body class="light-theme">
-<script>(function(){try{var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;function apply(){document.body.classList.toggle('light-theme',!(m?m.matches:false));}apply();if(m){var f=function(){apply();};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
-
-<!-- 密码锁遮罩层 -->
-<div id="pw-overlay" class="pw-overlay">
-  <div class="pw-particles">
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
-    <div class="pw-particle"></div>
+<body data-page-node-id="qyD7bo9qySLShSww8C2wPb" class="light-theme">
+<div data-page-node-id="X2OhR3Y1kM6WkJzhtHxuH9" class="pw-overlay" id="pw-overlay">
+  <div data-page-node-id="a8oFvUTCPwBENi78O0dMUY" class="pw-particles">
+    <div data-page-node-id="kuVmRbvvpcYo7AK9WfNgrn" class="pw-particle"></div>
+    <div data-page-node-id="hQB8wWN8TbXIlqyHlXJPCD" class="pw-particle"></div>
+    <div data-page-node-id="tnOmSAGlA25Rr3MJHb9JQr" class="pw-particle"></div>
+    <div data-page-node-id="CdrvjNVN6muwCnGaMEysvB" class="pw-particle"></div>
+    <div data-page-node-id="wDreZCBZKuHBHve55zfzXy" class="pw-particle"></div>
+    <div data-page-node-id="UAiZomp5FWwTm2kM4wEdbw" class="pw-particle"></div>
+    <div data-page-node-id="1i5bgQYBw1qcGIuepcrf9k" class="pw-particle"></div>
+    <div data-page-node-id="8AvlrHEHL7mL5qve9fBWEA" class="pw-particle"></div>
   </div>
-  <div class="pw-box">
-    <div class="pw-icon">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 1C6.5 1 2 5.5 2 11v10h4v2h12v-2h4V11c0-5.5-4.5-10-10-10zm0 3c3.9 0 7 3.1 7 7v3H5v-3c0-3.9 3.1-7 7-7zm-1 8h2v4h-2z" fill="#00d4ff"/>
+  <div data-page-node-id="sO6SYP85L4STRIqaxpgUOf" class="pw-box">
+    <div data-page-node-id="kbgJ0To7cyNdUeIQAn7W3e" class="pw-icon">
+      <svg data-page-node-id="1VGHn4W5DVvut1LGqGFMYS" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path data-page-node-id="qT82854niHGgxnFnyok27X" d="M12 1C6.5 1 2 5.5 2 11v10h4v2h12v-2h4V11c0-5.5-4.5-10-10-10zm0 3c3.9 0 7 3.1 7 7v3H5v-3c0-3.9 3.1-7 7-7zm-1 8h2v4h-2z" fill="#00d4ff"/>
       </svg>
     </div>
-    <h2>访问需要密码</h2>
-    <p>输入密码以查看快讯内容</p>
-    <input type="password" id="pw-input" placeholder="Password" autocomplete="off">
-    <button class="pw-btn" onclick="checkPassword()">进入</button>
-    <div class="pw-error" id="pw-error"></div>
+    <h2 data-page-node-id="YO0TEqhDmxviYZWnVL3pHw"><!--pnid:P2o2NlLHwICIDB8MefMo58-->访问需要密码</h2>
+    <p data-page-node-id="kHpjaACvs64fXj2d7TRyhp"><!--pnid:w6IOxun4DzB8wKhIu6j3er-->输入密码以查看快讯内容</p>
+    <input data-page-node-id="qBwIMKIUqYzAH7VWDPwS4u" autocomplete="off" id="pw-input" placeholder="Password" type="password">
+    <button data-page-node-id="PSbJEOCmWmT7cfSYKpKAw2" class="pw-btn" onclick="checkPassword()"><!--pnid:E2wLFfQJwxEBzB15ahKjbD-->进入</button>
+    <div data-page-node-id="IF8UUz6B5FNnSqZ7cKsC3B" class="pw-error" id="pw-error"></div>
   </div>
 </div>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="header-top">
+<script data-page-node-id="voKJj9TGhcAQikzNjjF7SC" data-pnid-children="sBuyn28QruYYuIQqt3SUMx">(function(){try{var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;function apply(){document.body.classList.toggle('light-theme',!(m?m.matches:false));}apply();if(m){var f=function(){apply();};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
 
-    <!-- 左栏：品牌图标 -->
-    <div class="brand-icon">
-      <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M4 8 Q1 15 4 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M26 8 Q29 15 26 22" stroke="rgba(0,212,255,0.45)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M1.5 5.5 Q-2 15 1.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
-        <path d="M28.5 5.5 Q32 15 28.5 24.5" stroke="rgba(0,212,255,0.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+<!--pnid:8EW3T2A6j2bbYzCEUzLZGm--><!-- 密码锁遮罩层 -->
+<!--pnid:AeamuvQmLLJA37opMrPVir--><!-- 云端版：已移除密码遮罩，访问无需密码 -->
+<div data-page-node-id="1jnJcKtaKFODJ2cI2ynuHr" class="header">
+  <div data-page-node-id="mzAvF13Vvjh9qZnPvTyNLv" class="header-inner">
+    <div data-page-node-id="OCJQaMmsXRxn4ji4450elX" class="header-top">
+
+    <!--pnid:nd5NIdoLc2M91fi2VMckoZ--><!-- 左栏：品牌图标 -->
+    <div data-page-node-id="M8TE6XHQMueWGaPThttvcF" class="brand-icon">
+      <svg data-page-node-id="1CDmO86m8I0u7o6GyBgVF5" fill="none" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <path data-page-node-id="7xc4qarP0ZWrbqfbdiMXwL" d="M17 3L7 17h8l-2 10 13-14h-9l3-10z" fill="none" stroke="#00d4ff" stroke-linejoin="round" stroke-width="1.5"/>
+        <path data-page-node-id="gQRe3R506RXwTaRKyLlsBk" d="M4 8 Q1 15 4 22" fill="none" stroke="rgba(0,212,255,0.45)" stroke-linecap="round" stroke-width="1.2"/>
+        <path data-page-node-id="H8rN8gT5zVNncKrzHvaLy8" d="M26 8 Q29 15 26 22" fill="none" stroke="rgba(0,212,255,0.45)" stroke-linecap="round" stroke-width="1.2"/>
+        <path data-page-node-id="mDvfgrux2GYdeIfMUpWOzp" d="M1.5 5.5 Q-2 15 1.5 24.5" fill="none" stroke="rgba(0,212,255,0.18)" stroke-linecap="round" stroke-width="1"/>
+        <path data-page-node-id="artNL9nTlcBHFdpf0IkQxq" d="M28.5 5.5 Q32 15 28.5 24.5" fill="none" stroke="rgba(0,212,255,0.18)" stroke-linecap="round" stroke-width="1"/>
       </svg>
     </div>
 
-    <!-- 中栏：品牌文字 -->
-    <div class="brand-title">
-      <div class="brand-en">Laosheng's Daily Brief</div>
-      <div class="brand-main-row">
-        <span class="brand-name">老盛</span>
-        <div class="brand-sep"></div>
-        <span class="brand-zaodao">早知道</span>
-        <span class="brand-tag">· 每日资讯不迟到</span>
+    <!--pnid:1IXVwbmguwKZyprUiTMLlh--><!-- 中栏：品牌文字 -->
+    <div data-page-node-id="89aCdGhfBQFtXOH5NeFplU" class="brand-title">
+      <div data-page-node-id="cWIp9LuKZeFmadD1EKeTtz" class="brand-en"><!--pnid:0b9JGwOlfPX2SM0Qmf6N18-->Laosheng's Daily Brief</div>
+      <div data-page-node-id="F0IoMxZEiy4oI1P4wtEz4T" class="brand-main-row">
+        <span data-page-node-id="KUwS6snUMIyYWwwKG0HwVD" class="brand-name"><!--pnid:Dcand9JJN20W8aZQP7iR4n-->老盛</span>
+        <div data-page-node-id="4wd8zBXcDTVwbameayfyFu" class="brand-sep"></div>
+        <span data-page-node-id="8XWCsyX9Oo2jMXzEE1oIlI" class="brand-zaodao"><!--pnid:QEBJ8yQqSAPWERModIpAMT-->早知道</span>
+        <span data-page-node-id="lzd4M3dseqHZeWsAEIHMZF" class="brand-tag"><!--pnid:6Um7OMnnyZKkPt2bi9dyor-->· 每日资讯不迟到</span>
       </div>
-      <div class="brand-subtitle">
-        <span class="live-dot"></span>AI驱动情报
-        <span class="dot"> </span><span class="live-dot" style="background:#f5c842;box-shadow:0 0 6px #f5c842;"></span>数据实时
-        <span class="dot"> </span><span class="live-dot" style="background:#ff4444;box-shadow:0 0 6px #ff4444;"></span>价值投资
+      <div data-page-node-id="XwK9mkMjprU6bb8V8P0ZBl" class="brand-subtitle">
+        <span data-page-node-id="wVFFG3erLKU6m3UkEWXpzb" class="live-dot"></span><!--pnid:gXTCPbyqKMaWBFJZlyCSEV-->AI驱动情报
+        <span data-page-node-id="2uy9J3VRsQDdaZk2XHmIxN" class="dot"> </span><span data-page-node-id="FMLmbU3wrmG9CedslS4Re5" class="live-dot" style="background:#f5c842; box-shadow:0 0 6px #f5c842"></span><!--pnid:pZjgIgmyd54SF5nWlpJXWZ-->数据实时
+        <span data-page-node-id="8Jqpn5tBuiGmDOnMEiVYH1" class="dot"> </span><span data-page-node-id="fAzgwq8vefyUPhPWZna87P" class="live-dot" style="background:#ff4444; box-shadow:0 0 6px #ff4444"></span><!--pnid:a8PojY2KxEWhTM46J4OSKv-->价值投资
       </div>
     </div>
 
-    <!-- 右栏：信息 -->
-    <div class="header-meta">
-      <div class="hm-row">
-        <div class="hm-date" id="latest-date">--</div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="切换日间/夜间阅读模式" aria-label="切换日间/夜间阅读模式">
-          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
-          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8z"/></svg>
+    <!--pnid:poN4jJ99LB13uVItu1shMe--><!-- 右栏：信息 -->
+    <div data-page-node-id="M03ljbbBjRykwoDYaFrFUn" class="header-meta">
+      <div data-page-node-id="bWMzONa6bIohhTsDC1HEBt" class="hm-row">
+        <div data-page-node-id="BYfOfN6c6x2VwuEkuheecY" class="hm-date" id="latest-date"><!--pnid:eFc6bkuwzmCQMgP1fiGUZt-->--</div>
+        <button data-page-node-id="jK2Kp9ds0s4w0p8ksCcPNW" aria-label="切换日间/夜间阅读模式" class="theme-toggle" onclick="toggleTheme()" title="切换日间/夜间阅读模式">
+          <svg data-page-node-id="QlIRWbaHKxGi0u1RPo07Ka" class="ico-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24"><circle data-page-node-id="TRGnK52bUYWsUbXtv0uUi8" cx="12" cy="12" r="4.6"/><path data-page-node-id="PRooCkxRT0vn2HsQda7YIB" d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+          <svg data-page-node-id="SwfQEPeLc9CJfc4zhUNSyG" class="ico-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path data-page-node-id="jnWR0D2DgBS0IoMuDR2IrA" d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8z"/></svg>
         </button>
       </div>
-      <div class="hm-sub">
-        <span id="latest-weekday">--</span>
-        <span>·</span>
-        <span>每日更新</span>
+      <div data-page-node-id="ge5EwKwFaOkVZ50K2IGXzx" class="hm-sub">
+        <span data-page-node-id="xqnnKbeQazCxL588BGPrMa" id="latest-weekday"><!--pnid:E9OqddRyKBx2kJXj5oZhe8-->--</span>
+        <span data-page-node-id="Kn1ZKStL7X4EPzqBFjo3g3"><!--pnid:bVaqC6Oq0WCQnaDOZnNeli-->·</span>
+        <span data-page-node-id="QMnI0syEJTxCJ07LKi8V4B"><!--pnid:1WHK2E82K3nImXKDC2WaFF-->每日更新</span>
       </div>
     </div>
 
-  </div><!-- /header-top -->
-  </div><!-- /header-inner -->
+  </div><!--pnid:8ccULPWTwG15mHnJa3YmzG--><!-- /header-top -->
+  </div><!--pnid:ybfBsrXkTRLhwGteQQOuA1--><!-- /header-inner -->
 </div>
 
-<div class="main-content">
+<div data-page-node-id="afVwxt8XjrnWyfByZfkICI" class="main-content">
 
-<div id="latest-section" class="fade-in fade-in-delay-1"></div>
+<div data-page-node-id="SITQNsEeVw9EOAvDREprgH" class="fade-in fade-in-delay-1" id="latest-section"></div>
 
-<div class="archive-section fade-in fade-in-delay-2">
-  <div class="section-title">历史快报 <span style="font-size:14px;font-weight:400;color:var(--text-muted);">（仅保留最近6天，不含当天）</span></div>
-  <div class="archive-timeline" id="archive-timeline"></div>
+<div data-page-node-id="f4ZfV66k242X7VfTkyxGxi" class="archive-section fade-in fade-in-delay-2">
+  <div data-page-node-id="qAn252BNOy3LFH0eveXZSa" class="section-title"><!--pnid:BWdbknVWPNLv07a4vHn36r-->历史快报 <span data-page-node-id="oFq0ZVsXGQCwPhpXpm75CO" style="font-size:14px; font-weight:400; color:var(--text-muted)"><!--pnid:QAMOdu2m56XXOFEIJ2pYn2-->（仅保留最近6天，不含当天）</span></div>
+  <div data-page-node-id="81LsFYp2wODgRY2qS7A21W" class="archive-timeline" id="archive-timeline"></div>
 </div>
 
 </div>
 
-<div class="site-footer fade-in fade-in-delay-3">
-  <div class="footer-divider"></div>
-  <div class="footer-content">
-    <p>老盛早知道 &copy; 2026 &middot; Powered by WorkBuddy &amp; AI</p>
-    <p>本站内容仅供参考，不构成投资建议</p>
+<div data-page-node-id="qyJv9JZPscmueU3mfChVIJ" class="site-footer fade-in fade-in-delay-3">
+  <div data-page-node-id="5ke2vMugf5vzDME7RooRBe" class="footer-divider"></div>
+  <div data-page-node-id="hUOkdXSECZuDTua8jRLTgf" class="footer-content">
+    <p data-page-node-id="xxjWMLtYpkNhQ7q9LcrtnE"><!--pnid:amICdBYURjzvPo7iDa8GcS-->老盛早知道 &copy; 2026 &middot; Powered by WorkBuddy &amp; AI</p>
+    <p data-page-node-id="RfAuLNInPoVIUvMCxFx09q"><!--pnid:ysJYNLJgOd0QUpHx2EJiM3-->本站内容仅供参考，不构成投资建议</p>
   </div>
 </div>
 
-<script>
-// 所有快报数据（按日期倒序）- 最新一期 + 全部历史；历史区取 slice(1) 列出所有历史期，界面可见数=数组数=本地文件数
+<script data-page-node-id="BAHfk3M7CMxuuoDfUmCElJ" data-pnid-children="Z7ibEMPUcHPaQbwh9ZZH2L">
+// 所有快报数据（按日期倒序）- 同一天可多条（盘前/盘后），每天有几份就列几条
+// ⚠️ 云端每期整体替换本数组：覆盖【最近 7 个不同日期】下的全部条目（条数可 >7），按日期倒序、同一天 post→pre→空
+// 每条 { date:"YYYYMMDD", weekday:"星期X", slot:"pre"|"post"|"", title:"..." }
+// slot 与文件名前缀对应：pre=盘前_、post=盘后_、空=无前缀；title 采用「日期 周X·要点1·要点2·要点3」≤50 字
 const reports = [
-{ date: "20261117", weekday: "星期二", title: "11/17 周二·沪指失守3600·银行午后护盘·华为算力逆势" },
-{ date: "20261116", weekday: "星期一", title: "11/16 周一·银行逆势涨1.91%·科技全线杀跌·外汇存准上调" },
-{ date: "20261113", weekday: "星期五", title: "11/13 周五·英伟达换帅算力杀跌·银行独涨护盘·美债破5.1%" },
-{ date: "20261112", weekday: "星期四", title: "11/12 周四·银行护盘涨0.36%·美债回升至5%·创业板跌2.44%" },
-{ date: "20261111", weekday: "星期三", title: "11/11 周三·美CPI超预期·A股放量·算力爆发" },
-{ date: "20261110", weekday: "星期二", title: "11/10 周二·关税缓和·油价暴跌·成长活跃" },
-{ date: "20261109", weekday: "星期一", title: "11/9 周一·国常会稳市·银行护盘·非农推升加息" }]
-function getLink(dateStr) {
-  return `老盛早知道_${dateStr}.html`;
+{ date: "20261117", weekday: "星期二", slot: "post", title: "11/17 周二·沪指失守3600·银行红利护盘·AI链重挫" },
+{ date: "20261117", weekday: "星期二", slot: "pre", title: "11/17 周二·沪指失守3600·银行午后护盘·华为算力逆势" },
+{ date: "20261116", weekday: "星期一", slot: "pre", title: "11/16 周一·银行逆势涨1.91%·科技全线杀跌·外汇存准上调" },
+{ date: "20261113", weekday: "星期五", slot: "pre", title: "11/13 周五·英伟达换帅算力杀跌·银行独涨护盘·美债破5.1%" },
+{ date: "20261112", weekday: "星期四", slot: "pre", title: "11/12 周四·银行护盘涨0.36%·美债回升至5%·创业板跌2.44%" },
+{ date: "20261111", weekday: "星期三", slot: "pre", title: "11/11 周三·美CPI超预期·A股放量·算力爆发" },
+{ date: "20261110", weekday: "星期二", slot: "pre", title: "11/10 周二·关税缓和·油价暴跌·成长活跃" },
+{ date: "20261109", weekday: "星期一", slot: "pre", title: "11/9 周一·国常会稳市·银行护盘·非农推升加息" }]
+// ⚠️ 云端门户跳转铁律（2026-11-17 升级）：所有链接必须是绝对 URL，key 按时段区分。
+// key 规则：盘前=YYYYMMDD_pre、盘后=YYYYMMDD_post、无前缀=YYYYMMDD；与 reports 每条 date+slot 一一对应。
+// 已生成的报告 → 资料库 page 节点绝对链接；未生成的期次 → 公开静态站带前缀文件名的绝对 URL。
+// 🚫 严禁退回相对文件名：资料库页面环境下会解析成 /space/d/xxx 而 404。
+const REPORT_URLS = {
+  "20261117_post": "https://www.workbuddy.cn/space/d/xZFCIKEvgk2XKV1rVi3y5A",
+  "20261117_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261117.html",
+  "20261116_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261116.html",
+  "20261113_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261113.html",
+  "20261112_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261112.html",
+  "20261111_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261111.html",
+  "20261110_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261110.html",
+  "20261109_pre": "https://sheng-2000.github.io/laosheng-zaodao/老盛早知道_20261109.html"
+};
+const STATIC_BASE = "https://sheng-2000.github.io/laosheng-zaodao/";
+// 时段前缀：pre=盘前_、post=盘后_、其余=空串
+function prefixFor(slot) {
+  return slot === 'pre' ? '盘前_' : slot === 'post' ? '盘后_' : '';
+}
+// 传入整条 report，按 date+slot 查绝对链接；无链接时回退带前缀文件名的静态站绝对 URL
+function getLink(r) {
+  const key = r.slot ? `${r.date}_${r.slot}` : r.date;
+  return REPORT_URLS[key] || STATIC_BASE + prefixFor(r.slot) + `老盛早知道_${r.date}.html`;
 }
 
 // 从标题中提取前3个关键词（用·分割）
 function extractKeywords(title) {
   const parts = title.split('·').map(s => s.trim()).filter(Boolean);
   return parts.slice(0, 3);
+}
+// 时段中文标签：用于卡片上区分盘前/盘后
+function slotLabel(slot) {
+  return slot === 'pre' ? '盘前' : slot === 'post' ? '盘后' : '';
 }
 
 // Header meta
@@ -1154,7 +1197,7 @@ const keywords = extractKeywords(latest.title);
 const heroTagsHtml = keywords.map(k => `<span class="hero-tag">${k}</span>`).join('');
 document.getElementById('latest-section').innerHTML = `
   <div class="section-title">最新一期</div>
-  <a class="hero-card" href="${getLink(latest.date)}">
+  <a class="hero-card" href="${getLink(latest)}" target="_blank" rel="noopener noreferrer">
     <div class="hero-card-border"></div>
     <div class="hero-card-inner">
       <div class="hero-date-block">
@@ -1165,6 +1208,7 @@ document.getElementById('latest-section').innerHTML = `
       <div class="hero-content-block">
         <div class="hero-badge-row">
           <span class="hero-badge"><span class="hero-badge-dot"></span>LATEST</span>
+          ${slotLabel(latest.slot) ? `<span class="hero-badge" style="background:rgba(240,180,41,.14);color:#f0b429;border-color:rgba(240,180,41,.4)">${slotLabel(latest.slot)}</span>` : ''}
           <span class="hero-label">${latest.date.slice(0,4)}年${parseInt(latest.date.slice(4,6))}月${parseInt(latest.date.slice(6,8))}日</span>
         </div>
         <div class="hero-title">${latest.title}</div>
@@ -1182,12 +1226,15 @@ archive.forEach(r => {
   const d = r.date;
   const item = document.createElement('a');
   item.className = 'timeline-item';
-  item.href = getLink(d);
+  item.href = getLink(r);
+  item.target = '_blank';
+  item.rel = 'noopener noreferrer';
   item.innerHTML = `
     <div class="timeline-dot"></div>
     <div class="timeline-content">
       <div class="tl-header">
         <span class="tl-date">${d.slice(0,4)}.${d.slice(4,6)}.${d.slice(6,8)}</span>
+        ${slotLabel(r.slot) ? `<span class="tl-slot-badge">${slotLabel(r.slot)}</span>` : ''}
         <span class="tl-weekday">${r.weekday}</span>
       </div>
       <div class="tl-title">${r.title}</div>
@@ -1250,6 +1297,7 @@ window.toggleTheme = function() {
 
   document.getElementById('pw-input').focus();
 })();
+
 </script>
 </body>
 </html>
