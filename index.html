@@ -49,6 +49,141 @@ body{
 ::-webkit-scrollbar-thumb:hover { background:rgba(139,148,158,0.55); }
 
 
+/* ══════════ PASSWORD GATE ══════════ */
+.pw-overlay {
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg-primary);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 0.6s ease, visibility 0.6s ease;
+  overflow:hidden;
+}
+.pw-overlay.hidden { opacity:0;pointer-events:none;visibility:hidden; }
+
+.pw-overlay::before {
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle 300px at 20% 30%, rgba(0,212,255,0.06) 0%, transparent 70%),
+    radial-gradient(circle 250px at 80% 70%, rgba(188,140,255,0.05) 0%, transparent 70%),
+    radial-gradient(circle 200px at 50% 50%, rgba(0,212,255,0.03) 0%, transparent 70%);
+  animation:pw-bg-drift 12s ease-in-out infinite alternate;
+}
+@keyframes pw-bg-drift {
+  0% { transform:scale(1) translate(0,0); }
+  50% { transform:scale(1.1) translate(-2%,3%); }
+  100% { transform:scale(1) translate(2%,-2%); }
+}
+
+.pw-particles {
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+}
+.pw-particle {
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--accent);opacity:0;
+  animation:pw-float linear infinite;
+}
+.pw-particle:nth-child(1) { left:10%;top:80%;animation-duration:14s;animation-delay:0s;width:2px;height:2px; }
+.pw-particle:nth-child(2) { left:25%;top:90%;animation-duration:18s;animation-delay:2s;background:var(--purple); }
+.pw-particle:nth-child(3) { left:45%;top:85%;animation-duration:12s;animation-delay:4s;width:4px;height:4px; }
+.pw-particle:nth-child(4) { left:65%;top:95%;animation-duration:16s;animation-delay:1s;background:var(--purple); }
+.pw-particle:nth-child(5) { left:80%;top:88%;animation-duration:20s;animation-delay:3s;width:2px;height:2px; }
+.pw-particle:nth-child(6) { left:35%;top:92%;animation-duration:15s;animation-delay:5s; }
+.pw-particle:nth-child(7) { left:55%;top:82%;animation-duration:17s;animation-delay:6s;background:var(--green);width:2px;height:2px; }
+.pw-particle:nth-child(8) { left:90%;top:75%;animation-duration:13s;animation-delay:7s;background:var(--green); }
+@keyframes pw-float {
+  0% { transform:translateY(0) translateX(0);opacity:0; }
+  10% { opacity:0.6; }
+  90% { opacity:0.3; }
+  100% { transform:translateY(-100vh) translateX(30px);opacity:0; }
+}
+
+.pw-overlay::after {
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,212,255,0.015) 2px, rgba(0,212,255,0.015) 4px
+  );
+  pointer-events:none;
+}
+
+.pw-box {
+  text-align:center;max-width:380px;width:90%;padding:44px 36px;
+  background:rgba(22,27,34,0.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(0,212,255,0.2);
+  border-radius:20px;
+  box-shadow:0 0 80px rgba(0,212,255,0.06),0 0 0 1px rgba(0,212,255,0.05),inset 0 1px 0 rgba(255,255,255,0.04);
+  position:relative;z-index:1;
+  animation:pw-box-in 0.8s ease forwards;
+}
+@keyframes pw-box-in {
+  from { opacity:0;transform:translateY(30px) scale(0.96); }
+  to { opacity:1;transform:translateY(0) scale(1); }
+}
+
+.pw-box::before {
+  content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--purple),transparent);
+  border-radius:2px;
+}
+
+.pw-box .pw-icon {
+  width:60px;height:60px;margin:0 auto 22px;
+  background:linear-gradient(145deg,rgba(0,212,255,0.08),rgba(0,212,255,0.02));
+  border:1px solid rgba(0,212,255,0.25);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 30px rgba(0,212,255,0.15);
+  position:relative;
+}
+.pw-box .pw-icon::after {
+  content:'';position:absolute;inset:-6px;border-radius:20px;
+  border:1px solid rgba(0,212,255,0.06);
+  animation:pw-icon-ring 3s ease-in-out infinite;
+}
+@keyframes pw-icon-ring {
+  0%,100% { transform:scale(1);opacity:0.5; }
+  50% { transform:scale(1.08);opacity:1; }
+}
+.pw-box .pw-icon svg { width:28px;height:28px; }
+
+.pw-box h2 { font-size:20px;font-weight:700;color:var(--text-primary);margin-bottom:6px;letter-spacing:2px; }
+.pw-box p { font-size:13px;color:var(--text-muted);margin-bottom:28px; }
+.pw-box input[type="password"] {
+  width:100%;padding:14px 18px;font-size:16px;
+  background:rgba(13,17,23,0.8);
+  border:1px solid rgba(48,54,61,0.8);
+  border-radius:10px;color:var(--text-primary);
+  outline:none;letter-spacing:6px;text-align:center;
+  transition:all 0.3s ease;
+}
+.pw-box input[type="password"]:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(0,212,255,0.1),0 0 20px rgba(0,212,255,0.08);
+}
+.pw-box input[type="password"]::placeholder { letter-spacing:1px;color:var(--text-muted);font-size:14px; }
+
+.pw-box .pw-btn {
+  margin-top:18px;width:100%;padding:13px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,#00d4ff,#0099cc);
+  color:#0d1117;border:none;border-radius:10px;cursor:pointer;
+  letter-spacing:3px;transition:all 0.3s ease;
+  position:relative;overflow:hidden;
+}
+.pw-box .pw-btn::before {
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transition:left 0.5s ease;
+}
+.pw-box .pw-btn:hover::before { left:100%; }
+.pw-box .pw-btn:hover {
+  box-shadow:0 0 30px rgba(0,212,255,0.35);transform:translateY(-2px);
+}
+.pw-box .pw-btn:active { transform:translateY(0); }
+
+.pw-box .pw-error {
+  color:var(--red);font-size:12px;margin-top:14px;min-height:18px;
+  transition:opacity 0.3s;
+}
+
 /* ══════════ HEADER ══════════ */
 .header {
   background:linear-gradient(180deg, #0a1018 0%, #0c1523 100%);
@@ -596,6 +731,19 @@ body.light-theme .tl-slot-badge.slot-post { color:#6f3fd0 !important;background:
   body { line-height:1.6; }
 
 
+/* 密码锁 */
+  .pw-box {
+    padding:28px 20px;
+    max-width:320px;
+    margin:0 16px;
+  }
+  .pw-box .pw-icon { width:48px;height:48px;border-radius:12px;margin-bottom:18px; }
+  .pw-box .pw-icon svg { width:22px;height:22px; }
+  .pw-box h2 { font-size:16px;margin-bottom:4px; }
+  .pw-box p { font-size:12px;margin-bottom:20px; }
+  .pw-box input[type="password"] { padding:12px;font-size:15px;letter-spacing:4px; }
+  .pw-box .pw-btn { padding:11px;font-size:13px;letter-spacing:2px; }
+
   /* Header - 紧凑布局 */
   .header { position:sticky; }
   .header-inner { padding:12px 16px 10px; }
@@ -889,6 +1037,25 @@ body.light-theme .footer-divider::before { box-shadow:0 0 10px rgba(10,102,194,0
 body.light-theme ::selection { background:rgba(10,102,194,0.22);color:#1f2328; }
 body.light-theme ::-webkit-scrollbar-thumb { background:rgba(31,35,40,0.22);border-radius:3px; }
 body.light-theme ::-webkit-scrollbar-thumb:hover { background:rgba(31,35,40,0.38); }
+body.light-theme .pw-box .pw-icon {
+  background:linear-gradient(145deg,rgba(10,102,194,0.08),rgba(10,102,194,0.02));
+  border-color:rgba(10,102,194,0.3);
+  box-shadow:0 0 30px rgba(10,102,194,0.12);
+}
+body.light-theme .pw-box .pw-icon svg path { fill:#0a66c2; }
+body.light-theme .pw-box input[type="password"] {
+  background:#ffffff;
+  border-color:#dfe3e8;
+}
+body.light-theme .pw-box input[type="password"]:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(10,102,194,0.1);
+}
+body.light-theme .pw-btn {
+  background:linear-gradient(135deg,#0a66c2,#084d94);
+  color:#ffffff;
+}
+body.light-theme .pw-btn:hover { box-shadow:0 0 30px rgba(10,102,194,0.3); }
 /* 平滑过渡 */
 body, .header, .brand-icon {
   transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease;
@@ -897,6 +1064,31 @@ body, .header, .brand-icon {
 </style>
 </head>
 <body data-page-node-id="qyD7bo9qySLShSww8C2wPb" class="light-theme">
+<div data-page-node-id="TBt9v9MCxOiDvHaPyfYXdW" class="pw-overlay" id="pw-overlay">
+  <div data-page-node-id="7BUGkAIdsE0idCQHQT4Cko" class="pw-particles">
+    <div data-page-node-id="Xn6bf2GCLn1Rdg6WaZLtFz" class="pw-particle"></div>
+    <div data-page-node-id="kfK6QibZrcwg9pwSrU4Uyt" class="pw-particle"></div>
+    <div data-page-node-id="BceudRxplfJAQnVVF4mlWo" class="pw-particle"></div>
+    <div data-page-node-id="1MjjYPiOJrmuwka82pNwmp" class="pw-particle"></div>
+    <div data-page-node-id="Ys0TAGHryQkeyBWtgMB5eQ" class="pw-particle"></div>
+    <div data-page-node-id="ZMgRCunU8T7ItYHxidQpBT" class="pw-particle"></div>
+    <div data-page-node-id="nqGQXRQlkucespMRXTKDrN" class="pw-particle"></div>
+    <div data-page-node-id="DQVYEaYmQnOQKRshm3sUqL" class="pw-particle"></div>
+  </div>
+  <div data-page-node-id="SBAMhKnvCMH6x6q5bcrhKU" class="pw-box">
+    <div data-page-node-id="6HHV1HofWMGU7d4BIwRHwY" class="pw-icon">
+      <svg data-page-node-id="mskhJODw6oruP52W1RZuvw" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path data-page-node-id="JeEMtXzEQjOq3Sreht4cEG" d="M12 1C6.5 1 2 5.5 2 11v10h4v2h12v-2h4V11c0-5.5-4.5-10-10-10zm0 3c3.9 0 7 3.1 7 7v3H5v-3c0-3.9 3.1-7 7-7zm-1 8h2v4h-2z" fill="#00d4ff"/>
+      </svg>
+    </div>
+    <h2 data-page-node-id="P1zaWasmzRPQJF8ZZrgRe1"><!--pnid:P2o2NlLHwICIDB8MefMo58-->访问需要密码</h2>
+    <p data-page-node-id="Yx18uXdOgdBo3USKAAAjpP"><!--pnid:w6IOxun4DzB8wKhIu6j3er-->输入密码以查看快讯内容</p>
+    <input data-page-node-id="CyH6fLs9YjrOo2Sa7YE0tX" autocomplete="off" id="pw-input" placeholder="Password" type="password">
+    <button data-page-node-id="oCEJXhUcJHHjvYougZQnj9" class="pw-btn" onclick="checkPassword()"><!--pnid:E2wLFfQJwxEBzB15ahKjbD-->进入</button>
+    <div data-page-node-id="9sy70f1JtWrui2I1bHsbem" class="pw-error" id="pw-error"></div>
+  </div>
+</div>
+
 
 <script data-page-node-id="voKJj9TGhcAQikzNjjF7SC" data-pnid-children="sBuyn28QruYYuIQqt3SUMx">(function(){try{var m=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;function apply(){document.body.classList.toggle('light-theme',!(m?m.matches:false));}apply();if(m){var f=function(){apply();};if(m.addEventListener)m.addEventListener('change',f);else if(m.addListener)m.addListener(f);}}catch(e){}})();</script>
 
@@ -1089,6 +1281,54 @@ window.toggleTheme = function() {
 };
 
 
+// ══════════ 密码锁 ══════════
+(function() {
+  const _0x1a = [78,85,74,123,79,69,86,52];
+  const _0x1b = _0x1a.map(function(c){return String.fromCharCode(c - 1)}).join('');
+  const KEY = 'lszd_auth';
+
+  // 检查 session 认证（file:// 本地协议下 sessionStorage 可能不可用，需容错）
+  try {
+    if (sessionStorage.getItem(KEY) === 'ok') {
+      document.getElementById('pw-overlay').style.display = 'none';
+      return;
+    }
+  } catch (e) {}
+
+  function verify(pwd) {
+    return btoa(pwd) === _0x1b;
+  }
+
+  function hideOverlay() {
+    var ov = document.getElementById('pw-overlay');
+    if (!ov) return;
+    ov.classList.add('hidden');
+    ov.style.display = 'none';
+    ov.style.visibility = 'hidden';
+  }
+
+  window.checkPassword = function() {
+    var input = document.getElementById('pw-input');
+    var error = document.getElementById('pw-error');
+    var val = input.value.trim();
+    if (!val) { error.textContent = '请输入密码'; return; }
+    if (verify(val)) {
+      try { sessionStorage.setItem(KEY, 'ok'); } catch (e) {}
+      hideOverlay();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      error.textContent = '密码错误，请重试';
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  document.getElementById('pw-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); window.checkPassword(); }
+  });
+
+  document.getElementById('pw-input').focus();
+})();
 </script>
 </body>
 </html>
