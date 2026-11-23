@@ -986,6 +986,7 @@ body, .header, .brand-icon {
 // 每条 { date:"YYYYMMDD", weekday:"星期X", slot:"pre"|"post"|"", title:"..." }
 // slot 与文件名前缀对应：pre=盘前_、post=盘后_、空=无前缀；title 采用「日期 周X·要点1·要点2·要点3」≤50 字
 const reports = [
+{ date: "20261123", weekday: "星期一", slot: "post", title: "11/23 周一盘后·沪指V型反弹科技领涨·稳市三箭齐发护盘·红利权重回调" },
 { date: "20261123", weekday: "星期一", slot: "pre", title: "11/23 周一盘前·隔夜纳指暴跌5.28%AI链入熊·稳市三箭齐发护盘·A股红利逆势创新高" },
 { date: "20261122", weekday: "星期日", slot: "post", title: "11/22 周日盘后·周末休市数据沿用11/20·沪指跌1.23%红利逆势创新高·纳指入熊AI链重挫" },
 { date: "20261122", weekday: "星期日", slot: "pre", title: "11/22 周日盘前·隔夜AI雪崩纳指跌5.28%·A股红利逆势创新高·金价失守3540" },
@@ -1006,6 +1007,7 @@ const reports = [
 // 已生成的报告 → 资料库 page 节点绝对链接；未生成的期次 → 公开静态站带前缀文件名的绝对 URL。
 // 🚫 严禁退回相对文件名：资料库页面环境下会解析成 /space/d/xxx 而 404。
 const REPORT_URLS = {
+  "20261123_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261123.html",
   "20261123_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261123.html",
   "20261122_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261122.html",
   "20261122_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261122.html",
