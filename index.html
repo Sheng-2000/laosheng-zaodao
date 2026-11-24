@@ -986,6 +986,7 @@ body, .header, .brand-icon {
 // 每条 { date:"YYYYMMDD", weekday:"星期X", slot:"pre"|"post"|"", title:"..." }
 // slot 与文件名前缀对应：pre=盘前_、post=盘后_、空=无前缀；title 采用「日期 周X·要点1·要点2·要点3」≤50 字
 const reports = [
+{ date: "20261125", weekday: "星期三", slot: "pre", title: "11/25 周三盘前·隔夜美股分化AI获利兑现·A股高开低走红利护盘·央行8000亿MLF" },
 { date: "20261124", weekday: "星期二", slot: "post", title: "11/24 周二盘后·黄仁勋复职点燃AI·沪指高开低走收红·红利科技跷跷板" },
 { date: "20261124", weekday: "星期二", slot: "pre", title: "11/24 周二盘前·隔夜美股飙升纳指涨6.51%·A股放量普涨科技领涨·黄金创新高" },
 { date: "20261123", weekday: "星期一", slot: "post", title: "11/23 周一盘后·沪指V型反弹科技领涨·稳市三箭齐发护盘·红利权重回调" },
@@ -997,9 +998,7 @@ const reports = [
 { date: "20261120", weekday: "星期五", slot: "post", title: "11/20 周五盘后·沪指放量跌1.23%·银行红利创新高·全球科技重挫" },
 { date: "20261120", weekday: "星期五", slot: "pre", title: "11/20 周五盘前·隔夜美股重挫金价破位·A股缩量磨底·银行红利护盘" },
 { date: "20261119", weekday: "星期四", slot: "post", title: "11/19 周四盘后·沪指回调科创领涨·金价重挫·银行红利护盘" },
-{ date: "20261119", weekday: "星期四", slot: "pre", title: "11/19 周四盘前·隔夜美股分化鹰派纪要·金价破3800·国产算力领涨" },
-{ date: "20261118", weekday: "星期三", slot: "post", title: "11/18 周三盘后·沪指微涨算力反弹·成交创地量·银行红利护盘" },
-{ date: "20261118", weekday: "星期三", slot: "pre", title: "11/18 周三盘前·隔夜美股四连跌·金价破3800·红利防御占优" }
+{ date: "20261119", weekday: "星期四", slot: "pre", title: "11/19 周四盘前·隔夜美股分化鹰派纪要·金价破3800·国产算力领涨" }
 ]
 
 // ⚠️ 云端门户跳转铁律（2026-11-17 升级）：所有链接必须是绝对 URL，key 按时段区分。
@@ -1007,6 +1006,7 @@ const reports = [
 // 已生成的报告 → 资料库 page 节点绝对链接；未生成的期次 → 公开静态站带前缀文件名的绝对 URL。
 // 🚫 严禁退回相对文件名：资料库页面环境下会解析成 /space/d/xxx 而 404。
 const REPORT_URLS = {
+  "20261125_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261125.html",
   "20261124_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261124.html",
   "20261124_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261124.html",
   "20261123_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261123.html",
@@ -1019,8 +1019,6 @@ const REPORT_URLS = {
   "20261120_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261120.html",
   "20261119_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261119.html",
   "20261119_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261119.html",
-  "20261118_post": "https://sheng-2000.github.io/laosheng-zaodao/盘后_老盛早知道_20261118.html",
-  "20261118_pre": "https://sheng-2000.github.io/laosheng-zaodao/盘前_老盛早知道_20261118.html",
 };
 const STATIC_BASE = "https://sheng-2000.github.io/laosheng-zaodao/";
 // 时段前缀：pre=盘前_、post=盘后_、其余=空串
